@@ -145,4 +145,11 @@ function handleGameCellClicks()
         playerIsPlayingAnyGame = true;
       }
 
+
+  if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 620 &&
+      mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 650)
+      {
+        playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
+      }
+    
 }

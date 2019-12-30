@@ -19,6 +19,9 @@ function handleDualPurposeSplashAndLoadingSceneClick()
 {
   playerShouldSeeDualPurposeLoadingSplashScreen = false;
   playerShouldSeeTitleScreen = true;
+  setSourcesForAudioObjects();
+  populateMultisoundArrays();
+  playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
   //setInterval(updateGameFrame, frameRate);
   gameInterval.start();
 }

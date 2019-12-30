@@ -113,9 +113,11 @@ function handleCollisionsWithLetters()
           if (arrayOfLetters[letterIndex].name === currentCorrectLetter)
           {
             amountCorrect++;
+            playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
           } else if (arrayOfLetters[letterIndex].name !== currentCorrectLetter)
           {
             amountIncorrect++;
+            playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
           }
           calculateAccuracy();
           populateArrayOfLettersForSnake();
@@ -133,9 +135,11 @@ function handleCollisionsWithLetters()
           if (arrayOfLetters[letterIndex].name === currentCorrectLetter)
           {
             amountCorrect++;
+            playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
           } else if (arrayOfLetters[letterIndex].name !== currentCorrectLetter)
           {
             amountIncorrect++;
+            playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
           }
           calculateAccuracy();
           setOrResetCorrectLetter();
@@ -152,6 +156,7 @@ function handleCollisionsWithLetters()
       {
         console.log('correct letter collision detected');
         amountCorrect++;
+        playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
         calculateAccuracy();
         setOrResetCorrectLetter();
         arrayOfLetters.splice(letterIndex,1);
@@ -161,6 +166,7 @@ function handleCollisionsWithLetters()
       {
         console.log('incorrect letter collision detected');
         amountIncorrect++;
+        playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
         calculateAccuracy();
         setOrResetCorrectLetter();
         arrayOfLetters.splice(letterIndex,1);
@@ -179,6 +185,7 @@ function handleCollisionsWithLetters()
       {
         console.log('correct letter collision detected');
         amountCorrect++;
+        playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
         calculateAccuracy();
         setOrResetCorrectLetter();
         initializeLettersForJumper();
@@ -190,6 +197,7 @@ function handleCollisionsWithLetters()
       {
         console.log('incorrect letter collision detected');
         amountIncorrect++;
+        playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
         calculateAccuracy();
         setOrResetCorrectLetter();
         initializeLettersForJumper();

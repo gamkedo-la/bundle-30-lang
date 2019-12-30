@@ -42,5 +42,6 @@ function handleBackButtonClick()
         playerShouldBePlayingLane = false;
         playerShouldBePlayingJumper = false;
         arrayOfLetters = [];
+        playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
       }
 }
