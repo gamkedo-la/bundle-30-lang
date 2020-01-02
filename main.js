@@ -46,6 +46,8 @@ function gameSpecificUpdates()
   } else if (playerShouldBePlayingSpaceShooter)
   {
     moveSpaceShooterBullets();
+  } else if (playerShouldBePlayingRunner) {
+	  updateRunnerWorld();
   }
 }
 
@@ -78,5 +80,9 @@ function drawEverythingInTheGame()
   {
     drawDebugStuff();
   }
+
+	if (playerShouldBePlayingRunner) {
+		drawRunnerWorld();
+	}
 }
 //end of draw section
