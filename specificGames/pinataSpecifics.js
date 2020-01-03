@@ -4,6 +4,21 @@
 // physics code comes from this public domain work by XEM
 // https://github.com/xem/mini2Dphysics
 
+var pinataGame = new function() {
+
+// list of all known Circles
+var objects = [];
+
+// tiny functions to handle 2d vectors
+var Vec2 = (x,y,t) => ({x,y});
+var length = (x,y,t)=> dot(x,x)**.5;
+var add = (x,y,t) => Vec2(x.x+y.x, x.y+y.y);
+var substract = (x,y,t) => add(x, scale(y, -1));
+var scale = (x,y,t) => Vec2(x.x*y, x.y*y);
+var dot = (x,y,t) => x.x*y.x + x.y*y.y;
+var cross = (x,y,t) => x.x*y.y - x.y*y.x;
+var normalize = (x,y,t) => scale(x, 1 / (length(x) || 1));
+
 // vars:
 // a: canvas
 // b: c1
@@ -23,7 +38,9 @@
 // x: jT
 // b.bgColor="#333";
 var Circle = (C, R = Math.random() * 30 + 10, M = 1/R) => 
-  objects.push({
+
+  objects.push(
+    {
     C, // center
     I: 0, // inertia
     V: Vec2(0, 0), // velocity (speed)
@@ -34,34 +51,32 @@ var Circle = (C, R = Math.random() * 30 + 10, M = 1/R) =>
     E: 0, // angle acceleration,
     R, // radius
     
-    // random emojoi! work on modern devices!
-    //Z: String.fromCodePoint(0x1F600 + Math.random() * 69/*56*/ | 0) // emoji
-    Z: String.fromCharCode(65+Math.floor(Math.random() * 26)) // random A-Z
+    // random emojoi! works on most modern devices but not all
+    //Z: String.fromCodePoint(0x1F600 + Math.random() * 69/*56*/ | 0) 
+
+    // random letter A-Z
+    Z: String.fromCharCode(65+Math.floor(Math.random() * 26))
 
     //I: M,   // (here it's simplified as M) Inertia = mass * radius ^ 2. 12 is a magic constant that can be changed
   });
-// Vec2 lib
-var Vec2 = (x,y,t) => ({x,y});
-var length = (x,y,t)=> dot(x,x)**.5;
-var add = (x,y,t) => Vec2(x.x+y.x, x.y+y.y);
-var substract = (x,y,t) => add(x, scale(y, -1));
-var scale = (x,y,t) => Vec2(x.x*y, x.y*y);
-var dot = (x,y,t) => x.x*y.x + x.y*y.y;
-var cross = (x,y,t) => x.x*y.y - x.y*y.x;
-var normalize = (x,y,t) => scale(x, 1 / (length(x) || 1));
-// Globals
-var objects = [];
+
+
 // Init scene
 Circle(Vec2(800, 1000), 600, 0); // floor!
+
+// create many little candies
 for(i = 99; i--; ){
   Circle(Vec2(Math.random() * 900 + 300, Math.random() * 900 - 700));
 }
+
+// debug only: spawn new candy on mouseclick
 onclick = e => Circle(Vec2(e.pageX, e.pageY));
-// Loop
+
+// temp animation loop
 setInterval(
   e => {
   
-    //a.width ^= 0; // clear
+    //a.width ^= 0; // clear the screen
     c.fillStyle = "rgba(150,220,255,1)";
     c.fillRect(0,0,a.width,a.height);
 
@@ -75,14 +90,14 @@ setInterval(
         
             // Test collision
             e = substract(d.C, b.C);
-            if(length(e) < b.R + d.R){
+            if (length(e) < b.R + d.R){
               D = b.R + d.R - length(e), // depth
               N = normalize(e), // normal
               S = add(d.C, scale(normalize(scale(e, -1)), d.R)), // start
               E = add(S, scale(N, D)) // end
               
               // Resolve collision
-              if(b.M || d.M){
+              if (b.M || d.M) {
                 //  correct positions
                 h = scale(N, D / (b.M + d.M) * .8); // .8 = poscorrectionrate = percentage of separation to project objects
                 b.C = add(b.C, scale(h, -b.M));
@@ -130,7 +145,6 @@ setInterval(
       b.B += b.M ? b.D * .01 : .001;
       
       // Draw
-      
       c.save();
       c.beginPath();
       c.translate(b.C.x, b.C.y);
@@ -140,10 +154,11 @@ setInterval(
       c.font = b.R * 1.9 + "px a";
       //c.textAlign = "center";
       
-
       if(objects[i].M) {
         c.fillStyle = "rgba(0,0,0,0.25)";
-        c.fillText(b.Z, -b.R * 1.24, b.R * .67); // the letter
+        //c.fillText(b.Z, -b.R * 1.24, b.R * .67); // the emoji
+        c.fillText(b.Z, -b.R, b.R); // the letter
+        c.fill();
         }
       else {
           c.fillStyle = "rgba(80,60,40,1)";
@@ -156,3 +171,5 @@ setInterval(
   },
   9
 );
+
+}(); // create new pinataGame object immediately
