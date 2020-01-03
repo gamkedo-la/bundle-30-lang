@@ -46,7 +46,7 @@ function customFontFillText(string, fontSize, xCoordinate,yCoordinate)
     gameCanvasContext.drawImage(arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding,
                                 0,0, /*starting x and y coordinates on the canvas*/
                                 1000,750, /*original png width and height*/
-                                arrayOfCharactersIndex*20,0,/*x y on canvas, space each character by 20 pixels horizontally*/
+                                arrayOfCharactersIndex*15,0,/*x y on canvas, space each character by 20 pixels horizontally*/
                                 40,40/*width and height of drawing on canvas*/);
 
   }
