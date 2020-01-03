@@ -42,7 +42,6 @@ function spawnALetterIfAppropriate()
   if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter)
   {
     arrayOfLetters.push({xCoordinate:640,yCoordinate:Math.random()*700, name:name, correctAnswer:false});
-    console.log(arrayOfLetters);
   } else if (playerShouldBePlayingLane)
   {
     let randomNumber2 = Math.random()*10;
@@ -154,7 +153,6 @@ function handleCollisionsWithLetters()
         arrayOfLetters[letterIndex].xCoordinate === playerXCoordinate &&
         arrayOfLetters[letterIndex].name === currentCorrectLetter)
       {
-        console.log('correct letter collision detected');
         amountCorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
         calculateAccuracy();
@@ -164,7 +162,6 @@ function handleCollisionsWithLetters()
         arrayOfLetters[letterIndex].xCoordinate === playerXCoordinate &&
         arrayOfLetters[letterIndex].name !== currentCorrectLetter)
       {
-        console.log('incorrect letter collision detected');
         amountIncorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
         calculateAccuracy();
@@ -183,7 +180,6 @@ function handleCollisionsWithLetters()
         playerXCoordinate < arrayOfLetters[letterIndex].xCoordinate + 20 &&
         arrayOfLetters[letterIndex].name === currentCorrectLetter)
       {
-        console.log('correct letter collision detected');
         amountCorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
         calculateAccuracy();
@@ -195,7 +191,6 @@ function handleCollisionsWithLetters()
         playerXCoordinate < arrayOfLetters[letterIndex].xCoordinate + 20 &&
         arrayOfLetters[letterIndex].name !== currentCorrectLetter)
       {
-        console.log('incorrect letter collision detected');
         amountIncorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
         calculateAccuracy();

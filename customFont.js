@@ -36,7 +36,6 @@ function customFontFillText(string, fontSize, xCoordinate,yCoordinate)
       }
     }//end of checking for number matches
   }// end of loop through characters
-  console.log(arrayOfCharacterObjectLiterals);
 
   for (let arrayOfCharactersIndex = 0; arrayOfCharactersIndex < arrayOfCharacterObjectLiterals.length; arrayOfCharactersIndex++)
   {
@@ -48,7 +47,7 @@ function customFontFillText(string, fontSize, xCoordinate,yCoordinate)
                                 0,0, /*starting x and y coordinates on the canvas*/
                                 1000,750, /*original png width and height*/
                                 arrayOfCharactersIndex*20,0,/*x y on canvas, space each character by 20 pixels horizontally*/
-                                20,20/*width and height of drawing on canvas*/);
+                                40,40/*width and height of drawing on canvas*/);
 
   }
 

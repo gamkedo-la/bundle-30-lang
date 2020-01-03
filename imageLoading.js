@@ -44,13 +44,11 @@ function loadImages()
   for (let arrayOfTextNumbersIndex = 0; arrayOfTextNumbersIndex < arrayOfTextNumbers.length; arrayOfTextNumbersIndex++)
   {
     let numberImageName = 'number' + arrayOfTextNumbers[arrayOfTextNumbersIndex];
-    console.log(arrayOfTextNumbers[arrayOfTextNumbersIndex]);
     arrayOfImages.push({imageObjectBinding: window[numberImageName],
                     theFile: 'images/Custom Font/pngs/numbers/' + arrayOfTextNumbers[arrayOfTextNumbersIndex]  + '.png'});
   }
 
   numberOfImagesToLoad = arrayOfImages.length;
-  console.log(arrayOfImages);
 
   for (let imageToLoadIndex = 0; imageToLoadIndex < arrayOfImages.length; imageToLoadIndex++)
   {
@@ -61,16 +59,8 @@ function loadImages()
 }
 
 function beginLoadingImage(imageVariable, fileName) {
-
-  //smalla.onload = function() {alert('smalla image object loaded')};
-
-  //smalla.src = 'images/Custom Font/pngs/small letters/smalla.png';
-  //console.log(smalla);
-  //console.log(fileName);
   imageVariable.src = fileName;
 	imageVariable.onload = countLoadedImageAndLaunchIfReady;
-  //console.log(imageVariable.src);
-
 }
 
 var gameIsLoadingBoolean = true;
@@ -78,7 +68,6 @@ var gameIsLoadingBoolean = true;
 function countLoadedImageAndLaunchIfReady()
 {
 	numberOfImagesToLoad--;
-  console.log(numberOfImagesToLoad);
 
   if (numberOfImagesToLoad === 0)
   {

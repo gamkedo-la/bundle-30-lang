@@ -57,7 +57,5 @@ function playARandomSoundInAMultisoundArray(targetMultisoundArray)
 {
   let range = targetMultisoundArray.length - 1;
   let randomNumberInRange = Math.floor(Math.random() * (range - 1) + 1);
-  console.log(randomNumberInRange);
-  console.log(targetMultisoundArray[randomNumberInRange]);
   targetMultisoundArray[randomNumberInRange].play();
 }

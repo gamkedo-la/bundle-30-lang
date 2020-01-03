@@ -14,7 +14,6 @@ var laneFrameRate = 1000/50;
 
 function drawCarPlayer()
 {
-  console.log("inside drawCarPlayer");
   gameCanvasContext.fillStyle = 'blue';
   gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 30,60);
 }

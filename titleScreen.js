@@ -94,7 +94,6 @@ function handleGameCellClicks()
   else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
            mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
       {
-        console.log("inside lane cell click");
         playerShouldBePlayingLane = true;
         playerShouldSeeTitleScreen = false;
         letterSpawnInterval.reset(laneLetterSpawnRate);
@@ -105,7 +104,6 @@ function handleGameCellClicks()
   else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&
            mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
       {
-        console.log("inside jumper cell click");
         playerShouldBePlayingJumper = true;
         playerShouldSeeTitleScreen = false;
         playerIsPlayingAnyGame = true;

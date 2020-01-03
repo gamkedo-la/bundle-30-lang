@@ -15,7 +15,6 @@ function drawSpaceShooterPlayer()
 {
   gameCanvasContext.fillStyle = 'white';
   gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 20,20);
-  console.log('inside drawSpaceShooterPlayer');
 }
 
 function moveSpaceShooterPlayer()
@@ -47,7 +46,6 @@ var bulletSpeed = 7;
 
 function moveSpaceShooterBullets()
 {
-  //console.log("inside moveSpaceShooterBullets");
   for (var bulletIndex = 0; bulletIndex < arrayOfBullets.length; bulletIndex++)
   {
     arrayOfBullets[bulletIndex].x+=bulletSpeed;
@@ -57,7 +55,6 @@ function moveSpaceShooterBullets()
 function drawSpaceShooterBullets()
 {
   gameCanvasContext.fillStyle = 'white';
-  //console.log("inside drawSpaceShooterBullets");
   for (var bulletIndex = 0; bulletIndex < arrayOfBullets.length; bulletIndex++)
   {
     gameCanvasContext.fillRect(arrayOfBullets[bulletIndex].x,arrayOfBullets[bulletIndex].y,
