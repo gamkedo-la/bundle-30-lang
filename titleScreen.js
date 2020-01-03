@@ -65,6 +65,7 @@ function drawGameNames()
 
   gameCanvasContext.fillText('Space', 130, 290);
   gameCanvasContext.fillText('Shooter', 122,325);
+	gameCanvasContext.fillText('Runner', 224, 305);
 }
 
 function handleGameCellClicks()
@@ -144,6 +145,13 @@ function handleGameCellClicks()
         playerShouldSeeTitleScreen = false;
         playerIsPlayingAnyGame = true;
       }
+	else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
+			 mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
+	{
+		playerShouldBePlayingRunner = true;
+		playerShouldSeeTitleScreen = false;
+		playerIsPlayingAnyGame = true;
+	}
 
 
   if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 620 &&
