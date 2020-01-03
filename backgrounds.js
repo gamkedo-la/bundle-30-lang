@@ -1,6 +1,6 @@
 function drawLoadingOrSplashOrTitleScreenBackground()
 {
-  gameCanvasContext.fillStyle = 'black';
+  gameCanvasContext.fillStyle = 'orange';
   gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
 }
 

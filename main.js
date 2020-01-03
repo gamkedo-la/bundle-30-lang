@@ -1,13 +1,15 @@
 window.onload = function()
 {
+
+  loadImages();
+  
   gameCanvas = document.getElementById("gameCanvas");
   gameCanvasContext = gameCanvas.getContext('2d');
 
   statsCanvas = document.getElementById("statsCanvas");
   statsCanvasContext = statsCanvas.getContext('2d');
 
-  drawLoadingOrSplashOrTitleScreenBackground();
-  drawDualPurposeLoadingSplashScreen();
+  drawPleaseWaitForLoadingMessage();
 
   document.addEventListener('keydown',keyDown);
   document.addEventListener('keyup',keyUp);

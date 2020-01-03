@@ -10,7 +10,7 @@ var frameRate = 1000/30;
 
 function gameCanvasClick()
 {
-  if (playerShouldSeeDualPurposeLoadingSplashScreen)
+  if (playerShouldSeePleaseWaitForDownloading)
   {
     handleDualPurposeSplashAndLoadingSceneClick();//dualLoadingSplashScreen.js, player advances to main menu after loading
     initializeCorrectLetterAudioTag();

@@ -1,18 +1,19 @@
-var playerShouldSeeDualPurposeLoadingSplashScreen = true;
+var playerShouldSeePleaseWaitForDownloading = true;
 
-function drawDualPurposeLoadingSplashScreen()
+function promptPlayerForClickAfterLoading()
 {
+  drawLoadingOrSplashOrTitleScreenBackground();
   gameCanvasContext.fillStyle = 'lime';
   gameCanvasContext.font = '30px Helvetica';
-  gameCanvasContext.fillText("Dual Purpose Loading/Splash Screen", 0,50);
-  gameCanvasContext.fillText("A loading screen loads files", 0,100);
-  gameCanvasContext.fillText("A splash screen forces user ", 0,150);
-  gameCanvasContext.fillText("interaction to unlock audio", 0,200);
+  gameCanvasContext.fillText("Downloading done. Click to start", 0,250);
 }
 
-function drawDoneLoadingMessage()
+function drawPleaseWaitForLoadingMessage()
 {
-  gameCanvasContext.fillText("Downloading done. Click to start", 0,250);
+  drawLoadingOrSplashOrTitleScreenBackground();
+  gameCanvasContext.fillStyle = 'lime';
+  gameCanvasContext.font = '30px Helvetica';
+  gameCanvasContext.fillText("The game is downloading. Please Wait.", 0,50);
 }
 
 function handleDualPurposeSplashAndLoadingSceneClick()

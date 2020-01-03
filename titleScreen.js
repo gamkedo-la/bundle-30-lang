@@ -9,6 +9,7 @@ function drawTitleScreen()
   drawTitleScreenHeader();
   drawCellTextAndCheckForHighlightingFromMouseOver();
   drawGameNames();
+  customFontFillText('I poop 2 times every 17 days');
 }
 
 function drawTitleScreenHeader()
@@ -159,5 +160,5 @@ function handleGameCellClicks()
       {
         playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
       }
-    
+
 }
