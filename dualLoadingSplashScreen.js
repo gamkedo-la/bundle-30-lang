@@ -26,5 +26,6 @@ function handleDualPurposeSplashAndLoadingSceneClick()
   populateMultisoundArrays();
   playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
   //setInterval(updateGameFrame, frameRate);
+  playerShouldSeePleaseWaitForDownloading = false;
   gameInterval.start();
 }
