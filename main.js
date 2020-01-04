@@ -1,3 +1,5 @@
+var gameCanvas, gameCanvasContext;
+
 window.onload = function()
 {
 
@@ -15,6 +17,9 @@ window.onload = function()
   document.addEventListener('keyup',keyUp);
   document.addEventListener('click', gameCanvasClick, false);
   gameCanvas.addEventListener('mousemove', calculateMousePosition);
+  gameInterval = new frameInterval(advanceGameFrame, frameRate);
+  letterSpawnInterval = new frameInterval(spawnALetterIfAppropriate, letterSpawnRate);
+  letterSpawnInterval.stop();//workaround for infinite spawning at the initialization
 
   // initializeCorrectLetterAudioTag();
 }
