@@ -9,16 +9,19 @@ function drawTitleScreen()
   drawTitleScreenHeader();
   drawCellTextAndCheckForHighlightingFromMouseOver();
   drawGameNames();
-  customFontFillText('I read 2 times every 17 days');
 }
 
 function drawTitleScreenHeader()
 {
   //title text
-  gameCanvasContext.fillStyle = 'lime';
-  gameCanvasContext.font = '30px Helvetica';
-  gameCanvasContext.fillText("Letter Game Emulator", 200,50);
-  gameCanvasContext.fillText("Choose A Game", 200,100);
+  // gameCanvasContext.fillStyle = 'lime';
+  // gameCanvasContext.font = '30px Helvetica';
+  // gameCanvasContext.fillText("Letter Game Emulator", 200,50);
+  // gameCanvasContext.fillText("Choose A Game", 200,100);
+
+  //customFontFillText(string, fontSize, spacing, xCoordinate,yCoordinate)
+  customFontFillText("Bundle of 30 Language Games", 40, 20, 50,25);
+  customFontFillText("Choose A Game", 25, 20, 175,100);
 }
 
 function drawCellTextAndCheckForHighlightingFromMouseOver()
@@ -45,28 +48,39 @@ function drawCellTextAndCheckForHighlightingFromMouseOver()
 
 function drawGameNames()
 {
-  gameCanvasContext.fillStyle = 'blue';
-  gameCanvasContext.font = '27px Helvetica';
+  // gameCanvasContext.fillStyle = 'blue';
+  // gameCanvasContext.font = '27px Helvetica';
 
   //row 1
-  gameCanvasContext.fillText('Snake', 29,205);
+  // gameCanvasContext.fillText('Snake', 29,205);
+  customFontFillText("Snake", 27, 15, 30,185);
 
-  gameCanvasContext.fillText('Bird', 142,205);
+  // gameCanvasContext.fillText('Bird', 142,205);
+  customFontFillText('Bird', 27, 15, 142,185);
 
-  gameCanvasContext.fillText('Lane', 237,205);
+  // gameCanvasContext.fillText('Lane', 237,205);
+  customFontFillText("Lane", 27, 15, 237,185);
 
-  gameCanvasContext.fillText('Jumper', 322,205);
+  // gameCanvasContext.fillText('Jumper', 322,205);
+  customFontFillText("Jumper", 27, 15, 322,185);
 
-  gameCanvasContext.fillText('Finder', 429,205);
+  // gameCanvasContext.fillText('Finder', 429,205);
+  customFontFillText("Finder", 27, 15, 429,185);
 
-  gameCanvasContext.fillText('Catcher', 522,205);
+  // gameCanvasContext.fillText('Catcher', 522,205);
+  customFontFillText("Catcher", 27, 15, 522,185);
 
   //row two
-  gameCanvasContext.fillText('Shooter', 22,305);
+  // gameCanvasContext.fillText('Shooter', 22,305);
+  customFontFillText("Shooter", 27, 15, 22,285);
 
-  gameCanvasContext.fillText('Space', 130, 290);
-  gameCanvasContext.fillText('Shooter', 122,325);
-	gameCanvasContext.fillText('Runner', 224, 305);
+  // gameCanvasContext.fillText('Space', 130, 290);
+  // gameCanvasContext.fillText('Shooter', 122,325);
+  customFontFillText("Space", 27, 15, 130,285);
+  customFontFillText("Shooter", 27, 15, 122,305);
+
+	// gameCanvasContext.fillText('Runner', 224, 305);
+  customFontFillText("Runner", 27, 15, 224,285);
 }
 
 function handleGameCellClicks()

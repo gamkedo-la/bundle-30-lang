@@ -25,8 +25,9 @@ function drawBackButton()
     {
       gameCanvasContext.fillStyle = jumperBackButtonTextColor;
     }
-      gameCanvasContext.font = '27px Helvetica';
-      gameCanvasContext.fillText('Back', 560,685);
+      // gameCanvasContext.font = '27px Helvetica';
+      // gameCanvasContext.fillText('Back', 560,685);
+      customFontFillText('Back');
   }
 }
 
