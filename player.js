@@ -35,5 +35,7 @@ function moveGameSpecificPlayer()
   } else if (playerShouldBePlayingSpaceShooter)
   {
     moveSpaceShooterPlayer();
+  } else if (playerShouldBePlayingRunner) {
+	  moveRunnerPlayer();
   }
 }

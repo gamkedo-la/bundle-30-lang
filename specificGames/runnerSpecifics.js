@@ -1,6 +1,18 @@
 var playerShouldBePlayingRunner = false;
 var parallaxPos = [0, 0, 0];
 const RUNNERSPEED = 10;
+const RUNNERWIDTH = 30;
+const RUNNERHEIGHT = 80;
+const RUNNERGRAVITY = 4;
+const RUNNERJUMPSPEED = 30;
+const RUNNERMAXJUMPHEIGHT = 300;
+var runnerStatus = 'run'; // 'run', 'jump', or 'slide'
+
+
+function initializeRunner() {
+	playerXCoordinate = (gameCanvas.width - RUNNERWIDTH)/2;
+	playerYCoordinate = gameCanvas.height*0.75 - RUNNERHEIGHT;
+}
 
 function drawParallax() {
 	gameCanvasContext.fillStyle = 'lightgrey';
@@ -20,7 +32,50 @@ function drawRunnerBackground() {
 }
 
 function drawRunnerWorld() {
+	gameCanvasContext.fillStyle = 'white';
+	let x = playerXCoordinate;
+	let y = playerYCoordinate;
+	let width = RUNNERWIDTH;
+	let height = RUNNERHEIGHT;
+	if (runnerStatus == 'slide') {
+		width = RUNNERHEIGHT;
+		height = RUNNERWIDTH;
+		y = gameCanvas.height*0.75 - height;
+	}
+	gameCanvasContext.fillRect(x, y, width, height);
+}
 
+function runnerJump() {
+	runnerStatus = 'jump';
+	playerSpeedY = RUNNERJUMPSPEED;
+}
+
+function runnerSlide() {
+	runnerStatus = 'slide';
+	playerSpeedY = 0;
+}
+
+function runnerRun() {
+	runnerStatus = 'run';
+	playerSpeedY = 0;
+}
+
+function moveRunnerPlayer() {
+	if (upArrowIsBeingHeld) {
+		runnerJump();
+	} else if (downArrowIsBeingHeld) {
+		runnerSlide();
+	} else {
+		runnerRun();
+	}
+	playerYCoordinate -= playerSpeedY;
+	playerYCoordinate += RUNNERGRAVITY;
+	if (playerYCoordinate + RUNNERHEIGHT > gameCanvas.height*0.75) {
+		playerYCoordinate = gameCanvas.height*0.75 - RUNNERHEIGHT;
+	}
+	if (playerYCoordinate < RUNNERMAXJUMPHEIGHT) {
+		playerYCoordinate = RUNNERMAXJUMPHEIGHT;
+	}
 }
 
 function updateRunnerWorld() {
