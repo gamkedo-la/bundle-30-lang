@@ -4,11 +4,11 @@ const RUNNERSPEED = 10;
 
 function drawParallax() {
 	gameCanvasContext.fillStyle = 'lightgrey';
-	gameCanvasContext.fillText('AMAZING', parallaxPos[0], 100);
+	gameCanvasContext.fillText('AMAZING', parallaxPos[0], gameCanvas.height*0.28);
 	gameCanvasContext.fillStyle = 'grey';
-	gameCanvasContext.fillText('PARALLAX', parallaxPos[1], 200);
+	gameCanvasContext.fillText('PARALLAX', parallaxPos[1], gameCanvas.height/2);
 	gameCanvasContext.fillStyle = 'dimgrey';
-	gameCanvasContext.fillText('EFFECT', parallaxPos[2], 300);
+	gameCanvasContext.fillText('EFFECT', parallaxPos[2], gameCanvas.height*0.8);
 }
 
 function drawRunnerBackground() {
