@@ -25,6 +25,4 @@ function frameInterval(updateFunction, frameRate) {
     }
 }
 
-var gameInterval = new frameInterval(advanceGameFrame, frameRate);
-var letterSpawnInterval = new frameInterval(spawnALetterIfAppropriate, letterSpawnRate);
-letterSpawnInterval.stop();//workaround for infinite spawning at the initialization
+var gameInterval, letterSpawnInterval;

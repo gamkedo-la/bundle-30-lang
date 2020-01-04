@@ -162,6 +162,7 @@ function handleGameCellClicks()
 	else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
 			 mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
 	{
+		initializeRunner();
 		playerShouldBePlayingRunner = true;
 		playerShouldSeeTitleScreen = false;
 		playerIsPlayingAnyGame = true;
