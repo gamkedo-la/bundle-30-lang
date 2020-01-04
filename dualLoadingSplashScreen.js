@@ -21,6 +21,7 @@ function drawPleaseWaitForLoadingMessage()
 function handleDualPurposeSplashAndLoadingSceneClick()
 {
   playerShouldSeeDualPurposeLoadingSplashScreen = false;
+  playerShouldSeePleaseWaitForDownloading = false;
   playerShouldSeeTitleScreen = true;
   setSourcesForAudioObjects();
   populateMultisoundArrays();

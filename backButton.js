@@ -27,7 +27,7 @@ function drawBackButton()
     }
       // gameCanvasContext.font = '27px Helvetica';
       // gameCanvasContext.fillText('Back', 560,685);
-      customFontFillText('Back');
+      customFontFillText('Back', 27, 15, 555,660);
   }
 }
 

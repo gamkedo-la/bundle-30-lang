@@ -56,7 +56,7 @@ function drawGameNames()
   customFontFillText("Snake", 27, 15, 30,185);
 
   // gameCanvasContext.fillText('Bird', 142,205);
-  customFontFillText('Bird', 27, 15, 142,185);
+  customFontFillText('Bird', 27, 15, 138,185);
 
   // gameCanvasContext.fillText('Lane', 237,205);
   customFontFillText("Lane", 27, 15, 237,185);
@@ -65,22 +65,22 @@ function drawGameNames()
   customFontFillText("Jumper", 27, 15, 322,185);
 
   // gameCanvasContext.fillText('Finder', 429,205);
-  customFontFillText("Finder", 27, 15, 429,185);
+  customFontFillText("Finder", 27, 15, 420,185);
 
   // gameCanvasContext.fillText('Catcher', 522,205);
-  customFontFillText("Catcher", 27, 15, 522,185);
+  customFontFillText("Catcher", 22, 12, 527,187);
 
   //row two
   // gameCanvasContext.fillText('Shooter', 22,305);
-  customFontFillText("Shooter", 27, 15, 22,285);
+  customFontFillText("Shooter", 22, 12, 24,285);
 
   // gameCanvasContext.fillText('Space', 130, 290);
   // gameCanvasContext.fillText('Shooter', 122,325);
-  customFontFillText("Space", 27, 15, 130,285);
-  customFontFillText("Shooter", 27, 15, 122,305);
+  customFontFillText("Space", 25, 12, 130,270);
+  customFontFillText("Shooter", 17, 10, 129,305);
 
 	// gameCanvasContext.fillText('Runner', 224, 305);
-  customFontFillText("Runner", 27, 15, 224,285);
+  customFontFillText("Runner", 27, 13, 225,285);
 }
 
 function handleGameCellClicks()
@@ -89,6 +89,7 @@ function handleGameCellClicks()
   if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 120 &&
       mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
   {
+    console.log('snake cell clicked');
     playerShouldBePlayingSnake = true;
     playerShouldSeeTitleScreen = false;
     gameInterval.reset(snakeGameFrameRate);
