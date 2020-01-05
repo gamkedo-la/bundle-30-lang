@@ -4,7 +4,7 @@ window.onload = function()
 {
 
   loadImages();
-  
+
   gameCanvas = document.getElementById("gameCanvas");
   gameCanvasContext = gameCanvas.getContext('2d');
 
@@ -72,24 +72,32 @@ function handleGameSpecificSpritesOffScreen()
 //draw section
 function drawEverythingInTheGame()
 {
-  drawGameSpecificBackground();
-  drawBackButton();
-  drawGameSpecificPlayer();
-  if (playerShouldBePlayingSpaceShooter)
+  if (!levelIsTransitioning)
   {
-    drawSpaceShooterBullets();
-  }
-  drawLetters();
-  drawStatsBackground();
-  drawStats();
+    drawGameSpecificBackground();
+    drawBackButton();
+    drawGameSpecificPlayer();
+    if (playerShouldBePlayingSpaceShooter)
+    {
+      drawSpaceShooterBullets();
+    }
+    drawLetters();
+    drawStatsBackground();
+    drawStats();
 
-  if (debugOn)
+    if (debugOn)
+    {
+      drawDebugStuff();
+    }
+
+  	if (playerShouldBePlayingRunner) {
+  		drawRunnerWorld();
+  	}
+  }
+
+  if (levelIsTransitioning)
   {
-    drawDebugStuff();
+    drawTransitionScreen();
   }
-
-	if (playerShouldBePlayingRunner) {
-		drawRunnerWorld();
-	}
 }
 //end of draw section

@@ -17,6 +17,8 @@ var uiButtonSound2 = document.createElement("AUDIO");
 var uiButtonSound3 = document.createElement("AUDIO");
 var uiButtonSound4 = document.createElement("AUDIO");
 
+var transitionToLevelMusic1 = document.createElement("AUDIO");
+
 function setSourcesForAudioObjects()//for after loading screen
 {
   generalPositiveFeedbackSound1.src = "audio/Positive_01.mp3";
@@ -33,7 +35,19 @@ function setSourcesForAudioObjects()//for after loading screen
   uiButtonSound2.src = "audio/UI_02.mp3";
   uiButtonSound3.src = "audio/UI_03.mp3";
   uiButtonSound4.src = "audio/UI_04.mp3";
+
+  transitionToLevelMusic1.src = "audio/levelTransitionSound.mp3";
 }
+
+// transitionToLevelMusic1.onended = "correctLetterAudioTag.play()";
+// transitionToLevelMusic1.addEventListener("ended", playCorrectLetterAudioTag());
+transitionToLevelMusic1.onended = function()
+{playCorrectLetterAudioTag();
+  levelIsTransitioning = false;
+  transitionIsFadingIn = false;
+  transitionIsFadingOut = false;
+};
+
 
 function populateMultisoundArrays()
 {
