@@ -46,6 +46,7 @@ transitionToLevelMusic1.onended = function()
   levelIsTransitioning = false;
   transitionIsFadingIn = false;
   transitionIsFadingOut = false;
+  gameCanvasContext.globalAlpha = 1;
 };
 
 
