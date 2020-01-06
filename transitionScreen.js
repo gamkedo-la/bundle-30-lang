@@ -9,7 +9,7 @@ function drawTransitionScreen()
 
   if (transitionScreenVisualFadeLevel < 1 && transitionIsFadingIn)
   {
-    transitionScreenVisualFadeLevel += 0.02;
+    transitionScreenVisualFadeLevel += 0.01;
     gameCanvasContext.globalAlpha = transitionScreenVisualFadeLevel;
     if (transitionScreenVisualFadeLevel > 0.9)
     {
@@ -18,7 +18,7 @@ function drawTransitionScreen()
     }
   } else if (transitionScreenVisualFadeLevel > 0 && transitionIsFadingOut)
   {
-    transitionScreenVisualFadeLevel -= 0.02;
+    transitionScreenVisualFadeLevel -= 0.01;
     gameCanvasContext.globalAlpha = transitionScreenVisualFadeLevel;
   }
 

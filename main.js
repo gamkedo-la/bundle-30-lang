@@ -1,4 +1,4 @@
-var gameCanvas, gameCanvasContext;
+var gameCanvas, gameCanvasContext, statsCanvas, statsCanvasContext;
 
 window.onload = function()
 {
@@ -6,9 +6,11 @@ window.onload = function()
   loadImages();
 
   gameCanvas = document.getElementById("gameCanvas");
+  gameCanvas.style.display = "inline";
   gameCanvasContext = gameCanvas.getContext('2d');
 
   statsCanvas = document.getElementById("statsCanvas");
+  statsCanvas.style.display = 'inline';
   statsCanvasContext = statsCanvas.getContext('2d');
 
   drawPleaseWaitForLoadingMessage();
