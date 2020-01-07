@@ -15,8 +15,9 @@ function initializeRunner() {
 }
 
 function drawParallax() {
-	gameCanvasContext.fillStyle = 'lightgrey';
-	gameCanvasContext.fillText('AMAZING', parallaxPos[0], gameCanvas.height*0.28);
+	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[0],gameCanvas.height*0.28, 50,50);
+	// gameCanvasContext.fillStyle = 'lightgrey';
+	// gameCanvasContext.fillText('AMAZING', parallaxPos[0], gameCanvas.height*0.28);
 	gameCanvasContext.fillStyle = 'grey';
 	gameCanvasContext.fillText('PARALLAX', parallaxPos[1], gameCanvas.height/2);
 	gameCanvasContext.fillStyle = 'dimgrey';
@@ -24,10 +25,11 @@ function drawParallax() {
 }
 
 function drawRunnerBackground() {
-	gameCanvasContext.fillStyle = 'cyan';
-	gameCanvasContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height*0.75);
-	gameCanvasContext.fillStyle = 'green';
-	gameCanvasContext.fillRect(0, gameCanvas.height*0.75, gameCanvas.width, gameCanvas.height);
+	gameCanvasContext.drawImage(runnerSunAndSkyBackgroundImage, 0,0, gameCanvas.width,gameCanvas.height);
+	// gameCanvasContext.fillStyle = 'cyan';
+	// gameCanvasContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height*0.75);
+	// gameCanvasContext.fillStyle = 'green';
+	// gameCanvasContext.fillRect(0, gameCanvas.height*0.75, gameCanvas.width, gameCanvas.height);
 	drawParallax();
 }
 

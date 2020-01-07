@@ -1,3 +1,10 @@
+//standard image declaration section
+let runnerSunAndSkyBackgroundImage = document.createElement("img");
+let runnerCloud1 = document.createElement("img");
+
+
+
+//custom font image loading section, used loops for less typing... just to see if i could
 var arrayOfTextLetters = 'abcdefghijklmnopqrstuvwxyz';
 var arrayOfTextNumbers = '0123456789';
 
@@ -22,9 +29,6 @@ var arrayOfTextNumbers = '0123456789';
     let numberVariableName = 'number' + arrayOfTextNumbers[arrayOfTextNumbersIndex];
     window[numberVariableName] = document.createElement("img");
   }
-
-  //somewhat standard image loading
-  window[runnerSkyAndSunBackgroundLayer] = document.createElement("img");
 })();
 
 var numberOfImagesToLoad = undefined;
@@ -52,7 +56,9 @@ function loadImages()
   }
 
   //somewhat standard image loading
-  arrayOfImages.push({})
+  arrayOfImages.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png'});
+  arrayOfImages.push({imageObjectBinding: runnerCloud1, theFile: 'images/Backgrounds/runnerCloud1.png'});
+
 
   numberOfImagesToLoad = arrayOfImages.length;
 
