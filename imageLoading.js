@@ -22,6 +22,9 @@ var arrayOfTextNumbers = '0123456789';
     let numberVariableName = 'number' + arrayOfTextNumbers[arrayOfTextNumbersIndex];
     window[numberVariableName] = document.createElement("img");
   }
+
+  //somewhat standard image loading
+  window[runnerSkyAndSunBackgroundLayer] = document.createElement("img");
 })();
 
 var numberOfImagesToLoad = undefined;
@@ -47,6 +50,9 @@ function loadImages()
     arrayOfImages.push({imageObjectBinding: window[numberImageName],
                     theFile: 'images/Custom Font/pngs/numbers/' + arrayOfTextNumbers[arrayOfTextNumbersIndex]  + '.png'});
   }
+
+  //somewhat standard image loading
+  arrayOfImages.push({})
 
   numberOfImagesToLoad = arrayOfImages.length;
 
