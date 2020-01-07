@@ -1,5 +1,5 @@
 var playerShouldBePlayingRunner = false;
-var parallaxPos = [0, 0, 0];
+var parallaxPos = [320,200,440, 0, 0];
 const RUNNERSPEED = 10;
 const RUNNERWIDTH = 30;
 const RUNNERHEIGHT = 80;
@@ -15,13 +15,15 @@ function initializeRunner() {
 }
 
 function drawParallax() {
-	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[0],gameCanvas.height*0.28, 50,50);
+	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[0],gameCanvas.height*0.20, 200,150);
+	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[1],gameCanvas.height*0.07, 150,125);
+	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[2],gameCanvas.height*0.12, 250,200);
 	// gameCanvasContext.fillStyle = 'lightgrey';
 	// gameCanvasContext.fillText('AMAZING', parallaxPos[0], gameCanvas.height*0.28);
 	gameCanvasContext.fillStyle = 'grey';
-	gameCanvasContext.fillText('PARALLAX', parallaxPos[1], gameCanvas.height/2);
+	gameCanvasContext.fillText('PARALLAX', parallaxPos[3], gameCanvas.height/2);
 	gameCanvasContext.fillStyle = 'dimgrey';
-	gameCanvasContext.fillText('EFFECT', parallaxPos[2], gameCanvas.height*0.8);
+	gameCanvasContext.fillText('EFFECT', parallaxPos[4], gameCanvas.height*0.8);
 }
 
 function drawRunnerBackground() {
@@ -81,15 +83,15 @@ function moveRunnerPlayer() {
 }
 
 function updateRunnerWorld() {
-	parallaxPos[0] -= RUNNERSPEED/3;
+	parallaxPos[0] -= RUNNERSPEED/30;
 	if (parallaxPos[0] + gameCanvasContext.measureText('AMAZING').width < 0) {
 		parallaxPos[0] = gameCanvas.width;
 	}
-	parallaxPos[1] -= RUNNERSPEED/2;
+	parallaxPos[1] -= RUNNERSPEED/20;
 	if (parallaxPos[1] + gameCanvasContext.measureText('PARALLAX').width < 0) {
 		parallaxPos[1] = gameCanvas.width;
 	}
-	parallaxPos[2] -= RUNNERSPEED;
+	parallaxPos[2] -= RUNNERSPEED/15;
 	if (parallaxPos[2] + gameCanvasContext.measureText('EFFECT').width < 0) {
 		parallaxPos[2] = gameCanvas.width;
 	}
