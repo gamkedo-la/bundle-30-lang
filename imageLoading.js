@@ -1,6 +1,8 @@
 //standard image declaration section
 let runnerSunAndSkyBackgroundImage = document.createElement("img");
 let runnerCloud1 = document.createElement("img");
+let runnerGrassImage = document.createElement("img");
+let runnerMountain1Image = document.createElement("img");
 
 
 
@@ -58,6 +60,8 @@ function loadImages()
   //somewhat standard image loading
   arrayOfImages.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png'});
   arrayOfImages.push({imageObjectBinding: runnerCloud1, theFile: 'images/Backgrounds/runnerCloud1.png'});
+  arrayOfImages.push({imageObjectBinding: runnerGrassImage, theFile: 'images/Backgrounds/runnerGrass.png'});
+  arrayOfImages.push({imageObjectBinding: runnerMountain1Image, theFile: 'images/Backgrounds/runnerMountain1.png'});
 
 
   numberOfImagesToLoad = arrayOfImages.length;

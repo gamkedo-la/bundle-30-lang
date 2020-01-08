@@ -15,23 +15,27 @@ function initializeRunner() {
 }
 
 function drawParallax() {
+	//clouds
 	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[0],gameCanvas.height*0.20, 200,150);
 	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[1],gameCanvas.height*0.07, 150,125);
 	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[2],gameCanvas.height*0.12, 250,200);
 	// gameCanvasContext.fillStyle = 'lightgrey';
 	// gameCanvasContext.fillText('AMAZING', parallaxPos[0], gameCanvas.height*0.28);
-	gameCanvasContext.fillStyle = 'grey';
-	gameCanvasContext.fillText('PARALLAX', parallaxPos[3], gameCanvas.height/2);
+
+	//mountains
+
+
+	// gameCanvasContext.fillStyle = 'grey';
+	// gameCanvasContext.fillText('PARALLAX', parallaxPos[3], gameCanvas.height/2);
 	gameCanvasContext.fillStyle = 'dimgrey';
 	gameCanvasContext.fillText('EFFECT', parallaxPos[4], gameCanvas.height*0.8);
 }
 
 function drawRunnerBackground() {
 	gameCanvasContext.drawImage(runnerSunAndSkyBackgroundImage, 0,0, gameCanvas.width,gameCanvas.height);
-	// gameCanvasContext.fillStyle = 'cyan';
-	// gameCanvasContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height*0.75);
-	// gameCanvasContext.fillStyle = 'green';
-	// gameCanvasContext.fillRect(0, gameCanvas.height*0.75, gameCanvas.width, gameCanvas.height);
+	gameCanvasContext.drawImage(runnerMountain1Image, parallaxPos[3],gameCanvas.height*0.20, 200,350);
+	gameCanvasContext.drawImage(runnerGrassImage, 0,gameCanvas.height*0.7, gameCanvas.width,gameCanvas.height*0.3);
+
 	drawParallax();
 }
 
@@ -83,16 +87,29 @@ function moveRunnerPlayer() {
 }
 
 function updateRunnerWorld() {
-	parallaxPos[0] -= RUNNERSPEED/30;
+	//cloud 1
+	parallaxPos[0] -= RUNNERSPEED/100;
 	if (parallaxPos[0] + gameCanvasContext.measureText('AMAZING').width < 0) {
 		parallaxPos[0] = gameCanvas.width;
 	}
-	parallaxPos[1] -= RUNNERSPEED/20;
+	//cloud 2
+	parallaxPos[1] -= RUNNERSPEED/80;
 	if (parallaxPos[1] + gameCanvasContext.measureText('PARALLAX').width < 0) {
 		parallaxPos[1] = gameCanvas.width;
 	}
-	parallaxPos[2] -= RUNNERSPEED/15;
+	//cloud 3
+	parallaxPos[2] -= RUNNERSPEED/120;
 	if (parallaxPos[2] + gameCanvasContext.measureText('EFFECT').width < 0) {
 		parallaxPos[2] = gameCanvas.width;
+	}
+	//mountain
+	parallaxPos[3] -= RUNNERSPEED/60;
+	if (parallaxPos[3] + gameCanvasContext.measureText('EFFECT').width < 0) {
+		parallaxPos[3] = gameCanvas.width;
+	}
+	//mushroom
+	parallaxPos[4] -= RUNNERSPEED/15;
+	if (parallaxPos[4] + gameCanvasContext.measureText('EFFECT').width < 0) {
+		parallaxPos[4] = gameCanvas.width;
 	}
 }
