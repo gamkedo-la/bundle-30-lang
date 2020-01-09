@@ -1,11 +1,29 @@
-function customFontFillText(string, fontSize, spacing, xCoordinate,yCoordinate)
+function customFontFillText(arrayOfCharacterTypes, fontSize, spacing, xCoordinate,yCoordinate)
 {
+  
   let arrayOfCharacterObjectLiterals = [];
-  for (let stringIndex = 0; stringIndex < string.length; stringIndex++)
+
+  for (let arrayOfCharactersTypesIndex = 0; arrayOfCharactersTypesIndex < arrayOfCharacterTypes.length; arrayOfCharactersTypesIndex++)
   {
-    arrayOfCharacterObjectLiterals.push({/*characterType: undefined,*/
-                                         character: string.charAt(stringIndex),
-                                         imageObjectBinding: undefined});
+    if (typeof arrayOfCharacterTypes[arrayOfCharactersTypesIndex] === 'string')
+    {
+      let string = arrayOfCharacterTypes[arrayOfCharactersTypesIndex];
+      for (let stringIndex = 0; stringIndex < string.length; stringIndex++)
+      arrayOfCharacterObjectLiterals.push({
+
+                                           character: string.charAt(stringIndex),
+                                           imageObjectBinding: undefined
+                                         });
+    } else
+    {
+      let specialCharacter = arrayOfCharacterTypes[arrayOfCharactersTypesIndex];
+      arrayOfCharacterObjectLiterals.push({
+
+                                           character: specialCharacter,
+                                           imageObjectBinding: undefined
+                                         });
+    }
+
   }
 
   for (let arrayOfCharactersIndex = 0; arrayOfCharactersIndex < arrayOfCharacterObjectLiterals.length; arrayOfCharactersIndex++)
@@ -14,15 +32,27 @@ function customFontFillText(string, fontSize, spacing, xCoordinate,yCoordinate)
     {
       if (arrayOfTextLetters[arrayOfTextLettersIndex] === arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character)
       {
-        //arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].characterType = 'smallLetter';
         let characterObjectBindingName = 'small' + arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character;
         arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding = window[characterObjectBindingName];
       }
       if (arrayOfTextLetters[arrayOfTextLettersIndex].toUpperCase() === arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character)
       {
         characterObjectBindingName = 'big' + arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character.toLowerCase();
-        //arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].characterType = 'bigLetter';
         arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding = window[characterObjectBindingName];
+      }
+    }
+
+    for (let arrayOfTextSymbolsIndex = 0; arrayOfTextSymbolsIndex < arrayOfTextSymbols.length; arrayOfTextSymbolsIndex++)
+    {
+      // console.log(arrayOfTextSymbols[arrayOfTextSymbolsIndex]);
+      // console.log(arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character);
+
+      if (arrayOfTextSymbols[arrayOfTextSymbolsIndex] === arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character)
+      {
+        characterObjectBindingName = 'symbol' + arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character;
+        console.log(characterObjectBindingName);
+        arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding = window[characterObjectBindingName];
+        console.log(arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding);
       }
     }
 
@@ -31,7 +61,6 @@ function customFontFillText(string, fontSize, spacing, xCoordinate,yCoordinate)
       if (arrayOfTextNumbers[arrayOfTextNumbersIndex] === arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character)
       {
         characterObjectBindingName = 'number' + arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character;
-        //arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].characterType = 'number';
         arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding = window[characterObjectBindingName];
       }
     }//end of checking for number matches
@@ -39,6 +68,7 @@ function customFontFillText(string, fontSize, spacing, xCoordinate,yCoordinate)
 
   for (let arrayOfCharactersIndex = 0; arrayOfCharactersIndex < arrayOfCharacterObjectLiterals.length; arrayOfCharactersIndex++)
   {
+    console.log(arrayOfCharacterObjectLiterals);
     if (arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding === undefined)
     {
       continue;

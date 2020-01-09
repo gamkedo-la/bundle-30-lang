@@ -2,7 +2,7 @@ var levelIsTransitioning = false;
 var transitionIsFadingIn = false;
 var transitionIsFadingOut = false;
 
-function drawTransitionScreen()
+function drawTransitionScreen(specificTransitionScreenText)
 {
 
   let transitionScreenVisualFadeLevel = gameCanvasContext.globalAlpha;
@@ -31,3 +31,6 @@ function drawTransitionScreen()
   customFontFillText('Transition Screen...', 20, 15, 0,350);
   customFontFillText('Woooooaaaahhh!!!', 20, 15, 0, 390);
 }
+
+const transitionToSnakeTextLine1 = 'Eat the answer!';
+const transitionToSnakeTextLine2 = '';
