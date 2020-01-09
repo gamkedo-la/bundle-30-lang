@@ -1,4 +1,5 @@
 var gameCanvas, gameCanvasContext, statsCanvas, statsCanvasContext;
+console.log('anything');
 
 window.onload = function()
 {

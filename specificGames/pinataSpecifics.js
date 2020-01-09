@@ -21,7 +21,7 @@ var normalize = (x,y,t) => scale(x, 1 / (length(x) || 1));
 var rnd = (minimum,maximum) => Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
 
 function pinataClick(e) {
-    console.log("Pinata game click");
+    // console.log("Pinata game click");
     //Circle(Vec2(e.pageX, e.pageY));
     // create many little candies
     for(i = 20; i--; ){
@@ -32,7 +32,7 @@ function pinataClick(e) {
 }
 
 this.init = function() {
-    console.log("Pinata game init!")
+    // console.log("Pinata game init!")
 
     var c = gameCanvasContext;
     var a = gameCanvas;
@@ -54,9 +54,9 @@ this.init = function() {
     // temp animation loop
     setInterval(
     e => {
-    
+
         if (levelIsTransitioning) return;
-        
+
         //a.width ^= 0; // clear the screen
         c.fillStyle = "rgba(150,220,255,1)";
         c.fillRect(0,0,a.width,a.height);
@@ -68,7 +68,7 @@ this.init = function() {
                 b = objects[i];
                 d = objects[j];
                 //if((b.M && b.C.y < 400) || (d.M && d.C.y < 400)){ // perf
-            
+
                 // Test collision
                 e = substract(d.C, b.C);
                 if (length(e) < b.R + d.R){
@@ -76,7 +76,7 @@ this.init = function() {
                 N = normalize(e), // normal
                 S = add(d.C, scale(normalize(scale(e, -1)), d.R)), // start
                 E = add(S, scale(N, D)) // end
-                
+
                 // Resolve collision
                 if (b.M || d.M) {
                     //  correct positions
@@ -118,13 +118,13 @@ this.init = function() {
             }
             }
         }
-        
+
         // Update scene
         b.V = add(b.V, scale(b.A, .01));
         b.C = add(b.C, scale(b.V, .01));
         b.D += b.E * .01;
         b.B += b.M ? b.D * .01 : .001;
-        
+
         // Draw
         c.save();
         c.beginPath();
@@ -134,7 +134,7 @@ this.init = function() {
         //c.lineWidth = 3;
         c.font = b.R * 1.9 + "px a";
         c.textAlign = "center";
-        
+
         if(objects[i].M) {
             //c.fillStyle = "rgba(0,0,0,0.25)";
             c.fillStyle = objects[i].color;
@@ -172,7 +172,7 @@ this.init = function() {
 // u: tangent
 // x: jT
 // b.bgColor="#333";
-var Circle = (C, R = Math.random() * 30 + 10, M = 1/R) => 
+var Circle = (C, R = Math.random() * 30 + 10, M = 1/R) =>
 
   objects.push(
     {
@@ -185,9 +185,9 @@ var Circle = (C, R = Math.random() * 30 + 10, M = 1/R) =>
     D: 0, // angle velocity
     E: 0, // angle acceleration,
     R, // radius
-    
+
     // random emojoi! works on most modern devices but not all
-    //Z: String.fromCodePoint(0x1F600 + Math.random() * 69/*56*/ | 0) 
+    //Z: String.fromCodePoint(0x1F600 + Math.random() * 69/*56*/ | 0)
 
     // random letter A-Z
     Z: String.fromCharCode(65+Math.floor(Math.random() * 26)),

@@ -6,6 +6,7 @@ function promptPlayerForClickAfterLoading()
   // gameCanvasContext.fillStyle = 'lime';
   // gameCanvasContext.font = '30px Helvetica';
   // gameCanvasContext.fillText("Downloading done. Click to start", 0,250);
+  //
   let sentenceArray1 = ['Downloading done', symbolPeriodImage];
   customFontFillText(sentenceArray1, 30, 20, 150, 250);
 

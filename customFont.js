@@ -1,6 +1,24 @@
+//** To use the custom font fill text, please create an array where numbers and letters can be put in together in a string
+//at one index,and then symbols and punctuation get their own index.
+//Example: let yourSentenceArray = ['These are words and 1', symbolCommaImage, ' 2', symbolCommaImage, ' and 3 numbers', symbolPeriodImage];
+//Here is the current list of symbols:
+// upArrowImage
+// rightArrowImage
+// downArrowImage
+// leftArrowImage
+// symbolTildeImage ~
+// symbolExclamationPointImage !
+// symbolEmailAtImage @
+// symbolHashImage #
+// symbolDollarSignImage $
+// symbolPercentImage %
+// symbolEqualsImage =
+// symbolQuestionMarkImage ?
+// symbolPeriodImage .
+
 function customFontFillText(arrayOfCharacterTypes, fontSize, spacing, xCoordinate,yCoordinate)
 {
-  
+
   let arrayOfCharacterObjectLiterals = [];
 
   for (let arrayOfCharactersTypesIndex = 0; arrayOfCharactersTypesIndex < arrayOfCharacterTypes.length; arrayOfCharactersTypesIndex++)
@@ -18,13 +36,13 @@ function customFontFillText(arrayOfCharacterTypes, fontSize, spacing, xCoordinat
     {
       let specialCharacter = arrayOfCharacterTypes[arrayOfCharactersTypesIndex];
       arrayOfCharacterObjectLiterals.push({
-
-                                           character: specialCharacter,
-                                           imageObjectBinding: undefined
+                                           imageObjectBinding: specialCharacter
                                          });
     }
 
   }
+
+
 
   for (let arrayOfCharactersIndex = 0; arrayOfCharactersIndex < arrayOfCharacterObjectLiterals.length; arrayOfCharactersIndex++)
   {
@@ -42,20 +60,6 @@ function customFontFillText(arrayOfCharacterTypes, fontSize, spacing, xCoordinat
       }
     }
 
-    for (let arrayOfTextSymbolsIndex = 0; arrayOfTextSymbolsIndex < arrayOfTextSymbols.length; arrayOfTextSymbolsIndex++)
-    {
-      // console.log(arrayOfTextSymbols[arrayOfTextSymbolsIndex]);
-      // console.log(arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character);
-
-      if (arrayOfTextSymbols[arrayOfTextSymbolsIndex] === arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character)
-      {
-        characterObjectBindingName = 'symbol' + arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character;
-        console.log(characterObjectBindingName);
-        arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding = window[characterObjectBindingName];
-        console.log(arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding);
-      }
-    }
-
     for (let arrayOfTextNumbersIndex = 0; arrayOfTextNumbersIndex < arrayOfTextNumbers.length; arrayOfTextNumbersIndex++)
     {
       if (arrayOfTextNumbers[arrayOfTextNumbersIndex] === arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character)
@@ -68,7 +72,6 @@ function customFontFillText(arrayOfCharacterTypes, fontSize, spacing, xCoordinat
 
   for (let arrayOfCharactersIndex = 0; arrayOfCharactersIndex < arrayOfCharacterObjectLiterals.length; arrayOfCharactersIndex++)
   {
-    console.log(arrayOfCharacterObjectLiterals);
     if (arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding === undefined)
     {
       continue;

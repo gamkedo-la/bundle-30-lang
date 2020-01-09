@@ -2,7 +2,7 @@ var levelIsTransitioning = false;
 var transitionIsFadingIn = false;
 var transitionIsFadingOut = false;
 
-function drawTransitionScreen(specificTransitionScreenText)
+function drawTransitionScreen(arraysOfGameSpecificCustomFontFillTextsForTransitionScreen)
 {
 
   let transitionScreenVisualFadeLevel = gameCanvasContext.globalAlpha;
@@ -22,15 +22,11 @@ function drawTransitionScreen(specificTransitionScreenText)
     gameCanvasContext.globalAlpha = transitionScreenVisualFadeLevel;
   }
 
-
   gameCanvasContext.fillStyle = 'orange';
   gameCanvasContext.fillRect(0,0, 640,700);
 
-  //customFontFillText(string, fontSize, spacing, xCoordinate,yCoordinate)
-  customFontFillText('Awesometastical Placeholder', 20, 15, 0,310);
-  customFontFillText('Transition Screen...', 20, 15, 0,350);
-  customFontFillText('Woooooaaaahhh!!!', 20, 15, 0, 390);
+  if (playerShouldBePlayingSnake)
+  {
+    drawSnakeTransitionText();
+  }
 }
-
-const transitionToSnakeTextLine1 = 'Eat the answer!';
-const transitionToSnakeTextLine2 = '';

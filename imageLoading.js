@@ -112,7 +112,7 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: symbolHashImage, theFile: 'images/Custom Font/pngs/symbols/symbolHash.png'});
   arrayOfImages.push({imageObjectBinding: symbolQuestionMarkImage, theFile: 'images/Custom Font/pngs/symbols/symbolQuestionMark.png'});
 
-  console.log(arrayOfImages);
+  // console.log(arrayOfImages);
 
   numberOfImagesToLoad = arrayOfImages.length;
 

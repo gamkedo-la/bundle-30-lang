@@ -92,3 +92,13 @@ function populateArrayOfLettersForSnake()
   arrayOfLetters.push({name:'m',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
   arrayOfLetters.push({name:'n',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
 }
+
+function drawSnakeTransitionText()
+{
+  //customFontFillText(sentenceArray, fontSize, spacing, xCoordinate,yCoordinate)
+  customFontFillText(['Eat the answers', symbolExclamationPointImage], 60,30, 100,50);
+  customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' move up'], 30,15, 210,200);
+  customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' move right'], 30,15, 350,350);
+  customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' move down'], 30,15, 200,500);
+  customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' move left'], 30,15, 50,350);
+}

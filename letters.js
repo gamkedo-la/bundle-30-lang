@@ -19,10 +19,10 @@ function setOrResetCorrectLetter()
     currentCorrectLetter = 'n';
   }
   correctLetterAudioTag.src = "audio/" + currentCorrectLetter + '.mp3';
-  console.log('level is transitioning' + levelIsTransitioning);
+  // console.log('level is transitioning' + levelIsTransitioning);
   if (!levelIsTransitioning)
   {
-    console.log("level is transitioning " + levelIsTransitioning);
+    // console.log("level is transitioning " + levelIsTransitioning);
     playCorrectLetterAudioTag();
   }
 }

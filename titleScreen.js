@@ -14,14 +14,9 @@ function drawTitleScreen()
 function drawTitleScreenHeader()
 {
   //title text
-  // gameCanvasContext.fillStyle = 'lime';
-  // gameCanvasContext.font = '30px Helvetica';
-  // gameCanvasContext.fillText("Letter Game Emulator", 200,50);
-  // gameCanvasContext.fillText("Choose A Game", 200,100);
-
-  //customFontFillText(string, fontSize, spacing, xCoordinate,yCoordinate)
-  customFontFillText("Bundle of 30 Language Games", 40, 20, 50,25);
-  customFontFillText("Choose A Game!", 25, 20, 175,100);
+  //customFontFillText(sentenceArray, fontSize, spacing, xCoordinate,yCoordinate)
+  customFontFillText(['Bundle of 30 Language Games'], 40, 20, 50,25);
+  customFontFillText(['Choose A Game ', symbolExclamationPointImage], 25, 20, 175,100);
 }
 
 function drawCellTextAndCheckForHighlightingFromMouseOver()
@@ -94,7 +89,7 @@ function handleGameCellClicks()
   if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 120 &&
       mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
   {
-    console.log('snake cell clicked');
+    // console.log('snake cell clicked');
     playerShouldBePlayingSnake = true;
     playerShouldSeeTitleScreen = false;
     gameInterval.reset(snakeGameFrameRate);
@@ -197,7 +192,7 @@ function handleGameCellClicks()
       {
         levelIsTransitioning = true;
         transitionIsFadingIn = true;
-        console.log(levelIsTransitioning);
+        // console.log(levelIsTransitioning);
         playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
         transitionToLevelMusic1.play();
         gameCanvasContext.globalAlpha = 0.0;
