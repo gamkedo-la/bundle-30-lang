@@ -81,6 +81,9 @@ function drawGameNames()
 
 	// gameCanvasContext.fillText('Runner', 224, 305);
   customFontFillText("Runner", 27, 13, 225,285);
+  customFontFillText("Pinata", 27, 15, 322,285);
+
+
 }
 
 function handleGameCellClicks()
@@ -174,8 +177,17 @@ function handleGameCellClicks()
 		playerShouldBePlayingRunner = true;
 		playerShouldSeeTitleScreen = false;
 		playerIsPlayingAnyGame = true;
-    levelIsTransitioning = true;
-	}
+        levelIsTransitioning = true;
+    }
+    // pinata 27,15,322,285
+    else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&
+        mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
+    {   pinataGame.init();
+        playerShouldBePlayingPinata = true;
+        playerShouldSeeTitleScreen = false;
+        playerIsPlayingAnyGame = true;
+        levelIsTransitioning = true;
+    }
 
   //any game
   if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 620 &&
