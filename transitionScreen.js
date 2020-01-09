@@ -28,5 +28,8 @@ function drawTransitionScreen(arraysOfGameSpecificCustomFontFillTextsForTransiti
   if (playerShouldBePlayingSnake)
   {
     drawSnakeTransitionText();
+  } else {
+    customFontFillText(['placeholder transition text'], 30, 15, 50,300);
+    
   }
 }
