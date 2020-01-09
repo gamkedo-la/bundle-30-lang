@@ -19,6 +19,17 @@ var dot = (x,y,t) => x.x*y.x + x.y*y.y;
 var cross = (x,y,t) => x.x*y.y - x.y*y.x;
 var normalize = (x,y,t) => scale(x, 1 / (length(x) || 1));
 
+function pinataClick(e) {
+    console.log("Pinata game click");
+    //Circle(Vec2(e.pageX, e.pageY));
+    // create many little candies
+    for(i = 20; i--; ){
+        Circle(Vec2(e.pageX+Math.random()*10-5,e.pageY+Math.random()*10-5));
+    }
+
+
+}
+
 this.init = function() {
     console.log("Pinata game init!")
 
@@ -30,12 +41,14 @@ this.init = function() {
     Circle(Vec2(640, 5500), 5000, 0); // floor!
 
     // create many little candies
-    for(i = 99; i--; ){
-        Circle(Vec2(Math.random() * 900 + 300, Math.random() * 900 - 700));
-    }
+    //for(i = 99; i--; ){
+    //    Circle(Vec2(Math.random() * 900 + 300, Math.random() * 900 - 700));
+    //}
 
     // debug only: spawn new candy on mouseclick
     // onclick = e => Circle(Vec2(e.pageX, e.pageY));
+
+    document.addEventListener('click', pinataClick, false);
 
     // temp animation loop
     setInterval(
