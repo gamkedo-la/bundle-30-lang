@@ -119,7 +119,7 @@ function loadImages()
   for (let imageToLoadIndex = 0; imageToLoadIndex < arrayOfImages.length; imageToLoadIndex++)
   {
 
-		beginLoadingImage(arrayOfImages[imageToLoadIndex].imageObjectBinding, arrayOfImages[imageToLoadIndex].theFile);
+	  beginLoadingImage(arrayOfImages[imageToLoadIndex].imageObjectBinding, encodeURI(arrayOfImages[imageToLoadIndex].theFile));
 	}
 
 }
