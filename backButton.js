@@ -44,6 +44,12 @@ function handleBackButtonClick()
         playerShouldBePlayingJumper = false;
         arrayOfLetters = [];
         playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
-        currentBackgroundMusic.pause();
+        if (gameIsOnAServerAndCanUseWebAudioAPI)
+        {
+          backgroundMusicBufferSource.stop();
+        } else
+        {
+            currentBackgroundMusic.pause();
+        }
       }
 }

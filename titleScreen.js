@@ -175,7 +175,15 @@ function handleGameCellClicks()
 		playerShouldSeeTitleScreen = false;
 		playerIsPlayingAnyGame = true;
         levelIsTransitioning = true;
-        //currentBackgroundMusic = runnerBackgroundMusic;
+        if (gameIsOnAServerAndCanUseWebAudioAPI)
+        {
+            backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
+            currentBackgroundMusic = backgroundMusicBufferSource;
+            loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
+            backgroundMusicBufferSource.loop = true;
+            backgroundMusicBufferSource.loopStart = 6.9;
+            backgroundMusicBufferSource.loopEnd = 1;
+        }
     }
     // pinata 27,15,322,285
     else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&

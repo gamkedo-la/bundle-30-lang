@@ -54,7 +54,7 @@ transitionToLevelMusic1.onended = function()
   transitionIsFadingOut = false;
   gameCanvasContext.globalAlpha = 1;
 
-  if (gameIsOnAServerAndCanUseWebAudioAPI)
+  if (gameIsOnAServerAndCanUseWebAudioAPI /*&& currentBackgroundMusic.playbackState !== 'playing'*/)
   {
     currentBackgroundMusic.start();
   } else
@@ -100,29 +100,45 @@ function playARandomSoundInAMultisoundArray(targetMultisoundArray)
 
 //Web Audio API section, for extra audio features when necessary or desired
 
-var gameIsOnAServerAndCanUseWebAudioAPI = false;
+var gameIsOnAServerAndCanUseWebAudioAPI = true;
 var webAudioAPIContext;
 var webAudioMusicBus;
 
-var runnerBackgroundMusicForWebAudioAPI;
-var runnerMusicGainNode;
-var runnerBackgroundMusicBuffer;
+var backgroundMusicBufferSource;
 
 function initializeWebAudioAPI()
 {
   webAudioAPIContext = new (window.AudioContext || window.webkitAudioContext)();
-  webAudioMusicBus = webAudioAPIContext.createGain();
-  webAudioMusicBus.connect(webAudioAPIContext.destination);
 
-  runnerBackgroundMusicForWebAudioAPI = webAudioAPIContext.createBufferSource();
-  runnerBackgroundMusicBuffer = webAudioAPIContext.createBuffer(2, 22050, 44100);
-  runnerBackgroundMusicForWebAudioAPI.buffer = runnerBackgroundMusicBuffer;
 
-  let runnerBackgroundMusicXHR = new XMLHttpRequest();
+
+  // runnerBackgroundMusicForWebAudioAPI = webAudioAPIContext.createBufferSource();
+  // runnerBackgroundMusicBuffer = webAudioAPIContext.createBuffer(2, 22050, 44100);
+  // runnerBackgroundMusicForWebAudioAPI.buffer = runnerBackgroundMusicBuffer;
+
+
+
+  // let runnerBackgroundMusicXHR = new XMLHttpRequest();
   // xhr.onload = function () {
   //   return done(this.responseText)
   // }
-  runnerBackgroundMusicXHR.open("GET", 'audio/backgroundTracks/runnerBackground.mp3', true);
-  runnerBackgroundMusicXHR.send();
+  // runnerBackgroundMusicXHR.open("GET", 'audio/backgroundTracks/runnerBackground.mp3', true);
+  // runnerBackgroundMusicXHR.send();
   //runnerMusicGainNode = webAudioAPIContext.createGain();
+}
+
+function loadWebAudioAPISound(audioURL, targetWebAudioAPIBuffer) {
+  var requestForAudioDataToBeDecoded = new XMLHttpRequest();
+  requestForAudioDataToBeDecoded.open('GET', audioURL, true);
+  requestForAudioDataToBeDecoded.responseType = 'arraybuffer';
+
+  // Decode asynchronously
+  requestForAudioDataToBeDecoded.onload = function() {
+    webAudioAPIContext.decodeAudioData(requestForAudioDataToBeDecoded.response, function(bufferDataFromRequestResponse) {
+      targetWebAudioAPIBuffer.buffer = bufferDataFromRequestResponse;
+      targetWebAudioAPIBuffer.connect(webAudioAPIContext.destination);
+      console.log(targetWebAudioAPIBuffer.length);
+    });
+  }
+  requestForAudioDataToBeDecoded.send();
 }

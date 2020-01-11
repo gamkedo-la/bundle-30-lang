@@ -42,6 +42,7 @@ function updateEverythingInTheGame()
   handleGameSpecificSpritesOffScreen();
   moveLettersIfAppropriate();
   handleCollisionsWithLetters();
+  // if (webAudioAPIContext.)
 }
 
 function gameSpecificUpdates()
