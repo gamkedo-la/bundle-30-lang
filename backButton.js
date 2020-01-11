@@ -44,5 +44,6 @@ function handleBackButtonClick()
         playerShouldBePlayingJumper = false;
         arrayOfLetters = [];
         playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
+        currentBackgroundMusic.pause();
       }
 }

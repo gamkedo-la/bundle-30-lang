@@ -175,6 +175,7 @@ function handleGameCellClicks()
 		playerShouldSeeTitleScreen = false;
 		playerIsPlayingAnyGame = true;
         levelIsTransitioning = true;
+        currentBackgroundMusic = runnerBackgroundMusic;
     }
     // pinata 27,15,322,285
     else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&

@@ -12,6 +12,7 @@ var runnerStatus = 'run'; // 'run', 'jump', or 'slide'
 function initializeRunner() {
 	playerXCoordinate = (gameCanvas.width - RUNNERWIDTH)/2;
 	playerYCoordinate = gameCanvas.height*0.75 - RUNNERHEIGHT;
+	currentBackgroundMusic = runnerBackgroundMusic;
 }
 
 function drawParallax() {

@@ -17,6 +17,10 @@ var uiButtonSound2 = document.createElement("AUDIO");
 var uiButtonSound3 = document.createElement("AUDIO");
 var uiButtonSound4 = document.createElement("AUDIO");
 
+var currentBackgroundMusic = undefined;
+
+var runnerBackgroundMusic = document.createElement("AUDIO");
+
 var transitionToLevelMusic1 = document.createElement("AUDIO");
 
 function setSourcesForAudioObjects()//for after loading screen
@@ -37,6 +41,8 @@ function setSourcesForAudioObjects()//for after loading screen
   uiButtonSound4.src = "audio/UI_04.mp3";
 
   transitionToLevelMusic1.src = "audio/levelTransitionSound.mp3";
+
+  runnerBackgroundMusic.src = "audio/backgroundTracks/runnerBackground.mp3";
 }
 
 // transitionToLevelMusic1.onended = "correctLetterAudioTag.play()";
@@ -47,6 +53,15 @@ transitionToLevelMusic1.onended = function()
   transitionIsFadingIn = false;
   transitionIsFadingOut = false;
   gameCanvasContext.globalAlpha = 1;
+  currentBackgroundMusic.loop = true;
+  currentBackgroundMusic.addEventListener('timeupdate', function(){
+                  var buffer = 0.32;
+                  if(this.currentTime > this.duration - buffer){
+                    console.log('hello loop point');
+                      this.currentTime = 6.8;
+                      this.play();
+                  }}, false);
+  currentBackgroundMusic.play();
 };
 
 
