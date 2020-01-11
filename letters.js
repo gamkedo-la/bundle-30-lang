@@ -63,13 +63,21 @@ function spawnALetterIfAppropriate()
       randomChoiceOf2XStartingPositions = 380;
     }
     arrayOfLetters.push({xCoordinate:randomChoiceOf2XStartingPositions,yCoordinate:-20, name:name, correctAnswer:false});
+  } else if (playerShouldBePlayingRunner) {
+	  let coinToss = Math.random() < 0.5;
+	  arrayOfLetters.push({
+		  name: name,
+		  correctAnswer: false,
+		  xCoordinate: gameCanvas.width,
+		  yCoordinate: coinToss ? RUNNERMAXJUMPHEIGHT + 16 : gameCanvas.height*0.75 // NOTE(Gonzalo): 16 is letter height guesstimate
+	  });
   }
 
 }
 
 function moveLettersIfAppropriate()
 {
-  if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter)
+  if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter || playerShouldBePlayingRunner)
   {
     for (var letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
     {
@@ -101,6 +109,9 @@ function drawLetters()
   } else if (playerShouldBePlayingSpaceShooter)
   {
     gameCanvasContext.fillStyle = spaceShooterLetterColor;
+  } else if (playerShouldBePlayingRunner)
+  {
+    gameCanvasContext.fillStyle = RUNNERLETTERCOLOR;
   }
   gameCanvasContext.font = '30px Helvetica';
   for (var letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
