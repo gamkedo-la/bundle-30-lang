@@ -170,7 +170,8 @@ function handleGameCellClicks()
 	else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
 			 mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
 	{
-		initializeRunner();
+		gameInterval.reset(RUNNERFRAMERATE);
+        letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
 		playerShouldBePlayingRunner = true;
 		playerShouldSeeTitleScreen = false;
 		playerIsPlayingAnyGame = true;

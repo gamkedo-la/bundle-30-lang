@@ -6,13 +6,19 @@ const RUNNERHEIGHT = 80;
 const RUNNERGRAVITY = 4;
 const RUNNERJUMPSPEED = 30;
 const RUNNERMAXJUMPHEIGHT = 300;
+const RUNNERFRAMERATE = 1000/30;
+const RUNNERLETTERSPAWNRATE = 6666;
+const RUNNERLETTERCOLOR = 'red';
 var runnerStatus = 'run'; // 'run', 'jump', or 'slide'
 
 
 function initializeRunner() {
 	playerXCoordinate = (gameCanvas.width - RUNNERWIDTH)/2;
 	playerYCoordinate = gameCanvas.height*0.75 - RUNNERHEIGHT;
-
+	arrayOfLetters.splice(0);
+	gameInterval.reset(RUNNERFRAMERATE);
+    letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
+	letterSpeed = RUNNERSPEED/5;
 	if (gameIsOnAServerAndCanUseWebAudioAPI)
 	{
 		currentBackgroundMusic = backgroundMusicBufferSource;
