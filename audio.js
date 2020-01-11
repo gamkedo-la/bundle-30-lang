@@ -53,15 +53,22 @@ transitionToLevelMusic1.onended = function()
   transitionIsFadingIn = false;
   transitionIsFadingOut = false;
   gameCanvasContext.globalAlpha = 1;
-  currentBackgroundMusic.loop = true;
-  currentBackgroundMusic.addEventListener('timeupdate', function(){
-                  var buffer = 0.32;
-                  if(this.currentTime > this.duration - buffer){
-                    console.log('hello loop point');
-                      this.currentTime = 6.8;
-                      this.play();
-                  }}, false);
-  currentBackgroundMusic.play();
+
+  if (gameIsOnAServerAndCanUseWebAudioAPI)
+  {
+    currentBackgroundMusic.start();
+  } else
+  {
+    currentBackgroundMusic.loop = true;
+    currentBackgroundMusic.addEventListener('timeupdate', function(){
+                    var buffer = 0.32;
+                    if(this.currentTime > this.duration - buffer){
+                      console.log('hello loop point');
+                        this.currentTime = 6.8;
+                        this.play();
+                    }}, false);
+    currentBackgroundMusic.play();
+  }
 };
 
 
@@ -88,4 +95,34 @@ function playARandomSoundInAMultisoundArray(targetMultisoundArray)
   let range = targetMultisoundArray.length - 1;
   let randomNumberInRange = Math.floor(Math.random() * (range - 1) + 1);
   targetMultisoundArray[randomNumberInRange].play();
+}
+
+
+//Web Audio API section, for extra audio features when necessary or desired
+
+var gameIsOnAServerAndCanUseWebAudioAPI = false;
+var webAudioAPIContext;
+var webAudioMusicBus;
+
+var runnerBackgroundMusicForWebAudioAPI;
+var runnerMusicGainNode;
+var runnerBackgroundMusicBuffer;
+
+function initializeWebAudioAPI()
+{
+  webAudioAPIContext = new (window.AudioContext || window.webkitAudioContext)();
+  webAudioMusicBus = webAudioAPIContext.createGain();
+  webAudioMusicBus.connect(webAudioAPIContext.destination);
+
+  runnerBackgroundMusicForWebAudioAPI = webAudioAPIContext.createBufferSource();
+  runnerBackgroundMusicBuffer = webAudioAPIContext.createBuffer(2, 22050, 44100);
+  runnerBackgroundMusicForWebAudioAPI.buffer = runnerBackgroundMusicBuffer;
+
+  let runnerBackgroundMusicXHR = new XMLHttpRequest();
+  // xhr.onload = function () {
+  //   return done(this.responseText)
+  // }
+  runnerBackgroundMusicXHR.open("GET", 'audio/backgroundTracks/runnerBackground.mp3', true);
+  runnerBackgroundMusicXHR.send();
+  //runnerMusicGainNode = webAudioAPIContext.createGain();
 }

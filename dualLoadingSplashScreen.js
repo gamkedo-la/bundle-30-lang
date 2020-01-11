@@ -33,4 +33,8 @@ function handleDualPurposeSplashAndLoadingSceneClick()
   //setInterval(updateGameFrame, frameRate);
   playerShouldSeePleaseWaitForDownloading = false;
   gameInterval.start();
+  if (gameIsOnAServerAndCanUseWebAudioAPI)
+  {
+    initializeWebAudioAPI();
+  }
 }
