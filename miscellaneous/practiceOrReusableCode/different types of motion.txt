@@ -1,0 +1,9 @@
+Left/Right horizontal oscillation: 
+this.x = this.x + Math.cos(this.radians) * 10;
+
+Top left to Bottom right diagonal oscillation:
+this.x = this.x + Math.cos(this.radians) * 10;
+this.y = this.y + Math.cos(this.radians) * 10;
+
+
+

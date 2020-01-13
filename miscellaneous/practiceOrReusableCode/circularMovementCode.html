@@ -1,0 +1,77 @@
+<html>
+
+<canvas id = 'circularMovementCanvas' width = '640' height = '700'></canvas>
+
+<script>
+
+  let circularMovementCanvas;
+  let circularMovementCanvasContext;
+
+  let RectanglePrototype = function()
+  {
+    this.x = 400;
+    this.y = 350;
+    this.width = 50;
+    this.height = 50;
+
+    this.velocity = 0.25;
+
+    this.draw = function()
+    {
+      circularMovementCanvasContext.fillStyle = 'blue';
+      circularMovementCanvasContext.fillRect(this.x,this.y, this.width,this.height);
+    }
+
+    //actual circle motion stuff
+    this.radius = this.width/2;//not really a radius, taken from code that animated a circle
+    this.radians = 0;
+
+
+    this.updatePosition = function()
+    {
+      //move points over time
+      this.radians += this.velocity;
+      this.x = this.x + Math.cos(this.radians) * 10;
+    }
+
+  };
+
+  let actualRectangle;
+
+  window.onload = function()
+  {
+    circularMovementCanvas = document.getElementById("circularMovementCanvas");
+    circularMovementCanvasContext = circularMovementCanvas.getContext('2d');
+
+    actualRectangle = new RectanglePrototype();
+
+    setInterval(animationLoop, 1000/30);
+  }
+
+  function animationLoop()
+  {
+    updatePositions();
+    drawEverything();
+  }
+
+  function updatePositions()
+  {
+    actualRectangle.updatePosition();
+  }
+
+  function drawEverything()
+  {
+      drawBackground();
+      actualRectangle.draw();
+  }
+
+  function drawBackground()
+  {
+    circularMovementCanvasContext.fillStyle = 'black';
+    circularMovementCanvasContext.fillRect(0,0, 640,700);
+  }
+
+
+</script>
+
+</html>

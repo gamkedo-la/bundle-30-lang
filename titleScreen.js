@@ -77,10 +77,11 @@ function drawGameNames()
 	// gameCanvasContext.fillText('Runner', 224, 305);
   customFontFillText("Runner", 27, 13, 225,285);
 
-  //customFontFillText("Piñata", 27, 15, 322,285); // FIXME: needs changes to the custom font
+  //customFontFillText("Piñata", 27, 15, 322,285);
   customFontFillText("Piñata", 27, 15, 322,285);
 
-
+  customFontFillText("Air", 27, 15, 445,265);
+  customFontFillText("Grab", 27, 15, 437,300);
 }
 
 function handleGameCellClicks()
