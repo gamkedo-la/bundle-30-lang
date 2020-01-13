@@ -26,7 +26,7 @@ let symbolPeriodImage = document.createElement("img");//.
 
 
 //custom font image loading section, used loops for less typing... just to see if i could
-var arrayOfTextLetters = 'abcdefghijklmnopqrstuvwxyz';
+var arrayOfTextLetters = 'abcdefghijklmnopqrstuvwxyzñ';
 var arrayOfTextNumbers = '0123456789';
 var arrayOfTextSymbols = [upArrowImage, rightArrowImage, downArrowImage, leftArrowImage, symbolTildeImage, symbolExclamationPointImage,
 symbolEmailAtImage, symbolHashImage, symbolDollarSignImage, symbolPercentImage, symbolEqualsImage, symbolQuestionMarkImage,

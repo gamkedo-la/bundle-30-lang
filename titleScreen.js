@@ -78,7 +78,7 @@ function drawGameNames()
   customFontFillText("Runner", 27, 13, 225,285);
 
   //customFontFillText("Piñata", 27, 15, 322,285); // FIXME: needs changes to the custom font
-  customFontFillText("Pinata", 27, 15, 322,285);
+  customFontFillText("Piñata", 27, 15, 322,285);
 
 
 }
