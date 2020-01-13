@@ -1,9 +1,29 @@
+let this.radians = 0;
+
+
 Left/Right horizontal oscillation: 
+
 this.x = this.x + Math.cos(this.radians) * 10;
 
+
+
+Up/Down vertical oscillation:
+
+this.y = this.y + Math.sin(this.radians) * 10;
+
+
+
 Top left to Bottom right diagonal oscillation:
+
 this.x = this.x + Math.cos(this.radians) * 10;
 this.y = this.y + Math.cos(this.radians) * 10;
+
+
+
+Circular:
+
+this.x = this.x + Math.cos(this.radians) * 10;
+this.y = this.y + Math.sin(this.radians) * 10;
 
 
 

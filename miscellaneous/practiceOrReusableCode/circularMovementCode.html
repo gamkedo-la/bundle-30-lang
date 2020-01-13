@@ -7,19 +7,28 @@
   let circularMovementCanvas;
   let circularMovementCanvasContext;
 
-  let RectanglePrototype = function()
-  {
-    this.x = 400;
-    this.y = 350;
-    this.width = 50;
-    this.height = 50;
+  function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+}
 
-    this.velocity = 0.25;
+  let LetterPrototype = function(nameString)
+  {
+    this.name = nameString;
+    this.x = getRandomIntInclusive(100,430);
+    this.y = getRandomIntInclusive(100,590);
+    this.fontSize = 50;
+
+    this.circlePathVelocity = 0.25;
+    this.xVelocity = 5;
+    this.yVelocity = 5;
 
     this.draw = function()
     {
       circularMovementCanvasContext.fillStyle = 'blue';
-      circularMovementCanvasContext.fillRect(this.x,this.y, this.width,this.height);
+      circularMovementCanvasContext.font = '30px Helvetica';
+      circularMovementCanvasContext.fillText(this.name, this.x,this.y);
     }
 
     //actual circle motion stuff
@@ -30,22 +39,52 @@
     this.updatePosition = function()
     {
       //move points over time
-      this.radians += this.velocity;
-      this.x = this.x + Math.cos(this.radians) * 10;
+      this.radians += this.circlePathVelocity;
+      this.x = this.x + (Math.cos(this.radians) * 10) + this.xVelocity;
+      this.y = this.y + (Math.sin(this.radians) * 10) + this.yVelocity;
     }
 
+    this.checkWallCollision = function()
+    {
+      // console.log('actualRectangleX: ' + this.x);
+      // console.log('actualRectangleY: ' + this.y);
+      if (this.x + 100 > 630 || this.x  - 100 < 10)
+      {
+        // this.circlePathVelocity *= -1;
+        this.xVelocity *= -1;
+      }
+      if (this.y + 100 > 690 || this.y - 100 < 10)
+      {
+        this.yVelocity *= -1;
+      }
+    }
   };
 
-  let actualRectangle;
+  let letterM;
+  let letterN;
 
   window.onload = function()
   {
     circularMovementCanvas = document.getElementById("circularMovementCanvas");
     circularMovementCanvasContext = circularMovementCanvas.getContext('2d');
 
-    actualRectangle = new RectanglePrototype();
+    letterM = new LetterPrototype('m');
+    letterN = new LetterPrototype('n');
+
+    // letterMCircleVelocityInterval = new frameInterval(randomizeIntegerPropertyValue(letterM.circlePathVelocity, 0.1,0.3));
+    // letterMXVelocityInterval = new frameInterval(randomizeIntegerPropertyValue(letterM.xVelocity, 3,30), randomizeTimeLengthForSetIntervalReset(1,2));
+    // letterMXVelocityInterval.start();
+    // letterMYVelocityInterval = new frameInterval(randomizeIntegerPropertyValue(letterM.yVelocity, 3,30), randomizeTimeLengthForSetIntervalReset(1,2));
+    // letterMYVelocityInterval.start();
+    // // letterMCircleVelocityInterval = new frameInterval();
+    // letterNXVelocityInterval = new frameInterval(randomizeIntegerPropertyValue(letterN.xVelocity, 3,30), randomizeTimeLengthForSetIntervalReset(1,2));
+    // letterNXVelocityInterval.start();
+    // letterNYVelocityInterval = new frameInterval(randomizeIntegerPropertyValue(letterN.yVelocity, 3,30), randomizeTimeLengthForSetIntervalReset(1,2));
+    // letterNYVelocityInterval.start();
 
     setInterval(animationLoop, 1000/30);
+    setInterval(changeLetterMXVelocity, 500);
+    setInterval(changeLetterNYVelocity, 500);
   }
 
   function animationLoop()
@@ -56,13 +95,17 @@
 
   function updatePositions()
   {
-    actualRectangle.updatePosition();
+    letterM.updatePosition();
+    letterM.checkWallCollision();
+    letterN.updatePosition();
+    letterN.checkWallCollision();
   }
 
   function drawEverything()
   {
       drawBackground();
-      actualRectangle.draw();
+      letterM.draw();
+      letterN.draw();
   }
 
   function drawBackground()
@@ -71,6 +114,85 @@
     circularMovementCanvasContext.fillRect(0,0, 640,700);
   }
 
+  // function randomizeIntegerPropertyValue(property, minPropertyInteger,maxPropertyInteger)
+  // {
+  //   let randomIntegerPropertyValue = getRandomIntInclusive(minPropertyInteger,maxPropertyInteger);
+  //   property = randomIntegerPropertyValue;
+  //   console.log('property should be randomized: ' + randomIntegerPropertyValue);
+  //   return randomIntegerPropertyValue;
+  // }
+
+  let arrayOfPossibleXYVelocityIntegers = [-30,-15,-10,-9,8,9,10,15,30];
+
+  function changeLetterMXVelocity()
+  {
+    let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
+    letterM.xVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
+    console.log(letterM.xVelocity);
+  }
+
+  function changeLetterMYVelocity()
+  {
+    let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
+    letterM.yVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
+    console.log(letterM.xVelocity);
+  }
+
+  function changeLetterNXVelocity()
+  {
+    let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
+    letterN.xVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
+    console.log(letterN.xVelocity);
+  }
+
+  function changeLetterNYVelocity()
+  {
+    let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
+    letterN.yVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
+    console.log(letterN.yVelocity);
+  }
+
+  function randomizeTimeLengthForSetIntervalReset(minTimeInteger,maxTimeInteger)
+  {
+    let randomTimeLengthToResetValue = getRandomIntInclusive(minTimeInteger,maxTimeInteger);
+    console.log(randomTimeLengthToResetValue);
+    return randomTimeLengthToResetValue;
+  }
+
+  let letterMCircleVelocityInterval;
+  let letterMXVelocityInterval;
+  let letterMYVelocityInterval;
+  let letterNCircleVelocityInterval;
+  let letterNXVelocityInterval;
+  let letterNYVelocityInterval;
+
+  function frameInterval(updateFunction, frameRate) {
+      var timerObject = setInterval(updateFunction, frameRate);
+
+      this.stop = function() {
+          if (timerObject) {
+              clearInterval(timerObject);
+              timerObject = null;
+          }
+          return this;
+      }
+
+      // start timer using current settings (if it's not already running)
+      this.start = function() {
+          if (!timerObject) {
+              this.stop();
+              timerObject = setInterval(updateFunction, frameRate);
+          }
+          console.log(frameRate);
+          return this;
+      }
+
+      // start with new interval, stop current interval
+      this.reset = function(newRate) {
+          frameRate = newRate;
+          return this.stop().start();
+      }
+  }
 
 </script>
 
