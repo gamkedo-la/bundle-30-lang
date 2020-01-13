@@ -213,10 +213,10 @@ function checkForCorrectLetterClick(currentCorrectLetter)
     // console.log('bottomWallY: ' + arrayOfLetters[arrayOfLettersIndex].bottomWallY);
     // console.log('mouseX: ' + mouseCoordinates.mouseX);
     // console.log('mouseY: ' + mouseCoordinates.mouseY);
-    if (mouseCoordinates.mouseX > arrayOfLetters[arrayOfLettersIndex].leftWallX - 100 &&
-        mouseCoordinates.mouseX < arrayOfLetters[arrayOfLettersIndex].rightWallX + 100
-     && mouseCoordinates.mouseY > arrayOfLetters[arrayOfLettersIndex].topWallY - 100 &&
-        mouseCoordinates.mouseY < arrayOfLetters[arrayOfLettersIndex].bottomWallY + 100 &&
+    if (mouseCoordinates.mouseX > arrayOfLetters[arrayOfLettersIndex].leftWallX - 30 &&
+        mouseCoordinates.mouseX < arrayOfLetters[arrayOfLettersIndex].rightWallX + 25
+     && mouseCoordinates.mouseY > arrayOfLetters[arrayOfLettersIndex].topWallY - 45 &&
+        mouseCoordinates.mouseY < arrayOfLetters[arrayOfLettersIndex].bottomWallY &&
         arrayOfLetters[arrayOfLettersIndex].name === currentCorrectLetter)
     {
       setOrResetCorrectLetter();
