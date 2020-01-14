@@ -10,14 +10,14 @@ var pinataGame = new function() {
 var objects = [];
 
 // tiny functions to handle 2d vectors
-var Vec2 = (x,y,t) => ({x,y});
-var length = (x,y,t)=> dot(x,x)**.5;
-var add = (x,y,t) => Vec2(x.x+y.x, x.y+y.y);
-var substract = (x,y,t) => add(x, scale(y, -1));
-var scale = (x,y,t) => Vec2(x.x*y, x.y*y);
-var dot = (x,y,t) => x.x*y.x + x.y*y.y;
-var cross = (x,y,t) => x.x*y.y - x.y*y.x;
-var normalize = (x,y,t) => scale(x, 1 / (length(x) || 1));
+var Vec2 = (x,y) => ({x,y});
+var length = (x)=> dot(x,x)**.5;
+var add = (x,y) => Vec2(x.x+y.x, x.y+y.y);
+var substract = (x,y) => add(x, scale(y, -1));
+var scale = (x,y) => Vec2(x.x*y, x.y*y);
+var dot = (x,y) => x.x*y.x + x.y*y.y;
+var cross = (x,y) => x.x*y.y - x.y*y.x;
+var normalize = (x) => scale(x, 1 / (length(x) || 1));
 var rnd = (minimum,maximum) => Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
 
 function pinataClick(e) {
@@ -58,7 +58,7 @@ this.init = function() {
         if (levelIsTransitioning) return;
 
         //a.width ^= 0; // clear the screen
-        c.fillStyle = "rgba(150,220,255,1)";
+        c.fillStyle = "rgba(150,220,255,1)"; // sky blue
         c.fillRect(0,0,a.width,a.height);
 
         // Compute collisions
@@ -139,8 +139,9 @@ this.init = function() {
             //c.fillStyle = "rgba(0,0,0,0.25)";
             c.fillStyle = objects[i].color;
             //c.fillText(b.Z, -b.R * 1.24, b.R * .67); // the emoji
-            c.fillText(b.Z, 0, b.R * 0.65); // the letter
             c.fill(); // circle
+            c.fillStyle = "white"; // txt color
+            c.fillText(b.Z, 0, b.R * 0.65); // the letter
             }
         else {
             c.fillStyle = "rgba(80,60,40,1)";
@@ -191,7 +192,7 @@ var Circle = (C, R = Math.random() * 30 + 10, M = 1/R) =>
 
     // random letter A-Z
     Z: String.fromCharCode(65+Math.floor(Math.random() * 26)),
-    color: "rgba("+rnd(0,255)+","+rnd(0,255)+","+rnd(0,255)+",0.25)"
+    color: "rgba("+rnd(0,255)+","+rnd(0,255)+","+rnd(0,255)+",1)" //0.25)"
 
     //I: M,   // (here it's simplified as M) Inertia = mass * radius ^ 2. 12 is a magic constant that can be changed
   });
