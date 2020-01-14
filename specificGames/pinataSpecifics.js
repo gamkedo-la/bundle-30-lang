@@ -160,8 +160,13 @@ this.init = function() {
             c.fillStyle = objects[i].color;
             //c.fillText(b.Z, -b.R * 1.24, b.R * .67); // the emoji
             c.fill(); // circle
-            c.fillStyle = "white"; // txt color
-            c.fillText(b.Z, 0, b.R * 0.65); // the letter
+
+            // draw the letter using html font
+            //c.fillStyle = "white"; // txt color
+            //c.fillText(b.Z, 0, b.R * 0.65);
+
+            // draw the letter using bitmap font
+            customFontFillText([b.Z], b.R*1.5,0, 0-b.R*0.75,0-b.R*0.75);            
             }
         else {
             c.fillStyle = "rgba(80,60,40,1)";
@@ -212,7 +217,8 @@ var Circle = (C, R = Math.random() * 30 + 10, M = 1/R) =>
 
     // random letter A-Z
     Z: String.fromCharCode(65+Math.floor(Math.random() * 26)),
-    color: "rgba("+rndInt(0,255)+","+rndInt(0,255)+","+rndInt(0,255)+",1)" //0.25)"
+    //color: "rgba("+rndInt(0,255)+","+rndInt(0,255)+","+rndInt(0,255)+",1)" //0.25)"
+    color: "rgba("+rndInt(64,255)+","+rndInt(64,255)+","+rndInt(64,255)+",1)" //0.25)"
 
     //I: M,   // (here it's simplified as M) Inertia = mass * radius ^ 2. 12 is a magic constant that can be changed
   });
