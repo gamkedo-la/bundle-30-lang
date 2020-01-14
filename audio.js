@@ -109,22 +109,6 @@ var backgroundMusicBufferSource;
 function initializeWebAudioAPI()
 {
   webAudioAPIContext = new (window.AudioContext || window.webkitAudioContext)();
-
-
-
-  // runnerBackgroundMusicForWebAudioAPI = webAudioAPIContext.createBufferSource();
-  // runnerBackgroundMusicBuffer = webAudioAPIContext.createBuffer(2, 22050, 44100);
-  // runnerBackgroundMusicForWebAudioAPI.buffer = runnerBackgroundMusicBuffer;
-
-
-
-  // let runnerBackgroundMusicXHR = new XMLHttpRequest();
-  // xhr.onload = function () {
-  //   return done(this.responseText)
-  // }
-  // runnerBackgroundMusicXHR.open("GET", 'audio/backgroundTracks/runnerBackground.mp3', true);
-  // runnerBackgroundMusicXHR.send();
-  //runnerMusicGainNode = webAudioAPIContext.createGain();
 }
 
 function loadWebAudioAPISound(audioURL, targetWebAudioAPIBuffer) {
