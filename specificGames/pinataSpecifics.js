@@ -13,21 +13,38 @@ var objects = [];
 var Vec2 = (x,y) => ({x,y});
 var length = (x)=> dot(x,x)**.5;
 var add = (x,y) => Vec2(x.x+y.x, x.y+y.y);
-var substract = (x,y) => add(x, scale(y, -1));
+var sub = (x,y) => add(x, scale(y, -1));
 var scale = (x,y) => Vec2(x.x*y, x.y*y);
 var dot = (x,y) => x.x*y.x + x.y*y.y;
 var cross = (x,y) => x.x*y.y - x.y*y.x;
 var normalize = (x) => scale(x, 1 / (length(x) || 1));
-var rnd = (minimum,maximum) => Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+var rndInt = (minimum,maximum) => Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+
+// which one we want to click
+var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var targetLetter = alphabet[rndInt(0,alphabet.length)];
 
 function pinataClick(e) {
     // console.log("Pinata game click");
-    //Circle(Vec2(e.pageX, e.pageY));
+    
+    // select a new letter
+    targetLetter = alphabet[rndInt(0,alphabet.length)];
+
     // create many little candies
     for(i = 20; i--; ){
         Circle(Vec2(e.pageX+Math.random()*10-5,e.pageY+Math.random()*10-5));
     }
 
+    // detect WHICH circle we clicked!
+    var clickXY = Vec2(e.pageX,e.pageY);
+    for(i = objects.length; i--;){
+        b = objects[i];
+        e = sub(clickXY, b.C);
+        if (length(e) < b.R) {    
+            console.log("You clicked a candy! It was letter " + b.Z);
+            // FIXME - handle >1 positive on same frame etc
+        }
+    }
 
 }
 
@@ -42,9 +59,9 @@ this.init = function() {
     Circle(Vec2(640, 5500), 5000, 0); // floor!
 
     // create many little candies
-    //for(i = 99; i--; ){
-    //    Circle(Vec2(Math.random() * 900 + 300, Math.random() * 900 - 700));
-    //}
+    for(i = 99; i--; ){
+        Circle(Vec2(Math.random() * 900 + 300, Math.random() * 900 - 700));
+    }
 
     // debug only: spawn new candy on mouseclick
     // onclick = e => Circle(Vec2(e.pageX, e.pageY));
@@ -61,6 +78,9 @@ this.init = function() {
         c.fillStyle = "rgba(150,220,255,1)"; // sky blue
         c.fillRect(0,0,a.width,a.height);
 
+        // draw mission customFontFillText(fontSize, spacing, xCoordinate,yCoordinate)
+        customFontFillText(['Click the letter ' + targetLetter],32,32,32,32);
+
         // Compute collisions
         for(i = objects.length; i--;){
         for(j = objects.length; j-->i;){
@@ -70,7 +90,7 @@ this.init = function() {
                 //if((b.M && b.C.y < 400) || (d.M && d.C.y < 400)){ // perf
 
                 // Test collision
-                e = substract(d.C, b.C);
+                e = sub(d.C, b.C);
                 if (length(e) < b.R + d.R){
                 D = b.R + d.R - length(e), // depth
                 N = normalize(e), // normal
@@ -87,10 +107,10 @@ this.init = function() {
                     //but the Mass is inversed, so start scale with d and end scale with b
                     p = add(scale(S, d.M / (b.M + d.M)), scale(E, b.M / (b.M + d.M)));
                     //r is vector from center of object to collision point
-                    l = substract(p, b.C);
-                    m = substract(p, d.C);
+                    l = sub(p, b.C);
+                    m = sub(p, d.C);
                     //newV = V + D cross R
-                    n = substract(add(d.V, Vec2(-1 * d.D * m.y, d.D * m.x)), add(b.V, Vec2(-1 * b.D * l.y, b.D * l.x)));
+                    n = sub(add(d.V, Vec2(-1 * d.D * m.y, d.D * m.x)), add(b.V, Vec2(-1 * b.D * l.y, b.D * l.x)));
                     //if objects moving apart ignore
                     //if(dot(n, N) < 0){
                     // Calc t scalar
@@ -100,15 +120,15 @@ this.init = function() {
                     t = scale(N, s);
                     // t = F dt = m * ?v
                     // ?v = t / m
-                    b.V = substract(b.V, scale(t, b.M));
+                    b.V = sub(b.V, scale(t, b.M));
                     d.V = add(d.V, scale(t, d.M));
                     b.D -= cross(l, N) * s * b.M;
                     d.D += cross(m, N) * s * d.M;
-                    u = scale(normalize(substract(n, scale(N, dot(n, N)))), -1);
+                    u = scale(normalize(sub(n, scale(N, dot(n, N)))), -1);
                     x = -1.5 * dot(n, u) * .5 / (b.M + d.M + cross(l, u) ** 2 * b.M + cross(m, u) ** 2 * d.M);
                     //t is from b to d (in opposite direction of velocity)
                     t = scale(u, x);
-                    b.V = substract(b.V, scale(t, b.M));
+                    b.V = sub(b.V, scale(t, b.M));
                     d.V = add(d.V, scale(t, d.M));
                     b.D -= cross(l, u) * x * b.M;
                     d.D += cross(m, u) * x * d.M;
@@ -192,7 +212,7 @@ var Circle = (C, R = Math.random() * 30 + 10, M = 1/R) =>
 
     // random letter A-Z
     Z: String.fromCharCode(65+Math.floor(Math.random() * 26)),
-    color: "rgba("+rnd(0,255)+","+rnd(0,255)+","+rnd(0,255)+",1)" //0.25)"
+    color: "rgba("+rndInt(0,255)+","+rndInt(0,255)+","+rndInt(0,255)+",1)" //0.25)"
 
     //I: M,   // (here it's simplified as M) Inertia = mass * radius ^ 2. 12 is a magic constant that can be changed
   });
