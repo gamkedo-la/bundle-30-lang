@@ -1,17 +1,60 @@
 <html>
 
 <canvas id = 'circularMovementCanvas' width = '640' height = '700'></canvas>
+<image id = 'fanBladesImage' src = 'fanBlades.png'></image>
 
 <script>
 
   let circularMovementCanvas;
   let circularMovementCanvasContext;
 
-  function getRandomIntInclusive(min, max) {
+  function getRandomIntInclusive(min, max)
+  {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
-}
+  }
+
+
+
+  let arrayOfFanBlades = [];
+  let fanBlade1;
+  let fanBlade2;
+
+  let BladePrototype = function(xStartingImagePoint,yStartingImagePoint, rotationDirection)
+  {
+    this.width = 50;
+    this.height = 20;
+
+    this.xStartingImagePoint = xStartingImagePoint;
+    this.yStartingImagePoint = yStartingImagePoint;
+
+    this.xCenterImagePoint = this.xStartingImagePoint + this.width/2;
+    this.yCenterImagePoint = this.yStartingImagePoint + this.height/2;
+
+    this.angle = 0;
+    this.rotationSpeed = 20;
+    this.rotationDirection = rotationDirection;
+
+    this.updateAngle = function()
+    {
+      this.angle += this.rotationSpeed;
+    }
+
+    this.draw = function()
+    {
+      circularMovementCanvasContext.save();
+      circularMovementCanvasContext.translate(this.xCenterImagePoint,this.yCenterImagePoint);
+      circularMovementCanvasContext.rotate(Math.PI / 180 * (this.angle*this.rotationDirection));
+      circularMovementCanvasContext.drawImage(fanBladesImage, this.xCenterImagePoint - this.width/2,
+                                              this.yCenterImagePoint - this.height/2, this.width,this.height);
+
+      circularMovementCanvasContext.restore();
+      circularMovementCanvasContext.drawImage(fanBladesImage, 0,0, 640,700);
+      // circularMovementCanvasContext.fillStyle = 'blue';
+      // circularMovementCanvasContext.fillRect(0,0, 640,700);
+    }
+  }
 
   let LetterPrototype = function(nameString)
   {
@@ -46,11 +89,8 @@
 
     this.checkWallCollision = function()
     {
-      // console.log('actualRectangleX: ' + this.x);
-      // console.log('actualRectangleY: ' + this.y);
       if (this.x + 100 > 630 || this.x  - 100 < 10)
       {
-        // this.circlePathVelocity *= -1;
         this.xVelocity *= -1;
       }
       if (this.y + 100 > 690 || this.y - 100 < 10)
@@ -63,6 +103,8 @@
   let letterM;
   let letterN;
 
+  let fanBladesImage;
+
   window.onload = function()
   {
     circularMovementCanvas = document.getElementById("circularMovementCanvas");
@@ -71,16 +113,14 @@
     letterM = new LetterPrototype('m');
     letterN = new LetterPrototype('n');
 
-    // letterMCircleVelocityInterval = new frameInterval(randomizeIntegerPropertyValue(letterM.circlePathVelocity, 0.1,0.3));
-    // letterMXVelocityInterval = new frameInterval(randomizeIntegerPropertyValue(letterM.xVelocity, 3,30), randomizeTimeLengthForSetIntervalReset(1,2));
-    // letterMXVelocityInterval.start();
-    // letterMYVelocityInterval = new frameInterval(randomizeIntegerPropertyValue(letterM.yVelocity, 3,30), randomizeTimeLengthForSetIntervalReset(1,2));
-    // letterMYVelocityInterval.start();
-    // // letterMCircleVelocityInterval = new frameInterval();
-    // letterNXVelocityInterval = new frameInterval(randomizeIntegerPropertyValue(letterN.xVelocity, 3,30), randomizeTimeLengthForSetIntervalReset(1,2));
-    // letterNXVelocityInterval.start();
-    // letterNYVelocityInterval = new frameInterval(randomizeIntegerPropertyValue(letterN.yVelocity, 3,30), randomizeTimeLengthForSetIntervalReset(1,2));
-    // letterNYVelocityInterval.start();
+    // let blade1CenterPoint = {x:340, y:570};
+    // let blade2CenterPoint = {x:375, y:570};
+    fanBlade1 = new BladePrototype(315,560, -1);
+    fanBlade2 = new BladePrototype(350,560, 1);
+    arrayOfFanBlades.push(fanBlade1);
+    arrayOfFanBlades.push(fanBlade2);
+
+    fanBladesImage = document.getElementById('fanBladesImage');
 
     setInterval(animationLoop, 1000/30);
     setInterval(changeLetterMXVelocity, 500);
@@ -99,6 +139,8 @@
     letterM.checkWallCollision();
     letterN.updatePosition();
     letterN.checkWallCollision();
+
+    updateFanBladeAngles();
   }
 
   function drawEverything()
@@ -115,48 +157,40 @@
     circularMovementCanvasContext.fillRect(0,0, 640,700);
   }
 
-  // function randomizeIntegerPropertyValue(property, minPropertyInteger,maxPropertyInteger)
-  // {
-  //   let randomIntegerPropertyValue = getRandomIntInclusive(minPropertyInteger,maxPropertyInteger);
-  //   property = randomIntegerPropertyValue;
-  //   console.log('property should be randomized: ' + randomIntegerPropertyValue);
-  //   return randomIntegerPropertyValue;
-  // }
-
   let arrayOfPossibleXYVelocityIntegers = [-30,-15,-10,-9,8,9,10,15,30];
 
   function changeLetterMXVelocity()
   {
     let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
     letterM.xVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
-    console.log(letterM.xVelocity);
+
   }
 
   function changeLetterMYVelocity()
   {
     let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
     letterM.yVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
-    console.log(letterM.xVelocity);
+
   }
 
   function changeLetterNXVelocity()
   {
     let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
     letterN.xVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
-    console.log(letterN.xVelocity);
+
   }
 
   function changeLetterNYVelocity()
   {
     let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
     letterN.yVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
-    console.log(letterN.yVelocity);
+
   }
 
   function randomizeTimeLengthForSetIntervalReset(minTimeInteger,maxTimeInteger)
   {
     let randomTimeLengthToResetValue = getRandomIntInclusive(minTimeInteger,maxTimeInteger);
-    console.log(randomTimeLengthToResetValue);
+
     return randomTimeLengthToResetValue;
   }
 
@@ -184,7 +218,6 @@
               this.stop();
               timerObject = setInterval(updateFunction, frameRate);
           }
-          console.log(frameRate);
           return this;
       }
 
@@ -195,6 +228,8 @@
       }
   }
 
+
+
   function drawFan()
   {
     //box
@@ -202,24 +237,18 @@
     circularMovementCanvasContext.fillRect(320,550, 75,150);
 
     //blades
-    //ctx.ellipse(x,y, radiusX,radiusY, rotation, startAngle, endAngle [, anticlockwise]);
-    //blade 1
-    circularMovementCanvasContext.fillStyle = 'red';
-    circularMovementCanvasContext.beginPath();
-    circularMovementCanvasContext.ellipse(355,560, 4,10, 0, 0, 2 * Math.PI);
-    circularMovementCanvasContext.fill();
-    //blade 2
-    circularMovementCanvasContext.beginPath();
-    circularMovementCanvasContext.ellipse(370,565, 4,10, 0.7525, 0, 2 * Math.PI);
-    circularMovementCanvasContext.fill();
-    //blade 3
-    circularMovementCanvasContext.beginPath();
-    circularMovementCanvasContext.ellipse(370,580, 4,10, 1.552, 0, 2 * Math.PI);
-    circularMovementCanvasContext.fill();
-    //blade 4
-    circularMovementCanvasContext.beginPath();
-    circularMovementCanvasContext.ellipse(355,595, 4,10, 3.14, 0, 2 * Math.PI);
-    circularMovementCanvasContext.fill();
+    for (let fanBladesIndex = 0; fanBladesIndex < arrayOfFanBlades.length; fanBladesIndex++)
+    {
+      arrayOfFanBlades[fanBladesIndex].draw();
+    }
+  }
+
+  function updateFanBladeAngles()
+  {
+    for (let fanBladesIndex = 0; fanBladesIndex < arrayOfFanBlades.length; fanBladesIndex++)
+    {
+      arrayOfFanBlades[fanBladesIndex].updateAngle();
+    }
   }
 
 </script>
