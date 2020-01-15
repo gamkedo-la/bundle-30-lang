@@ -104,6 +104,7 @@
   function drawEverything()
   {
       drawBackground();
+      drawFan();
       letterM.draw();
       letterN.draw();
   }
@@ -192,6 +193,33 @@
           frameRate = newRate;
           return this.stop().start();
       }
+  }
+
+  function drawFan()
+  {
+    //box
+    circularMovementCanvasContext.fillStyle = 'white';
+    circularMovementCanvasContext.fillRect(320,550, 75,150);
+
+    //blades
+    //ctx.ellipse(x,y, radiusX,radiusY, rotation, startAngle, endAngle [, anticlockwise]);
+    //blade 1
+    circularMovementCanvasContext.fillStyle = 'red';
+    circularMovementCanvasContext.beginPath();
+    circularMovementCanvasContext.ellipse(355,560, 4,10, 0, 0, 2 * Math.PI);
+    circularMovementCanvasContext.fill();
+    //blade 2
+    circularMovementCanvasContext.beginPath();
+    circularMovementCanvasContext.ellipse(370,565, 4,10, 0.7525, 0, 2 * Math.PI);
+    circularMovementCanvasContext.fill();
+    //blade 3
+    circularMovementCanvasContext.beginPath();
+    circularMovementCanvasContext.ellipse(370,580, 4,10, 1.552, 0, 2 * Math.PI);
+    circularMovementCanvasContext.fill();
+    //blade 4
+    circularMovementCanvasContext.beginPath();
+    circularMovementCanvasContext.ellipse(355,595, 4,10, 3.14, 0, 2 * Math.PI);
+    circularMovementCanvasContext.fill();
   }
 
 </script>
