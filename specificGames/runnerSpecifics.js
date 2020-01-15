@@ -3,18 +3,19 @@ var parallaxPos = [320,200,440, 0, 0];
 const RUNNERSPEED = 10;
 const RUNNERWIDTH = 30;
 const RUNNERHEIGHT = 80;
-const RUNNERGRAVITY = 4;
+const RUNNERGRAVITY = 3;
 const RUNNERJUMPSPEED = 30;
 const RUNNERMAXJUMPHEIGHT = 300;
 const RUNNERFRAMERATE = 1000/30;
 const RUNNERLETTERSPAWNRATE = 6666;
 const RUNNERLETTERCOLOR = 'red';
-var runnerStatus = 'run'; // 'run', 'jump', or 'slide'
-
+var runnerStatus = 'run'; // 'run', 'jump', 'slide', or 'stumble'
+var runnerFloorLevel = 0;
 
 function initializeRunner() {
+	runnerFloorLevel = gameCanvas.height*0.75;
 	playerXCoordinate = (gameCanvas.width - RUNNERWIDTH)/2;
-	playerYCoordinate = gameCanvas.height*0.75 - RUNNERHEIGHT;
+	playerYCoordinate = runnerFloorLevel - RUNNERHEIGHT;
 	arrayOfLetters.splice(0);
 	gameInterval.reset(RUNNERFRAMERATE);
     letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
@@ -64,7 +65,15 @@ function drawRunnerWorld() {
 		height = RUNNERWIDTH;
 		y = gameCanvas.height*0.75 - height;
 	}
-	gameCanvasContext.fillRect(x, y, width, height);
+	if (runnerStatus == 'stumble') {
+		gameCanvasContext.save();
+		gameCanvasContext.translate(x, y);
+		gameCanvasContext.rotate(Math.PI/4);
+		gameCanvasContext.fillRect(width, -height/2, width, height);
+		gameCanvasContext.restore();
+	} else {
+		gameCanvasContext.fillRect(x, y, width, height);
+	}
 }
 
 function runnerJump() {
@@ -74,7 +83,6 @@ function runnerJump() {
 
 function runnerSlide() {
 	runnerStatus = 'slide';
-	playerSpeedY = 0;
 }
 
 function runnerRun() {
@@ -83,20 +91,28 @@ function runnerRun() {
 }
 
 function moveRunnerPlayer() {
-	if (upArrowIsBeingHeld) {
-		runnerJump();
-	} else if (downArrowIsBeingHeld) {
-		runnerSlide();
-	} else {
-		runnerRun();
-	}
-	playerYCoordinate -= playerSpeedY;
-	playerYCoordinate += RUNNERGRAVITY;
-	if (playerYCoordinate + RUNNERHEIGHT > gameCanvas.height*0.75) {
-		playerYCoordinate = gameCanvas.height*0.75 - RUNNERHEIGHT;
-	}
-	if (playerYCoordinate < RUNNERMAXJUMPHEIGHT) {
-		playerYCoordinate = RUNNERMAXJUMPHEIGHT;
+	let runnerIsRunning = runnerStatus == 'run';
+	let runnerIsStumbling = runnerStatus == 'stumble';
+	let runnerIsJumping = runnerStatus == 'jump';
+	if (!runnerIsStumbling) {
+		if (upArrowIsBeingHeld && runnerIsRunning) {
+			runnerJump();
+		} else if (downArrowIsBeingHeld && !runnerIsJumping) {
+			runnerSlide();
+		} else if (!runnerIsJumping) {
+			runnerRun();
+		}
+		if (runnerIsJumping) {
+			playerYCoordinate -= playerSpeedY;
+			playerSpeedY -= RUNNERGRAVITY;
+			if (playerYCoordinate + RUNNERHEIGHT > runnerFloorLevel) {
+				playerYCoordinate = runnerFloorLevel - RUNNERHEIGHT;
+				runnerStatus = 'run';
+			}
+			if (playerYCoordinate < RUNNERMAXJUMPHEIGHT) {
+				playerYCoordinate = RUNNERMAXJUMPHEIGHT;
+			}
+		}
 	}
 }
 

@@ -220,6 +220,22 @@ function handleCollisionsWithLetters()
       }
     }
   }
+	else if (playerShouldBePlayingRunner) {
+		for (let letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+		{
+			let letter = arrayOfLetters[letterIndex];
+			let letterIsOnFloor = letter.yCoordinate == runnerFloorLevel;
+			let letterIsColliding = letter.xCoordinate <= playerXCoordinate && letter.xCoordinate >= playerXCoordinate - RUNNERWIDTH;
+			let runnerIsStumbling = runnerStatus == 'stumble';
+			let runnerIsRunning = runnerStatus == 'run';
+			if (letterIsOnFloor && letterIsColliding && runnerIsRunning) {
+				runnerStatus = 'stumble';
+			}
+			if (letterIsOnFloor && !letterIsColliding && runnerIsStumbling) {
+				runnerStatus = 'run';
+			}
+		}
+	}
 }
 
 
