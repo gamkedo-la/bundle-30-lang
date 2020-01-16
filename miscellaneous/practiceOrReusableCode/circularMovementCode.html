@@ -4,8 +4,8 @@
 <image id = 'fanBladesImage' src = 'fanBlades.png'></image>
 <image id = 'blueSquareImage' src = 'blueSquare.png'></image>
 <image id = 'armlessBody' src = 'armlessBody.png'></image>
-<image id = 'leftArm' src = 'leftArm.png'></image>
-<image id = 'rightArm' src = 'rightArm.png'></image>
+<image id = 'leftArm' src = 'arm.png'></image>
+<image id = 'rightArm' src = 'arm.png'></image>
 
 <script>
 
@@ -14,8 +14,8 @@
 
   let blueSquareImage = document.getElementById("blueSquareImage");
   let armlessBodyImage = document.getElementById("armlessBody");
-  let leftArmImage = document.getElementById("leftArm");
-  let rightArmImage = document.getElementById("rightArm");
+  let leftArmImage = document.getElementById("arm");
+  let rightArmImage = document.getElementById("arm");
 
   let actualBlueSquare;
 
@@ -93,6 +93,24 @@
       circularMovementCanvasContext.fillText(this.name, this.x,this.y);
     }
 
+    this.colliderLeftX = this.x - 40;
+    this.colliderTopY = this.y - 50;
+    this.colliderRightX = this.colliderLeftX + 100;
+    this.colliderBottomY = this.colliderTopY + 100;
+
+    this.updateColliderPositions = function()
+    {
+      this.colliderLeftX = this.x - 40;
+      this.colliderTopY = this.y - 50;
+      this.colliderRightX = this.colliderLeftX + 100;
+      this.colliderBottomY = this.colliderTopY + 100;
+    }
+
+    this.drawCollider = function()
+    {
+      circularMovementCanvasContext.strokeStyle = 'pink';
+      circularMovementCanvasContext.strokeRect(this.colliderLeftX,this.colliderTopY, 100,100);
+    }
     //actual circle motion stuff
     this.radius = this.width/2;//not really a radius, taken from code that animated a circle
     this.radians = 0;
@@ -119,6 +137,24 @@
     }
   };
 
+  let arrayOfLetters = [];
+
+  function checkForLetterClick()
+  {
+    console.log('inside check for letter click');
+    for (let arrayOfLettersIndex = 0; arrayOfLettersIndex < arrayOfLetters.length; arrayOfLettersIndex++)
+    {
+      if (mouseCoordinates.mouseX > arrayOfLetters[arrayOfLettersIndex].colliderLeftX &&
+          mouseCoordinates.mouseX < arrayOfLetters[arrayOfLettersIndex].colliderRightX &&
+          mouseCoordinates.mouseY > arrayOfLetters[arrayOfLettersIndex].colliderTopY &&
+          mouseCoordinates.mouseY < arrayOfLetters[arrayOfLettersIndex].colliderBottomY)
+          {
+            console.log('letter click detected');
+          }
+    }
+
+  }
+
   let letterM;
   let letterN;
 
@@ -129,13 +165,18 @@
 
     circularMovementCanvas = document.getElementById("circularMovementCanvas");
     circularMovementCanvasContext = circularMovementCanvas.getContext('2d');
-    console.log(circularMovementCanvas.width);
+
+    circularMovementCanvas.addEventListener('mousemove', calculateMousePosition);
+    circularMovementCanvas.addEventListener('click', circularMovementCanvasClick, false);
 
     blueSquareImage = document.getElementById('blueSquareImage');
     fanBladesImage = document.getElementById('fanBladesImage');
 
     letterM = new LetterPrototype('m');
     letterN = new LetterPrototype('n');
+
+    arrayOfLetters.push(letterM);
+    arrayOfLetters.push(letterN);
 
     //Fan(xCoordinate,yCoordinate, width,height, color)
     fan1 = new Fan(10,550, 75,150, 'white');
@@ -175,20 +216,180 @@
     letterM.checkWallCollision();
     letterN.updatePosition();
     letterN.checkWallCollision();
-
+    letterM.updateColliderPositions();
+    letterN.updateColliderPositions();
     updateFanBladeAngles();
-    console.log(arrayOfFans[0].fanBlade1Angle);
   }
 
   function drawEverything()
   {
       drawBackground();
       drawFans();
-      circularMovementCanvasContext.drawImage(armlessBodyImage, 225,400, 200,320);
-      circularMovementCanvasContext.drawImage(leftArm, 265,450, 75,160);
-      circularMovementCanvasContext.drawImage(rightArm, 295,450, 90,160);
+      drawMan();
       letterM.draw();
       letterN.draw();
+      letterM.drawCollider();
+      letterN.drawCollider();
+      drawMouseCoordinates();
+      if (shouldDrawStretchedArm)
+      {
+        drawStretchedArm();
+      }
+      // drawAngleCalculationBaseLine();
+      // drawAngledLineForLeftArmPivotPoint();
+      // drawAngledLineForRightArmPivotPoint();
+  }
+
+  var mouseCoordinates = {mouseX:undefined,mouseY:undefined};
+
+  function calculateMousePosition(builtInDocumentEventObject)
+  {
+    var rect = circularMovementCanvas.getBoundingClientRect();
+    var root = document.documentElement;
+    var x = builtInDocumentEventObject.clientX - rect.left - root.scrollLeft;
+    var y = builtInDocumentEventObject.clientY - rect.top - root.scrollTop;
+    mouseCoordinates.mouseX = x;
+    mouseCoordinates.mouseY = y;
+    // console.log(mouseCoordinates.mouseX,mouseCoordinates.mouseY);
+  }
+
+  function drawMouseCoordinates()
+  {
+    circularMovementCanvasContext.fillStyle = 'lime';
+    circularMovementCanvasContext.font = '30px Helvetica';
+    circularMovementCanvasContext.fillText(mouseCoordinates.mouseX + ', ' + mouseCoordinates.mouseY,
+                                           mouseCoordinates.mouseX,mouseCoordinates.mouseY);
+  }
+
+  let shouldDrawStretchedArm = false;
+  function stopDrawingStretchedArm()
+  {
+    shouldDrawStretchedArm = false;
+  }
+
+  let armPivotPointX;
+  let armPivotPointY;
+  let armToStretch;
+
+  function circularMovementCanvasClick()
+  {
+    calculateArmStretch();
+    shouldDrawStretchedArm = true;
+    setTimeout(stopDrawingStretchedArm, 250);
+
+    checkForLetterClick();
+  }
+
+  let armStretchAngle;
+  let armStretchHeight;
+
+  function calculateArmStretch()
+  {
+    armPivotPointX = mouseCoordinates.mouseX;
+    armPivotPointY = mouseCoordinates.mouseY;
+    armToStretch = undefined;
+
+    if (armPivotPointX <= 320)
+    {
+      armToStretch = leftArm;
+    } else {
+      armToStretch = rightArm;
+    }
+    armStretchAngle = Math.atan2(mouseCoordinates.mouseY - 550, mouseCoordinates.mouseX - 326);
+    armStretchHeight = Math.sqrt( Math.pow(326 - armPivotPointX,2) + Math.pow(550 - armPivotPointY,2) );
+  }
+
+  function drawStretchedArm()
+  {
+    circularMovementCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
+    circularMovementCanvasContext.translate(armPivotPointX,armPivotPointY);//place imaginary hand at pivot point
+    circularMovementCanvasContext.rotate(armStretchAngle + Math.PI/2);//rotate with hand at pivot based in radians
+    circularMovementCanvasContext.translate(-armPivotPointX,-armPivotPointY);//return hand to 0,0 of canvas
+    circularMovementCanvasContext.drawImage(armToStretch, armPivotPointX - 10,armPivotPointY, 75 + 10,armStretchHeight*1.6);//normal draw code affected by rotation
+    circularMovementCanvasContext.restore();//erase any errant abnormal draw code
+  }
+
+  let leftArmX = 320;
+  let leftArmY = 0;
+  let leftArmAngle = 90;
+  let leftArmPivotX = 326;
+  let leftArmPivotY = 550;
+
+  let rightArmX = 320;
+  let rightArmY = 0;
+  let rightArmAngle = 0;
+  let rightArmPivotX = 326;
+  let rightArmPivotY = 550;
+
+  function drawAngleCalculationBaseLine()//give a visual representation of the bottom part of the arms
+  {
+    circularMovementCanvasContext.strokeStyle = 'lime';//color for STROKE, not FILL
+    circularMovementCanvasContext.beginPath();//reset the coordinates of imaginary drawing hand
+    circularMovementCanvasContext.moveTo(0,550);//move the imaginary hand to 0,550
+    circularMovementCanvasContext.lineTo(640,550);//give coordinates to next point of drawing without actually drawing it
+    circularMovementCanvasContext.stroke();//fill in the strokes of previous drawing directions
+  }
+
+  function drawAngledLineForLeftArmPivotPoint()
+  {
+    circularMovementCanvasContext.strokeStyle = 'lime';//color for STROKE, not FILL
+    circularMovementCanvasContext.beginPath();//reset the coordinates of imaginary drawing hand
+    circularMovementCanvasContext.moveTo(leftArmPivotX,leftArmPivotY);//move the imaginary hand to 0,550
+    circularMovementCanvasContext.lineTo(mouseCoordinates.mouseX,mouseCoordinates.mouseY);//give coordinates to next point of drawing without actually drawing it
+    circularMovementCanvasContext.stroke();//fill in the strokes of previous drawing directions
+  }
+
+  function drawAngledLineForRightArmPivotPoint()
+  {
+    circularMovementCanvasContext.strokeStyle = 'red';//color for STROKE, not FILL
+    circularMovementCanvasContext.beginPath();//reset the coordinates of imaginary drawing hand
+    circularMovementCanvasContext.moveTo(rightArmPivotX,rightArmPivotY);//move the imaginary hand to 0,550
+    circularMovementCanvasContext.lineTo(mouseCoordinates.mouseX,mouseCoordinates.mouseY);//give coordinates to next point of drawing without actually drawing it
+    circularMovementCanvasContext.stroke();//fill in the strokes of previous drawing directions
+  }
+
+  function drawMan()
+  {
+
+    circularMovementCanvasContext.drawImage(armlessBodyImage, 227,400, 200,320);
+
+    calculateLeftArmAngle();
+    circularMovementCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
+    circularMovementCanvasContext.translate(leftArmPivotX,leftArmPivotY);//place imaginary hand at pivot point
+    circularMovementCanvasContext.rotate(leftArmAngle + Math.PI/2);//rotate with hand at pivot based in radians
+    circularMovementCanvasContext.translate(-leftArmPivotX,-leftArmPivotY);//return hand to 0,0 of canvas
+    circularMovementCanvasContext.drawImage(leftArm, 320,450, 75,160);//normal draw code affected by rotation
+    circularMovementCanvasContext.restore();//erase any errant abnormal draw code
+
+    calculateRightArmAngle();
+    circularMovementCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
+    circularMovementCanvasContext.translate(rightArmPivotX,rightArmPivotY);//place imaginary hand at pivot point
+    circularMovementCanvasContext.rotate(rightArmAngle + Math.PI/2);//rotate with hand at pivot based in radians
+    circularMovementCanvasContext.translate(-rightArmPivotX,-rightArmPivotY);//return hand to 0,0 of canvas
+    circularMovementCanvasContext.drawImage(rightArm, 320,450, 75,160);//normal draw code affected by rotation
+    circularMovementCanvasContext.restore();//erase any errant abnormal draw code
+  }
+
+  function calculateLeftArmAngle()
+  {
+    if (mouseCoordinates.mouseX > 326)//stop the arm from going past the mid angle point for aesthetic reasons
+    {
+      leftArmAngle = -2;
+    } else
+    {
+      leftArmAngle = Math.atan2(mouseCoordinates.mouseY - 550, mouseCoordinates.mouseX - 326);
+    }
+  }
+
+  function calculateRightArmAngle()
+  {
+    if (mouseCoordinates.mouseX < 326)//stop the arm from going past the mid angle point for aesthetic reasons
+    {
+      rightArmAngle = -1;
+    } else
+    {
+      rightArmAngle = Math.atan2(mouseCoordinates.mouseY - 550, mouseCoordinates.mouseX - 326)
+    }
   }
 
   function drawBackground()
@@ -362,14 +563,12 @@
     this.rotateFanBlade1 = function()
     {
       this.fanBlade1Angle += this.fanBladeSpeed;
-      console.log('fanBladeSpeed: ' + this.fanBladeSpeed);
       // console.log('fanBlade1RotationAng')
     }
 
     this.rotateFanBlade2 = function()
     {
       this.fanBlade2Angle += this.fanBladeSpeed;
-      console.log('fan blade 2 rotation angle: ' + this.fanBlade2RotationAngle);
     }
   }
 
