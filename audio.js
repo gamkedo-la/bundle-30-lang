@@ -56,8 +56,11 @@ transitionToLevelMusic1.onended = function()
 
   if (gameIsOnAServerAndCanUseWebAudioAPI /*&& currentBackgroundMusic.playbackState !== 'playing'*/)
   {
-    currentBackgroundMusic.start();
-  } else
+    if (currentBackgroundMusic) { // bugfix: skip if undefined
+        currentBackgroundMusic.start();
+    }
+  } 
+  else
   {
     currentBackgroundMusic.loop = true;
     currentBackgroundMusic.addEventListener('timeupdate', function(){
