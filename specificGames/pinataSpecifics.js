@@ -4,6 +4,8 @@
 // physics code comes from this public domain work by XEM
 // https://github.com/xem/mini2Dphysics
 
+var playerShouldBePlayingPinata = false;
+
 var pinataGame = new function() {
 
 // list of all known Circles
@@ -22,11 +24,22 @@ var rndInt = (minimum,maximum) => Math.floor(Math.random() * (maximum - minimum 
 
 // which one we want to click
 var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var targetLetter = alphabet[rndInt(0,alphabet.length)];
+var targetLetter = alphabet[rndInt(0,alphabet.length-1)];
 
 function pinataClick(e) {
     // console.log("Pinata game click");
     
+    // detect WHICH circle we clicked!
+    var clickXY = Vec2(e.pageX,e.pageY);
+    for(let i = objects.length; i--;){
+        let checkme = objects[i];
+        let dist = sub(clickXY, checkme.C);
+        if (length(dist) < checkme.R) {    
+            console.log("You clicked a candy! It was letter " + b.Z);
+            // FIXME - handle >1 positive on same frame etc
+        }
+    }
+
     // select a new letter
     targetLetter = alphabet[rndInt(0,alphabet.length)];
 
@@ -34,18 +47,9 @@ function pinataClick(e) {
     for(i = 20; i--; ){
         Circle(Vec2(e.pageX+Math.random()*10-5,e.pageY+Math.random()*10-5));
     }
-
-    // detect WHICH circle we clicked!
-    var clickXY = Vec2(e.pageX,e.pageY);
-    for(i = objects.length; i--;){
-        b = objects[i];
-        e = sub(clickXY, b.C);
-        if (length(e) < b.R) {    
-            console.log("You clicked a candy! It was letter " + b.Z);
-            // FIXME - handle >1 positive on same frame etc
-        }
-    }
-
+    // ensure the target one is there at least once
+    Circle(Vec2(e.pageX+Math.random()*10-5,e.pageY+Math.random()*10-5),40,1/40,targetLetter);
+    
 }
 
 this.init = function() {
@@ -56,12 +60,17 @@ this.init = function() {
 
     // Init scene
     //Circle(Vec2(800, 1000), 600, 0); // floor!
-    Circle(Vec2(640, 5500), 5000, 0); // floor!
+    Circle(Vec2(320, 5700), 5000, 0); // floor!
+    Circle(Vec2(2840, 5000), 5000, 0); // r wall
+    Circle(Vec2(-2200, 5000), 5000, 0); // l wall
 
     // create many little candies
     for(i = 99; i--; ){
         Circle(Vec2(Math.random() * 900 + 300, Math.random() * 900 - 700));
     }
+    // ensure the target one is there at least once
+    Circle(Vec2(Math.random() * 900 + 300, Math.random() * 900 - 700),40,1/40,targetLetter);
+
 
     // debug only: spawn new candy on mouseclick
     // onclick = e => Circle(Vec2(e.pageX, e.pageY));
@@ -79,7 +88,7 @@ this.init = function() {
         c.fillRect(0,0,a.width,a.height);
 
         // draw mission customFontFillText(fontSize, spacing, xCoordinate,yCoordinate)
-        customFontFillText(['Click the letter ' + targetLetter],32,32,32,32);
+        customFontFillText(['Click the letter ' + targetLetter],32,24,80,32);
 
         // Compute collisions
         for(i = objects.length; i--;){
@@ -198,7 +207,7 @@ this.init = function() {
 // u: tangent
 // x: jT
 // b.bgColor="#333";
-var Circle = (C, R = Math.random() * 30 + 10, M = 1/R) =>
+var Circle = (C, R = Math.random() * 30 + 10, M = 1/R, forcedString) =>
 
   objects.push(
     {
@@ -216,11 +225,19 @@ var Circle = (C, R = Math.random() * 30 + 10, M = 1/R) =>
     //Z: String.fromCodePoint(0x1F600 + Math.random() * 69/*56*/ | 0)
 
     // random letter A-Z
-    Z: String.fromCharCode(65+Math.floor(Math.random() * 26)),
+    Z: forcedString || String.fromCharCode(65+Math.floor(Math.random() * 26)),
     //color: "rgba("+rndInt(0,255)+","+rndInt(0,255)+","+rndInt(0,255)+",1)" //0.25)"
     color: "rgba("+rndInt(64,255)+","+rndInt(64,255)+","+rndInt(64,255)+",1)" //0.25)"
 
     //I: M,   // (here it's simplified as M) Inertia = mass * radius ^ 2. 12 is a magic constant that can be changed
   });
+
+    this.drawTransitionText = function()
+  {
+    customFontFillText(['Piñata Pop', symbolExclamationPointImage],80,42,100,50);
+    customFontFillText(['Click the right letter'],32,24,80,250);
+    customFontFillText(['as fast as you can',symbolExclamationPointImage],32,24,80,290);
+
+  }
 
 }(); // create new pinataGame object immediately
