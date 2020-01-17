@@ -1,8 +1,8 @@
 var playerShouldBePlayingRunner = false;
 var parallaxPos = [320,200,440, 0, 0];
 const RUNNERSPEED = 10;
-const RUNNERWIDTH = 30;
-const RUNNERHEIGHT = 80;
+const RUNNERWIDTH = 50;
+const RUNNERHEIGHT = 160;
 const RUNNERGRAVITY = 3;
 const RUNNERJUMPSPEED = 30;
 const RUNNERMAXJUMPHEIGHT = 300;
@@ -69,10 +69,12 @@ function drawRunnerWorld() {
 		gameCanvasContext.save();
 		gameCanvasContext.translate(x, y);
 		gameCanvasContext.rotate(Math.PI/4);
-		gameCanvasContext.fillRect(width, -height/2, width, height);
+		// gameCanvasContext.fillRect(width, -height/2, width, height);
+		gameCanvasContext.drawImage(runnerRunning1Image, x,y, width,height);
 		gameCanvasContext.restore();
 	} else {
-		gameCanvasContext.fillRect(x, y, width, height);
+		// gameCanvasContext.fillRect(x, y, width, height);
+		gameCanvasContext.drawImage(runnerRunning1Image, x,y, width,height);
 	}
 }
 
