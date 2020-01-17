@@ -28,13 +28,13 @@ var targetLetter = alphabet[rndInt(0,alphabet.length-1)];
 
 function pinataClick(e) {
     // console.log("Pinata game click");
-    
+
     // detect WHICH circle we clicked!
     var clickXY = Vec2(e.pageX,e.pageY);
     for(let i = objects.length; i--;){
         let checkme = objects[i];
         let dist = sub(clickXY, checkme.C);
-        if (length(dist) < checkme.R) {    
+        if (length(dist) < checkme.R) {
             console.log("You clicked a candy! It was letter " + b.Z);
             // FIXME - handle >1 positive on same frame etc
         }
@@ -49,7 +49,7 @@ function pinataClick(e) {
     }
     // ensure the target one is there at least once
     Circle(Vec2(e.pageX+Math.random()*10-5,e.pageY+Math.random()*10-5),40,1/40,targetLetter);
-    
+
 }
 
 this.init = function() {
@@ -87,8 +87,7 @@ this.init = function() {
         c.fillStyle = "rgba(150,220,255,1)"; // sky blue
         c.fillRect(0,0,a.width,a.height);
 
-        // draw mission customFontFillText(fontSize, spacing, xCoordinate,yCoordinate)
-        customFontFillText(['Click the letter ' + targetLetter],32,24,80,32);
+
 
         // Compute collisions
         for(i = objects.length; i--;){
@@ -164,6 +163,8 @@ this.init = function() {
         c.font = b.R * 1.9 + "px a";
         c.textAlign = "center";
 
+
+
         if(objects[i].M) {
             //c.fillStyle = "rgba(0,0,0,0.25)";
             c.fillStyle = objects[i].color;
@@ -175,13 +176,15 @@ this.init = function() {
             //c.fillText(b.Z, 0, b.R * 0.65);
 
             // draw the letter using bitmap font
-            customFontFillText([b.Z], b.R*1.5,0, 0-b.R*0.75,0-b.R*0.75);            
+            customFontFillText([b.Z], b.R*1.5,0, 0-b.R*0.75,0-b.R*0.75);
             }
         else {
             c.fillStyle = "rgba(80,60,40,1)";
             c.fill(); // the ground
         }
         c.restore();
+        // draw mission customFontFillText(fontSize, spacing, xCoordinate,yCoordinate)
+        customFontFillText(['Click the letter ' + targetLetter],32,24,80,32);
         }
     },
     9
