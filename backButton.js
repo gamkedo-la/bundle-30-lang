@@ -51,6 +51,7 @@ function handleBackButtonClick()
         } else
         {
             currentBackgroundMusic.pause();
+            currentBackgroundMusic = undefined;
         }
       }
 }
