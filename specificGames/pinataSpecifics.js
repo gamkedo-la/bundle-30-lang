@@ -81,7 +81,7 @@ this.init = function() {
     setInterval(
     e => {
 
-        if (levelIsTransitioning) return;
+        if (levelIsTransitioning || !playerShouldBePlayingPinata) return;
 
         //a.width ^= 0; // clear the screen
         c.fillStyle = "rgba(150,220,255,1)"; // sky blue
