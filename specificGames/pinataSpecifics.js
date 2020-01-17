@@ -185,6 +185,7 @@ this.init = function() {
         c.restore();
         // draw mission customFontFillText(fontSize, spacing, xCoordinate,yCoordinate)
         customFontFillText(['Click the letter ' + targetLetter],32,24,80,32);
+        drawBackButton();
         }
     },
     9
