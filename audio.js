@@ -20,6 +20,8 @@ var uiButtonSound4 = document.createElement("AUDIO");
 var currentBackgroundMusic = undefined;
 
 var runnerBackgroundMusic = document.createElement("AUDIO");
+var pinataBackgroundMusic = document.createElement("AUDIO");
+
 
 var transitionToLevelMusic1 = document.createElement("AUDIO");
 
@@ -43,6 +45,8 @@ function setSourcesForAudioObjects()//for after loading screen
   transitionToLevelMusic1.src = "audio/levelTransitionSound.mp3";
 
   runnerBackgroundMusic.src = "audio/backgroundTracks/runnerBackground.mp3";
+  pinataBackgroundMusic.src = "audio/backgroundTracks/pinataBackgroundMusic.mp3";
+
 }
 
 // transitionToLevelMusic1.onended = "correctLetterAudioTag.play()";
@@ -59,7 +63,7 @@ transitionToLevelMusic1.onended = function()
     if (currentBackgroundMusic) { // bugfix: skip if undefined
         currentBackgroundMusic.start();
     }
-  } 
+  }
   else
   {
     currentBackgroundMusic.loop = true;
@@ -67,7 +71,7 @@ transitionToLevelMusic1.onended = function()
                     var buffer = 0.32;
                     if(this.currentTime > this.duration - buffer){
                       console.log('hello loop point');
-                        this.currentTime = 6.8;
+                        this.currentTime = 0;
                         this.play();
                     }}, false);
     currentBackgroundMusic.play();
@@ -103,7 +107,7 @@ function playARandomSoundInAMultisoundArray(targetMultisoundArray)
 
 //Web Audio API section, for extra audio features when necessary or desired
 
-var gameIsOnAServerAndCanUseWebAudioAPI = true;
+var gameIsOnAServerAndCanUseWebAudioAPI = false;
 var webAudioAPIContext;
 var webAudioMusicBus;
 

@@ -58,6 +58,8 @@ this.init = function() {
     var c = gameCanvasContext;
     var a = gameCanvas;
 
+    currentBackgroundMusic = pinataBackgroundMusic;
+
     // Init scene
     //Circle(Vec2(800, 1000), 600, 0); // floor!
     Circle(Vec2(320, 5700), 5000, 0); // floor!
