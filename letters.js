@@ -223,16 +223,32 @@ function handleCollisionsWithLetters()
 	else if (playerShouldBePlayingRunner) {
 		for (let letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
 		{
-			let letter = arrayOfLetters[letterIndex];
-			let letterIsOnFloor = letter.yCoordinate == runnerFloorLevel;
-			let letterIsColliding = letter.xCoordinate <= playerXCoordinate && letter.xCoordinate >= playerXCoordinate - RUNNERWIDTH;
-			let runnerIsStumbling = runnerStatus == 'stumble';
-			let runnerIsRunning = runnerStatus == 'run';
+			const letter = arrayOfLetters[letterIndex];
+			const letterIsOnFloor = letter.yCoordinate == runnerFloorLevel;
+			const letterIsColliding = letter.xCoordinate <= playerXCoordinate && letter.xCoordinate >= playerXCoordinate - RUNNERWIDTH;
+			const runnerIsStumbling = runnerStatus == 'stumble';
+			const runnerIsJumping = runnerStatus == 'jump';
+			const runnerIsRunning = runnerStatus == 'run';
+			const runnerIsSliding = runnerStatus == 'slide';
 			if (letterIsOnFloor && letterIsColliding && runnerIsRunning) {
 				runnerStatus = 'stumble';
 			}
 			if (letterIsOnFloor && !letterIsColliding && runnerIsStumbling) {
 				runnerStatus = 'run';
+			}
+			if (((letterIsOnFloor && runnerIsSliding)||(!letterIsOnFloor && runnerIsJumping)) && letterIsColliding) {
+				if (letter.name == currentCorrectLetter) {
+					amountCorrect++;
+					playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
+					calculateAccuracy();
+					setOrResetCorrectLetter();
+				} else {
+					amountIncorrect++;
+					playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
+					calculateAccuracy();
+					setOrResetCorrectLetter();
+				}
+				arrayOfLetters.splice(letterIndex, 1);
 			}
 		}
 	}

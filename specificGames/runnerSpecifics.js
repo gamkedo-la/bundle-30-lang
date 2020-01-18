@@ -27,6 +27,7 @@ function initializeRunner() {
 	{
 		currentBackgroundMusic = runnerBackgroundMusic;
 	}
+	setOrResetCorrectLetter();
 }
 
 function drawParallax() {
