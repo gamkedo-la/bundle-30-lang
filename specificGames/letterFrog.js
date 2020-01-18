@@ -23,9 +23,13 @@ window.onload = function()
   letterFrogCanvasContext = letterFrogCanvas.getContext('2d');
 
   document.addEventListener('keydown', handleKeyDown);
+  document.addEventListener('click', handleSplashScreenClick);
 
   frog = new FrogClass();
   initializeOrResetLilyPads();
+
+  initializeCorrectLetterAudio();
+  setOrResetCorrectLetterAudio();
 
   setInterval(gameLoop, letterFrogFrameRate);
 }
@@ -42,6 +46,15 @@ function handleKeyDown(builtInDocumentEventObject)
     break;
   case 38://up arrow
     frog.checkForLilyLanding();
+    if (frog.yCoordinate === 50)
+    {
+      frog.yCoordinate -= 50;
+      frog.currentLilyPad = undefined;
+    }
+    if (frog.yCoordinate === 0)
+    {
+      frog.yCoordinate = 650;
+    }
     break;
   case 39://right arrow
   if (frog.yCoordinate === 650)
@@ -60,18 +73,29 @@ function gameLoop()
 
 function updateEverything()
 {
-  moveLilyPads();
-  handleOffScreenLilyPads();
-  frog.updateCenterX();
-  frog.moveWhileOnLilyPad();
-  frog.handleOffScreen();
+  if(!userClickedAfterLoadingBool)
+  {
+    return;
+  } else {
+    moveLilyPads();
+    handleOffScreenLilyPads();
+    frog.updateCenterX();
+    frog.moveWhileOnLilyPad();
+    frog.handleOffScreen();
+  }
 }
 
 function drawEverything()
 {
-  drawLetterFrogBackground();
-  drawLilyPads();
-  frog.draw();
+  if(!userClickedAfterLoadingBool)
+  {
+    drawSplashScreen();
+  } else {
+    drawLetterFrogBackground();
+    drawLilyPads();
+    frog.draw();
+  }
+
 }
 
 let frog;
@@ -106,11 +130,14 @@ function FrogClass()
       console.log(arrayOfLilyPads[arrayOfLilyPadsIndex]);
       if (this.centerX > arrayOfLilyPads[arrayOfLilyPadsIndex].xCoordinate &&
           this.centerX < arrayOfLilyPads[arrayOfLilyPadsIndex].xCoordinate + 50 &&
-          this.yCoordinate - 50 === arrayOfLilyPads[arrayOfLilyPadsIndex].yCoordinate)
+          this.yCoordinate - 50 === arrayOfLilyPads[arrayOfLilyPadsIndex].yCoordinate &&
+          arrayOfLilyPads[arrayOfLilyPadsIndex].letter === currentCorrectLetter)
           {
             console.log('lily landing detected');
             this.yCoordinate -= 50;
             this.currentLilyPad = arrayOfLilyPads[arrayOfLilyPadsIndex];
+            setOrResetCorrectLetterAudio();
+            correctLetterAudio.play();
           }
     }
   }
@@ -163,10 +190,18 @@ function LilyPadClass()
 
   this.direction = undefined;
 
+  this.drawLetter = function()
+  {
+    letterFrogCanvasContext.fillStyle = 'red';
+    letterFrogCanvasContext.font = '30px Helvetica';
+    letterFrogCanvasContext.fillText(this.letter, this.xCoordinate + 22,this.yCoordinate + 30);
+  }
+
   this.draw = function()
   {
     letterFrogCanvasContext.fillStyle = this.color;
     letterFrogCanvasContext.fillRect(this.xCoordinate,this.yCoordinate, this.width,this.height);
+    this.drawLetter();
   }
 
   this.move = function()
@@ -189,6 +224,7 @@ function LilyPadClass()
   }
 
   this.letter = undefined;
+
 }
 
 function initializeOrResetLilyPads()
@@ -249,10 +285,40 @@ function handleOffScreenLilyPads()
   }
 }
 
-// function setLilyPadYCoordinates()
-// {
-//   for (let arrayOfLilyPadRowsIndex = 0; arrayOfLilyPadsIndex < 5; arrayOfLilyPadsIndex++)
-//   {
-//     arrayOfLilyPads[arrayOfLilyPadsIndex].yCoordinate = arrayOfLilyPadsIndex
-//   }
-// }
+var correctLetterAudio;
+var currentCorrectLetter = undefined;
+
+function initializeCorrectLetterAudio()
+{
+  correctLetterAudio = document.getElementById("correctLetterAudio");
+}
+
+function setOrResetCorrectLetterAudio()
+{
+  let randomNumber = Math.random();
+  if (randomNumber < 0.5)
+  {
+    correctLetterAudio.src = 'm.mp3';
+  } else {
+    correctLetterAudio.src = 'n.mp3';
+  }
+  currentCorrectLetter = correctLetterAudio.src.charAt(correctLetterAudio.src.length - 5);
+}
+
+let userClickedAfterLoadingBool = false;
+
+function drawSplashScreen()
+{
+  letterFrogCanvasContext.fillStyle = 'Aqua';
+  letterFrogCanvasContext.fillRect(0,0, 640,700);
+
+  letterFrogCanvasContext.fillStyle = 'black';
+  letterFrogCanvasContext.font = '30px Helvetica';
+  letterFrogCanvasContext.fillText('Game is loading, click when done', 30,30);
+}
+
+function handleSplashScreenClick(builtInDocumentEventObject)
+{
+  userClickedAfterLoadingBool = true;
+  correctLetterAudio.play();
+}
