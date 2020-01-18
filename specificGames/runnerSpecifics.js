@@ -1,13 +1,13 @@
 var playerShouldBePlayingRunner = false;
 var parallaxPos = [320,200,440, 0, 0];
 const RUNNERSPEED = 10;
-const RUNNERWIDTH = 50;
-const RUNNERHEIGHT = 160;
-const RUNNERGRAVITY = 3;
+const RUNNERWIDTH = 100;
+const RUNNERHEIGHT = 220;
+const RUNNERGRAVITY = 1.5;
 const RUNNERJUMPSPEED = 30;
-const RUNNERMAXJUMPHEIGHT = 300;
+const RUNNERMAXJUMPHEIGHT = 75;
 const RUNNERFRAMERATE = 1000/30;
-const RUNNERLETTERSPAWNRATE = 6666;
+const RUNNERLETTERSPAWNRATE = 5555;
 const RUNNERLETTERCOLOR = 'red';
 var runnerStatus = 'run'; // 'run', 'jump', 'slide', or 'stumble'
 var runnerFloorLevel = 0;
@@ -28,6 +28,7 @@ function initializeRunner() {
 		currentBackgroundMusic = runnerBackgroundMusic;
 	}
 	setOrResetCorrectLetter();
+	setInterval(cycleRunnerRunningImages, 200);
 }
 
 function drawParallax() {
@@ -71,12 +72,31 @@ function drawRunnerWorld() {
 		gameCanvasContext.translate(x, y);
 		gameCanvasContext.rotate(Math.PI/4);
 		// gameCanvasContext.fillRect(width, -height/2, width, height);
-		gameCanvasContext.drawImage(runnerRunning1Image, x,y, width,height);
+		gameCanvasContext.drawImage(arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex], x,y, width,height);
 		gameCanvasContext.restore();
-	} else {
+	} else if (runnerStatus == 'jump'){
+		gameCanvasContext.drawImage(runnerJumpingImage, x,y, width,height);
+	}else {
 		// gameCanvasContext.fillRect(x, y, width, height);
-		gameCanvasContext.drawImage(runnerRunning1Image, x,y, width,height);
+		gameCanvasContext.drawImage(currentRunnerRunningImage, x,y, width,height);
 	}
+}
+
+let arrayOfRunnerRunningImages = [];
+let arrayOfRunnerRunningImagesIndex = 0;
+let runnerImagesIndexDirection = 1;
+let currentRunnerRunningImage;
+
+function cycleRunnerRunningImages()
+{
+	arrayOfRunnerRunningImagesIndex += runnerImagesIndexDirection;
+	if (arrayOfRunnerRunningImagesIndex === 2)
+	{
+		runnerImagesIndexDirection = -1;
+	} else if (arrayOfRunnerRunningImagesIndex === 0){
+		runnerImagesIndexDirection = 1;
+	}
+	currentRunnerRunningImage = arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex];
 }
 
 function runnerJump() {

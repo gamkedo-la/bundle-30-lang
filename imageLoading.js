@@ -6,6 +6,9 @@ let runnerCloud1 = document.createElement("img");
 let runnerGrassImage = document.createElement("img");
 let runnerMountain1Image = document.createElement("img");
 let runnerRunning1Image = document.createElement('img');
+let runnerRunning2Image = document.createElement('img');
+let runnerRunning3Image = document.createElement('img');
+let runnerJumpingImage = document.createElement("img");
 
 //special characters for custom font
 let upArrowImage = document.createElement("img");
@@ -97,6 +100,9 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: runnerGrassImage, theFile: 'images/Backgrounds/runnerGrass.png'});
   arrayOfImages.push({imageObjectBinding: runnerMountain1Image, theFile: 'images/Backgrounds/runnerMountain1.png'});
   arrayOfImages.push({imageObjectBinding: runnerRunning1Image, theFile: 'images/sprites/runner/runnerRunning1.png'});
+  arrayOfImages.push({imageObjectBinding: runnerRunning2Image, theFile: 'images/sprites/runner/runnerRunning2.png'});
+  arrayOfImages.push({imageObjectBinding: runnerRunning3Image, theFile: 'images/sprites/runner/runnerRunning3.png'});
+  arrayOfImages.push({imageObjectBinding: runnerJumpingImage, theFile: 'images/sprites/runner/runnerJumping.png'});
 
 
   arrayOfImages.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png' });
@@ -142,4 +148,6 @@ function countLoadedImageAndLaunchIfReady()
   {
     promptPlayerForClickAfterLoading();// in dualLoadingSplashScreen.js
   }
+
+  arrayOfRunnerRunningImages.push(runnerRunning1Image,runnerRunning2Image,runnerRunning3Image);
 }

@@ -69,7 +69,7 @@ function spawnALetterIfAppropriate()
 		  name: name,
 		  correctAnswer: false,
 		  xCoordinate: gameCanvas.width,
-		  yCoordinate: coinToss ? RUNNERMAXJUMPHEIGHT + 16 : gameCanvas.height*0.75 // NOTE(Gonzalo): 16 is letter height guesstimate
+		  yCoordinate: coinToss ? RUNNERMAXJUMPHEIGHT + 40 : gameCanvas.height*0.75 // NOTE(Gonzalo): 16 is letter height guesstimate
 	  });
   }
 
