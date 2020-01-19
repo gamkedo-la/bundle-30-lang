@@ -15,6 +15,7 @@ window.onload = function()
   statsCanvasContext = statsCanvas.getContext('2d');
 
   drawPleaseWaitForLoadingMessage();
+  
 
   document.addEventListener('keydown',keyDown);
   document.addEventListener('keyup',keyUp);

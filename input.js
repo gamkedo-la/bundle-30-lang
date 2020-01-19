@@ -134,6 +134,14 @@ function keyDown(builtInDocumentEventObject)
       debugOn = true;
     }
     break;
+
+    case 107://number pad +
+    turnMasterVolumeUp();
+    break;
+
+    case 109://number pad -
+    turnMasterVolumeDown();
+    break;
   }
 }
 

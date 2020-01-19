@@ -208,5 +208,5 @@ function handleGameCellClicks()
         transitionToLevelMusic1.play();
         gameCanvasContext.globalAlpha = 0.0;
       }
-
+      
 }

@@ -28,25 +28,42 @@ var transitionToLevelMusic1 = document.createElement("AUDIO");
 function setSourcesForAudioObjects()//for after loading screen
 {
   generalPositiveFeedbackSound1.src = "audio/Positive_01.mp3";
+  masterAudioBus.push(generalPositiveFeedbackSound1);
   generalPositiveFeedbackSound2.src = "audio/Positive_02.mp3";
+  masterAudioBus.push(generalPositiveFeedbackSound2);
   generalPositiveFeedbackSound3.src = "audio/Positive_03.mp3";
+  masterAudioBus.push(generalPositiveFeedbackSound3);
   generalPositiveFeedbackSound4.src = "audio/Positive_04.mp3";
+  masterAudioBus.push(generalPositiveFeedbackSound4);
+
 
   generalNegativeFeedbackSound1.src = "audio/Negative_01.mp3";
+  masterAudioBus.push(generalNegativeFeedbackSound1);
   generalNegativeFeedbackSound2.src = "audio/Negative_02.mp3";
+  masterAudioBus.push(generalNegativeFeedbackSound2);
   generalNegativeFeedbackSound3.src = "audio/Negative_03.mp3";
+  masterAudioBus.push(generalNegativeFeedbackSound3);
   generalNegativeFeedbackSound4.src = "audio/Negative_04.mp3";
+  masterAudioBus.push(generalNegativeFeedbackSound4);
+
 
   uiButtonSound1.src = "audio/UI_01.mp3";
+  masterAudioBus.push(uiButtonSound1);
   uiButtonSound2.src = "audio/UI_02.mp3";
+  masterAudioBus.push(uiButtonSound2);
   uiButtonSound3.src = "audio/UI_03.mp3";
+  masterAudioBus.push(uiButtonSound3);
   uiButtonSound4.src = "audio/UI_04.mp3";
+  masterAudioBus.push(uiButtonSound4);
+
 
   transitionToLevelMusic1.src = "audio/levelTransitionSound.mp3";
+  masterAudioBus.push(transitionToLevelMusic1);
 
   runnerBackgroundMusic.src = "audio/backgroundTracks/runnerBackground.mp3";
+  masterAudioBus.push(runnerBackgroundMusic);
   pinataBackgroundMusic.src = "audio/backgroundTracks/pinataBackgroundMusic.mp3";
-
+  masterAudioBus.push(pinataBackgroundMusic);
 }
 
 // transitionToLevelMusic1.onended = "correctLetterAudioTag.play()";
@@ -132,4 +149,32 @@ function loadWebAudioAPISound(audioURL, targetWebAudioAPIBuffer) {
     });
   }
   requestForAudioDataToBeDecoded.send();
+}
+
+var masterAudioBus = [];
+
+function turnMasterVolumeUp()
+{
+  for (let masterAudioBusIndex = 0; masterAudioBusIndex < masterAudioBus.length; masterAudioBusIndex++)
+  {
+    masterAudioBus[masterAudioBusIndex].volume += 0.1;
+    if (masterAudioBus[masterAudioBusIndex].volume > 1)
+    {
+      masterAudioBus[masterAudioBusIndex].volume = 1;
+    }
+  }
+  correctLetterAudioTag.volume += 0.1;
+}
+
+function turnMasterVolumeDown()
+{
+  for (let masterAudioBusIndex = 0; masterAudioBusIndex < masterAudioBus.length; masterAudioBusIndex++)
+  {
+    masterAudioBus[masterAudioBusIndex].volume -= 0.1;
+    if (masterAudioBus[masterAudioBusIndex].volume < 0.1)
+    {
+      masterAudioBus[masterAudioBusIndex].volume = 0.1;
+    }
+  }
+  correctLetterAudioTag.volume -= 0.1;
 }
