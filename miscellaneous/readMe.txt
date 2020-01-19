@@ -8,7 +8,8 @@ foreign language.
 
 **** SEPARATE GAME STEPS ******
 Step 1:
-  a.Figure out a simple game idea that makes the player pick one of two letter choices.
+  a.Figure out a simple game idea that makes the player pick one of two language concept choices
+(1 of two letters, 1 of two words, 1 of two verb conjugations, 1 of two spellings, etc.).
   b.Gameplay should have an 'endless' feel to it, like an endless runner style. So letter choices either get repositioned on the
   screen when a choice is made, letters are continuously fed across the screen, etc. so that players can keep making choices,
   gameplay never really stops.
