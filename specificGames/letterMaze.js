@@ -86,6 +86,33 @@ function CellPrototype(rowIndex, columnIndex)
 
   this.hasBeenVisitedByGenerationAlgorithm = false;
 
+  this.topNeighboringCellExists = undefined;
+  this.rightNeighboringCellExists = undefined;
+  this.bottomNeighboringCellExists = undefined;
+  this.leftNeighboringCellExists = undefined;
+
+  this.arrayOfExistingNeighboringCells = [];
+
+  this.checkForExistenceOfNeighboringCells = function()
+  {
+    if (rowIndex > 0)
+    {
+      this.topNeighboringCellExists = true;
+    } else {
+      this.topNeighboringCellExists = false;
+    }
+    if (rowIndex < NUMBER_OR_ROWS - 1)
+    {
+      this.bottomNeighboringCellExists = true;
+    } else {
+      this.bottomNeighboringCellExists = false;
+    }
+    if (columnIndex > 0)
+    {
+      this.leftNeighboringCellExists = true;
+    }
+    //*****
+  }
   this.checkNeighboringCellsToSeeIfTheyveBeenVisited = function()
   {
     var arrayOfCurrentUnvisitedNeighboringCells = [];
