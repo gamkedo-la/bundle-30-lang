@@ -32,6 +32,7 @@ window.onload = function()
   letterMazeCanvas.addEventListener('click', handleSplashScreenClick);
 
   initializeArrayOfCells();
+  console.log(arrayOfCells);
   currentCellBeingVisitedByGenerationAlgorithm = arrayOfCells[0];
 
   setInterval(gameLoop, gameFrameRate);
@@ -46,7 +47,7 @@ function gameLoop()
 
 function updateEverything()
 {
-
+  advanceGenerationAlgorithm();
 }
 
 function drawEverything()
@@ -84,6 +85,8 @@ function CellPrototype(rowIndex, columnIndex)
   this.rowIndex = rowIndex;
   this.columnIndex = columnIndex;
 
+  this.cellIndex = (this.rowIndex * NUMBER_OF_COLUMNS) + columnIndex;
+
   this.hasBeenVisitedByGenerationAlgorithm = false;
 
   this.topNeighboringCellExists = undefined;
@@ -109,7 +112,7 @@ function CellPrototype(rowIndex, columnIndex)
     } else {
       this.topNeighboringCellExists = false;
     }
-    if (rowIndex < NUMBER_OR_ROWS - 1)
+    if (rowIndex < NUMBER_OR_ROWS - 2)
     {
       this.bottomNeighboringCellExists = true;
     } else {
@@ -122,7 +125,7 @@ function CellPrototype(rowIndex, columnIndex)
     } else {
       this.leftNeighboringCellExists = false;
     }
-    if (columnIndex < NUMBER_OF_COLUMNS - 1)
+    if (columnIndex < NUMBER_OF_COLUMNS - 2)
     {
       this.rightNeighboringCellExists = true;
     } else {
@@ -138,15 +141,15 @@ function CellPrototype(rowIndex, columnIndex)
     }
     if (this.rightNeighboringCellExists)
     {
-      this.bottomNeighboringCellIndex = ( (this.rowIndex + 1) * NUMBER_OF_COLUMNS ) + this.columnIndex;
+      this.rightNeighboringCellIndex = (this.rowIndex * NUMBER_OF_COLUMNS ) + this.columnIndex + 1;
     }
     if (this.bottomNeighboringCellExists)
     {
-      this.leftNeighboringCellIndex = ( (this.rowIndex * NUMBER_OF_COLUMNS) + (this.columnIndex - 1) );
+      this.bottomNeighboringCellIndex = ( ( (this.rowIndex + 1 ) * NUMBER_OF_COLUMNS ) + this.columnIndex );
     }
     if (this.leftNeighboringCellExists)
     {
-      this.rightNeighboringCellIndex = ( (this.rowIndex * NUMBER_OF_COLUMNS) + (this.columnIndex + 1) );
+      this.leftNeighboringCellIndex = ( (this.rowIndex * NUMBER_OF_COLUMNS) + (this.columnIndex - 1) );
     }
   }
 
@@ -170,7 +173,7 @@ function CellPrototype(rowIndex, columnIndex)
     }
   }
 
-  this.checkNeighboringCellsToSeeIfTheyveBeenVisited = function()
+  this.returnARandomUnvisitedNeighborIfPossible = function()
   {
     var arrayOfCurrentUnvisitedNeighboringCells = [];
 
@@ -189,6 +192,17 @@ function CellPrototype(rowIndex, columnIndex)
       if (this.leftNeighboringCellExists && !this.leftNeighboringCell.hasBeenVisitedByGenerationAlgorithm)
       {
         arrayOfCurrentUnvisitedNeighboringCells.push(this.leftNeighboringCell);
+      }
+
+      console.log(arrayOfCurrentUnvisitedNeighboringCells);
+      if (arrayOfCurrentUnvisitedNeighboringCells.length > 0)
+      {
+        let randomNeighboringCellIndex = getRandomIntInclusive(0, arrayOfCurrentUnvisitedNeighboringCells.length - 1);
+        console.log('randomNeighboringCellIndex: ' + randomNeighboringCellIndex);
+        console.log('arrayOfCurrentUnvisitedNeighboringCells[randomNeighboringCellIndex]: ' + arrayOfCurrentUnvisitedNeighboringCells[randomNeighboringCellIndex]);
+        return arrayOfCurrentUnvisitedNeighboringCells[randomNeighboringCellIndex];
+      } else {
+        return undefined;
       }
   }
 
@@ -239,7 +253,17 @@ function CellPrototype(rowIndex, columnIndex)
       letterMazeCanvasContext.fillStyle = 'purple';
       letterMazeCanvasContext.fillRect(xCoordinate,yCoordinate, xCoordinate + CELL_WIDTH,yCoordinate + CELL_HEIGHT);
     }
+
+    letterMazeCanvasContext.fillStyle = 'green';
+    letterMazeCanvasContext.font = '30px Helvetica';
+    letterMazeCanvasContext.fillText(this.cellIndex, this.columnIndex*CELL_WIDTH+30,this.rowIndex*CELL_HEIGHT+30);
   }
+}
+
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
 }
 
 function initializeArrayOfCells()
@@ -249,18 +273,28 @@ function initializeArrayOfCells()
     for (let columnIndex = 0; columnIndex < NUMBER_OF_COLUMNS; columnIndex++)
     {
       let cell = new CellPrototype(rowIndex,columnIndex);
-      checkExtistenceOfNeighboringCells();
-      defineExistingNeighboringCellsForAllCells();
       arrayOfCells.push(cell);
     }
   }
+  checkExtistenceOfNeighboringCellsForAllCells();
+  calculateAndAssignIndicesForExistingNeighborsForAllCells();
+  defineExistingNeighboringCellsForAllCells();
+  returnARandomUnvisitedNeighborIfPossibleForAllCells();
 }
 
-function checkExtistenceOfNeighboringCells()
+function checkExtistenceOfNeighboringCellsForAllCells()
 {
   for (let arrayOfCellsIndex = 0; arrayOfCellsIndex < arrayOfCells.length; arrayOfCellsIndex++)
   {
     arrayOfCells[arrayOfCellsIndex].checkForExistenceOfNeighboringCells();
+  }
+}
+
+function calculateAndAssignIndicesForExistingNeighborsForAllCells()
+{
+  for (let arrayOfCellsIndex = 0; arrayOfCellsIndex < arrayOfCells.length; arrayOfCellsIndex++)
+  {
+    arrayOfCells[arrayOfCellsIndex].calculateAndAssignIndicesForExistingNeighbors();
   }
 }
 
@@ -272,6 +306,14 @@ function defineExistingNeighboringCellsForAllCells()
   }
 }
 
+function returnARandomUnvisitedNeighborIfPossibleForAllCells()
+{
+  for (let arrayOfCellsIndex = 0; arrayOfCellsIndex < arrayOfCells.length; arrayOfCellsIndex++)
+  {
+    arrayOfCells[arrayOfCellsIndex].returnARandomUnvisitedNeighborIfPossible();
+  }
+}
+
 function drawCells()
 {
   for (let currentCellIndex = 0; currentCellIndex < arrayOfCells.length; currentCellIndex++)
@@ -280,5 +322,16 @@ function drawCells()
   }
 
   currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
-  currentCellBeingVisitedByGenerationAlgorithm.checkNeighboringCellsToSeeIfTheyveBeenVisited();
+  var nextCellToBeVisitedByGenerationAlgorithm = currentCellBeingVisitedByGenerationAlgorithm.returnARandomUnvisitedNeighborIfPossible();
+
+  if (nextCellToBeVisitedByGenerationAlgorithm)
+  {
+    nextCellToBeVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
+    currentCellBeingVisitedByGenerationAlgorithm = nextCellToBeVisitedByGenerationAlgorithm;//setting up next frame
+  }
+}
+
+function advanceGenerationAlgorithm()
+{
+
 }
