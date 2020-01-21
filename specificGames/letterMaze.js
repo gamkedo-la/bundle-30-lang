@@ -91,7 +91,15 @@ function CellPrototype(rowIndex, columnIndex)
   this.bottomNeighboringCellExists = undefined;
   this.leftNeighboringCellExists = undefined;
 
-  this.arrayOfExistingNeighboringCells = [];
+  this.topNeighboringCellIndex = undefined;
+  this.rightNeighboringCellIndex = undefined;
+  this.bottomNeighboringCellIndex = undefined;
+  this.leftNeighboringCellIndex = undefined;
+
+  this.topNeighboringCell = undefined;
+  this.rightNeighboringCell = undefined;
+  this.bottomNeighboringCell = undefined;
+  this.leftNeighboringCell = undefined;
 
   this.checkForExistenceOfNeighboringCells = function()
   {
@@ -110,36 +118,78 @@ function CellPrototype(rowIndex, columnIndex)
     if (columnIndex > 0)
     {
       this.leftNeighboringCellExists = true;
+
+    } else {
+      this.leftNeighboringCellExists = false;
     }
-    //*****
+    if (columnIndex < NUMBER_OF_COLUMNS - 1)
+    {
+      this.rightNeighboringCellExists = true;
+    } else {
+      this.rightNeighboringCellExists = false;
+    }
   }
+
+  this.calculateAndAssignIndicesForExistingNeighbors = function()
+  {
+    if (this.topNeighboringCellExists)
+    {
+      this.topNeighboringCellIndex = ( (this.rowIndex - 1) * NUMBER_OF_COLUMNS ) + this.columnIndex;
+    }
+    if (this.rightNeighboringCellExists)
+    {
+      this.bottomNeighboringCellIndex = ( (this.rowIndex + 1) * NUMBER_OF_COLUMNS ) + this.columnIndex;
+    }
+    if (this.bottomNeighboringCellExists)
+    {
+      this.leftNeighboringCellIndex = ( (this.rowIndex * NUMBER_OF_COLUMNS) + (this.columnIndex - 1) );
+    }
+    if (this.leftNeighboringCellExists)
+    {
+      this.rightNeighboringCellIndex = ( (this.rowIndex * NUMBER_OF_COLUMNS) + (this.columnIndex + 1) );
+    }
+  }
+
+  this.defineExistingNeighboringCells = function()
+  {
+    if (this.topNeighboringCellExists)
+    {
+      this.topNeighboringCell = arrayOfCells[this.topNeighboringCellIndex];
+    }
+    if (this.rightNeighboringCellExists)
+    {
+      this.rightNeighboringCell = arrayOfCells[this.rightNeighboringCellIndex];
+    }
+    if (this.bottomNeighboringCellExists)
+    {
+      this.bottomNeighboringCell = arrayOfCells[this.bottomNeighboringCellIndex];
+    }
+    if (this.leftNeighboringCellExists)
+    {
+      this.leftNeighboringCell = arrayOfCells[this.leftNeighboringCellIndex];
+    }
+  }
+
   this.checkNeighboringCellsToSeeIfTheyveBeenVisited = function()
   {
     var arrayOfCurrentUnvisitedNeighboringCells = [];
 
-    //*** less than 0!!!
-    // var topNeighboringCell = arrayOfCells[((rowIndex - 1) * NUMBER_OF_COLUMNS) + columnIndex];
-    // var rightNeighboringCell = arrayOfCells[(rowIndex * NUMBER_OF_COLUMNS) + (columnIndex + 1)];
-    // var bottomNeighboringCell = arrayOfCells[( (rowIndex + 1) * NUMBER_OF_COLUMNS) + columnIndex];
-    // var leftNeighboringCell = arrayOfCells[(rowIndex * NUMBER_OF_COLUMNS) + (columnIndex - 1)];
-    //
-    // if (!topNeighboringCell.hasBeenVisitedByGenerationAlgorithm)
-    // {
-    //   arrayOfCurrentUnvisitedNeighboringCells.push(topNeighboringCell);
-    // }
-    // if (!rightNeighboringCell.hasBeenVisitedByGenerationAlgorithm)
-    // {
-    //   arrayOfCurrentUnvisitedNeighboringCells.push(rightNeighboringCell);
-    // }
-    // if (!bottomNeighboringCell.hasBeenVisitedByGenerationAlgorithm)
-    // {
-    //   arrayOfCurrentUnvisitedNeighboringCells.push(bottomNeighboringCell);
-    // }
-    // if (!leftNeighboringCell.hasBeenVisitedByGenerationAlgorithm)
-    // {
-    //   arrayOfCurrentUnvisitedNeighboringCells.push(leftNeighboringCell);
-    // }
-
+      if (this.topNeighboringCellExists && !this.topNeighboringCell.hasBeenVisitedByGenerationAlgorithm)
+      {
+        arrayOfCurrentUnvisitedNeighboringCells.push(this.topNeighboringCell);
+      }
+      if (this.rightNeighboringCellExists && !this.rightNeighboringCell.hasBeenVisitedByGenerationAlgorithm)
+      {
+        arrayOfCurrentUnvisitedNeighboringCells.push(this.rightNeighboringCell);
+      }
+      if (this.bottomNeighboringCellExists && !this.bottomNeighboringCell.hasBeenVisitedByGenerationAlgorithm)
+      {
+        arrayOfCurrentUnvisitedNeighboringCells.push(this.bottomNeighboringCell);
+      }
+      if (this.leftNeighboringCellExists && !this.leftNeighboringCell.hasBeenVisitedByGenerationAlgorithm)
+      {
+        arrayOfCurrentUnvisitedNeighboringCells.push(this.leftNeighboringCell);
+      }
   }
 
   this.arrayOfExistentWalls = [true, true, true, true];
@@ -159,7 +209,6 @@ function CellPrototype(rowIndex, columnIndex)
       letterMazeCanvasContext.lineTo(xCoordinate + CELL_WIDTH, yCoordinate);
       letterMazeCanvasContext.stroke();
     }
-
 
     //right wall
     if (this.arrayOfExistentWalls[1] === true)
@@ -200,8 +249,26 @@ function initializeArrayOfCells()
     for (let columnIndex = 0; columnIndex < NUMBER_OF_COLUMNS; columnIndex++)
     {
       let cell = new CellPrototype(rowIndex,columnIndex);
+      checkExtistenceOfNeighboringCells();
+      defineExistingNeighboringCellsForAllCells();
       arrayOfCells.push(cell);
     }
+  }
+}
+
+function checkExtistenceOfNeighboringCells()
+{
+  for (let arrayOfCellsIndex = 0; arrayOfCellsIndex < arrayOfCells.length; arrayOfCellsIndex++)
+  {
+    arrayOfCells[arrayOfCellsIndex].checkForExistenceOfNeighboringCells();
+  }
+}
+
+function defineExistingNeighboringCellsForAllCells()
+{
+  for (let arrayOfCellsIndex = 0; arrayOfCellsIndex < arrayOfCells.length; arrayOfCellsIndex++)
+  {
+    arrayOfCells[arrayOfCellsIndex].defineExistingNeighboringCells();
   }
 }
 
@@ -214,9 +281,4 @@ function drawCells()
 
   currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
   currentCellBeingVisitedByGenerationAlgorithm.checkNeighboringCellsToSeeIfTheyveBeenVisited();
-}
-
-function testForArrayOfNeighbors()
-{
-  arrayOfCells[0].checkNeighboringCellsToSeeIfTheyveBeenVisited();
 }
