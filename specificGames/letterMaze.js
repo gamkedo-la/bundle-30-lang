@@ -7,7 +7,7 @@ function drawBackground()
   letterMazeCanvasContext.fillRect(0,0, 640,700);
 }
 
-var playerShouldSeeSplashScreen = true;
+// var playerShouldSeeSplashScreen = true;
 
 function drawSplashScreen()
 {
@@ -21,7 +21,7 @@ function drawSplashScreen()
   letterMazeCanvasContext.fillText('Downloading. Click to start when finished.', 0,0 + fillTextYPositionOffset);
 }
 
-var gameFrameRate = 1000/30;
+var gameFrameRate = 1000;
 var frameCount = 0;
 
 window.onload = function()
@@ -32,9 +32,11 @@ window.onload = function()
   letterMazeCanvas.addEventListener('click', handleSplashScreenClick);
 
   initializeArrayOfCells();
-  console.log(arrayOfCells);
-  currentCellBeingVisitedByGenerationAlgorithm = arrayOfCells[0];
 
+  var randomStartingIndexForMazeGeneration = getRandomIntInclusive(0,arrayOfCells.length - 1);
+  console.log(randomStartingIndexForMazeGeneration);
+  currentCellBeingVisitedByGenerationAlgorithm = arrayOfCells[randomStartingIndexForMazeGeneration];
+  currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
   setInterval(gameLoop, gameFrameRate);
 }
 
@@ -52,12 +54,12 @@ function updateEverything()
 
 function drawEverything()
 {
-  if (playerShouldSeeSplashScreen)
-  {
-    drawSplashScreen();
-  } else {
+  // if (playerShouldSeeSplashScreen)
+  // {
+  //   drawSplashScreen();
+  // } else {
     drawGame();
-  }
+  // }
 }
 
 function drawGame()
@@ -112,7 +114,7 @@ function CellPrototype(rowIndex, columnIndex)
     } else {
       this.topNeighboringCellExists = false;
     }
-    if (rowIndex < NUMBER_OR_ROWS - 2)
+    if (rowIndex < NUMBER_OR_ROWS - 1)
     {
       this.bottomNeighboringCellExists = true;
     } else {
@@ -125,7 +127,7 @@ function CellPrototype(rowIndex, columnIndex)
     } else {
       this.leftNeighboringCellExists = false;
     }
-    if (columnIndex < NUMBER_OF_COLUMNS - 2)
+    if (columnIndex < NUMBER_OF_COLUMNS - 1)
     {
       this.rightNeighboringCellExists = true;
     } else {
@@ -194,15 +196,11 @@ function CellPrototype(rowIndex, columnIndex)
         arrayOfCurrentUnvisitedNeighboringCells.push(this.leftNeighboringCell);
       }
 
-      console.log(arrayOfCurrentUnvisitedNeighboringCells);
+      // console.log(arrayOfCurrentUnvisitedNeighboringCells);
       if (arrayOfCurrentUnvisitedNeighboringCells.length > 0)
       {
         let randomNeighboringCellIndex = getRandomIntInclusive(0, arrayOfCurrentUnvisitedNeighboringCells.length - 1);
-        console.log('randomNeighboringCellIndex: ' + randomNeighboringCellIndex);
-        console.log('arrayOfCurrentUnvisitedNeighboringCells[randomNeighboringCellIndex]: ' + arrayOfCurrentUnvisitedNeighboringCells[randomNeighboringCellIndex]);
         return arrayOfCurrentUnvisitedNeighboringCells[randomNeighboringCellIndex];
-      } else {
-        return undefined;
       }
   }
 
@@ -213,38 +211,38 @@ function CellPrototype(rowIndex, columnIndex)
     var xCoordinate = this.columnIndex * CELL_WIDTH;
     var yCoordinate = this.rowIndex * CELL_HEIGHT;
 
+    letterMazeCanvasContext.lineWidth = 2;
     letterMazeCanvasContext.strokeStyle = 'blue';
-    letterMazeCanvasContext.lineWidth = 10;
 
     //top wall
-    if (this.arrayOfExistentWalls[0] === true)
+    if (this.arrayOfExistentWalls[0])
     {
-      letterMazeCanvasContext.moveTo(xCoordinate,yCoordinate);
-      letterMazeCanvasContext.lineTo(xCoordinate + CELL_WIDTH, yCoordinate);
+      letterMazeCanvasContext.moveTo(xCoordinate,yCoordinate + 5);
+      letterMazeCanvasContext.lineTo(xCoordinate + CELL_WIDTH, yCoordinate + 5);
       letterMazeCanvasContext.stroke();
     }
 
     //right wall
-    if (this.arrayOfExistentWalls[1] === true)
+    if (this.arrayOfExistentWalls[1])
     {
-      letterMazeCanvasContext.moveTo(xCoordinate + CELL_WIDTH,yCoordinate);
-      letterMazeCanvasContext.lineTo(xCoordinate + CELL_WIDTH, yCoordinate + CELL_HEIGHT);
+      letterMazeCanvasContext.moveTo(xCoordinate + CELL_WIDTH - 5,yCoordinate);
+      letterMazeCanvasContext.lineTo(xCoordinate + CELL_WIDTH - 5, yCoordinate + CELL_HEIGHT);
       letterMazeCanvasContext.stroke();
     }
 
     //bottom wall
-    if (this.arrayOfExistentWalls[2] === true)
+    if (this.arrayOfExistentWalls[2])
     {
-      letterMazeCanvasContext.moveTo(xCoordinate + CELL_WIDTH,yCoordinate + CELL_HEIGHT);
-      letterMazeCanvasContext.lineTo(xCoordinate, yCoordinate + CELL_HEIGHT);
+      letterMazeCanvasContext.moveTo(xCoordinate + CELL_WIDTH,yCoordinate + CELL_HEIGHT - 5);
+      letterMazeCanvasContext.lineTo(xCoordinate, yCoordinate + CELL_HEIGHT - 5);
       letterMazeCanvasContext.stroke();
     }
 
     //left wall
-    if (this.arrayOfExistentWalls[3] === true)
+    if (this.arrayOfExistentWalls[3])
     {
-      letterMazeCanvasContext.moveTo(xCoordinate,yCoordinate + CELL_HEIGHT);
-      letterMazeCanvasContext.lineTo(xCoordinate, yCoordinate);
+      letterMazeCanvasContext.moveTo(xCoordinate + 5,yCoordinate + CELL_HEIGHT);
+      letterMazeCanvasContext.lineTo(xCoordinate + 5, yCoordinate);
       letterMazeCanvasContext.stroke();
     }
 
@@ -276,10 +274,10 @@ function initializeArrayOfCells()
       arrayOfCells.push(cell);
     }
   }
+
   checkExtistenceOfNeighboringCellsForAllCells();
   calculateAndAssignIndicesForExistingNeighborsForAllCells();
   defineExistingNeighboringCellsForAllCells();
-  returnARandomUnvisitedNeighborIfPossibleForAllCells();
 }
 
 function checkExtistenceOfNeighboringCellsForAllCells()
@@ -306,32 +304,71 @@ function defineExistingNeighboringCellsForAllCells()
   }
 }
 
-function returnARandomUnvisitedNeighborIfPossibleForAllCells()
-{
-  for (let arrayOfCellsIndex = 0; arrayOfCellsIndex < arrayOfCells.length; arrayOfCellsIndex++)
-  {
-    arrayOfCells[arrayOfCellsIndex].returnARandomUnvisitedNeighborIfPossible();
-  }
-}
-
 function drawCells()
 {
   for (let currentCellIndex = 0; currentCellIndex < arrayOfCells.length; currentCellIndex++)
   {
     arrayOfCells[currentCellIndex].draw();
   }
+}
 
-  currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
-  var nextCellToBeVisitedByGenerationAlgorithm = currentCellBeingVisitedByGenerationAlgorithm.returnARandomUnvisitedNeighborIfPossible();
-
-  if (nextCellToBeVisitedByGenerationAlgorithm)
+function filterArrayOfVisitedCells()
+{
+  var arrayOfAllVisitedCells = [];
+  for (let arrayOfCellsIndex = 0; arrayOfCellsIndex < arrayOfCells.length; arrayOfCellsIndex++)
   {
-    nextCellToBeVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
-    currentCellBeingVisitedByGenerationAlgorithm = nextCellToBeVisitedByGenerationAlgorithm;//setting up next frame
+    if (arrayOfCells[arrayOfCellsIndex].hasBeenVisitedByGenerationAlgorithm)
+    {
+      arrayOfAllVisitedCells.push(arrayOfCells[arrayOfCellsIndex]);
+    }
+  }
+  for (let arrayOfVisitedCellsIndex = 0; arrayOfVisitedCellsIndex < arrayOfAllVisitedCells.length; arrayOfVisitedCellsIndex++)
+  {
+    // console.log('arrayOfVisitedCellsIndex: ' + arrayOfVisitedCellsIndex);
+    // console.log('arrayOfAllVisitedCells: ' + arrayOfAllVisitedCells[arrayOfVisitedCellsIndex].cellIndex);
   }
 }
 
 function advanceGenerationAlgorithm()
 {
+  var nextCellToBeVisitedByGenerationAlgorithm = currentCellBeingVisitedByGenerationAlgorithm.returnARandomUnvisitedNeighborIfPossible();
+  console.log('currentCellIndex: ' + currentCellBeingVisitedByGenerationAlgorithm.cellIndex);
+  console.log('nextCell: ' + nextCellToBeVisitedByGenerationAlgorithm.cellIndex);
+  console.log('');
+  // filterArrayOfVisitedCells();
+  removeWallsBetweenNeighboringVisitedCellsDuringGeneration(currentCellBeingVisitedByGenerationAlgorithm.cellIndex,nextCellToBeVisitedByGenerationAlgorithm.cellIndex);
 
+
+  currentCellBeingVisitedByGenerationAlgorithm = nextCellToBeVisitedByGenerationAlgorithm;//setting up next frame
+  currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
+}
+
+function removeWallsBetweenNeighboringVisitedCellsDuringGeneration(currentCellIndex,neighboringCellIndex)
+{
+  var differenceBetweenCellIndices = currentCellIndex - neighboringCellIndex;
+  // console.log('differenceBetweenCellIndices: ' + differenceBetweenCellIndices);
+  //the neighboring cell is above the current cell
+  if (differenceBetweenCellIndices == 8)
+  {
+    arrayOfCells[currentCellIndex].arrayOfExistentWalls[0] = false;
+    arrayOfCells[neighboringCellIndex].arrayOfExistentWalls[2] = false;
+  }
+  //the neighboring cell is on the right of the current cell
+  if (differenceBetweenCellIndices == -1)
+  {
+    arrayOfCells[currentCellIndex].arrayOfExistentWalls[1] = false;
+    arrayOfCells[neighboringCellIndex].arrayOfExistentWalls[3] = false;
+  }
+  //the neighboring cell is below the current cell
+  if (differenceBetweenCellIndices == -8)
+  {
+    arrayOfCells[currentCellIndex].arrayOfExistentWalls[2] = false;
+    arrayOfCells[neighboringCellIndex].arrayOfExistentWalls[0] = false;
+  }
+  //the neighboring cell is on the left of the current cell
+  if (differenceBetweenCellIndices == 1)
+  {
+    arrayOfCells[currentCellIndex].arrayOfExistentWalls[3] = false;
+    arrayOfCells[neighboringCellIndex].arrayOfExistentWalls[1] = false;
+  }
 }
