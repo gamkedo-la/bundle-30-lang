@@ -21,7 +21,7 @@ function drawSplashScreen()
   letterMazeCanvasContext.fillText('Downloading. Click to start when finished.', 0,0 + fillTextYPositionOffset);
 }
 
-var gameFrameRate = 1000;
+var gameFrameRate = 1000/30;
 var frameCount = 0;
 
 window.onload = function()
@@ -217,6 +217,7 @@ function CellPrototype(rowIndex, columnIndex)
     //top wall
     if (this.arrayOfExistentWalls[0])
     {
+      letterMazeCanvasContext.beginPath();
       letterMazeCanvasContext.moveTo(xCoordinate,yCoordinate + 5);
       letterMazeCanvasContext.lineTo(xCoordinate + CELL_WIDTH, yCoordinate + 5);
       letterMazeCanvasContext.stroke();
@@ -225,6 +226,7 @@ function CellPrototype(rowIndex, columnIndex)
     //right wall
     if (this.arrayOfExistentWalls[1])
     {
+      letterMazeCanvasContext.beginPath();
       letterMazeCanvasContext.moveTo(xCoordinate + CELL_WIDTH - 5,yCoordinate);
       letterMazeCanvasContext.lineTo(xCoordinate + CELL_WIDTH - 5, yCoordinate + CELL_HEIGHT);
       letterMazeCanvasContext.stroke();
@@ -233,6 +235,7 @@ function CellPrototype(rowIndex, columnIndex)
     //bottom wall
     if (this.arrayOfExistentWalls[2])
     {
+      letterMazeCanvasContext.beginPath();
       letterMazeCanvasContext.moveTo(xCoordinate + CELL_WIDTH,yCoordinate + CELL_HEIGHT - 5);
       letterMazeCanvasContext.lineTo(xCoordinate, yCoordinate + CELL_HEIGHT - 5);
       letterMazeCanvasContext.stroke();
@@ -241,6 +244,7 @@ function CellPrototype(rowIndex, columnIndex)
     //left wall
     if (this.arrayOfExistentWalls[3])
     {
+      letterMazeCanvasContext.beginPath();
       letterMazeCanvasContext.moveTo(xCoordinate + 5,yCoordinate + CELL_HEIGHT);
       letterMazeCanvasContext.lineTo(xCoordinate + 5, yCoordinate);
       letterMazeCanvasContext.stroke();
