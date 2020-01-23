@@ -10,6 +10,7 @@ var pinataGame = new function() {
 
 // list of all known Circles
 var objects = [];
+const CANDY_COUNT = 30;
 
 // tiny functions to handle 2d vectors
 var Vec2 = (x,y) => ({x,y});
@@ -26,8 +27,28 @@ var rndInt = (minimum,maximum) => Math.floor(Math.random() * (maximum - minimum 
 var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var targetLetter = alphabet[rndInt(0,alphabet.length-1)];
 
+function boom(x,y) {
+    
+    objects = [];
+    // Init scene ground floor
+    Circle(Vec2(320, 5700), 5000, 0); // floor!
+    Circle(Vec2(2840, 5000), 5000, 0); // r wall
+    Circle(Vec2(-2200, 5000), 5000, 0); // l wall
+
+    // select a new letter
+    targetLetter = alphabet[rndInt(0,alphabet.length-1)];
+    // ensure the target one is there at least one matching letter, quite high up
+    Circle(Vec2(x+Math.random()*300-250,y+Math.random()*-100-75),40,1/40,targetLetter);
+    // create many little candies
+    for(i = CANDY_COUNT; i--; ){
+        Circle(Vec2(x+Math.random()*200-100,y+Math.random()*-200)); // a bit higher please
+    }
+
+}
+
 function pinataClick(e) {
     // console.log("Pinata game click");
+    let correct = false;
 
     // detect WHICH circle we clicked!
     var clickXY = Vec2(e.pageX,e.pageY);
@@ -35,20 +56,23 @@ function pinataClick(e) {
         let checkme = objects[i];
         let dist = sub(clickXY, checkme.C);
         if (length(dist) < checkme.R) {
-            console.log("You clicked a candy! It was letter " + b.Z);
+            console.log("You clicked letter " + checkme.Z + ' at a distance of ' + length(dist) + ' which is less than ' + checkme.R);
             // FIXME - handle >1 positive on same frame etc
+            // did we succeed?
+            if (checkme.Z == targetLetter) {
+                console.log("You clicked the right letter!");
+                correct = true;
+            }
         }
     }
 
-    // select a new letter
-    targetLetter = alphabet[rndInt(0,alphabet.length)];
-
-    // create many little candies
-    for(i = 20; i--; ){
-        Circle(Vec2(e.pageX+Math.random()*10-5,e.pageY+Math.random()*10-5));
+    if (correct) {
+        amountCorrect++;
+        boom(e.pageX,e.pageY)
+    } else {
+        amountIncorrect++;
     }
-    // ensure the target one is there at least once
-    Circle(Vec2(e.pageX+Math.random()*10-5,e.pageY+Math.random()*10-5),40,1/40,targetLetter);
+
 
 }
 
@@ -60,19 +84,7 @@ this.init = function() {
 
     currentBackgroundMusic = pinataBackgroundMusic;
 
-    // Init scene
-    //Circle(Vec2(800, 1000), 600, 0); // floor!
-    Circle(Vec2(320, 5700), 5000, 0); // floor!
-    Circle(Vec2(2840, 5000), 5000, 0); // r wall
-    Circle(Vec2(-2200, 5000), 5000, 0); // l wall
-
-    // create many little candies
-    for(i = 99; i--; ){
-        Circle(Vec2(Math.random() * 900 + 300, Math.random() * 900 - 700));
-    }
-    // ensure the target one is there at least once
-    Circle(Vec2(Math.random() * 900 + 300, Math.random() * 900 - 700),40,1/40,targetLetter);
-
+    boom(a.width/2,a.height/2)// middle of screen
 
     // debug only: spawn new candy on mouseclick
     // onclick = e => Circle(Vec2(e.pageX, e.pageY));
@@ -167,10 +179,15 @@ this.init = function() {
 
 
 
-        if(objects[i].M) {
-            //c.fillStyle = "rgba(0,0,0,0.25)";
-            c.fillStyle = objects[i].color;
-            //c.fillText(b.Z, -b.R * 1.24, b.R * .67); // the emoji
+        if(objects[i].M) { // does it have mass?
+
+            if (b.Z == targetLetter) {
+                // debug mode: easy to find flashing balls
+                c.fillStyle = "rgba("+rndInt(100,255)+","+rndInt(100,255)+","+rndInt(100,255)+",1)"; 
+            } else {
+                c.fillStyle = objects[i].color; // selet ball colour
+            }
+
             c.fill(); // circle
 
             // draw the letter using html font
@@ -179,19 +196,22 @@ this.init = function() {
 
             // draw the letter using bitmap font
             customFontFillText([b.Z], b.R*1.5,0, 0-b.R*0.75,0-b.R*0.75);
-            }
-        else {
+
+        }
+        else { // no mass? must be the ground
             c.fillStyle = "rgba(80,60,40,1)";
             c.fill(); // the ground
         }
         c.restore();
+        
         // draw mission customFontFillText(fontSize, spacing, xCoordinate,yCoordinate)
         customFontFillText(['Click the letter ' + targetLetter],32,24,80,32);
         drawBackButton();
         }
-    },
-    9
-    );
+
+    }, // func
+    9 // framerate in ms
+    ); // setInterval
 
 }
 
@@ -219,11 +239,11 @@ var Circle = (C, R = Math.random() * 30 + 10, M = 1/R, forcedString) =>
     {
     C, // center
     I: 0, // inertia
-    V: Vec2(0, 0), // velocity (speed)
+    V: Vec2(M ? Math.random()*1000-500 : 0, M ?  Math.random()*-500 : 0), // velocity (speed)
     M, // inverseMass (0 if immobile)
     A: Vec2(0, M ? 250 : 0), // acceleration
     B: M ? Math.random() * 7 : 0, // angle
-    D: 0, // angle velocity
+    D: 0, // angle velocity (stays on!)
     E: 0, // angle acceleration,
     R, // radius
 
