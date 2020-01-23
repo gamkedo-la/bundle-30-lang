@@ -16,7 +16,8 @@ English -
 2. I am fine. I am five.
 3. 13/30
 4. has/have
-5. walk/walks
+5. walk/walks (audio prompt like "A cat ____" or "Catssss ____", visual prompt like a 
+picture of one cat or a picture of multiple cats)
 6. of/for 
 7. ran/run
 8. basket/basketssss
@@ -36,6 +37,7 @@ English -
 22. to/from
 23. pants/a pants
 24. this/that/these/those
+25. his/has/he/he's
 
 
 Any language - 
