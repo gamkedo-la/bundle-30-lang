@@ -21,7 +21,7 @@ function drawSplashScreen()
   letterMazeCanvasContext.fillText('Downloading. Click to start when finished.', 0,0 + fillTextYPositionOffset);
 }
 
-var gameFrameRate = 1000/30;
+var gameFrameRate = 1000/15;
 var frameCount = 0;
 
 window.onload = function()
@@ -81,6 +81,8 @@ const CELL_HEIGHT = 100;
 
 var arrayOfCells = [];
 var currentCellBeingVisitedByGenerationAlgorithm;
+
+var backtrackStack = [];
 
 function CellPrototype(rowIndex, columnIndex)
 {
@@ -201,6 +203,8 @@ function CellPrototype(rowIndex, columnIndex)
       {
         let randomNeighboringCellIndex = getRandomIntInclusive(0, arrayOfCurrentUnvisitedNeighboringCells.length - 1);
         return arrayOfCurrentUnvisitedNeighboringCells[randomNeighboringCellIndex];
+      } else {
+        return undefined;
       }
   }
 
@@ -220,7 +224,13 @@ function CellPrototype(rowIndex, columnIndex)
       letterMazeCanvasContext.fillStyle = 'purple';
       letterMazeCanvasContext.fillRect(xCoordinate,yCoordinate, CELL_WIDTH,CELL_HEIGHT);
     }
-    
+
+    if (currentCellBeingVisitedByGenerationAlgorithm === this)
+    {
+      letterMazeCanvasContext.fillStyle = 'orange';
+      letterMazeCanvasContext.fillRect(xCoordinate,yCoordinate, CELL_WIDTH,CELL_HEIGHT);
+    }
+
     //top wall
     if (this.arrayOfExistentWalls[0])
     {
@@ -336,22 +346,29 @@ function filterArrayOfVisitedCells()
 
 function advanceGenerationAlgorithm()
 {
+  console.log('currentCellBeingVisitedByGenerationAlgorithm: ' + currentCellBeingVisitedByGenerationAlgorithm.cellIndex);
   var nextCellToBeVisitedByGenerationAlgorithm = currentCellBeingVisitedByGenerationAlgorithm.returnARandomUnvisitedNeighborIfPossible();
-  console.log('currentCellIndex: ' + currentCellBeingVisitedByGenerationAlgorithm.cellIndex);
-  console.log('nextCell: ' + nextCellToBeVisitedByGenerationAlgorithm.cellIndex);
-  console.log('');
-  // filterArrayOfVisitedCells();
-  removeWallsBetweenNeighboringVisitedCellsDuringGeneration(currentCellBeingVisitedByGenerationAlgorithm.cellIndex,nextCellToBeVisitedByGenerationAlgorithm.cellIndex);
 
 
-  currentCellBeingVisitedByGenerationAlgorithm = nextCellToBeVisitedByGenerationAlgorithm;//setting up next frame
-  currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
+  if (nextCellToBeVisitedByGenerationAlgorithm)
+  {
+    removeWallsBetweenNeighboringVisitedCellsDuringGeneration(currentCellBeingVisitedByGenerationAlgorithm.cellIndex,nextCellToBeVisitedByGenerationAlgorithm.cellIndex);
+    backtrackStack.push(currentCellBeingVisitedByGenerationAlgorithm);
+    currentCellBeingVisitedByGenerationAlgorithm = nextCellToBeVisitedByGenerationAlgorithm;//setting up next frame
+    currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
+  } else if (backtrackStack.length > 0)
+  {
+    console.log('hello backtrack');
+    var cellToBacktrackTo = backtrackStack.pop();
+    console.log(cellToBacktrackTo);
+    currentCellBeingVisitedByGenerationAlgorithm = cellToBacktrackTo;
+  }
+
 }
 
 function removeWallsBetweenNeighboringVisitedCellsDuringGeneration(currentCellIndex,neighboringCellIndex)
 {
   var differenceBetweenCellIndices = currentCellIndex - neighboringCellIndex;
-  // console.log('differenceBetweenCellIndices: ' + differenceBetweenCellIndices);
   //the neighboring cell is above the current cell
   if (differenceBetweenCellIndices == 8)
   {
