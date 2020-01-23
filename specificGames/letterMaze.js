@@ -215,7 +215,7 @@ function CellPrototype(rowIndex, columnIndex)
     var xCoordinate = this.columnIndex * CELL_WIDTH;
     var yCoordinate = this.rowIndex * CELL_HEIGHT;
 
-    letterMazeCanvasContext.lineWidth = 2;
+    letterMazeCanvasContext.lineWidth = 15;
     letterMazeCanvasContext.strokeStyle = 'blue';
 
     //visitation of algorithm in purple
@@ -267,9 +267,9 @@ function CellPrototype(rowIndex, columnIndex)
       letterMazeCanvasContext.stroke();
     }
 
-    letterMazeCanvasContext.fillStyle = 'green';
-    letterMazeCanvasContext.font = '30px Helvetica';
-    letterMazeCanvasContext.fillText(this.cellIndex, this.columnIndex*CELL_WIDTH+30,this.rowIndex*CELL_HEIGHT+30);
+    // letterMazeCanvasContext.fillStyle = 'green';
+    // letterMazeCanvasContext.font = '30px Helvetica';
+    // letterMazeCanvasContext.fillText(this.cellIndex, this.columnIndex*CELL_WIDTH+30,this.rowIndex*CELL_HEIGHT+30);
   }
 }
 
