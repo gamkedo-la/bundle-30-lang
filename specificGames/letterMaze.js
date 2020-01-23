@@ -74,7 +74,7 @@ function handleSplashScreenClick()
 }
 
 const NUMBER_OF_COLUMNS = 8;
-const NUMBER_OR_ROWS = 7;
+const NUMBER_OF_ROWS = 7;
 
 const CELL_WIDTH = 80;
 const CELL_HEIGHT = 100;
@@ -114,7 +114,7 @@ function CellPrototype(rowIndex, columnIndex)
     } else {
       this.topNeighboringCellExists = false;
     }
-    if (rowIndex < NUMBER_OR_ROWS - 1)
+    if (rowIndex < NUMBER_OF_ROWS - 1)
     {
       this.bottomNeighboringCellExists = true;
     } else {
@@ -214,6 +214,13 @@ function CellPrototype(rowIndex, columnIndex)
     letterMazeCanvasContext.lineWidth = 2;
     letterMazeCanvasContext.strokeStyle = 'blue';
 
+    //visitation of algorithm in purple
+    if (this.hasBeenVisitedByGenerationAlgorithm)
+    {
+      letterMazeCanvasContext.fillStyle = 'purple';
+      letterMazeCanvasContext.fillRect(xCoordinate,yCoordinate, CELL_WIDTH,CELL_HEIGHT);
+    }
+    
     //top wall
     if (this.arrayOfExistentWalls[0])
     {
@@ -250,12 +257,6 @@ function CellPrototype(rowIndex, columnIndex)
       letterMazeCanvasContext.stroke();
     }
 
-    if (this.hasBeenVisitedByGenerationAlgorithm)
-    {
-      letterMazeCanvasContext.fillStyle = 'purple';
-      letterMazeCanvasContext.fillRect(xCoordinate,yCoordinate, xCoordinate + CELL_WIDTH,yCoordinate + CELL_HEIGHT);
-    }
-
     letterMazeCanvasContext.fillStyle = 'green';
     letterMazeCanvasContext.font = '30px Helvetica';
     letterMazeCanvasContext.fillText(this.cellIndex, this.columnIndex*CELL_WIDTH+30,this.rowIndex*CELL_HEIGHT+30);
@@ -270,7 +271,7 @@ function getRandomIntInclusive(min, max) {
 
 function initializeArrayOfCells()
 {
-  for (let rowIndex = 0; rowIndex < NUMBER_OR_ROWS; rowIndex++)
+  for (let rowIndex = 0; rowIndex < NUMBER_OF_ROWS; rowIndex++)
   {
     for (let columnIndex = 0; columnIndex < NUMBER_OF_COLUMNS; columnIndex++)
     {
