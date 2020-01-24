@@ -28,7 +28,7 @@ var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var targetLetter = alphabet[rndInt(0,alphabet.length-1)];
 
 function boom(x,y) {
-    
+
     objects = [];
     // Init scene ground floor
     Circle(Vec2(320, 5700), 5000, 0); // floor!
@@ -61,7 +61,12 @@ function pinataClick(e) {
             // did we succeed?
             if (checkme.Z == targetLetter) {
                 console.log("You clicked the right letter!");
+                playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
                 correct = true;
+            }
+            else {
+                console.log("You clicked the wrong answer!");
+                playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
             }
         }
     }
@@ -183,7 +188,7 @@ this.init = function() {
 
             if (b.Z == targetLetter) {
                 // debug mode: easy to find flashing balls
-                c.fillStyle = "rgba("+rndInt(100,255)+","+rndInt(100,255)+","+rndInt(100,255)+",1)"; 
+                c.fillStyle = "rgba("+rndInt(100,255)+","+rndInt(100,255)+","+rndInt(100,255)+",1)";
             } else {
                 c.fillStyle = objects[i].color; // selet ball colour
             }
@@ -203,7 +208,7 @@ this.init = function() {
             c.fill(); // the ground
         }
         c.restore();
-        
+
         // draw mission customFontFillText(fontSize, spacing, xCoordinate,yCoordinate)
         customFontFillText(['Click the letter ' + targetLetter],32,24,80,32);
         drawBackButton();

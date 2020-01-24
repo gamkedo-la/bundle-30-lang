@@ -63,6 +63,7 @@ function setSourcesForAudioObjects()//for after loading screen
   runnerBackgroundMusic.src = "audio/backgroundTracks/runnerBackground.mp3";
   masterAudioBus.push(runnerBackgroundMusic);
   pinataBackgroundMusic.src = "audio/backgroundTracks/pinataBackgroundMusic.mp3";
+  pinataBackgroundMusic.volume = 0.2;
   masterAudioBus.push(pinataBackgroundMusic);
 }
 
