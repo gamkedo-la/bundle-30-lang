@@ -46,6 +46,7 @@ function drawGameNames()
   // gameCanvasContext.fillStyle = 'blue';
   // gameCanvasContext.font = '27px Helvetica';
 
+
   //row 1
   // gameCanvasContext.fillText('Snake', 29,205);
   customFontFillText("Snake", 27, 15, 30,185);
@@ -65,6 +66,7 @@ function drawGameNames()
   // gameCanvasContext.fillText('Catcher', 522,205);
   customFontFillText("Catcher", 22, 12, 527,187);
 
+
   //row two
   // gameCanvasContext.fillText('Shooter', 22,305);
   customFontFillText("Shooter", 22, 12, 24,285);
@@ -82,6 +84,11 @@ function drawGameNames()
 
   customFontFillText("Air", 27, 15, 445,265);
   customFontFillText("Grab", 27, 15, 437,300);
+
+  customFontFillText("Frog", 27, 15, 535,285);
+
+  //row 3
+  customFontFillText('Maze', 27, 15, 37,385);
 }
 
 function handleGameCellClicks()
@@ -208,5 +215,5 @@ function handleGameCellClicks()
         transitionToLevelMusic1.play();
         gameCanvasContext.globalAlpha = 0.0;
       }
-      
+
 }
