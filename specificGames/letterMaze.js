@@ -1,13 +1,22 @@
 var letterMazeCanvas;
 var letterMazeCanvasContext;
 
+var letterMazeCanvas2;
+var letterMazeCanvasContext2;
+
 function drawBackground()
 {
   letterMazeCanvasContext.fillStyle = 'black';
   letterMazeCanvasContext.fillRect(0,0, 640,700);
 }
 
-// var playerShouldSeeSplashScreen = true;
+function drawBackground2()
+{
+  letterMazeCanvasContext2.fillStyle = 'black';
+  letterMazeCanvasContext2.fillRect(0,0, 640,700);
+}
+
+var playerShouldSeeSplashScreen = true;
 
 function drawSplashScreen()
 {
@@ -29,14 +38,22 @@ window.onload = function()
   letterMazeCanvas = document.getElementById('letterMazeCanvas');
   letterMazeCanvasContext = letterMazeCanvas.getContext('2d');
 
+  letterMazeCanvas2 = document.getElementById('letterMazeCanvas2');
+  letterMazeCanvasContext2 = letterMazeCanvas2.getContext('2d');
+
   letterMazeCanvas.addEventListener('click', handleSplashScreenClick);
+  document.addEventListener('keydown', handleKeyDowns);
 
   initializeArrayOfCells();
 
   var randomStartingIndexForMazeGeneration = getRandomIntInclusive(0,arrayOfCells.length - 1);
-  console.log(randomStartingIndexForMazeGeneration);
+
   currentCellBeingVisitedByGenerationAlgorithm = arrayOfCells[randomStartingIndexForMazeGeneration];
   currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
+
+  initializeCorrectLetterAudioTag();
+  setOrResetCorrectLetter();
+
   setInterval(gameLoop, gameFrameRate);
 }
 
@@ -49,23 +66,32 @@ function gameLoop()
 
 function updateEverything()
 {
-  advanceGenerationAlgorithm();
+  if (!playerShouldSeeSplashScreen && mazeGenerationAlgorithmShouldAdvance)
+  {
+    advanceGenerationAlgorithm();
+  }
 }
 
 function drawEverything()
 {
-  // if (playerShouldSeeSplashScreen)
-  // {
-  //   drawSplashScreen();
-  // } else {
+  if (playerShouldSeeSplashScreen)
+  {
+    drawSplashScreen();
+  } else {
     drawGame();
-  // }
+  }
 }
 
 function drawGame()
 {
   drawBackground();
+  drawBackground2();
   drawCells();
+  if (!mazeGenerationAlgorithmShouldAdvance)
+  {
+    drawLetters();
+    drawPlayers();
+  }
 }
 
 function handleSplashScreenClick()
@@ -218,17 +244,26 @@ function CellPrototype(rowIndex, columnIndex)
     letterMazeCanvasContext.lineWidth = 15;
     letterMazeCanvasContext.strokeStyle = 'blue';
 
+    letterMazeCanvasContext2.lineWidth = 15;
+    letterMazeCanvasContext2.strokeStyle = 'blue';
+
     //visitation of algorithm in purple
     if (this.hasBeenVisitedByGenerationAlgorithm)
     {
       letterMazeCanvasContext.fillStyle = 'purple';
       letterMazeCanvasContext.fillRect(xCoordinate,yCoordinate, CELL_WIDTH,CELL_HEIGHT);
+
+      letterMazeCanvasContext2.fillStyle = 'purple';
+      letterMazeCanvasContext2.fillRect(xCoordinate,yCoordinate, CELL_WIDTH,CELL_HEIGHT);
     }
 
-    if (currentCellBeingVisitedByGenerationAlgorithm === this)
+    if (currentCellBeingVisitedByGenerationAlgorithm === this && mazeGenerationAlgorithmShouldAdvance)
     {
       letterMazeCanvasContext.fillStyle = 'orange';
       letterMazeCanvasContext.fillRect(xCoordinate,yCoordinate, CELL_WIDTH,CELL_HEIGHT);
+
+      letterMazeCanvasContext2.fillStyle = 'orange';
+      letterMazeCanvasContext2.fillRect(xCoordinate,yCoordinate, CELL_WIDTH,CELL_HEIGHT);
     }
 
     //top wall
@@ -238,6 +273,11 @@ function CellPrototype(rowIndex, columnIndex)
       letterMazeCanvasContext.moveTo(xCoordinate,yCoordinate + 5);
       letterMazeCanvasContext.lineTo(xCoordinate + CELL_WIDTH, yCoordinate + 5);
       letterMazeCanvasContext.stroke();
+
+      letterMazeCanvasContext2.beginPath();
+      letterMazeCanvasContext2.moveTo(xCoordinate,yCoordinate + 5);
+      letterMazeCanvasContext2.lineTo(xCoordinate + CELL_WIDTH, yCoordinate + 5);
+      letterMazeCanvasContext2.stroke();
     }
 
     //right wall
@@ -247,6 +287,11 @@ function CellPrototype(rowIndex, columnIndex)
       letterMazeCanvasContext.moveTo(xCoordinate + CELL_WIDTH - 5,yCoordinate);
       letterMazeCanvasContext.lineTo(xCoordinate + CELL_WIDTH - 5, yCoordinate + CELL_HEIGHT);
       letterMazeCanvasContext.stroke();
+
+      letterMazeCanvasContext2.beginPath();
+      letterMazeCanvasContext2.moveTo(xCoordinate + CELL_WIDTH - 5,yCoordinate);
+      letterMazeCanvasContext2.lineTo(xCoordinate + CELL_WIDTH - 5, yCoordinate + CELL_HEIGHT);
+      letterMazeCanvasContext2.stroke();
     }
 
     //bottom wall
@@ -256,6 +301,11 @@ function CellPrototype(rowIndex, columnIndex)
       letterMazeCanvasContext.moveTo(xCoordinate + CELL_WIDTH,yCoordinate + CELL_HEIGHT - 5);
       letterMazeCanvasContext.lineTo(xCoordinate, yCoordinate + CELL_HEIGHT - 5);
       letterMazeCanvasContext.stroke();
+
+      letterMazeCanvasContext2.beginPath();
+      letterMazeCanvasContext2.moveTo(xCoordinate + CELL_WIDTH,yCoordinate + CELL_HEIGHT - 5);
+      letterMazeCanvasContext2.lineTo(xCoordinate, yCoordinate + CELL_HEIGHT - 5);
+      letterMazeCanvasContext2.stroke();
     }
 
     //left wall
@@ -265,11 +315,20 @@ function CellPrototype(rowIndex, columnIndex)
       letterMazeCanvasContext.moveTo(xCoordinate + 5,yCoordinate + CELL_HEIGHT);
       letterMazeCanvasContext.lineTo(xCoordinate + 5, yCoordinate);
       letterMazeCanvasContext.stroke();
+
+      letterMazeCanvasContext2.beginPath();
+      letterMazeCanvasContext2.moveTo(xCoordinate + 5,yCoordinate + CELL_HEIGHT);
+      letterMazeCanvasContext2.lineTo(xCoordinate + 5, yCoordinate);
+      letterMazeCanvasContext2.stroke();
     }
 
     // letterMazeCanvasContext.fillStyle = 'green';
     // letterMazeCanvasContext.font = '30px Helvetica';
     // letterMazeCanvasContext.fillText(this.cellIndex, this.columnIndex*CELL_WIDTH+30,this.rowIndex*CELL_HEIGHT+30);
+
+    // letterMazeCanvasContext2.fillStyle = 'green';
+    // letterMazeCanvasContext2.font = '30px Helvetica';
+    // letterMazeCanvasContext2.fillText(this.cellIndex, this.columnIndex*CELL_WIDTH+30,this.rowIndex*CELL_HEIGHT+30);
   }
 }
 
@@ -344,9 +403,11 @@ function filterArrayOfVisitedCells()
   }
 }
 
+var mazeGenerationAlgorithmShouldAdvance = true;
+var finalCellVisitedByGenerationAlgorithm = undefined;
+
 function advanceGenerationAlgorithm()
 {
-  console.log('currentCellBeingVisitedByGenerationAlgorithm: ' + currentCellBeingVisitedByGenerationAlgorithm.cellIndex);
   var nextCellToBeVisitedByGenerationAlgorithm = currentCellBeingVisitedByGenerationAlgorithm.returnARandomUnvisitedNeighborIfPossible();
 
 
@@ -358,10 +419,18 @@ function advanceGenerationAlgorithm()
     currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
   } else if (backtrackStack.length > 0)
   {
-    console.log('hello backtrack');
     var cellToBacktrackTo = backtrackStack.pop();
-    console.log(cellToBacktrackTo);
     currentCellBeingVisitedByGenerationAlgorithm = cellToBacktrackTo;
+    finalCellVisitedByGenerationAlgorithm = cellToBacktrackTo;
+  } else if (backtrackStack.length === 0)
+  {
+    mazeGenerationAlgorithmShouldAdvance = false;
+    populateArrayOfDeadEndCellsNotIncludingPlayerStartingLocation();
+    initializeLetters();
+    console.log('currentCellBeingVisitedByGenerationAlgorithm: ' + currentCellBeingVisitedByGenerationAlgorithm);
+    initializePlayers();
+    correctLetterAudioTag.play();
+    console.log(arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation);
   }
 
 }
@@ -392,5 +461,371 @@ function removeWallsBetweenNeighboringVisitedCellsDuringGeneration(currentCellIn
   {
     arrayOfCells[currentCellIndex].arrayOfExistentWalls[3] = false;
     arrayOfCells[neighboringCellIndex].arrayOfExistentWalls[1] = false;
+  }
+}
+
+var arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation = [];
+
+function populateArrayOfDeadEndCellsNotIncludingPlayerStartingLocation()
+{
+  //cycle through all the cells
+  for (let cellIndex = 0; cellIndex < arrayOfCells.length; cellIndex++)
+  {
+    let existentWallsCount = 0;
+    //at each cell count the number of existing walls
+    for (let arrayOfExistentWallsIndex = 0; arrayOfExistentWallsIndex < arrayOfCells[cellIndex].arrayOfExistentWalls.length; arrayOfExistentWallsIndex++)
+    {
+      if (arrayOfCells[cellIndex].arrayOfExistentWalls[arrayOfExistentWallsIndex] === true)
+      {
+        existentWallsCount++;
+      }
+    }//end of counting existent walls
+    if (existentWallsCount === 3)
+    {
+      arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation.push(arrayOfCells[cellIndex]);
+    }//end of pushing dead ends into dead end array
+  }//end of cycling through all the cells
+  console.log('finalCellVisitedByGenerationAlgorithm: ' + finalCellVisitedByGenerationAlgorithm);
+  for (let deadEndCellsIndex = 0; deadEndCellsIndex < arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation.length; deadEndCellsIndex++)
+  {
+    if (arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation[deadEndCellsIndex] === finalCellVisitedByGenerationAlgorithm)
+    {
+      arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation.splice(deadEndCellsIndex,1);
+    }
+  }
+}//end of function
+
+var currentCorrectLetter = undefined;
+var correctLetterAudioTag = undefined;
+
+function setOrResetCorrectLetter()
+{
+  let randomNumber = Math.random()*10;
+
+  if (randomNumber < 5)
+  {
+    currentCorrectLetter = 'm';
+  } else {
+    currentCorrectLetter = 'n';
+  }
+  correctLetterAudioTag.src = currentCorrectLetter + '.mp3';
+}
+
+function playCorrectLetterAudioTag()
+{
+  correctLetterAudioTag.play();
+}
+
+function initializeCorrectLetterAudioTag()
+{
+  correctLetterAudioTag = document.getElementById('correctLetterAudioTag');
+}
+
+var arrayOfLetters = [];
+let letterM;
+let letterN;
+
+function LetterClass(nameString)
+{
+  this.name = nameString;
+  this.cellIndex = undefined;
+  this.cell = undefined;
+
+  this.assignCell = function()
+  {
+    let randomDeadEndIndex = getRandomIntInclusive(0,arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation.length - 1);
+    console.log('random dead end index: ' + randomDeadEndIndex);
+    this.cell = arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation[randomDeadEndIndex];
+    arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation.splice(randomDeadEndIndex,1);
+    console.log('letter cell index: letter ' + this.name + ': ' + this.cellIndex);
+  }
+
+  this.draw = function()
+  {
+    letterMazeCanvasContext.fillStyle = 'black';
+    letterMazeCanvasContext.font = '30px Helvetica';
+    letterMazeCanvasContext.fillText(this.name, this.cell.columnIndex*CELL_WIDTH + CELL_WIDTH/2,this.cell.rowIndex*CELL_HEIGHT + CELL_HEIGHT/2 + 30);
+
+    letterMazeCanvasContext2.fillStyle = 'black';
+    letterMazeCanvasContext2.font = '30px Helvetica';
+    letterMazeCanvasContext2.fillText(this.name, this.cell.columnIndex*CELL_WIDTH + CELL_WIDTH/2,this.cell.rowIndex*CELL_HEIGHT + CELL_HEIGHT/2 + 30);
+  }
+}
+
+function initializeLetters()
+{
+  letterM = new LetterClass('m');
+  arrayOfLetters.push(letterM);
+  letterN = new LetterClass('n');
+  arrayOfLetters.push(letterN);
+  assignLetterCellIndices();
+}
+
+function assignLetterCellIndices()
+{
+  for (let arrayOfLettersIndex = 0; arrayOfLettersIndex < arrayOfLetters.length; arrayOfLettersIndex++)
+  {
+    arrayOfLetters[arrayOfLettersIndex].assignCell();
+  }
+}
+
+function drawLetters()
+{
+  for (let arrayOfLettersIndex = 0; arrayOfLettersIndex < arrayOfLetters.length; arrayOfLettersIndex++)
+  {
+    arrayOfLetters[arrayOfLettersIndex].draw();
+  }
+}
+
+function PlayerClass(nameString)
+{
+  this.name = nameString;
+
+  this.cell = undefined;
+  this.cellIndex = undefined;
+
+  this.initialize = function()
+  {
+    this.cell = finalCellVisitedByGenerationAlgorithm;
+  }
+
+  this.draw = function()
+  {
+    if (this.name === 'player1')
+    {
+      letterMazeCanvasContext.fillStyle = 'orange';
+      letterMazeCanvasContext.fillRect(this.cell.columnIndex*CELL_WIDTH + 13,this.cell.rowIndex*CELL_HEIGHT + 13,
+                                       CELL_WIDTH - 25,CELL_HEIGHT - 25);
+    } else if (this.name === 'player2')
+    {
+      letterMazeCanvasContext2.fillStyle = 'orange';
+      letterMazeCanvasContext2.fillRect(this.cell.columnIndex*CELL_WIDTH + 13,this.cell.rowIndex*CELL_HEIGHT + 13,
+                                       CELL_WIDTH - 25,CELL_HEIGHT - 25);
+    }
+  }
+}
+
+let player1;
+let player2;
+let arrayOfPlayers = [];
+
+function initializePlayers()
+{
+  player1 = new PlayerClass('player1');
+  arrayOfPlayers.push(player1);
+  player2 = new PlayerClass('player2');
+  arrayOfPlayers.push(player2);
+
+  for (let arrayOfPlayersIndex = 0; arrayOfPlayersIndex < arrayOfPlayers.length; arrayOfPlayersIndex++)
+  {
+    arrayOfPlayers[arrayOfPlayersIndex].initialize();
+  }
+}
+
+function drawPlayers()
+{
+  for (let arrayOfPlayersIndex = 0; arrayOfPlayersIndex < arrayOfPlayers.length; arrayOfPlayersIndex++)
+  {
+    arrayOfPlayers[arrayOfPlayersIndex].draw();
+  }
+}
+
+function handleKeyDowns(builtInDocumentEventObject)
+{
+  builtInDocumentEventObject.preventDefault();
+  if (!playerShouldSeeSplashScreen && !mazeGenerationAlgorithmShouldAdvance)
+  {
+  switch(builtInDocumentEventObject.keyCode)
+    {
+      case 87://w
+      console.log('recognizing w press');
+      movePlayer1UpIfPossible();
+      break;
+
+      case 68://d
+      console.log('recognizing d press');
+      moverPlayer1RightIfPossible();
+      break;
+
+      case 83://s
+      console.log('recognizing s press');
+      moverPlayer1DownIfPossible();
+      break;
+
+      case 65://a
+      console.log('recognizing a press');
+      moverPlayer1LeftIfPossible();
+      break;
+
+      case 37://left arrow
+      moverPlayer2LeftIfPossible();
+      break;
+
+      case 38://up arrow
+      movePlayer2UpIfPossible();
+      break;
+
+      case 39://right arrow
+      moverPlayer2RightIfPossible();
+      break;
+
+      case 40://down arrow
+      moverPlayer2DownIfPossible();
+      break;
+    }//end of switch
+  }//end of if not on splash screen check
+}//end of handleKeyDowns
+
+function movePlayer1UpIfPossible()
+{
+  if (player1.cell.topNeighboringCellExists && !player1.cell.arrayOfExistentWalls[0])
+  {
+    player1.cell = player1.cell.topNeighboringCell;
+    checkForLetterCollisions();
+  } else {
+    player1.cell = player1.cell;
+  }
+}
+
+function movePlayer2UpIfPossible()
+{
+  if (player2.cell.topNeighboringCellExists && !player2.cell.arrayOfExistentWalls[0])
+  {
+    player2.cell = player2.cell.topNeighboringCell;
+    checkForLetterCollisions();
+  } else {
+    player2.cell = player2.cell;
+  }
+}
+
+function moverPlayer1RightIfPossible()
+{
+  if (player1.cell.rightNeighboringCellExists && !player1.cell.arrayOfExistentWalls[1])
+  {
+    player1.cell = player1.cell.rightNeighboringCell;
+    checkForLetterCollisions();
+  }
+  else {
+    player1.cell = player1.cell;
+  }
+}
+
+function moverPlayer2RightIfPossible()
+{
+  if (player2.cell.rightNeighboringCellExists && !player2.cell.arrayOfExistentWalls[1])
+  {
+    player2.cell = player2.cell.rightNeighboringCell;
+    checkForLetterCollisions();
+  }
+  else {
+    player2.cell = player2.cell;
+  }
+}
+
+function moverPlayer1DownIfPossible()
+{
+  if (player1.cell.bottomNeighboringCellExists && !player1.cell.arrayOfExistentWalls[2])
+  {
+    player1.cell = player1.cell.bottomNeighboringCell;
+    checkForLetterCollisions();
+  }
+  else {
+    player1.cell = player1.cell;
+  }
+}
+
+function moverPlayer2DownIfPossible()
+{
+  if (player2.cell.bottomNeighboringCellExists && !player2.cell.arrayOfExistentWalls[2])
+  {
+    player2.cell = player2.cell.bottomNeighboringCell;
+    checkForLetterCollisions();
+  }
+  else {
+    player2.cell = player2.cell;
+  }
+}
+
+function moverPlayer1LeftIfPossible()
+{
+  if (player1.cell.leftNeighboringCellExists && !player1.cell.arrayOfExistentWalls[3])
+  {
+    player1.cell = player1.cell.leftNeighboringCell;
+    checkForLetterCollisions();
+  }
+  else {
+    player1.cell = player1.cell;
+  }
+}
+
+function moverPlayer2LeftIfPossible()
+{
+  if (player2.cell.leftNeighboringCellExists && !player2.cell.arrayOfExistentWalls[3])
+  {
+    player2.cell = player2.cell.leftNeighboringCell;
+    checkForLetterCollisions();
+  }
+  else {
+    player2.cell = player2.cell;
+  }
+}
+
+function checkForLetterCollisions()
+{
+  for (let arrayOfLettersIndex = 0; arrayOfLettersIndex < arrayOfLetters.length; arrayOfLettersIndex++)
+  {
+    for (let arrayOfPlayersIndex = 0; arrayOfPlayersIndex < arrayOfPlayers.length; arrayOfPlayersIndex++)
+    {
+      if (arrayOfPlayers[arrayOfPlayersIndex].cell === arrayOfLetters[arrayOfLettersIndex].cell &&
+          arrayOfLetters[arrayOfLettersIndex].name === currentCorrectLetter)
+          {
+            resetGame();
+            console.log('correct letter choice');
+          }
+      else if (arrayOfPlayers[arrayOfPlayersIndex].cell === arrayOfLetters[arrayOfLettersIndex].cell &&
+               arrayOfLetters[arrayOfLettersIndex].name !== currentCorrectLetter)
+               {
+                 // resetGame();
+                 console.log('incorrect letter choice');
+               }//end of checking for incorrect letter choice
+    }//end of checking the players positions and if letter was correct/incorrect
+  }//end of check all the letters
+}//end of correct letter check
+
+function resetGame()
+{
+  arrayOfLetters = [];
+  randomStartingIndexForMazeGeneration = getRandomIntInclusive(0,arrayOfCells.length - 1);
+
+  clearCellsOfHavingBeenVisitedByGenerationAlgorithm();
+  resetExistenceOfWalls();
+  arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation = [];
+
+  currentCellBeingVisitedByGenerationAlgorithm = arrayOfCells[randomStartingIndexForMazeGeneration];
+  currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
+
+
+  mazeGenerationAlgorithmShouldAdvance = true;
+}
+
+function clearCellsOfHavingBeenVisitedByGenerationAlgorithm()
+{
+  for (let arrayOfCellsIndex = 0; arrayOfCellsIndex < arrayOfCells.length; arrayOfCellsIndex++)
+  {
+    arrayOfCells[arrayOfCellsIndex].hasBeenVisitedByGenerationAlgorithm = false;
+  }
+}
+
+function resetExistenceOfWalls()
+{
+  for (let arrayOfCellsIndex = 0; arrayOfCellsIndex < arrayOfCells.length; arrayOfCellsIndex++)
+  {
+    for (let arrayOfExistentWallsIndex = 0; arrayOfExistentWallsIndex < arrayOfCells[arrayOfCellsIndex].arrayOfExistentWalls.length; arrayOfExistentWallsIndex++)
+    {
+      if (arrayOfCells[arrayOfCellsIndex].arrayOfExistentWalls[arrayOfExistentWallsIndex] === false)
+      {
+        arrayOfCells[arrayOfCellsIndex].arrayOfExistentWalls[arrayOfExistentWallsIndex] = true;
+      }
+    }
   }
 }
