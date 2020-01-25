@@ -40,6 +40,10 @@ picture of one cat or a picture of multiple cats)
 25. his/has/he/he's
 26. Who/How
 27. time now (is)/time was/time will be
+28. am/can/do/have (functions)(question/answer consistency)
+39. Here/There
+40. are/is
+41. on/in
 
 
 Any language - 
