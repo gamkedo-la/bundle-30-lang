@@ -38,6 +38,8 @@ picture of one cat or a picture of multiple cats)
 23. pants/a pants
 24. this/that/these/those
 25. his/has/he/he's
+26. Who/How
+27. time now (is)/time was/time will be
 
 
 Any language - 
