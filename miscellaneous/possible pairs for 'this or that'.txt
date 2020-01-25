@@ -26,7 +26,7 @@ picture of one cat or a picture of multiple cats)
 11. My/I
 12. s/no s for plurals
 13. s/no s conjugations in simple present
-14. whale/well/wheel
+14. whale/well/wheel/while
 15. now/before/later
 16. today/yesterday/tomorrow/regularly
 17. no/now
@@ -44,6 +44,11 @@ picture of one cat or a picture of multiple cats)
 39. Here/There
 40. are/is
 41. on/in
+42. then/than
+43. present/past
+44. a/the
+45. a/an to indicated singular nouns
+46. would/want/would want/will/will want
 
 
 Any language - 
