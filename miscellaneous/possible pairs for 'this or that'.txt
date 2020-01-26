@@ -29,7 +29,7 @@ picture of one cat or a picture of multiple cats)
 14. whale/well/wheel/while
 15. now/before/later
 16. today/yesterday/tomorrow/regularly
-17. no/now
+17. no/now/not
 18. Tuesday/Thursday
 19. What do you eat? = eat What did you eat? = ate
 20. north south east west = 北，南，东，西
@@ -55,15 +55,33 @@ picture of one cat or a picture of multiple cats)
 50. ridesssss while reading
 51. drive/ride
 52. he can drivesss/he drives
+53. lookEd (audio clips)
+54. came/come
+55. today/yesterday/tomorrow with dates shown
+56. What DID you do before? What ARE you doing now? What DO you do regularly? What WILL you do later?
+57. I give it to he/him/his
+58. perspective changes What toy do you see? I/She see a _____.
+59. These/Thee
+60. or/our
+61. his/has
+62. pick singular or plural form
+63. Who/What/Where/When/Why/How with relevant pics (Who = pic of a person/What = pic of a thing,
+Where = pic of a location, When = pic of time, why = because)
+64. on/no
+65. into with verb
+66. find/friend
+67. clothes/closes
+68. ssssss or ing while reading (audio prompt)
 
 
 Any language - 
 1. < > (greater than, less than)
 
 Chinese - 
-1. Ta (he/she)
+1. Ta (he/she characters prompted with a picture of a boy or a girl)
 2. 4 Ba's
 3. Men - plural indication, Ma - question indication
 4. Ta - he/she, Da - big
 5. Bǎ - put, Bà - dad, Bā - eight, 
+6. Ta - he, Ye - also (characters)
 
