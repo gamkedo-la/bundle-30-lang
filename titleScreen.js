@@ -89,6 +89,8 @@ function drawGameNames()
 
   //row 3
   customFontFillText('Maze', 27, 15, 37,385);
+
+  customFontFillText('Memory', 27, 15, 122,385);
 }
 
 function handleGameCellClicks()
