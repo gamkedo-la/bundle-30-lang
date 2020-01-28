@@ -1,5 +1,13 @@
 //standard image declaration section
 
+//Prompt and Answer Class Section
+let womanImage = document.createElement("img");
+let womenImage = document.createElement("img");
+let manImage = document.createElement("img");
+let menImage = document.createElement("img");
+let heImage = document.createElement("img");
+let sheImage = document.createElement("img");
+
 //runner images
 let runnerSunAndSkyBackgroundImage = document.createElement("img");
 let runnerCloud1 = document.createElement("img");
@@ -95,6 +103,16 @@ function loadImages()
   }
 
   //somewhat standard image loading
+
+  //prompt and answer
+  arrayOfImages.push({imageObjectBinding: womanImage, theFile: 'images/Sprites/PromptsAndAnswers/woman.png'});
+  arrayOfImages.push({imageObjectBinding: womenImage, theFile: 'images/Sprites/PromptsAndAnswers/women.png'});
+  arrayOfImages.push({imageObjectBinding: manImage, theFile: 'images/Sprites/PromptsAndAnswers/man.png'});
+  arrayOfImages.push({imageObjectBinding: menImage, theFile: 'images/Sprites/PromptsAndAnswers/men.png'});
+  arrayOfImages.push({imageObjectBinding: heImage, theFile: 'images/Sprites/PromptsAndAnswers/man.png'});
+  arrayOfImages.push({imageObjectBinding: sheImage, theFile: 'images/Sprites/PromptsAndAnswers/woman.png'});
+
+  //runner game
   arrayOfImages.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png'});
   arrayOfImages.push({imageObjectBinding: runnerCloud1, theFile: 'images/Backgrounds/runnerCloud1.png'});
   arrayOfImages.push({imageObjectBinding: runnerGrassImage, theFile: 'images/Backgrounds/runnerGrass.png'});

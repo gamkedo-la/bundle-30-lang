@@ -32,6 +32,7 @@ function handleDualPurposeSplashAndLoadingSceneClick()
   playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
   //setInterval(updateGameFrame, frameRate);
   playerShouldSeePleaseWaitForDownloading = false;
+  initializePromptAndAnswerObjects();
   gameInterval.start();
   if (gameIsOnAServerAndCanUseWebAudioAPI)
   {

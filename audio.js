@@ -1,7 +1,22 @@
+//prompts and answers section
+var womanAudio = document.createElement("AUDIO");
+var womenAudio = document.createElement("AUDIO");
+var menAudio = document.createElement("AUDIO");
+var manAudio = document.createElement("AUDIO");
+var heAudio = document.createElement("AUDIO");
+var sheAudio = document.createElement("AUDIO");
+
+//UI section
 var arrayOfUIButtonSounds = [];
 var arrayOfGeneralPositiveFeedbackSounds = [];
 var arrayOfGeneralNegativeFeedbackSounds = [];
 
+var uiButtonSound1 = document.createElement("AUDIO");
+var uiButtonSound2 = document.createElement("AUDIO");
+var uiButtonSound3 = document.createElement("AUDIO");
+var uiButtonSound4 = document.createElement("AUDIO");
+
+//gameplay feedback
 var generalPositiveFeedbackSound1 = document.createElement("AUDIO");
 var generalPositiveFeedbackSound2 = document.createElement("AUDIO");
 var generalPositiveFeedbackSound3 = document.createElement("AUDIO");
@@ -12,21 +27,34 @@ var generalNegativeFeedbackSound2 = document.createElement("AUDIO");
 var generalNegativeFeedbackSound3 = document.createElement("AUDIO");
 var generalNegativeFeedbackSound4 = document.createElement("AUDIO");
 
-var uiButtonSound1 = document.createElement("AUDIO");
-var uiButtonSound2 = document.createElement("AUDIO");
-var uiButtonSound3 = document.createElement("AUDIO");
-var uiButtonSound4 = document.createElement("AUDIO");
 
+//music
 var currentBackgroundMusic = undefined;
 
 var runnerBackgroundMusic = document.createElement("AUDIO");
 var pinataBackgroundMusic = document.createElement("AUDIO");
 
-
 var transitionToLevelMusic1 = document.createElement("AUDIO");
 
 function setSourcesForAudioObjects()//for after loading screen
 {
+
+  //prompts and answers
+  womanAudio.src = 'audio/PromptsAndAnswers/woman.mp3';
+  masterAudioBus.push(womanAudio);
+  womenAudio.src = 'audio/PromptsAndAnswers/women.mp3';
+  masterAudioBus.push(womenAudio);
+  menAudio.src = 'audio/PromptsAndAnswers/men.mp3';
+  masterAudioBus.push(menAudio);
+  manAudio.src = 'audio/PromptsAndAnswers/man.mp3';
+  masterAudioBus.push(manAudio);
+  heAudio.src = 'audio/PromptsAndAnswers/he.mp3';
+  masterAudioBus.push(heAudio);
+  sheAudio.src = 'audio/PromptsAndAnswers/she.mp3';
+  masterAudioBus.push(sheAudio);
+
+
+  //gameplay feedback
   generalPositiveFeedbackSound1.src = "audio/Positive_01.mp3";
   masterAudioBus.push(generalPositiveFeedbackSound1);
   generalPositiveFeedbackSound2.src = "audio/Positive_02.mp3";
@@ -35,7 +63,6 @@ function setSourcesForAudioObjects()//for after loading screen
   masterAudioBus.push(generalPositiveFeedbackSound3);
   generalPositiveFeedbackSound4.src = "audio/Positive_04.mp3";
   masterAudioBus.push(generalPositiveFeedbackSound4);
-
 
   generalNegativeFeedbackSound1.src = "audio/Negative_01.mp3";
   masterAudioBus.push(generalNegativeFeedbackSound1);
@@ -46,7 +73,7 @@ function setSourcesForAudioObjects()//for after loading screen
   generalNegativeFeedbackSound4.src = "audio/Negative_04.mp3";
   masterAudioBus.push(generalNegativeFeedbackSound4);
 
-
+  //UI
   uiButtonSound1.src = "audio/UI_01.mp3";
   masterAudioBus.push(uiButtonSound1);
   uiButtonSound2.src = "audio/UI_02.mp3";
@@ -56,7 +83,7 @@ function setSourcesForAudioObjects()//for after loading screen
   uiButtonSound4.src = "audio/UI_04.mp3";
   masterAudioBus.push(uiButtonSound4);
 
-
+  //music
   transitionToLevelMusic1.src = "audio/levelTransitionSound.mp3";
   masterAudioBus.push(transitionToLevelMusic1);
 
