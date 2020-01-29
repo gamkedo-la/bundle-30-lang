@@ -41,8 +41,10 @@ function updateEverythingInTheGame()
   moveGameSpecificPlayer();
   gameSpecificUpdates();
   handleGameSpecificSpritesOffScreen();
-  moveLettersIfAppropriate();
-  handleCollisionsWithLetters();
+  //moveLettersIfAppropriate();//change to promptAndAnswerClass
+  moveAnswersIfAppropriate();
+  //handleCollisionsWithLetters();//change to promptAndAnswerClass
+  handleCollisionsWithAnswers();
   // if (webAudioAPIContext.)
 }
 
@@ -86,7 +88,8 @@ function drawEverythingInTheGame()
     {
       drawSpaceShooterBullets();
     }
-    drawLetters();
+    drawLetters();//change to promptAndAnswerClass
+    //drawAnswers();
     drawStatsBackground();
     drawStats();
 
