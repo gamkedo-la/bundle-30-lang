@@ -16,7 +16,7 @@ function initializeRunner() {
 	runnerFloorLevel = gameCanvas.height*0.75;
 	playerXCoordinate = (gameCanvas.width - RUNNERWIDTH)/2;
 	playerYCoordinate = runnerFloorLevel - RUNNERHEIGHT;
-	arrayOfLetters.splice(0);
+	arrayOfAnswers.splice(0);
 	gameInterval.reset(RUNNERFRAMERATE);
     letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
 	letterSpeed = RUNNERSPEED/5;

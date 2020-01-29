@@ -1,7 +1,7 @@
 var gameCanvas;
 var gameCanvasContext;
 var correctLetterAudioTag;
-var arrayOfLetters = [];
+var arrayOfAnswers = [];
 
 window.onload = function()
 {
@@ -13,8 +13,8 @@ window.onload = function()
   letterM = new letter('m');
   letterN = new letter('n');
 
-  arrayOfLetters.push(letterM);
-  arrayOfLetters.push(letterN);
+  arrayOfAnswers.push(letterM);
+  arrayOfAnswers.push(letterN);
 
   correctLetterAudioTag = document.getElementById('correctLetter');
   setOrResetCorrectLetter();
@@ -205,19 +205,19 @@ function checkForCorrectLetterClick(currentCorrectLetter)
 {
   let correctLetterString = 'letter' + currentCorrectLetter.toUpperCase();
   console.log('correctLetterString: ' + correctLetterString);
-  for (let arrayOfLettersIndex = 0; arrayOfLettersIndex < arrayOfLetters.length; arrayOfLettersIndex++)
+  for (let arrayOfAnswersIndex = 0; arrayOfAnswersIndex < arrayOfAnswers.length; arrayOfAnswersIndex++)
   {
-    // console.log('leftWallX: ' + arrayOfLetters[arrayOfLettersIndex].leftWallX);
-    // console.log('rightWallX: ' + arrayOfLetters[arrayOfLettersIndex].rightWallX);
-    // console.log('topWallY: ' + arrayOfLetters[arrayOfLettersIndex].topWallY);
-    // console.log('bottomWallY: ' + arrayOfLetters[arrayOfLettersIndex].bottomWallY);
+    // console.log('leftWallX: ' + arrayOfAnswers[arrayOfAnswersIndex].leftWallX);
+    // console.log('rightWallX: ' + arrayOfAnswers[arrayOfAnswersIndex].rightWallX);
+    // console.log('topWallY: ' + arrayOfAnswers[arrayOfAnswersIndex].topWallY);
+    // console.log('bottomWallY: ' + arrayOfAnswers[arrayOfAnswersIndex].bottomWallY);
     // console.log('mouseX: ' + mouseCoordinates.mouseX);
     // console.log('mouseY: ' + mouseCoordinates.mouseY);
-    if (mouseCoordinates.mouseX > arrayOfLetters[arrayOfLettersIndex].leftWallX - 30 &&
-        mouseCoordinates.mouseX < arrayOfLetters[arrayOfLettersIndex].rightWallX + 25
-     && mouseCoordinates.mouseY > arrayOfLetters[arrayOfLettersIndex].topWallY - 45 &&
-        mouseCoordinates.mouseY < arrayOfLetters[arrayOfLettersIndex].bottomWallY &&
-        arrayOfLetters[arrayOfLettersIndex].name === currentCorrectLetter)
+    if (mouseCoordinates.mouseX > arrayOfAnswers[arrayOfAnswersIndex].leftWallX - 30 &&
+        mouseCoordinates.mouseX < arrayOfAnswers[arrayOfAnswersIndex].rightWallX + 25
+     && mouseCoordinates.mouseY > arrayOfAnswers[arrayOfAnswersIndex].topWallY - 45 &&
+        mouseCoordinates.mouseY < arrayOfAnswers[arrayOfAnswersIndex].bottomWallY &&
+        arrayOfAnswers[arrayOfAnswersIndex].name === currentCorrectLetter)
     {
       setOrResetCorrectLetter();
       console.log('hello world');

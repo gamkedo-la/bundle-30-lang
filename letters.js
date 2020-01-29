@@ -1,4 +1,4 @@
-var arrayOfLetters = [];
+var arrayOfAnswers = [];
 
 var letterDimensionX = 45;
 var letterDimensionY = 45;
@@ -51,7 +51,7 @@ function spawnALetterIfAppropriate()
   }
   if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter)
   {
-    arrayOfLetters.push({xCoordinate:640,yCoordinate:Math.random()*700, name:name, correctAnswer:false});
+    arrayOfAnswers.push({xCoordinate:640,yCoordinate:Math.random()*700, name:name, correctAnswer:false});
   } else if (playerShouldBePlayingLane)
   {
     let randomNumber2 = Math.random()*10;
@@ -62,10 +62,10 @@ function spawnALetterIfAppropriate()
     } else {
       randomChoiceOf2XStartingPositions = 380;
     }
-    arrayOfLetters.push({xCoordinate:randomChoiceOf2XStartingPositions,yCoordinate:-20, name:name, correctAnswer:false});
+    arrayOfAnswers.push({xCoordinate:randomChoiceOf2XStartingPositions,yCoordinate:-20, name:name, correctAnswer:false});
   } else if (playerShouldBePlayingRunner) {
 	  let coinToss = Math.random() < 0.5;
-	  arrayOfLetters.push({
+	  arrayOfAnswers.push({
 		  name: name,
 		  correctAnswer: false,
 		  xCoordinate: gameCanvas.width,
@@ -79,15 +79,15 @@ function moveLettersIfAppropriate()
 {
   if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter || playerShouldBePlayingRunner)
   {
-    for (var letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+    for (var letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {
-      arrayOfLetters[letterIndex].xCoordinate -= letterSpeed;//letters move right to left in bird
+      arrayOfAnswers[letterIndex].xCoordinate -= letterSpeed;//letters move right to left in bird
     }
   } else if (playerShouldBePlayingLane)
   {
-    for (var letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+    for (var letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {
-      arrayOfLetters[letterIndex].yCoordinate += letterSpeed;//letters move top to bottom in lane
+      arrayOfAnswers[letterIndex].yCoordinate += letterSpeed;//letters move top to bottom in lane
     }
   }
 }
@@ -114,10 +114,10 @@ function drawLetters()
     gameCanvasContext.fillStyle = RUNNERLETTERCOLOR;
   }
   gameCanvasContext.font = '30px Helvetica';
-  for (var letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+  for (var letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
   {
-    gameCanvasContext.fillText(arrayOfLetters[letterIndex].name,
-    arrayOfLetters[letterIndex].xCoordinate,arrayOfLetters[letterIndex].yCoordinate);
+    gameCanvasContext.fillText(arrayOfAnswers[letterIndex].name,
+    arrayOfAnswers[letterIndex].xCoordinate,arrayOfAnswers[letterIndex].yCoordinate);
   }
 }
 
@@ -125,92 +125,92 @@ function handleCollisionsWithLetters()
 {
   if (playerShouldBePlayingSnake)
   {
-    for (let letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+    for (let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {
-      if (playerXCoordinate > arrayOfLetters[letterIndex].xCoordinate - 15 && playerXCoordinate < arrayOfLetters[letterIndex].xCoordinate + 40
-        && playerYCoordinate > arrayOfLetters[letterIndex].yCoordinate - 30 && playerYCoordinate < arrayOfLetters[letterIndex].yCoordinate + 5)
+      if (playerXCoordinate > arrayOfAnswers[letterIndex].xCoordinate - 15 && playerXCoordinate < arrayOfAnswers[letterIndex].xCoordinate + 40
+        && playerYCoordinate > arrayOfAnswers[letterIndex].yCoordinate - 30 && playerYCoordinate < arrayOfAnswers[letterIndex].yCoordinate + 5)
         {
-          if (arrayOfLetters[letterIndex].name === currentCorrectLetter)
+          if (arrayOfAnswers[letterIndex].name === currentCorrectLetter)
           {
             amountCorrect++;
             playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
-          } else if (arrayOfLetters[letterIndex].name !== currentCorrectLetter)
+          } else if (arrayOfAnswers[letterIndex].name !== currentCorrectLetter)
           {
             amountIncorrect++;
             playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
           }
           calculateAccuracy();
-          populateArrayOfLettersForSnake();
+          populateArrayOfAnswersForSnake();
           setOrResetCorrectLetter();
 
         }
     }
   } else if (playerShouldBePlayingBird)
   {
-    for (let letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+    for (let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {
-      if (playerXCoordinate > arrayOfLetters[letterIndex].xCoordinate - 15 && playerXCoordinate < arrayOfLetters[letterIndex].xCoordinate + 40
-        && playerYCoordinate > arrayOfLetters[letterIndex].yCoordinate - 30 && playerYCoordinate < arrayOfLetters[letterIndex].yCoordinate + 5)
+      if (playerXCoordinate > arrayOfAnswers[letterIndex].xCoordinate - 15 && playerXCoordinate < arrayOfAnswers[letterIndex].xCoordinate + 40
+        && playerYCoordinate > arrayOfAnswers[letterIndex].yCoordinate - 30 && playerYCoordinate < arrayOfAnswers[letterIndex].yCoordinate + 5)
         {
-          if (arrayOfLetters[letterIndex].name === currentCorrectLetter)
+          if (arrayOfAnswers[letterIndex].name === currentCorrectLetter)
           {
             amountCorrect++;
             playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
-          } else if (arrayOfLetters[letterIndex].name !== currentCorrectLetter)
+          } else if (arrayOfAnswers[letterIndex].name !== currentCorrectLetter)
           {
             amountIncorrect++;
             playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
           }
           calculateAccuracy();
           setOrResetCorrectLetter();
-          arrayOfLetters.splice(letterIndex,1);
+          arrayOfAnswers.splice(letterIndex,1);
         }
     }
   } else if (playerShouldBePlayingLane)
   {
-    for (let letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+    for (let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {
-      if (arrayOfLetters[letterIndex].yCoordinate - 5 > playerYCoordinate && arrayOfLetters[letterIndex].yCoordinate - 5 < playerYCoordinate + 60 &&
-        arrayOfLetters[letterIndex].xCoordinate === playerXCoordinate &&
-        arrayOfLetters[letterIndex].name === currentCorrectLetter)
+      if (arrayOfAnswers[letterIndex].yCoordinate - 5 > playerYCoordinate && arrayOfAnswers[letterIndex].yCoordinate - 5 < playerYCoordinate + 60 &&
+        arrayOfAnswers[letterIndex].xCoordinate === playerXCoordinate &&
+        arrayOfAnswers[letterIndex].name === currentCorrectLetter)
       {
         amountCorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
         calculateAccuracy();
         setOrResetCorrectLetter();
-        arrayOfLetters.splice(letterIndex,1);
-      } else if (arrayOfLetters[letterIndex].yCoordinate - 5 > playerYCoordinate && arrayOfLetters[letterIndex].yCoordinate - 5 < playerYCoordinate + 60 &&
-        arrayOfLetters[letterIndex].xCoordinate === playerXCoordinate &&
-        arrayOfLetters[letterIndex].name !== currentCorrectLetter)
+        arrayOfAnswers.splice(letterIndex,1);
+      } else if (arrayOfAnswers[letterIndex].yCoordinate - 5 > playerYCoordinate && arrayOfAnswers[letterIndex].yCoordinate - 5 < playerYCoordinate + 60 &&
+        arrayOfAnswers[letterIndex].xCoordinate === playerXCoordinate &&
+        arrayOfAnswers[letterIndex].name !== currentCorrectLetter)
       {
         amountIncorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
         calculateAccuracy();
         setOrResetCorrectLetter();
-        arrayOfLetters.splice(letterIndex,1);
+        arrayOfAnswers.splice(letterIndex,1);
       }
     }
   }
   else if (playerShouldBePlayingJumper)
   {
-    for (let letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+    for (let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {
-      if (playerYCoordinate + 20 > arrayOfLetters[letterIndex].yCoordinate - 20 &&
-        playerYCoordinate < arrayOfLetters[letterIndex].yCoordinate &&
-        playerXCoordinate + 20 > arrayOfLetters[letterIndex].xCoordinate &&
-        playerXCoordinate < arrayOfLetters[letterIndex].xCoordinate + 20 &&
-        arrayOfLetters[letterIndex].name === currentCorrectLetter)
+      if (playerYCoordinate + 20 > arrayOfAnswers[letterIndex].yCoordinate - 20 &&
+        playerYCoordinate < arrayOfAnswers[letterIndex].yCoordinate &&
+        playerXCoordinate + 20 > arrayOfAnswers[letterIndex].xCoordinate &&
+        playerXCoordinate < arrayOfAnswers[letterIndex].xCoordinate + 20 &&
+        arrayOfAnswers[letterIndex].name === currentCorrectLetter)
       {
         amountCorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
         calculateAccuracy();
         setOrResetCorrectLetter();
         initializeLettersForJumper();
-      } else if (playerYCoordinate + 20 > arrayOfLetters[letterIndex].yCoordinate - 20 &&
-        playerYCoordinate < arrayOfLetters[letterIndex].yCoordinate &&
-        playerXCoordinate + 20 > arrayOfLetters[letterIndex].xCoordinate &&
-        playerXCoordinate < arrayOfLetters[letterIndex].xCoordinate + 20 &&
-        arrayOfLetters[letterIndex].name !== currentCorrectLetter)
+      } else if (playerYCoordinate + 20 > arrayOfAnswers[letterIndex].yCoordinate - 20 &&
+        playerYCoordinate < arrayOfAnswers[letterIndex].yCoordinate &&
+        playerXCoordinate + 20 > arrayOfAnswers[letterIndex].xCoordinate &&
+        playerXCoordinate < arrayOfAnswers[letterIndex].xCoordinate + 20 &&
+        arrayOfAnswers[letterIndex].name !== currentCorrectLetter)
       {
         amountIncorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
@@ -221,9 +221,9 @@ function handleCollisionsWithLetters()
     }
   }
 	else if (playerShouldBePlayingRunner) {
-		for (let letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+		for (let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
 		{
-			const letter = arrayOfLetters[letterIndex];
+			const letter = arrayOfAnswers[letterIndex];
 			const letterIsOnFloor = letter.yCoordinate == runnerFloorLevel;
 			const letterIsColliding = letter.xCoordinate <= playerXCoordinate && letter.xCoordinate >= playerXCoordinate - RUNNERWIDTH;
 			const runnerIsStumbling = runnerStatus == 'stumble';
@@ -248,7 +248,7 @@ function handleCollisionsWithLetters()
 					calculateAccuracy();
 					setOrResetCorrectLetter();
 				}
-				arrayOfLetters.splice(letterIndex, 1);
+				arrayOfAnswers.splice(letterIndex, 1);
 			}
 		}
 	}
@@ -257,11 +257,11 @@ function handleCollisionsWithLetters()
 
 // function checkForLettersOffLeftSideOfScreen()
 // {
-//   for (let letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+//   for (let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
 //   {
-//     if (arrayOfLetters[letterIndex].x < 0)
+//     if (arrayOfAnswers[letterIndex].x < 0)
 //     {
-//       arrayOfLetters.splice(letterIndex,1);
+//       arrayOfAnswers.splice(letterIndex,1);
 //     }
 //   }
 // }

@@ -521,7 +521,7 @@ function initializeCorrectLetterAudioTag()
   correctLetterAudioTag = document.getElementById('correctLetterAudioTag');
 }
 
-var arrayOfLetters = [];
+var arrayOfAnswers = [];
 let letterM;
 let letterN;
 
@@ -555,25 +555,25 @@ function LetterClass(nameString)
 function initializeLetters()
 {
   letterM = new LetterClass('m');
-  arrayOfLetters.push(letterM);
+  arrayOfAnswers.push(letterM);
   letterN = new LetterClass('n');
-  arrayOfLetters.push(letterN);
+  arrayOfAnswers.push(letterN);
   assignLetterCellIndices();
 }
 
 function assignLetterCellIndices()
 {
-  for (let arrayOfLettersIndex = 0; arrayOfLettersIndex < arrayOfLetters.length; arrayOfLettersIndex++)
+  for (let arrayOfAnswersIndex = 0; arrayOfAnswersIndex < arrayOfAnswers.length; arrayOfAnswersIndex++)
   {
-    arrayOfLetters[arrayOfLettersIndex].assignCell();
+    arrayOfAnswers[arrayOfAnswersIndex].assignCell();
   }
 }
 
 function drawLetters()
 {
-  for (let arrayOfLettersIndex = 0; arrayOfLettersIndex < arrayOfLetters.length; arrayOfLettersIndex++)
+  for (let arrayOfAnswersIndex = 0; arrayOfAnswersIndex < arrayOfAnswers.length; arrayOfAnswersIndex++)
   {
-    arrayOfLetters[arrayOfLettersIndex].draw();
+    arrayOfAnswers[arrayOfAnswersIndex].draw();
   }
 }
 
@@ -772,18 +772,18 @@ function moverPlayer2LeftIfPossible()
 
 function checkForLetterCollisions()
 {
-  for (let arrayOfLettersIndex = 0; arrayOfLettersIndex < arrayOfLetters.length; arrayOfLettersIndex++)
+  for (let arrayOfAnswersIndex = 0; arrayOfAnswersIndex < arrayOfAnswers.length; arrayOfAnswersIndex++)
   {
     for (let arrayOfPlayersIndex = 0; arrayOfPlayersIndex < arrayOfPlayers.length; arrayOfPlayersIndex++)
     {
-      if (arrayOfPlayers[arrayOfPlayersIndex].cell === arrayOfLetters[arrayOfLettersIndex].cell &&
-          arrayOfLetters[arrayOfLettersIndex].name === currentCorrectLetter)
+      if (arrayOfPlayers[arrayOfPlayersIndex].cell === arrayOfAnswers[arrayOfAnswersIndex].cell &&
+          arrayOfAnswers[arrayOfAnswersIndex].name === currentCorrectLetter)
           {
             resetGame();
             console.log('correct letter choice');
           }
-      else if (arrayOfPlayers[arrayOfPlayersIndex].cell === arrayOfLetters[arrayOfLettersIndex].cell &&
-               arrayOfLetters[arrayOfLettersIndex].name !== currentCorrectLetter)
+      else if (arrayOfPlayers[arrayOfPlayersIndex].cell === arrayOfAnswers[arrayOfAnswersIndex].cell &&
+               arrayOfAnswers[arrayOfAnswersIndex].name !== currentCorrectLetter)
                {
                  // resetGame();
                  console.log('incorrect letter choice');
@@ -794,7 +794,7 @@ function checkForLetterCollisions()
 
 function resetGame()
 {
-  arrayOfLetters = [];
+  arrayOfAnswers = [];
   randomStartingIndexForMazeGeneration = getRandomIntInclusive(0,arrayOfCells.length - 1);
 
   clearCellsOfHavingBeenVisitedByGenerationAlgorithm();

@@ -78,7 +78,7 @@ function drawTiles()
   }
 }
 
-var arrayOfLetters = [];
+var arrayOfAnswers = [];
 
 function LetterClass(name, xStartingPosition,yStartingPosition, positionName)
 {
@@ -172,7 +172,7 @@ function initializeLetters()
       }
 
     let letter = new LetterClass(name, startingPositions.xStartingPosition,startingPositions.yStartingPosition, positionName);
-    arrayOfLetters.push(letter);
+    arrayOfAnswers.push(letter);
     }
   }
 }
@@ -183,16 +183,16 @@ function getRandomArbitrary(min, max) {
 
 function drawLetters()
 {
-  for (let arrayOfTextLettersIndex = 0; arrayOfTextLettersIndex < arrayOfLetters.length; arrayOfTextLettersIndex++)
+  for (let arrayOfTextLettersIndex = 0; arrayOfTextLettersIndex < arrayOfAnswers.length; arrayOfTextLettersIndex++)
   {
-    arrayOfLetters[arrayOfTextLettersIndex].draw();
+    arrayOfAnswers[arrayOfTextLettersIndex].draw();
   }
 }
 
 function moveLetters()
 {
-  for (let arrayOfTextLettersIndex = 0; arrayOfTextLettersIndex < arrayOfLetters.length; arrayOfTextLettersIndex++)
+  for (let arrayOfTextLettersIndex = 0; arrayOfTextLettersIndex < arrayOfAnswers.length; arrayOfTextLettersIndex++)
   {
-    arrayOfLetters[arrayOfTextLettersIndex].move();
+    arrayOfAnswers[arrayOfTextLettersIndex].move();
   }
 }

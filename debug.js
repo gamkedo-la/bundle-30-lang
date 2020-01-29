@@ -16,11 +16,11 @@ function drawDebugStuff()
 
 function drawLetterCoordinates()
 {
-  for (let letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+  for (let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
   {
     gameCanvasContext.fillStyle = 'black';
-    gameCanvasContext.fillText(arrayOfLetters[letterIndex].xCoordinate + ',' + arrayOfLetters[letterIndex].yCoordinate,
-                              arrayOfLetters[letterIndex].xCoordinate, arrayOfLetters[letterIndex].yCoordinate - 27);
+    gameCanvasContext.fillText(arrayOfAnswers[letterIndex].xCoordinate + ',' + arrayOfAnswers[letterIndex].yCoordinate,
+                              arrayOfAnswers[letterIndex].xCoordinate, arrayOfAnswers[letterIndex].yCoordinate - 27);
   }
 }
 
@@ -33,10 +33,10 @@ function drawPlayerCoordinates()
 
 function drawLetterColliders()
 {
-  for(let letterIndex = 0; letterIndex < arrayOfLetters.length; letterIndex++)
+  for(let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
   {
     gameCanvasContext.strokeStyle = 'black';
-    gameCanvasContext.strokeRect(arrayOfLetters[letterIndex].xCoordinate,arrayOfLetters[letterIndex].yCoordinate - 20,
+    gameCanvasContext.strokeRect(arrayOfAnswers[letterIndex].xCoordinate,arrayOfAnswers[letterIndex].yCoordinate - 20,
                                 27,27);
   }
 }

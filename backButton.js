@@ -44,7 +44,7 @@ function handleBackButtonClick()
         playerShouldBePlayingJumper = false;
         playerShouldBePlayingPinata = false;
 		playerShouldBePlayingRunner = false;
-        arrayOfLetters = [];
+        arrayOfAnswers = [];
         playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
         if (gameIsOnAServerAndCanUseWebAudioAPI)
         {

@@ -76,11 +76,11 @@ function moveJumperPlayer()
 
 function initializeLettersForJumper()
 {
-  arrayOfLetters = [];
-  arrayOfLetters.push({name:'m',
+  arrayOfAnswers = [];
+  arrayOfAnswers.push({name:'m',
                        xCoordinate:Math.random()*640,
                        yCoordinate:Math.floor(Math.random() * 6 ) * 100 + 30/*font size*/ + 20/*offset for fillText*/});
-  arrayOfLetters.push({name:'n',
+  arrayOfAnswers.push({name:'n',
                        xCoordinate:Math.random()*640,
                        yCoordinate:Math.floor(Math.random() * 6 ) * 100 + 30/*font size*/ + 20/*offset for fillText*/});
 }

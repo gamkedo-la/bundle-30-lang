@@ -137,17 +137,17 @@
     }
   };
 
-  let arrayOfLetters = [];
+  let arrayOfAnswers = [];
 
   function checkForLetterClick()
   {
     console.log('inside check for letter click');
-    for (let arrayOfLettersIndex = 0; arrayOfLettersIndex < arrayOfLetters.length; arrayOfLettersIndex++)
+    for (let arrayOfAnswersIndex = 0; arrayOfAnswersIndex < arrayOfAnswers.length; arrayOfAnswersIndex++)
     {
-      if (mouseCoordinates.mouseX > arrayOfLetters[arrayOfLettersIndex].colliderLeftX &&
-          mouseCoordinates.mouseX < arrayOfLetters[arrayOfLettersIndex].colliderRightX &&
-          mouseCoordinates.mouseY > arrayOfLetters[arrayOfLettersIndex].colliderTopY &&
-          mouseCoordinates.mouseY < arrayOfLetters[arrayOfLettersIndex].colliderBottomY)
+      if (mouseCoordinates.mouseX > arrayOfAnswers[arrayOfAnswersIndex].colliderLeftX &&
+          mouseCoordinates.mouseX < arrayOfAnswers[arrayOfAnswersIndex].colliderRightX &&
+          mouseCoordinates.mouseY > arrayOfAnswers[arrayOfAnswersIndex].colliderTopY &&
+          mouseCoordinates.mouseY < arrayOfAnswers[arrayOfAnswersIndex].colliderBottomY)
           {
             console.log('letter click detected');
           }
@@ -175,8 +175,8 @@
     letterM = new LetterPrototype('m');
     letterN = new LetterPrototype('n');
 
-    arrayOfLetters.push(letterM);
-    arrayOfLetters.push(letterN);
+    arrayOfAnswers.push(letterM);
+    arrayOfAnswers.push(letterN);
 
     //Fan(xCoordinate,yCoordinate, width,height, color)
     fan1 = new Fan(10,550, 75,150, 'white');

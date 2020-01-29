@@ -34,15 +34,23 @@ function initializePromptAndAnswerObjects()
   console.log(arrayOfLogicalPromptAnswerGroupings);
 }
 
-function PromptAndAnswerClass(nameString, textString, imageAssociation, audioAssociation)
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+}
+
+function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, audioAssociation)
 {
   this.name = nameString;
-  this.textAssociation = textString;
+  this.textAssociation = textAssociation;
   this.imageAssociation = imageAssociation;
   this.audioAssociation = audioAssociation;
 
+  this.arrayOfDataTypes = ['string','img','audio'];
+
   this.prompt = undefined;
-  this.arrayOfPossiblePrompts = [this.text, this.imageAssociation, this.audioAssociation];
+  this.arrayOfPossiblePrompts = [this.textAssociation, this.imageAssociation, this.audioAssociation];
   this.chooseAPrompt = function()
   {
     let randomArrayOfPossiblePromptsIndex = getRandomIntInclusive(0, arrayOfPossiblePrompts.length - 1);
@@ -50,24 +58,76 @@ function PromptAndAnswerClass(nameString, textString, imageAssociation, audioAss
   }
 
   this.answer = undefined;
-  this.arrayOfPossibleAnswers = [this.text, this.imageAssociation, this.audioAssociation];
+  this.arrayOfPossibleAnswers = [this.textAssociation, this.imageAssociation, this.audioAssociation];
   this.assignAnAnswerBasedOnPrompt = function()
   {
     let temporaryArrayOfPossibleAnswers = this.arrayOfPossibleAnswers;
+
     let randomIndexToChooseAnswerInTemporaryArray = undefined;
 
     for (let arrayOfTemporaryAnswersIndex = 0; arrayOfTemporaryAnswersIndex < temporaryArrayOfPossibleAnswers.length; arrayOfTemporaryAnswersIndex++)
     {
       if (temporaryArrayOfPossibleAnswers[arrayOfTemporaryAnswersIndex] === this.prompt)
       {
+        // console.log('this.prompt: ' + this.prompt);
         temporaryArrayOfPossibleAnswers.splice(arrayOfTemporaryAnswersIndex,1);
         randomIndexToChooseAnswerInTemporaryArray = getRandomIntInclusive(0, temporaryArrayOfPossibleAnswers.length - 1);
         this.answer = temporaryArrayOfPossibleAnswers[randomIndexToChooseAnswerInTemporaryArray];
       }//end of checking for prompt/answer overlap
     }//end of for loop through temporary answers array
   }//end of answer assignment
+
+  this.assignIncorrectAnswer = function()
+  {
+    
+  }
 }//end of prompt and answer class
 
+let currentPromptAnswerGroup = undefined;
+
+function pickARandomLogicalPromptAnswerGroup()
+{
+  let randomIndexForArrayOfGroups = getRandomIntInclusive(0,arrayOfLogicalPromptAnswerGroupings.length - 1);
+  currentPromptAnswerGroup = arrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
+}
+
+let currentPromptAnswerFromLogicalGroup = undefined;
+
+function pickTargetPromptAnswerFromPromptAnswerGroup()
+{
+  let randomIndexGromLogicalPromptGroup = getRandomIntInclusive(0,currentPromptAnswerGroup.length - 1);
+  currentPromptAnswerFromLogicalGroup = currentPromptAnswerGroup[randomIndexGromLogicalPromptGroup];
+}
+
+let currentPrompt = undefined;
+
+function pickARandomPrompt()
+{
+  let randomPromptIndex = getRandomIntInclusive(0, currentPromptAnswerFromLogicalGroup.arrayOfPossiblePrompts.length - 1);
+  currentPromptAnswerFromLogicalGroup.prompt = currentPromptAnswerFromLogicalGroup.arrayOfPossiblePrompts[randomPromptIndex];
+}
+
+let currentIncorrectAnswer = undefined;
+
+function()
+{
+  let randomIncorrectAnswerIndex =
+}
+
+function initializePromptAndAnswers()
+{
+  pickARandomLogicalPromptAnswerGroup();
+  // console.log('currentPromptAnswerGroup: ' + currentPromptAnswerGroup);
+  pickTargetPromptAnswerFromPromptAnswerGroup();
+  pickARandomPrompt();
+  // console.log('currentAnswerFromLogicalGroup: ' + currentAnswerFromLogicalGroup);
+  // console.log('currentAnswerFromLogicalGroup.arrayOfPossiblePrompts: ' + currentAnswerFromLogicalGroup.arrayOfPossiblePrompts);
+  // pickARandomAssociationTypeToPromptFromGroup();
+  // console.log('currentPromptedAssociationType: ' + currentPromptedAssociationType);
+  currentPromptAnswerFromLogicalGroup.assignAnAnswerBasedOnPrompt();
+  console.log('prompt: ' + currentPromptAnswerFromLogicalGroup.prompt);
+  console.log('answer: ' + currentPromptAnswerFromLogicalGroup.answer);
+}
 
 function moveAnswersIfAppropriate()
 {

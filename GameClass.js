@@ -9,10 +9,10 @@ function GameClass()
     placeholderColor: undefined,
     image: undefined,
 
-    this.update: function()
+    update: function()
     {
 
-    }
+    },
 
     drawPlaceHolderImage: function()
     {
@@ -82,8 +82,8 @@ function GameClass()
 
   this.backButtonSpecifics =
   {
-    backButtonRectangleColor = undefined;
-    backButtonTextColor = undefined;
+    backButtonRectangleColor: undefined,
+    backButtonTextColor: undefined
   }
 
   this.answersSpeed = undefined;
@@ -122,6 +122,6 @@ function GameClass()
 
   this.input = function()
   {
-    
+
   }
 }

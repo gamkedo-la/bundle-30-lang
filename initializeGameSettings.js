@@ -7,7 +7,7 @@ function initializeSpecificGameSettings()
     playerSpeedX = startingSnakeSpeedX;
     playerSpeedY = startingSnakeSpeedY;
     letterSpeed = snakeLetterSpeed;
-    populateArrayOfLettersForSnake();
+    populateArrayOfAnswersForSnake();
   } else if (playerShouldBePlayingBird)
   {
     playerXCoordinate = birdStartingX;

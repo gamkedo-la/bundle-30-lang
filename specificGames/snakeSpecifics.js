@@ -86,11 +86,12 @@ function wrapSnakeIfOffScreen()
   }
 }
 
-function populateArrayOfLettersForSnake()
+function populateArrayOfAnswersForSnake()
 {
-  arrayOfLetters = [];
-  arrayOfLetters.push({name:'m',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
-  arrayOfLetters.push({name:'n',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
+  arrayOfAnswers = [];
+  
+  arrayOfAnswers.push({name:'m',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
+  arrayOfAnswers.push({name:'n',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
 }
 
 function drawSnakeTransitionText()
