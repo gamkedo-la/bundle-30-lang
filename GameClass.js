@@ -3,21 +3,78 @@ function GameClass()
 
   this.Player =
   {
-    startingCoordinates: {x:undefined,y:undefined},
+    coordinates: {x:undefined,y:undefined},
     xySpeeds: {x:undefined,y:undefined},
-    widthAndHeight: {width:undefined,height:undefined},
-    placeHolderColor: undefined,
+    dimensions: {width:undefined,height:undefined},
+    placeholderColor: undefined,
     image: undefined,
+
+    this.update: function()
+    {
+
+    }
+
+    drawPlaceHolderImage: function()
+    {
+      gameCanvasContext.fillStyle = this.placeholderColor;
+      gameCanvasContext.fillRect(this.coordinates.x,this.coordinates.y, this.dimensions.width,this.dimensions.height);
+    },
+
+    drawImage: function()
+    {
+      //drawImage(image,startingPointOfOriginalImageX (optional),startingPointOfOriginalImageY (optional),
+      //                cropWidthOfOriginalImage (optional),cropWidthOfOriginalImage (optional),
+      //                startingXofDrawingOnCanvas,startingYofDrawingOnCanvas,
+      //                widthOfDrawingOnCanvas,height);
+      gameCanvasContext.drawImage(this.image, this.coordinates.x,this.coordinates.y,
+                                              this.this.dimensions.width,this.dimensions.height);
+    },
 
     draw: function()
     {
-      gameCanvasContext.fillStyle = this.placeHolderColor;
+      if (this.image === undefined)
+      {
+        this.drawPlaceHolderImage();
+      } else
+      {
+        this.drawImage();
+      }
 
       // for(let snakeTailIndex = 0; snakeTailIndex < snakeTail.length; snakeTailIndex++)
       // {
       //   gameCanvasContext.fillRect(snakeTail[snakeTailIndex].x,snakeTail[snakeTailIndex].y,
       //   snakeDimension - 2,snakeDimension - 2);
       // }
+    }
+  }
+
+  this.backgroundImage = undefined;
+  this.placeholderBackgroundColor = undefined;
+
+  this.drawPlaceHolderBackgroundImage = function()
+  {
+    gameCanvasContext.fillStyle = this.placeholderBackgroundColor;
+    gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+  }
+
+  this.drawBackgroundImage = function()
+  {
+    //drawImage(image,startingPointOfOriginalImageX (optional),startingPointOfOriginalImageY (optional),
+    //                cropWidthOfOriginalImage (optional),cropWidthOfOriginalImage (optional),
+    //                startingXofDrawingOnCanvas,startingYofDrawingOnCanvas,
+    //                widthOfDrawingOnCanvas,height);
+    gameCanvasContext.drawImage(this.backgroundImage, this.coordinates.x,this.coordinates.y,
+                                                      this.this.dimensions.width,this.dimensions.height);
+  }
+
+  this.drawBackground = function()
+  {
+    if (this.background === undefined)
+    {
+      this.drawPlaceHolderBackgroundImage();
+    } else
+    {
+      this.drawBackgroundImage();
     }
   }
 
@@ -62,4 +119,9 @@ function GameClass()
     gameCanvasContext.fillStyle = undefined;
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
   };
+
+  this.input = function()
+  {
+    
+  }
 }
