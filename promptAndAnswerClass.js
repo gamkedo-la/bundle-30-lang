@@ -69,14 +69,6 @@ function PromptAndAnswerClass(nameString, textString, imageAssociation, audioAss
 }//end of prompt and answer class
 
 
-
-
-
-
-
-
-
-
 function moveAnswersIfAppropriate()
 {
   if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter || playerShouldBePlayingRunner)
