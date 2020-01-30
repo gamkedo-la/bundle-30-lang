@@ -109,11 +109,10 @@ function pickARandomPrompt()
 
 let currentIncorrectAnswer = undefined;
 
-function()
-{
-  let randomIncorrectAnswerIndex =
-}
-
+// function()
+// {
+//   let randomIncorrectAnswerIndex =
+// }
 function initializePromptAndAnswers()
 {
   pickARandomLogicalPromptAnswerGroup();
