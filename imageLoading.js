@@ -105,12 +105,12 @@ function loadImages()
   //somewhat standard image loading
 
   //prompt and answer
-  arrayOfImages.push({imageObjectBinding: womanImage, theFile: 'images/Sprites/PromptsAndAnswers/woman.png'});
-  arrayOfImages.push({imageObjectBinding: womenImage, theFile: 'images/Sprites/PromptsAndAnswers/women.png'});
-  arrayOfImages.push({imageObjectBinding: manImage, theFile: 'images/Sprites/PromptsAndAnswers/man.png'});
-  arrayOfImages.push({imageObjectBinding: menImage, theFile: 'images/Sprites/PromptsAndAnswers/men.png'});
-  arrayOfImages.push({imageObjectBinding: heImage, theFile: 'images/Sprites/PromptsAndAnswers/man.png'});
-  arrayOfImages.push({imageObjectBinding: sheImage, theFile: 'images/Sprites/PromptsAndAnswers/woman.png'});
+  arrayOfImages.push({imageObjectBinding: womanImage, theFile: 'images/sprites/PromptsAndAnswers/woman.png'});
+  arrayOfImages.push({imageObjectBinding: womenImage, theFile: 'images/sprites/PromptsAndAnswers/women.png'});
+  arrayOfImages.push({imageObjectBinding: manImage, theFile: 'images/sprites/PromptsAndAnswers/man.png'});
+  arrayOfImages.push({imageObjectBinding: menImage, theFile: 'images/sprites/PromptsAndAnswers/men.png'});
+  arrayOfImages.push({imageObjectBinding: heImage, theFile: 'images/sprites/PromptsAndAnswers/man.png'});
+  arrayOfImages.push({imageObjectBinding: sheImage, theFile: 'images/sprites/PromptsAndAnswers/woman.png'});
 
   //runner game
   arrayOfImages.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png'});
