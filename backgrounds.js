@@ -26,7 +26,7 @@ function drawGameSpecificBackground()
   } else if (playerShouldBePlayingSpaceShooter)
   {
     drawSpaceShooterBackground();
-  } else if (playerShouldBePlayingRunner) {
-	  drawRunnerBackground();
+  } else if (runnerGame.isPlaying()) {
+	  runnerGame.drawBackground();
   }
 }

@@ -182,7 +182,7 @@ function handleGameCellClicks()
 	{
 		gameInterval.reset(RUNNERFRAMERATE);
         letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
-		playerShouldBePlayingRunner = true;
+		runnerGame.startPlaying();
 		playerShouldSeeTitleScreen = false;
 		playerIsPlayingAnyGame = true;
         levelIsTransitioning = true;

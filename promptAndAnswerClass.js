@@ -128,9 +128,10 @@ function initializePromptAndAnswers()
   console.log('answer: ' + currentPromptAnswerFromLogicalGroup.answer);
 }
 
+var answerSpeed = 0;
 function moveAnswersIfAppropriate()
 {
-  if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter || playerShouldBePlayingRunner)
+  if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter || runnerGame.isPlaying())
   {
     for (var answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
     {
@@ -244,7 +245,7 @@ function handleCollisionsWithAnswers()
       }
     }
   }
-	else if (playerShouldBePlayingRunner) {
+	else if (runnerGame.isPlaying()) {
 		for (let answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
 		{
 			const letter = arrayOfAnswers[answerIndex];

@@ -63,7 +63,7 @@ function spawnALetterIfAppropriate()
       randomChoiceOf2XStartingPositions = 380;
     }
     arrayOfAnswers.push({xCoordinate:randomChoiceOf2XStartingPositions,yCoordinate:-20, name:name, correctAnswer:false});
-  } else if (playerShouldBePlayingRunner) {
+  } else if (runnerGame.isPlaying()) {
 	  let coinToss = Math.random() < 0.5;
 	  arrayOfAnswers.push({
 		  name: name,
@@ -77,7 +77,7 @@ function spawnALetterIfAppropriate()
 
 function moveLettersIfAppropriate()
 {
-  if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter || playerShouldBePlayingRunner)
+	if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter || runnerGame.isPlaying())
   {
     for (var letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {
@@ -109,7 +109,7 @@ function drawLetters()
   } else if (playerShouldBePlayingSpaceShooter)
   {
     gameCanvasContext.fillStyle = spaceShooterLetterColor;
-  } else if (playerShouldBePlayingRunner)
+  } else if (runnerGame.isPlaying())
   {
     gameCanvasContext.fillStyle = RUNNERLETTERCOLOR;
   }
@@ -220,7 +220,7 @@ function handleCollisionsWithLetters()
       }
     }
   }
-	else if (playerShouldBePlayingRunner) {
+	else if (runnerGame.isPlaying()) {
 		for (let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
 		{
 			const letter = arrayOfAnswers[letterIndex];

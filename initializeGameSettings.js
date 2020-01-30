@@ -27,7 +27,7 @@ function initializeSpecificGameSettings()
   {
     playerXCoordinate = spaceShooterStartingXCoordinate;
     playerYCoordinate = spaceShooterStartingYCoordinate;
-  } else if (playerShouldBePlayingRunner) {
-	  initializeRunner();
+  } else if (runnerGame.isPlaying()) {
+	  runnerGame.initialize();
   }
 }

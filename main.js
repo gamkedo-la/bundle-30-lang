@@ -1,9 +1,9 @@
-var gameCanvas, gameCanvasContext, statsCanvas, statsCanvasContext;
+var gameCanvas, gameCanvasContext, statsCanvas, statsCanvasContext, runnerGame;
 console.log('Bundle of 30 Language Games Starting...');
 
 window.onload = function()
 {
-
+  runnerGame = new runnerGameClass()
   loadImages();
 
   gameCanvas = document.getElementById("gameCanvas");
@@ -60,8 +60,8 @@ function gameSpecificUpdates()
   } else if (playerShouldBePlayingSpaceShooter)
   {
     moveSpaceShooterBullets();
-  } else if (playerShouldBePlayingRunner) {
-	  updateRunnerWorld();
+  } else if (runnerGame.isPlaying()) {
+    runnerGame.update();
   }
 }
 
@@ -98,9 +98,9 @@ function drawEverythingInTheGame()
       drawDebugStuff();
     }
 
-  	if (playerShouldBePlayingRunner) {
-  		drawRunnerWorld();
-  	}
+    if (runnerGame.isPlaying()) {
+		runnerGame.draw();
+	}
   }
 
   if (levelIsTransitioning)
