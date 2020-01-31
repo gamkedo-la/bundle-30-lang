@@ -122,6 +122,22 @@ function pinataClick(e) {
 
 }
 
+// rainbow generator
+var size    = 16;
+var rainbow = new Array(size);
+for (var i=0; i<size; i++) {
+  var red   = sin_to_hex(i, 0 * Math.PI * 2/3); // 0   deg
+  var blue  = sin_to_hex(i, 1 * Math.PI * 2/3); // 120 deg
+  var green = sin_to_hex(i, 2 * Math.PI * 2/3); // 240 deg
+  rainbow[i] = "#"+ red + green + blue;
+}
+function sin_to_hex(i, phase) {
+  var sin = Math.sin(Math.PI / size * 2 * i + phase);
+  var int = Math.floor(sin * 127) + 128;
+  var hex = int.toString(16);
+ return hex.length === 1 ? "0"+hex : hex;
+}
+
 this.init = function() {
     // console.log("Pinata game init!")
 
@@ -143,11 +159,17 @@ this.init = function() {
 
         if (levelIsTransitioning || !playerShouldBePlayingPinata) return;
 
-        //a.width ^= 0; // clear the screen
+        //a.width ^= 0; // clear the screen hack
         c.fillStyle = "rgba(150,220,255,1)"; // sky blue
         c.fillRect(0,0,a.width,a.height);
 
-
+        // draw a nice sky
+        for (i=0; i<rainbow.length; i++) {
+            c.fillStyle = rainbow[i];
+            c.beginPath();
+            c.arc(320, 900+i*50, 1000, 0, 7);
+            c.fill();
+        }
 
         // Compute collisions
         for(i = objects.length; i--;){
