@@ -31,10 +31,13 @@ var generalNegativeFeedbackSound4 = document.createElement("AUDIO");
 //music
 var currentBackgroundMusic = undefined;
 
+var transitionToLevelMusic1 = document.createElement("AUDIO");
+var titleScreenMusic = document.createElement("AUDIO");
+
 var runnerBackgroundMusic = document.createElement("AUDIO");
 var pinataBackgroundMusic = document.createElement("AUDIO");
 
-var transitionToLevelMusic1 = document.createElement("AUDIO");
+
 
 function setSourcesForAudioObjects()//for after loading screen
 {
@@ -86,6 +89,8 @@ function setSourcesForAudioObjects()//for after loading screen
   //music
   transitionToLevelMusic1.src = "audio/levelTransitionSound.mp3";
   masterAudioBus.push(transitionToLevelMusic1);
+  titleScreenMusic.src = 'audio/backgroundTracks/titleScreenMusic.mp3';
+  masterAudioBus.push(titleScreenMusic);
 
   runnerBackgroundMusic.src = "audio/backgroundTracks/runnerBackground.mp3";
   masterAudioBus.push(runnerBackgroundMusic);
