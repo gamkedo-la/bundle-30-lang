@@ -96,16 +96,12 @@ function snakeGameClass()
     if (playerXCoordinate > gameCanvas.width)
     {
       playerXCoordinate = 0;
-      console.log('player went off the right');
-      console.log('playerXCoordinate: ' + playerXCoordinate);
     } else if (playerXCoordinate < 0)
     {
       playerXCoordinate = gameCanvas.width;
     } else if (playerYCoordinate > gameCanvas.height)
     {
-      console.log('player went off the bottom');
       playerYCoordinate = 0;
-      console.log('playerYCoordinate: ' + playerYCoordinate);
     } else if (playerYCoordinate < 0)
     {
       playerYCoordinate = gameCanvas.height;
