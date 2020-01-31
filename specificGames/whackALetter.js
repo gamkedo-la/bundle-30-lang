@@ -5,6 +5,19 @@ var whackALetterFrameRate = 1000/30;
 var playerShouldSeeSplashScreen = true;
 
 var tileImage = document.createElement("img");
+var hammerCursorImage = document.createElement("img");
+
+var mouseCoordinates = {mouseX:undefined,mouseY:undefined};
+
+function calculateMousePosition(builtInDocumentEventObject)
+{
+  var rect = whackALetterCanvas.getBoundingClientRect();
+  var root = document.documentElement;
+  var x = builtInDocumentEventObject.clientX - rect.left - root.scrollLeft;
+  var y = builtInDocumentEventObject.clientY - rect.top - root.scrollTop;
+  mouseCoordinates.mouseX = x;
+  mouseCoordinates.mouseY = y;
+}
 
 function drawSplashScreen()
 {
@@ -22,15 +35,29 @@ window.onload = function()
   whackALetterCanvasContext = whackALetterCanvas.getContext('2d');
 
   whackALetterCanvas.addEventListener('click', handleWhackALetterClick);
+  whackALetterCanvas.addEventListener('mousemove', calculateMousePosition);
 
   initializeLetters();
   loadTileImage();
   setInterval(gameLoop, whackALetterFrameRate);
 }
 
+let mouseClicked = false;
+
 function handleWhackALetterClick()
 {
   playerShouldSeeSplashScreen = false;
+  document.body.style.cursor = 'none';
+  if (!playerShouldSeeSplashScreen)
+  {
+    mouseClicked = true;
+    setTimeout(unclickMouse, 200);
+  }
+}
+
+function unclickMouse()
+{
+  mouseClicked = false;
 }
 
 function gameLoop()
@@ -50,10 +77,31 @@ function drawEverything()
   {
     drawSplashScreen();
   } else {
+
     drawBackground();
     drawLetters();
     drawTiles();
+    drawHammerCursor();
   }
+}
+
+function drawHammerCursor()
+{
+  if (mouseClicked)
+  {
+    whackALetterCanvasContext.save();
+    whackALetterCanvasContext.translate(mouseCoordinates.mouseX + 35,mouseCoordinates.mouseY + 25);
+    whackALetterCanvasContext.rotate(-45*Math.PI/180);
+    whackALetterCanvasContext.translate(-(mouseCoordinates.mouseX + 35),-(mouseCoordinates.mouseY + 25));
+
+    whackALetterCanvasContext.drawImage(hammerCursorImage, mouseCoordinates.mouseX - 35,mouseCoordinates.mouseY - 25, 100,100);
+    whackALetterCanvasContext.restore();
+  } else {
+    {
+      whackALetterCanvasContext.drawImage(hammerCursorImage, mouseCoordinates.mouseX - 35,mouseCoordinates.mouseY - 25, 100,100);
+    }
+  }
+
 }
 
 function drawBackground()
@@ -65,6 +113,7 @@ function drawBackground()
 function loadTileImage()
 {
   tileImage.src = 'whackALetterTile.png';
+  hammerCursorImage.src = 'whackHammer.png';
 }
 
 function drawTiles()

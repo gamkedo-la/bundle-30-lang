@@ -4,6 +4,8 @@ var letterMazeCanvasContext;
 var letterMazeCanvas2;
 var letterMazeCanvasContext2;
 
+var backgroundMusic = document.createElement("audio");
+
 function drawBackground()
 {
   letterMazeCanvasContext.fillStyle = 'black';
@@ -97,6 +99,7 @@ function drawGame()
 function handleSplashScreenClick()
 {
   playerShouldSeeSplashScreen = false;
+  backgroundMusic.src = 'mazeRaceMusic.mp3';
 }
 
 const NUMBER_OF_COLUMNS = 8;
@@ -429,6 +432,8 @@ function advanceGenerationAlgorithm()
     initializeLetters();
     console.log('currentCellBeingVisitedByGenerationAlgorithm: ' + currentCellBeingVisitedByGenerationAlgorithm);
     initializePlayers();
+    correctLetterAudioTag.onended = function(){backgroundMusic.play()};
+    backgroundMusic.loop = true;
     correctLetterAudioTag.play();
     console.log(arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation);
   }
@@ -781,6 +786,8 @@ function checkForLetterCollisions()
           {
             resetGame();
             console.log('correct letter choice');
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0;
           }
       else if (arrayOfPlayers[arrayOfPlayersIndex].cell === arrayOfAnswers[arrayOfAnswersIndex].cell &&
                arrayOfAnswers[arrayOfAnswersIndex].name !== currentCorrectLetter)
