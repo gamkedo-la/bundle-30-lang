@@ -50,7 +50,7 @@ function updateEverythingInTheGame()
 
 function gameSpecificUpdates()
 {
-  if (playerShouldBePlayingSnake)
+  if (SNAKE_GAME.isPlaying())
   {
     SNAKE_GAME.updateSnakeTail();
   } else if (playerShouldBePlayingLane)
@@ -100,7 +100,10 @@ function drawEverythingInTheGame()
 
     if (runnerGame.isPlaying()) {
 		runnerGame.draw();
-	}
+	} else if (SNAKE_GAME.isPlaying())
+  {
+    SNAKE_GAME.draw();
+  }
   }
 
   if (levelIsTransitioning)

@@ -54,7 +54,12 @@ function snakeGameClass()
     playerXCoordinate = snakeStartingX;
     playerYCoordinate = snakeStartingY;
     gameInterval.reset(SNAKE_GAME_FRAME_RATE);
+    playerSpeedX = 0;
+    playerSpeedY = 0;
+    letterSpeed = SNAKE_LETTER_SPEED;
+    SNAKE_GAME.populateArrayOfAnswers();
     setOrResetCorrectLetter();
+
   }
 
 
@@ -113,6 +118,7 @@ function snakeGameClass()
   {
     this.drawBackground();
     this.drawPlayer();
+    this.drawAnswers();
   }
 
   this.drawBackground = function()
@@ -152,6 +158,16 @@ function snakeGameClass()
 
     arrayOfAnswers.push({name:'m',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
     arrayOfAnswers.push({name:'n',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
+  }
+
+  this.drawAnswers = function()
+  {
+    gameCanvasContext.fillStyle = SNAKE_LETTER_COLOR;
+    for (var letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
+    {
+      gameCanvasContext.fillText(arrayOfAnswers[letterIndex].name,
+      arrayOfAnswers[letterIndex].xCoordinate,arrayOfAnswers[letterIndex].yCoordinate);
+    }
   }
 }
 

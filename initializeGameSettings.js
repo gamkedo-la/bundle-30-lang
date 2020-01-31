@@ -1,13 +1,8 @@
 function initializeSpecificGameSettings()
 {
-  if (playerShouldBePlayingSnake)
+  if (SNAKE_GAME.isPlaying())
   {
-    playerXCoordinate = snakeStartingX;
-    playerYCoordinate = snakeStartingY;
-    playerSpeedX = STARTING_SNAKE_SPEED_X;
-    playerSpeedY = STARTING_SNAKE_SPEED_Y;
-    letterSpeed = SNAKE_LETTER_SPEED;
-    SNAKE_GAME.populateArrayOfAnswers();
+    SNAKE_GAME.initialize();
   } else if (playerShouldBePlayingBird)
   {
     playerXCoordinate = birdStartingX;

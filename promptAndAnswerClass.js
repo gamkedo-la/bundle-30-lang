@@ -148,7 +148,7 @@ function moveAnswersIfAppropriate()
 
 function handleCollisionsWithAnswers()
 {
-  if (playerShouldBePlayingSnake)
+  if (SNAKE_GAME.isPlaying())
   {
     for (let answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
     {

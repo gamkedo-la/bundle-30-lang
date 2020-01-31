@@ -39,7 +39,7 @@ function handleBackButtonClick()
         playerShouldSeeTitleScreen = true;
         playerIsPlayingAnyGame = false;
         playerShouldBePlayingBird = false;
-        playerShouldBePlayingSnake = false;
+        SNAKE_GAME.stopPlaying() = false;
         playerShouldBePlayingLane = false;
         playerShouldBePlayingJumper = false;
         playerShouldBePlayingPinata = false;

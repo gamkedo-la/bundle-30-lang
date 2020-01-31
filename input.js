@@ -48,7 +48,7 @@ function keyDown(builtInDocumentEventObject)
   {
     case 37://left arrow
     leftArrowIsBeingHeld = true;
-    if (playerShouldBePlayingSnake)
+    if (SNAKE_GAME.isPlaying())
     {
       playerSpeedX = -20;
       playerSpeedY = 0;
@@ -67,7 +67,7 @@ function keyDown(builtInDocumentEventObject)
 
     case 38://up arrow
     upArrowIsBeingHeld = true;
-    if (playerShouldBePlayingSnake)
+    if (SNAKE_GAME.isPlaying())
     {
       playerSpeedX = 0;
       playerSpeedY = -20;
@@ -79,7 +79,7 @@ function keyDown(builtInDocumentEventObject)
 
     case 39://right arrow
     rightArrowIsBeingHeld = true;
-    if (playerShouldBePlayingSnake)
+    if (SNAKE_GAME.isPlaying())
     {
       playerSpeedX = 20;
       playerSpeedY = 0;
@@ -97,7 +97,7 @@ function keyDown(builtInDocumentEventObject)
 
     case 40://down arrow
     downArrowIsBeingHeld = true;
-    if (playerShouldBePlayingSnake)
+    if (SNAKE_GAME.isPlaying())
     {
       playerSpeedX = 0;
       playerSpeedY = 20;

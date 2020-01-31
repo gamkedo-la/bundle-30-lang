@@ -123,13 +123,16 @@ function drawLetters()
 
 function handleCollisionsWithLetters()
 {
-  if (playerShouldBePlayingSnake)
+  if (SNAKE_GAME.isPlaying())
   {
+    console.log('playerXCoordinate: ' + playerXCoordinate);
+    console.log('playerYCoordinate: ' + playerYCoordinate);
     for (let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {
       if (playerXCoordinate > arrayOfAnswers[letterIndex].xCoordinate - 15 && playerXCoordinate < arrayOfAnswers[letterIndex].xCoordinate + 40
         && playerYCoordinate > arrayOfAnswers[letterIndex].yCoordinate - 30 && playerYCoordinate < arrayOfAnswers[letterIndex].yCoordinate + 5)
         {
+          console.log('letter collision detected');
           if (arrayOfAnswers[letterIndex].name === currentCorrectLetter)
           {
             amountCorrect++;

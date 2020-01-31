@@ -100,7 +100,7 @@ function handleGameCellClicks()
       mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
   {
     // console.log('snake cell clicked');
-    playerShouldBePlayingSnake = true;
+    SNAKE_GAME.startPlaying();
     playerShouldSeeTitleScreen = false;
     gameInterval.reset(SNAKE_GAME_FRAME_RATE);
     playerIsPlayingAnyGame = true;

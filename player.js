@@ -23,7 +23,7 @@ function drawGameSpecificPlayer()
 
 function moveGameSpecificPlayer()
 {
-  if (playerShouldBePlayingSnake)
+  if (SNAKE_GAME.isPlaying())
   {
     SNAKE_GAME.movePlayer();
   } else if (playerShouldBePlayingBird)
