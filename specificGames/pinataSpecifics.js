@@ -13,6 +13,7 @@ var objects = [];
 
 // how many poppable letter choices will fall out
 const CANDY_COUNT = 25;
+const MASS_SCALE = 5; // this number divided by the radius = mass (was 1)
 
 // special case: candies with a "space" as the letter are considered particles of confetti
 const CONFETTI_COUNT = 12;
@@ -38,33 +39,6 @@ var targetLetter = alphabet[rndInt(0,alphabet.length-1)];
 
 function boom(x,y,wasCorrect) {
 
-    
-    // reuse old confetti
-    let found = 0;
-    for(let i=objects.length; i--;) { 
-        if (objects[i].Z==CONFETTI_ID) { // gotcha
-            found++;
-            objects[i].R = CONFETTI_RADIUS;
-            objects[i].M = CONFETTI_MASS;
-            objects[i].C.x = x+Math.random()*40-20;
-            objects[i].C.y = y+Math.random()*-40-30;
-            objects[i].V.x = Math.random()*1000-500;
-            objects[i].V.y = Math.random()*1000-500;
-        }
-    }
-    
-    // spawn some particles of confetti
-    if (!found) { // first time init
-        for(i = CONFETTI_COUNT; i--; ){
-            Circle(
-                Vec2(x+Math.random()*40-20,
-                y+Math.random()*-40-30), // more down than up
-                CONFETTI_RADIUS,
-                CONFETTI_MASS,
-                CONFETTI_ID);
-        }
-    }
-
     if (wasCorrect) {
         // destroy the world!
         objects = [];
@@ -77,12 +51,38 @@ function boom(x,y,wasCorrect) {
         // select a new letter
         targetLetter = alphabet[rndInt(0,alphabet.length-1)];
         // ensure the target one is there at least one matching letter, quite high up
-        Circle(Vec2(x+Math.random()*300-250,y+Math.random()*-100-75),40,1/40,targetLetter);
+        Circle(Vec2(x+Math.random()*300-250,y+Math.random()*-100-75),40,5/40,targetLetter);
         // create many little candies
         for(i = CANDY_COUNT; i--; ){
             Circle(Vec2(x+Math.random()*200-100,y+Math.random()*-200)); // a bit higher please
         }
     }
+
+        // reuse old confetti
+        let found = 0;
+        for(let i=objects.length; i--;) { 
+            if (objects[i].Z==CONFETTI_ID) { // gotcha
+                found++;
+                objects[i].R = CONFETTI_RADIUS;
+                objects[i].M = CONFETTI_MASS;
+                objects[i].C.x = x+Math.random()*40-20;
+                objects[i].C.y = y+Math.random()*-40-30;
+                objects[i].V.x = Math.random()*1000-500;
+                objects[i].V.y = Math.random()*1000-500;
+            }
+        }
+        
+        // spawn some particles of confetti if we need them
+        if (!found) { // first time init
+            for(i = CONFETTI_COUNT; i--; ){
+                Circle(
+                    Vec2(x+Math.random()*40-20,
+                    y+Math.random()*-40-30), // more down than up
+                    CONFETTI_RADIUS,
+                    CONFETTI_MASS,
+                    CONFETTI_ID);
+            }
+        }
 
 }
 
@@ -303,7 +303,7 @@ this.init = function() {
 // u: tangent
 // x: jT
 // b.bgColor="#333";
-var Circle = (C, R = Math.random() * 30 + 10, M = 1/R, forcedString) =>
+var Circle = (C, R = Math.random() * 30 + 10, M = MASS_SCALE/R, forcedString) =>
 
   objects.push(
     {
