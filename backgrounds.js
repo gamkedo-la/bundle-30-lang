@@ -12,7 +12,7 @@ function drawGameSpecificBackground()
     drawTitleScreen();
   } else if (playerShouldBePlayingSnake)
   {
-    drawSnakeBackground();
+    SNAKE_GAME.drawBackground();
   } else if (playerShouldBePlayingBird)
   {
     drawBirdBackground();

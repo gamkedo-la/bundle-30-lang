@@ -1,105 +1,162 @@
-var snakeStartingX = 320;
-var snakeStartingY = 350;
+function getRandomIntInclusive(min, max)
+{
+min = Math.ceil(min);
+max = Math.floor(max);
+return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+}
+
+var snakeStartingX = getRandomIntInclusive(0,640);
+var snakeStartingY = getRandomIntInclusive(0,700);
 
 var snakeTail = [];
-var snakeTailMaxLength = 5;
 
-var startingSnakeSpeedX = 0;
-var startingSnakeSpeedY = 0;
 
-var snakeDimension = 20;
+const STARTING_SNAKE_SPEED_X = 0;
+const STARTING_SNAKE_SPEED_Y = 0;
 
-var snakeGameFrameRate = 1000/10;
+const SNAKE_TAIL_MAX_LENGTH = 5;
+const SNAKE_DIMENSION = 20;
 
-var snakeBackButtonRectangleColor = 'yellow';
-var snakeBackButtonTextColor = 'blueviolet';
+const SNAKE_GAME_FRAME_RATE = 1000/10;
 
-var snakeLetterColor = 'cyan';
+const SNAKE_BACK_BUTTON_RECTANGLE_COLOR = 'yellow';
+const SNAKE_BACK_BUTTON_TEXT_COLOR = 'blueviolet';
 
-var snakeLetterSpeed = 0;
+const SNAKE_LETTER_COLOR = 'cyan';
 
-function drawSnakeBackground()
+const SNAKE_LETTER_SPEED = 0;
+
+const SNAKE_BACKGROUND_COLOR = 'brown';
+
+const SNAKE_PLAYER_COLOR = 'lime';
+
+function snakeGameClass()
 {
-    gameCanvasContext.fillStyle = 'brown';
-    gameCanvasContext.fillRect(0,0, 640,700);
-}
+  let gameIsPlaying = false;
 
-
-
-function drawSnakePlayer()
-{
-  gameCanvasContext.fillStyle = 'lime';
-
-  for(let snakeTailIndex = 0; snakeTailIndex < snakeTail.length; snakeTailIndex++)
+  this.isPlaying = function()
   {
-    gameCanvasContext.fillRect(snakeTail[snakeTailIndex].x,snakeTail[snakeTailIndex].y,
-    snakeDimension - 2,snakeDimension - 2);
+    return gameIsPlaying;
+  };
 
-    // if (snakeTrail[i].x === playerX && snakeTrail[i].y == playerY)
-    // {
-    //   tail = 5;
-    // }
-
+  this.startPlaying = function()
+  {
+    gameIsPlaying = true;
   }
 
-}
-
-function populateSnakeTail()
-{
-  snakeTail.push({x:playerXCoordinate,y:playerYCoordinate});
-}
-
-function deleteExcessTail()
-{
-  while (snakeTail.length > snakeTailMaxLength)
+  this.stopPlaying = function()
   {
-    snakeTail.shift();
+    gameIsPlaying = false;
+  }
+
+  this.initialize = function()
+  {
+    playerXCoordinate = snakeStartingX;
+    playerYCoordinate = snakeStartingY;
+    gameInterval.reset(SNAKE_GAME_FRAME_RATE);
+    setOrResetCorrectLetter();
+  }
+
+
+  //update section
+  this.update = function()
+  {
+    this.updateSnakeTail();
+    this.movePlayer();
+  }
+
+  this.updateSnakeTail = function()
+  {
+    this.populateSnakeTail();
+    this.deleteExcessTail();
+  }
+
+  this.populateSnakeTail = function()
+  {
+    snakeTail.push({x:playerXCoordinate,y:playerYCoordinate});
+  }
+
+  this.deleteExcessTail = function()
+  {
+    while (snakeTail.length > SNAKE_TAIL_MAX_LENGTH)
+    {
+      snakeTail.shift();
+    }
+  }
+
+  this.movePlayer = function()
+  {
+    playerXCoordinate += playerSpeedX;
+    playerYCoordinate += playerSpeedY;
+    this.wrapSnakeIfOffScreen();
+  }
+
+  this.wrapSnakeIfOffScreen = function()
+  {
+    if (playerXCoordinate > gameCanvas.width)
+    {
+      playerXCoordinate = 0;
+      console.log('player went off the right');
+      console.log('playerXCoordinate: ' + playerXCoordinate);
+    } else if (playerXCoordinate < 0)
+    {
+      playerXCoordinate = gameCanvas.width;
+    } else if (playerYCoordinate > gameCanvas.height)
+    {
+      console.log('player went off the bottom');
+      playerYCoordinate = 0;
+      console.log('playerYCoordinate: ' + playerYCoordinate);
+    } else if (playerYCoordinate < 0)
+    {
+      playerYCoordinate = gameCanvas.height;
+    }
+  }
+
+  //draw section
+  this.draw = function()
+  {
+    this.drawBackground();
+    this.drawPlayer();
+  }
+
+  this.drawBackground = function()
+  {
+    gameCanvasContext.fillStyle = SNAKE_BACKGROUND_COLOR;
+    gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+  }
+
+  this.drawPlayer = function()
+  {
+    gameCanvasContext.fillStyle = SNAKE_PLAYER_COLOR;
+
+    for(let snakeTailIndex = 0; snakeTailIndex < snakeTail.length; snakeTailIndex++)
+    {
+      gameCanvasContext.fillRect(snakeTail[snakeTailIndex].x,snakeTail[snakeTailIndex].y,
+      SNAKE_DIMENSION - 2,SNAKE_DIMENSION - 2);
+
+      // if (snakeTrail[i].x === playerX && snakeTrail[i].y == playerY)
+      // {
+      //   tail = 5;
+      // }
+    }
+  }
+
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Eat the answers', symbolExclamationPointImage], 60,30, 100,50);
+    customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' move up'], 30,15, 210,200);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' move right'], 30,15, 350,350);
+    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' move down'], 30,15, 200,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' move left'], 30,15, 50,350);
+  }
+
+  this.populateArrayOfAnswers = function()
+  {
+    arrayOfAnswers = [];
+
+    arrayOfAnswers.push({name:'m',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
+    arrayOfAnswers.push({name:'n',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
   }
 }
 
-function updateSnakeTail()
-{
-  populateSnakeTail();
-  deleteExcessTail();
-}
-
-function moveSnakePlayer()
-{
-  playerXCoordinate += playerSpeedX;
-  playerYCoordinate += playerSpeedY;
-}
-
-function wrapSnakeIfOffScreen()
-{
-  if (playerXCoordinate > 640)
-  {
-    playerXCoordinate = -20;
-  } else if (playerXCoordinate < 0)
-  {
-    playerXCoordinate = 640;
-  } else if (playerYCoordinate > 700)
-  {
-    playerYCoordinate = -20;
-  } else if (playerYCoordinate < 0)
-  {
-    playerYCoordinate = 700;
-  }
-}
-
-function populateArrayOfAnswersForSnake()
-{
-  arrayOfAnswers = [];
-  
-  arrayOfAnswers.push({name:'m',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
-  arrayOfAnswers.push({name:'n',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
-}
-
-function drawSnakeTransitionText()
-{
-  //customFontFillText(sentenceArray, fontSize, spacing, xCoordinate,yCoordinate)
-  customFontFillText(['Eat the answers', symbolExclamationPointImage], 60,30, 100,50);
-  customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' move up'], 30,15, 210,200);
-  customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' move right'], 30,15, 350,350);
-  customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' move down'], 30,15, 200,500);
-  customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' move left'], 30,15, 50,350);
-}
+const SNAKE_GAME = new snakeGameClass();

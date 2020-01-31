@@ -6,7 +6,7 @@ function drawBackButton()
     if (playerShouldBePlayingBird){
       gameCanvasContext.fillStyle = birdBackButtonRectangleColor;
     } else if (playerShouldBePlayingSnake) {
-      gameCanvasContext.fillStyle = snakeBackButtonRectangleColor;
+      gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_RECTANGLE_COLOR;
     } else if (playerShouldBePlayingLane) {
       gameCanvasContext.fillStyle = laneBackButtonRectangleColor;
     } else if (playerShouldBePlayingJumper) {
@@ -18,7 +18,7 @@ function drawBackButton()
     if (playerShouldBePlayingBird){
       gameCanvasContext.fillStyle = birdBackButtonTextColor;
     } else if (playerShouldBePlayingSnake) {
-      gameCanvasContext.fillStyle = snakeBackButtonTextColor;
+      gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_TEXT_COLOR;
     } else if (playerShouldBePlayingLane) {
       gameCanvasContext.fillStyle = laneBackButtonTextColor;
     } else if (playerShouldBePlayingJumper)

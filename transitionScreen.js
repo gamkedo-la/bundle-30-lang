@@ -27,7 +27,7 @@ function drawTransitionScreen(arraysOfGameSpecificCustomFontFillTextsForTransiti
 
   if (playerShouldBePlayingSnake)
   {
-    drawSnakeTransitionText();
+    SNAKE_GAME.drawTransitionText();
   }
   else if (playerShouldBePlayingPinata)
   {
@@ -35,6 +35,6 @@ function drawTransitionScreen(arraysOfGameSpecificCustomFontFillTextsForTransiti
   }
   else {
     customFontFillText(['placeholder transition text'], 30, 15, 50,300);
-    
+
   }
 }

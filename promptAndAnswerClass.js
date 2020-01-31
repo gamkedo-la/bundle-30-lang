@@ -79,7 +79,7 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
 
   this.assignIncorrectAnswer = function()
   {
-    
+
   }
 }//end of prompt and answer class
 
@@ -165,7 +165,7 @@ function handleCollisionsWithAnswers()
             playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
           }
           calculateAccuracy();
-          populatearrayOfAnswersForSnake();
+          SNAKE_GAME.populateArrayOfAnswers();
           setOrResetCorrectLetter();
 
         }

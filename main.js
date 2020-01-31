@@ -52,7 +52,7 @@ function gameSpecificUpdates()
 {
   if (playerShouldBePlayingSnake)
   {
-    updateSnakeTail();
+    SNAKE_GAME.updateSnakeTail();
   } else if (playerShouldBePlayingLane)
   {
     moveYellowCenterDashes();
@@ -69,7 +69,7 @@ function handleGameSpecificSpritesOffScreen()
 {
   if (playerShouldBePlayingSnake)
   {
-    wrapSnakeIfOffScreen();
+    SNAKE_GAME.wrapSnakeIfOffScreen();
   } else if (playerShouldBePlayingBird) {
     handleBirdOffScreenPossibilities();
   }

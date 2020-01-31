@@ -102,7 +102,7 @@ function handleGameCellClicks()
     // console.log('snake cell clicked');
     playerShouldBePlayingSnake = true;
     playerShouldSeeTitleScreen = false;
-    gameInterval.reset(snakeGameFrameRate);
+    gameInterval.reset(SNAKE_GAME_FRAME_RATE);
     playerIsPlayingAnyGame = true;
     setOrResetCorrectLetter();
     levelIsTransitioning = true;

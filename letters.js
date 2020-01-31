@@ -96,7 +96,7 @@ function drawLetters()
 {
   if (playerShouldBePlayingSnake)
   {
-    gameCanvasContext.fillStyle = snakeLetterColor;
+    gameCanvasContext.fillStyle = SNAKE_LETTER_COLOR;
   } else if (playerShouldBePlayingBird)
   {
     gameCanvasContext.fillStyle = birdLetterColor;

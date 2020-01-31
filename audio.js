@@ -111,15 +111,18 @@ transitionToLevelMusic1.onended = function()
   }
   else
   {
-    currentBackgroundMusic.loop = true;
-    currentBackgroundMusic.addEventListener('timeupdate', function(){
-                    var buffer = 0.32;
-                    if(this.currentTime > this.duration - buffer){
-                      console.log('hello loop point');
-                        this.currentTime = 0;
-                        this.play();
-                    }}, false);
-    currentBackgroundMusic.play();
+    if (currentBackgroundMusic !== undefined)
+    {
+      currentBackgroundMusic.loop = true;
+      currentBackgroundMusic.addEventListener('timeupdate', function(){
+                      var buffer = 0.32;
+                      if(this.currentTime > this.duration - buffer){
+                        console.log('hello loop point');
+                          this.currentTime = 0;
+                          this.play();
+                      }}, false);
+      currentBackgroundMusic.play();
+    }
   }
 };
 
