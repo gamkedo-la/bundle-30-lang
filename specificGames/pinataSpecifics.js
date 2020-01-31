@@ -8,9 +8,18 @@ var playerShouldBePlayingPinata = false;
 
 var pinataGame = new function() {
 
-// list of all known Circles
+// list of all known candies
 var objects = [];
-const CANDY_COUNT = 30;
+
+// how many poppable letter choices will fall out
+const CANDY_COUNT = 25;
+
+// special case: candies with a "space" as the letter are considered particles of confetti
+const CONFETTI_COUNT = 12;
+const CONFETTI_RADIUS = 16;
+const CONFETTI_MASS = 0.00001;
+const CONFETTI_SHRINKSPEED = 0.95; // % each frame
+const CONFETTI_ID = " "; 
 
 // tiny functions to handle 2d vectors
 var Vec2 = (x,y) => ({x,y});
@@ -27,21 +36,52 @@ var rndInt = (minimum,maximum) => Math.floor(Math.random() * (maximum - minimum 
 var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var targetLetter = alphabet[rndInt(0,alphabet.length-1)];
 
-function boom(x,y) {
+function boom(x,y,wasCorrect) {
 
-    objects = [];
-    // Init scene ground floor
-    Circle(Vec2(320, 5700), 5000, 0); // floor!
-    Circle(Vec2(2840, 5000), 5000, 0); // r wall
-    Circle(Vec2(-2200, 5000), 5000, 0); // l wall
+    
+    // reuse old confetti
+    let found = 0;
+    for(let i=objects.length; i--;) { 
+        if (objects[i].Z==CONFETTI_ID) { // gotcha
+            found++;
+            objects[i].R = CONFETTI_RADIUS;
+            objects[i].M = CONFETTI_MASS;
+            objects[i].C.x = x+Math.random()*40-20;
+            objects[i].C.y = y+Math.random()*-40-30;
+            objects[i].V.x = Math.random()*1000-500;
+            objects[i].V.y = Math.random()*1000-500;
+        }
+    }
+    
+    // spawn some particles of confetti
+    if (!found) { // first time init
+        for(i = CONFETTI_COUNT; i--; ){
+            Circle(
+                Vec2(x+Math.random()*40-20,
+                y+Math.random()*-40-30), // more down than up
+                CONFETTI_RADIUS,
+                CONFETTI_MASS,
+                CONFETTI_ID);
+        }
+    }
 
-    // select a new letter
-    targetLetter = alphabet[rndInt(0,alphabet.length-1)];
-    // ensure the target one is there at least one matching letter, quite high up
-    Circle(Vec2(x+Math.random()*300-250,y+Math.random()*-100-75),40,1/40,targetLetter);
-    // create many little candies
-    for(i = CANDY_COUNT; i--; ){
-        Circle(Vec2(x+Math.random()*200-100,y+Math.random()*-200)); // a bit higher please
+    if (wasCorrect) {
+        // destroy the world!
+        objects = [];
+        
+        // Init scene ground floor
+        Circle(Vec2(320, 5700), 5000, 0); // floor!
+        Circle(Vec2(2840, 5000), 5000, 0); // r wall
+        Circle(Vec2(-2200, 5000), 5000, 0); // l wall
+
+        // select a new letter
+        targetLetter = alphabet[rndInt(0,alphabet.length-1)];
+        // ensure the target one is there at least one matching letter, quite high up
+        Circle(Vec2(x+Math.random()*300-250,y+Math.random()*-100-75),40,1/40,targetLetter);
+        // create many little candies
+        for(i = CANDY_COUNT; i--; ){
+            Circle(Vec2(x+Math.random()*200-100,y+Math.random()*-200)); // a bit higher please
+        }
     }
 
 }
@@ -73,9 +113,10 @@ function pinataClick(e) {
 
     if (correct) {
         amountCorrect++;
-        boom(e.pageX,e.pageY)
+        boom(e.pageX,e.pageY,true)
     } else {
         amountIncorrect++;
+        boom(e.pageX,e.pageY,false)
     }
 
 
@@ -89,7 +130,7 @@ this.init = function() {
 
     currentBackgroundMusic = pinataBackgroundMusic;
 
-    boom(a.width/2,a.height/2)// middle of screen
+    boom(a.width/2,a.height/2,true)// middle of screen
 
     // debug only: spawn new candy on mouseclick
     // onclick = e => Circle(Vec2(e.pageX, e.pageY));
@@ -182,7 +223,9 @@ this.init = function() {
         c.font = b.R * 1.9 + "px a";
         c.textAlign = "center";
 
-
+        if (b.Z==CONFETTI_ID) {
+            b.R *= CONFETTI_SHRINKSPEED;
+        }
 
         if(objects[i].M) { // does it have mass?
 
