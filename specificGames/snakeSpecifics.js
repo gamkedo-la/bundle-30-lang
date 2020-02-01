@@ -154,10 +154,9 @@ function snakeGameClass()
 
   this.populateArrayOfAnswers = function()
   {
-    arrayOfAnswers = [];
 
-    arrayOfAnswers.push({name:'m',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
-    arrayOfAnswers.push({name:'n',xCoordinate:Math.floor(Math.random()*640),yCoordinate:Math.floor(Math.random()*675)});
+    
+
   }
 
   this.drawAnswers = function()

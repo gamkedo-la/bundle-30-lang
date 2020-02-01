@@ -31,7 +31,7 @@ function initializePromptAndAnswerObjects()
   heVersusShePairGrouping.push(shePromptAndAnswer);
   arrayOfLogicalPromptAnswerGroupings.push(heVersusShePairGrouping);
 
-  console.log(arrayOfLogicalPromptAnswerGroupings);
+  console.log("arrayOfLogicalPromptAnswerGroupings: " + arrayOfLogicalPromptAnswerGroupings);
 }
 
 function getRandomIntInclusive(min, max) {
@@ -79,7 +79,80 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
 
   this.assignIncorrectAnswer = function()
   {
+    let temporaryPromptAndAnswerGroup = currentPromptAnswerGroup;
+    let editedPromptAndAnswerGroup = undefined;
+    let temporaryArrayOfPossibleIncorrectAnswers = [];
 
+    console.log("temporaryPromptAndAnswerGroup: " + temporaryPromptAndAnswerGroup);
+    console.log("currentPromptAnswerFromLogicalGroup.prompt: " + currentPromptAnswerFromLogicalGroup.prompt);
+    for (let currentPromptAndAnswerGroupIndex = 0; currentPromptAndAnswerGroupIndex < temporaryPromptAndAnswerGroup.length; currentPromptAndAnswerGroupIndex++)
+    {
+      console.log("temporaryPromptAndAnswerGroup[currentPromptAndAnswerGroupIndex]: " + temporaryPromptAndAnswerGroup[currentPromptAndAnswerGroupIndex]);
+      if (currentPromptAnswerFromLogicalGroup.prompt === temporaryPromptAndAnswerGroup[currentPromptAndAnswerGroupIndex].prompt)
+      {
+        console.log('match');
+        temporaryPromptAndAnswerGroup.splice(currentPromptAndAnswerGroupIndex,1);
+        editedPromptAndAnswerGroup = temporaryPromptAndAnswerGroup;
+      }
+    }
+
+    let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,editedPromptAndAnswerGroup.length - 1);
+    let incorrectPromptAnswerArray = editedPromptAndAnswerGroup[randomIndexForEditedPromptAndAnswerGroup];
+    console.log("incorrectPromptAnswerArray: " + incorrectPromptAnswerArray);
+
+    let correctAnswerDataType = undefined;
+
+
+    if (typeof this.answer === 'string')
+    {
+        console.log("this.answer data type: " + typeof this.answer);
+      correctAnswerDataType = 'string';
+    } else if (this.answer.nodeName === 'IMG') {
+      console.log('this.answer data type: ' + this.answer.nodeName);
+      correctAnswerDataType = 'IMG';
+    } else if (this.answer.nodeName === 'AUDIO')
+    {
+      console.log('this.answer data type: ' + this.answer.nodeName);
+      correctAnswerDataType = 'AUDIO';
+    } else {
+      console.log(this.answer.nodeName);
+    }
+
+    console.log("correctAnswerDataType: " + correctAnswerDataType);
+    console.log("typeof incorrectPromptAnswerArray[incorrectPromptAnswerArrayIndex]: " + incorrectPromptAnswerArray[]);
+    console.log("incorrectPromptAnswerArray[incorrectPromptAnswerArrayIndex].nodeName: " + incorrectPromptAnswerArray.nodeName);
+
+    for (let incorrectPromptAnswerArrayIndex = 0; incorrectPromptAnswerArrayIndex < incorrectPromptAnswerArray.length; incorrectPromptAnswerArrayIndex++)
+    {
+        let currentIncorrectIndexDataType = undefined;
+        console.log()
+        if (typeof incorrectPromptAnswerArray[incorrectPromptAnswerArrayIndex] === 'string')
+        {
+          currentIncorrectIndexDataType = 'string';
+          if (correctAnswerDataType === currentIncorrectAnswerDataType)
+          {
+            currentIncorrectAnswer = incorrectPromptAnswerArray[incorrectPromptAnswerArrayIndex];
+          }
+        }
+        else if (incorrectPromptAnswerArray[incorrectPromptAnswerArrayIndex].nodeName === 'IMG')
+        {
+          currentIncorrectIndexDataType = 'IMG';
+          if (correctAnswerDataType === currentIncorrectAnswerDataType)
+          {
+            currentIncorrectAnswer = incorrectPromptAnswerArray[incorrectPromptAnswerArrayIndex];
+          }
+        }
+        else if (incorrectPromptAnswerArray[incorrectPromptAnswerArrayIndex].nodeName === 'AUDIO')
+        {
+          currentIncorrectIndexDataType = 'AUDIO';
+          if (correctAnswerDataType === currentIncorrectAnswerDataType)
+          {
+            currentIncorrectAnswer = incorrectPromptAnswerArray[incorrectPromptAnswerArrayIndex];
+          }
+        }
+    }
+
+    console.log("currentIncorrectAnswer: " + currentIncorrectAnswer);
   }
 }//end of prompt and answer class
 
@@ -116,14 +189,12 @@ let currentIncorrectAnswer = undefined;
 function initializePromptAndAnswers()
 {
   pickARandomLogicalPromptAnswerGroup();
-  // console.log('currentPromptAnswerGroup: ' + currentPromptAnswerGroup);
+
   pickTargetPromptAnswerFromPromptAnswerGroup();
   pickARandomPrompt();
-  // console.log('currentAnswerFromLogicalGroup: ' + currentAnswerFromLogicalGroup);
-  // console.log('currentAnswerFromLogicalGroup.arrayOfPossiblePrompts: ' + currentAnswerFromLogicalGroup.arrayOfPossiblePrompts);
-  // pickARandomAssociationTypeToPromptFromGroup();
-  // console.log('currentPromptedAssociationType: ' + currentPromptedAssociationType);
+
   currentPromptAnswerFromLogicalGroup.assignAnAnswerBasedOnPrompt();
+  currentPromptAnswerFromLogicalGroup.assignIncorrectAnswer();
   console.log('prompt: ' + currentPromptAnswerFromLogicalGroup.prompt);
   console.log('answer: ' + currentPromptAnswerFromLogicalGroup.answer);
 }
