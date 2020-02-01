@@ -20,7 +20,7 @@ const CONFETTI_COUNT = 12;
 const CONFETTI_RADIUS = 16;
 const CONFETTI_MASS = 0.00001;
 const CONFETTI_SHRINKSPEED = 0.95; // % each frame
-const CONFETTI_ID = " "; 
+const CONFETTI_ID = " ";
 
 // tiny functions to handle 2d vectors
 var Vec2 = (x,y) => ({x,y});
@@ -42,7 +42,7 @@ function boom(x,y,wasCorrect) {
     if (wasCorrect) {
         // destroy the world!
         objects = [];
-        
+
         // Init scene ground floor
         Circle(Vec2(320, 5700), 5000, 0); // floor!
         Circle(Vec2(2840, 5000), 5000, 0); // r wall
@@ -60,7 +60,7 @@ function boom(x,y,wasCorrect) {
 
         // reuse old confetti
         let found = 0;
-        for(let i=objects.length; i--;) { 
+        for(let i=objects.length; i--;) {
             if (objects[i].Z==CONFETTI_ID) { // gotcha
                 found++;
                 objects[i].R = CONFETTI_RADIUS;
@@ -71,7 +71,7 @@ function boom(x,y,wasCorrect) {
                 objects[i].V.y = Math.random()*1000-500;
             }
         }
-        
+
         // spawn some particles of confetti if we need them
         if (!found) { // first time init
             for(i = CONFETTI_COUNT; i--; ){
@@ -144,6 +144,7 @@ this.init = function() {
     var c = gameCanvasContext;
     var a = gameCanvas;
 
+    currentBackgroundMusic.pause();
     currentBackgroundMusic = pinataBackgroundMusic;
 
     boom(a.width/2,a.height/2,true)// middle of screen

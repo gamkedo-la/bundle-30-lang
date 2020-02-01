@@ -200,6 +200,7 @@ function handleGameCellClicks()
     else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&
         mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
     {   pinataGame.init();
+
         playerShouldBePlayingPinata = true;
         playerShouldSeeTitleScreen = false;
         playerIsPlayingAnyGame = true;
@@ -210,12 +211,14 @@ function handleGameCellClicks()
   if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 620 &&
       mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 650)
       {
+        currentBackgroundMusic.pause();
         levelIsTransitioning = true;
         transitionIsFadingIn = true;
         // console.log(levelIsTransitioning);
         playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
         transitionToLevelMusic1.play();
-        currentBackgroundMusic.pause();
+        // currentBackgroundMusic.pause();
+        console.log(currentBackgroundMusic);
         gameCanvasContext.globalAlpha = 0.0;
       }
 
