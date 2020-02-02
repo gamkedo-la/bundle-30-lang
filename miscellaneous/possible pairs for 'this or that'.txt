@@ -18,7 +18,7 @@ English -
 4. has/have
 5. walk/walks (audio prompt like "A cat ____" or "Catssss ____", visual prompt like a 
 picture of one cat or a picture of multiple cats)
-6. of/for 
+6. of/for from/form, 
 7. ran/run
 8. basket/basketssss
 9. comes before, comes after
@@ -91,6 +91,11 @@ Where = pic of a location, When = pic of time, why = because)
 89. China's/Chinese
 90. <>=
 91. mammals/animals
+92. when/win
+93. her/here
+94. says/say
+95. taking/talking
+
 
 
 Any language - 
