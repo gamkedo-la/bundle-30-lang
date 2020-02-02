@@ -36,6 +36,8 @@ let symbolEqualsImage = document.createElement("img");//=
 let symbolQuestionMarkImage = document.createElement("img");//?
 let symbolPeriodImage = document.createElement("img");//.
 
+let placeholderPlayButtonImage = document.createElement("img");
+
 
 //custom font image loading section, used loops for less typing... just to see if i could
 var arrayOfTextLetters = 'abcdefghijklmnopqrstuvwxyzñ';
@@ -139,6 +141,7 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: symbolHashImage, theFile: 'images/Custom Font/pngs/symbols/symbolHash.png'});
   arrayOfImages.push({imageObjectBinding: symbolQuestionMarkImage, theFile: 'images/Custom Font/pngs/symbols/symbolQuestionMark.png'});
 
+  arrayOfImages.push({imageObjectBinding: placeholderPlayButtonImage, theFile: 'images/placeholderPlayButtonImage.png'});
   // console.log(arrayOfImages);
 
   numberOfImagesToLoad = arrayOfImages.length;

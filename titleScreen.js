@@ -104,7 +104,7 @@ function handleGameCellClicks()
     playerShouldSeeTitleScreen = false;
     gameInterval.reset(SNAKE_GAME_FRAME_RATE);
     playerIsPlayingAnyGame = true;
-    setOrResetCorrectLetter();
+    // setOrResetCorrectLetter();
     levelIsTransitioning = true;
   }
   else if (mouseCoordinates.mouseX > 120 && mouseCoordinates.mouseX < 220 &&
@@ -115,7 +115,7 @@ function handleGameCellClicks()
         gameInterval.reset(birdGameFrameRate);
         letterSpawnInterval.reset(birdLetterSpawnRate);
         playerIsPlayingAnyGame = true;
-        setOrResetCorrectLetter();
+        // setOrResetCorrectLetter();
         levelIsTransitioning = true;
       }
   else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
@@ -126,7 +126,7 @@ function handleGameCellClicks()
         letterSpawnInterval.reset(laneLetterSpawnRate);
         playerIsPlayingAnyGame = true;
         gameInterval.reset(laneFrameRate);
-        setOrResetCorrectLetter();
+        // setOrResetCorrectLetter();
         levelIsTransitioning = true;
       }
   else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&
@@ -136,7 +136,7 @@ function handleGameCellClicks()
         playerShouldSeeTitleScreen = false;
         playerIsPlayingAnyGame = true;
         gameInterval.reset(jumperFrameRate);
-        setOrResetCorrectLetter();
+        // setOrResetCorrectLetter();
         initializeLettersForJumper();
         levelIsTransitioning = true;
       }
@@ -165,7 +165,7 @@ function handleGameCellClicks()
         playerShouldSeeTitleScreen = false;
         playerIsPlayingAnyGame = true;
         gameInterval.reset(spaceShooterFrameRate);
-        setOrResetCorrectLetter();
+        // setOrResetCorrectLetter();
         letterSpawnInterval.reset(spaceShooterLetterSpawnRate);
         levelIsTransitioning = true;
       }

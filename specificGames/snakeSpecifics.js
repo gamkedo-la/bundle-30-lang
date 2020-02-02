@@ -58,8 +58,8 @@ function snakeGameClass()
     playerSpeedY = 0;
     letterSpeed = SNAKE_LETTER_SPEED;
     SNAKE_GAME.populateArrayOfAnswers();
-    setOrResetCorrectLetter();
-
+    // setOrResetCorrectLetter();
+    initializeAnswerCoordinates();
   }
 
 
@@ -154,18 +154,34 @@ function snakeGameClass()
 
   this.populateArrayOfAnswers = function()
   {
-
-    
-
+    arrayOfAnswers.push(currentAnswer);
+    arrayOfAnswers.push(currentIncorrectAnswer);
   }
 
   this.drawAnswers = function()
   {
-    gameCanvasContext.fillStyle = SNAKE_LETTER_COLOR;
-    for (var letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
+    if (currentAnswerDataType === 'string')
     {
-      gameCanvasContext.fillText(arrayOfAnswers[letterIndex].name,
-      arrayOfAnswers[letterIndex].xCoordinate,arrayOfAnswers[letterIndex].yCoordinate);
+      gameCanvasContext.fillStyle = SNAKE_LETTER_COLOR;
+      for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
+      {
+        gameCanvasContext.fillText(arrayOfAnswers[arrayOfAnswersAnswerIndex],
+        arrayOfAnswers[arrayOfAnswersAnswerIndex].xCoordinate,arrayOfAnswers[arrayOfAnswersAnswerIndex].yCoordinate);
+      }
+    } else if (currentAnswerDataType === 'IMG')
+    {
+      for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
+      {
+        gameCanvasContext.drawImage(arrayOfAnswers[arrayOfAnswersAnswerIndex],
+        arrayOfAnswers[arrayOfAnswersAnswerIndex].xCoordinate,arrayOfAnswers[arrayOfAnswersAnswerIndex].yCoordinate, 100,100);
+      }
+    } else if (currentAnswerDataType === "AUDIO")
+    {
+      for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
+      {
+        gameCanvasContext.drawImage(placeholderPlayButtonImage,
+        arrayOfAnswers[arrayOfAnswersAnswerIndex].xCoordinate,arrayOfAnswers[arrayOfAnswersAnswerIndex].yCoordinate, 100,100);
+      }
     }
   }
 }

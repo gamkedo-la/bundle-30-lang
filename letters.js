@@ -8,24 +8,24 @@ var correctLetterAudioTag = undefined;
 
 var currentCorrectLetter = undefined;
 
-function setOrResetCorrectLetter()
-{
-  let randomNumber = Math.random()*10;
-
-  if (randomNumber < 5)
-  {
-    currentCorrectLetter = 'm';
-  } else {
-    currentCorrectLetter = 'n';
-  }
-  correctLetterAudioTag.src = "audio/" + currentCorrectLetter + '.mp3';
-  // console.log('level is transitioning' + levelIsTransitioning);
-  if (!levelIsTransitioning)
-  {
-    // console.log("level is transitioning " + levelIsTransitioning);
-    playCorrectLetterAudioTag();
-  }
-}
+// function setOrResetCorrectLetter()
+// {
+//   let randomNumber = Math.random()*10;
+//
+//   if (randomNumber < 5)
+//   {
+//     currentCorrectLetter = 'm';
+//   } else {
+//     currentCorrectLetter = 'n';
+//   }
+//   correctLetterAudioTag.src = "audio/" + currentCorrectLetter + '.mp3';
+//   // console.log('level is transitioning' + levelIsTransitioning);
+//   if (!levelIsTransitioning)
+//   {
+//     // console.log("level is transitioning " + levelIsTransitioning);
+//     playCorrectLetterAudioTag();
+//   }
+// }
 
 function playCorrectLetterAudioTag()
 {
@@ -144,7 +144,7 @@ function handleCollisionsWithLetters()
           }
           calculateAccuracy();
           populateArrayOfAnswersForSnake();
-          setOrResetCorrectLetter();
+          // setOrResetCorrectLetter();
 
         }
     }
@@ -165,7 +165,7 @@ function handleCollisionsWithLetters()
             playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
           }
           calculateAccuracy();
-          setOrResetCorrectLetter();
+          // setOrResetCorrectLetter();
           arrayOfAnswers.splice(letterIndex,1);
         }
     }
@@ -180,7 +180,7 @@ function handleCollisionsWithLetters()
         amountCorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
         calculateAccuracy();
-        setOrResetCorrectLetter();
+        // setOrResetCorrectLetter();
         arrayOfAnswers.splice(letterIndex,1);
       } else if (arrayOfAnswers[letterIndex].yCoordinate - 5 > playerYCoordinate && arrayOfAnswers[letterIndex].yCoordinate - 5 < playerYCoordinate + 60 &&
         arrayOfAnswers[letterIndex].xCoordinate === playerXCoordinate &&
@@ -189,7 +189,7 @@ function handleCollisionsWithLetters()
         amountIncorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
         calculateAccuracy();
-        setOrResetCorrectLetter();
+        // setOrResetCorrectLetter();
         arrayOfAnswers.splice(letterIndex,1);
       }
     }
@@ -207,7 +207,7 @@ function handleCollisionsWithLetters()
         amountCorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
         calculateAccuracy();
-        setOrResetCorrectLetter();
+        // setOrResetCorrectLetter();
         initializeLettersForJumper();
       } else if (playerYCoordinate + 20 > arrayOfAnswers[letterIndex].yCoordinate - 20 &&
         playerYCoordinate < arrayOfAnswers[letterIndex].yCoordinate &&
@@ -218,7 +218,7 @@ function handleCollisionsWithLetters()
         amountIncorrect++;
         playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
         calculateAccuracy();
-        setOrResetCorrectLetter();
+        // setOrResetCorrectLetter();
         initializeLettersForJumper();
       }
     }
@@ -244,12 +244,12 @@ function handleCollisionsWithLetters()
 					amountCorrect++;
 					playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
 					calculateAccuracy();
-					setOrResetCorrectLetter();
+					// setOrResetCorrectLetter();
 				} else {
 					amountIncorrect++;
 					playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
 					calculateAccuracy();
-					setOrResetCorrectLetter();
+					// setOrResetCorrectLetter();
 				}
 				arrayOfAnswers.splice(letterIndex, 1);
 			}

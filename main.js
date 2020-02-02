@@ -44,7 +44,7 @@ function updateEverythingInTheGame()
   //moveLettersIfAppropriate();//change to promptAndAnswerClass
   moveAnswersIfAppropriate();
   //handleCollisionsWithLetters();//change to promptAndAnswerClass
-  handleCollisionsWithAnswers();
+  // handleCollisionsWithAnswers();
   // if (webAudioAPIContext.)
 }
 
@@ -111,9 +111,9 @@ function drawEverythingInTheGame()
     drawTransitionScreen();
   }
 
-  gameCanvasContext.drawImage(womenImage, 0,0, 80,70);
-  gameCanvasContext.drawImage(womanImage, 0,70, 80,70);
-  gameCanvasContext.drawImage(manImage, 0,140, 80,70);
-  gameCanvasContext.drawImage(menImage, 0,210, 80,70);
+  // gameCanvasContext.drawImage(womenImage, 0,0, 80,70);
+  // gameCanvasContext.drawImage(womanImage, 0,70, 80,70);
+  // gameCanvasContext.drawImage(manImage, 0,140, 80,70);
+  // gameCanvasContext.drawImage(menImage, 0,210, 80,70);
 }
 //end of draw section
