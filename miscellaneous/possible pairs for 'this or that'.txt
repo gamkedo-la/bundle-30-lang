@@ -86,6 +86,12 @@ Where = pic of a location, When = pic of time, why = because)
 81. kite/cat
 82. hear/heard
 83. those/these/this (pronunciation and function)
+84. its/it's
+85. very/every
+89. China's/Chinese
+90. <>=
+91. mammals/animals
+
 
 Any language - 
 1. < > (greater than, less than)
