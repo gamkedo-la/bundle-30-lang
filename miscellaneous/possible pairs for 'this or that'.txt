@@ -95,6 +95,10 @@ Where = pic of a location, When = pic of time, why = because)
 93. her/here
 94. says/say
 95. taking/talking
+96. ure/ire with actual words
+97. foot/feet
+98. dessert/desert
+99. Mount/Mountain
 
 
 

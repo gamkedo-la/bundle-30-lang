@@ -30,8 +30,6 @@ function initializePromptAndAnswerObjects()
   heVersusShePairGrouping.push(hePromptAndAnswer);
   heVersusShePairGrouping.push(shePromptAndAnswer);
   arrayOfLogicalPromptAnswerGroupings.push(heVersusShePairGrouping);
-
-  console.log('arrayOfLogicalPromptAnswerGroupings from initialization: ' + arrayOfLogicalPromptAnswerGroupings[0][0].textAssociation);
 }
 
 function getRandomIntInclusive(min, max) {
@@ -52,164 +50,196 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
   this.audioAssociation = audioAssociation;
   this.audioAssociation.datatype = 'audio';
 
-  this.prompt = undefined;
   this.arrayOfPossiblePrompts = [this.textAssociation, this.imageAssociation, this.audioAssociation];
-  this.chooseAPrompt = function()
+  this.arrayOfPossibleAnswers = [this.textAssociation, this.imageAssociation, this.audioAssociation];
+
+  this.xCoordinate = undefined;
+  this.yCoordinate = undefined;
+  this.width = undefined;
+  this.height = undefined;
+}//end of prompt and answer class
+
+function PromptsAndAnswersManager()
+{
+
+  this.currentLogicalPromptAndAnswerGroup = undefined;
+  this.pickARandomLogicalPromptAnswerGroup = function()
   {
-    let randomArrayOfPossiblePromptsIndex = getRandomIntInclusive(0, arrayOfPossiblePrompts.length - 1);
-    this.prompt = arrayOfPossiblePrompts[randomArrayOfPossiblePromptsIndex];
+    let randomIndexForArrayOfGroups = getRandomIntInclusive(0,arrayOfLogicalPromptAnswerGroupings.length - 1);
+    this.currentLogicalPromptAndAnswerGroup = arrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
+    console.log("arrayOfLogicalPromptAnswerGroupings: " + arrayOfLogicalPromptAnswerGroupings);
+    console.log("this.currentLogicalPromptAndAnswerGroup: " + this.currentLogicalPromptAndAnswerGroup);
   }
 
-  this.answer = undefined;
-  this.arrayOfPossibleAnswers = [this.textAssociation, this.imageAssociation, this.audioAssociation];
+
+  this.correctTargetPromptAndAnswerPairing = undefined;
+  this.pickATargetPromptAndAnswerPairing = function()
+  {
+    let randomIndexFromCurrentPromptAndAnswerGroup = getRandomIntInclusive(0,this.currentLogicalPromptAndAnswerGroup.length - 1);
+    this.correctTargetPromptAndAnswerPairing = this.currentLogicalPromptAndAnswerGroup[randomIndexFromCurrentPromptAndAnswerGroup];
+    console.log("this.correctTargetPromptAndAnswerPairing: " + this.correctTargetPromptAndAnswerPairing);
+  }
+
+
+  this.currentPrompt = undefined;
+  this.pickARandomPromptFromTargetPromptAndAnswerPairing = function()
+  {
+    let randomIndexForArrayOfPossiblePrompts = getRandomIntInclusive(0,this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts.length - 1);
+    this.currentPrompt = this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts[randomIndexForArrayOfPossiblePrompts];
+    console.log("this.currentPrompt: " + this.currentPrompt);
+  }
+
+
+  this.dataTypeOfCurrentPrompt = undefined;
+  this.defineDataTypeOfCurrentPrompt = function()
+  {
+    if (typeof this.currentPrompt === 'string')
+    {
+      this.dataTypeOfCurrentPrompt = 'string';
+    }
+    else if (this.currentPrompt.nodeName === 'IMG')
+    {
+      this.dataTypeOfCurrentPrompt = 'IMG';
+    }
+    else if (this.currentPrompt.nodeName === 'AUDIO')
+    {
+      this.dataTypeOfCurrentPrompt = 'AUDIO';
+    }
+    else
+    {
+      console.log("unknown data type for current prompt");
+    }
+    console.log("this.dataTypeOfCurrentPrompt: " + this.dataTypeOfCurrentPrompt);
+  }
+
+
+  this.currentCorrectAnswer = undefined;
   this.assignAnAnswerBasedOnPrompt = function()
   {
-    let temporaryArrayOfPossibleAnswers = this.arrayOfPossibleAnswers;
+    let temporaryArrayOfPossibleAnswers = this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers;
 
-    let randomIndexToChooseAnswerInTemporaryArray = undefined;
+    let randomIndexForTemporaryArray = undefined;
 
     for (let arrayOfTemporaryAnswersIndex = 0; arrayOfTemporaryAnswersIndex < temporaryArrayOfPossibleAnswers.length; arrayOfTemporaryAnswersIndex++)
     {
-      if (temporaryArrayOfPossibleAnswers[arrayOfTemporaryAnswersIndex] === this.prompt)
+      if (temporaryArrayOfPossibleAnswers[arrayOfTemporaryAnswersIndex] === this.currentPrompt)
       {
-        // console.log('this.prompt: ' + this.prompt);
         temporaryArrayOfPossibleAnswers.splice(arrayOfTemporaryAnswersIndex,1);
         randomIndexToChooseAnswerInTemporaryArray = getRandomIntInclusive(0, temporaryArrayOfPossibleAnswers.length - 1);
-        this.answer = temporaryArrayOfPossibleAnswers[randomIndexToChooseAnswerInTemporaryArray];
-        currentAnswer = this.answer;
-        if (typeof currentAnswer === 'string')
-        {
-
-          currentAnswerDataType = 'string';
-        } else if (currentAnswer.nodeName === 'IMG') {
-
-          currentAnswerDataType = 'IMG';
-        } else if (currentAnswer.nodeName === 'AUDIO')
-        {
-
-          currentAnswerDataType = 'AUDIO';
-        }
-        console.log('this.answer: ' + this.answer);
-        console.log('this.answer.datatype : ' + this.answer.datatype);
+        this.currentCorrectAnswer = temporaryArrayOfPossibleAnswers[randomIndexToChooseAnswerInTemporaryArray];
       }//end of checking for prompt/answer overlap
     }//end of for loop through temporary answers array
+    console.log("this.currentCorrectAnswer: " + this.currentCorrectAnswer);
   }//end of answer assignment
 
-  this.assignIncorrectAnswer = function()
+
+  this.currentCorrectAnswerDataType = undefined;
+  this.defineCurrentCorrectAnswerDataType = function()
   {
-    let temporaryPromptAndAnswerGroup = currentPromptAnswerGroup;
-    let editedPromptAndAnswerGroup = undefined;
-    let temporaryArrayOfPossibleIncorrectAnswers = [];
+    if (typeof this.currentCorrectAnswer === 'string')
+    {
+      this.currentCorrectAnswerDataType = 'string';
+    } else if (this.currentCorrectAnswer.nodeName === 'IMG') {
+      this.currentCorrectAnswerDataType = 'IMG';
+    } else if (this.currentCorrectAnswer.nodeName === 'AUDIO')
+    {
+      this.currentCorrectAnswerDataType = 'AUDIO';
+    }
+    console.log('this.currentCorrectAnswerDataType: ' + this.currentCorrectAnswerDataType);
+  }
 
 
-    for (let currentPromptAndAnswerGroupIndex = 0; currentPromptAndAnswerGroupIndex < temporaryPromptAndAnswerGroup.length; currentPromptAndAnswerGroupIndex++)
+  this.incorrectTargetPromptAndAnswerPairing = undefined;
+  this.editedPromptAndAnswerGroup = undefined;
+  this.defineIncorrectTargetPromptAndAnswerPairing = function()
+  {
+    let editablePromptAndAnswerGroup = this.currentLogicalPromptAndAnswerGroup;
+    console.log("editablePromptAndAnswerGroup: " + editablePromptAndAnswerGroup);
+
+    console.log("this.currentPrompt: " + this.currentPrompt);
+    console.log("editablePromptAndAnswerGroup[0].prompt: " + editablePromptAndAnswerGroup[0].prompt);
+    for (let editablePromptAndAnswerGroupIndex = 0; editablePromptAndAnswerGroupIndex < editablePromptAndAnswerGroup.length; editablePromptAndAnswerGroupIndex++)
     {
 
-      if (currentPromptAnswerFromLogicalGroup.prompt === temporaryPromptAndAnswerGroup[currentPromptAndAnswerGroupIndex].prompt)
+      if (this.correctTargetPromptAndAnswerPairing === editablePromptAndAnswerGroup[editablePromptAndAnswerGroupIndex])
       {
-
-        temporaryPromptAndAnswerGroup.splice(currentPromptAndAnswerGroupIndex,1);
-        editedPromptAndAnswerGroup = temporaryPromptAndAnswerGroup;
-        console.log('currentPromptAnswerGroup: ' + currentPromptAnswerGroup[0].name);
-        console.log('editedPromptAndAnswerGroup: ' + editedPromptAndAnswerGroup[0].name);
+        editablePromptAndAnswerGroup.splice(editablePromptAndAnswerGroupIndex,1);
+        console.log("editablePromptAndAnswerGroup: " + editablePromptAndAnswerGroup);
+        this.editedPromptAndAnswerGroup = editablePromptAndAnswerGroup;
+        console.log("this.editedPromptAndAnswerGroup: " + this.editedPromptAndAnswerGroup);
       }
     }
 
-    let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,editedPromptAndAnswerGroup.length - 1);
-    let incorrectPromptAnswerObject = editedPromptAndAnswerGroup[randomIndexForEditedPromptAndAnswerGroup];
-    console.log('incorrectPromptAnswerObject: ' + incorrectPromptAnswerObject.name);
+    let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editedPromptAndAnswerGroup.length - 1);
+    this.incorrectTargetPromptAndAnswerPairing = this.editedPromptAndAnswerGroup[randomIndexForEditedPromptAndAnswerGroup];
+    console.log("this.incorrectTargetPromptAndAnswerPairing: " + this.incorrectTargetPromptAndAnswerPairing);
+  }
 
-    let correctAnswerDataType = undefined;
 
+  this.currentIncorrectAnswer = undefined;
+  this.assignCurrentIncorrectAnswer = function()
+  {
+    let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editedPromptAndAnswerGroup.length - 1);
 
-    if (typeof this.answer === 'string')
-    {
-
-      correctAnswerDataType = 'string';
-    } else if (this.answer.nodeName === 'IMG') {
-
-      correctAnswerDataType = 'IMG';
-    } else if (this.answer.nodeName === 'AUDIO')
-    {
-
-      correctAnswerDataType = 'AUDIO';
-    } else {
-
-    }
-
-    console.log('correctAnswerDataType: ' + correctAnswerDataType);
-
-    for (let arrayOfPossibleAnswersIndex = 0; arrayOfPossibleAnswersIndex < incorrectPromptAnswerObject.arrayOfPossibleAnswers.length; arrayOfPossibleAnswersIndex++)
+    for (let arrayOfPossibleAnswersIndex = 0; arrayOfPossibleAnswersIndex < this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers.length; arrayOfPossibleAnswersIndex++)
     {
         let currentIncorrectAnswerDataType = undefined;
-        console.log()
-        if (typeof incorrectPromptAnswerObject.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex] === 'string')
+        if (typeof this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex] === 'string')
         {
           currentIncorrectAnswerDataType = 'string';
           if (currentIncorrectAnswerDataType !== undefined)
           {
-            if (correctAnswerDataType === currentIncorrectAnswerDataType)
+            if (this.currentCorrectAnswerDataType === currentIncorrectAnswerDataType)
             {
-              currentIncorrectAnswer = incorrectPromptAnswerObject.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
+              console.log('match');
+              console.log('this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex]: ' + this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex]);
+              this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
           }
         }
-        else if (incorrectPromptAnswerObject.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex].nodeName === 'IMG')
+        else if (this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex].nodeName === 'IMG')
         {
           currentIncorrectAnswerDataType = 'IMG';
           if (currentIncorrectAnswerDataType !== undefined)
           {
-            if (correctAnswerDataType === currentIncorrectAnswerDataType)
+            if (this.currentCorrectAnswerDataType === currentIncorrectAnswerDataType)
             {
-              currentIncorrectAnswer = incorrectPromptAnswerObject.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
+              console.log('match');
+              this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
           }
         }
-        else if (incorrectPromptAnswerObject.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex].nodeName === 'AUDIO')
+        else if (this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex].nodeName === 'AUDIO')
         {
           currentIncorrectAnswerDataType = 'AUDIO';
           if (currentIncorrectAnswerDataType !== undefined)
           {
-            if (correctAnswerDataType === currentIncorrectAnswerDataType)
+            if (this.currentCorrectAnswerDataType === currentIncorrectAnswerDataType)
             {
-              currentIncorrectAnswer = incorrectPromptAnswerObject.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
+              console.log('match');
+              this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
           }
         }
     }
-    console.log('currentIncorrectAnswer: ' + currentIncorrectAnswer);
-
+    console.log('this.currentIncorrectAnswer: ' + this.currentIncorrectAnswer);
   }
 
 
-
-}//end of prompt and answer class
-
-let currentPromptAnswerGroup = undefined;
-
-function pickARandomLogicalPromptAnswerGroup()
-{
-  let randomIndexForArrayOfGroups = getRandomIntInclusive(0,arrayOfLogicalPromptAnswerGroupings.length - 1);
-  currentPromptAnswerGroup = arrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
+  this.setOrResetPromptsAndAnswers = function()
+  {
+    this.pickARandomLogicalPromptAnswerGroup();
+    this.pickATargetPromptAndAnswerPairing();
+    this.pickARandomPromptFromTargetPromptAndAnswerPairing();
+    this.defineDataTypeOfCurrentPrompt();
+    this.assignAnAnswerBasedOnPrompt();
+    this.defineCurrentCorrectAnswerDataType();
+    this.defineIncorrectTargetPromptAndAnswerPairing();
+    this.assignCurrentIncorrectAnswer();
+  }
 }
 
-let currentPromptAnswerFromLogicalGroup = undefined;
-
-function pickTargetPromptAnswerFromPromptAnswerGroup()
-{
-  let randomIndexGromLogicalPromptGroup = getRandomIntInclusive(0,currentPromptAnswerGroup.length - 1);
-  currentPromptAnswerFromLogicalGroup = currentPromptAnswerGroup[randomIndexGromLogicalPromptGroup];
-}
-
-let currentPrompt = undefined;
-
-function pickARandomPrompt()
-{
-  let randomPromptIndex = getRandomIntInclusive(0, currentPromptAnswerFromLogicalGroup.arrayOfPossiblePrompts.length - 1);
-  currentPromptAnswerFromLogicalGroup.prompt = currentPromptAnswerFromLogicalGroup.arrayOfPossiblePrompts[randomPromptIndex];
-}
-
-let currentIncorrectAnswer = undefined;
+let promptsAndAnswersManager = new PromptsAndAnswersManager();
 
 let currentStringAnswerXCoordinate = undefined;
 let currentStringAnswerYCoordinate = undefined;
