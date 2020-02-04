@@ -57,9 +57,7 @@ function snakeGameClass()
     playerSpeedX = 0;
     playerSpeedY = 0;
     letterSpeed = SNAKE_LETTER_SPEED;
-    SNAKE_GAME.populateArrayOfAnswers();
-    // setOrResetCorrectLetter();
-    initializeAnswerCoordinates();
+    this.shuffleAndResetPromptsAndAnswers();
   }
 
 
@@ -152,30 +150,36 @@ function snakeGameClass()
     customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' move left'], 30,15, 50,350);
   }
 
-  this.populateArrayOfAnswers = function()
+  this.shuffleAndResetPromptsAndAnswers = function()
   {
-    arrayOfAnswers.push(currentAnswer);
-    arrayOfAnswers.push(currentIncorrectAnswer);
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
   }
 
   this.drawAnswers = function()
   {
-    if (currentAnswerDataType === 'string')
+    if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
       gameCanvasContext.fillStyle = SNAKE_LETTER_COLOR;
       for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       {
-        gameCanvasContext.fillText(arrayOfAnswers[arrayOfAnswersAnswerIndex],
-        arrayOfAnswers[arrayOfAnswersAnswerIndex].xCoordinate,arrayOfAnswers[arrayOfAnswersAnswerIndex].yCoordinate);
+        //draw correct answer
+        gameCanvasContext.fillText(promptsAndAnswersManager.currentCorrectAnswer,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.correctAnswerXCoordinate,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.correctAnswerYCoordinate);
+
+        //draw incorrect answer
+        gameCanvasContext.fillText(promptsAndAnswersManager.currentIncorrectAnswer,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.incorrectAnswerXCoordinate,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.incorrectAnswerYCoordinate);
       }
-    } else if (currentAnswerDataType === 'IMG')
+    } else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
     {
       for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       {
         gameCanvasContext.drawImage(arrayOfAnswers[arrayOfAnswersAnswerIndex],
         arrayOfAnswers[arrayOfAnswersAnswerIndex].xCoordinate,arrayOfAnswers[arrayOfAnswersAnswerIndex].yCoordinate, 100,100);
       }
-    } else if (currentAnswerDataType === "AUDIO")
+    } else if (promptsAndAnswersManager.currentAnswerDataType === "AUDIO")
     {
       for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       {

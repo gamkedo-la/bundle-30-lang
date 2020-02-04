@@ -33,8 +33,8 @@ function handleDualPurposeSplashAndLoadingSceneClick()
   //setInterval(updateGameFrame, frameRate);
   playerShouldSeePleaseWaitForDownloading = false;
   initializePromptAndAnswerObjects();
-  promptsAndAnswersManager.setOrResetPromptsAndAnswers();
   
+
   currentBackgroundMusic = titleScreenMusic;
   currentBackgroundMusic.play();
   currentBackgroundMusic.loop = true;
@@ -43,5 +43,4 @@ function handleDualPurposeSplashAndLoadingSceneClick()
   {
     initializeWebAudioAPI();
   }
-  initializePromptAndAnswers();
 }

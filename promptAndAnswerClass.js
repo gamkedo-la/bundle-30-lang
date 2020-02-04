@@ -5,8 +5,6 @@ let menPromptAndAnswer = {};
 let hePromptAndAnswer = {};
 let shePromptAndAnswer = {};
 
-let arrayOfLogicalPromptAnswerGroupings = [];
-
 let womanVersusWomenPairGrouping = [];
 let manVersusMenPairGrouping = [];
 let heVersusShePairGrouping = [];
@@ -17,19 +15,19 @@ function initializePromptAndAnswerObjects()
   womenPromptAndAnswer = new PromptAndAnswerClass('women', 'women', womenImage, womenAudio);
   womanVersusWomenPairGrouping.push(womanPromptAndAnswer);
   womanVersusWomenPairGrouping.push(womenPromptAndAnswer);
-  arrayOfLogicalPromptAnswerGroupings.push(womanVersusWomenPairGrouping);
+  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(womanVersusWomenPairGrouping);
 
   manPromptAndAnswer = new PromptAndAnswerClass('man', 'man', manImage, manAudio);
   menPromptAndAnswer = new PromptAndAnswerClass("men", "men", menImage, menAudio);
   manVersusMenPairGrouping.push(manPromptAndAnswer);
   manVersusMenPairGrouping.push(menPromptAndAnswer);
-  arrayOfLogicalPromptAnswerGroupings.push(manVersusMenPairGrouping);
+  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(manVersusMenPairGrouping);
 
   hePromptAndAnswer = new PromptAndAnswerClass('he', 'he', heImage, heAudio);
   shePromptAndAnswer = new PromptAndAnswerClass('she', 'she', sheImage, sheAudio);
   heVersusShePairGrouping.push(hePromptAndAnswer);
   heVersusShePairGrouping.push(shePromptAndAnswer);
-  arrayOfLogicalPromptAnswerGroupings.push(heVersusShePairGrouping);
+  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(heVersusShePairGrouping);
 }
 
 function getRandomIntInclusive(min, max) {
@@ -53,22 +51,24 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
   this.arrayOfPossiblePrompts = [this.textAssociation, this.imageAssociation, this.audioAssociation];
   this.arrayOfPossibleAnswers = [this.textAssociation, this.imageAssociation, this.audioAssociation];
 
-  this.xCoordinate = undefined;
-  this.yCoordinate = undefined;
+  this.answerXCoordinate = undefined;
+  this.answerYCoordinate = undefined;
+
   this.width = undefined;
   this.height = undefined;
+
+  this.containsTheCurrentCorrectAnswer = undefined;
 }//end of prompt and answer class
 
 function PromptsAndAnswersManager()
 {
+  this.arrayOfLogicalPromptAnswerGroupings = [];
 
   this.currentLogicalPromptAndAnswerGroup = undefined;
   this.pickARandomLogicalPromptAnswerGroup = function()
   {
-    let randomIndexForArrayOfGroups = getRandomIntInclusive(0,arrayOfLogicalPromptAnswerGroupings.length - 1);
-    this.currentLogicalPromptAndAnswerGroup = arrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
-    console.log("arrayOfLogicalPromptAnswerGroupings: " + arrayOfLogicalPromptAnswerGroupings);
-    console.log("this.currentLogicalPromptAndAnswerGroup: " + this.currentLogicalPromptAndAnswerGroup);
+    let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.length - 1);
+    this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
   }
 
 
@@ -77,7 +77,7 @@ function PromptsAndAnswersManager()
   {
     let randomIndexFromCurrentPromptAndAnswerGroup = getRandomIntInclusive(0,this.currentLogicalPromptAndAnswerGroup.length - 1);
     this.correctTargetPromptAndAnswerPairing = this.currentLogicalPromptAndAnswerGroup[randomIndexFromCurrentPromptAndAnswerGroup];
-    console.log("this.correctTargetPromptAndAnswerPairing: " + this.correctTargetPromptAndAnswerPairing);
+    console.log("this.correctTargetPromptAndAnswerPairing: " + this.correctTargetPromptAndAnswerPairing.name);
   }
 
 
@@ -96,20 +96,22 @@ function PromptsAndAnswersManager()
     if (typeof this.currentPrompt === 'string')
     {
       this.dataTypeOfCurrentPrompt = 'string';
+      textPrompter.loadCurrentText(this.currentPrompt);
     }
     else if (this.currentPrompt.nodeName === 'IMG')
     {
       this.dataTypeOfCurrentPrompt = 'IMG';
+      imagePrompter.loadCurrentImage(this.currentPrompt);
     }
     else if (this.currentPrompt.nodeName === 'AUDIO')
     {
       this.dataTypeOfCurrentPrompt = 'AUDIO';
+      audioPrompter.loadCurrentImage(this.currentPrompt);
     }
     else
     {
       console.log("unknown data type for current prompt");
     }
-    console.log("this.dataTypeOfCurrentPrompt: " + this.dataTypeOfCurrentPrompt);
   }
 
 
@@ -145,7 +147,6 @@ function PromptsAndAnswersManager()
     {
       this.currentCorrectAnswerDataType = 'AUDIO';
     }
-    console.log('this.currentCorrectAnswerDataType: ' + this.currentCorrectAnswerDataType);
   }
 
 
@@ -154,25 +155,19 @@ function PromptsAndAnswersManager()
   this.defineIncorrectTargetPromptAndAnswerPairing = function()
   {
     let editablePromptAndAnswerGroup = this.currentLogicalPromptAndAnswerGroup;
-    console.log("editablePromptAndAnswerGroup: " + editablePromptAndAnswerGroup);
-
-    console.log("this.currentPrompt: " + this.currentPrompt);
-    console.log("editablePromptAndAnswerGroup[0].prompt: " + editablePromptAndAnswerGroup[0].prompt);
     for (let editablePromptAndAnswerGroupIndex = 0; editablePromptAndAnswerGroupIndex < editablePromptAndAnswerGroup.length; editablePromptAndAnswerGroupIndex++)
     {
 
       if (this.correctTargetPromptAndAnswerPairing === editablePromptAndAnswerGroup[editablePromptAndAnswerGroupIndex])
       {
         editablePromptAndAnswerGroup.splice(editablePromptAndAnswerGroupIndex,1);
-        console.log("editablePromptAndAnswerGroup: " + editablePromptAndAnswerGroup);
         this.editedPromptAndAnswerGroup = editablePromptAndAnswerGroup;
-        console.log("this.editedPromptAndAnswerGroup: " + this.editedPromptAndAnswerGroup);
       }
     }
 
     let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editedPromptAndAnswerGroup.length - 1);
     this.incorrectTargetPromptAndAnswerPairing = this.editedPromptAndAnswerGroup[randomIndexForEditedPromptAndAnswerGroup];
-    console.log("this.incorrectTargetPromptAndAnswerPairing: " + this.incorrectTargetPromptAndAnswerPairing);
+    console.log("this.incorrectTargetPromptAndAnswerPairing: " + this.incorrectTargetPromptAndAnswerPairing.name);
   }
 
 
@@ -191,7 +186,6 @@ function PromptsAndAnswersManager()
           {
             if (this.currentCorrectAnswerDataType === currentIncorrectAnswerDataType)
             {
-              console.log('match');
               console.log('this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex]: ' + this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex]);
               this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
@@ -204,7 +198,6 @@ function PromptsAndAnswersManager()
           {
             if (this.currentCorrectAnswerDataType === currentIncorrectAnswerDataType)
             {
-              console.log('match');
               this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
           }
@@ -216,7 +209,6 @@ function PromptsAndAnswersManager()
           {
             if (this.currentCorrectAnswerDataType === currentIncorrectAnswerDataType)
             {
-              console.log('match');
               this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
           }
@@ -240,52 +232,6 @@ function PromptsAndAnswersManager()
 }
 
 let promptsAndAnswersManager = new PromptsAndAnswersManager();
-
-let currentStringAnswerXCoordinate = undefined;
-let currentStringAnswerYCoordinate = undefined;
-let currentStringIncorrectAnswerXCoordinate = undefined;
-let currentStringIncorrectAnswerYCoordinate = undefined;
-
-function initializeAnswerCoordinates()
-{
-  if (currentAnswerDataType === 'string')
-  {
-    currentStringAnswerXCoordinate = getRandomIntInclusive(0,640);
-    currentStringAnswerYCoordinate = getRandomIntInclusive(0,640);
-
-    currentStringIncorrectAnswerXCoordinate = getRandomIntInclusive(0,640);
-    currentStringIncorrectAnswerYCoordinate = getRandomIntInclusive(0,640);
-  } else
-  {
-    currentAnswer.xCoordinate = getRandomIntInclusive(0,640);
-    currentAnswer.yCoordinate = getRandomIntInclusive(0,700);
-
-    currentIncorrectAnswer.xCoordinate = getRandomIntInclusive(0,640);
-    currentIncorrectAnswer.yCoordinate = getRandomIntInclusive(0,700);
-  }
-
-
-  console.log('current answer x: ' + currentAnswer.xCoordinate);
-  console.log('current answer y: ' + currentAnswer.yCoordinate);
-}
-
-// function()
-// {
-//   let randomIncorrectAnswerIndex =
-// }
-function initializePromptAndAnswers()
-{
-  pickARandomLogicalPromptAnswerGroup();
-
-  pickTargetPromptAnswerFromPromptAnswerGroup();
-  pickARandomPrompt();
-
-  currentPromptAnswerFromLogicalGroup.assignAnAnswerBasedOnPrompt();
-  currentPromptAnswerFromLogicalGroup.assignIncorrectAnswer();
-  console.log('prompt: ' + currentPromptAnswerFromLogicalGroup.prompt);
-  console.log('answer: ' + currentPromptAnswerFromLogicalGroup.answer);
-
-}
 
 var answerSpeed = 0;
 function moveAnswersIfAppropriate()
