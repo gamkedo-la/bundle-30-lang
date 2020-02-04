@@ -12,11 +12,14 @@ var pinataGame = new function() {
 var objects = [];
 
 // how many poppable letter choices will fall out
-const CANDY_COUNT = 25;
-const MASS_SCALE = 5; // this number divided by the radius = mass (was 1)
+const CANDY_COUNT = 10;
+const CANDY_MIN_SIZE = 20;
+const CANDY_START_RADIUS = 100;
+const CANDY_SHRINK = -0.1;
+const CANDY_MASS = 1; 
 
 // special case: candies with a "space" as the letter are considered particles of confetti
-const CONFETTI_COUNT = 12;
+const CONFETTI_COUNT = 0; // currently it messes up the physics
 const CONFETTI_RADIUS = 16;
 const CONFETTI_MASS = 0.00001;
 const CONFETTI_SHRINKSPEED = 0.95; // % each frame
@@ -40,21 +43,24 @@ var targetLetter = alphabet[rndInt(0,alphabet.length-1)];
 function boom(x,y,wasCorrect) {
 
     if (wasCorrect) {
+
+        /*
         // destroy the world!
         objects = [];
-
         // Init scene ground floor
         Circle(Vec2(320, 5700), 5000, 0); // floor!
         Circle(Vec2(2840, 5000), 5000, 0); // r wall
         Circle(Vec2(-2200, 5000), 5000, 0); // l wall
+        */
 
         // select a new letter
         targetLetter = alphabet[rndInt(0,alphabet.length-1)];
         // ensure the target one is there at least one matching letter, quite high up
         Circle(Vec2(x+Math.random()*300-250,y+Math.random()*-100-75),40,5/40,targetLetter);
+
         // create many little candies
         for(i = CANDY_COUNT; i--; ){
-            Circle(Vec2(x+Math.random()*200-100,y+Math.random()*-200)); // a bit higher please
+            Circle(Vec2(x+Math.random()*100-50,y+Math.random()*-100)); // a bit higher please
         }
     }
 
@@ -90,12 +96,18 @@ function pinataClick(e) {
     // console.log("Pinata game click");
     let correct = false;
 
+    // stop the slow fade in early
+    levelIsTransitioning = false;
+    transitionIsFadingIn = false;
+    transitionIsFadingOut = false;
+    gameCanvasContext.globalAlpha = 1;
+
     // detect WHICH circle we clicked!
     var clickXY = Vec2(e.pageX,e.pageY);
     for(let i = objects.length; i--;){
         let checkme = objects[i];
         let dist = sub(clickXY, checkme.C);
-        if (length(dist) < checkme.R) {
+        if (length(dist) < checkme.R + 2) { // the +2 is a little extra leeway =)
             console.log("You clicked letter " + checkme.Z + ' at a distance of ' + length(dist) + ' which is less than ' + checkme.R);
             // FIXME - handle >1 positive on same frame etc
             // did we succeed?
@@ -147,6 +159,10 @@ this.init = function() {
     currentBackgroundMusic.pause();
     currentBackgroundMusic = pinataBackgroundMusic;
 
+    // Init scene ground floor
+    Circle(Vec2(320, 5700), 5000, 0); // floor!
+    Circle(Vec2(2840, 5000), 5000, 0); // r wall
+    Circle(Vec2(-2200, 5000), 5000, 0); // l wall
     boom(a.width/2,a.height/2,true)// middle of screen
 
     // debug only: spawn new candy on mouseclick
@@ -236,6 +252,9 @@ this.init = function() {
         b.D += b.E * .01;
         b.B += b.M ? b.D * .01 : .001;
 
+        // shrink!
+        if (b.M && b.R > CANDY_MIN_SIZE) b.R += CANDY_SHRINK;
+
         // Draw
         c.save();
         c.beginPath();
@@ -304,7 +323,8 @@ this.init = function() {
 // u: tangent
 // x: jT
 // b.bgColor="#333";
-var Circle = (C, R = Math.random() * 30 + 10, M = MASS_SCALE/R, forcedString) =>
+
+var Circle = (C, R = Math.random() * CANDY_START_RADIUS + CANDY_MIN_SIZE, M = CANDY_MASS, forcedString) =>
 
   objects.push(
     {

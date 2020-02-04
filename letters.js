@@ -29,7 +29,7 @@ var currentCorrectLetter = undefined;
 
 function playCorrectLetterAudioTag()
 {
-  correctLetterAudioTag.play();
+  if (correctLetterAudioTag) correctLetterAudioTag.play();
 }
 
 function initializeCorrectLetterAudioTag()
