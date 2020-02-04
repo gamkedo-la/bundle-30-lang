@@ -1,6 +1,5 @@
 var playerShouldBePlayingSnake = false;
 var playerShouldBePlayingBird = false;
-var playerShouldBePlayingLane = false;
 var playerShouldBePlayingJumper = false;
 var playerShouldBePlayingFinder = false;
 var playerShouldBePlayingCatcher = false;
@@ -55,7 +54,7 @@ function keyDown(builtInDocumentEventObject)
     } else if (playerShouldBePlayingBird)
     {
 
-    } else if (playerShouldBePlayingLane)
+    } else if (laneGame.isPlaying())
     {
       if (playerXCoordinate > 230)
       playerXCoordinate = 230;
@@ -86,7 +85,7 @@ function keyDown(builtInDocumentEventObject)
     }  else if (playerShouldBePlayingBird)
     {
 
-    } else if (playerShouldBePlayingLane)
+    } else if (laneGame.isPlaying())
     {
       if (playerXCoordinate !== 380)
       {

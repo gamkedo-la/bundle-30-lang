@@ -11,8 +11,8 @@ function drawGameSpecificPlayer()
     SNAKE_GAME.drawPlayer();
   } else if (playerShouldBePlayingBird) {
     drawBirdPlayer();
-  } else if (playerShouldBePlayingLane) {
-    drawCarPlayer();
+  } else if (laneGame.isPlaying()) {
+	  laneGame.drawPlayer();
   } else if (playerShouldBePlayingJumper){
     drawJumperPlayer();
   } else if (playerShouldBePlayingSpaceShooter)

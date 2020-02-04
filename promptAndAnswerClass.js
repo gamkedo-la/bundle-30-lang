@@ -242,7 +242,7 @@ function moveAnswersIfAppropriate()
     {
       arrayOfAnswers[answerIndex].xCoordinate -= answerSpeed;//letters move right to left in bird
     }
-  } else if (playerShouldBePlayingLane)
+  } else if (laneGame.isPlaying())
   {
     for (var answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
     {
@@ -296,7 +296,7 @@ function handleCollisionsWithAnswers()
           arrayOfAnswers.splice(answerIndex,1);
         }
     }
-  } else if (playerShouldBePlayingLane)
+  } else if (laneGame.isPlaying())
   {
     for (let answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
     {

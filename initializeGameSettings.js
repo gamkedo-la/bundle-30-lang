@@ -9,11 +9,9 @@ function initializeSpecificGameSettings()
     playerYCoordinate = birdStartingY;
     playerSpeedX = birdSpeed;
     letterSpeed = birdLetterSpeed;
-  } else if (playerShouldBePlayingLane)
+  } else if (laneGame.isPlaying())
   {
-    playerXCoordinate = laneStartingX;
-    playerYCoordinate = laneStartingY;
-    letterSpeed = laneLetterSpeed;
+	laneGame.initialize();
   } else if (playerShouldBePlayingJumper)
   {
     playerXCoordinate = jumperStartingXCoordinate;

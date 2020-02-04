@@ -121,7 +121,7 @@ function handleGameCellClicks()
   else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
            mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
       {
-        playerShouldBePlayingLane = true;
+		laneGame.startPlaying();
         playerShouldSeeTitleScreen = false;
         letterSpawnInterval.reset(laneLetterSpawnRate);
         playerIsPlayingAnyGame = true;

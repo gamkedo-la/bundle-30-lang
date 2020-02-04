@@ -7,7 +7,7 @@ function drawBackButton()
       gameCanvasContext.fillStyle = birdBackButtonRectangleColor;
     } else if (playerShouldBePlayingSnake) {
       gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_RECTANGLE_COLOR;
-    } else if (playerShouldBePlayingLane) {
+    } else if (laneGame.isPlaying()) {
       gameCanvasContext.fillStyle = laneBackButtonRectangleColor;
     } else if (playerShouldBePlayingJumper) {
       gameCanvasContext.fillStyle = jumperBackButtonRectangleColor;
@@ -19,7 +19,7 @@ function drawBackButton()
       gameCanvasContext.fillStyle = birdBackButtonTextColor;
     } else if (playerShouldBePlayingSnake) {
       gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_TEXT_COLOR;
-    } else if (playerShouldBePlayingLane) {
+    } else if (laneGame.isPlaying()) {
       gameCanvasContext.fillStyle = laneBackButtonTextColor;
     } else if (playerShouldBePlayingJumper)
     {
@@ -40,7 +40,7 @@ function handleBackButtonClick()
         playerIsPlayingAnyGame = false;
         playerShouldBePlayingBird = false;
         SNAKE_GAME.stopPlaying() = false;
-        playerShouldBePlayingLane = false;
+        laneGame.stopPlaying();
         playerShouldBePlayingJumper = false;
         playerShouldBePlayingPinata = false;
 		runnerGame.stopPlaying();

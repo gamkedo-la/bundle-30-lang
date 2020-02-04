@@ -53,10 +53,9 @@ function gameSpecificUpdates()
   if (SNAKE_GAME.isPlaying())
   {
     SNAKE_GAME.updateSnakeTail();
-  } else if (playerShouldBePlayingLane)
+  } else if (laneGame.isPlaying())
   {
-    moveYellowCenterDashes();
-    handleDashArrayPopulation();
+    laneGame.update();
   } else if (playerShouldBePlayingSpaceShooter)
   {
     moveSpaceShooterBullets();

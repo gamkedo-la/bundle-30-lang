@@ -12,78 +12,101 @@ var laneBackButtonTextColor = 'yellow';
 
 var laneFrameRate = 1000/50;
 
-function drawCarPlayer()
-{
-  gameCanvasContext.fillStyle = 'blue';
-  gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 30,60);
+
+function laneGameClass() {
+	let gameIsPlaying = false;
+	let arrayOfYellowCenterDashes = [-1, 0, 1, 2, 3, 4, 5, 6].map(function(dashIndex) {
+		return {x: 320 - 7.5, y: dashIndex*100};
+	});
+	let dashHeight = 75;
+	let dashWidth = 15;
+
+	this.isPlaying = function() {
+		return gameIsPlaying;
+	};
+
+	this.initialize = function() {
+		playerXCoordinate = laneStartingX;
+		playerYCoordinate = laneStartingY;
+		letterSpeed = laneLetterSpeed;
+	};
+
+	this.startPlaying = function() {
+		gameIsPlaying = true;
+	};
+
+	this.stopPlaying = function() {
+		gameIsPlaying = false;
+	};
+
+	this.update = function() {
+		moveYellowCenterDashes();
+		handleDashArrayPopulation();
+	};
+
+	this.drawBackground = function() {
+		drawLaneGrass();
+		drawLaneRoadAsphalt();
+		drawLaneYellowCenterDashes();
+	};
+
+	this.drawPlayer = function() {
+		gameCanvasContext.fillStyle = 'blue';
+		gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 30,60);
+	};
+
+	function drawLaneGrass()
+	{
+		gameCanvasContext.fillStyle = 'green';
+		gameCanvasContext.fillRect(0,0, 640,700);
+	}
+
+	function drawLaneRoadAsphalt()
+	{
+		gameCanvasContext.fillStyle = 'gray';
+		gameCanvasContext.fillRect(140,0, 360,700);
+	}
+
+
+	function drawLaneYellowCenterDashes()
+	{
+		for (let dashIndex = 0; dashIndex < arrayOfYellowCenterDashes.length; dashIndex++)
+		{
+			gameCanvasContext.fillStyle = 'yellow';
+			gameCanvasContext.fillRect(arrayOfYellowCenterDashes[dashIndex].x,arrayOfYellowCenterDashes[dashIndex].y,
+									   dashWidth,dashHeight);
+		}
+	}
+
+	function moveYellowCenterDashes()
+	{
+		for (let dashIndex = 0; dashIndex < arrayOfYellowCenterDashes.length; dashIndex++)
+		{
+			arrayOfYellowCenterDashes[dashIndex].y += 3;
+		}
+	}
+
+	function spawnANewDashIfAppropriate()
+	{
+		if (arrayOfYellowCenterDashes[0].y > 0)
+		{
+			arrayOfYellowCenterDashes.unshift({x:320 - 7.5,y:-100});
+		}
+	}
+
+	function deleteDashesOffBottomOfScreen()
+	{
+		if (arrayOfYellowCenterDashes[arrayOfYellowCenterDashes.length - 1].y > 700)
+		{
+			arrayOfYellowCenterDashes.splice(arrayOfYellowCenterDashes.length - 1,1);
+		}
+	}
+
+	function handleDashArrayPopulation()
+	{
+		spawnANewDashIfAppropriate();
+		deleteDashesOffBottomOfScreen();
+	}
 }
 
-//background section
-function drawLaneBackground()
-{
-  drawLaneGrass();
-  drawLaneRoadAsphalt();
-  drawLaneYellowCenterDashes();
-}
-
-function drawLaneGrass()
-{
-  gameCanvasContext.fillStyle = 'green';
-  gameCanvasContext.fillRect(0,0, 640,700);
-}
-
-function drawLaneRoadAsphalt()
-{
-  gameCanvasContext.fillStyle = 'gray';
-  gameCanvasContext.fillRect(140,0, 360,700);
-}
-
-var arrayOfYellowCenterDashes = [];
-var dashHeight = 75;
-var dashWidth = 15;
-
-for (let dashIndex = -1; dashIndex < 7; dashIndex++)
-{
-  arrayOfYellowCenterDashes.push({x:320 - 7.5,y:dashIndex*100})
-}
-
-function drawLaneYellowCenterDashes()
-{
-  for (let dashIndex = 0; dashIndex < arrayOfYellowCenterDashes.length; dashIndex++)
-  {
-    gameCanvasContext.fillStyle = 'yellow';
-    gameCanvasContext.fillRect(arrayOfYellowCenterDashes[dashIndex].x,arrayOfYellowCenterDashes[dashIndex].y,
-                              dashWidth,dashHeight);
-  }
-}
-
-function moveYellowCenterDashes()
-{
-  for (let dashIndex = 0; dashIndex < arrayOfYellowCenterDashes.length; dashIndex++)
-  {
-    arrayOfYellowCenterDashes[dashIndex].y += 3;
-  }
-}
-
-function spawnANewDashIfAppropriate()
-{
-  if (arrayOfYellowCenterDashes[0].y > 0)
-  {
-    arrayOfYellowCenterDashes.unshift({x:320 - 7.5,y:-100});
-  }
-}
-
-function deleteDashesOffBottomOfScreen()
-{
-  if (arrayOfYellowCenterDashes[arrayOfYellowCenterDashes.length - 1].y > 700)
-  {
-    arrayOfYellowCenterDashes.splice(arrayOfYellowCenterDashes.length - 1,1);
-  }
-}
-
-function handleDashArrayPopulation()
-{
-  spawnANewDashIfAppropriate();
-  deleteDashesOffBottomOfScreen();
-}
-//end of background section
+const laneGame = new laneGameClass();
