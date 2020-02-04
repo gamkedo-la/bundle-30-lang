@@ -58,6 +58,7 @@ function snakeGameClass()
     playerSpeedY = 0;
     letterSpeed = SNAKE_LETTER_SPEED;
     this.shuffleAndResetPromptsAndAnswers();
+    this.loadPromptsManager();
   }
 
 
@@ -153,6 +154,17 @@ function snakeGameClass()
   this.shuffleAndResetPromptsAndAnswers = function()
   {
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+  }
+
+  this.loadPromptsManager = function()
+  {
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+  }
+
+  this.promptThePlayer = function()
+  {
+    promptersManager.promptThePlayer();
+    console.log('should be prompting the player');
   }
 
   this.drawAnswers = function()

@@ -106,7 +106,7 @@ function PromptsAndAnswersManager()
     else if (this.currentPrompt.nodeName === 'AUDIO')
     {
       this.dataTypeOfCurrentPrompt = 'AUDIO';
-      audioPrompter.loadCurrentImage(this.currentPrompt);
+      audioPrompter.loadCurrentAudioPrompt(this.currentPrompt);
     }
     else
     {

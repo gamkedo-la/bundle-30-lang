@@ -1,5 +1,6 @@
 function AudioPrompter()
 {
+  this.name = 'audio prompter';
   this.currentAudioPrompt = undefined;
   this.image = placeholderPlayButtonImage;
 
@@ -13,9 +14,10 @@ function AudioPrompter()
     this.currentAudioPrompt = audioTagToLoad;
   }
 
-  this.playAudioPrompt = function()
+  this.promptThePlayer = function()
   {
     this.currentAudioPrompt.play();
+    console.log('inside audio prompter play code');
   }
 }
 

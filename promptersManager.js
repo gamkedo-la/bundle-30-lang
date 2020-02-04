@@ -4,9 +4,11 @@ function PromptersManager()
   this.loadCurrentPrompter = function(prompterToLoad)
   {
     this.currentPrompter = prompterToLoad;
+    console.log('this.currentPrompter.name: ' + this.currentPrompter.name);
   }
 
-  this.defineCurrentPrompterDataType = function()
+
+  this.loadAppropriatePrompterBasedOnCurrentPromptsDataType = function()
   {
     if (promptsAndAnswersManager.dataTypeOfCurrentPrompt === 'string')
     {
@@ -20,6 +22,7 @@ function PromptersManager()
    }
   }
 
+  this.shouldBePrompting = false;
   this.promptThePlayer = function()
   {
     this.currentPrompter.promptThePlayer();
