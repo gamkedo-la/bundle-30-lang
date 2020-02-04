@@ -6,7 +6,7 @@ var playerYSpeed = undefined;
 
 function drawGameSpecificPlayer()
 {
-  if (playerShouldBePlayingSnake)
+  if (SNAKE_GAME.isPlaying())
   {
     SNAKE_GAME.drawPlayer();
   } else if (playerShouldBePlayingBird) {

@@ -66,7 +66,7 @@ function gameSpecificUpdates()
 
 function handleGameSpecificSpritesOffScreen()
 {
-  if (playerShouldBePlayingSnake)
+	if (SNAKE_GAME.isPlaying())
   {
     SNAKE_GAME.wrapSnakeIfOffScreen();
   } else if (playerShouldBePlayingBird) {
