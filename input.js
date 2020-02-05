@@ -1,4 +1,3 @@
-var playerShouldBePlayingSnake = false;
 var playerShouldBePlayingBird = false;
 var playerShouldBePlayingJumper = false;
 var playerShouldBePlayingFinder = false;

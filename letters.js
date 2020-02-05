@@ -94,7 +94,7 @@ function moveLettersIfAppropriate()
 
 function drawLetters()
 {
-  if (playerShouldBePlayingSnake)
+  if (SNAKE_GAME.isPlaying())
   {
     gameCanvasContext.fillStyle = SNAKE_LETTER_COLOR;
   } else if (playerShouldBePlayingBird)
