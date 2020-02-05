@@ -118,6 +118,7 @@ function snakeGameClass()
     this.drawBackground();
     this.drawPlayer();
     this.drawPromptsWhenAppropriate();
+    this.drawAnswers();
   }
 
   this.drawBackground = function()
@@ -207,6 +208,7 @@ function snakeGameClass()
         arrayOfAnswers[arrayOfAnswersAnswerIndex].xCoordinate,arrayOfAnswers[arrayOfAnswersAnswerIndex].yCoordinate, 100,100);
       }
     }
+    console.log('I should see some answers on the screen');
   }
 }
 

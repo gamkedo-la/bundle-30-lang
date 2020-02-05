@@ -51,8 +51,8 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
   this.arrayOfPossiblePrompts = [this.textAssociation, this.imageAssociation, this.audioAssociation];
   this.arrayOfPossibleAnswers = [this.textAssociation, this.imageAssociation, this.audioAssociation];
 
-  this.answerXCoordinate = undefined;
-  this.answerYCoordinate = undefined;
+  this.xCoordinate = undefined;
+  this.yCoordinate = undefined;
 
   this.width = undefined;
   this.height = undefined;
@@ -217,6 +217,14 @@ function PromptsAndAnswersManager()
     console.log('this.currentIncorrectAnswer: ' + this.currentIncorrectAnswer);
   }
 
+  this.defineXAndYCoordinatesForTargets = function()
+  {
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,540);
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = getRandomIntInclusive(0,600);
+
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,540);
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomIntInclusive(0,600);
+  }
 
   this.setOrResetPromptsAndAnswers = function()
   {
@@ -228,6 +236,7 @@ function PromptsAndAnswersManager()
     this.defineCurrentCorrectAnswerDataType();
     this.defineIncorrectTargetPromptAndAnswerPairing();
     this.assignCurrentIncorrectAnswer();
+    this.defineXAndYCoordinatesForTargets();
   }
 }
 
