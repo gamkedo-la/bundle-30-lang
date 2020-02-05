@@ -27,13 +27,10 @@ function TextPrompter()
     console.log('promptersManager.shouldBeDrawingAPrompt: ' + promptersManager.shouldBeDrawingAPrompt);
   }
 
-  this.promptingInterval = new frameInterval(this.togglePromptingBoolean,1000);
-
   this.promptThePlayer = function()
   {
     this.togglePromptingBoolean();
-    this.promptingInterval.start();
-    console.log('hello text prompter interval');
+    setTimeout(this.togglePromptingBoolean,1000);
   }
 }
 

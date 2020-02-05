@@ -27,13 +27,13 @@ function AudioPrompter()
 
   this.drawThePrompt = function()
   {
-    if (this.currentImage !== undefined)
+    if (this.image !== undefined)
     {
       //(img,
       //sourceImageStartingX,SourceImageStartingY,SourceImageWidthToCrop,SourceImageHeightToCrop,
       //targetCanvasXCoordinateToStartDrawing,targetCanvasYCoordinateToStartDrawing,
       //widthOfImageToDrawOnTargetCanvas,heightOfImageToDrawOnTargetCanvas);
-      gameCanvasContext.drawImage(this.currentImage,
+      gameCanvasContext.drawImage(this.image,
                            0,0, 1000,750,
                            gameCanvas.width/2 - 150,gameCanvas.height/2 - 150,
                            300,300);
@@ -44,6 +44,7 @@ function AudioPrompter()
   this.promptThePlayer = function()
   {
     this.currentAudioPrompt.play();
+    this.togglePromptingBoolean();
     setTimeout(this.togglePromptingBoolean,1000);
     console.log('inside audio prompter play code');
   }

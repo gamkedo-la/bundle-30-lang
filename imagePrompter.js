@@ -34,12 +34,10 @@ function ImagePrompter()
     }
   }
 
-  this.promptingInterval = new frameInterval(this.togglePromptingBoolean,1000);
-
   this.promptThePlayer = function()
   {
     this.togglePromptingBoolean();
-    this.promptingInterval.start();
+    setTimeout(this.togglePromptingBoolean,1000);
     console.log('hello image prompter interval');
   }
 }
