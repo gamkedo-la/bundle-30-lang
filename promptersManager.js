@@ -1,5 +1,12 @@
 function PromptersManager()
 {
+  this.instantiatePrompters = function()
+  {
+    textPrompter = new TextPrompter();
+    imagePrompter = new ImagePrompter();
+    audioPrompter = new AudioPrompter();
+  }
+
   this.currentPrompter = undefined;
   this.loadCurrentPrompter = function(prompterToLoad)
   {
@@ -22,7 +29,7 @@ function PromptersManager()
    }
   }
 
-  this.shouldBePrompting = false;
+  this.shouldBeDrawingAPrompt = false;
   this.promptThePlayer = function()
   {
     this.currentPrompter.promptThePlayer();

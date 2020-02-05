@@ -220,6 +220,7 @@ function handleGameCellClicks()
         // currentBackgroundMusic.pause();
         console.log(currentBackgroundMusic);
         gameCanvasContext.globalAlpha = 0.0;
+        promptersManager.instantiatePrompters();
       }
 
 }

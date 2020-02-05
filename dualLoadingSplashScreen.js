@@ -33,12 +33,13 @@ function handleDualPurposeSplashAndLoadingSceneClick()
   //setInterval(updateGameFrame, frameRate);
   playerShouldSeePleaseWaitForDownloading = false;
   initializePromptAndAnswerObjects();
-  
+
 
   currentBackgroundMusic = titleScreenMusic;
   currentBackgroundMusic.play();
   currentBackgroundMusic.loop = true;
   gameInterval.start();
+  
   if (gameIsOnAServerAndCanUseWebAudioAPI)
   {
     initializeWebAudioAPI();

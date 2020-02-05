@@ -7,11 +7,33 @@ function TextPrompter()
     this.currentText = textToLoad;
   }
 
+  this.drawThePrompt = function()
+  {
+    if (this.currentText !== undefined)
+    {
+      customFontFillText(this.currentText, 100, 50, gameCanvas.width/2 - 150,gameCanvas.height/2 - 75);
+      console.log('inside text prompter draw code');
+    }
+  }
+
+  this.togglePromptingBoolean = function()
+  {
+    if (promptersManager.shouldBeDrawingAPrompt)
+    {
+      promptersManager.shouldBeDrawingAPrompt = false;
+    } else {
+      promptersManager.shouldBeDrawingAPrompt = true;
+    }
+  }
+
+  this.promptingInterval = new frameInterval(this.togglePromptingBoolean,1000);
+
   this.promptThePlayer = function()
   {
-    customFontFillText(this.currentText, 100, 20, gameCanvas.width/2 - 50,gameCanvas.height/2 + 50);
-    console.log('inside text prompter draw code');
+    this.togglePromptingBoolean();
+    this.promptingInterval.start();
+    console.log('hello text prompter interval');
   }
 }
 
-let textPrompter = new TextPrompter();
+let textPrompter;

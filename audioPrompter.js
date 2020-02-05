@@ -21,4 +21,4 @@ function AudioPrompter()
   }
 }
 
-let audioPrompter = new AudioPrompter();
+let audioPrompter;
