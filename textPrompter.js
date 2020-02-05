@@ -24,6 +24,7 @@ function TextPrompter()
     } else {
       promptersManager.shouldBeDrawingAPrompt = true;
     }
+    console.log('promptersManager.shouldBeDrawingAPrompt: ' + promptersManager.shouldBeDrawingAPrompt);
   }
 
   this.promptingInterval = new frameInterval(this.togglePromptingBoolean,1000);
