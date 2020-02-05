@@ -32,7 +32,9 @@ function PromptersManager()
   this.shouldBeDrawingAPrompt = false;
   this.promptThePlayer = function()
   {
-    this.currentPrompter.promptThePlayer();
+      if (typeof(this.currentPrompter) != 'undefined') {
+		  this.currentPrompter.promptThePlayer();
+	  }
   }
 }
 
