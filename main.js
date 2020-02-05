@@ -56,9 +56,9 @@ function gameSpecificUpdates()
   } else if (laneGame.isPlaying())
   {
     laneGame.update();
-  } else if (playerShouldBePlayingSpaceShooter)
+  } else if (spaceShooterGame.isPlaying())
   {
-    moveSpaceShooterBullets();
+	  spaceShooterGame.update();
   } else if (runnerGame.isPlaying()) {
     runnerGame.update();
   }
@@ -83,9 +83,9 @@ function drawEverythingInTheGame()
     drawGameSpecificBackground();
     drawBackButton();
     drawGameSpecificPlayer();
-    if (playerShouldBePlayingSpaceShooter)
+    if (spaceShooterGame.isPlaying())
     {
-      drawSpaceShooterBullets();
+		spaceShooterGame.draw();
     }
     drawLetters();//change to promptAndAnswerClass
     //drawAnswers();

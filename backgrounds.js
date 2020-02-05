@@ -23,9 +23,10 @@ function drawGameSpecificBackground()
   {
     drawJumperBackground();
     drawJumperPlatforms();
-  } else if (playerShouldBePlayingSpaceShooter)
+  } else if (spaceShooterGame.isPlaying())
   {
-    drawSpaceShooterBackground();
+      // drawSpaceShooterBackground();
+	  spaceShooterGame.drawBackground();
   } else if (runnerGame.isPlaying()) {
 	  runnerGame.drawBackground();
   }

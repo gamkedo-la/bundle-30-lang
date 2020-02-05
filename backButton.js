@@ -41,6 +41,7 @@ function handleBackButtonClick()
         playerShouldBePlayingBird = false;
         SNAKE_GAME.stopPlaying();
         laneGame.stopPlaying();
+		spaceShooterGame.stopPlaying();
         playerShouldBePlayingJumper = false;
         playerShouldBePlayingPinata = false;
 		runnerGame.stopPlaying();

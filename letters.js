@@ -49,7 +49,7 @@ function spawnALetterIfAppropriate()
   } else {
     name = 'n';
   }
-  if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter)
+  if (playerShouldBePlayingBird || spaceShooterGame.isPlaying())
   {
     arrayOfAnswers.push({xCoordinate:640,yCoordinate:Math.random()*700, name:name, correctAnswer:false});
   } else if (laneGame.isPlaying())
@@ -77,7 +77,7 @@ function spawnALetterIfAppropriate()
 
 function moveLettersIfAppropriate()
 {
-	if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter || runnerGame.isPlaying())
+	if (playerShouldBePlayingBird || spaceShooterGame.isPlaying() || runnerGame.isPlaying())
   {
     for (var letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {
@@ -106,7 +106,7 @@ function drawLetters()
   } else if (playerShouldBePlayingJumper)
   {
     gameCanvasContext.fillStyle = jumperLetterColor;
-  } else if (playerShouldBePlayingSpaceShooter)
+  } else if (spaceShooterGame.isPlaying())
   {
     gameCanvasContext.fillStyle = spaceShooterLetterColor;
   } else if (runnerGame.isPlaying())
