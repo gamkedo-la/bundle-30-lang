@@ -15,9 +15,9 @@ function drawGameSpecificPlayer()
 	  laneGame.drawPlayer();
   } else if (playerShouldBePlayingJumper){
     drawJumperPlayer();
-  } else if (playerShouldBePlayingSpaceShooter)
+  } else if (spaceShooterGame.isPlaying())
   {
-    drawSpaceShooterPlayer();
+	  spaceShooterGame.drawPlayer();
   }
 }
 
@@ -32,9 +32,9 @@ function moveGameSpecificPlayer()
   } else if (playerShouldBePlayingJumper)
   {
     moveJumperPlayer();
-  } else if (playerShouldBePlayingSpaceShooter)
+  } else if (spaceShooterGame.isPlaying())
   {
-    moveSpaceShooterPlayer();
+	  spaceShooterGame.movePlayer();
   } else if (runnerGame.isPlaying()) {
 	  runnerGame.movePlayerCharacter()
   }

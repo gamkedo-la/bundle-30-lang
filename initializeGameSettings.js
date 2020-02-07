@@ -16,10 +16,11 @@ function initializeSpecificGameSettings()
   {
     playerXCoordinate = jumperStartingXCoordinate;
     playerYCoordinate = jumperStartingYCoordinate;
-  } else if (playerShouldBePlayingSpaceShooter)
+  } else if (spaceShooterGame.isPlaying())
   {
-    playerXCoordinate = spaceShooterStartingXCoordinate;
-    playerYCoordinate = spaceShooterStartingYCoordinate;
+    // playerXCoordinate = spaceShooterStartingXCoordinate;
+      // playerYCoordinate = spaceShooterStartingYCoordinate;
+	  spaceShooterGame.initialize();
   } else if (runnerGame.isPlaying()) {
 	  runnerGame.initialize();
   }

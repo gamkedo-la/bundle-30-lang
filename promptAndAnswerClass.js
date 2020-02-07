@@ -245,7 +245,7 @@ let promptsAndAnswersManager = new PromptsAndAnswersManager();
 var answerSpeed = 0;
 function moveAnswersIfAppropriate()
 {
-  if (playerShouldBePlayingBird || playerShouldBePlayingSpaceShooter || runnerGame.isPlaying())
+  if (playerShouldBePlayingBird || spaceShooterGame.isPlaying() || runnerGame.isPlaying())
   {
     for (var answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
     {

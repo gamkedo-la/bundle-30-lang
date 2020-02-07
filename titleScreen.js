@@ -161,7 +161,7 @@ function handleGameCellClicks()
   else if (mouseCoordinates.mouseX > 120 && mouseCoordinates.mouseX < 220 &&
            mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
       {
-        playerShouldBePlayingSpaceShooter = true;
+        spaceShooterGame.startPlaying();
         playerShouldSeeTitleScreen = false;
         playerIsPlayingAnyGame = true;
         gameInterval.reset(spaceShooterFrameRate);
@@ -172,7 +172,7 @@ function handleGameCellClicks()
   else if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 120 &&
            mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
       {
-        playerShouldBePlayingSpaceShooter = true;
+        spaceShooterGame.startPlaying();
         playerShouldSeeTitleScreen = false;
         playerIsPlayingAnyGame = true;
         levelIsTransitioning = true;
