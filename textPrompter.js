@@ -12,7 +12,6 @@ function TextPrompter()
     if (this.currentText !== undefined)
     {
       customFontFillText(this.currentText, 100, 50, gameCanvas.width/2 - 150,gameCanvas.height/2 - 75);
-      console.log('inside text prompter draw code');
     }
   }
 
@@ -24,7 +23,6 @@ function TextPrompter()
     } else {
       promptersManager.shouldBeDrawingAPrompt = true;
     }
-    console.log('promptersManager.shouldBeDrawingAPrompt: ' + promptersManager.shouldBeDrawingAPrompt);
   }
 
   this.promptThePlayer = function()

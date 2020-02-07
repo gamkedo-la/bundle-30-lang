@@ -181,32 +181,45 @@ function snakeGameClass()
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
       gameCanvasContext.fillStyle = SNAKE_LETTER_COLOR;
-      for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
-      {
+      // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
+      // {
         //draw correct answer
+        console.log('inside text answers draw code');
         gameCanvasContext.fillText(promptsAndAnswersManager.currentCorrectAnswer,
-        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.correctAnswerXCoordinate,
-        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.correctAnswerYCoordinate);
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
 
         //draw incorrect answer
         gameCanvasContext.fillText(promptsAndAnswersManager.currentIncorrectAnswer,
-        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.incorrectAnswerXCoordinate,
-        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.incorrectAnswerYCoordinate);
-      }
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate);
+      //}
     } else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
     {
-      for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
-      {
-        gameCanvasContext.drawImage(arrayOfAnswers[arrayOfAnswersAnswerIndex],
-        arrayOfAnswers[arrayOfAnswersAnswerIndex].xCoordinate,arrayOfAnswers[arrayOfAnswersAnswerIndex].yCoordinate, 100,100);
-      }
+      // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
+      // {
+        console.log('inside image answers draw code');
+        gameCanvasContext.drawImage(promptsAndAnswersManager.currentCorrectAnswer,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, 100,100);
+
+        gameCanvasContext.drawImage(promptsAndAnswersManager.currentCorrectAnswer,
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate, 100,100);
+      //}
     } else if (promptsAndAnswersManager.currentAnswerDataType === "AUDIO")
     {
-      for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
-      {
-        gameCanvasContext.drawImage(placeholderPlayButtonImage,
-        arrayOfAnswers[arrayOfAnswersAnswerIndex].xCoordinate,arrayOfAnswers[arrayOfAnswersAnswerIndex].yCoordinate, 100,100);
-      }
+      // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
+      // {
+      console.log('audio answers draw code');
+      gameCanvasContext.drawImage(placeholderPlayButtonImage,
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, 100,100);
+
+      gameCanvasContext.drawImage(placeholderPlayButtonImage,
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate, 100,100);
+      //}
     }
     console.log('I should see some answers on the screen');
   }

@@ -20,7 +20,6 @@ function ImagePrompter()
                            0,0, 1000,750,
                            gameCanvas.width/2 - 150,gameCanvas.height/2 - 150,
                            300,300);
-                           console.log('inside image prompt draw code');
     }
   }
 
@@ -38,7 +37,6 @@ function ImagePrompter()
   {
     this.togglePromptingBoolean();
     setTimeout(this.togglePromptingBoolean,1000);
-    console.log('hello image prompter interval');
   }
 }
 

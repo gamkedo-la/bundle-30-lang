@@ -135,17 +135,17 @@ function PromptsAndAnswersManager()
   }//end of answer assignment
 
 
-  this.currentCorrectAnswerDataType = undefined;
-  this.defineCurrentCorrectAnswerDataType = function()
+  this.currentAnswerDataType = undefined;
+  this.definecurrentAnswerDataType = function()
   {
     if (typeof this.currentCorrectAnswer === 'string')
     {
-      this.currentCorrectAnswerDataType = 'string';
+      this.currentAnswerDataType = 'string';
     } else if (this.currentCorrectAnswer.nodeName === 'IMG') {
-      this.currentCorrectAnswerDataType = 'IMG';
+      this.currentAnswerDataType = 'IMG';
     } else if (this.currentCorrectAnswer.nodeName === 'AUDIO')
     {
-      this.currentCorrectAnswerDataType = 'AUDIO';
+      this.currentAnswerDataType = 'AUDIO';
     }
   }
 
@@ -184,7 +184,7 @@ function PromptsAndAnswersManager()
           currentIncorrectAnswerDataType = 'string';
           if (currentIncorrectAnswerDataType !== undefined)
           {
-            if (this.currentCorrectAnswerDataType === currentIncorrectAnswerDataType)
+            if (this.currentAnswerDataType === currentIncorrectAnswerDataType)
             {
               console.log('this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex]: ' + this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex]);
               this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
@@ -196,7 +196,7 @@ function PromptsAndAnswersManager()
           currentIncorrectAnswerDataType = 'IMG';
           if (currentIncorrectAnswerDataType !== undefined)
           {
-            if (this.currentCorrectAnswerDataType === currentIncorrectAnswerDataType)
+            if (this.currentAnswerDataType === currentIncorrectAnswerDataType)
             {
               this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
@@ -207,7 +207,7 @@ function PromptsAndAnswersManager()
           currentIncorrectAnswerDataType = 'AUDIO';
           if (currentIncorrectAnswerDataType !== undefined)
           {
-            if (this.currentCorrectAnswerDataType === currentIncorrectAnswerDataType)
+            if (this.currentAnswerDataType === currentIncorrectAnswerDataType)
             {
               this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
@@ -233,7 +233,7 @@ function PromptsAndAnswersManager()
     this.pickARandomPromptFromTargetPromptAndAnswerPairing();
     this.defineDataTypeOfCurrentPrompt();
     this.assignAnAnswerBasedOnPrompt();
-    this.defineCurrentCorrectAnswerDataType();
+    this.definecurrentAnswerDataType();
     this.defineIncorrectTargetPromptAndAnswerPairing();
     this.assignCurrentIncorrectAnswer();
     this.defineXAndYCoordinatesForTargets();

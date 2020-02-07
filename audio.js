@@ -122,7 +122,7 @@ transitionToLevelMusic1.onended = function()
       currentBackgroundMusic.addEventListener('timeupdate', function(){
                       var buffer = 0.32;
                       if(this.currentTime > this.duration - buffer){
-                        console.log('hello loop point');
+                        // console.log('hello loop point');
                           this.currentTime = 0;
                           this.play();
                       }}, false);

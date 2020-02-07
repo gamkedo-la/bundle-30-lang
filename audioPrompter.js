@@ -22,7 +22,6 @@ function AudioPrompter()
     } else {
       promptersManager.shouldBeDrawingAPrompt = true;
     }
-    console.log('promptersManager.shouldBeDrawingAPrompt: ' + promptersManager.shouldBeDrawingAPrompt);
   }
 
   this.drawThePrompt = function()
@@ -37,7 +36,6 @@ function AudioPrompter()
                            0,0, 1000,750,
                            gameCanvas.width/2 - 150,gameCanvas.height/2 - 150,
                            300,300);
-                           console.log('inside image prompt draw code');
     }
   }
 
@@ -46,7 +44,6 @@ function AudioPrompter()
     this.currentAudioPrompt.play();
     this.togglePromptingBoolean();
     setTimeout(this.togglePromptingBoolean,1000);
-    console.log('inside audio prompter play code');
   }
 }
 
