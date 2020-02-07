@@ -117,8 +117,8 @@ function snakeGameClass()
   {
     this.drawBackground();
     this.drawPlayer();
-    this.drawPromptsWhenAppropriate();
     this.drawAnswers();
+    this.drawPromptsWhenAppropriate();
   }
 
   this.drawBackground = function()
@@ -147,6 +147,7 @@ function snakeGameClass()
   {
     if (promptersManager.shouldBeDrawingAPrompt)
     {
+      promptersManager.currentPrompter.updatePromptImage();
       promptersManager.currentPrompter.drawThePrompt();
     }
   }
