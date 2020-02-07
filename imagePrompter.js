@@ -28,6 +28,10 @@ function ImagePrompter()
     if (promptersManager.shouldBeDrawingAPrompt)
     {
       promptersManager.shouldBeDrawingAPrompt = false;
+      if (promptsAndAnswersManager.currentAnswerDataType === "AUDIO")
+      {
+        promptersManager.promptAudioAnswersWhenAppropriate();
+      }
     } else {
       promptersManager.shouldBeDrawingAPrompt = true;
     }

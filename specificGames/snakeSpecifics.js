@@ -173,7 +173,6 @@ function snakeGameClass()
   this.promptThePlayer = function()
   {
     promptersManager.promptThePlayer();
-    console.log('should be prompting the player');
   }
 
   this.drawAnswers = function()
@@ -184,7 +183,6 @@ function snakeGameClass()
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
         //draw correct answer
-        console.log('inside text answers draw code');
         gameCanvasContext.fillText(promptsAndAnswersManager.currentCorrectAnswer,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
@@ -198,7 +196,6 @@ function snakeGameClass()
     {
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
-        console.log('inside image answers draw code');
         gameCanvasContext.drawImage(promptsAndAnswersManager.currentCorrectAnswer,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, 100,100);
@@ -211,17 +208,35 @@ function snakeGameClass()
     {
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
-      console.log('audio answers draw code');
+      if (promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing)
+      {
+        gameCanvasContext.globalCompositeOperation = promptersManager.globalCompositeOperationForCanvasContext;
+        gameCanvasContext.globalAlpha = promptersManager.highlightedAnswerCurrentAlpha;
+        console.log('promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing ' + promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing);
+        console.log('gameCanvasContext.globalAlpha: ' + gameCanvasContext.globalAlpha);
+      }
+      //gameCanvasContext.globalAlpha = 0;
       gameCanvasContext.drawImage(placeholderPlayButtonImage,
       promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
       promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, 100,100);
+      gameCanvasContext.globalCompositeOperation = 'source-over';
+      gameCanvasContext.globalAlpha = 1;
 
+      if (promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing)
+      {
+        gameCanvasContext.globalCompositeOperation = promptersManager.globalCompositeOperationForCanvasContext;
+        gameCanvasContext.globalAlpha = promptersManager.highlightedAnswerCurrentAlpha;
+        console.log('promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing: ' + promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing);
+        console.log('gameCanvasContext.globalAlpha: ' + gameCanvasContext.globalAlpha);
+      }
+      //gameCanvasContext.globalAlpha = 0;
       gameCanvasContext.drawImage(placeholderPlayButtonImage,
       promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
       promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate, 100,100);
+      gameCanvasContext.globalCompositeOperation = 'source-over';
+      gameCanvasContext.globalAlpha = 1;
       //}
     }
-    console.log('I should see some answers on the screen');
   }
 }
 

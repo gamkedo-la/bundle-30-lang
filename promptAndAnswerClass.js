@@ -58,6 +58,9 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
   this.height = undefined;
 
   this.containsTheCurrentCorrectAnswer = undefined;
+
+  this.shouldBeFlashing = false;
+  this.globalCompositeOperationForCanvasContext = 'source-over';
 }//end of prompt and answer class
 
 function PromptsAndAnswersManager()
