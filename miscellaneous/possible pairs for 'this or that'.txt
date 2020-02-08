@@ -84,7 +84,7 @@ Where = pic of a location, When = pic of time, why = because)
 79. the biggest/biggerst
 80. ed ending words
 81. kite/cat
-82. hear/heard
+82. hear/heard/hair
 83. those/these/this (pronunciation and function)
 84. its/it's
 85. very/every
@@ -105,6 +105,7 @@ Where = pic of a location, When = pic of time, why = because)
 103. big I/small l
 104. glass/grass
 105. her/she body
+106. hear/hair
 
 
 
