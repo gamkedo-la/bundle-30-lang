@@ -235,6 +235,30 @@ function snakeGameClass()
       //}
     }
   }
+
+  this.handleCollisionsWithAnswers = function()
+  {
+    for (let answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
+    {
+      if (playerXCoordinate > promptsAndAnswersManager.currentCorrectAnswer.xCoordinate - 15 && playerXCoordinate < currentCorrectAnswer.xCoordinate + 40
+        && playerYCoordinate > arrayOfAnswers[answerIndex].yCoordinate - 30 && playerYCoordinate < arrayOfAnswers[answerIndex].yCoordinate + 5)
+        {
+          if (arrayOfAnswers[answerIndex] === currentAnswer)
+          {
+            amountCorrect++;
+            //playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
+          } else if (arrayOfAnswers[answerIndex] !== currentAnswer)
+          {
+            amountIncorrect++;
+            //playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
+          }
+          //calculateAccuracy();
+          SNAKE_GAME.populateArrayOfAnswers();
+          //setOrResetCorrectLetter();
+
+        }
+    }
+  }
 }
 
 const SNAKE_GAME = new snakeGameClass();
