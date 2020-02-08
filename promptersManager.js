@@ -11,7 +11,6 @@ function PromptersManager()
   this.loadCurrentPrompter = function(prompterToLoad)
   {
     this.currentPrompter = prompterToLoad;
-    console.log('this.currentPrompter.name: ' + this.currentPrompter.name);
   }
 
 
@@ -93,17 +92,12 @@ function PromptersManager()
       this.globalCompositeOperationForCanvasContext = 'source-over';
     }
 
-    console.log('this.highlightedAnswerCurrentAlpha: ' + promptersManager.highlightedAnswerCurrentAlpha);
     if (promptersManager.highlightedAnswerCurrentAlpha === 1)
     {
       promptersManager.highlightedAnswerCurrentAlpha = 0;
-      console.log('inside toggle flash on');
     } else if (promptersManager.highlightedAnswerCurrentAlpha === 0){
       promptersManager.highlightedAnswerCurrentAlpha = 1;
-      console.log('inside toggle flash off');
     }
-
-    console.log('inside toggle flash');
   }
 
   this.flashInterval = undefined;

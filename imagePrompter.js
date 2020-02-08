@@ -9,8 +9,8 @@ function ImagePrompter()
   }
 
   this.backgroundColor = 'white';
-  this.currentWidth = 50;
-  this.currentHeight = 50;
+  this.currentWidth = 150;
+  this.currentHeight = 150;
 
   this.updatePromptImage = function()
   {
@@ -22,18 +22,25 @@ function ImagePrompter()
   {
     if (this.image !== undefined)
     {
+
+
       gameCanvasContext.fillStyle = this.backgroundColor;
       gameCanvasContext.fillRect(gameCanvas.width/2 - this.currentWidth/2,gameCanvas.height/2 - this.currentHeight/2,
                                  this.currentWidth,this.currentHeight);
+
+     customFontFillText(["What do you see", symbolQuestionMarkImage],
+                         this.currentWidth*0.15 /*font size*/,this.currentWidth*0.055 /*spacing*/,
+                         gameCanvas.width/2 - this.currentWidth/2  + this.currentWidth*0.0175,//xCoordinate
+                         gameCanvas.height/2 - this.currentHeight/2);//yCoordinate
       //(img,
       //sourceImageStartingX,SourceImageStartingY,SourceImageWidthToCrop,SourceImageHeightToCrop,
       //targetCanvasXCoordinateToStartDrawing,targetCanvasYCoordinateToStartDrawing,
       //widthOfImageToDrawOnTargetCanvas,heightOfImageToDrawOnTargetCanvas);
       gameCanvasContext.drawImage(this.image,
                            0,0, 1000,750,
-                           gameCanvas.width/2 - this.currentWidth/2 + this.currentWidth/2*0.2,
-                           gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight/2*0.2,
-                           this.currentWidth*0.75,this.currentHeight*0.75);
+                           gameCanvas.width/2 - this.currentWidth/2 + this.currentWidth*0.225,
+                           gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.2,
+                           this.currentWidth*0.6,this.currentHeight*0.7);
     }
   }
 

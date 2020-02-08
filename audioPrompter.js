@@ -27,8 +27,8 @@ function AudioPrompter()
   }
 
   this.backgroundColor = 'white';
-  this.currentWidth = 50;
-  this.currentHeight = 50;
+  this.currentWidth = 150;
+  this.currentHeight = 150;
 
   this.updatePromptImage = function()
   {
@@ -43,6 +43,11 @@ function AudioPrompter()
       gameCanvasContext.fillStyle = this.backgroundColor;
       gameCanvasContext.fillRect(gameCanvas.width/2 - this.currentWidth/2,gameCanvas.height/2 - this.currentHeight/2,
                                  this.currentWidth,this.currentHeight);
+
+     customFontFillText(["What do you hear", symbolQuestionMarkImage],
+                         this.currentWidth*0.15 /*font size*/,this.currentWidth*0.055 /*spacing*/,
+                         gameCanvas.width/2 - this.currentWidth/2 + this.currentHeight*0.0125,//xCoordinate
+                         gameCanvas.height/2 - this.currentHeight/2);//yCoordinate
       //(img,
       //sourceImageStartingX,SourceImageStartingY,SourceImageWidthToCrop,SourceImageHeightToCrop,
       //targetCanvasXCoordinateToStartDrawing,targetCanvasYCoordinateToStartDrawing,
@@ -50,8 +55,8 @@ function AudioPrompter()
       gameCanvasContext.drawImage(this.image,
                            0,0, 1000,750,
                            gameCanvas.width/2 - this.currentWidth/2 + this.currentWidth*0.15,
-                           gameCanvas.height/2 - this.currentHeight/2 + this.currentWidth*0.1,
-                           this.currentWidth*0.75,this.currentHeight*0.75);
+                           gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.25,
+                           this.currentWidth*0.7,this.currentHeight*0.65);
     }
   }
 
