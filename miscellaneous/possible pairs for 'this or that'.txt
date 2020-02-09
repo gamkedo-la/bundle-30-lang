@@ -106,6 +106,9 @@ Where = pic of a location, When = pic of time, why = because)
 104. glass/grass
 105. her/she body
 106. hear/hair
+107. choose tenses
+108. will/going to
+109. teaches/teachers
 
 
 
