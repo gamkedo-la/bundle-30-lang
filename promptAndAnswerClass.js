@@ -72,6 +72,7 @@ function PromptsAndAnswersManager()
   {
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
+
   }
 
 
@@ -170,7 +171,7 @@ function PromptsAndAnswersManager()
 
     let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editedPromptAndAnswerGroup.length - 1);
     this.incorrectTargetPromptAndAnswerPairing = this.editedPromptAndAnswerGroup[randomIndexForEditedPromptAndAnswerGroup];
-    console.log("this.incorrectTargetPromptAndAnswerPairing: " + this.incorrectTargetPromptAndAnswerPairing.name);
+    //console.log("this.incorrectTargetPromptAndAnswerPairing: " + this.incorrectTargetPromptAndAnswerPairing.name);
   }
 
 

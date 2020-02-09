@@ -42,6 +42,8 @@ function TextPrompter()
     if (promptersManager.shouldBeDrawingAPrompt)
     {
       promptersManager.shouldBeDrawingAPrompt = false;
+      this.currentHeight = 150;
+      this.currentHeight = 150;
       if (promptsAndAnswersManager.currentAnswerDataType === "AUDIO")
       {
         promptersManager.promptAudioAnswersWhenAppropriate();

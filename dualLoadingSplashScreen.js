@@ -39,9 +39,11 @@ function handleDualPurposeSplashAndLoadingSceneClick()
   currentBackgroundMusic.play();
   currentBackgroundMusic.loop = true;
   gameInterval.start();
-  
+
   if (gameIsOnAServerAndCanUseWebAudioAPI)
   {
     initializeWebAudioAPI();
   }
+
+  promptersManager.instantiatePrompters();
 }

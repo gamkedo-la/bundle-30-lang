@@ -67,6 +67,7 @@ function snakeGameClass()
   {
     this.updateSnakeTail();
     this.movePlayer();
+    this.handleCollisionsWithAnswers();
   }
 
   this.updateSnakeTail = function()
@@ -184,6 +185,7 @@ function snakeGameClass()
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
         //draw correct answer
+        gameCanvasContext.font = '30px Helvetica';
         gameCanvasContext.fillText(promptsAndAnswersManager.currentCorrectAnswer,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
@@ -238,25 +240,95 @@ function snakeGameClass()
 
   this.handleCollisionsWithAnswers = function()
   {
-    for (let answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
+    if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
-      if (playerXCoordinate > promptsAndAnswersManager.currentCorrectAnswer.xCoordinate - 15 && playerXCoordinate < currentCorrectAnswer.xCoordinate + 40
-        && playerYCoordinate > arrayOfAnswers[answerIndex].yCoordinate - 30 && playerYCoordinate < arrayOfAnswers[answerIndex].yCoordinate + 5)
+      if (playerXCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
+          playerXCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 30 &&
+          playerYCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
+          playerYCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 30)
         {
-          if (arrayOfAnswers[answerIndex] === currentAnswer)
-          {
+            console.log('inside collision with correct string answer');
             amountCorrect++;
-            //playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
-          } else if (arrayOfAnswers[answerIndex] !== currentAnswer)
-          {
-            amountIncorrect++;
-            //playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
-          }
-          //calculateAccuracy();
-          SNAKE_GAME.populateArrayOfAnswers();
-          //setOrResetCorrectLetter();
-
+            playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
+            initializePromptAndAnswerObjects();
+            this.shuffleAndResetPromptsAndAnswers();
+            this.loadPromptsManager();
+            this.promptThePlayer();
+        } else if (playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
+            playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 30 &&
+            playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
+            playerYCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 30)
+        {
+          console.log('inside collision with incorrect string answer');
+          amountIncorrect++;
+          playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
+          initializePromptAndAnswerObjects();
+          this.shuffleAndResetPromptsAndAnswers();
+          this.loadPromptsManager();
+          this.promptThePlayer();
         }
+        calculateAccuracy();
+
+    }
+    else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
+    {
+      if (playerXCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
+          playerXCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+          playerYCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
+          playerYCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
+        {
+          console.log('inside collision with correct image answer');
+            amountCorrect++;
+            playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
+            initializePromptAndAnswerObjects();
+            this.shuffleAndResetPromptsAndAnswers();
+            this.loadPromptsManager();
+            this.promptThePlayer();
+        } else if ((playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
+            playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+            playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
+            playerYCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100))
+        {
+          console.log('inside collision with incorrect image answer');
+          amountIncorrect++;
+          playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
+          initializePromptAndAnswerObjects();
+          this.shuffleAndResetPromptsAndAnswers();
+          this.loadPromptsManager();
+          this.promptThePlayer();
+        }
+        calculateAccuracy();
+
+    }
+    else if (promptsAndAnswersManager.currentAnswerDataType === 'AUDIO')
+    {
+      if (playerXCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
+          playerXCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+          playerYCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
+          playerYCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
+        {
+          console.log('inside collision with correct audio answer');
+            amountCorrect++;
+            playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
+            initializePromptAndAnswerObjects();
+            this.shuffleAndResetPromptsAndAnswers();
+            this.loadPromptsManager();
+            this.promptThePlayer();
+        } else if ((playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
+            playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+            playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
+            playerYCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100))
+        {
+          console.log('inside collision with incorrect audio answer');
+          amountIncorrect++;
+          playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
+          initializePromptAndAnswerObjects();
+          this.shuffleAndResetPromptsAndAnswers();
+          this.loadPromptsManager();
+          this.promptThePlayer();
+        }
+        calculateAccuracy();
+
     }
   }
 }

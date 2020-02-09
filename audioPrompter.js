@@ -19,8 +19,8 @@ function AudioPrompter()
     if (promptersManager.shouldBeDrawingAPrompt)
     {
       promptersManager.shouldBeDrawingAPrompt = false;
-      this.currentWidth = 0;
-      this.currentHeight = 0;
+      this.currentWidth = 150;
+      this.currentHeight = 150;
     } else {
       promptersManager.shouldBeDrawingAPrompt = true;
     }

@@ -49,6 +49,8 @@ function ImagePrompter()
     if (promptersManager.shouldBeDrawingAPrompt)
     {
       promptersManager.shouldBeDrawingAPrompt = false;
+      this.currentWidth = 150;
+      this.currentHeight = 150;
       if (promptsAndAnswersManager.currentAnswerDataType === "AUDIO")
       {
         promptersManager.promptAudioAnswersWhenAppropriate();

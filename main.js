@@ -52,7 +52,7 @@ function gameSpecificUpdates()
 {
   if (SNAKE_GAME.isPlaying())
   {
-    SNAKE_GAME.updateSnakeTail();
+    SNAKE_GAME.update();
   } else if (laneGame.isPlaying())
   {
     laneGame.update();
