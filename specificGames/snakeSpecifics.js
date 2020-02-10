@@ -193,10 +193,23 @@ function snakeGameClass()
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
 
+        //collider box
+        gameCanvasContext.strokeStyle = 'white';
+        gameCanvasContext.strokeRect(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5,
+                                    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 35,//fill text offset
+                                    75,50);
+
         //draw incorrect answer
+        gameCanvasContext.fillStyle = SNAKE_LETTER_COLOR;
         gameCanvasContext.fillText(promptsAndAnswersManager.currentIncorrectAnswer,
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate);
+
+        //collider collider box
+        gameCanvasContext.strokeStyle = 'white';
+        gameCanvasContext.strokeRect(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5,
+                                    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 35,//fill text offset
+                                    75,50);
       //}
     } else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
     {
@@ -245,10 +258,10 @@ function snakeGameClass()
   {
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
-      if (playerXCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-          playerXCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 30 &&
-          playerYCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
-          playerYCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 30)
+      if (playerXCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 &&
+          playerXCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 70 &&
+          playerYCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 35 &&
+          playerYCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 15)
         {
             console.log('inside collision with correct string answer');
             amountCorrect++;
@@ -261,10 +274,10 @@ function snakeGameClass()
             playerSpeedY = 0;
             textPrompter.currentWidth = 150;
             textPrompter.currentHeight = 150;
-        } else if (playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-            playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 30 &&
-            playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
-            playerYCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 30)
+        } else if (playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 &&
+            playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 70 &&
+            playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 35 &&
+            playerYCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 15)
         {
           console.log('inside collision with incorrect string answer');
           amountIncorrect++;
