@@ -275,8 +275,6 @@ function snakeGameClass()
             this.promptThePlayer();
             playerSpeedX = 0;
             playerSpeedY = 0;
-            textPrompter.currentWidth = 150;
-            textPrompter.currentHeight = 150;
         } else if (playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 &&
             playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 70 &&
             playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 35 &&
@@ -293,8 +291,6 @@ function snakeGameClass()
           this.promptThePlayer();
           playerSpeedX = 0;
           playerSpeedY = 0;
-          textPrompter.currentWidth = 150;
-          textPrompter.currentHeight = 150;
         }
         calculateAccuracy();
 
@@ -317,8 +313,6 @@ function snakeGameClass()
             this.promptThePlayer();
             playerSpeedX = 0;
             playerSpeedY = 0;
-            imagePrompter.currentWidth = 150;
-            imagePrompter.currentHeight = 150;
         } else if ((playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
             playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
             playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
@@ -335,8 +329,6 @@ function snakeGameClass()
           this.promptThePlayer();
           playerSpeedX = 0;
           playerSpeedY = 0;
-          imagePrompter.currentWidth = 150;
-          imagePrompter.currentHeight = 150;
         }
         calculateAccuracy();
 
@@ -359,8 +351,6 @@ function snakeGameClass()
             this.promptThePlayer();
             playerSpeedX = 0;
             playerSpeedY = 0;
-            audioPrompter.width = 150;
-            audioPrompter.height = 150;
         } else if ((playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
             playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
             playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
@@ -377,9 +367,6 @@ function snakeGameClass()
           this.promptThePlayer();
           playerSpeedX = 0;
           playerSpeedY = 0;
-          audioPrompter.width = 150;
-          audioPrompter.height = 150;
-
         }
         calculateAccuracy();
 
