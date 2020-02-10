@@ -11,6 +11,11 @@ let heVersusShePairGrouping = [];
 
 function initializePromptAndAnswerObjects()
 {
+  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings = [];
+  womanVersusWomenPairGrouping = [];
+  manVersusMenPairGrouping = [];
+  heVersusShePairGrouping = [];
+
   womanPromptAndAnswer = new PromptAndAnswerClass('woman', 'woman', womanImage, womanAudio);
   womenPromptAndAnswer = new PromptAndAnswerClass('women', 'women', womenImage, womenAudio);
   womanVersusWomenPairGrouping.push(womanPromptAndAnswer);

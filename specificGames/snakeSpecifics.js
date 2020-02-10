@@ -65,9 +65,12 @@ function snakeGameClass()
   //update section
   this.update = function()
   {
-    this.updateSnakeTail();
-    this.movePlayer();
-    this.handleCollisionsWithAnswers();
+    if (!promptersManager.shouldBeDrawingAPrompt)
+    {
+      this.updateSnakeTail();
+      this.movePlayer();
+      this.handleCollisionsWithAnswers();
+    }
   }
 
   this.updateSnakeTail = function()
@@ -254,6 +257,10 @@ function snakeGameClass()
             this.shuffleAndResetPromptsAndAnswers();
             this.loadPromptsManager();
             this.promptThePlayer();
+            playerSpeedX = 0;
+            playerSpeedY = 0;
+            textPrompter.currentWidth = 150;
+            textPrompter.currentHeight = 150;
         } else if (playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
             playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 30 &&
             playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
@@ -266,6 +273,10 @@ function snakeGameClass()
           this.shuffleAndResetPromptsAndAnswers();
           this.loadPromptsManager();
           this.promptThePlayer();
+          playerSpeedX = 0;
+          playerSpeedY = 0;
+          textPrompter.currentWidth = 150;
+          textPrompter.currentHeight = 150;
         }
         calculateAccuracy();
 
@@ -284,6 +295,10 @@ function snakeGameClass()
             this.shuffleAndResetPromptsAndAnswers();
             this.loadPromptsManager();
             this.promptThePlayer();
+            playerSpeedX = 0;
+            playerSpeedY = 0;
+            imagePrompter.currentWidth = 150;
+            imagePrompter.currentHeight = 150;
         } else if ((playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
             playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
             playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
@@ -296,6 +311,10 @@ function snakeGameClass()
           this.shuffleAndResetPromptsAndAnswers();
           this.loadPromptsManager();
           this.promptThePlayer();
+          playerSpeedX = 0;
+          playerSpeedY = 0;
+          imagePrompter.currentWidth = 150;
+          imagePrompter.currentHeight = 150;
         }
         calculateAccuracy();
 
@@ -314,6 +333,10 @@ function snakeGameClass()
             this.shuffleAndResetPromptsAndAnswers();
             this.loadPromptsManager();
             this.promptThePlayer();
+            playerSpeedX = 0;
+            playerSpeedY = 0;
+            audioPrompter.width = 150;
+            audioPrompter.height = 150;
         } else if ((playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
             playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
             playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
@@ -326,6 +349,10 @@ function snakeGameClass()
           this.shuffleAndResetPromptsAndAnswers();
           this.loadPromptsManager();
           this.promptThePlayer();
+          playerSpeedX = 0;
+          playerSpeedY = 0;
+          audioPrompter.width = 150;
+          audioPrompter.height = 150;
         }
         calculateAccuracy();
 

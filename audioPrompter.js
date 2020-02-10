@@ -23,6 +23,8 @@ function AudioPrompter()
       this.currentHeight = 150;
     } else {
       promptersManager.shouldBeDrawingAPrompt = true;
+      this.currentHeight = 150;
+      this.currentHeight = 150;
     }
   }
 
