@@ -264,6 +264,8 @@ function snakeGameClass()
           playerYCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 35 &&
           playerYCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 15)
         {
+          promptersManager.currentPrompter.currentWidth = 150;
+          promptersManager.currentPrompter.currentHeight = 150;
             console.log('inside collision with correct string answer');
             amountCorrect++;
             playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
@@ -280,6 +282,8 @@ function snakeGameClass()
             playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 35 &&
             playerYCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 15)
         {
+          promptersManager.currentPrompter.currentWidth = 150;
+          promptersManager.currentPrompter.currentHeight = 150;
           console.log('inside collision with incorrect string answer');
           amountIncorrect++;
           playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
@@ -303,6 +307,8 @@ function snakeGameClass()
           playerYCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
         {
           console.log('inside collision with correct image answer');
+          promptersManager.currentPrompter.currentWidth = 150;
+          promptersManager.currentPrompter.currentHeight = 150;
             amountCorrect++;
             playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
             initializePromptAndAnswerObjects();
@@ -318,6 +324,8 @@ function snakeGameClass()
             playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
             playerYCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100))
         {
+          promptersManager.currentPrompter.currentWidth = 150;
+          promptersManager.currentPrompter.currentHeight = 150;
           console.log('inside collision with incorrect image answer');
           amountIncorrect++;
           playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
@@ -341,6 +349,8 @@ function snakeGameClass()
           playerYCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
         {
           console.log('inside collision with correct audio answer');
+            promptersManager.currentPrompter.currentWidth = 150;
+            promptersManager.currentPrompter.currentHeight = 150;
             amountCorrect++;
             playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
             initializePromptAndAnswerObjects();
@@ -357,6 +367,8 @@ function snakeGameClass()
             playerYCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100))
         {
           console.log('inside collision with incorrect audio answer');
+          promptersManager.currentPrompter.currentWidth = 150;
+          promptersManager.currentPrompter.currentHeight = 150;
           amountIncorrect++;
           playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
           initializePromptAndAnswerObjects();
@@ -367,6 +379,7 @@ function snakeGameClass()
           playerSpeedY = 0;
           audioPrompter.width = 150;
           audioPrompter.height = 150;
+
         }
         calculateAccuracy();
 

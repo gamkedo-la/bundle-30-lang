@@ -19,6 +19,7 @@ function PromptersManager()
     if (promptsAndAnswersManager.dataTypeOfCurrentPrompt === 'string')
     {
       this.loadCurrentPrompter(textPrompter);
+
     } else if (promptsAndAnswersManager.dataTypeOfCurrentPrompt === 'IMG')
     {
      this.loadCurrentPrompter(imagePrompter);
