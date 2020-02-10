@@ -32,21 +32,22 @@ const SNAKE_PLAYER_COLOR = 'lime';
 
 function snakeGameClass()
 {
-  let gameIsPlaying = false;
+  this.gameIsPlaying = false;
+  this.isTransitioningIn = false;
 
   this.isPlaying = function()
   {
-    return gameIsPlaying;
+    return this.gameIsPlaying;
   };
 
   this.startPlaying = function()
   {
-    gameIsPlaying = true;
+    this.gameIsPlaying = true;
   }
 
   this.stopPlaying = function()
   {
-    gameIsPlaying = false;
+    this.gameIsPlaying = false;
   }
 
   this.initialize = function()

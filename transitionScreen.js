@@ -25,7 +25,8 @@ function drawTransitionScreen(arraysOfGameSpecificCustomFontFillTextsForTransiti
   gameCanvasContext.fillStyle = 'orange';
   gameCanvasContext.fillRect(0,0, 640,700);
 
-  if (SNAKE_GAME.isPlaying())
+  console.log('SNAKE_GAME.gameIsPlaying: ' + SNAKE_GAME.gameIsPlaying);
+  if (SNAKE_GAME.isTransitioningIn)
   {
     SNAKE_GAME.drawTransitionText();
   }

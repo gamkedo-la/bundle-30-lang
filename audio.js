@@ -102,7 +102,8 @@ function setSourcesForAudioObjects()//for after loading screen
 // transitionToLevelMusic1.onended = "correctLetterAudioTag.play()";
 // transitionToLevelMusic1.addEventListener("ended", playCorrectLetterAudioTag());
 transitionToLevelMusic1.onended = function()
-{SNAKE_GAME.startPlaying();
+{ SNAKE_GAME.isTransitioningIn = false;
+  SNAKE_GAME.startPlaying();
   promptersManager.promptThePlayer();
   levelIsTransitioning = false;
   transitionIsFadingIn = false;
