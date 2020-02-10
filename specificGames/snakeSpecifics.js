@@ -68,7 +68,7 @@ function snakeGameClass()
     if (!promptersManager.shouldBeDrawingAPrompt)
     {
       this.updateSnakeTail();
-      this.movePlayer();
+      //this.movePlayer();
       this.handleCollisionsWithAnswers();
     }
   }

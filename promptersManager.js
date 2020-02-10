@@ -78,6 +78,7 @@ function PromptersManager()
       promptsAndAnswersManager.currentIncorrectAnswer.play();
       promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = true;
     }//end of else for coin flip
+    this.flashInterval = undefined;
     this.flashInterval = new frameInterval(this.toggleAudioAnswersFlashWhenPlaying,100);
   }
 
