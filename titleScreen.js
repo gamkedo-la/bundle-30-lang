@@ -219,7 +219,6 @@ function handleGameCellClicks()
         playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
         transitionToLevelMusic1.play();
         // currentBackgroundMusic.pause();
-        console.log(currentBackgroundMusic);
         gameCanvasContext.globalAlpha = 0.0;
 
       }

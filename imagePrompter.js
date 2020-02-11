@@ -5,7 +5,6 @@ function ImagePrompter()
   this.loadCurrentImage = function(imageToLoad)
   {
     this.image = imageToLoad;
-    console.log('imagePrompter.currentImage: ' + this.image);
   }
 
   this.backgroundColor = 'white';

@@ -86,7 +86,6 @@ function PromptsAndAnswersManager()
   {
     let randomIndexFromCurrentPromptAndAnswerGroup = getRandomIntInclusive(0,this.currentLogicalPromptAndAnswerGroup.length - 1);
     this.correctTargetPromptAndAnswerPairing = this.currentLogicalPromptAndAnswerGroup[randomIndexFromCurrentPromptAndAnswerGroup];
-    console.log("this.correctTargetPromptAndAnswerPairing: " + this.correctTargetPromptAndAnswerPairing.name);
   }
 
 
@@ -95,7 +94,6 @@ function PromptsAndAnswersManager()
   {
     let randomIndexForArrayOfPossiblePrompts = getRandomIntInclusive(0,this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts.length - 1);
     this.currentPrompt = this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts[randomIndexForArrayOfPossiblePrompts];
-    console.log("this.currentPrompt: " + this.currentPrompt);
   }
 
 
@@ -140,7 +138,6 @@ function PromptsAndAnswersManager()
         this.currentCorrectAnswer = temporaryArrayOfPossibleAnswers[randomIndexToChooseAnswerInTemporaryArray];
       }//end of checking for prompt/answer overlap
     }//end of for loop through temporary answers array
-    console.log("this.currentCorrectAnswer: " + this.currentCorrectAnswer);
   }//end of answer assignment
 
 
@@ -195,7 +192,6 @@ function PromptsAndAnswersManager()
           {
             if (this.currentAnswerDataType === currentIncorrectAnswerDataType)
             {
-              console.log('this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex]: ' + this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex]);
               this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
           }
@@ -223,7 +219,6 @@ function PromptsAndAnswersManager()
           }
         }
     }
-    console.log('this.currentIncorrectAnswer: ' + this.currentIncorrectAnswer);
   }
 
   this.defineXAndYCoordinatesForTargets = function()
