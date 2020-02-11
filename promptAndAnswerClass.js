@@ -221,13 +221,17 @@ function PromptsAndAnswersManager()
     }
   }
 
+
   this.defineXAndYCoordinatesForTargets = function()
   {
-      this.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,540);
-      this.correctTargetPromptAndAnswerPairing.yCoordinate = getRandomIntInclusive(0,600);
+      let correctAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
+      let incorrectAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
 
-      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,540);
-      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomIntInclusive(0,600);
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = correctAnswerCoordinates.randomXCoordinate;
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = correctAnswerCoordinates.randomYCoordinate;
+
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = incorrectAnswerCoordinates.randomXCoordinate;
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = incorrectAnswerCoordinates.randomYCoordinate;
   }
 
   this.setOrResetPromptsAndAnswers = function()

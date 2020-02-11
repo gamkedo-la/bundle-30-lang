@@ -372,6 +372,30 @@ function snakeGameClass()
 
     }
   }
+
+  this.assignUsableAnswerCoordinates = function()
+  {
+    let randomXCoordinate = undefined;
+    let randomYCoordinate = undefined;
+
+    let randomizedAttemptForXCoordinate = undefined;
+    randomizedAttemptForXCoordinate = getRandomIntInclusive(playerXCoordinate-40,playerXCoordinate+60);
+    let randomizedAttemptForYCoordinate = undefined;
+    randomizedAttemptForYCoordinate = getRandomIntInclusive(playerYCoordinate - 40,playerYCoordinate + 60);
+
+    if (randomizedAttemptForXCoordinate > playerXCoordinate - 20 && randomizedAttemptForXCoordinate < playerXCoordinate + 40
+      && randomizedAttemptForYCoordinate > playerYCoordinate - 20 && randomizedAttemptForYCoordinate < playerYCoordinate + 40)
+    {
+      console.log('recursion?');
+      this.assignUsableAnswerCoordinates();
+
+    } else {
+      randomXCoordinate = randomizedAttemptForXCoordinate;
+      randomYCoordinate = randomizedAttemptForYCoordinate;
+      console.log('actual assignment?');
+      return {randomXCoordinate,randomYCoordinate};
+    }
+  }
 }
 
 const SNAKE_GAME = new snakeGameClass();
