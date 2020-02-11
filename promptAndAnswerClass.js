@@ -400,3 +400,9 @@ function handleCollisionsWithAnswers()
 		}
 	}
 }
+
+function getRandomIntWithExclusionaryRange(min,max, excludedMin,excludedMax) {
+    var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    return (randomNumber >= excludedMin && randomNumber <= excludedMax) ?
+    getRandomIntWithExclusionaryRange(min,max, excludedMin,excludedMax) : randomNumber;
+}

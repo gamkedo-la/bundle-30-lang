@@ -109,7 +109,11 @@ Where = pic of a location, When = pic of time, why = because)
 107. choose tenses
 108. will/going to
 109. teaches/teachers
-
+110. or/are
+111. verb/adverb (The ____ dog. The dog barks _____.)
+112. America/American
+113. Earth's/Earthes
+114. word/world
 
 
 Any language - 

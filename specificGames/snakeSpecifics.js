@@ -378,23 +378,10 @@ function snakeGameClass()
     let randomXCoordinate = undefined;
     let randomYCoordinate = undefined;
 
-    let randomizedAttemptForXCoordinate = undefined;
-    randomizedAttemptForXCoordinate = getRandomIntInclusive(playerXCoordinate-40,playerXCoordinate+60);
-    let randomizedAttemptForYCoordinate = undefined;
-    randomizedAttemptForYCoordinate = getRandomIntInclusive(playerYCoordinate - 40,playerYCoordinate + 60);
+    randomXCoordinate = getRandomIntWithExclusionaryRange(0,540, playerXCoordinate - 40,playerXCoordinate + 60);
+    randomYCoordinate = getRandomIntWithExclusionaryRange(0,600, playerYCoordinate - 40,playerYCoordinate + 60);
 
-    if (randomizedAttemptForXCoordinate > playerXCoordinate - 20 && randomizedAttemptForXCoordinate < playerXCoordinate + 40
-      && randomizedAttemptForYCoordinate > playerYCoordinate - 20 && randomizedAttemptForYCoordinate < playerYCoordinate + 40)
-    {
-      console.log('recursion?');
-      this.assignUsableAnswerCoordinates();
-
-    } else {
-      randomXCoordinate = randomizedAttemptForXCoordinate;
-      randomYCoordinate = randomizedAttemptForYCoordinate;
-      console.log('actual assignment?');
-      return {randomXCoordinate,randomYCoordinate};
-    }
+    return {randomXCoordinate,randomYCoordinate};
   }
 }
 
