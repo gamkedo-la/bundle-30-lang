@@ -46,6 +46,10 @@ function PromptersManager()
 
   this.playAudioAnswersBackToBack = function(randomNumber)
   {
+
+    this.flashInterval = undefined;
+    this.flashInterval = new frameInterval(this.toggleAudioAnswersFlashWhenPlaying,100);
+
     if (randomNumber < 0.5)
     {
       promptsAndAnswersManager.currentCorrectAnswer.onended = function()
@@ -58,6 +62,8 @@ function PromptersManager()
           promptsAndAnswersManager.currentCorrectAnswer.onended = undefined;
           promptsAndAnswersManager.currentIncorrectAnswer.onended = undefined;
           promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = false;
+          promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = false;
+          promptersManager.flashInterval.stop();
         }//clear both onended functions to account for unintended play calls
       }
       promptsAndAnswersManager.currentCorrectAnswer.play();
@@ -74,13 +80,13 @@ function PromptersManager()
           promptsAndAnswersManager.currentCorrectAnswer.onended = undefined;
           promptsAndAnswersManager.currentIncorrectAnswer.onended = undefined;
           promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = false;
+          promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = false;
+          promptersManager.flashInterval.stop();
         }//clear both onended functions to account for unintended play calls
       }//end of incorrect answer audio being played first
       promptsAndAnswersManager.currentIncorrectAnswer.play();
       promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = true;
     }//end of else for coin flip
-    this.flashInterval = undefined;
-    this.flashInterval = new frameInterval(this.toggleAudioAnswersFlashWhenPlaying,100);
   }
 
   this.globalCompositeOperationForCanvasContext = 'source-over';
@@ -97,8 +103,10 @@ function PromptersManager()
     if (promptersManager.highlightedAnswerCurrentAlpha === 1)
     {
       promptersManager.highlightedAnswerCurrentAlpha = 0;
+      console.log('toggle flash');
     } else if (promptersManager.highlightedAnswerCurrentAlpha === 0){
       promptersManager.highlightedAnswerCurrentAlpha = 1;
+      console.log('toggle flash');
     }
   }
 
