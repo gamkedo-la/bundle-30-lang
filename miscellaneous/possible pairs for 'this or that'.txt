@@ -114,6 +114,7 @@ Where = pic of a location, When = pic of time, why = because)
 112. America/American
 113. Earth's/Earthes
 114. word/world
+115. no/not
 
 
 Any language - 
