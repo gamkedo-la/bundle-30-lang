@@ -124,12 +124,24 @@ function snakeGameClass()
     this.drawPlayer();
     this.drawAnswers();
     this.drawPromptsWhenAppropriate();
+    this.drawBackButton();
   }
 
   this.drawBackground = function()
   {
     gameCanvasContext.fillStyle = SNAKE_BACKGROUND_COLOR;
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+  }
+
+  this.drawBackButton = function()
+  {
+    // Draw the button 
+    gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_RECTANGLE_COLOR;
+    gameCanvasContext.fillRect(540,650, 100,50);
+
+    // Write text in button
+    gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_TEXT_COLOR;
+    customFontFillText('Back', 27, 15, 555,660);
   }
 
   this.drawPlayer = function()
