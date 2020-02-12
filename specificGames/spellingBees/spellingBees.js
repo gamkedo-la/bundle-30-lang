@@ -7,7 +7,9 @@ function SpellingBeesGame()
 
   this.beeCatcher = undefined;
 
-  this.bee1 = undefined;
+  this.beesManager = undefined;
+
+  this.wordsManager = undefined;
 
   this.initializeCanvas = function()
   {
@@ -15,23 +17,29 @@ function SpellingBeesGame()
     this.canvasContext = spellingBeesGame.canvas.getContext('2d');
   }
 
-  this.update = function()
+  this.updateEverything = function()
   {
-
+    this.beesManager.updateBees();
   }
 
   this.drawEverything = function()
   {
     this.background.draw();
     this.beeCatcher.draw();
-    this.bee1.draw();
+    this.beesManager.drawBees();
+  }
+
+  this.advanceGameFrame = function()
+  {
+    spellingBeesGame.updateEverything();
+    spellingBeesGame.drawEverything();
   }
 
   this.initialize = function()
   {
     this.initializeCanvas();
     this.beeCatcher.initialize();
-    this.bee1.initialize();
+    this.beesManager.initialize();
     this.background.initialize();
   }
 }
@@ -49,5 +57,5 @@ function getRandomIntInclusive(min, max)
 window.onload = function()
 {
   spellingBeesGame.initialize();
-  spellingBeesGame.drawEverything();
+  setInterval(spellingBeesGame.advanceGameFrame,1000/30);
 }
