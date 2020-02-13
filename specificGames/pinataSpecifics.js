@@ -17,7 +17,7 @@ var pinataGame = new function () {
     // how many poppable letter choices will fall out
     const CANDY_COUNT = 16;
     const CANDY_MIN_SIZE = 20;
-    const CANDY_START_RADIUS = 60;
+    const CANDY_START_RADIUS = 40;
     const CANDY_SHRINK = -0.2;
     const CANDY_MASS = 1;
 
@@ -46,6 +46,8 @@ var pinataGame = new function () {
     function boom(x, y, wasCorrect) {
 
         if (wasCorrect) {
+            
+            //pinataSmashed = false; // reset!!!!!!!! fixme: or do we like spam
 
             /*
             // destroy the world!
@@ -325,12 +327,20 @@ var pinataGame = new function () {
             if (pinataSmashed) {
                 customFontFillText(['Click the letter ' + targetLetter], 32, 24, 80, 32);
             } else {
-                customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
                 // let's draw an actual pinata here
-                var wobblex = Math.cos(performance.now()/1000)*60;
-                var wobbley = Math.cos(performance.now()/500)*15;
-                c.drawImage(pinataImage,180+wobblex,100-wobbley);
-
+                var wobblex = 180+Math.cos(performance.now()/1000)*60;
+                var wobbley = 100-Math.cos(performance.now()/500)*15;
+                // first the string
+                c.beginPath(); 
+                c.moveTo(320,0);
+                c.lineTo(wobblex+120,wobbley+108);
+                c.strokeStyle = "rgba(80,80,80,1)";
+                c.lineWidth = 4;
+                c.stroke();
+                // now the pinata itself
+                c.drawImage(pinataImage,wobblex,wobbley);
+                // and the instructions
+                customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
             }
 
             drawBackButton();
