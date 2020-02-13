@@ -11,18 +11,21 @@ var pinataGame = new function() {
 // list of all known candies
 var objects = [];
 
+// game state: have we done the initial smash?
+var pinataSmashed = false;
+
 // how many poppable letter choices will fall out
-const CANDY_COUNT = 10;
+const CANDY_COUNT = 16;
 const CANDY_MIN_SIZE = 20;
-const CANDY_START_RADIUS = 100;
-const CANDY_SHRINK = -0.1;
+const CANDY_START_RADIUS = 80;
+const CANDY_SHRINK = -0.2;
 const CANDY_MASS = 1; 
 
 // special case: candies with a "space" as the letter are considered particles of confetti
-const CONFETTI_COUNT = 0; // currently it messes up the physics
-const CONFETTI_RADIUS = 16;
-const CONFETTI_MASS = 0.00001;
-const CONFETTI_SHRINKSPEED = 0.95; // % each frame
+const CONFETTI_COUNT = 20; // currently it messes up the physics
+const CONFETTI_RADIUS = 10; // starting size
+const CONFETTI_MASS = 100; // the higher the number, the LESS it weighs! FIXME 
+const CONFETTI_SHRINKSPEED = 0.975; // % each frame
 const CONFETTI_ID = " ";
 
 // tiny functions to handle 2d vectors
@@ -71,22 +74,26 @@ function boom(x,y,wasCorrect) {
                 found++;
                 objects[i].R = CONFETTI_RADIUS;
                 objects[i].M = CONFETTI_MASS;
-                objects[i].C.x = x+Math.random()*40-20;
-                objects[i].C.y = y+Math.random()*-40-30;
-                objects[i].V.x = Math.random()*1000-500;
-                objects[i].V.y = Math.random()*1000-500;
+                objects[i].C.x = x+Math.random()*80-40;
+                objects[i].C.y = y+Math.random()*-80-40;
+                // add some random velocity
+                objects[i].V.x = Math.random()*2000-1000;
+                objects[i].V.y = Math.random()*2000-1000;
             }
         }
 
         // spawn some particles of confetti if we need them
         if (!found) { // first time init
             for(i = CONFETTI_COUNT; i--; ){
-                Circle(
-                    Vec2(x+Math.random()*40-20,
-                    y+Math.random()*-40-30), // more down than up
+                let c = new Circle(
+                    Vec2(x+Math.random()*80-40,
+                    y+Math.random()*-80-40),
                     CONFETTI_RADIUS,
                     CONFETTI_MASS,
                     CONFETTI_ID);
+                // add some random velocity
+                c.V.x = Math.random()*2000-1000;
+                c.V.y = Math.random()*2000-1000;
             }
         }
 
@@ -188,6 +195,11 @@ this.init = function() {
             c.fill();
         }
 
+        // draw the pinata if it has not been smashed yet
+        if (!pinataSmashed) {
+            
+        }
+
         // Compute collisions
         for(i = objects.length; i--;){
         for(j = objects.length; j-->i;){
@@ -284,8 +296,14 @@ this.init = function() {
             //c.fillStyle = "white"; // txt color
             //c.fillText(b.Z, 0, b.R * 0.65);
 
-            // draw the letter using bitmap font
-            customFontFillText([b.Z], b.R*1.5,0, 0-b.R*0.75,0-b.R*0.75);
+            if (b.Z==CONFETTI_ID) {
+                // emoji! works on most modern devices but not all
+                c.fillText(String.fromCodePoint(0x1F600 + (i % 69/*56*/)), b.R*1.5,0, 0-b.R*0.75,0-b.R*0.75);
+            } else {
+                // draw the letter using bitmap font
+                customFontFillText([b.Z], b.R*1.5,0, 0-b.R*0.75,0-b.R*0.75);
+            }
+
 
         }
         else { // no mass? must be the ground
@@ -324,37 +342,35 @@ this.init = function() {
 // x: jT
 // b.bgColor="#333";
 
-var Circle = (C, R = Math.random() * CANDY_START_RADIUS + CANDY_MIN_SIZE, M = CANDY_MASS, forcedString) =>
-
-  objects.push(
-    {
-    C, // center
-    I: 0, // inertia
-    V: Vec2(M ? Math.random()*1000-500 : 0, M ?  Math.random()*-500 : 0), // velocity (speed)
-    M, // inverseMass (0 if immobile)
-    A: Vec2(0, M ? 250 : 0), // acceleration
-    B: M ? Math.random() * 7 : 0, // angle
-    D: 0, // angle velocity (stays on!)
-    E: 0, // angle acceleration,
-    R, // radius
-
-    // random emojoi! works on most modern devices but not all
-    //Z: String.fromCodePoint(0x1F600 + Math.random() * 69/*56*/ | 0)
-
-    // random letter A-Z
-    Z: forcedString || String.fromCharCode(65+Math.floor(Math.random() * 26)),
-    //color: "rgba("+rndInt(0,255)+","+rndInt(0,255)+","+rndInt(0,255)+",1)" //0.25)"
-    color: "rgba("+rndInt(64,255)+","+rndInt(64,255)+","+rndInt(64,255)+",1)" //0.25)"
-
-    //I: M,   // (here it's simplified as M) Inertia = mass * radius ^ 2. 12 is a magic constant that can be changed
-  });
+function Circle(C, R = Math.random() * CANDY_START_RADIUS + CANDY_MIN_SIZE, M = CANDY_MASS, forcedString)
+{
+    var newCircle = {
+        C, // center
+        I: 0, // inertia
+        V: Vec2(M ? Math.random()*1000-500 : 0, M ?  Math.random()*-500 : 0), // velocity (speed)
+        M, // inverseMass (0 if immobile)
+        A: Vec2(0, M ? 250 : 0), // acceleration
+        B: M ? Math.random() * 7 : 0, // angle
+        D: 0, // angle velocity (stays on!)
+        E: 0, // angle acceleration,
+        R, // radius
+        // random emojoi! works on most modern devices but not all
+        //Z: String.fromCodePoint(0x1F600 + Math.random() * 69/*56*/ | 0)
+        // random letter A-Z
+        Z: forcedString || String.fromCharCode(65+Math.floor(Math.random() * 26)),
+        //color: "rgba("+rndInt(0,255)+","+rndInt(0,255)+","+rndInt(0,255)+",1)" //0.25)"
+        color: "rgba("+rndInt(64,255)+","+rndInt(64,255)+","+rndInt(64,255)+",1)" //0.25)"
+        //I: M,   // (here it's simplified as M) Inertia = mass * radius ^ 2. 12 is a magic constant that can be changed
+    };
+    objects.push(newCircle);
+    return newCircle;
+    }
 
     this.drawTransitionText = function()
-  {
-    customFontFillText(['Piñata Pop', symbolExclamationPointImage],80,42,100,50);
-    customFontFillText(['Click the right letter'],32,24,80,250);
-    customFontFillText(['as fast as you can',symbolExclamationPointImage],32,24,80,290);
-
-  }
+    {
+        customFontFillText(['Piñata Pop', symbolExclamationPointImage],80,42,100,50);
+        customFontFillText(['Click the right letter'],32,24,80,250);
+        customFontFillText(['as fast as you can',symbolExclamationPointImage],32,24,80,290);
+    }
 
 }(); // create new pinataGame object immediately
