@@ -221,11 +221,26 @@ function PromptsAndAnswersManager()
     }
   }
 
+  this.checkIfAnswersTooClose = function(
+    incorrectAnswerCoordinates, correctAnswerCoordinates, minDistance)
+  {
+    return (
+      Math.abs(incorrectAnswerCoordinates.randomXCoordinate - correctAnswerCoordinates.randomXCoordinate) < minDistance &&
+      Math.abs(incorrectAnswerCoordinates.randomYCoordinate - correctAnswerCoordinates.randomYCoordinate) < minDistance
+    )
+  }
+
 
   this.defineXAndYCoordinatesForTargets = function()
   {
       let correctAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
       let incorrectAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
+
+      while(
+        this.checkIfAnswersTooClose(incorrectAnswerCoordinates, correctAnswerCoordinates, 300)
+      ){
+        incorrectAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
+      }
 
       this.correctTargetPromptAndAnswerPairing.xCoordinate = correctAnswerCoordinates.randomXCoordinate;
       this.correctTargetPromptAndAnswerPairing.yCoordinate = correctAnswerCoordinates.randomYCoordinate;
