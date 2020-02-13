@@ -11,21 +11,13 @@ var arrayOfRunnerRunningImages = [];
 var runnerStatus = 'run'; // 'run', 'jump', 'slide', or 'stumble'
 var runnerFloorLevel = 0;
 
+runnerGameClass.prototype = new GameClass();
 function runnerGameClass() {
-	let gameIsPlaying = false;
 	let arrayOfRunnerRunningImagesIndex = 0;
 	let runnerImagesIndexDirection = 1;
 	let currentRunnerRunningImage;
 
-	const parallaxPos = [320,200,440, 0, 0];
-
-	this.isPlaying = function() {
-		return gameIsPlaying;
-	};
-
-	this.startPlaying = function() {
-		gameIsPlaying = true;
-	};
+    const parallaxPos = [320,200,440, 0, 0];
 
 	function cycleRunnerRunningImages()
 	{
@@ -54,13 +46,10 @@ function runnerGameClass() {
 		{
 			currentBackgroundMusic = runnerBackgroundMusic;
 		}
-		setOrResetCorrectLetter();
+		// setOrResetCorrectLetter();
 		setInterval(cycleRunnerRunningImages, 200);
 	};
 
-	this.stopPlaying = function() {
-		gameIsPlaying = false;
-	};
 
 	this.update = function() {
 		//cloud 1

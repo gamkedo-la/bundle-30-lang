@@ -1,8 +1,20 @@
 function GameClass()
 {
+  let gameIsPlaying = false;
+
+  this.isPlaying = function() {
+	return gameIsPlaying;
+  };
+
+  this.startPlaying = function() {
+	gameIsPlaying = true;
+  };
+
+  this.stopPlaying = function() {
+	gameIsPlaying = false;
+  };
 
   this.gameFrameRate = undefined;//number
-
   this.updateEverythingInTheGame = function(){};
   this.drawEverythingInTheGame = function(){};
 
@@ -11,7 +23,6 @@ function GameClass()
     // this.updateEverythingInTheGame();
     // this.drawEverythingInTheGame();
   };
-
 }
 
 let testGame1 = new GameClass();
@@ -128,23 +139,23 @@ function GameClassManager()
   }
 }
 
-let gameClassManager = new GameClassManager();
+// let gameClassManager = new GameClassManager();
 
-var gameCanvas, gameCanvasContext, statsCanvas, statsCanvasContext, runnerGame;
-window.onload = function()
-{
-  gameCanvas = document.getElementById("gameCanvas");
-  gameCanvasContext = gameCanvas.getContext('2d');
+// var gameCanvas, gameCanvasContext, statsCanvas, statsCanvasContext, runnerGame;
+// window.onload = function()
+// {
+//   gameCanvas = document.getElementById("gameCanvas");
+//   gameCanvasContext = gameCanvas.getContext('2d');
 
-  let randomNumber = Math.random();
-  if (randomNumber < 0.5)
-  {
-    console.log('should load game 1');
-    gameClassManager.loadCurrentGame(testGame1);
-  } else {
-    console.log('should load game 2');
-    gameClassManager.loadCurrentGame(testGame2);
-  }
+//   let randomNumber = Math.random();
+//   if (randomNumber < 0.5)
+//   {
+//     console.log('should load game 1');
+//     gameClassManager.loadCurrentGame(testGame1);
+//   } else {
+//     console.log('should load game 2');
+//     gameClassManager.loadCurrentGame(testGame2);
+//   }
 
-  setInterval(gameClassManager.currentGame.advanceGameFrame, gameClassManager.currentGame.gameFrameRate);
-}
+//   setInterval(gameClassManager.currentGame.advanceGameFrame, gameClassManager.currentGame.gameFrameRate);
+// }
