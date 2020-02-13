@@ -115,6 +115,9 @@ Where = pic of a location, When = pic of time, why = because)
 113. Earth's/Earthes
 114. word/world
 115. no/not
+116. Rome/room
+117. could/cold
+118. ride/read
 
 
 Any language - 
