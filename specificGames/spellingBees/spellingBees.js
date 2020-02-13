@@ -20,6 +20,7 @@ function SpellingBeesGame()
   this.updateEverything = function()
   {
     this.beesManager.updateBees();
+    this.beeCatcher.checkForBeeCollisions();
   }
 
   this.drawEverything = function()
@@ -27,6 +28,7 @@ function SpellingBeesGame()
     this.background.draw();
     this.beeCatcher.draw();
     this.beesManager.drawBees();
+    this.beeBoxes.draw();
   }
 
   this.advanceGameFrame = function()
@@ -41,6 +43,8 @@ function SpellingBeesGame()
     this.beeCatcher.initialize();
     this.beesManager.initialize();
     this.background.initialize();
+    spellingBeesGame.beeBoxes = new BeeBoxes();
+    this.beeBoxes.initialize();
   }
 }
 

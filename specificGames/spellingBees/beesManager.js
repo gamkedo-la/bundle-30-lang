@@ -10,6 +10,7 @@ function BeesManager()
       {
         let letter = spellingBeesGame.wordsManager.arrayOfWords[arrayOfWordsIndex].arrayOfLetters[letterIndex];
         let bee = new Bee(letter);
+        bee.initialize();
         this.arrayOfBees.push(bee);
       }
     }

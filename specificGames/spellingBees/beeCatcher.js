@@ -22,6 +22,37 @@ function BeeCatcher()
     spellingBeesGame.canvasContext.fillStyle = this.color,
     spellingBeesGame.canvasContext.fillRect(this.x,this.y, this.width,this.height);
   }
+
+  this.checkForBeeCollisions = function()
+  {
+    for (let beeIndex = 0; beeIndex < spellingBeesGame.beesManager.arrayOfBees.length; beeIndex++)
+    {
+      if (spellingBeesGame.beesManager.arrayOfBees[beeIndex].x > this.x &&
+          spellingBeesGame.beesManager.arrayOfBees[beeIndex].x < this.x + this.width &&
+          spellingBeesGame.beesManager.arrayOfBees[beeIndex].y > this.y &&
+          spellingBeesGame.beesManager.arrayOfBees[beeIndex].y < this.y + this.height)
+          {
+            let letterSubmission = spellingBeesGame.beesManager.arrayOfBees.splice(beeIndex,1);
+            spellingBeesGame.caughtBeesManager.placeCaughtBeeInAppropriateBox(letterSubmission);
+          }
+    }
+  }
 }
 
 spellingBeesGame.beeCatcher = new BeeCatcher();
+
+function CaughtBeesManager()
+{
+  this.currentBoxToBeFilledIndex = 0;
+  this.placeCaughtBeeInAppropriateBox = function(bee)
+  {
+    bee.x = spellingBeesGame.beeBoxes.arrayOfBoxes[this.currentBoxToBeFilledIndex].x +
+            spellingBeesGame.beeBoxes.arrayOfBoxes[this.currentBoxToBeFilledIndex].width/2;
+    bee.velocity = 0;
+            
+    spellingBeesGame.beeBoxes.arrayOfBoxes[this.currentBoxToBeFilledIndex].bee = bee;
+    this.currentBoxToBeFilledIndex++;
+  }
+}
+
+spellingBeesGame.caughtBeesManager = new CaughtBeesManager();

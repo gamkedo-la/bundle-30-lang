@@ -17,17 +17,19 @@ function Bee(letter)
   this.xDirection = undefined;
   this.yDirection = undefined;
 
-  this.velocity = 10;
+  this.velocity = 5;
 
   this.initialize = function()
   {
-    this.x = getRandomIntWithExclusionaryRange(0,spellingBeesGame.canvas.width - spellingBeesGame.beeCatcher.width,
+    this.radiusX = spellingBeesGame.canvas.width/16;
+    this.radiusY = spellingBeesGame.canvas.height/29;
+
+    this.x = getRandomIntWithExclusionaryRange(this.radiusX*2,spellingBeesGame.canvas.width - this.radiusX*2,
                   spellingBeesGame.beeCatcher.x,spellingBeesGame.beeCatcher.x + spellingBeesGame.beeCatcher.width);
-    this.y = getRandomIntWithExclusionaryRange(0,spellingBeesGame.canvas.height - spellingBeesGame.beeCatcher.height,
+    this.y = getRandomIntWithExclusionaryRange(this.radiusY*2,spellingBeesGame.canvas.height - this.radiusY*2,
                   spellingBeesGame.beeCatcher.y,spellingBeesGame.beeCatcher.y + spellingBeesGame.beeCatcher.height);
 
-    this.radiusX = spellingBeesGame.canvas.width/14;
-    this.radiusY = spellingBeesGame.canvas.height/27;
+
 
     if (spellingBeesGame.beeCatcher.x > this.x)
     {
@@ -66,6 +68,7 @@ function Bee(letter)
     this.x += this.velocity*this.xDirection;
     this.y += this.velocity*this.yDirection;
   }
+
   this.draw = function()
   {
     //ellipse
