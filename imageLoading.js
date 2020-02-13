@@ -38,6 +38,7 @@ let symbolPeriodImage = document.createElement("img");//.
 
 let placeholderPlayButtonImage = document.createElement("img");
 
+let pinataImage = document.createElement("img");
 
 //custom font image loading section, used loops for less typing... just to see if i could
 var arrayOfTextLetters = 'abcdefghijklmnopqrstuvwxyzñ';
@@ -142,6 +143,9 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: symbolQuestionMarkImage, theFile: 'images/Custom Font/pngs/symbols/symbolQuestionMark.png'});
 
   arrayOfImages.push({imageObjectBinding: placeholderPlayButtonImage, theFile: 'images/placeholderPlayButtonImage.png'});
+
+  arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});
+
   // console.log(arrayOfImages);
 
   numberOfImagesToLoad = arrayOfImages.length;
