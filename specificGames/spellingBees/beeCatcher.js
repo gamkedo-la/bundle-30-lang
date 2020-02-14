@@ -32,9 +32,32 @@ function BeeCatcher()
           spellingBeesGame.beesManager.arrayOfBees[beeIndex].y > this.y &&
           spellingBeesGame.beesManager.arrayOfBees[beeIndex].y < this.y + this.height)
           {
-            let letterSubmission = spellingBeesGame.beesManager.arrayOfBees.splice(beeIndex,1);
-            spellingBeesGame.caughtBeesManager.placeCaughtBeeInAppropriateBox(letterSubmission);
+            let caughtBee = spellingBeesGame.beesManager.arrayOfBees[beeIndex];
+            spellingBeesGame.caughtBeesManager.placeCaughtBeeInAppropriateBox(caughtBee);
+            spellingBeesGame.caughtBeesManager.submitLetterToSubmissionsManager(caughtBee);
+            spellingBeesGame.letterSubmissionManager.checkSubmittedLettersForCorrectSpelling();
+            console.log(spellingBeesGame.letterSubmissionManager.arrayOfLetters);
           }
+    }
+  }
+
+  this.moveWhenAppropriate = function()
+  {
+    if (spellingBeesGame.inputManager.leftArrowIsBeingHeld)
+    {
+      this.x -= 6;
+    }
+    if (spellingBeesGame.inputManager.upArrowIsBeingHeld)
+    {
+      this.y -= 6;
+    }
+    if (spellingBeesGame.inputManager.rightArrowIsBeingHeld)
+    {
+      this.x += 6;
+    }
+    if (spellingBeesGame.inputManager.downArrowIsBeingHeld)
+    {
+      this.y += 6;
     }
   }
 }
@@ -43,16 +66,23 @@ spellingBeesGame.beeCatcher = new BeeCatcher();
 
 function CaughtBeesManager()
 {
+  this.arrayOfCaughtBees = [];
   this.currentBoxToBeFilledIndex = 0;
-  this.placeCaughtBeeInAppropriateBox = function(bee)
+  this.boxLeftX = spellingBeesGame.canvas.width/8;
+  this.boxCenterXOffset =  (spellingBeesGame.canvas.width/8)/2;
+  this.boxCenterY = spellingBeesGame.canvas.height*0.9 + (spellingBeesGame.canvas.height/10)/2;
+
+  this.placeCaughtBeeInAppropriateBox = function(caughtBee)
   {
-    bee.x = spellingBeesGame.beeBoxes.arrayOfBoxes[this.currentBoxToBeFilledIndex].x +
-            spellingBeesGame.beeBoxes.arrayOfBoxes[this.currentBoxToBeFilledIndex].width/2;
-    bee.velocity = 0;
-            
-    spellingBeesGame.beeBoxes.arrayOfBoxes[this.currentBoxToBeFilledIndex].bee = bee;
+    caughtBee.x = (this.currentBoxToBeFilledIndex*this.boxLeftX) + this.boxCenterXOffset;
+    caughtBee.y = this.boxCenterY;
+    caughtBee.velocity = 0;
     this.currentBoxToBeFilledIndex++;
   }
-}
 
-spellingBeesGame.caughtBeesManager = new CaughtBeesManager();
+  this.submitLetterToSubmissionsManager = function(caughtBee)
+  {
+    let letterToSubmit = caughtBee.letter;
+    spellingBeesGame.letterSubmissionManager.arrayOfLetters.push(letterToSubmit);
+  }
+}

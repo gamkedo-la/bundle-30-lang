@@ -6,6 +6,20 @@ function LetterSubmission(letterSubmission)
 function LetterSubmissionManager()
 {
   this.arrayOfLetters = [];
+
+  this.checkSubmittedLettersForCorrectSpelling = function()
+  {
+    console.log('this.arrayOfLetters: ' + this.arrayOfLetters);
+    console.log('spellingBeesGame.answersManager.currentSplitAnswer: ' + spellingBeesGame.answersManager.currentSplitAnswer);
+    if (this.arrayOfLetters.toString() === spellingBeesGame.answersManager.currentSplitAnswer.toString())
+    {
+      console.log('correct answer submitted');
+    } else if (this.arrayOfLetters.length === spellingBeesGame.answersManager.currentSplitAnswer.length &&
+               this.arrayOfLetters.toString !== spellingBeesGame.answersManager.currentSplitAnswer.toString())
+               {
+                 console.log('incorrect answer submitted');
+               }
+  }
 }
 
 spellingBeesGame.letterSubmissionManager = new LetterSubmissionManager();
@@ -44,14 +58,6 @@ function BeeBoxes()
     for (let boxIndex = 0; boxIndex < this.arrayOfBoxes.length; boxIndex++)
     {
       this.arrayOfBoxes[boxIndex].draw();
-      if (this.arrayOfBoxes[boxIndex].bee === undefined)
-      {
-        continue;
-      }
-      else
-      {
-        console.log(this.arrayOfBoxes[boxIndex].bee);
-      }
     }
   }
 }
