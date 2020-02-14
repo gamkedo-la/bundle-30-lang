@@ -40,57 +40,31 @@ function drawCellTextAndCheckForHighlightingFromMouseOver()
     }
   }
 }
+// TODO: fold this data into each game class
+const GAME_NAMES = [
+  [{name: "Snake", fontSize: 27, spacing: 15, x: 30, y: 185}],
+  [{name: "Bird", fontSize: 27, spacing: 15, x: 138, y: 185}],
+  [{name: "Lane", fontSize: 27, spacing: 15, x: 237, y: 185}],
+  [{name: "Jumper", fontSize: 27, spacing: 15, x: 322, y: 185}],
+  [{name: "Finder", fontSize: 27, spacing: 15, x: 420, y: 185}],
+  [{name: "Catcher", fontSize: 22, spacing: 12, x: 527, y: 187}],
+  [{name: "Shooter", fontSize: 22, spacing: 12, x: 24, y: 285}],
+  [{name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270}, {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}],
+  [{name: "Runner", fontSize: 27, spacing: 13, x: 225, y: 285}],
+  [{name: "Piñata", fontSize: 27, spacing: 15, x: 322, y: 285}],
+  [{name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265}, {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}],
+  [{name: "Frog", fontSize: 27, spacing: 15, x: 535, y: 285}],
+  [{name: "Maze", fontSize: 27, spacing: 15, x: 37, y: 385}],
+  [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],
+];
 
 function drawGameNames()
 {
-  // gameCanvasContext.fillStyle = 'blue';
-  // gameCanvasContext.font = '27px Helvetica';
-
-
-  //row 1
-  // gameCanvasContext.fillText('Snake', 29,205);
-  customFontFillText("Snake", 27, 15, 30,185);
-
-  // gameCanvasContext.fillText('Bird', 142,205);
-  customFontFillText('Bird', 27, 15, 138,185);
-
-  // gameCanvasContext.fillText('Lane', 237,205);
-  customFontFillText("Lane", 27, 15, 237,185);
-
-  // gameCanvasContext.fillText('Jumper', 322,205);
-  customFontFillText("Jumper", 27, 15, 322,185);
-
-  // gameCanvasContext.fillText('Finder', 429,205);
-  customFontFillText("Finder", 27, 15, 420,185);
-
-  // gameCanvasContext.fillText('Catcher', 522,205);
-  customFontFillText("Catcher", 22, 12, 527,187);
-
-
-  //row two
-  // gameCanvasContext.fillText('Shooter', 22,305);
-  customFontFillText("Shooter", 22, 12, 24,285);
-
-  // gameCanvasContext.fillText('Space', 130, 290);
-  // gameCanvasContext.fillText('Shooter', 122,325);
-  customFontFillText("Space", 25, 12, 130,270);
-  customFontFillText("Shooter", 17, 10, 129,305);
-
-	// gameCanvasContext.fillText('Runner', 224, 305);
-  customFontFillText("Runner", 27, 13, 225,285);
-
-  //customFontFillText("Piñata", 27, 15, 322,285);
-  customFontFillText("Piñata", 27, 15, 322,285);
-
-  customFontFillText("Air", 27, 15, 445,265);
-  customFontFillText("Grab", 27, 15, 437,300);
-
-  customFontFillText("Frog", 27, 15, 535,285);
-
-  //row 3
-  customFontFillText('Maze', 27, 15, 37,385);
-
-  customFontFillText('Memory', 27, 15, 122,385);
+  GAME_NAMES.forEach(function (nameDataArray) {
+	nameDataArray.forEach(function(nameData) {
+	  customFontFillText(nameData.name, nameData.fontSize, nameData.spacing, nameData.x, nameData.y);
+	});
+  });
 }
 
 function handleGameCellClicks()
@@ -212,7 +186,7 @@ function handleGameCellClicks()
   if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 620 &&
       mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 650)
       {
-        currentBackgroundMusic.pause();
+        // currentBackgroundMusic.pause();
         levelIsTransitioning = true;
         transitionIsFadingIn = true;
         // console.log(levelIsTransitioning);
