@@ -118,6 +118,10 @@ Where = pic of a location, When = pic of time, why = because)
 116. Rome/room
 117. could/cold
 118. ride/read
+119. anything with huge
+120. every/very
+121. thought/fought th/f
+122. son/some m/n
 
 
 Any language - 
