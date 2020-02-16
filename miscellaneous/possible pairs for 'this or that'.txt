@@ -122,6 +122,11 @@ Where = pic of a location, When = pic of time, why = because)
 120. every/very
 121. thought/fought th/f
 122. son/some m/n
+123. hear/hair
+124. it's/its
+125. town/ton
+126. food/fruit
+127. 'to be' conjugations am/are/is
 
 
 Any language - 
