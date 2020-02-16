@@ -30,25 +30,10 @@ const SNAKE_BACKGROUND_COLOR = 'brown';
 
 const SNAKE_PLAYER_COLOR = 'lime';
 
+snakeGameClass.prototype = new GameClass();
 function snakeGameClass()
 {
-  this.gameIsPlaying = false;
   this.isTransitioningIn = false;
-
-  this.isPlaying = function()
-  {
-    return this.gameIsPlaying;
-  };
-
-  this.startPlaying = function()
-  {
-    this.gameIsPlaying = true;
-  }
-
-  this.stopPlaying = function()
-  {
-    this.gameIsPlaying = false;
-  }
 
   this.initialize = function()
   {
@@ -61,7 +46,6 @@ function snakeGameClass()
     this.shuffleAndResetPromptsAndAnswers();
     this.loadPromptsManager();
   }
-
 
   //update section
   this.update = function()
