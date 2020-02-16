@@ -1,4 +1,3 @@
-var playerShouldBePlayingJumper = false;
 var playerShouldBePlayingFinder = false;
 var playerShouldBePlayingCatcher = false;
 
@@ -55,7 +54,7 @@ function keyDown(builtInDocumentEventObject)
     {
       if (playerXCoordinate > 230)
       playerXCoordinate = 230;
-    } else if (playerShouldBePlayingJumper)
+    } else if (jumperGame.isPlaying())
     {
 
     }
@@ -67,7 +66,7 @@ function keyDown(builtInDocumentEventObject)
     {
       playerSpeedX = 0;
       playerSpeedY = -20;
-    } else if (playerShouldBePlayingJumper)
+    } else if (jumperGame.isPlaying())
     {
 
     }
@@ -97,7 +96,7 @@ function keyDown(builtInDocumentEventObject)
     {
       playerSpeedX = 0;
       playerSpeedY = 20;
-    } else if (playerShouldBePlayingJumper)
+    } else if (jumperGame.isPlaying())
     {
       playerYCoordinate += 100;
       if (playerYCoordinate > 700)//if the player goes below the screen
@@ -112,9 +111,9 @@ function keyDown(builtInDocumentEventObject)
       if (birdGame.isPlaying())
       {
 		birdGame.onSpaceBarKeyDown();
-      } else if (playerShouldBePlayingJumper)
+      } else if (jumperGame.isPlaying())
       {
-        playerYCoordinate += -5;
+        jumperGame.onSpaceBarKeyDown();
       } else if (spaceShooterGame.isPlaying())
       {
         arrayOfBullets.push({x:playerXCoordinate,y:playerYCoordinate});

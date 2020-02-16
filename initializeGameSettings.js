@@ -9,10 +9,9 @@ function initializeSpecificGameSettings()
   } else if (laneGame.isPlaying())
   {
 	laneGame.initialize();
-  } else if (playerShouldBePlayingJumper)
+  } else if (jumperGame.isPlaying())
   {
-    playerXCoordinate = jumperStartingXCoordinate;
-    playerYCoordinate = jumperStartingYCoordinate;
+	jumperGame.initialize();
   } else if (spaceShooterGame.isPlaying())
   {
     // playerXCoordinate = spaceShooterStartingXCoordinate;

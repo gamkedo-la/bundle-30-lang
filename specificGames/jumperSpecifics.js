@@ -1,78 +1,91 @@
-var jumperStartingXCoordinate = Math.random() * 640;
-var jumperStartingYCoordinate = (Math.floor(Math.random() * 7) * 100) + 30;
+const jumperLetterColor = 'red';
+const jumperBackButtonRectangleColor = 'yellow';
+const jumperBackButtonTextColor = 'green';
 
-var playerYVelocity = 0;
-
-var jumperFrameRate = 1000/30;
-
-var jumperLetterColor = 'red';
-
-var jumperBackButtonRectangleColor = 'yellow';
-var jumperBackButtonTextColor = 'green';
-
-function drawJumperBackground()
+jumperGameClass.prototype = new GameClass();
+function jumperGameClass()
 {
-  gameCanvasContext.fillStyle = 'black';
-  gameCanvasContext.fillRect(0,0, 640,700);
-}
+  const MAX_PLATFORMS = 7;
+  const jumperStartingXCoordinate = Math.random() * 640;
+  const jumperStartingYCoordinate = (Math.floor(Math.random() * 7) * 100) + 30;
+  const arrayOfJumperPlatforms = [...Array(MAX_PLATFORMS).keys()].map(function(i) {
+	return {x:0, y:i*100};
+  });
+  this.frameRate = 1000/30;
+  this.letterSpawnInterval = 2000;
 
-var arrayOfJumperPlatforms = [];
-
-for (let i = 1; i < 14; i+=2)
-{
-  arrayOfJumperPlatforms.push({x:0,y:i*50})
-}
-
-function drawJumperPlatforms()
-{
-  gameCanvasContext.fillStyle = 'blue';
-  for (let platformsIndex = 0; platformsIndex < arrayOfJumperPlatforms.length; platformsIndex++)
+  this.initialize = function()
   {
-    gameCanvasContext.fillRect(arrayOfJumperPlatforms[platformsIndex].x,arrayOfJumperPlatforms[platformsIndex].y,
-                               gameCanvas.width,50)
-  }
+	playerXCoordinate = jumperStartingXCoordinate;
+    playerYCoordinate = jumperStartingYCoordinate;
+  };
+
+  this.update = function()
+  {
+  };
+
+  this.movePlayer = function()
+  {
+	if (!upArrowIsBeingHeld && playerYCoordinate !== 30 && playerYCoordinate !== 130 && playerYCoordinate !== 230
+		&& playerYCoordinate !== 330 && playerYCoordinate !== 430 && playerYCoordinate !== 530 && playerYCoordinate !== 630)
+    {
+      playerYCoordinate += 5;
+    }
+
+    if (leftArrowIsBeingHeld)
+    {
+      playerXCoordinate -= 3;
+      if (playerXCoordinate < -10)//if the player goes off the left side of the screen
+      {
+        playerXCoordinate = 635;//put them on the right side
+      }
+    }
+    if (upArrowIsBeingHeld)
+    {
+      playerYCoordinate -= 5;
+    }
+    if (rightArrowIsBeingHeld)
+    {
+      playerXCoordinate += 3;
+      if (playerXCoordinate > 635)//if the player goes off the right side of the screen
+      {
+        playerXCoordinate = -5;//put them on the left side of the screen
+      }
+    }
+    if (downArrowIsBeingHeld)
+    {
+
+    }
+  };
+
+  this.draw = function()
+  {
+  };
+
+  this.drawBackground = function()
+  {
+	gameCanvasContext.fillStyle = 'black';
+	gameCanvasContext.fillRect(0,0, 640,700);
+	gameCanvasContext.fillStyle = 'blue';
+	for (let platformsIndex = 0; platformsIndex < arrayOfJumperPlatforms.length; platformsIndex++)
+	{
+      gameCanvasContext.fillRect(arrayOfJumperPlatforms[platformsIndex].x, arrayOfJumperPlatforms[platformsIndex].y, gameCanvas.width, 50)
+	}
+  };
+
+  this.drawPlayer = function()
+  {
+	gameCanvasContext.fillStyle = 'white';
+	gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 20,20);
+  };
+
+  this.onSpaceBarKeyDown = function()
+  {
+	playerYCoordinate += -5;
+  };
 }
 
-
-function drawJumperPlayer()
-{
-  gameCanvasContext.fillStyle = 'white';
-  gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 20,20);
-}
-
-function moveJumperPlayer()
-{
-      if (!upArrowIsBeingHeld && playerYCoordinate !== 30 && playerYCoordinate !== 130 && playerYCoordinate !== 230
-      && playerYCoordinate !== 330 && playerYCoordinate !== 430 && playerYCoordinate !== 530 && playerYCoordinate !== 630)
-      {
-        playerYCoordinate += 5;
-      }
-
-      if (leftArrowIsBeingHeld)
-      {
-        playerXCoordinate -= 3;
-        if (playerXCoordinate < -10)//if the player goes off the left side of the screen
-        {
-          playerXCoordinate = 635;//put them on the right side
-        }
-      }
-      if (upArrowIsBeingHeld)
-      {
-        playerYCoordinate -= 5;
-      }
-      if (rightArrowIsBeingHeld)
-      {
-        playerXCoordinate += 3;
-        if (playerXCoordinate > 635)//if the player goes off the right side of the screen
-        {
-            playerXCoordinate = -5;//put them on the left side of the screen
-        }
-      }
-      if (downArrowIsBeingHeld)
-      {
-
-      }
-}
+const jumperGame = new jumperGameClass();
 
 function initializeLettersForJumper()
 {

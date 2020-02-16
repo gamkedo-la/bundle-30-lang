@@ -107,10 +107,10 @@ function handleGameCellClicks()
   else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&
            mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
       {
-        playerShouldBePlayingJumper = true;
+        jumperGame.startPlaying();
         playerShouldSeeTitleScreen = false;
         playerIsPlayingAnyGame = true;
-        gameInterval.reset(jumperFrameRate);
+        gameInterval.reset(jumperGame.frameRate);
         // setOrResetCorrectLetter();
         initializeLettersForJumper();
         levelIsTransitioning = true;
