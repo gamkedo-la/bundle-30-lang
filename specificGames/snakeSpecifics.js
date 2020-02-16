@@ -54,7 +54,7 @@ function snakeGameClass()
     if (!promptersManager.shouldBeDrawingAPrompt)
     {
       this.updateSnakeTail();
-      //this.movePlayer();
+      this.movePlayer();
       this.handleCollisionsWithAnswers();
     }
   }
@@ -120,7 +120,7 @@ function snakeGameClass()
 
   this.drawBackButton = function()
   {
-    // Draw the button 
+    // Draw the button
     gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_RECTANGLE_COLOR;
     gameCanvasContext.fillRect(540,650, 100,50);
 

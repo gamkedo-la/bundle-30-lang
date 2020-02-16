@@ -45,6 +45,7 @@ function keyDown(builtInDocumentEventObject)
     leftArrowIsBeingHeld = true;
     if (SNAKE_GAME.isPlaying())
     {
+      console.log('left arrow is being held');
       playerSpeedX = -20;
       playerSpeedY = 0;
     } else if (birdGame.isPlaying())
