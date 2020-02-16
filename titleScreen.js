@@ -84,11 +84,11 @@ function handleGameCellClicks()
   }
   else if (mouseCoordinates.mouseX > 120 && mouseCoordinates.mouseX < 220 &&
            mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
-      {
-        playerShouldBePlayingBird = true;
+  {
+	birdGame.startPlaying();
         playerShouldSeeTitleScreen = false;
-        gameInterval.reset(birdGameFrameRate);
-        letterSpawnInterval.reset(birdLetterSpawnRate);
+	gameInterval.reset(birdGame.frameRate);
+	letterSpawnInterval.reset(birdGame.letterSpawnRate);
         playerIsPlayingAnyGame = true;
         // setOrResetCorrectLetter();
         levelIsTransitioning = true;

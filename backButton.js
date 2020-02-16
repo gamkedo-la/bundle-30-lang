@@ -3,7 +3,7 @@ function drawBackButton()
   if (playerIsPlayingAnyGame)
   {
     //draw the rectangle
-    if (playerShouldBePlayingBird){
+    if (birdGame.isPlaying()) {
       gameCanvasContext.fillStyle = birdBackButtonRectangleColor;
     } else if (SNAKE_GAME.isPlaying()) {
       gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_RECTANGLE_COLOR;
@@ -15,7 +15,7 @@ function drawBackButton()
     gameCanvasContext.fillRect(540,650, 100,50);
 
     //draw the text
-    if (playerShouldBePlayingBird){
+    if (birdGame.isPlaying()){
       gameCanvasContext.fillStyle = birdBackButtonTextColor;
     } else if (SNAKE_GAME.isPlaying()) {
       gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_TEXT_COLOR;
@@ -38,7 +38,7 @@ function handleBackButtonClick()
       {
         playerShouldSeeTitleScreen = true;
         playerIsPlayingAnyGame = false;
-        playerShouldBePlayingBird = false;
+        birdGame.stopPlaying();
         SNAKE_GAME.stopPlaying();
         laneGame.stopPlaying();
 		spaceShooterGame.stopPlaying();

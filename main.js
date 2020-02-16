@@ -50,6 +50,9 @@ function updateEverythingInTheGame()
 
 function gameSpecificUpdates()
 {
+  if (birdGame.isPlaying()) {
+	birdGame.update();
+  }
   if (SNAKE_GAME.isPlaying())
   {
     SNAKE_GAME.update();
@@ -66,11 +69,11 @@ function gameSpecificUpdates()
 
 function handleGameSpecificSpritesOffScreen()
 {
-	if (SNAKE_GAME.isPlaying())
+  if (SNAKE_GAME.isPlaying())
   {
     SNAKE_GAME.wrapSnakeIfOffScreen();
-  } else if (playerShouldBePlayingBird) {
-    handleBirdOffScreenPossibilities();
+  } else if (birdGame.isPlaying()) {
+	birdGame.handleOffScreenSprites();
   }
 }
 //end of update section

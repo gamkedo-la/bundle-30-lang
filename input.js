@@ -1,4 +1,3 @@
-var playerShouldBePlayingBird = false;
 var playerShouldBePlayingJumper = false;
 var playerShouldBePlayingFinder = false;
 var playerShouldBePlayingCatcher = false;
@@ -49,7 +48,7 @@ function keyDown(builtInDocumentEventObject)
     {
       playerSpeedX = -20;
       playerSpeedY = 0;
-    } else if (playerShouldBePlayingBird)
+    } else if (birdGame.isPlaying())
     {
 
     } else if (laneGame.isPlaying())
@@ -80,7 +79,7 @@ function keyDown(builtInDocumentEventObject)
     {
       playerSpeedX = 20;
       playerSpeedY = 0;
-    }  else if (playerShouldBePlayingBird)
+    }  else if (birdGame.isPlaying())
     {
 
     } else if (laneGame.isPlaying())
@@ -110,9 +109,9 @@ function keyDown(builtInDocumentEventObject)
     break;
 
     case 32://spacebar
-      if (playerShouldBePlayingBird)
+      if (birdGame.isPlaying())
       {
-        flapUp();
+		birdGame.onSpaceBarKeyDown();
       } else if (playerShouldBePlayingJumper)
       {
         playerYCoordinate += -5;
@@ -149,7 +148,7 @@ function keyUp(builtInDocumentEventObject)
   {
     case 37://left arrow
     leftArrowIsBeingHeld = false;
-    if (playerShouldBePlayingBird)
+    if (birdGame.isPlaying())
     {
 
     }
@@ -161,7 +160,7 @@ function keyUp(builtInDocumentEventObject)
 
     case 39://right arrow
     rightArrowIsBeingHeld = false;
-    if (playerShouldBePlayingBird)
+    if (birdGame.isPlaying())
     {
       rightArrowDown = false;
     }

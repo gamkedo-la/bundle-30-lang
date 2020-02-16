@@ -268,7 +268,7 @@ let promptsAndAnswersManager = new PromptsAndAnswersManager();
 var answerSpeed = 0;
 function moveAnswersIfAppropriate()
 {
-  if (playerShouldBePlayingBird || spaceShooterGame.isPlaying() || runnerGame.isPlaying())
+  if (birdGame.isPlaying() || spaceShooterGame.isPlaying() || runnerGame.isPlaying())
   {
     for (var answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
     {
@@ -307,7 +307,7 @@ function handleCollisionsWithAnswers()
 
         }
     }
-  } else if (playerShouldBePlayingBird)
+  } else if (birdGame.isPlaying())
   {
     for (let answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
     {

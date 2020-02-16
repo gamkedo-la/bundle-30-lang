@@ -3,12 +3,9 @@ function initializeSpecificGameSettings()
   if (SNAKE_GAME.isPlaying())
   {
     //SNAKE_GAME.initialize();
-  } else if (playerShouldBePlayingBird)
+  } else if (birdGame.isPlaying())
   {
-    playerXCoordinate = birdStartingX;
-    playerYCoordinate = birdStartingY;
-    playerSpeedX = birdSpeed;
-    letterSpeed = birdLetterSpeed;
+	birdGame.initialize();
   } else if (laneGame.isPlaying())
   {
 	laneGame.initialize();

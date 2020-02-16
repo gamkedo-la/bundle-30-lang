@@ -9,8 +9,8 @@ function drawGameSpecificPlayer()
   if (SNAKE_GAME.isPlaying())
   {
     SNAKE_GAME.drawPlayer();
-  } else if (playerShouldBePlayingBird) {
-    drawBirdPlayer();
+  } else if (birdGame.isPlaying()) {
+    birdGame.drawPlayer();
   } else if (laneGame.isPlaying()) {
 	  laneGame.drawPlayer();
   } else if (playerShouldBePlayingJumper){
@@ -26,9 +26,9 @@ function moveGameSpecificPlayer()
   if (SNAKE_GAME.isPlaying())
   {
     SNAKE_GAME.movePlayer();
-  } else if (playerShouldBePlayingBird)
+  } else if (birdGame.isPlaying())
   {
-    moveBirdPlayer();
+    birdGame.movePlayer();
   } else if (playerShouldBePlayingJumper)
   {
     moveJumperPlayer();

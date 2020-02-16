@@ -13,9 +13,9 @@ function drawGameSpecificBackground()
   } else if (SNAKE_GAME.isPlaying())
   {
     SNAKE_GAME.drawBackground();
-  } else if (playerShouldBePlayingBird)
+  } else if (birdGame.isPlaying())
   {
-    drawBirdBackground();
+    birdGame.drawBackground();
   } else if (laneGame.isPlaying())
   {
     laneGame.drawBackground();

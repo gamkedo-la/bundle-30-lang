@@ -49,7 +49,7 @@ function spawnALetterIfAppropriate()
   } else {
     name = 'n';
   }
-  if (playerShouldBePlayingBird || spaceShooterGame.isPlaying())
+  if (birdGame.isPlaying() || spaceShooterGame.isPlaying())
   {
     arrayOfAnswers.push({xCoordinate:640,yCoordinate:Math.random()*700, name:name, correctAnswer:false});
   } else if (laneGame.isPlaying())
@@ -77,7 +77,7 @@ function spawnALetterIfAppropriate()
 
 function moveLettersIfAppropriate()
 {
-	if (playerShouldBePlayingBird || spaceShooterGame.isPlaying() || runnerGame.isPlaying())
+	if (birdGame.isPlaying() || spaceShooterGame.isPlaying() || runnerGame.isPlaying())
   {
     for (var letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {
@@ -97,7 +97,7 @@ function drawLetters()
   if (SNAKE_GAME.isPlaying())
   {
     gameCanvasContext.fillStyle = SNAKE_LETTER_COLOR;
-  } else if (playerShouldBePlayingBird)
+  } else if (birdGame.isPlaying())
   {
     gameCanvasContext.fillStyle = birdLetterColor;
   } else if (laneGame.isPlaying())
@@ -148,7 +148,7 @@ function handleCollisionsWithLetters()
 
         }
     }
-  } else if (playerShouldBePlayingBird)
+  } else if (birdGame.isPlaying())
   {
     for (let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {
