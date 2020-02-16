@@ -9,7 +9,7 @@ function drawBackButton()
       gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_RECTANGLE_COLOR;
     } else if (laneGame.isPlaying()) {
       gameCanvasContext.fillStyle = laneBackButtonRectangleColor;
-    } else if (playerShouldBePlayingJumper) {
+    } else if (jumperGame.isPlaying()) {
       gameCanvasContext.fillStyle = jumperBackButtonRectangleColor;
     }
     gameCanvasContext.fillRect(540,650, 100,50);
@@ -21,7 +21,7 @@ function drawBackButton()
       gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_TEXT_COLOR;
     } else if (laneGame.isPlaying()) {
       gameCanvasContext.fillStyle = laneBackButtonTextColor;
-    } else if (playerShouldBePlayingJumper)
+    } else if (jumperGame.isPlaying())
     {
       gameCanvasContext.fillStyle = jumperBackButtonTextColor;
     }
@@ -42,7 +42,7 @@ function handleBackButtonClick()
         SNAKE_GAME.stopPlaying();
         laneGame.stopPlaying();
 		spaceShooterGame.stopPlaying();
-        playerShouldBePlayingJumper = false;
+		jumperGame.stopPlaying();
         playerShouldBePlayingPinata = false;
 		runnerGame.stopPlaying();
         arrayOfAnswers = [];

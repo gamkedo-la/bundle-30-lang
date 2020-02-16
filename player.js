@@ -13,8 +13,8 @@ function drawGameSpecificPlayer()
     birdGame.drawPlayer();
   } else if (laneGame.isPlaying()) {
 	  laneGame.drawPlayer();
-  } else if (playerShouldBePlayingJumper){
-    drawJumperPlayer();
+  } else if (jumperGame.isPlaying()){
+    jumperGame.drawPlayer();
   } else if (spaceShooterGame.isPlaying())
   {
 	  spaceShooterGame.drawPlayer();
@@ -29,9 +29,9 @@ function moveGameSpecificPlayer()
   } else if (birdGame.isPlaying())
   {
     birdGame.movePlayer();
-  } else if (playerShouldBePlayingJumper)
+  } else if (jumperGame.isPlaying())
   {
-    moveJumperPlayer();
+	jumperGame.movePlayer()
   } else if (spaceShooterGame.isPlaying())
   {
 	  spaceShooterGame.movePlayer();

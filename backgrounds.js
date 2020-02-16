@@ -19,10 +19,9 @@ function drawGameSpecificBackground()
   } else if (laneGame.isPlaying())
   {
     laneGame.drawBackground();
-  } else if (playerShouldBePlayingJumper)
+  } else if (jumperGame.isPlaying())
   {
-    drawJumperBackground();
-    drawJumperPlatforms();
+	jumperGame.drawBackground();
   } else if (spaceShooterGame.isPlaying())
   {
       // drawSpaceShooterBackground();

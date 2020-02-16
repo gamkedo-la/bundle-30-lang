@@ -103,7 +103,7 @@ function drawLetters()
   } else if (laneGame.isPlaying())
   {
     gameCanvasContext.fillStyle = laneLetterColor;
-  } else if (playerShouldBePlayingJumper)
+  } else if (jumperGame.isPlaying())
   {
     gameCanvasContext.fillStyle = jumperLetterColor;
   } else if (spaceShooterGame.isPlaying())
@@ -194,7 +194,7 @@ function handleCollisionsWithLetters()
       }
     }
   }
-  else if (playerShouldBePlayingJumper)
+  else if (jumperGame.isPlaying())
   {
     for (let letterIndex = 0; letterIndex < arrayOfAnswers.length; letterIndex++)
     {

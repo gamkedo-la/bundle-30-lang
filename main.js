@@ -64,6 +64,9 @@ function gameSpecificUpdates()
 	  spaceShooterGame.update();
   } else if (runnerGame.isPlaying()) {
     runnerGame.update();
+  } else if (jumperGame.isPlaying())
+  {
+	jumperGame.update();
   }
 }
 
@@ -103,9 +106,12 @@ function drawEverythingInTheGame()
     if (runnerGame.isPlaying()) {
 		runnerGame.draw();
 	} else if (SNAKE_GAME.isPlaying())
-  {
-    SNAKE_GAME.draw();
-  }
+	{
+      SNAKE_GAME.draw();
+	} else if (jumperGame.isPlaying())
+	{
+	  jumperGame.draw();
+	}
   }
 
   if (levelIsTransitioning)
