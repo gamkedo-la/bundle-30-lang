@@ -38,14 +38,11 @@ function advanceGameFrame()
 //update section
 function updateEverythingInTheGame()
 {
+  //gameClassManager.currentGame.updateEverythingInTheGame();
   moveGameSpecificPlayer();
   gameSpecificUpdates();
   handleGameSpecificSpritesOffScreen();
-  //moveLettersIfAppropriate();//change to promptAndAnswerClass
   moveAnswersIfAppropriate();
-  //handleCollisionsWithLetters();//change to promptAndAnswerClass
-  // handleCollisionsWithAnswers();
-  // if (webAudioAPIContext.)
 }
 
 function gameSpecificUpdates()
@@ -81,8 +78,10 @@ function handleGameSpecificSpritesOffScreen()
 //draw section
 function drawEverythingInTheGame()
 {
+
   if (!levelIsTransitioning)
   {
+    //gameClassManager.currentGame.drawEverythingInTheGame();
     drawGameSpecificBackground();
     drawBackButton();
     drawGameSpecificPlayer();
