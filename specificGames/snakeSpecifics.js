@@ -33,6 +33,7 @@ const SNAKE_PLAYER_COLOR = 'lime';
 snakeGameClass.prototype = new GameClass();
 function snakeGameClass()
 {
+  var playerSpeedX, playerSpeedY;
   this.isTransitioningIn = false;
 
   this.initialize = function()

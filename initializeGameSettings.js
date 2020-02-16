@@ -2,7 +2,7 @@ function initializeSpecificGameSettings()
 {
   if (SNAKE_GAME.isPlaying())
   {
-    //SNAKE_GAME.initialize();
+    SNAKE_GAME.initialize();
   } else if (birdGame.isPlaying())
   {
 	birdGame.initialize();
