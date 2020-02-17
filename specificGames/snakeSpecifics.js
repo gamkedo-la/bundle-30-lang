@@ -5,15 +5,6 @@ max = Math.floor(max);
 return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
 }
 
-var snakeStartingX = getRandomIntInclusive(0,640);
-var snakeStartingY = getRandomIntInclusive(0,700);
-
-var snakeTail = [];
-
-
-const STARTING_SNAKE_SPEED_X = 0;
-const STARTING_SNAKE_SPEED_Y = 0;
-
 const SNAKE_TAIL_MAX_LENGTH = 5;
 const SNAKE_DIMENSION = 20;
 
@@ -33,16 +24,55 @@ const SNAKE_PLAYER_COLOR = 'lime';
 snakeGameClass.prototype = new GameClass();
 function snakeGameClass()
 {
-  var playerSpeedX, playerSpeedY;
+  this.name = 'Snake Game';
+
+  this.snake =
+  {
+    x: undefined,
+    y: undefined,
+    speedX: 0,
+    speedY: 0,
+    tail:
+    {
+      pieces: [],
+      update: function()
+      {
+        
+      }
+    },
+
+    initialize: function()
+    {
+      this.x = getRandomIntInclusive(0,gameCanvas.width);
+      this.y = getRandomIntInclusive(0,gameCanvas.height);
+    },
+
+    draw: function()
+    {
+      gameCanvasContext.fillStyle = SNAKE_PLAYER_COLOR;
+
+      for(let snakeTailIndex = 0; snakeTailIndex < this.snake.tail.length; snakeTailIndex++)
+      {
+        gameCanvasContext.fillRect(this.snake.tail[snakeTailIndex].x,this.snake.tail[snakeTailIndex].y,
+        SNAKE_DIMENSION - 2,SNAKE_DIMENSION - 2);
+      }
+    },
+
+    update: function()
+    {
+
+    }
+  }
+
   this.isTransitioningIn = false;
 
   this.initialize = function()
   {
-    playerXCoordinate = snakeStartingX;
-    playerYCoordinate = snakeStartingY;
+    playerXCoordinate = this.snake.speedX;
+    playerYCoordinate = this.snake.speedY;
     gameInterval.reset(SNAKE_GAME_FRAME_RATE);
-    playerSpeedX = 0;
-    playerSpeedY = 0;
+    this.snake.speedX = 0;
+    this.snake.speedY = 0;
     letterSpeed = SNAKE_LETTER_SPEED;
     this.shuffleAndResetPromptsAndAnswers();
     this.loadPromptsManager();
@@ -67,38 +97,38 @@ function snakeGameClass()
 
   this.populateSnakeTail = function()
   {
-    snakeTail.push({x:playerXCoordinate,y:playerYCoordinate});
+    this.snake.tail.push({x:this.snake.x,y:this.snake.y});
   }
 
   this.deleteExcessTail = function()
   {
-    while (snakeTail.length > SNAKE_TAIL_MAX_LENGTH)
+    while (this.snake.tail.length > SNAKE_TAIL_MAX_LENGTH)
     {
-      snakeTail.shift();
+      this.snake.tail.shift();
     }
   }
 
   this.movePlayer = function()
   {
-    playerXCoordinate += playerSpeedX;
-    playerYCoordinate += playerSpeedY;
+    this.snake.x += this.snake.speedX;
+    this.snake.y += this.snake.speedY;
     this.wrapSnakeIfOffScreen();
   }
 
   this.wrapSnakeIfOffScreen = function()
   {
-    if (playerXCoordinate > gameCanvas.width)
+    if (this.snake.x > gameCanvas.width)
     {
-      playerXCoordinate = 0;
-    } else if (playerXCoordinate < 0)
+      this.snake.x = 0;
+    } else if (this.snake.x < 0)
     {
-      playerXCoordinate = gameCanvas.width;
-    } else if (playerYCoordinate > gameCanvas.height)
+      this.snake.x = gameCanvas.width;
+    } else if (this.snake.y > gameCanvas.height)
     {
-      playerYCoordinate = 0;
-    } else if (playerYCoordinate < 0)
+      this.snake.y = 0;
+    } else if (this.snake.y < 0)
     {
-      playerYCoordinate = gameCanvas.height;
+      this.snake.y = gameCanvas.height;
     }
   }
 
@@ -106,7 +136,7 @@ function snakeGameClass()
   this.draw = function()
   {
     this.drawBackground();
-    this.drawPlayer();
+    this.snake.draw();
     this.drawAnswers();
     this.drawPromptsWhenAppropriate();
     this.drawBackButton();
@@ -127,22 +157,6 @@ function snakeGameClass()
     // Write text in button
     gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_TEXT_COLOR;
     customFontFillText('Back', 27, 15, 555,660);
-  }
-
-  this.drawPlayer = function()
-  {
-    gameCanvasContext.fillStyle = SNAKE_PLAYER_COLOR;
-
-    for(let snakeTailIndex = 0; snakeTailIndex < snakeTail.length; snakeTailIndex++)
-    {
-      gameCanvasContext.fillRect(snakeTail[snakeTailIndex].x,snakeTail[snakeTailIndex].y,
-      SNAKE_DIMENSION - 2,SNAKE_DIMENSION - 2);
-
-      // if (snakeTrail[i].x === playerX && snakeTrail[i].y == playerY)
-      // {
-      //   tail = 5;
-      // }
-    }
   }
 
   this.drawPromptsWhenAppropriate = function()
@@ -256,10 +270,10 @@ function snakeGameClass()
   {
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
-      if (playerXCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 &&
-          playerXCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 70 &&
-          playerYCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 35 &&
-          playerYCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 15)
+      if (this.snake.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 &&
+          this.snake.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 70 &&
+          this.snake.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 35 &&
+          this.snake.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 15)
         {
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
@@ -270,12 +284,12 @@ function snakeGameClass()
             this.shuffleAndResetPromptsAndAnswers();
             this.loadPromptsManager();
             this.promptThePlayer();
-            playerSpeedX = 0;
-            playerSpeedY = 0;
-        } else if (playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 &&
-            playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 70 &&
-            playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 35 &&
-            playerYCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 15)
+            this.snake.speedX = 0;
+            this.snake.speedY = 0;
+        } else if (this.snake.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 &&
+            this.snake.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 70 &&
+            this.snake.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 35 &&
+            this.snake.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 15)
         {
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
@@ -286,18 +300,18 @@ function snakeGameClass()
           this.shuffleAndResetPromptsAndAnswers();
           this.loadPromptsManager();
           this.promptThePlayer();
-          playerSpeedX = 0;
-          playerSpeedY = 0;
+          this.snake.speedX = 0;
+          this.snake.speedY = 0;
         }
         calculateAccuracy();
 
     }
     else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
     {
-      if (playerXCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-          playerXCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
-          playerYCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
-          playerYCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
+      if (this.snake.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
+          this.snake.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+          this.snake.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
+          this.snake.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
         {
           console.log('inside collision with correct image answer');
           promptersManager.currentPrompter.currentWidth = 150;
@@ -308,12 +322,12 @@ function snakeGameClass()
             this.shuffleAndResetPromptsAndAnswers();
             this.loadPromptsManager();
             this.promptThePlayer();
-            playerSpeedX = 0;
-            playerSpeedY = 0;
-        } else if ((playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-            playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
-            playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
-            playerYCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100))
+            this.snake.speedX = 0;
+            this.snake.speedY = 0;
+        } else if ((this.snake.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
+            this.snake.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+            this.snake.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
+            this.snake.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100))
         {
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
@@ -324,18 +338,18 @@ function snakeGameClass()
           this.shuffleAndResetPromptsAndAnswers();
           this.loadPromptsManager();
           this.promptThePlayer();
-          playerSpeedX = 0;
-          playerSpeedY = 0;
+          this.snake.speedX = 0;
+          this.snake.speedY = 0;
         }
         calculateAccuracy();
 
     }
     else if (promptsAndAnswersManager.currentAnswerDataType === 'AUDIO')
     {
-      if (playerXCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-          playerXCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
-          playerYCoordinate > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
-          playerYCoordinate < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
+      if (this.snake.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
+          this.snake.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+          this.snake.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
+          this.snake.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
         {
           console.log('inside collision with correct audio answer');
             promptersManager.currentPrompter.currentWidth = 150;
@@ -346,12 +360,12 @@ function snakeGameClass()
             this.shuffleAndResetPromptsAndAnswers();
             this.loadPromptsManager();
             this.promptThePlayer();
-            playerSpeedX = 0;
-            playerSpeedY = 0;
-        } else if ((playerXCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-            playerXCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
-            playerYCoordinate > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
-            playerYCoordinate < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100))
+            this.snake.speedX = 0;
+            this.snake.speedY = 0;
+        } else if ((this.snake.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
+            this.snake.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+            this.snake.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
+            this.snake.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100))
         {
           console.log('inside collision with incorrect audio answer');
           promptersManager.currentPrompter.currentWidth = 150;
@@ -362,8 +376,8 @@ function snakeGameClass()
           this.shuffleAndResetPromptsAndAnswers();
           this.loadPromptsManager();
           this.promptThePlayer();
-          playerSpeedX = 0;
-          playerSpeedY = 0;
+          this.snake.speedX = 0;
+          this.snake.speedY = 0;
         }
         calculateAccuracy();
 

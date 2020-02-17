@@ -74,6 +74,8 @@ function handleGameCellClicks()
       mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
   {
     // console.log('snake cell clicked');
+    gameClassManager.loadCurrentGame(SNAKE_GAME);
+    console.log("gameClassManager.currentGame: " + gameClassManager.currentGame);
     SNAKE_GAME.startPlaying();
     SNAKE_GAME.isTransitioningIn = true;
     playerShouldSeeTitleScreen = false;

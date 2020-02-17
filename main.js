@@ -24,8 +24,6 @@ window.onload = function()
   gameInterval = new frameInterval(advanceGameFrame, frameRate);
   letterSpawnInterval = new frameInterval(spawnALetterIfAppropriate, letterSpawnRate);
   letterSpawnInterval.stop();//workaround for infinite spawning at the initialization
-
-  // initializeCorrectLetterAudioTag();
 }
 
 function advanceGameFrame()
