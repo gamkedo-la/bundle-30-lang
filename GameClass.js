@@ -15,8 +15,8 @@ function GameClass()
   };
 
   this.gameFrameRate = undefined;//number
-  this.updateEverythingInTheGame = function(){};
-  this.drawEverythingInTheGame = function(){};
+  this.update = function(){};
+  this.draw = function(){};
 }
 
 function GameClassManager()

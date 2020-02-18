@@ -5,15 +5,8 @@ max = Math.floor(max);
 return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
 }
 
-const SNAKE_TAIL_MAX_LENGTH = 5;
-const SNAKE_DIMENSION = 20;
-
-const SNAKE_GAME_FRAME_RATE = 1000/10;
-
 const SNAKE_BACK_BUTTON_RECTANGLE_COLOR = 'yellow';
 const SNAKE_BACK_BUTTON_TEXT_COLOR = 'blueviolet';
-
-const SNAKE_LETTER_COLOR = 'cyan';
 
 const SNAKE_LETTER_SPEED = 0;
 
@@ -25,55 +18,17 @@ snakeGameClass.prototype = new GameClass();
 function snakeGameClass()
 {
   this.name = 'Snake Game';
+  this.FRAME_RATE = 1000/10;
 
-  this.snake =
-  {
-    x: undefined,
-    y: undefined,
-    speedX: 0,
-    speedY: 0,
-    tail:
-    {
-      pieces: [],
-      update: function()
-      {
-        
-      }
-    },
-
-    initialize: function()
-    {
-      this.x = getRandomIntInclusive(0,gameCanvas.width);
-      this.y = getRandomIntInclusive(0,gameCanvas.height);
-    },
-
-    draw: function()
-    {
-      gameCanvasContext.fillStyle = SNAKE_PLAYER_COLOR;
-
-      for(let snakeTailIndex = 0; snakeTailIndex < this.snake.tail.length; snakeTailIndex++)
-      {
-        gameCanvasContext.fillRect(this.snake.tail[snakeTailIndex].x,this.snake.tail[snakeTailIndex].y,
-        SNAKE_DIMENSION - 2,SNAKE_DIMENSION - 2);
-      }
-    },
-
-    update: function()
-    {
-
-    }
-  }
+  this.snake = undefined;
 
   this.isTransitioningIn = false;
 
   this.initialize = function()
   {
-    playerXCoordinate = this.snake.speedX;
-    playerYCoordinate = this.snake.speedY;
-    gameInterval.reset(SNAKE_GAME_FRAME_RATE);
-    this.snake.speedX = 0;
-    this.snake.speedY = 0;
-    letterSpeed = SNAKE_LETTER_SPEED;
+    this.snake = new SnakeClass();
+    this.snake.initialize();
+    gameInterval.reset(this.FRAME_RATE);
     this.shuffleAndResetPromptsAndAnswers();
     this.loadPromptsManager();
   }
@@ -83,52 +38,8 @@ function snakeGameClass()
   {
     if (!promptersManager.shouldBeDrawingAPrompt)
     {
-      this.updateSnakeTail();
-      this.movePlayer();
+      this.snake.update();
       this.handleCollisionsWithAnswers();
-    }
-  }
-
-  this.updateSnakeTail = function()
-  {
-    this.populateSnakeTail();
-    this.deleteExcessTail();
-  }
-
-  this.populateSnakeTail = function()
-  {
-    this.snake.tail.push({x:this.snake.x,y:this.snake.y});
-  }
-
-  this.deleteExcessTail = function()
-  {
-    while (this.snake.tail.length > SNAKE_TAIL_MAX_LENGTH)
-    {
-      this.snake.tail.shift();
-    }
-  }
-
-  this.movePlayer = function()
-  {
-    this.snake.x += this.snake.speedX;
-    this.snake.y += this.snake.speedY;
-    this.wrapSnakeIfOffScreen();
-  }
-
-  this.wrapSnakeIfOffScreen = function()
-  {
-    if (this.snake.x > gameCanvas.width)
-    {
-      this.snake.x = 0;
-    } else if (this.snake.x < 0)
-    {
-      this.snake.x = gameCanvas.width;
-    } else if (this.snake.y > gameCanvas.height)
-    {
-      this.snake.y = 0;
-    } else if (this.snake.y < 0)
-    {
-      this.snake.y = gameCanvas.height;
     }
   }
 
@@ -192,11 +103,13 @@ function snakeGameClass()
     promptersManager.promptThePlayer();
   }
 
+  this.LETTER_COLOR = 'cyan';
+
   this.drawAnswers = function()
   {
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
-      gameCanvasContext.fillStyle = SNAKE_LETTER_COLOR;
+      gameCanvasContext.fillStyle = this.LETTER_COLOR;
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
         //draw correct answer
@@ -212,7 +125,7 @@ function snakeGameClass()
                                     75,50);
 
         //draw incorrect answer
-        gameCanvasContext.fillStyle = SNAKE_LETTER_COLOR;
+        gameCanvasContext.fillStyle = this.LETTER_COLOR;
         gameCanvasContext.fillText(promptsAndAnswersManager.currentIncorrectAnswer,
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate);

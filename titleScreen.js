@@ -42,20 +42,20 @@ function drawCellTextAndCheckForHighlightingFromMouseOver()
 }
 // TODO: fold this data into each game class
 const GAME_NAMES = [
-  [{name: "Snake", fontSize: 27, spacing: 15, x: 30, y: 185}],
-  [{name: "Bird", fontSize: 27, spacing: 15, x: 138, y: 185}],
-  [{name: "Lane", fontSize: 27, spacing: 15, x: 237, y: 185}],
-  [{name: "Jumper", fontSize: 27, spacing: 15, x: 322, y: 185}],
-  [{name: "Finder", fontSize: 27, spacing: 15, x: 420, y: 185}],
-  [{name: "Catcher", fontSize: 22, spacing: 12, x: 527, y: 187}],
-  [{name: "Shooter", fontSize: 22, spacing: 12, x: 24, y: 285}],
-  [{name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270}, {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}],
-  [{name: "Runner", fontSize: 27, spacing: 13, x: 225, y: 285}],
-  [{name: "Piñata", fontSize: 27, spacing: 15, x: 322, y: 285}],
-  [{name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265}, {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}],
-  [{name: "Frog", fontSize: 27, spacing: 15, x: 535, y: 285}],
-  [{name: "Maze", fontSize: 27, spacing: 15, x: 37, y: 385}],
-  [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],
+  [{name: "Snake", fontSize: 27, spacing: 15, x: 30, y: 185}],//1
+  [{name: "Bird", fontSize: 27, spacing: 15, x: 138, y: 185}],//2
+  [{name: "Lane", fontSize: 27, spacing: 15, x: 237, y: 185}],//3
+  [{name: "Jumper", fontSize: 27, spacing: 15, x: 322, y: 185}],//4
+  [{name: "Finder", fontSize: 27, spacing: 15, x: 420, y: 185}],//5
+  [{name: "Catcher", fontSize: 22, spacing: 12, x: 527, y: 187}],//6
+  [{name: "Shooter", fontSize: 22, spacing: 12, x: 24, y: 285}],//7
+  [{name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270}, {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}],//8
+  [{name: "Runner", fontSize: 27, spacing: 13, x: 225, y: 285}],//9
+  [{name: "Piñata", fontSize: 27, spacing: 15, x: 322, y: 285}],//10
+  [{name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265}, {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}],//11
+  [{name: "Frog", fontSize: 27, spacing: 15, x: 535, y: 285}],//12
+  [{name: "Maze", fontSize: 27, spacing: 15, x: 37, y: 385}],//13
+  [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
 ];
 
 function drawGameNames()
@@ -79,7 +79,7 @@ function handleGameCellClicks()
     SNAKE_GAME.startPlaying();
     SNAKE_GAME.isTransitioningIn = true;
     playerShouldSeeTitleScreen = false;
-    gameInterval.reset(SNAKE_GAME_FRAME_RATE);
+    gameInterval.reset(SNAKE_GAME.FRAME_RATE);
     playerIsPlayingAnyGame = true;
     // setOrResetCorrectLetter();
     levelIsTransitioning = true;

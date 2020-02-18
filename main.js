@@ -36,11 +36,14 @@ function advanceGameFrame()
 //update section
 function updateEverythingInTheGame()
 {
-  //gameClassManager.currentGame.updateEverythingInTheGame();
-  moveGameSpecificPlayer();
-  gameSpecificUpdates();
-  handleGameSpecificSpritesOffScreen();
-  moveAnswersIfAppropriate();
+  if (gameClassManager.currentGame !== undefined)
+  {
+    gameClassManager.currentGame.update();
+  }
+  //moveGameSpecificPlayer();
+  //gameSpecificUpdates();
+  //handleGameSpecificSpritesOffScreen();
+  //moveAnswersIfAppropriate();
 }
 
 function gameSpecificUpdates()
@@ -82,33 +85,36 @@ function drawEverythingInTheGame()
 
   if (!levelIsTransitioning)
   {
-    //gameClassManager.currentGame.drawEverythingInTheGame();
-    drawGameSpecificBackground();
-    drawBackButton();
-    drawGameSpecificPlayer();
-    if (spaceShooterGame.isPlaying())
+    if (gameClassManager.currentGame !== undefined)
     {
-		spaceShooterGame.draw();
-    }
-    drawLetters();//change to promptAndAnswerClass
-    //drawAnswers();
-    drawStatsBackground();
-    drawStats();
+      gameClassManager.currentGame.draw();
+      //drawGameSpecificBackground();
+      //drawBackButton();
+      //drawGameSpecificPlayer();
+      // if (spaceShooterGame.isPlaying())
+      // {
+  		// spaceShooterGame.draw();
+      // }
+      //drawLetters();//change to promptAndAnswerClass
+      //drawAnswers();
+      drawStatsBackground();
+      drawStats();
 
-    if (debugOn)
-    {
-      drawDebugStuff();
-    }
+      if (debugOn)
+      {
+        drawDebugStuff();
+      }
 
-    if (runnerGame.isPlaying()) {
-		runnerGame.draw();
-	} else if (SNAKE_GAME.isPlaying())
-	{
-      SNAKE_GAME.draw();
-	} else if (jumperGame.isPlaying())
-	{
-	  jumperGame.draw();
-	}
+    //   if (runnerGame.isPlaying()) {
+  	// 	runnerGame.draw();
+  	// } else if (SNAKE_GAME.isPlaying())
+  	// {
+    //     SNAKE_GAME.draw();
+  	// } else if (jumperGame.isPlaying())
+  	// {
+  	//   jumperGame.draw();
+  	// }
+    }  
   }
 
   if (levelIsTransitioning)
