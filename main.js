@@ -48,6 +48,7 @@ function updateEverythingInTheGame()
 
 function gameSpecificUpdates()
 {
+
   if (birdGame.isPlaying()) {
 	birdGame.update();
   }
@@ -82,7 +83,10 @@ function handleGameSpecificSpritesOffScreen()
 //draw section
 function drawEverythingInTheGame()
 {
-
+  if (fullGameStateMachine.currentState === fullGameStateMachine.titleScreenState)
+  {
+    titleScreen.draw();
+  }
   if (!levelIsTransitioning)
   {
     if (gameClassManager.currentGame !== undefined)
@@ -114,7 +118,7 @@ function drawEverythingInTheGame()
   	// {
   	//   jumperGame.draw();
   	// }
-    }  
+    }
   }
 
   if (levelIsTransitioning)

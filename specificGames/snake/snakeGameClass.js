@@ -18,7 +18,7 @@ snakeGameClass.prototype = new GameClass();
 function snakeGameClass()
 {
   this.name = 'Snake Game';
-  this.FRAME_RATE = 1000/10;
+  const FRAME_RATE = 1000/10;
 
   this.snake = undefined;
 
@@ -28,7 +28,7 @@ function snakeGameClass()
   {
     this.snake = new SnakeClass();
     this.snake.initialize();
-    gameInterval.reset(this.FRAME_RATE);
+    gameInterval.reset(FRAME_RATE);
     this.shuffleAndResetPromptsAndAnswers();
     this.loadPromptsManager();
   }

@@ -6,7 +6,7 @@ function drawDebugStuff()
   {
     gameCanvasContext.fillText(mouseCoordinates.mouseX + "," + mouseCoordinates.mouseY,
                                 mouseCoordinates.mouseX,mouseCoordinates.mouseY);
-  } else if (playerIsPlayingAnyGame)
+  } else if (fullGameStateMachine.playingAGameState)
   {
     drawLetterCoordinates();
     drawPlayerCoordinates();

@@ -5,7 +5,7 @@ var frameRate = 1000/30;
 
 function gameCanvasClick()
 {
-  if (playerShouldSeePleaseWaitForDownloading)
+  if (fullGameStateMachine.currentState === 'loading')
   {
     handleDualPurposeSplashAndLoadingSceneClick();//dualLoadingSplashScreen.js, player advances to main menu after loading
     initializeCorrectLetterAudioTag();
@@ -13,7 +13,7 @@ function gameCanvasClick()
   {
     handleGameCellClicks();//titleScreen.js, player chooses a game
     initializeSpecificGameSettings();//game initializes
-  } else if (playerIsPlayingAnyGame)//back button in games
+  } else if (fullGameStateMachine.playingAGameState)//back button in games
   {
     handleBackButtonClick();//backButton.js, player goes back to menu/title screen
   }

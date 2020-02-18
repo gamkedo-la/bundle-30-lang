@@ -1,4 +1,7 @@
-var playerShouldSeePleaseWaitForDownloading = true;
+function LoadingAndSplashScreen()
+{
+
+}
 
 function promptPlayerForClickAfterLoading()
 {
@@ -24,9 +27,15 @@ function drawPleaseWaitForLoadingMessage()
 
 function handleDualPurposeSplashAndLoadingSceneClick()
 {
-  playerShouldSeeDualPurposeLoadingSplashScreen = false;
-  playerShouldSeePleaseWaitForDownloading = false;
-  playerShouldSeeTitleScreen = true;
+  if (fullGameStateMachine.currentState === fullGameStateMachine.loadingFullGame)
+  {
+    return;
+  }
+  else if (fullGameStateMachine.currentState === fullGameStateMachine.waitingForSplashScreenClickState)
+  {
+    fullGameStateMachine.loadCurrentState(fullGameStateMachine.titleScreenStatus);
+  }
+
   setSourcesForAudioObjects();
   populateMultisoundArrays();
   playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);

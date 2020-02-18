@@ -1,6 +1,6 @@
 function drawBackButton()
 {
-  if (playerIsPlayingAnyGame)
+  if (fullGameStateMachine.playingAGameState)
   {
     //draw the rectangle
     if (birdGame.isPlaying()) {
@@ -37,7 +37,7 @@ function handleBackButtonClick()
       mouseCoordinates.mouseY > 650 && mouseCoordinates.mouseY < 700)
       {
         playerShouldSeeTitleScreen = true;
-        playerIsPlayingAnyGame = false;
+        fullGameStateMachine.playingAGameState = false;
         birdGame.stopPlaying();
         SNAKE_GAME.stopPlaying();
         laneGame.stopPlaying();

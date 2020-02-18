@@ -1,71 +1,71 @@
-var playerShouldSeeTitleScreen = false;
-var playerIsPlayingAnyGame = false;
-
-var cellXTopLeftCoordinate = 0;
-var cellYTopLeftCoordinate = 0;
-
-function drawTitleScreen()
+function TitleScreenClass()
 {
-  drawTitleScreenHeader();
-  drawCellTextAndCheckForHighlightingFromMouseOver();
-  drawGameNames();
-}
+  this.cellXTopLeftCoordinate = 0;
+  this.cellYTopLeftCoordinate = 0;
 
-function drawTitleScreenHeader()
-{
-  //title text
-  //customFontFillText(sentenceArray, fontSize, spacing, xCoordinate,yCoordinate)
-  customFontFillText(['Bundle of 30 Language Games'], 40, 20, 50,25);
-  customFontFillText(['Choose A Game ', symbolExclamationPointImage], 25, 20, 175,100);
-}
-
-function drawCellTextAndCheckForHighlightingFromMouseOver()
-{
-  //basic cell outlines
-  gameCanvasContext.strokeStyle = 'white';
-  for (let cellRowIndex = 0; cellRowIndex < 5; cellRowIndex++)
+  this.drawHeader = function()
   {
-    for (let cellColumnIndex = 0; cellColumnIndex < 6; cellColumnIndex++)
+    customFontFillText(['Bundle of 30 Language Games'], 40, 20, 50,25);
+    customFontFillText(['Choose A Game ', symbolExclamationPointImage], 25, 20, 175,100);
+  }
+
+  this.drawCellsAndCheckForHighlighting = function()
+  {
+    //basic cell outlines
+    gameCanvasContext.strokeStyle = 'white';
+    for (let cellRowIndex = 0; cellRowIndex < 5; cellRowIndex++)
     {
-      cellXTopLeftCoordinate = cellColumnIndex*100 + 20;
-      cellYTopLeftCoordinate = cellRowIndex*100 + 150;
-      gameCanvasContext.strokeRect(cellXTopLeftCoordinate,cellYTopLeftCoordinate, 100,100);
-      //highlight cell if the mouse is inside it
-      if (mouseCoordinates.mouseX > cellXTopLeftCoordinate && mouseCoordinates.mouseX < cellXTopLeftCoordinate + 100 &&
-          mouseCoordinates.mouseY > cellYTopLeftCoordinate && mouseCoordinates.mouseY < cellYTopLeftCoordinate + 100)
-          {
-            gameCanvasContext.fillStyle = 'white';
-            gameCanvasContext.fillRect(cellXTopLeftCoordinate,cellYTopLeftCoordinate, 100,100);
-          }
+      for (let cellColumnIndex = 0; cellColumnIndex < 6; cellColumnIndex++)
+      {
+        this.cellXTopLeftCoordinate = cellColumnIndex*100 + 20;
+        this.cellYTopLeftCoordinate = cellRowIndex*100 + 150;
+        gameCanvasContext.strokeRect(this.cellXTopLeftCoordinate,this.cellYTopLeftCoordinate, 100,100);
+        //highlight cell if the mouse is inside it
+        if (mouseCoordinates.mouseX > this.cellXTopLeftCoordinate && mouseCoordinates.mouseX < this.cellXTopLeftCoordinate + 100 &&
+            mouseCoordinates.mouseY > this.cellYTopLeftCoordinate && mouseCoordinates.mouseY < this.cellYTopLeftCoordinate + 100)
+            {
+              gameCanvasContext.fillStyle = 'white';
+              gameCanvasContext.fillRect(this.cellXTopLeftCoordinate,this.cellYTopLeftCoordinate, 100,100);
+            }
+      }
     }
   }
-}
-// TODO: fold this data into each game class
-const GAME_NAMES = [
-  [{name: "Snake", fontSize: 27, spacing: 15, x: 30, y: 185}],//1
-  [{name: "Bird", fontSize: 27, spacing: 15, x: 138, y: 185}],//2
-  [{name: "Lane", fontSize: 27, spacing: 15, x: 237, y: 185}],//3
-  [{name: "Jumper", fontSize: 27, spacing: 15, x: 322, y: 185}],//4
-  [{name: "Finder", fontSize: 27, spacing: 15, x: 420, y: 185}],//5
-  [{name: "Catcher", fontSize: 22, spacing: 12, x: 527, y: 187}],//6
-  [{name: "Shooter", fontSize: 22, spacing: 12, x: 24, y: 285}],//7
-  [{name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270}, {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}],//8
-  [{name: "Runner", fontSize: 27, spacing: 13, x: 225, y: 285}],//9
-  [{name: "Piñata", fontSize: 27, spacing: 15, x: 322, y: 285}],//10
-  [{name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265}, {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}],//11
-  [{name: "Frog", fontSize: 27, spacing: 15, x: 535, y: 285}],//12
-  [{name: "Maze", fontSize: 27, spacing: 15, x: 37, y: 385}],//13
-  [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
-];
 
-function drawGameNames()
-{
-  GAME_NAMES.forEach(function (nameDataArray) {
-	nameDataArray.forEach(function(nameData) {
-	  customFontFillText(nameData.name, nameData.fontSize, nameData.spacing, nameData.x, nameData.y);
-	});
-  });
+  const GAME_NAMES = [
+    [{name: "Snake", fontSize: 27, spacing: 15, x: 30, y: 185}],//1
+    [{name: "Bird", fontSize: 27, spacing: 15, x: 138, y: 185}],//2
+    [{name: "Lane", fontSize: 27, spacing: 15, x: 237, y: 185}],//3
+    [{name: "Jumper", fontSize: 27, spacing: 15, x: 322, y: 185}],//4
+    [{name: "Finder", fontSize: 27, spacing: 15, x: 420, y: 185}],//5
+    [{name: "Catcher", fontSize: 22, spacing: 12, x: 527, y: 187}],//6
+    [{name: "Shooter", fontSize: 22, spacing: 12, x: 24, y: 285}],//7
+    [{name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270}, {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}],//8
+    [{name: "Runner", fontSize: 27, spacing: 13, x: 225, y: 285}],//9
+    [{name: "Piñata", fontSize: 27, spacing: 15, x: 322, y: 285}],//10
+    [{name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265}, {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}],//11
+    [{name: "Frog", fontSize: 27, spacing: 15, x: 535, y: 285}],//12
+    [{name: "Maze", fontSize: 27, spacing: 15, x: 37, y: 385}],//13
+    [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
+  ];
+
+  this.drawGameNames = function()
+  {
+    GAME_NAMES.forEach(function (nameDataArray) {
+  	nameDataArray.forEach(function(nameData) {
+  	  customFontFillText(nameData.name, nameData.fontSize, nameData.spacing, nameData.x, nameData.y);
+  	});
+    });
+  }
+
+  this.draw = function()
+  {
+    this.drawHeader();
+    this.drawCellsAndCheckForHighlighting();
+    this.drawGameNames();
+  }
 }
+
+let titleScreen = new TitleScreenClass();
 
 function handleGameCellClicks()
 {
@@ -80,7 +80,7 @@ function handleGameCellClicks()
     SNAKE_GAME.isTransitioningIn = true;
     playerShouldSeeTitleScreen = false;
     gameInterval.reset(SNAKE_GAME.FRAME_RATE);
-    playerIsPlayingAnyGame = true;
+    fullGameStateMachine.playingAGameState = true;
     // setOrResetCorrectLetter();
     levelIsTransitioning = true;
   }
@@ -91,7 +91,7 @@ function handleGameCellClicks()
         playerShouldSeeTitleScreen = false;
 	gameInterval.reset(birdGame.frameRate);
 	letterSpawnInterval.reset(birdGame.letterSpawnRate);
-        playerIsPlayingAnyGame = true;
+        fullGameStateMachine.playingAGameState = true;
         // setOrResetCorrectLetter();
         levelIsTransitioning = true;
       }
@@ -101,7 +101,7 @@ function handleGameCellClicks()
 		laneGame.startPlaying();
         playerShouldSeeTitleScreen = false;
         letterSpawnInterval.reset(laneLetterSpawnRate);
-        playerIsPlayingAnyGame = true;
+        fullGameStateMachine.playingAGameState = true;
         gameInterval.reset(laneFrameRate);
         // setOrResetCorrectLetter();
         levelIsTransitioning = true;
@@ -111,7 +111,7 @@ function handleGameCellClicks()
       {
         jumperGame.startPlaying();
         playerShouldSeeTitleScreen = false;
-        playerIsPlayingAnyGame = true;
+        fullGameStateMachine.playingAGameState = true;
         gameInterval.reset(jumperGame.frameRate);
         // setOrResetCorrectLetter();
         initializeLettersForJumper();
@@ -122,7 +122,7 @@ function handleGameCellClicks()
       {
         playerShouldBePlayingFinder = true;
         playerShouldSeeTitleScreen = false;
-        playerIsPlayingAnyGame = true;
+        fullGameStateMachine.playingAGameState = true;
         levelIsTransitioning = true;
       }
   else if (mouseCoordinates.mouseX > 520 && mouseCoordinates.mouseX < 620 &&
@@ -130,7 +130,7 @@ function handleGameCellClicks()
       {
         playerShouldBePlayingCatcher = true;
         playerShouldSeeTitleScreen = false;
-        playerIsPlayingAnyGame = true;
+        fullGameStateMachine.playingAGameState = true;
         levelIsTransitioning = true;
       }
 
@@ -140,7 +140,7 @@ function handleGameCellClicks()
       {
         spaceShooterGame.startPlaying();
         playerShouldSeeTitleScreen = false;
-        playerIsPlayingAnyGame = true;
+        fullGameStateMachine.playingAGameState = true;
         gameInterval.reset(spaceShooterFrameRate);
         // setOrResetCorrectLetter();
         letterSpawnInterval.reset(spaceShooterLetterSpawnRate);
@@ -151,7 +151,7 @@ function handleGameCellClicks()
       {
         spaceShooterGame.startPlaying();
         playerShouldSeeTitleScreen = false;
-        playerIsPlayingAnyGame = true;
+        fullGameStateMachine.playingAGameState = true;
         levelIsTransitioning = true;
       }
 	else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
@@ -161,7 +161,7 @@ function handleGameCellClicks()
         letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
 		runnerGame.startPlaying();
 		playerShouldSeeTitleScreen = false;
-		playerIsPlayingAnyGame = true;
+		fullGameStateMachine.playingAGameState = true;
         levelIsTransitioning = true;
         if (gameIsOnAServerAndCanUseWebAudioAPI)
         {
@@ -180,7 +180,7 @@ function handleGameCellClicks()
 
         playerShouldBePlayingPinata = true;
         playerShouldSeeTitleScreen = false;
-        playerIsPlayingAnyGame = true;
+        fullGameStateMachine.playingAGameState = true;
         levelIsTransitioning = true;
     }
 

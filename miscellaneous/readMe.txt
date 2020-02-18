@@ -47,7 +47,7 @@ Step 2: Add the name of your game to titleScreen.js.
 
 Step 3: Add a click check for the cell of your game in handleGameCellClicks(). This works kind of like a collision check.
 This is where we trigger off the title screen boolean, trigger on your games boolean, reset the frame rate if desired, trigger
-on playerIsPlayingAnyGame (another check for the emulator), set the first correct letter choice, reset letter spawning if
+on fullGameStateMachine.playingAGameState (another check for the emulator), set the first correct letter choice, reset letter spawning if
 appropriate.
 
 Step 4: Copy/paste your game background draw function code into your game specific file. Label it drawYourGamesBackground().
