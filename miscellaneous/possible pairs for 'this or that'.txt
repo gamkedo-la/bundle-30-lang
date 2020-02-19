@@ -129,6 +129,7 @@ Where = pic of a location, When = pic of time, why = because)
 127. 'to be' conjugations am/are/is
 128. come/comb
 129. nature/natural
+130. patrol/petrol
 
 spelling - 
 1. was/saw

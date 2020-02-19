@@ -55,6 +55,12 @@ function laneGameClass() {
 		gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 30,60);
 	};
 
+	this.draw = function()
+	{
+		this.drawBackground();
+		this.drawPlayer();
+	}
+
 	function drawLaneGrass()
 	{
 		gameCanvasContext.fillStyle = 'green';

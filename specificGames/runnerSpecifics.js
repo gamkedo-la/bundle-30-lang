@@ -80,6 +80,7 @@ function runnerGameClass() {
 	};
 
 	this.draw = function() {
+		this.drawBackground();
 		gameCanvasContext.fillStyle = 'white';
 		let x = playerXCoordinate;
 		let y = playerYCoordinate;

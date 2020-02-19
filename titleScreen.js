@@ -21,8 +21,10 @@ function TitleScreenClass()
         this.cellYTopLeftCoordinate = cellRowIndex*100 + 150;
         gameCanvasContext.strokeRect(this.cellXTopLeftCoordinate,this.cellYTopLeftCoordinate, 100,100);
         //highlight cell if the mouse is inside it
-        if (mouseCoordinates.mouseX > this.cellXTopLeftCoordinate && mouseCoordinates.mouseX < this.cellXTopLeftCoordinate + 100 &&
-            mouseCoordinates.mouseY > this.cellYTopLeftCoordinate && mouseCoordinates.mouseY < this.cellYTopLeftCoordinate + 100)
+        if (inputManager.mouseCoordinates.x > this.cellXTopLeftCoordinate &&
+            inputManager.mouseCoordinates.x < this.cellXTopLeftCoordinate + 100 &&
+            inputManager.mouseCoordinates.y > this.cellYTopLeftCoordinate &&
+            inputManager.mouseCoordinates.y < this.cellYTopLeftCoordinate + 100)
             {
               gameCanvasContext.fillStyle = 'white';
               gameCanvasContext.fillRect(this.cellXTopLeftCoordinate,this.cellYTopLeftCoordinate, 100,100);
@@ -57,8 +59,15 @@ function TitleScreenClass()
     });
   }
 
+  this.drawBackground = function()
+  {
+    gameCanvasContext.fillStyle = 'orange';
+    gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+  }
+
   this.draw = function()
   {
+    this.drawBackground();
     this.drawHeader();
     this.drawCellsAndCheckForHighlighting();
     this.drawGameNames();

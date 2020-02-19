@@ -7,7 +7,7 @@ function LoadingAndSplashScreen()
 
   this.handleClickAfterLoading = function()
   {
-    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreenStatus);
+    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen);
     console.log('game recognizes click after loading');
     setSourcesForAudioObjects();
     populateMultisoundArrays();
@@ -29,28 +29,31 @@ function LoadingAndSplashScreen()
 
     promptersManager.instantiatePrompters();
   }
+
+  this.promptPlayerForClickAfterLoading = function()
+  {
+    this.drawLoadingOrSplashOrTitleScreenBackground();
+
+    let sentenceArray1 = ['Downloading done', symbolPeriodImage];
+    customFontFillText(sentenceArray1, 30, 20, 150, 250);
+
+    let sentenceArray2 = ['Click to start', symbolPeriodImage];
+    customFontFillText(sentenceArray2, 30, 20, 165, 350);
+  }
+
+  this.drawLoadingOrSplashOrTitleScreenBackground = function()
+  {
+    gameCanvasContext.fillStyle = 'orange';
+    gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+  }
+
+  this.drawPleaseWaitForLoadingMessage = function()
+  {
+    this.drawLoadingOrSplashOrTitleScreenBackground();
+    gameCanvasContext.fillStyle = 'lime';
+    gameCanvasContext.font = '30px Helvetica';
+    gameCanvasContext.fillText("The game is downloading. Please Wait.", 0,50);
+  }
 }
 
 let loadingAndSplashScreen = new LoadingAndSplashScreen();
-
-function promptPlayerForClickAfterLoading()
-{
-  drawLoadingOrSplashOrTitleScreenBackground();
-  // gameCanvasContext.fillStyle = 'lime';
-  // gameCanvasContext.font = '30px Helvetica';
-  // gameCanvasContext.fillText("Downloading done. Click to start", 0,250);
-  //
-  let sentenceArray1 = ['Downloading done', symbolPeriodImage];
-  customFontFillText(sentenceArray1, 30, 20, 150, 250);
-
-  let sentenceArray2 = ['Click to start', symbolPeriodImage];
-  customFontFillText(sentenceArray2, 30, 20, 165, 350);
-}
-
-function drawPleaseWaitForLoadingMessage()
-{
-  drawLoadingOrSplashOrTitleScreenBackground();
-  gameCanvasContext.fillStyle = 'lime';
-  gameCanvasContext.font = '30px Helvetica';
-  gameCanvasContext.fillText("The game is downloading. Please Wait.", 0,50);
-}

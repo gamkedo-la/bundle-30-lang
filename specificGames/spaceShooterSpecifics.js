@@ -17,32 +17,50 @@ function spaceShooterGameClass() {
 		return gameIsPlaying;
 	};
 
-	this.initialize = function() {
+	this.initialize = function()
+	{
 	};
 
-	this.startPlaying = function() {
+	this.startPlaying = function()
+	{
 		gameIsPlaying = true;
 	};
 
-	this.stopPlaying = function() {
+	this.stopPlaying = function()
+	{
 		gameIsPlaying = false;
 	};
 
-	this.update = function() {
+	this.update = function()
+	{
+		this.movePlayer();
+		this.moveBullets();
+	};
+
+	this.moveBullets = function()
+	{
 		for (var bulletIndex = 0; bulletIndex < arrayOfBullets.length; bulletIndex++)
 		{
 			arrayOfBullets[bulletIndex].x+=bulletSpeed;
 		}
+	}
+
+	this.draw = function()
+	{
+		this.drawBackground();
+		this.drawPlayer();
+		this.drawBullets();
 	};
 
-	this.draw = function() {
+	this.drawBullets = function()
+	{
 		gameCanvasContext.fillStyle = 'white';
 		for (var bulletIndex = 0; bulletIndex < arrayOfBullets.length; bulletIndex++)
 		{
 			gameCanvasContext.fillRect(arrayOfBullets[bulletIndex].x,arrayOfBullets[bulletIndex].y,
 									   bulletDimensionX,bulletDimensionY);
 		}
-	};
+	}
 
 	this.drawBackground = function() {
 		gameCanvasContext.fillStyle = 'black';

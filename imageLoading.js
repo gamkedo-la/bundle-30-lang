@@ -171,7 +171,7 @@ function countLoadedImageAndLaunchIfReady()
 
   if (numberOfImagesToLoad === 0)
   {
-    promptPlayerForClickAfterLoading();// in dualLoadingSplashScreen.js
+    loadingAndSplashScreen.promptPlayerForClickAfterLoading();// in dualLoadingSplashScreen.js
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.clickToLaunch);
   }
 

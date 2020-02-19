@@ -51,6 +51,8 @@ function birdGameClass() {
 
   this.update = function()
   {
+    this.movePlayer();
+    this.handleOffScreenSprites();
   };
 
   this.movePlayer = function()
@@ -68,17 +70,19 @@ function birdGameClass() {
 
   this.draw = function()
   {
+    this.drawBackground();
+    this.drawPlayer();
   };
 
   this.drawBackground = function()
   {
-	gameCanvasContext.fillStyle = 'cyan';
-	gameCanvasContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+  	gameCanvasContext.fillStyle = 'cyan';
+  	gameCanvasContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
   };
 
   this.drawPlayer = function()
   {
-	gameCanvasContext.fillStyle = 'lightCoral';
+	  gameCanvasContext.fillStyle = 'lightCoral';
     gameCanvasContext.fillRect(playerXCoordinate, playerYCoordinate, 20,20);
   };
 

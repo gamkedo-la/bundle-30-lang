@@ -16,12 +16,14 @@ function jumperGameClass()
 
   this.initialize = function()
   {
-	playerXCoordinate = jumperStartingXCoordinate;
+	  playerXCoordinate = jumperStartingXCoordinate;
     playerYCoordinate = jumperStartingYCoordinate;
   };
 
   this.update = function()
   {
+    this.movePlayer();
+    this.handlePlayerWrapping();
   };
 
   this.handleLeftArrowDown = function()
@@ -97,40 +99,31 @@ function jumperGameClass()
 
   this.draw = function()
   {
+    this.drawBackground();
+    this.drawPlayer();
   };
 
   this.drawBackground = function()
   {
-	gameCanvasContext.fillStyle = 'black';
-	gameCanvasContext.fillRect(0,0, 640,700);
-	gameCanvasContext.fillStyle = 'blue';
-	for (let platformsIndex = 0; platformsIndex < arrayOfJumperPlatforms.length; platformsIndex++)
-	{
-      gameCanvasContext.fillRect(arrayOfJumperPlatforms[platformsIndex].x, arrayOfJumperPlatforms[platformsIndex].y, gameCanvas.width, 50)
-	}
+  	gameCanvasContext.fillStyle = 'black';
+  	gameCanvasContext.fillRect(0,0, 640,700);
+  	gameCanvasContext.fillStyle = 'blue';
+  	for (let platformsIndex = 0; platformsIndex < arrayOfJumperPlatforms.length; platformsIndex++)
+  	{
+        gameCanvasContext.fillRect(arrayOfJumperPlatforms[platformsIndex].x, arrayOfJumperPlatforms[platformsIndex].y, gameCanvas.width, 50)
+  	}
   };
 
   this.drawPlayer = function()
   {
-	gameCanvasContext.fillStyle = 'white';
-	gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 20,20);
+  	gameCanvasContext.fillStyle = 'white';
+  	gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 20,20);
   };
 
   this.onSpaceBarKeyDown = function()
   {
-	playerYCoordinate += -5;
+  	playerYCoordinate += -5;
   };
 }
 
 const jumperGame = new jumperGameClass();
-
-function initializeLettersForJumper()
-{
-  arrayOfAnswers = [];
-  arrayOfAnswers.push({name:'m',
-                       xCoordinate:Math.random()*640,
-                       yCoordinate:Math.floor(Math.random() * 6 ) * 100 + 30/*font size*/ + 20/*offset for fillText*/});
-  arrayOfAnswers.push({name:'n',
-                       xCoordinate:Math.random()*640,
-                       yCoordinate:Math.floor(Math.random() * 6 ) * 100 + 30/*font size*/ + 20/*offset for fillText*/});
-}
