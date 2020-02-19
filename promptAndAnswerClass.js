@@ -77,9 +77,7 @@ function PromptsAndAnswersManager()
   {
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
-
   }
-
 
   this.correctTargetPromptAndAnswerPairing = undefined;
   this.pickATargetPromptAndAnswerPairing = function()

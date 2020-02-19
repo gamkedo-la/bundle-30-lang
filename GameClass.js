@@ -25,6 +25,7 @@ function GameClassManager()
   this.loadCurrentGame = function(gameToLoad)
   {
     this.currentGame = gameToLoad;
+    this.currentGame.initialize();
   }
 
   this.currentFrameRate = 1000/30;

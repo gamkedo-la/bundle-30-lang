@@ -8,9 +8,14 @@ function birdGameClass() {
   const birdStartingY = 100;
   const gravity = 4;
 
+  this.initialize = function()
+  {
+    gameInterval.reset(this.frameRate);
+  }
+
   this.applyGravityToBird = function()
   {
-	playerYCoordinate += gravity;
+	   playerYCoordinate += gravity;
   }
 
   this.handleLeftArrowDown = function()

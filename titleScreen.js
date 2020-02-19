@@ -76,33 +76,21 @@ function TitleScreenClass()
   this.handleGameCellClicks = function()
   {
     //1st row
-    if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 120 &&
-        mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+    //snake
+    if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
+        inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
     {
-      // console.log('snake cell clicked');
       gameClassManager.loadCurrentGame(SNAKE_GAME);
-      console.log("gameClassManager.currentGame: " + gameClassManager.currentGame);
-      SNAKE_GAME.startPlaying();
-      SNAKE_GAME.isTransitioningIn = true;
-      playerShouldSeeTitleScreen = false;
-      gameInterval.reset(SNAKE_GAME.FRAME_RATE);
-      fullGameStateMachine.playingAGameState = true;
-      // setOrResetCorrectLetter();
-      levelIsTransitioning = true;
     }
-    else if (mouseCoordinates.mouseX > 120 && mouseCoordinates.mouseX < 220 &&
-             mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+    //bird
+    else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
+             inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
     {
-  	birdGame.startPlaying();
-          playerShouldSeeTitleScreen = false;
-  	gameInterval.reset(birdGame.frameRate);
-  	letterSpawnInterval.reset(birdGame.letterSpawnRate);
-          fullGameStateMachine.playingAGameState = true;
-          // setOrResetCorrectLetter();
-          levelIsTransitioning = true;
-        }
-    else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
-             mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+    gameClassManager.loadCurrentGame(birdGame);
+
+    }
+    else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
+             inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
         {
   		laneGame.startPlaying();
           playerShouldSeeTitleScreen = false;
@@ -112,8 +100,8 @@ function TitleScreenClass()
           // setOrResetCorrectLetter();
           levelIsTransitioning = true;
         }
-    else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&
-             mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+    else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
+             inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
         {
           jumperGame.startPlaying();
           playerShouldSeeTitleScreen = false;
@@ -123,16 +111,16 @@ function TitleScreenClass()
           initializeLettersForJumper();
           levelIsTransitioning = true;
         }
-    else if (mouseCoordinates.mouseX > 420 && mouseCoordinates.mouseX < 520 &&
-             mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+    else if (inputManager.mouseCoordinates.x > 420 && inputManager.mouseCoordinates.x < 520 &&
+             inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
         {
           playerShouldBePlayingFinder = true;
           playerShouldSeeTitleScreen = false;
           fullGameStateMachine.playingAGameState = true;
           levelIsTransitioning = true;
         }
-    else if (mouseCoordinates.mouseX > 520 && mouseCoordinates.mouseX < 620 &&
-             mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+    else if (inputManager.mouseCoordinates.x > 520 && inputManager.mouseCoordinates.x < 620 &&
+             inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
         {
           playerShouldBePlayingCatcher = true;
           playerShouldSeeTitleScreen = false;
@@ -141,8 +129,8 @@ function TitleScreenClass()
         }
 
     //2nd row
-    else if (mouseCoordinates.mouseX > 120 && mouseCoordinates.mouseX < 220 &&
-             mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
+    else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
+             inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
         {
           spaceShooterGame.startPlaying();
           playerShouldSeeTitleScreen = false;
@@ -152,16 +140,16 @@ function TitleScreenClass()
           letterSpawnInterval.reset(spaceShooterLetterSpawnRate);
           levelIsTransitioning = true;
         }
-    else if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 120 &&
-             mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
+    else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
+             inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
         {
           spaceShooterGame.startPlaying();
           playerShouldSeeTitleScreen = false;
           fullGameStateMachine.playingAGameState = true;
           levelIsTransitioning = true;
         }
-  	else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
-  			 mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
+  	else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
+  			 inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
   	{
   		gameInterval.reset(RUNNERFRAMERATE);
           letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
@@ -180,31 +168,23 @@ function TitleScreenClass()
           }
       }
       // pinata 27,15,322,285
-      else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&
-          mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
-      {   pinataGame.init();
-
-          playerShouldBePlayingPinata = true;
-          playerShouldSeeTitleScreen = false;
-          fullGameStateMachine.playingAGameState = true;
-          levelIsTransitioning = true;
+      else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
+          inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
+      {
+        pinataGame.init();
       }
 
     //any game
-    if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 620 &&
-        mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 650)
+    if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 620 &&
+        inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 650)
         {
-          // currentBackgroundMusic.pause();
-          levelIsTransitioning = true;
-          transitionIsFadingIn = true;
-          // console.log(levelIsTransitioning);
+          console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
+          miniGameTransitioner.initialize();
+          fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
           playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
           transitionToLevelMusic1.play();
-          // currentBackgroundMusic.pause();
           gameCanvasContext.globalAlpha = 0.0;
-
         }
-
   }
 }
 

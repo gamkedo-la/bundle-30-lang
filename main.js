@@ -56,7 +56,7 @@ function drawEverythingInTheGame()
     break;
 
     case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame:
-    transitionToMiniGame.draw();
+    miniGameTransitioner.draw();
     break;
 
     case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:

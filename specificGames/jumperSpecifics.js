@@ -18,6 +18,7 @@ function jumperGameClass()
   {
 	  playerXCoordinate = jumperStartingXCoordinate;
     playerYCoordinate = jumperStartingYCoordinate;
+    gameInterval.reset(this.frameRate);
   };
 
   this.update = function()

@@ -1,7 +1,7 @@
 var spaceShooterStartingXCoordinate = 100;
 var spaceShooterStartingYCoordinate = 100;
 var spaceShooterPlayerSpeed = 15;
-var spaceShooterFrameRate = 1000/30;
+
 var spaceShooterLetterSpawnRate = 2000;
 var spaceShooterLetterColor = 'red';
 
@@ -13,12 +13,15 @@ function spaceShooterGameClass() {
 	var bulletDimensionY = 4;
 	var bulletSpeed = 7;
 
+	this.frameRate = 1000/30;
+
 	this.isPlaying = function() {
 		return gameIsPlaying;
 	};
 
 	this.initialize = function()
 	{
+		gameInterval.reset(this.frameRate);
 	};
 
 	this.startPlaying = function()

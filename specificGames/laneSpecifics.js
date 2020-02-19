@@ -10,9 +10,6 @@ var laneLetterColor = 'red';
 var laneBackButtonRectangleColor = 'Fuchsia';
 var laneBackButtonTextColor = 'yellow';
 
-var laneFrameRate = 1000/50;
-
-
 function laneGameClass() {
 	let gameIsPlaying = false;
 	let arrayOfYellowCenterDashes = [-1, 0, 1, 2, 3, 4, 5, 6].map(function(dashIndex) {
@@ -21,6 +18,7 @@ function laneGameClass() {
 	let dashHeight = 75;
 	let dashWidth = 15;
 
+	this.frameRate = 1000/50;
 	this.isPlaying = function() {
 		return gameIsPlaying;
 	};
@@ -29,6 +27,7 @@ function laneGameClass() {
 		playerXCoordinate = laneStartingX;
 		playerYCoordinate = laneStartingY;
 		letterSpeed = laneLetterSpeed;
+		gameInterval.reset(this.frameRate);
 	};
 
 	this.startPlaying = function() {

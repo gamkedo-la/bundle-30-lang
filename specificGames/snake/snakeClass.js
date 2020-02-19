@@ -41,9 +41,9 @@ function SnakeClass()
     {
       gameCanvasContext.fillStyle = SNAKE_PLAYER_COLOR;
 
-      for(let snakeTailIndex = 0; snakeTailIndex < this.snake.tail.length; snakeTailIndex++)
+      for(let snakeTailIndex = 0; snakeTailIndex < this.tail.length; snakeTailIndex++)
       {
-        gameCanvasContext.fillRect(this.snake.tail[snakeTailIndex].x,this.snake.tail[snakeTailIndex].y,
+        gameCanvasContext.fillRect(this.tail[snakeTailIndex].x,this.tail[snakeTailIndex].y,
         SNAKE_DIMENSION - 2,SNAKE_DIMENSION - 2);
       }
     },

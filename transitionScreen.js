@@ -2,39 +2,52 @@ var levelIsTransitioning = false;
 var transitionIsFadingIn = false;
 var transitionIsFadingOut = false;
 
-function drawTransitionScreen(arraysOfGameSpecificCustomFontFillTextsForTransitionScreen)
+function MiniGameTransitioner()
 {
-
-  let transitionScreenVisualFadeLevel = gameCanvasContext.globalAlpha;
-
-  if (transitionScreenVisualFadeLevel < 1 && transitionIsFadingIn)
+  this.draw = function()
   {
-    transitionScreenVisualFadeLevel += 0.01;
-    gameCanvasContext.globalAlpha = transitionScreenVisualFadeLevel;
-    if (transitionScreenVisualFadeLevel > 0.9)
+    //fade stuff
+    let transitionScreenVisualFadeLevel = gameCanvasContext.globalAlpha;
+
+    if (transitionScreenVisualFadeLevel < 1 && transitionIsFadingIn)
     {
-      transitionIsFadingIn = false;
-      transitionIsFadingOut = true;
+      transitionScreenVisualFadeLevel += 0.01;
+      gameCanvasContext.globalAlpha = transitionScreenVisualFadeLevel;
+      if (transitionScreenVisualFadeLevel > 0.9)
+      {
+        transitionIsFadingIn = false;
+        transitionIsFadingOut = true;
+      }
+    } else if (transitionScreenVisualFadeLevel > 0 && transitionIsFadingOut)
+    {
+      transitionScreenVisualFadeLevel -= 0.01;
+      gameCanvasContext.globalAlpha = transitionScreenVisualFadeLevel;
     }
-  } else if (transitionScreenVisualFadeLevel > 0 && transitionIsFadingOut)
-  {
-    transitionScreenVisualFadeLevel -= 0.01;
-    gameCanvasContext.globalAlpha = transitionScreenVisualFadeLevel;
+
+    //background
+    gameCanvasContext.fillStyle = 'orange';
+    gameCanvasContext.fillRect(0,0, 640,700);
+
+    //text
+    this.drawTransitionText();
   }
 
-  gameCanvasContext.fillStyle = 'orange';
-  gameCanvasContext.fillRect(0,0, 640,700);
-
-  if (SNAKE_GAME.isTransitioningIn)
+  this.initialize = function()
   {
-    SNAKE_GAME.drawTransitionText();
+    console.log('before global alpha');
+    gameCanvasContext.globalAlpha = 0;
+    console.log('after global alpha');
+    if (gameClassManager.currentGame.drawTransitionText)
+    {
+      this.drawTransitionText = gameClassManager.currentGame.drawTransitionText();
+    }
+    else
+    {
+      this.drawTransitionText = customFontFillText(['placeholder transition text'], 30, 15, 50,300);
+    }
   }
-  else if (playerShouldBePlayingPinata)
-  {
-    pinataGame.drawTransitionText();
-  }
-  else {
-    customFontFillText(['placeholder transition text'], 30, 15, 50,300);
 
-  }
+  this.drawTransitionText = undefined;
 }
+
+let miniGameTransitioner = new MiniGameTransitioner();

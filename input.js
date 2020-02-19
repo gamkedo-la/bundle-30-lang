@@ -11,7 +11,7 @@ function InputManager()
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.clickToLaunch:
       fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
-      transitionToTitleScreen();
+      loadingAndSplashScreen.handleClickAfterLoading();
       break;
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen:
@@ -20,7 +20,6 @@ function InputManager()
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen:
       titleScreen.handleGameCellClicks(builtInDocumentEventObject);
-      fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
       break;
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
