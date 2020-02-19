@@ -1,17 +1,23 @@
 function FullGameStateMachineClass()
 {
-  this.loadingFullGame = 'loading full game';
-  this.currentState = this.initialState;
+  this.FULL_GAME_ENUMERABLE_STATES =
+  Object.freeze
+  ({
+    loading: {},
+    clickToLanunch: {},
+    transitionToTitleScreen: {},
+    titleScreen: {},
+    transitionToMiniGame: {},
+    playingMiniGame: {}
+  })
 
-  this.waitingForSplashScreenClickState = 'waiting for splash screen click';
-  this.titleScreenState = 'title screen status';
-
-  this.playingAGameState = 'playing a game';
+  this.currentState = this.FULL_GAME_ENUMERABLE_STATES.loading;
 
   this.loadCurrentState = function(stateToLoad)
   {
     this.currentState = stateToLoad;
   }
+
 }
 
 let fullGameStateMachine = new FullGameStateMachineClass();

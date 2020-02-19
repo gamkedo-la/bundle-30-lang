@@ -127,6 +127,11 @@ Where = pic of a location, When = pic of time, why = because)
 125. town/ton
 126. food/fruit
 127. 'to be' conjugations am/are/is
+128. come/comb
+129. nature/natural
+
+spelling - 
+1. was/saw
 
 
 Any language - 

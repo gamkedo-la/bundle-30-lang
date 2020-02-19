@@ -33,8 +33,8 @@ function drawBackButton()
 
 function handleBackButtonClick()
 {
-  if (mouseCoordinates.mouseX > 540 && mouseCoordinates.mouseX < 640 &&
-      mouseCoordinates.mouseY > 650 && mouseCoordinates.mouseY < 700)
+  if (inputManager.mouseCoordinates.mouseX > 540 && inputManager.mouseCoordinates.mouseX < 640 &&
+      inputManager.mouseCoordinates.mouseY > 650 && inputManager.mouseCoordinates.mouseY < 700)
       {
         playerShouldSeeTitleScreen = true;
         fullGameStateMachine.playingAGameState = false;

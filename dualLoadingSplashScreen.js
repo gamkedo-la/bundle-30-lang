@@ -1,7 +1,36 @@
 function LoadingAndSplashScreen()
 {
+  this.handleClickWhileLoading = function()
+  {
+    return;
+  }
 
+  this.handleClickAfterLoading = function()
+  {
+    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreenStatus);
+    setSourcesForAudioObjects();
+    populateMultisoundArrays();
+    playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
+    //setInterval(updateGameFrame, frameRate);
+    playerShouldSeePleaseWaitForDownloading = false;
+    initializePromptAndAnswerObjects();
+
+
+    currentBackgroundMusic = titleScreenMusic;
+    currentBackgroundMusic.play();
+    currentBackgroundMusic.loop = true;
+    gameInterval.start();
+
+    if (gameIsOnAServerAndCanUseWebAudioAPI)
+    {
+      initializeWebAudioAPI();
+    }
+
+    promptersManager.instantiatePrompters();
+  }
 }
+
+let loadingAndSplashScreen = new LoadingAndSplashScreen();
 
 function promptPlayerForClickAfterLoading()
 {
@@ -23,36 +52,4 @@ function drawPleaseWaitForLoadingMessage()
   gameCanvasContext.fillStyle = 'lime';
   gameCanvasContext.font = '30px Helvetica';
   gameCanvasContext.fillText("The game is downloading. Please Wait.", 0,50);
-}
-
-function handleDualPurposeSplashAndLoadingSceneClick()
-{
-  if (fullGameStateMachine.currentState === fullGameStateMachine.loadingFullGame)
-  {
-    return;
-  }
-  else if (fullGameStateMachine.currentState === fullGameStateMachine.waitingForSplashScreenClickState)
-  {
-    fullGameStateMachine.loadCurrentState(fullGameStateMachine.titleScreenStatus);
-  }
-
-  setSourcesForAudioObjects();
-  populateMultisoundArrays();
-  playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
-  //setInterval(updateGameFrame, frameRate);
-  playerShouldSeePleaseWaitForDownloading = false;
-  initializePromptAndAnswerObjects();
-
-
-  currentBackgroundMusic = titleScreenMusic;
-  currentBackgroundMusic.play();
-  currentBackgroundMusic.loop = true;
-  gameInterval.start();
-
-  if (gameIsOnAServerAndCanUseWebAudioAPI)
-  {
-    initializeWebAudioAPI();
-  }
-
-  promptersManager.instantiatePrompters();
 }

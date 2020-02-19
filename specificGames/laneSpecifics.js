@@ -107,6 +107,12 @@ function laneGameClass() {
 		spawnANewDashIfAppropriate();
 		deleteDashesOffBottomOfScreen();
 	}
+
+	this.handleLeftArrowDown = function()
+	{
+		if (playerXCoordinate > 230)
+		playerXCoordinate = 230;
+	}
 }
 
 const laneGame = new laneGameClass();

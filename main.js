@@ -19,8 +19,8 @@ window.onload = function()
 
   document.addEventListener('keydown',keyDown);
   document.addEventListener('keyup',keyUp);
-  document.addEventListener('click', gameCanvasClick, false);
-  gameCanvas.addEventListener('mousemove', calculateMousePosition);
+  document.addEventListener('click', inputManager.gameCanvasClick, false);
+  gameCanvas.addEventListener('mousemove', inputManager.calculateMousePosition);
   gameInterval = new frameInterval(advanceGameFrame, frameRate);
   letterSpawnInterval = new frameInterval(spawnALetterIfAppropriate, letterSpawnRate);
   letterSpawnInterval.stop();//workaround for infinite spawning at the initialization

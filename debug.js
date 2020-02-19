@@ -4,8 +4,8 @@ function drawDebugStuff()
 {
   if (playerShouldSeeTitleScreen)
   {
-    gameCanvasContext.fillText(mouseCoordinates.mouseX + "," + mouseCoordinates.mouseY,
-                                mouseCoordinates.mouseX,mouseCoordinates.mouseY);
+    gameCanvasContext.fillText(inputManager.mouseCoordinates.mouseX + "," + inputManager.mouseCoordinates.mouseY,
+                                inputManager.mouseCoordinates.mouseX,inputManager.mouseCoordinates.mouseY);
   } else if (fullGameStateMachine.playingAGameState)
   {
     drawLetterCoordinates();

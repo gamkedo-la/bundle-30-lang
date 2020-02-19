@@ -63,140 +63,140 @@ function TitleScreenClass()
     this.drawCellsAndCheckForHighlighting();
     this.drawGameNames();
   }
+
+  this.handleGameCellClicks = function()
+  {
+    //1st row
+    if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 120 &&
+        mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+    {
+      // console.log('snake cell clicked');
+      gameClassManager.loadCurrentGame(SNAKE_GAME);
+      console.log("gameClassManager.currentGame: " + gameClassManager.currentGame);
+      SNAKE_GAME.startPlaying();
+      SNAKE_GAME.isTransitioningIn = true;
+      playerShouldSeeTitleScreen = false;
+      gameInterval.reset(SNAKE_GAME.FRAME_RATE);
+      fullGameStateMachine.playingAGameState = true;
+      // setOrResetCorrectLetter();
+      levelIsTransitioning = true;
+    }
+    else if (mouseCoordinates.mouseX > 120 && mouseCoordinates.mouseX < 220 &&
+             mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+    {
+  	birdGame.startPlaying();
+          playerShouldSeeTitleScreen = false;
+  	gameInterval.reset(birdGame.frameRate);
+  	letterSpawnInterval.reset(birdGame.letterSpawnRate);
+          fullGameStateMachine.playingAGameState = true;
+          // setOrResetCorrectLetter();
+          levelIsTransitioning = true;
+        }
+    else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
+             mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+        {
+  		laneGame.startPlaying();
+          playerShouldSeeTitleScreen = false;
+          letterSpawnInterval.reset(laneLetterSpawnRate);
+          fullGameStateMachine.playingAGameState = true;
+          gameInterval.reset(laneFrameRate);
+          // setOrResetCorrectLetter();
+          levelIsTransitioning = true;
+        }
+    else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&
+             mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+        {
+          jumperGame.startPlaying();
+          playerShouldSeeTitleScreen = false;
+          fullGameStateMachine.playingAGameState = true;
+          gameInterval.reset(jumperGame.frameRate);
+          // setOrResetCorrectLetter();
+          initializeLettersForJumper();
+          levelIsTransitioning = true;
+        }
+    else if (mouseCoordinates.mouseX > 420 && mouseCoordinates.mouseX < 520 &&
+             mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+        {
+          playerShouldBePlayingFinder = true;
+          playerShouldSeeTitleScreen = false;
+          fullGameStateMachine.playingAGameState = true;
+          levelIsTransitioning = true;
+        }
+    else if (mouseCoordinates.mouseX > 520 && mouseCoordinates.mouseX < 620 &&
+             mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
+        {
+          playerShouldBePlayingCatcher = true;
+          playerShouldSeeTitleScreen = false;
+          fullGameStateMachine.playingAGameState = true;
+          levelIsTransitioning = true;
+        }
+
+    //2nd row
+    else if (mouseCoordinates.mouseX > 120 && mouseCoordinates.mouseX < 220 &&
+             mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
+        {
+          spaceShooterGame.startPlaying();
+          playerShouldSeeTitleScreen = false;
+          fullGameStateMachine.playingAGameState = true;
+          gameInterval.reset(spaceShooterFrameRate);
+          // setOrResetCorrectLetter();
+          letterSpawnInterval.reset(spaceShooterLetterSpawnRate);
+          levelIsTransitioning = true;
+        }
+    else if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 120 &&
+             mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
+        {
+          spaceShooterGame.startPlaying();
+          playerShouldSeeTitleScreen = false;
+          fullGameStateMachine.playingAGameState = true;
+          levelIsTransitioning = true;
+        }
+  	else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
+  			 mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
+  	{
+  		gameInterval.reset(RUNNERFRAMERATE);
+          letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
+  		runnerGame.startPlaying();
+  		playerShouldSeeTitleScreen = false;
+  		fullGameStateMachine.playingAGameState = true;
+          levelIsTransitioning = true;
+          if (gameIsOnAServerAndCanUseWebAudioAPI)
+          {
+              backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
+              currentBackgroundMusic = backgroundMusicBufferSource;
+              loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
+              backgroundMusicBufferSource.loop = true;
+              backgroundMusicBufferSource.loopStart = 6.9;
+              backgroundMusicBufferSource.loopEnd = 1;
+          }
+      }
+      // pinata 27,15,322,285
+      else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&
+          mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
+      {   pinataGame.init();
+
+          playerShouldBePlayingPinata = true;
+          playerShouldSeeTitleScreen = false;
+          fullGameStateMachine.playingAGameState = true;
+          levelIsTransitioning = true;
+      }
+
+    //any game
+    if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 620 &&
+        mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 650)
+        {
+          // currentBackgroundMusic.pause();
+          levelIsTransitioning = true;
+          transitionIsFadingIn = true;
+          // console.log(levelIsTransitioning);
+          playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
+          transitionToLevelMusic1.play();
+          // currentBackgroundMusic.pause();
+          gameCanvasContext.globalAlpha = 0.0;
+
+        }
+
+  }
 }
 
 let titleScreen = new TitleScreenClass();
-
-function handleGameCellClicks()
-{
-  //1st row
-  if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 120 &&
-      mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
-  {
-    // console.log('snake cell clicked');
-    gameClassManager.loadCurrentGame(SNAKE_GAME);
-    console.log("gameClassManager.currentGame: " + gameClassManager.currentGame);
-    SNAKE_GAME.startPlaying();
-    SNAKE_GAME.isTransitioningIn = true;
-    playerShouldSeeTitleScreen = false;
-    gameInterval.reset(SNAKE_GAME.FRAME_RATE);
-    fullGameStateMachine.playingAGameState = true;
-    // setOrResetCorrectLetter();
-    levelIsTransitioning = true;
-  }
-  else if (mouseCoordinates.mouseX > 120 && mouseCoordinates.mouseX < 220 &&
-           mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
-  {
-	birdGame.startPlaying();
-        playerShouldSeeTitleScreen = false;
-	gameInterval.reset(birdGame.frameRate);
-	letterSpawnInterval.reset(birdGame.letterSpawnRate);
-        fullGameStateMachine.playingAGameState = true;
-        // setOrResetCorrectLetter();
-        levelIsTransitioning = true;
-      }
-  else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
-           mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
-      {
-		laneGame.startPlaying();
-        playerShouldSeeTitleScreen = false;
-        letterSpawnInterval.reset(laneLetterSpawnRate);
-        fullGameStateMachine.playingAGameState = true;
-        gameInterval.reset(laneFrameRate);
-        // setOrResetCorrectLetter();
-        levelIsTransitioning = true;
-      }
-  else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&
-           mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
-      {
-        jumperGame.startPlaying();
-        playerShouldSeeTitleScreen = false;
-        fullGameStateMachine.playingAGameState = true;
-        gameInterval.reset(jumperGame.frameRate);
-        // setOrResetCorrectLetter();
-        initializeLettersForJumper();
-        levelIsTransitioning = true;
-      }
-  else if (mouseCoordinates.mouseX > 420 && mouseCoordinates.mouseX < 520 &&
-           mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
-      {
-        playerShouldBePlayingFinder = true;
-        playerShouldSeeTitleScreen = false;
-        fullGameStateMachine.playingAGameState = true;
-        levelIsTransitioning = true;
-      }
-  else if (mouseCoordinates.mouseX > 520 && mouseCoordinates.mouseX < 620 &&
-           mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 250)
-      {
-        playerShouldBePlayingCatcher = true;
-        playerShouldSeeTitleScreen = false;
-        fullGameStateMachine.playingAGameState = true;
-        levelIsTransitioning = true;
-      }
-
-  //2nd row
-  else if (mouseCoordinates.mouseX > 120 && mouseCoordinates.mouseX < 220 &&
-           mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
-      {
-        spaceShooterGame.startPlaying();
-        playerShouldSeeTitleScreen = false;
-        fullGameStateMachine.playingAGameState = true;
-        gameInterval.reset(spaceShooterFrameRate);
-        // setOrResetCorrectLetter();
-        letterSpawnInterval.reset(spaceShooterLetterSpawnRate);
-        levelIsTransitioning = true;
-      }
-  else if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 120 &&
-           mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
-      {
-        spaceShooterGame.startPlaying();
-        playerShouldSeeTitleScreen = false;
-        fullGameStateMachine.playingAGameState = true;
-        levelIsTransitioning = true;
-      }
-	else if (mouseCoordinates.mouseX > 220 && mouseCoordinates.mouseX < 320 &&
-			 mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
-	{
-		gameInterval.reset(RUNNERFRAMERATE);
-        letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
-		runnerGame.startPlaying();
-		playerShouldSeeTitleScreen = false;
-		fullGameStateMachine.playingAGameState = true;
-        levelIsTransitioning = true;
-        if (gameIsOnAServerAndCanUseWebAudioAPI)
-        {
-            backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
-            currentBackgroundMusic = backgroundMusicBufferSource;
-            loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
-            backgroundMusicBufferSource.loop = true;
-            backgroundMusicBufferSource.loopStart = 6.9;
-            backgroundMusicBufferSource.loopEnd = 1;
-        }
-    }
-    // pinata 27,15,322,285
-    else if (mouseCoordinates.mouseX > 320 && mouseCoordinates.mouseX < 420 &&
-        mouseCoordinates.mouseY > 250 && mouseCoordinates.mouseY < 350)
-    {   pinataGame.init();
-
-        playerShouldBePlayingPinata = true;
-        playerShouldSeeTitleScreen = false;
-        fullGameStateMachine.playingAGameState = true;
-        levelIsTransitioning = true;
-    }
-
-  //any game
-  if (mouseCoordinates.mouseX > 20 && mouseCoordinates.mouseX < 620 &&
-      mouseCoordinates.mouseY > 150 && mouseCoordinates.mouseY < 650)
-      {
-        // currentBackgroundMusic.pause();
-        levelIsTransitioning = true;
-        transitionIsFadingIn = true;
-        // console.log(levelIsTransitioning);
-        playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
-        transitionToLevelMusic1.play();
-        // currentBackgroundMusic.pause();
-        gameCanvasContext.globalAlpha = 0.0;
-
-      }
-
-}

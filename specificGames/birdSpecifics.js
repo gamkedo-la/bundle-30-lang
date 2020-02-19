@@ -13,10 +13,15 @@ function birdGameClass() {
 	playerYCoordinate += gravity;
   }
 
+  this.handleLeftArrowDown = function()
+  {
+    moveBirdPlayerLeft();
+  };
+
   function moveBirdPlayerLeft()
   {
-	playerXCoordinate -= playerSpeedplayerSpeedYX;
-  }
+	   playerXCoordinate -= playerSpeedplayerSpeedYX;
+  };
 
   function moveBirdPlayerRight()
   {

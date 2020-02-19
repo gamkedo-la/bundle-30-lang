@@ -24,35 +24,58 @@ function jumperGameClass()
   {
   };
 
-  this.movePlayer = function()
+  this.handleLeftArrowDown = function()
   {
-	if (!upArrowIsBeingHeld && playerYCoordinate !== 30 && playerYCoordinate !== 130 && playerYCoordinate !== 230
-		&& playerYCoordinate !== 330 && playerYCoordinate !== 430 && playerYCoordinate !== 530 && playerYCoordinate !== 630)
+    inputManager.leftArrowIsBeingHeld = true;
+  }
+
+  this.handleLeftArrowBeingHeld = function()
+  {
+    playerXCoordinate -= 3;
+  }
+
+  this.handleRightArrowDown = function()
+  {
+    inputManager.rightArrowIsBeingHeld = true;
+  }
+
+  this.handleRightArrowIsBeingHeld = function()
+  {
+    playerXCoordinate += 3;
+  }
+
+  this.handlePlayerWrapping = function()
+  {
+    if (playerXCoordinate < -10)//if the player goes off the left side of the screen
     {
-      playerYCoordinate += 5;
+      playerXCoordinate = 635;//put them on the right side
     }
 
-    if (leftArrowIsBeingHeld)
+    if (playerXCoordinate > 635)//if the player goes off the right side of the screen
     {
-      playerXCoordinate -= 3;
-      if (playerXCoordinate < -10)//if the player goes off the left side of the screen
-      {
-        playerXCoordinate = 635;//put them on the right side
-      }
+      playerXCoordinate = -5;//put them on the left side of the screen
     }
-    if (upArrowIsBeingHeld)
+  }
+
+  this.movePlayer = function()
+  {
+	if (!inputManager.upArrowIsBeingHeld &&//if not jumping and not contacting a platform
+      playerYCoordinate !== 30 && playerYCoordinate !== 130 &&
+      playerYCoordinate !== 230 && playerYCoordinate !== 330 && playerYCoordinate !== 430 &&
+      playerYCoordinate !== 530 && playerYCoordinate !== 630)
+    {
+      playerYCoordinate += 5;//apply gravity
+    }
+
+    if (inputManager.upArrowIsBeingHeld)
     {
       playerYCoordinate -= 5;
     }
-    if (rightArrowIsBeingHeld)
+    if (inputManager.rightArrowIsBeingHeld)
     {
       playerXCoordinate += 3;
-      if (playerXCoordinate > 635)//if the player goes off the right side of the screen
-      {
-        playerXCoordinate = -5;//put them on the left side of the screen
-      }
     }
-    if (downArrowIsBeingHeld)
+    if (inputManager.downArrowIsBeingHeld)
     {
 
     }
