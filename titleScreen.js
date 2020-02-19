@@ -183,7 +183,7 @@ function TitleScreenClass()
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
           playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
           transitionToLevelMusic1.play();
-          gameCanvasContext.globalAlpha = 0.0;
+          // gameCanvasContext.globalAlpha = 0.0;
         }
   }
 }

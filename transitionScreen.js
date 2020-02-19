@@ -36,14 +36,17 @@ function MiniGameTransitioner()
   {
     console.log('before global alpha');
     gameCanvasContext.globalAlpha = 0;
+    transitionIsFadingIn = true;
     console.log('after global alpha');
     if (gameClassManager.currentGame.drawTransitionText)
     {
-      this.drawTransitionText = gameClassManager.currentGame.drawTransitionText();
+      this.drawTransitionText = gameClassManager.currentGame.drawTransitionText;
     }
     else
     {
-      this.drawTransitionText = customFontFillText(['placeholder transition text'], 30, 15, 50,300);
+      this.drawTransitionText = (function () {
+        customFontFillText(['placeholder transition text'], 30, 15, 50,300);
+      });
     }
   }
 
