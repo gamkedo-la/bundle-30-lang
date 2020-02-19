@@ -314,10 +314,22 @@ function snakeGameClass()
     playerSpeedY = 0;
   }
 
-  this.handleRightArrowDown = function()
+  this.handleUpArrowDown = function()
   {
     playerSpeedX = 0;
     playerSpeedY = -20;
+  }
+
+  this.handleRightArrowDown = function()
+  {
+    playerSpeedX = 20;
+    playerSpeedY = 0;
+  }
+
+  this.handleDownArrowDown = function()
+  {
+    playerSpeedX = 0;
+    playerSpeedY = 20;
   }
 }
 

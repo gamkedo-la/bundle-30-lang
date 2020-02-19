@@ -55,23 +55,28 @@ function spaceShooterGameClass() {
 	};
 
 	this.movePlayer = function() {
-		if (upArrowIsBeingHeld)
+		if (inputManager.upArrowIsBeingHeld)
 		{
 			playerYCoordinate -= spaceShooterPlayerSpeed;
 		}
-		if (rightArrowIsBeingHeld)
+		if (inputManager.rightArrowIsBeingHeld)
 		{
 			playerXCoordinate += spaceShooterPlayerSpeed;
 		}
-		if (downArrowIsBeingHeld)
+		if (inputManager.downArrowIsBeingHeld)
 		{
 			playerYCoordinate += spaceShooterPlayerSpeed;
 		}
-		if (leftArrowIsBeingHeld)
+		if (inputManager.leftArrowIsBeingHeld)
 		{
 			playerXCoordinate -= spaceShooterPlayerSpeed;
 		}
 	};
+
+	this.handleSpaceBarDown = function()
+	{
+		arrayOfBullets.push({x:playerXCoordinate,y:playerYCoordinate});
+	}
 };
 
 const spaceShooterGame = new spaceShooterGameClass();

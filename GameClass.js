@@ -26,6 +26,8 @@ function GameClassManager()
   {
     this.currentGame = gameToLoad;
   }
+
+  this.currentFrameRate = 1000/30;
 }
 
 let gameClassManager = new GameClassManager();

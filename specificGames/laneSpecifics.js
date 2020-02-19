@@ -113,6 +113,14 @@ function laneGameClass() {
 		if (playerXCoordinate > 230)
 		playerXCoordinate = 230;
 	}
+
+	this.handleRightArrowDown = function()
+	{
+		if (playerXCoordinate !== 380)
+		{
+			playerXCoordinate = 380;
+		}
+	}
 }
 
 const laneGame = new laneGameClass();

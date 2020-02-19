@@ -44,6 +44,11 @@ function jumperGameClass()
     playerXCoordinate += 3;
   }
 
+  this.handleSpaceBarDown = function()
+  {
+    inputManager.spaceBarIsBeingHeld = true;
+  }
+
   this.handlePlayerWrapping = function()
   {
     if (playerXCoordinate < -10)//if the player goes off the left side of the screen
@@ -75,11 +80,20 @@ function jumperGameClass()
     {
       playerXCoordinate += 3;
     }
-    if (inputManager.downArrowIsBeingHeld)
+    if (inputManager.leftArrowIsBeingHeld)
     {
-
+      playerXCoordinate -= 3;
     }
   };
+
+  this.handleDownArrowDown = function()
+  {
+    playerYCoordinate += 100;
+    if (playerYCoordinate > 700)//if the player goes below the screen
+    {
+      playerYCoordinate = 30;//put them at the top platform
+    }
+  }
 
   this.draw = function()
   {

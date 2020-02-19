@@ -5,11 +5,13 @@ function InputManager()
     switch(fullGameStateMachine.currentState)
     {
       case  fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.loading:
+      console.log('game is still loading, nothing should happen');
       return;
       break;
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.clickToLaunch:
-      fullGameStateMachine.loadCurrentState.(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
+      fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
+      transitionToTitleScreen();
       break;
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen:
@@ -18,7 +20,7 @@ function InputManager()
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen:
       titleScreen.handleGameCellClicks(builtInDocumentEventObject);
-      fullGameStateMachine.loadCurrentState.(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
+      fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
       break;
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
@@ -27,7 +29,7 @@ function InputManager()
     }
   }
 
-  this.mouseCoordinates = {mouseX:undefined,mouseY:undefined};
+  this.mouseCoordinates = {x:undefined,y:undefined};
 
   this.calculateMousePosition = function(builtInDocumentEventObject)
   {
@@ -35,102 +37,86 @@ function InputManager()
     var root = document.documentElement;
     var x = builtInDocumentEventObject.clientX - rect.left - root.scrollLeft;
     var y = builtInDocumentEventObject.clientY - rect.top - root.scrollTop;
-    this.mouseCoordinates.mouseX = x;
-    this.mouseCoordinates.mouseY = y;
+    inputManager.mouseCoordinates.x = x;
+    inputManager.mouseCoordinates.y = y;
   }
 
   this.leftArrowIsBeingHeld = false;
   this.rightArrowIsBeingHeld = false;
   this.downArrowIsBeingHeld = false;
   this.upArrowIsBeingHeld = false;
+  this.spaceBarIsBeingHeld = false;
 
   this.keyDown = function(builtInDocumentEventObject)
   {
-    builtInDocumentEventObject.preventDefault();
-    switch(builtInDocumentEventObject.keyCode)
-    {
-      case 37://left arrow
-      this.leftArrowIsBeingHeld = true;
-      switch(fullGameStateMachine.currentState)
+      builtInDocumentEventObject.preventDefault();
+      switch(builtInDocumentEventObject.keyCode)
       {
-        case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
-        if (gameClassManager.currentGame.handleLeftArrowDown)
+        case 37://left arrow
+        this.leftArrowIsBeingHeld = true;
+        switch(fullGameStateMachine.currentState)
         {
-          gameClassManager.currentGame.handleLeftArrowDown();
+          case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+          if (gameClassManager.currentGame.handleLeftArrowDown)
+          {
+            gameClassManager.currentGame.handleLeftArrowDown();
+          }
+          else
+          {
+            return;
+          }
+          break;
         }
-        else
-        {
-          return;
-        }
-      }
 
-      case 38://up arrow
-      this.upArrowIsBeingHeld = true;
-      switch(fullGameStateMachine.currentState)
-      {
-        case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
-        if (gameClassManager.currentGame.handleRightArrowDown)
+        case 38://up arrow
+        this.upArrowIsBeingHeld = true;
+        switch(fullGameStateMachine.currentState)
         {
-          gameClassManager.currentGame.handleRightArrowDown();
+          case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+          if (gameClassManager.currentGame.handleUpArrowDown)
+          {
+            gameClassManager.currentGame.handleUpArrowDown();
+          }
+          break;
         }
-        else
-        {
-          return;
-        }
-        else if (jumperGame.isPlaying())
-        {
-
-        }
-        break;
 
         case 39://right arrow
-        rightArrowIsBeingHeld = true;
-        if (SNAKE_GAME.isPlaying())
+        this.rightArrowIsBeingHeld = true;
+        switch(fullGameStateMachine.currentState)
         {
-          playerSpeedX = 20;
-          playerSpeedY = 0;
-        }  else if (birdGame.isPlaying())
-        {
-
-        } else if (laneGame.isPlaying())
-        {
-          if (playerXCoordinate !== 380)
+          case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+          if (gameClassManager.currentGame.handleRightArrowDown)
           {
-            playerXCoordinate = 380;
+            gameClassManager.currentGame.handleRightArrowDown();
           }
+          break;
         }
         break;
 
         case 40://down arrow
-        downArrowIsBeingHeld = true;
-        if (SNAKE_GAME.isPlaying())
+        this.downArrowIsBeingHeld = true;
+        switch(fullGameStateMachine.currentState)
         {
-          playerSpeedX = 0;
-          playerSpeedY = 20;
-        } else if (jumperGame.isPlaying())
-        {
-          playerYCoordinate += 100;
-          if (playerYCoordinate > 700)//if the player goes below the screen
+          case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+          if (gameClassManager.currentGame.handleDownArrowDown)
           {
-            playerYCoordinate = 30;//put them at the top platform
+            gameClassManager.currentGame.handleDownArrowDown();
           }
+          break;
         }
-
-      }
-
       break;
 
+
       case 32://spacebar
-        if (birdGame.isPlaying())
+      switch(fullGameStateMachine.currentState)
+      {
+        case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+        if (gameClassManager.currentGame.handleSpaceBarDown)
         {
-  		birdGame.onSpaceBarKeyDown();
-        } else if (jumperGame.isPlaying())
-        {
-          jumperGame.onSpaceBarKeyDown();
-        } else if (spaceShooterGame.isPlaying())
-        {
-          arrayOfBullets.push({x:playerXCoordinate,y:playerYCoordinate});
+          gameClassManager.currentGame.handleSpaceBarDown();
         }
+        break;
+      }
       break;
 
       case 68://d
@@ -152,47 +138,35 @@ function InputManager()
       break;
     }
   }
+
+  this.handleKeyUp = function(builtInDocumentEventObject)
+  {
+    switch(builtInDocumentEventObject.keyCode)
+    {
+      case 37://left arrow
+      this.leftArrowIsBeingHeld = false;
+      break;
+
+      case 38://up arrow
+      this.upArrowIsBeingHeld = false;
+      break;
+
+      case 39://right arrow
+      this.rightArrowIsBeingHeld = false;
+      break;
+
+      case 40://down arrow
+      this.downArrowIsBeingHeld = false;
+      break;
+
+      case 32://spacebar
+      this.spaceBarIsBeingHeld = false;
+      break;
+    }
+  }
 }
 
 let inputManager = new InputManager();
 
 var playerShouldBePlayingFinder = false;
 var playerShouldBePlayingCatcher = false;
-
-var frameRate = 1000/30;
-
-function keyDown(builtInDocumentEventObject)
-{
-
-}
-
-function keyUp(builtInDocumentEventObject)
-{
-
-  switch(builtInDocumentEventObject.keyCode)
-  {
-    case 37://left arrow
-    leftArrowIsBeingHeld = false;
-    if (birdGame.isPlaying())
-    {
-
-    }
-    break;
-
-    case 38://up arrow
-    upArrowIsBeingHeld = false;
-    break;
-
-    case 39://right arrow
-    rightArrowIsBeingHeld = false;
-    if (birdGame.isPlaying())
-    {
-      rightArrowDown = false;
-    }
-    break;
-
-    case 40://down arrow
-    downArrowIsBeingHeld = false;
-    break;
-  }
-}

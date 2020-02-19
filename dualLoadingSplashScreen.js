@@ -8,6 +8,7 @@ function LoadingAndSplashScreen()
   this.handleClickAfterLoading = function()
   {
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreenStatus);
+    console.log('game recognizes click after loading');
     setSourcesForAudioObjects();
     populateMultisoundArrays();
     playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);

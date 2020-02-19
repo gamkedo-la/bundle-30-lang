@@ -16,12 +16,11 @@ window.onload = function()
 
   drawPleaseWaitForLoadingMessage();
 
-
-  document.addEventListener('keydown',keyDown);
-  document.addEventListener('keyup',keyUp);
+  document.addEventListener('keydown',inputManager.keyDown);
+  document.addEventListener('keyup',inputManager.keyUp);
   document.addEventListener('click', inputManager.gameCanvasClick, false);
   gameCanvas.addEventListener('mousemove', inputManager.calculateMousePosition);
-  gameInterval = new frameInterval(advanceGameFrame, frameRate);
+  gameInterval = new frameInterval(advanceGameFrame, gameClassManager.currentFrameRate);
   letterSpawnInterval = new frameInterval(spawnALetterIfAppropriate, letterSpawnRate);
   letterSpawnInterval.stop();//workaround for infinite spawning at the initialization
 }
