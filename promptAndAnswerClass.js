@@ -166,6 +166,7 @@ function PromptsAndAnswersManager()
       {
         editablePromptAndAnswerGroup.splice(editablePromptAndAnswerGroupIndex,1);
         this.editedPromptAndAnswerGroup = editablePromptAndAnswerGroup;
+        console.log('this.editedPromptAndAnswerGroup: ' + this.editedPromptAndAnswerGroup);
       }
     }
 

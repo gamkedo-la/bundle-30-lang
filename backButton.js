@@ -27,6 +27,7 @@ function BackButton()
           gameClassManager.currentGame = undefined;
           playerShouldBePlayingPinata = false;
           arrayOfAnswers = [];
+          promptsAndAnswersManager.setOrResetPromptsAndAnswers();
           playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
           if (gameIsOnAServerAndCanUseWebAudioAPI)
           {
