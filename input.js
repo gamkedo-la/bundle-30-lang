@@ -104,16 +104,17 @@ function InputManager()
         break;
 
 
-      case 32://spacebar
-      switch(fullGameStateMachine.currentState)
-      {
-        case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
-        if (gameClassManager.currentGame.handleSpaceBarDown)
-        {
-          gameClassManager.currentGame.handleSpaceBarDown();
-        }
-      }
-      break;
+  	  case 32://spacebar
+		this.spaceBarIsBeingHeld = true;
+		switch(fullGameStateMachine.currentState)
+		{
+          case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+          if (gameClassManager.currentGame.handleSpaceBarDown)
+          {
+			gameClassManager.currentGame.handleSpaceBarDown();
+          }
+		}
+		break;
 
       case 68://d
       if (debugOn === true)
