@@ -220,6 +220,29 @@ function PromptsAndAnswersManager()
     }
   }
 
+  this.getTextWidthFromFontStyle = function(text, fontStyle){
+    gameCanvasContext.font = fontStyle;
+    return gameCanvasContext.measureText(text).width;
+  }
+
+  this.getCorrectAnswerWidthFromFontStyle = function(fontStyle){
+    if (this.currentAnswerDataType != 'string'){
+      console.log("This answer is not a string, cannot measure for text width");
+      return;
+    }
+
+    return this.getTextWidthFromFontStyle(this.currentCorrectAnswer, fontStyle);
+  }
+
+  this.getIncorrectAnswerWidthFromFontStyle = function(fontStyle){
+    if (this.currentAnswerDataType != 'string'){
+      console.log("This answer is not a string, cannot measure for text width");
+      return;
+    }
+
+    return this.getTextWidthFromFontStyle(this.currentIncorrectAnswer, fontStyle);
+  }
+
   this.checkIfAnswersTooClose = function(
     incorrectAnswerCoordinates, correctAnswerCoordinates, minDistance)
   {

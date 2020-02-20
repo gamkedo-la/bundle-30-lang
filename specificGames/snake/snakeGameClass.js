@@ -18,6 +18,9 @@ function snakeGameClass()
 
   this.isTransitioningIn = false;
 
+  this.textAnswerFontSize = 30;
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica'
+
   this.initialize = function()
   {
     this.initializePromptAndAnswerObjects();
@@ -95,8 +98,18 @@ function snakeGameClass()
       gameCanvasContext.fillStyle = this.LETTER_COLOR;
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
+        // Get answers width
+        var correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
+          this.textAnswerFontStyle
+        )
+
+        var incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
+          this.textAnswerFontStyle
+        )
+
         //draw correct answer
-        gameCanvasContext.font = '30px Helvetica';
+        // gameCanvasContext.font = '30px Helvetica';
+        gameCanvasContext.font = this.textAnswerFontStyle;
         gameCanvasContext.fillText(promptsAndAnswersManager.currentCorrectAnswer,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
@@ -104,8 +117,8 @@ function snakeGameClass()
         //collider box
         gameCanvasContext.strokeStyle = 'white';
         gameCanvasContext.strokeRect(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5,
-                                    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 35,//fill text offset
-                                    75,50);
+                                    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate-this.textAnswerFontSize,//fill text offset
+                                    correctAnswerWidth + 10, this.textAnswerFontSize + 10);
 
         //draw incorrect answer
         gameCanvasContext.fillStyle = this.LETTER_COLOR;
@@ -116,8 +129,8 @@ function snakeGameClass()
         //collider collider box
         gameCanvasContext.strokeStyle = 'white';
         gameCanvasContext.strokeRect(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5,
-                                    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 35,//fill text offset
-                                    75,50);
+                                    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - this.textAnswerFontSize,//fill text offset
+                                    incorrectAnswerWidth + 10 , this.textAnswerFontSize + 10);
       //}
     } else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
     {
@@ -166,10 +179,18 @@ function snakeGameClass()
   {
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
-      if (this.snake.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 &&
-          this.snake.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 70 &&
-          this.snake.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 35 &&
-          this.snake.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 15)
+      // Get answers width
+      var correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
+        this.textAnswerFontStyle
+      )
+
+      var incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
+        this.textAnswerFontStyle
+      )
+      if (this.snake.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 - this.snake.dimension&&
+          this.snake.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + correctAnswerWidth + 5 + this.snake.dimension&&
+          this.snake.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - this.textAnswerFontSize - this.snake.dimension &&
+          this.snake.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 10 + this.snake.dimension)
         {
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
@@ -181,10 +202,10 @@ function snakeGameClass()
             this.promptThePlayer();
             this.snake.speedX = 0;
             this.snake.speedY = 0;
-        } else if (this.snake.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 &&
-            this.snake.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 70 &&
-            this.snake.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 35 &&
-            this.snake.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 15)
+        } else if (this.snake.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 - this.snake.dimension&&
+            this.snake.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + incorrectAnswerWidth + 5 + this.snake.dimension&&
+            this.snake.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - this.textAnswerFontSize - this.snake.dimension &&
+            this.snake.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 10 + this.snake.dimension)
         {
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
