@@ -1,5 +1,7 @@
 function SnakeClass()
 {
+    let snake = this;
+    this.name = 'snake player';
     this.x = undefined;
     this.y = undefined;
     this.speedX = 0;
@@ -12,11 +14,12 @@ function SnakeClass()
 
     this.tail =
     {
+      name:'tail',
       pieces: [],
 
       populatePieces: function()
       {
-        this.pieces.push({x:this.x,y:this.y});
+        this.pieces.push({x:snake.x,y:snake.y});
       },
 
       deleteExcessPieces: function()
@@ -42,12 +45,10 @@ function SnakeClass()
 
     this.draw = function()
     {
-
       gameCanvasContext.fillStyle = this.color;
-
-      for(let snakeTailIndex = 0; snakeTailIndex < this.tail.length; snakeTailIndex++)
+      for(let snakeTailIndex = 0; snakeTailIndex < this.tail.pieces.length; snakeTailIndex++)
       {
-        gameCanvasContext.fillRect(this.tail[snakeTailIndex].x,this.tail[snakeTailIndex].y,
+        gameCanvasContext.fillRect(this.tail.pieces[snakeTailIndex].x,this.tail.pieces[snakeTailIndex].y,
         this.dimension - 2,this.dimension - 2);
       }
     },

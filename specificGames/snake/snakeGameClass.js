@@ -288,26 +288,30 @@ function snakeGameClass()
 
   this.handleLeftArrowDown = function()
   {
-    playerSpeedX = -20;
-    playerSpeedY = 0;
+    this.snake.speedX = -20;
+    this.snake.speedY = 0;
+    console.log('this.snake.speedX: ' + this.snake.speedX);
   }
 
   this.handleUpArrowDown = function()
   {
-    playerSpeedX = 0;
-    playerSpeedY = -20;
+    this.snake.speedX = 0;
+    this.snake.speedY = -20;
+    console.log('this.snake.speedY: ' + this.snake.speedY);
   }
 
   this.handleRightArrowDown = function()
   {
-    playerSpeedX = 20;
-    playerSpeedY = 0;
+    this.snake.speedX = 20;
+    this.snake.speedY = 0;
+    console.log('this.snake.speedX: ' + this.snake.speedX);
   }
 
   this.handleDownArrowDown = function()
   {
-    playerSpeedX = 0;
-    playerSpeedY = 20;
+    this.snake.speedX = 0;
+    this.snake.speedY = 20;
+    console.log('this.snake.speedY: ' + this.snake.speedY);
   }
 }
 

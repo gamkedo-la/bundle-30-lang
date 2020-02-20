@@ -48,6 +48,7 @@ function InputManager()
 
   this.keyDown = function(builtInDocumentEventObject)
   {
+      console.log('recognizing key down');
       builtInDocumentEventObject.preventDefault();
       switch(builtInDocumentEventObject.keyCode)
       {
@@ -64,8 +65,8 @@ function InputManager()
           {
             return;
           }
-          break;
         }
+        break;
 
         case 38://up arrow
         this.upArrowIsBeingHeld = true;
@@ -76,8 +77,8 @@ function InputManager()
           {
             gameClassManager.currentGame.handleUpArrowDown();
           }
-          break;
         }
+        break;
 
         case 39://right arrow
         this.rightArrowIsBeingHeld = true;
@@ -88,7 +89,6 @@ function InputManager()
           {
             gameClassManager.currentGame.handleRightArrowDown();
           }
-          break;
         }
         break;
 
@@ -101,9 +101,8 @@ function InputManager()
           {
             gameClassManager.currentGame.handleDownArrowDown();
           }
-          break;
         }
-      break;
+        break;
 
 
       case 32://spacebar
@@ -114,7 +113,6 @@ function InputManager()
         {
           gameClassManager.currentGame.handleSpaceBarDown();
         }
-        break;
       }
       break;
 
