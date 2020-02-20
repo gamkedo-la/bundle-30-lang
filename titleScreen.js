@@ -96,15 +96,9 @@ function TitleScreenClass()
     }
     else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
              inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-        {
-          jumperGame.startPlaying();
-          playerShouldSeeTitleScreen = false;
-          fullGameStateMachine.playingAGameState = true;
-          gameInterval.reset(jumperGame.frameRate);
-          // setOrResetCorrectLetter();
-          initializeLettersForJumper();
-          levelIsTransitioning = true;
-        }
+    {
+	  gameClassManager.loadCurrentGame(jumperGame);
+    }
     else if (inputManager.mouseCoordinates.x > 420 && inputManager.mouseCoordinates.x < 520 &&
              inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
         {

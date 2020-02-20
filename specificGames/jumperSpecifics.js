@@ -14,9 +14,14 @@ function jumperGameClass()
   this.frameRate = 1000/30;
   this.letterSpawnInterval = 2000;
 
+  function jump()
+  {
+	playerYCoordinate -= 5;
+  }
+
   this.initialize = function()
   {
-	  playerXCoordinate = jumperStartingXCoordinate;
+	playerXCoordinate = jumperStartingXCoordinate;
     playerYCoordinate = jumperStartingYCoordinate;
     gameInterval.reset(this.frameRate);
   };
@@ -49,7 +54,7 @@ function jumperGameClass()
 
   this.handleSpaceBarDown = function()
   {
-    inputManager.spaceBarIsBeingHeld = true;
+	jump();
   }
 
   this.handlePlayerWrapping = function()
@@ -67,26 +72,25 @@ function jumperGameClass()
 
   this.movePlayer = function()
   {
-	if (!inputManager.upArrowIsBeingHeld &&//if not jumping and not contacting a platform
-      playerYCoordinate !== 30 && playerYCoordinate !== 130 &&
-      playerYCoordinate !== 230 && playerYCoordinate !== 330 && playerYCoordinate !== 430 &&
-      playerYCoordinate !== 530 && playerYCoordinate !== 630)
+	if (!inputManager.upArrowIsBeingHeld &&
+		playerYCoordinate !== 30 && playerYCoordinate !== 130 &&
+		playerYCoordinate !== 230 && playerYCoordinate !== 330 && playerYCoordinate !== 430 &&
+		playerYCoordinate !== 530 && playerYCoordinate !== 630) //if not jumping and not contacting a platform
     {
       playerYCoordinate += 5;//apply gravity
     }
+  };
 
-    if (inputManager.upArrowIsBeingHeld)
-    {
-      playerYCoordinate -= 5;
-    }
-    if (inputManager.rightArrowIsBeingHeld)
-    {
-      playerXCoordinate += 3;
-    }
-    if (inputManager.leftArrowIsBeingHeld)
-    {
-      playerXCoordinate -= 3;
-    }
+  this.handleLeftArrowDown = function() {
+	playerXCoordinate -= 3;
+  };
+
+  this.handleUpArrowDown = function() {
+	jump();
+  };
+
+  this.handleRightArrowDown = function() {
+	playerXCoordinate += 3;
   };
 
   this.handleDownArrowDown = function()
