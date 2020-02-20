@@ -1,8 +1,26 @@
-function transitionToTitleScreen()
+function TransitionToTitleScreen()
 {
-  console.log('transitioning to title screen, should switch states in 1 second');
-  setTimeout(function()
+  console.log('transitioning to title screen, should switch states in 2 second');
+
+  this.changeFullGameStateAfterTwoSeconds = function()
   {
-    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen)
-  }, 1000);
+    setTimeout(function()
+    {
+      fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen)
+    }, 2000);
+  };
+
+  this.draw = function()
+  {
+    gameCanvasContext.fillStyle = 'orange';
+    gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+
+    customFontFillText(['Placeholder transition text'], 30, 15,
+                        0,gameCanvas.height/2);
+    customFontFillText(['to title screen'], 30, 15,
+                        0,gameCanvas.height/2 + 35);
+  }
+
 }
+
+let transitionToTitleScreen = new TransitionToTitleScreen();

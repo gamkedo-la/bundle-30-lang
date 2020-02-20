@@ -103,10 +103,8 @@ function PromptersManager()
     if (promptersManager.highlightedAnswerCurrentAlpha === 1)
     {
       promptersManager.highlightedAnswerCurrentAlpha = 0;
-      console.log('toggle flash');
     } else if (promptersManager.highlightedAnswerCurrentAlpha === 0){
       promptersManager.highlightedAnswerCurrentAlpha = 1;
-      console.log('toggle flash');
     }
   }
 

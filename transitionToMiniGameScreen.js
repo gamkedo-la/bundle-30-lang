@@ -34,10 +34,8 @@ function MiniGameTransitioner()
 
   this.initialize = function()
   {
-    console.log('before global alpha');
     gameCanvasContext.globalAlpha = 0;
     transitionIsFadingIn = true;
-    console.log('after global alpha');
     if (gameClassManager.currentGame.drawTransitionText)
     {
       this.drawTransitionText = gameClassManager.currentGame.drawTransitionText;

@@ -7,8 +7,8 @@ function LoadingAndSplashScreen()
 
   this.handleClickAfterLoading = function()
   {
-    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen);
-    transitionToTitleScreen();
+    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
+    transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
     console.log('game recognizes click after loading');
     setSourcesForAudioObjects();
     populateMultisoundArrays();

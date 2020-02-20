@@ -48,7 +48,7 @@ function drawEverythingInTheGame()
   switch(fullGameStateMachine.currentState)
   {
     case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen:
-    //TODO: transitionToTitleScreen.draw();
+    transitionToTitleScreen.draw();
     break;
 
     case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen:
