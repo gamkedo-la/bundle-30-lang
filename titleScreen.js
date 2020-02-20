@@ -180,6 +180,7 @@ function TitleScreenClass()
         {
           console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
           miniGameTransitioner.initialize();
+          currentBackgroundMusic.pause();
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
           playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
           transitionToLevelMusic1.play();
