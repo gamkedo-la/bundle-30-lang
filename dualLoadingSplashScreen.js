@@ -15,7 +15,6 @@ function LoadingAndSplashScreen()
     playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
     //setInterval(updateGameFrame, frameRate);
     playerShouldSeePleaseWaitForDownloading = false;
-    initializePromptAndAnswerObjects();
 
 
     currentBackgroundMusic = titleScreenMusic;

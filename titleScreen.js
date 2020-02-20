@@ -81,7 +81,6 @@ function TitleScreenClass()
         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
     {
       gameClassManager.loadCurrentGame(SNAKE_GAME);
-      console.log('inside title screen click');
     }
     //bird
     else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
@@ -183,6 +182,7 @@ function TitleScreenClass()
           miniGameTransitioner.initialize();
           currentBackgroundMusic.pause();
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
+
           playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
           transitionToLevelMusic1.play();
           // gameCanvasContext.globalAlpha = 0.0;

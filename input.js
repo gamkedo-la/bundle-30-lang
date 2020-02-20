@@ -48,7 +48,6 @@ function InputManager()
 
   this.keyDown = function(builtInDocumentEventObject)
   {
-      console.log('recognizing key down');
       builtInDocumentEventObject.preventDefault();
       switch(builtInDocumentEventObject.keyCode)
       {

@@ -20,12 +20,18 @@ function snakeGameClass()
 
   this.initialize = function()
   {
+    this.initializePromptAndAnswerObjects();
     this.snake = new SnakeClass();
     this.background = new SnakeBackground();
     this.snake.initialize();
     gameInterval.reset(FRAME_RATE);
     this.shuffleAndResetPromptsAndAnswers();
     this.loadPromptsManager();
+  }
+
+  this.initializePromptAndAnswerObjects = function()
+  {
+    initializePromptAndAnswerObjects();
   }
 
   //update section
@@ -168,7 +174,6 @@ function snakeGameClass()
         {
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
-            console.log('inside collision with correct string answer');
             amountCorrect++;
             playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
             initializePromptAndAnswerObjects();
@@ -184,7 +189,6 @@ function snakeGameClass()
         {
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
-          console.log('inside collision with incorrect string answer');
           amountIncorrect++;
           playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
           initializePromptAndAnswerObjects();
@@ -204,7 +208,6 @@ function snakeGameClass()
           this.snake.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
           this.snake.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
         {
-          console.log('inside collision with correct image answer');
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
             amountCorrect++;
@@ -222,7 +225,6 @@ function snakeGameClass()
         {
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
-          console.log('inside collision with incorrect image answer');
           amountIncorrect++;
           playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
           initializePromptAndAnswerObjects();
@@ -242,7 +244,6 @@ function snakeGameClass()
           this.snake.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
           this.snake.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
         {
-          console.log('inside collision with correct audio answer');
             promptersManager.currentPrompter.currentWidth = 150;
             promptersManager.currentPrompter.currentHeight = 150;
             amountCorrect++;
@@ -258,7 +259,6 @@ function snakeGameClass()
             this.snake.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
             this.snake.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100))
         {
-          console.log('inside collision with incorrect audio answer');
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
           amountIncorrect++;
@@ -290,28 +290,24 @@ function snakeGameClass()
   {
     this.snake.speedX = -20;
     this.snake.speedY = 0;
-    console.log('this.snake.speedX: ' + this.snake.speedX);
   }
 
   this.handleUpArrowDown = function()
   {
     this.snake.speedX = 0;
     this.snake.speedY = -20;
-    console.log('this.snake.speedY: ' + this.snake.speedY);
   }
 
   this.handleRightArrowDown = function()
   {
     this.snake.speedX = 20;
     this.snake.speedY = 0;
-    console.log('this.snake.speedX: ' + this.snake.speedX);
   }
 
   this.handleDownArrowDown = function()
   {
     this.snake.speedX = 0;
     this.snake.speedY = 20;
-    console.log('this.snake.speedY: ' + this.snake.speedY);
   }
 }
 

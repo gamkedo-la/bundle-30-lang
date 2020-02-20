@@ -77,6 +77,7 @@ function PromptsAndAnswersManager()
   {
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
+
   }
 
   this.correctTargetPromptAndAnswerPairing = undefined;
@@ -166,7 +167,6 @@ function PromptsAndAnswersManager()
       {
         editablePromptAndAnswerGroup.splice(editablePromptAndAnswerGroupIndex,1);
         this.editedPromptAndAnswerGroup = editablePromptAndAnswerGroup;
-        console.log('this.editedPromptAndAnswerGroup: ' + this.editedPromptAndAnswerGroup);
       }
     }
 
