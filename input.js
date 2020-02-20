@@ -23,7 +23,7 @@ function InputManager()
       break;
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
-      handleBackButtonClick();//backButton.js, player goes back to menu/title screen
+      backButton.handleClick();//backButton.js, player goes back to menu/title screen
       break;
     }
   }

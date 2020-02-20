@@ -4,8 +4,10 @@ function SnakeClass()
     this.y = undefined;
     this.speedX = 0;
     this.speedY = 0;
-    this.SNAKE_DIMENSION = 20;
+    this.dimension = 20;
     this.MAX_TAIL_LENGTH = 5;
+
+    this.color = 'lime';
 
     this.tail =
     {
@@ -39,12 +41,12 @@ function SnakeClass()
 
     this.draw = function()
     {
-      gameCanvasContext.fillStyle = SNAKE_PLAYER_COLOR;
+      gameCanvasContext.fillStyle = this.color;
 
       for(let snakeTailIndex = 0; snakeTailIndex < this.tail.length; snakeTailIndex++)
       {
         gameCanvasContext.fillRect(this.tail[snakeTailIndex].x,this.tail[snakeTailIndex].y,
-        SNAKE_DIMENSION - 2,SNAKE_DIMENSION - 2);
+        this.dimension - 2,this.dimension - 2);
       }
     },
 

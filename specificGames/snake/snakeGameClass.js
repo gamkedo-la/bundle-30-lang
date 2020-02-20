@@ -5,15 +5,6 @@ function getRandomIntInclusive(min, max)
   return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
 }
 
-const SNAKE_BACK_BUTTON_RECTANGLE_COLOR = 'yellow';
-const SNAKE_BACK_BUTTON_TEXT_COLOR = 'blueviolet';
-
-const SNAKE_LETTER_SPEED = 0;
-
-const SNAKE_BACKGROUND_COLOR = 'brown';
-
-const SNAKE_PLAYER_COLOR = 'lime';
-
 snakeGameClass.prototype = new GameClass();
 function snakeGameClass()
 {
@@ -21,12 +12,16 @@ function snakeGameClass()
   const FRAME_RATE = 1000/10;
 
   this.snake = undefined;
+  this.background = undefined;
+  this.backButtonColor = 'yellow';
+  this.backButtonTextColor = 'blueViolet';
 
   this.isTransitioningIn = false;
 
   this.initialize = function()
   {
     this.snake = new SnakeClass();
+    this.background = new SnakeBackground();
     this.snake.initialize();
     gameInterval.reset(FRAME_RATE);
     this.shuffleAndResetPromptsAndAnswers();
@@ -46,28 +41,11 @@ function snakeGameClass()
   //draw section
   this.draw = function()
   {
-    this.drawBackground();
+    this.background.draw();
     this.snake.draw();
     this.drawAnswers();
     this.drawPromptsWhenAppropriate();
-    this.drawBackButton();
-  }
-
-  this.drawBackground = function()
-  {
-    gameCanvasContext.fillStyle = SNAKE_BACKGROUND_COLOR;
-    gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
-  }
-
-  this.drawBackButton = function()
-  {
-    // Draw the button
-    gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_RECTANGLE_COLOR;
-    gameCanvasContext.fillRect(540,650, 100,50);
-
-    // Write text in button
-    gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_TEXT_COLOR;
-    customFontFillText('Back', 27, 15, 555,660);
+    backButton.draw();
   }
 
   this.drawPromptsWhenAppropriate = function()

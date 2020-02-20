@@ -1,59 +1,39 @@
-function drawBackButton()
+function BackButton()
 {
-  if (fullGameStateMachine.playingAGameState)
+  this.x = gameCanvas.width - gameCanvas.width/6;
+  this.y = gameCanvas.height - gameCanvas.height/12;
+
+  this.draw = function()
   {
-    //draw the rectangle
-    if (birdGame.isPlaying()) {
-      gameCanvasContext.fillStyle = birdBackButtonRectangleColor;
-    } else if (SNAKE_GAME.isPlaying()) {
-      gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_RECTANGLE_COLOR;
-    } else if (laneGame.isPlaying()) {
-      gameCanvasContext.fillStyle = laneBackButtonRectangleColor;
-    } else if (jumperGame.isPlaying()) {
-      gameCanvasContext.fillStyle = jumperBackButtonRectangleColor;
-    }
-    gameCanvasContext.fillRect(540,650, 100,50);
+    //rectangle
+    gameCanvasContext.fillStyle = gameClassManager.currentGame.backButtonColor;
+    gameCanvasContext.fillRect(this.x,this.y, gameCanvas.width,gameCanvas.height);
 
-    //draw the text
-    if (birdGame.isPlaying()){
-      gameCanvasContext.fillStyle = birdBackButtonTextColor;
-    } else if (SNAKE_GAME.isPlaying()) {
-      gameCanvasContext.fillStyle = SNAKE_BACK_BUTTON_TEXT_COLOR;
-    } else if (laneGame.isPlaying()) {
-      gameCanvasContext.fillStyle = laneBackButtonTextColor;
-    } else if (jumperGame.isPlaying())
-    {
-      gameCanvasContext.fillStyle = jumperBackButtonTextColor;
-    }
-      // gameCanvasContext.font = '27px Helvetica';
-      // gameCanvasContext.fillText('Back', 560,685);
-      customFontFillText('Back', 27, 15, 555,660);
+    //text
+    gameCanvasContext.fillStyle = gameClassManager.currentGame.backButtonTextColor;
+    customFontFillText('Back', 27, 15, 555,660);
   }
-}
 
-function handleBackButtonClick()
-{
-  if (inputManager.mouseCoordinates.mouseX > 540 && inputManager.mouseCoordinates.mouseX < 640 &&
-      inputManager.mouseCoordinates.mouseY > 650 && inputManager.mouseCoordinates.mouseY < 700)
-      {
-        playerShouldSeeTitleScreen = true;
-        fullGameStateMachine.playingAGameState = false;
-        birdGame.stopPlaying();
-        SNAKE_GAME.stopPlaying();
-        laneGame.stopPlaying();
-		spaceShooterGame.stopPlaying();
-		jumperGame.stopPlaying();
-        playerShouldBePlayingPinata = false;
-		runnerGame.stopPlaying();
-        arrayOfAnswers = [];
-        playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
-        if (gameIsOnAServerAndCanUseWebAudioAPI)
+  this.handleClick = function()
+  {
+    if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < gameCanvas.width &&
+        inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < gameCanvas.height)
         {
-          backgroundMusicBufferSource.stop();
-        } else
-        {
-            currentBackgroundMusic.pause();
-            currentBackgroundMusic = undefined;
+          fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
+          transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
+          gameClassManager.currentGame.stopPlaying();
+          playerShouldBePlayingPinata = false;
+          arrayOfAnswers = [];
+          playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
+          if (gameIsOnAServerAndCanUseWebAudioAPI)
+          {
+            backgroundMusicBufferSource.stop();
+          } else
+          {
+              currentBackgroundMusic.pause();
+              currentBackgroundMusic = titleScreenMusic;
+              currentBackgroundMusic.play();
+          }
         }
-      }
+  }
 }

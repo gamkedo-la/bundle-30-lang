@@ -1,4 +1,4 @@
-var gameCanvas, gameCanvasContext, statsCanvas, statsCanvasContext, runnerGame;
+var gameCanvas, gameCanvasContext, statsCanvas, statsCanvasContext, runnerGame, backButton;
 console.log('Bundle of 30 Language Games Starting...');
 
 window.onload = function()
@@ -23,6 +23,8 @@ window.onload = function()
   gameInterval = new frameInterval(advanceGameFrame, gameClassManager.currentFrameRate);
   letterSpawnInterval = new frameInterval(spawnALetterIfAppropriate, letterSpawnRate);
   letterSpawnInterval.stop();//workaround for infinite spawning at the initialization
+
+  backButton = new BackButton();
 }
 
 function advanceGameFrame()
