@@ -5,7 +5,8 @@ function SnakeClass()
     this.speedX = 0;
     this.speedY = 0;
     this.dimension = 20;
-    this.MAX_TAIL_LENGTH = 5;
+
+    const MAX_TAIL_LENGTH = 5;
 
     this.color = 'lime';
 
@@ -20,7 +21,7 @@ function SnakeClass()
 
       deleteExcessPieces: function()
       {
-        while (this.pieces.length > this.MAX_TAIL_LENGTH)
+        while (this.pieces.length > MAX_TAIL_LENGTH)
         {
           this.pieces.shift();
         }
@@ -41,6 +42,7 @@ function SnakeClass()
 
     this.draw = function()
     {
+
       gameCanvasContext.fillStyle = this.color;
 
       for(let snakeTailIndex = 0; snakeTailIndex < this.tail.length; snakeTailIndex++)
