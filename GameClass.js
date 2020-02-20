@@ -26,6 +26,7 @@ function GameClassManager()
   {
     this.currentGame = gameToLoad;
     this.currentGame.initialize();
+    fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame.associatedObject = gameToLoad;
   }
 
   this.currentFrameRate = 1000/30;

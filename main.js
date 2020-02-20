@@ -47,23 +47,7 @@ function updateEverythingInTheGame()
 //draw section
 function drawEverythingInTheGame()
 {
-  switch(fullGameStateMachine.currentState)
-  {
-    case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen:
-    transitionToTitleScreen.draw();
-    break;
-
-    case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen:
-    titleScreen.draw();
-    break;
-
-    case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame:
-    miniGameTransitioner.draw();
-    break;
-
-    case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
-    gameClassManager.currentGame.draw();
-  }
+  fullGameStateMachine.currentState.associatedObject.draw();
   drawStatsBackground();
   drawStats();
 

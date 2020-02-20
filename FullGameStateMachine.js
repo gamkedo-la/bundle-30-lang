@@ -1,15 +1,14 @@
 function FullGameStateMachineClass()
 {
   this.FULL_GAME_ENUMERABLE_STATES =
-  Object.freeze
-  ({
-    loading: {status:'loading full game'},
-    clickToLaunch: {status:'waiting for user click to launch full game'},
-    transitionToTitleScreen: {status:'transitioning to title screen'},
-    titleScreen: {status:'title screen'},
-    transitionToMiniGame: {status: 'transitioning to mini game'},
-    playingMiniGame: {status: 'playing mini game'}
-  });
+  {
+    loading: {status:'loading full game', associatedObject:loadingAndSplashScreen},
+    clickToLaunch: {status:'waiting for user click to launch full game', associatedObject: loadingAndSplashScreen},
+    transitionToTitleScreen: {status:'transitioning to title screen', associatedObject: transitionToTitleScreen},
+    titleScreen: {status:'title screen', associatedObject: titleScreen},
+    transitionToMiniGame: {status: 'transitioning to mini game', associatedObject: miniGameTransitioner},
+    playingMiniGame: {status: 'playing mini game', assoicatedObject: gameClassManager.currentGame}
+  };
 
   this.currentState = this.FULL_GAME_ENUMERABLE_STATES.loading;
   console.log('initial state is loading the game');

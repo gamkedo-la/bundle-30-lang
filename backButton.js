@@ -21,7 +21,10 @@ function BackButton()
         {
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
           transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
+          promptersManager.currentPrompter.currentWidth = 150;
+          promptersManager.currentPrompter.currentHeight = 150;
           gameClassManager.currentGame.stopPlaying();
+          gameClassManager.currentGame = undefined;
           playerShouldBePlayingPinata = false;
           arrayOfAnswers = [];
           playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);

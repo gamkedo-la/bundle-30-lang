@@ -42,6 +42,19 @@ function LoadingAndSplashScreen()
     customFontFillText(sentenceArray2, 30, 20, 165, 350);
   }
 
+  this.draw = function()
+  {
+    if (fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.loading)
+    {
+      this.drawLoadingOrSplashOrTitleScreenBackground();
+      this.drawPleaseWaitForLoadingMessage();
+    }
+    else if (fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.clickToLaunch)
+    {
+      this.promptPlayerForClickAfterLoading();
+    }
+  }
+
   this.drawLoadingOrSplashOrTitleScreenBackground = function()
   {
     gameCanvasContext.fillStyle = 'orange';
