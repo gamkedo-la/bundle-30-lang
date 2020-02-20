@@ -11,7 +11,6 @@ var laneBackButtonRectangleColor = 'Fuchsia';
 var laneBackButtonTextColor = 'yellow';
 
 function laneGameClass() {
-	let gameIsPlaying = false;
 	let arrayOfYellowCenterDashes = [-1, 0, 1, 2, 3, 4, 5, 6].map(function(dashIndex) {
 		return {x: 320 - 7.5, y: dashIndex*100};
 	});
@@ -19,9 +18,6 @@ function laneGameClass() {
 	let dashWidth = 15;
 
 	this.frameRate = 1000/50;
-	this.isPlaying = function() {
-		return gameIsPlaying;
-	};
 
 	this.initialize = function() {
 		playerXCoordinate = laneStartingX;
@@ -30,34 +26,20 @@ function laneGameClass() {
 		gameInterval.reset(this.frameRate);
 	};
 
-	this.startPlaying = function() {
-		gameIsPlaying = true;
-	};
-
-	this.stopPlaying = function() {
-		gameIsPlaying = false;
-	};
-
 	this.update = function() {
 		moveYellowCenterDashes();
 		handleDashArrayPopulation();
 	};
 
-	this.drawBackground = function() {
-		drawLaneGrass();
-		drawLaneRoadAsphalt();
-		drawLaneYellowCenterDashes();
-	};
-
-	this.drawPlayer = function() {
-		gameCanvasContext.fillStyle = 'blue';
-		gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 30,60);
-	};
-
-	this.draw = function()
-	{
-		this.drawBackground();
-		this.drawPlayer();
+    this.draw = function()
+    {
+	  // draw background
+	  drawLaneGrass();
+	  drawLaneRoadAsphalt();
+	  drawLaneYellowCenterDashes();
+	  // draw player
+	  gameCanvasContext.fillStyle = 'blue';
+	  gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 30,60);
 	}
 
 	function drawLaneGrass()
@@ -71,7 +53,6 @@ function laneGameClass() {
 		gameCanvasContext.fillStyle = 'gray';
 		gameCanvasContext.fillRect(140,0, 360,700);
 	}
-
 
 	function drawLaneYellowCenterDashes()
 	{

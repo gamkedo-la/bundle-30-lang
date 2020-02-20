@@ -91,15 +91,9 @@ function TitleScreenClass()
     }
     else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
              inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-        {
-  		laneGame.startPlaying();
-          playerShouldSeeTitleScreen = false;
-          letterSpawnInterval.reset(laneLetterSpawnRate);
-          fullGameStateMachine.playingAGameState = true;
-          gameInterval.reset(laneFrameRate);
-          // setOrResetCorrectLetter();
-          levelIsTransitioning = true;
-        }
+    {
+	  gameClassManager.loadCurrentGame(laneGame);
+    }
     else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
              inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
         {
