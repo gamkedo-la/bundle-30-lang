@@ -51,7 +51,6 @@ function snakeGameClass()
     this.snake.draw();
     this.drawAnswers();
     this.drawPromptsWhenAppropriate();
-    backButton.draw();
   }
 
   this.drawPromptsWhenAppropriate = function()

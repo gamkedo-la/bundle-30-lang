@@ -47,7 +47,9 @@ function updateEverythingInTheGame()
 //draw section
 function drawEverythingInTheGame()
 {
+
   fullGameStateMachine.currentState.associatedObject.draw();
+  backButton.draw();
   drawStatsBackground();
   drawStats();
 
