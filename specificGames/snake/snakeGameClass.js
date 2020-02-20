@@ -280,8 +280,8 @@ function snakeGameClass()
     let randomXCoordinate = undefined;
     let randomYCoordinate = undefined;
 
-    randomXCoordinate = getRandomIntWithExclusionaryRange(0,540, playerXCoordinate - 40,playerXCoordinate + 60);
-    randomYCoordinate = getRandomIntWithExclusionaryRange(0,600, playerYCoordinate - 40,playerYCoordinate + 60);
+    randomXCoordinate = getRandomIntWithExclusionaryRange(0,540, this.snake.x - 40,this.snake.x + 60);
+    randomYCoordinate = getRandomIntWithExclusionaryRange(0,600, this.snake.y - 40,this.snake.y + 60);
 
     return {randomXCoordinate,randomYCoordinate};
   }
