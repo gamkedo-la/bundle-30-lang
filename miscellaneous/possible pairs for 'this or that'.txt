@@ -130,6 +130,8 @@ Where = pic of a location, When = pic of time, why = because)
 128. come/comb
 129. nature/natural
 130. patrol/petrol
+131. whose/hose
+132. whole/who
 
 spelling - 
 1. was/saw
