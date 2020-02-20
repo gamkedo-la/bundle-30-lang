@@ -13,7 +13,7 @@ function birdGameClass() {
     gameInterval.reset(this.frameRate);
   }
 
-  this.applyGravityToBird = function()
+  function applyGravityToBird()
   {
 	   playerYCoordinate += gravity;
   }
