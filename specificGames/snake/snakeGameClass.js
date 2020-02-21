@@ -299,12 +299,8 @@ function snakeGameClass()
   {
     let randomXCoordinate = undefined;
     let randomYCoordinate = undefined;
-    console.log('this.snake.x: ' + this.snake.x);
-    console.log('this.snake.y: ' + this.snake.y);
     randomXCoordinate = getRandomIntWithExclusionaryRange(0,540, this.snake.x - 40,this.snake.x + 60);
     randomYCoordinate = getRandomIntWithExclusionaryRange(0,600, this.snake.y - 40,this.snake.y + 60);
-    console.log("randomXCoordinate: " + randomXCoordinate);
-    console.log("randomYCoordinate: " + randomYCoordinate);
     return {randomXCoordinate,randomYCoordinate};
   }
 

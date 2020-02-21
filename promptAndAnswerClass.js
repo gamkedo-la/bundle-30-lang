@@ -246,16 +246,11 @@ function PromptsAndAnswersManager()
   this.checkIfObjectsAreTooCloseToEachOther = function(
     firstObjectX,firstObjectY, secondObjectX,secondObjectY, minDistanceFromEachOther)
   {
-    console.log('actual x coordinates distance: ' + Math.abs(firstObjectX - secondObjectX) );
-    console.log('actual y coordinates distance: ' + Math.abs(firstObjectY - secondObjectY) );
   return (
       Math.abs(firstObjectX - secondObjectX) < minDistanceFromEachOther &&
       Math.abs(firstObjectY - secondObjectY) < minDistanceFromEachOther
     )
   }
-
-  // incorrectAnswerCoordinates.randomXCoordinate - correctAnswerCoordinates.randomXCoordinate
-  // incorrectAnswerCoordinates.randomYCoordinate - correctAnswerCoordinates.randomYCoordinate
 
   this.defineXAndYCoordinatesForTargets = function()
   {

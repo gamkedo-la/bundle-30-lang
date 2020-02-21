@@ -77,7 +77,7 @@ function jumperGameClass()
 		playerYCoordinate !== 230 && playerYCoordinate !== 330 && playerYCoordinate !== 430 &&
 		playerYCoordinate !== 530 && playerYCoordinate !== 630) //if not jumping and not contacting a platform
     {
-      playerYCoordinate += 5;//apply gravity
+      playerYCoordinate += 5;//apply GRAVITY
     }
   };
 

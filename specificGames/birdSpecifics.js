@@ -4,30 +4,44 @@ const birdLetterColor = 'BlueViolet';
 
 birdGameClass.prototype = new GameClass();
 function birdGameClass() {
-  const birdStartingX = 100;
-  const birdStartingY = 100;
-  const gravity = 4;
+  const BIRD_STARTING_X = 100;
+  const BIRD_STARTING_Y = 100;
+  const GRAVITY = 4;
+  const LEFT_ARROW_DOWN_SPEED = -8;
+  const RIGHT_ARROW_DOWN_SPEED = 8;
+  const LEFT_ARROW_UP_SPEED = -4;
+  const RIGHT_ARROW_UP_SPEED = 4;
 
   this.initialize = function()
   {
     gameInterval.reset(this.frameRate);
   }
 
-  function applyGravityToBird()
+  function applyGRAVITYToBird()
   {
-	   playerYCoordinate += gravity;
+	   playerYCoordinate += GRAVITY;
   }
 
   this.handleLeftArrowDown = function()
   {
-    inputManager.leftArrowIsBeingHeld = true;
-    moveBirdPlayerLeft();
+    playerXSpeed = LEFT_ARROW_DOWN_SPEED;
   };
 
   this.handleRightArrowDown = function()
   {
-    inputManager.rightArrowIsBeingHeld = true;
-    moveBirdPlayerRight();
+    playerXSpeed = RIGHT_ARROW_DOWN_SPEED;
+  }
+
+  this.handleLeftArrowUp = function()
+  {
+    playerXSpeed = LEFT_ARROW_UP_SPEED;
+    console.log('inside handle left arrow up in bird game');
+  }
+
+  this.handleRightArrowUp = function()
+  {
+    playerXSpeed = RIGHT_ARROW_UP_SPEED;
+    console.log('inside handle left arrow up in bird game');
   }
 
   function moveBirdPlayerLeft()
@@ -50,8 +64,8 @@ function birdGameClass() {
 
   this.initialize = function()
   {
-	playerXCoordinate = birdStartingX;
-    playerYCoordinate = birdStartingY;
+	playerXCoordinate = BIRD_STARTING_X;
+    playerYCoordinate = BIRD_STARTING_Y;
     playerXSpeed = 0;
     letterSpeed = 3;
   };
@@ -64,7 +78,8 @@ function birdGameClass() {
 
   this.movePlayer = function()
   {
-    applyGravityToBird();
+    applyGRAVITYToBird();
+
     playerXCoordinate += playerXSpeed;
 
   };

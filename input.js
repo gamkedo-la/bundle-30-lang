@@ -135,28 +135,88 @@ function InputManager()
     }
   }
 
-  this.handleKeyUp = function(builtInDocumentEventObject)
+  this.keyUp = function(builtInDocumentEventObject)
   {
     switch(builtInDocumentEventObject.keyCode)
     {
       case 37://left arrow
       this.leftArrowIsBeingHeld = false;
+      switch(fullGameStateMachine.currentState)
+      {
+        case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+        if (gameClassManager.currentGame.handleLeftArrowUp)
+        {
+          gameClassManager.currentGame.handleLeftArrowUp();
+        }
+        else
+        {
+          return;
+        }
+      }
       break;
 
       case 38://up arrow
       this.upArrowIsBeingHeld = false;
+      switch(fullGameStateMachine.currentState)
+      {
+        case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+        if (gameClassManager.currentGame.handleUpArrowUp)
+        {
+          gameClassManager.currentGame.handleUpArrowUp();
+        }
+        else
+        {
+          return;
+        }
+      }
       break;
 
       case 39://right arrow
       this.rightArrowIsBeingHeld = false;
+      switch(fullGameStateMachine.currentState)
+      {
+        case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+        if (gameClassManager.currentGame.handleRightArrowUp)
+        {
+          gameClassManager.currentGame.handleRightArrowUp();
+        }
+        else
+        {
+          return;
+        }
+      }
       break;
 
       case 40://down arrow
       this.downArrowIsBeingHeld = false;
+      switch(fullGameStateMachine.currentState)
+      {
+        case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+        if (gameClassManager.currentGame.handleDownArrowUp)
+        {
+          gameClassManager.currentGame.handleDownArrowUp();
+        }
+        else
+        {
+          return;
+        }
+      }
       break;
 
       case 32://spacebar
       this.spaceBarIsBeingHeld = false;
+      switch(fullGameStateMachine.currentState)
+      {
+        case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+        if (gameClassManager.currentGame.handleSpaceBarUp)
+        {
+          gameClassManager.currentGame.handleSpaceBarUp();
+        }
+        else
+        {
+          return;
+        }
+      }
       break;
     }
   }
