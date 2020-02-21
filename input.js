@@ -10,7 +10,6 @@ function InputManager()
       break;
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.clickToLaunch:
-      fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
       loadingAndSplashScreen.handleClickAfterLoading();
       break;
 
