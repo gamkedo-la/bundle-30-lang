@@ -25,7 +25,7 @@ function InputManager()
       backButton.handleClick();//backButton.js, player goes back to menu/title screen
       break;
     }
-  }
+  }//
 
   this.mouseCoordinates = {x:undefined,y:undefined};
 
