@@ -262,6 +262,7 @@ function PromptsAndAnswersManager()
         this.checkIfAnswersTooClose(incorrectAnswerCoordinates, correctAnswerCoordinates, 300)
       ){
         incorrectAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
+        correctAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
       }
 
       this.correctTargetPromptAndAnswerPairing.xCoordinate = correctAnswerCoordinates.randomXCoordinate;

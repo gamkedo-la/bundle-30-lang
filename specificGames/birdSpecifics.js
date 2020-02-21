@@ -32,13 +32,11 @@ function birdGameClass() {
 
   function moveBirdPlayerLeft()
   {
-     //playerXCoordinate -= playerXSpeed;
      playerXSpeed = -5;
   };
 
   function moveBirdPlayerRight()
   {
-     //playerXCoordinate += playerXSpeed;
      playerXSpeed = 5;
    };
 

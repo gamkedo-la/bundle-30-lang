@@ -5,13 +5,16 @@ function BackButton()
 
   this.draw = function()
   {
-    //rectangle
-    gameCanvasContext.fillStyle = gameClassManager.currentGame.backButtonColor;
-    gameCanvasContext.fillRect(this.x,this.y, gameCanvas.width,gameCanvas.height);
+    if (fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
+    {
+      //rectangle
+      gameCanvasContext.fillStyle = gameClassManager.currentGame.backButtonColor;
+      gameCanvasContext.fillRect(this.x,this.y, gameCanvas.width,gameCanvas.height);
 
-    //text
-    gameCanvasContext.fillStyle = gameClassManager.currentGame.backButtonTextColor;
-    customFontFillText('Back', 27, 15, 555,660);
+      //text
+      gameCanvasContext.fillStyle = gameClassManager.currentGame.backButtonTextColor;
+      customFontFillText('Back', 27, 15, 555,660);
+    }
   }
 
   this.handleClick = function()
