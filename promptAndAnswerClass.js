@@ -243,15 +243,19 @@ function PromptsAndAnswersManager()
     return this.getTextWidthFromFontStyle(this.currentIncorrectAnswer, fontStyle);
   }
 
-  this.checkIfAnswersTooClose = function(
-    incorrectAnswerCoordinates, correctAnswerCoordinates, minDistance)
+  this.checkIfObjectsAreTooCloseToEachOther = function(
+    firstObjectX,firstObjectY, secondObjectX,secondObjectY, minDistanceFromEachOther)
   {
-    return (
-      Math.abs(incorrectAnswerCoordinates.randomXCoordinate - correctAnswerCoordinates.randomXCoordinate) < minDistance &&
-      Math.abs(incorrectAnswerCoordinates.randomYCoordinate - correctAnswerCoordinates.randomYCoordinate) < minDistance
+    console.log('actual x coordinates distance: ' + Math.abs(firstObjectX - secondObjectX) );
+    console.log('actual y coordinates distance: ' + Math.abs(firstObjectY - secondObjectY) );
+  return (
+      Math.abs(firstObjectX - secondObjectX) < minDistanceFromEachOther &&
+      Math.abs(firstObjectY - secondObjectY) < minDistanceFromEachOther
     )
   }
 
+  // incorrectAnswerCoordinates.randomXCoordinate - correctAnswerCoordinates.randomXCoordinate
+  // incorrectAnswerCoordinates.randomYCoordinate - correctAnswerCoordinates.randomYCoordinate
 
   this.defineXAndYCoordinatesForTargets = function()
   {
@@ -259,10 +263,18 @@ function PromptsAndAnswersManager()
       let incorrectAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
 
       while(
-        this.checkIfAnswersTooClose(incorrectAnswerCoordinates, correctAnswerCoordinates, 300)
-      ){
+        this.checkIfObjectsAreTooCloseToEachOther(
+          incorrectAnswerCoordinates.randomXCoordinate,incorrectAnswerCoordinates.randomYCoordinate,
+          correctAnswerCoordinates.randomXCoordinate,correctAnswerCoordinates.randomYCoordinate, 300)
+
+          ||
+
+        this.checkIfObjectsAreTooCloseToEachOther(
+          incorrectAnswerCoordinates.randomXCoordinate,incorrectAnswerCoordinates.randomYCoordinate,
+          SNAKE_GAME.snake.x,SNAKE_GAME.snake.y, 60)
+      )
+      {
         incorrectAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
-        correctAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
       }
 
       this.correctTargetPromptAndAnswerPairing.xCoordinate = correctAnswerCoordinates.randomXCoordinate;
