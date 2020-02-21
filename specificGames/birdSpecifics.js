@@ -21,21 +21,25 @@ function birdGameClass() {
   this.handleLeftArrowDown = function()
   {
     inputManager.leftArrowIsBeingHeld = true;
+    moveBirdPlayerLeft();
   };
 
   this.handleRightArrowDown = function()
   {
     inputManager.rightArrowIsBeingHeld = true;
+    moveBirdPlayerRight();
   }
 
-  this.moveBirdPlayerLeft = function()
+  function moveBirdPlayerLeft()
   {
-	   playerXCoordinate -= playerSpeedplayerSpeedYX;
+     //playerXCoordinate -= playerXSpeed;
+     playerXSpeed = -5;
   };
 
-  this.moveBirdPlayerRight = function()
+  function moveBirdPlayerRight()
   {
-	   playerXCoordinate += playerSpeedX;
+     //playerXCoordinate += playerXSpeed;
+     playerXSpeed = 5;
    };
 
   this.flapUp = function()
@@ -50,7 +54,7 @@ function birdGameClass() {
   {
 	playerXCoordinate = birdStartingX;
     playerYCoordinate = birdStartingY;
-    playerSpeedX = 5;
+    playerXSpeed = 0;
     letterSpeed = 3;
   };
 
@@ -62,15 +66,9 @@ function birdGameClass() {
 
   this.movePlayer = function()
   {
-  	applyGravityToBird();
-  	if (inputManager.leftArrowIsBeingHeld)
-  	{
-      moveBirdPlayerLeft();
-  	}
-    else if (inputManager.rightArrowIsBeingHeld)
-  	{
-      moveBirdPlayerRight();
-  	}
+    applyGravityToBird();
+    playerXCoordinate += playerXSpeed;
+
   };
 
   this.draw = function()
