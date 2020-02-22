@@ -48,7 +48,9 @@ function updateEverythingInTheGame()
 function drawEverythingInTheGame()
 {
 
-  fullGameStateMachine.currentState.associatedObject.draw();
+  if (fullGameStateMachine.currentState.associatedObject) // can sometimes be undefined
+    fullGameStateMachine.currentState.associatedObject.draw();
+    
   backButton.draw();
   drawStatsBackground();
   drawStats();

@@ -43,6 +43,21 @@ var pinataGame = new function () {
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var targetLetter = alphabet[rndInt(0, alphabet.length - 1)];
 
+    // called by the game state machine
+    this.initialize = function() {
+        console.log("Pinata game initializing...");
+    }
+
+    // called by the game state machine
+    this.update = function() {
+        // todo: move physics update here from below
+    }
+
+    // called by the game state machine
+    this.draw = function() {
+        
+    }
+
     function boom(x, y, wasCorrect) {
 
         if (wasCorrect) {
@@ -176,8 +191,10 @@ var pinataGame = new function () {
         var c = gameCanvasContext;
         var a = gameCanvas;
 
-        currentBackgroundMusic.pause();
-        currentBackgroundMusic = pinataBackgroundMusic;
+        if (currentBackgroundMusic) {
+            currentBackgroundMusic.pause();
+            currentBackgroundMusic = pinataBackgroundMusic;
+        }
 
         // Init scene ground floor
         Circle(Vec2(320, 5700), 5000, 0); // floor!
@@ -343,7 +360,8 @@ var pinataGame = new function () {
                 customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
             }
 
-            drawBackButton();
+            //drawBackButton(); // FIXME
+
         }, // function declaration 
             9 // framerate in ms
         ); // setInterval

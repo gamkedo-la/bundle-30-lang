@@ -36,7 +36,8 @@ function MiniGameTransitioner()
   {
     gameCanvasContext.globalAlpha = 0;
     transitionIsFadingIn = true;
-    if (gameClassManager.currentGame.drawTransitionText)
+    if (gameClassManager.currentGame && // this can sometimes be null
+        gameClassManager.currentGame.drawTransitionText)
     {
       this.drawTransitionText = gameClassManager.currentGame.drawTransitionText;
     }

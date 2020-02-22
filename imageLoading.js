@@ -171,6 +171,21 @@ function countLoadedImageAndLaunchIfReady()
 
   if (numberOfImagesToLoad === 0)
   {
+
+    /*
+    const FAST_DEBUG_MODE = true; // skip entire menu and immeditately play a game! use only for debugging!
+    if (FAST_DEBUG_MODE) { 
+    
+        playerShouldBePlayingPinata = true;
+        playerShouldSeeTitleScreen = false;
+        fullGameStateMachine.playingAGameState = true;
+        levelIsTransitioning = false;
+        pinataGame.init();
+        //return; 
+    }
+    */
+    
+
     loadingAndSplashScreen.promptPlayerForClickAfterLoading();// in dualLoadingSplashScreen.js
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.clickToLaunch);
   }

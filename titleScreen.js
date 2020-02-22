@@ -75,6 +75,7 @@ function TitleScreenClass()
 
   this.handleGameCellClicks = function()
   {
+        
     //1st row
     //snake
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
@@ -140,7 +141,7 @@ function TitleScreenClass()
   			 inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
   	{
   		gameInterval.reset(RUNNERFRAMERATE);
-          letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
+        letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
   		runnerGame.startPlaying();
   		playerShouldSeeTitleScreen = false;
   		fullGameStateMachine.playingAGameState = true;
@@ -155,18 +156,37 @@ function TitleScreenClass()
               backgroundMusicBufferSource.loopEnd = 1;
           }
       }
-      // pinata 27,15,322,285
+      // PINATA GAME:
       else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
           inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
       {
+        gameClassManager.loadCurrentGame(pinataGame);
+        gameInterval.reset(RUNNERFRAMERATE);
+        letterSpawnInterval.reset(999999999999999); // never
         pinataGame.init();
+        //runnerGame.startPlaying();
+  		playerShouldSeeTitleScreen = false;
+  		fullGameStateMachine.playingAGameState = true;
+          levelIsTransitioning = true;
+          if (gameIsOnAServerAndCanUseWebAudioAPI)
+          {
+              backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
+              currentBackgroundMusic = backgroundMusicBufferSource;
+              // FIXME: change to a new song for pinata
+              loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
+              backgroundMusicBufferSource.loop = true;
+              backgroundMusicBufferSource.loopStart = 6.9;
+              backgroundMusicBufferSource.loopEnd = 1;
+          }
+        
       }
 
-    //any game
+      // FIXME: this may trigger when you click the background and never started a game?
+      // any game
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 620 &&
         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 650)
         {
-          console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
+          if (gameClassManager.currentGame) console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
           miniGameTransitioner.initialize();
           currentBackgroundMusic.pause();
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
