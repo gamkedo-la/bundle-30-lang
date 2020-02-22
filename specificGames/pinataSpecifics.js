@@ -4,10 +4,15 @@
 // physics code adapted from work by XEM 
 // https://github.com/xem/mini2Dphysics
 
-var playerShouldBePlayingPinata = false;
+var playerShouldBePlayingPinata = false; // FIXME is this still used elsewhere?
 
-// a global object that the game manager can access
+// a global the game manager can access
+////////////////////////////////////////
 var pinataGame = new function () {
+
+    //////////////////////////////////////////////////////
+    // private vars used internally by the pinata game
+    //////////////////////////////////////////////////////
 
     // list of all known candies
     var objects = [];
@@ -41,7 +46,16 @@ var pinataGame = new function () {
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var targetLetter = alphabet[rndInt(0, alphabet.length - 1)];
 
-    // called by the game state machine
+    //////////////////////////////////////////////////////
+    // public functions called by the game state machine
+    //////////////////////////////////////////////////////
+
+    this.drawTransitionText = function () {
+        customFontFillText(['Piñata Pop', symbolExclamationPointImage], 80, 42, 100, 50);
+        customFontFillText(['Click the right letter'], 32, 24, 80, 250);
+        customFontFillText(['as fast as you can', symbolExclamationPointImage], 32, 24, 80, 290);
+    }
+    
     this.initialize = function() {
         console.log("Pinata game initializing...");
 
@@ -74,6 +88,79 @@ var pinataGame = new function () {
 
         if (levelIsTransitioning || !playerShouldBePlayingPinata) return;
 
+        // iterate through all objects twice
+        for (i = objects.length; i--;) {
+            for (j = objects.length; j-- > i;) {
+                //for(k = 15; k--;){
+                b = objects[i];
+                d = objects[j];
+                //if((b.M && b.C.y < 400) || (d.M && d.C.y < 400)){ // perf
+
+                // Test collision
+                e = sub(d.C, b.C);
+                if (length(e) < b.R + d.R) { // close enough?
+                    D = b.R + d.R - length(e), // depth
+                        N = normalize(e), // normal
+                        S = add(d.C, scale(normalize(scale(e, -1)), d.R)), // start
+                        E = add(S, scale(N, D)) // end
+
+                    // Resolve collision
+                    if (b.M || d.M) {
+                        //  correct positions
+                        h = scale(N, D / (b.M + d.M) * .8); // .8 = poscorrectionrate = percentage of separation to project objects
+                        b.C = add(b.C, scale(h, -b.M));
+                        d.C = add(d.C, scale(h, d.M));
+                        //the direction of collisionInfo is always from b to d
+                        //but the Mass is inversed, so start scale with d and end scale with b
+                        p = add(scale(S, d.M / (b.M + d.M)), scale(E, b.M / (b.M + d.M)));
+                        //r is vector from center of object to collision point
+                        l = sub(p, b.C);
+                        m = sub(p, d.C);
+                        //newV = V + D cross R
+                        n = sub(add(d.V, Vec2(-1 * d.D * m.y, d.D * m.x)), add(b.V, Vec2(-1 * b.D * l.y, b.D * l.x)));
+                        //if objects moving apart ignore
+                        //if(dot(n, N) < 0){
+                        // Calc t scalar
+                        // the formula of s can be found in http://www.myphysicslab.com/collision.html
+                        s = (-1.5 * dot(n, N)) / (b.M + d.M + cross(l, N) ** 2 * b.M + cross(m, N) ** 2 * d.M);
+                        //t is in direction of normal ( from b to d)
+                        t = scale(N, s);
+                        // t = F dt = m * ?v
+                        // ?v = t / m
+                        b.V = sub(b.V, scale(t, b.M));
+                        d.V = add(d.V, scale(t, d.M));
+                        b.D -= cross(l, N) * s * b.M;
+                        d.D += cross(m, N) * s * d.M;
+                        u = scale(normalize(sub(n, scale(N, dot(n, N)))), -1);
+                        x = -1.5 * dot(n, u) * .5 / (b.M + d.M + cross(l, u) ** 2 * b.M + cross(m, u) ** 2 * d.M);
+                        //t is from b to d (in opposite direction of velocity)
+                        t = scale(u, x);
+                        b.V = sub(b.V, scale(t, b.M));
+                        d.V = add(d.V, scale(t, d.M));
+                        b.D -= cross(l, u) * x * b.M;
+                        d.D += cross(m, u) * x * d.M;
+                    } // collision resolved
+                } // close enough
+                // }
+            } // i
+            if (pinataSmashed) {
+
+                // Update scene
+                b.V = add(b.V, scale(b.A, .01));
+                b.C = add(b.C, scale(b.V, .01));
+                b.D += b.E * .01;
+                b.B += b.M ? b.D * .01 : .001;
+
+                // shrink!
+                if (b.M && b.R > CANDY_MIN_SIZE) b.R += CANDY_SHRINK;
+
+                if (b.Z == CONFETTI_ID) {
+                    b.R *= CONFETTI_SHRINKSPEED;
+                }
+
+            } else { // if we have not yet pinataSmashed:
+
+            }
     }
 
     // called by the game state machine
@@ -93,7 +180,72 @@ var pinataGame = new function () {
             c.fill();
         }
 
+
+                // Draw
+                c.save();
+                c.beginPath();
+                c.translate(b.C.x, b.C.y);
+                c.rotate(b.B);
+                c.arc(0, 0, b.R, 0, 7);
+                //c.lineWidth = 3;
+                c.font = b.R * 1.9 + "px a";
+                c.textAlign = "center";
+
+                if (objects[i].M) { // does it have mass? then draw a candy
+
+                    if (b.Z == targetLetter) {
+                        // debug mode: easy to find flashing balls
+                        c.fillStyle = "rgba(" + rndInt(100, 255) + "," + rndInt(100, 255) + "," + rndInt(100, 255) + ",1)";
+                    } else {
+                        c.fillStyle = objects[i].color; // selet ball colour
+                    }
+
+                    c.fill(); // the circle
+
+                    if (b.Z == CONFETTI_ID) {
+                        // draw the letter using html
+                        // emoji! works on most modern devices but not all
+                        //c.fillStyle = "white"; // txt color
+                        c.fillText(String.fromCodePoint(0x1F600 + (i % 69/*56*/)), b.R * 1.5, 0, 0 - b.R * 0.75, 0 - b.R * 0.75);
+                    } else {
+                        // draw the letter using bitmap font
+                        customFontFillText([b.Z], b.R * 1.5, 0, 0 - b.R * 0.75, 0 - b.R * 0.75);
+                    }
+                }
+                else { // no mass? must be the ground
+                    c.fillStyle = "rgba(80,60,40,1)";
+                    c.fill(); // the ground
+                }
+                c.restore();
+                // ^---- end draw
+            } // j
+
+
+            if (pinataSmashed) {
+                customFontFillText(['Click the letter ' + targetLetter], 32, 24, 80, 32);
+            } else {
+                // let's draw an actual pinata here
+                var wobblex = 180+Math.cos(performance.now()/1000)*60;
+                var wobbley = 100-Math.cos(performance.now()/500)*15;
+                // first the string
+                c.beginPath();
+                c.moveTo(320,0);
+                c.lineTo(wobblex+120,wobbley+108);
+                c.strokeStyle = "rgba(80,80,80,1)";
+                c.lineWidth = 4;
+                c.stroke();
+                // now the pinata itself
+                c.drawImage(pinataImage,wobblex,wobbley);
+                // and the instructions
+                customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
+            }
+
+            //drawBackButton(); // FIXME
     }
+
+    //////////////////////////////////////////////////////
+    // private functions used internally by the pinata game
+    //////////////////////////////////////////////////////
 
     function boom(x, y, wasCorrect) {
 
@@ -226,154 +378,6 @@ var pinataGame = new function () {
       }
     }
 
-
-    this.init = function () {
-
-        // temp animation loop - FIXME, make more elegant
-        setInterval(e => {
-
-
-            // iterate through all objects twice
-            for (i = objects.length; i--;) {
-                for (j = objects.length; j-- > i;) {
-                    //for(k = 15; k--;){
-                    b = objects[i];
-                    d = objects[j];
-                    //if((b.M && b.C.y < 400) || (d.M && d.C.y < 400)){ // perf
-
-                    // Test collision
-                    e = sub(d.C, b.C);
-                    if (length(e) < b.R + d.R) { // close enough?
-                        D = b.R + d.R - length(e), // depth
-                            N = normalize(e), // normal
-                            S = add(d.C, scale(normalize(scale(e, -1)), d.R)), // start
-                            E = add(S, scale(N, D)) // end
-
-                        // Resolve collision
-                        if (b.M || d.M) {
-                            //  correct positions
-                            h = scale(N, D / (b.M + d.M) * .8); // .8 = poscorrectionrate = percentage of separation to project objects
-                            b.C = add(b.C, scale(h, -b.M));
-                            d.C = add(d.C, scale(h, d.M));
-                            //the direction of collisionInfo is always from b to d
-                            //but the Mass is inversed, so start scale with d and end scale with b
-                            p = add(scale(S, d.M / (b.M + d.M)), scale(E, b.M / (b.M + d.M)));
-                            //r is vector from center of object to collision point
-                            l = sub(p, b.C);
-                            m = sub(p, d.C);
-                            //newV = V + D cross R
-                            n = sub(add(d.V, Vec2(-1 * d.D * m.y, d.D * m.x)), add(b.V, Vec2(-1 * b.D * l.y, b.D * l.x)));
-                            //if objects moving apart ignore
-                            //if(dot(n, N) < 0){
-                            // Calc t scalar
-                            // the formula of s can be found in http://www.myphysicslab.com/collision.html
-                            s = (-1.5 * dot(n, N)) / (b.M + d.M + cross(l, N) ** 2 * b.M + cross(m, N) ** 2 * d.M);
-                            //t is in direction of normal ( from b to d)
-                            t = scale(N, s);
-                            // t = F dt = m * ?v
-                            // ?v = t / m
-                            b.V = sub(b.V, scale(t, b.M));
-                            d.V = add(d.V, scale(t, d.M));
-                            b.D -= cross(l, N) * s * b.M;
-                            d.D += cross(m, N) * s * d.M;
-                            u = scale(normalize(sub(n, scale(N, dot(n, N)))), -1);
-                            x = -1.5 * dot(n, u) * .5 / (b.M + d.M + cross(l, u) ** 2 * b.M + cross(m, u) ** 2 * d.M);
-                            //t is from b to d (in opposite direction of velocity)
-                            t = scale(u, x);
-                            b.V = sub(b.V, scale(t, b.M));
-                            d.V = add(d.V, scale(t, d.M));
-                            b.D -= cross(l, u) * x * b.M;
-                            d.D += cross(m, u) * x * d.M;
-                        } // collision resolved
-                    } // close enough
-                    // }
-                } // i
-                if (pinataSmashed) {
-
-                    // Update scene
-                    b.V = add(b.V, scale(b.A, .01));
-                    b.C = add(b.C, scale(b.V, .01));
-                    b.D += b.E * .01;
-                    b.B += b.M ? b.D * .01 : .001;
-
-                    // shrink!
-                    if (b.M && b.R > CANDY_MIN_SIZE) b.R += CANDY_SHRINK;
-
-                    if (b.Z == CONFETTI_ID) {
-                        b.R *= CONFETTI_SHRINKSPEED;
-                    }
-
-                } else { // if we have not yet pinataSmashed:
-
-                }
-
-                // Draw
-                c.save();
-                c.beginPath();
-                c.translate(b.C.x, b.C.y);
-                c.rotate(b.B);
-                c.arc(0, 0, b.R, 0, 7);
-                //c.lineWidth = 3;
-                c.font = b.R * 1.9 + "px a";
-                c.textAlign = "center";
-
-                if (objects[i].M) { // does it have mass? then draw a candy
-
-                    if (b.Z == targetLetter) {
-                        // debug mode: easy to find flashing balls
-                        c.fillStyle = "rgba(" + rndInt(100, 255) + "," + rndInt(100, 255) + "," + rndInt(100, 255) + ",1)";
-                    } else {
-                        c.fillStyle = objects[i].color; // selet ball colour
-                    }
-
-                    c.fill(); // the circle
-
-                    if (b.Z == CONFETTI_ID) {
-                        // draw the letter using html
-                        // emoji! works on most modern devices but not all
-                        //c.fillStyle = "white"; // txt color
-                        c.fillText(String.fromCodePoint(0x1F600 + (i % 69/*56*/)), b.R * 1.5, 0, 0 - b.R * 0.75, 0 - b.R * 0.75);
-                    } else {
-                        // draw the letter using bitmap font
-                        customFontFillText([b.Z], b.R * 1.5, 0, 0 - b.R * 0.75, 0 - b.R * 0.75);
-                    }
-                }
-                else { // no mass? must be the ground
-                    c.fillStyle = "rgba(80,60,40,1)";
-                    c.fill(); // the ground
-                }
-                c.restore();
-                // ^---- end draw
-            } // j
-
-
-            if (pinataSmashed) {
-                customFontFillText(['Click the letter ' + targetLetter], 32, 24, 80, 32);
-            } else {
-                // let's draw an actual pinata here
-                var wobblex = 180+Math.cos(performance.now()/1000)*60;
-                var wobbley = 100-Math.cos(performance.now()/500)*15;
-                // first the string
-                c.beginPath();
-                c.moveTo(320,0);
-                c.lineTo(wobblex+120,wobbley+108);
-                c.strokeStyle = "rgba(80,80,80,1)";
-                c.lineWidth = 4;
-                c.stroke();
-                // now the pinata itself
-                c.drawImage(pinataImage,wobblex,wobbley);
-                // and the instructions
-                customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
-            }
-
-            //drawBackButton(); // FIXME
-
-        }, // function declaration
-            9 // framerate in ms
-        ); // setInterval
-
-    }
-
     // vars:
     // a: canvas
     // b: c1
@@ -393,6 +397,7 @@ var pinataGame = new function () {
     // x: jT
     // b.bgColor="#333";
 
+    // a class constructor
     function Circle(C, R = Math.random() * CANDY_START_RADIUS + CANDY_MIN_SIZE, M = CANDY_MASS, forcedString) {
         var newCircle = {
             C, // center
@@ -414,12 +419,6 @@ var pinataGame = new function () {
         };
         objects.push(newCircle);
         return newCircle;
-    }
-
-    this.drawTransitionText = function () {
-        customFontFillText(['Piñata Pop', symbolExclamationPointImage], 80, 42, 100, 50);
-        customFontFillText(['Click the right letter'], 32, 24, 80, 250);
-        customFontFillText(['as fast as you can', symbolExclamationPointImage], 32, 24, 80, 290);
     }
 
 }(); // create new pinataGame object immediately
