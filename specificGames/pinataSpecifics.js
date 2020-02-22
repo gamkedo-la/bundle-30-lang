@@ -24,7 +24,7 @@ var pinataGame = new function () {
     // special case: candies with a "space" as the letter are considered particles of confetti
     const CONFETTI_COUNT = 20; // currently it messes up the physics
     const CONFETTI_RADIUS = 10; // starting size
-    const CONFETTI_MASS = 100; // the higher the number, the LESS it weighs! FIXME 
+    const CONFETTI_MASS = 100; // the higher the number, the LESS it weighs! FIXME
     const CONFETTI_SHRINKSPEED = 0.975; // % each frame
     const CONFETTI_ID = " ";
 
@@ -55,13 +55,13 @@ var pinataGame = new function () {
 
     // called by the game state machine
     this.draw = function() {
-        
+      this.drawRainbow();
     }
 
     function boom(x, y, wasCorrect) {
 
         if (wasCorrect) {
-            
+
             //pinataSmashed = false; // reset!!!!!!!! fixme: or do we like spam
 
             /*
@@ -170,20 +170,24 @@ var pinataGame = new function () {
     }
 
     // rainbow generator
-    var size = 16;
-    var rainbow = new Array(size);
-    for (var i = 0; i < size; i++) {
-        var red = sin_to_hex(i, 0 * Math.PI * 2 / 3); // 0   deg
-        var blue = sin_to_hex(i, 1 * Math.PI * 2 / 3); // 120 deg
-        var green = sin_to_hex(i, 2 * Math.PI * 2 / 3); // 240 deg
-        rainbow[i] = "#" + red + green + blue;
+    this.drawRainbow = function()
+    {
+      var size = 16;
+      var rainbow = new Array(size);
+      for (var i = 0; i < size; i++) {
+          var red = sin_to_hex(i, 0 * Math.PI * 2 / 3); // 0   deg
+          var blue = sin_to_hex(i, 1 * Math.PI * 2 / 3); // 120 deg
+          var green = sin_to_hex(i, 2 * Math.PI * 2 / 3); // 240 deg
+          rainbow[i] = "#" + red + green + blue;
+      }
+      function sin_to_hex(i, phase) {
+          var sin = Math.sin(Math.PI / size * 2 * i + phase);
+          var int = Math.floor(sin * 127) + 128;
+          var hex = int.toString(16);
+          return hex.length === 1 ? "0" + hex : hex;
+      }
     }
-    function sin_to_hex(i, phase) {
-        var sin = Math.sin(Math.PI / size * 2 * i + phase);
-        var int = Math.floor(sin * 127) + 128;
-        var hex = int.toString(16);
-        return hex.length === 1 ? "0" + hex : hex;
-    }
+
 
     this.init = function () {
         // console.log("Pinata game init!")
@@ -200,7 +204,7 @@ var pinataGame = new function () {
         Circle(Vec2(320, 5700), 5000, 0); // floor!
         Circle(Vec2(2840, 5000), 5000, 0); // r wall
         Circle(Vec2(-2200, 5000), 5000, 0); // l wall
-        
+
         // wait for the first click
         //boom(a.width / 2, a.height / 2, true)// middle of screen
 
@@ -348,7 +352,7 @@ var pinataGame = new function () {
                 var wobblex = 180+Math.cos(performance.now()/1000)*60;
                 var wobbley = 100-Math.cos(performance.now()/500)*15;
                 // first the string
-                c.beginPath(); 
+                c.beginPath();
                 c.moveTo(320,0);
                 c.lineTo(wobblex+120,wobbley+108);
                 c.strokeStyle = "rgba(80,80,80,1)";
@@ -362,7 +366,7 @@ var pinataGame = new function () {
 
             //drawBackButton(); // FIXME
 
-        }, // function declaration 
+        }, // function declaration
             9 // framerate in ms
         ); // setInterval
 

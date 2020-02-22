@@ -44,38 +44,38 @@ function spawnALetterIfAppropriate()
   // NOTE: the game objects used below can sometimes be undefined
   // FIXME gracefully handle!!
   // if (typeof laneGame.isPlaying != 'function') return; etc??
-  
-    let randomNumber = Math.random()*10;
-  let name = undefined;
-  if (randomNumber < 5)
-  {
-    name = 'm';
-  } else {
-    name = 'n';
-  }
-  if ((birdGame && birdGame.isPlaying()) || (spaceShooterGame && spaceShooterGame.isPlaying()))
-  {
-    arrayOfAnswers.push({xCoordinate:640,yCoordinate:Math.random()*700, name:name, correctAnswer:false});
-  } else if (laneGame && laneGame.isPlaying())
-  {
-    let randomNumber2 = Math.random()*10;
-    let randomChoiceOf2XStartingPositions = undefined;
-    if (randomNumber2 < 5)
-    {
-      randomChoiceOf2XStartingPositions = 230;
-    } else {
-      randomChoiceOf2XStartingPositions = 380;
-    }
-    arrayOfAnswers.push({xCoordinate:randomChoiceOf2XStartingPositions,yCoordinate:-20, name:name, correctAnswer:false});
-  } else if (runnerGame && runnerGame.isPlaying()) {
-	  let coinToss = Math.random() < 0.5;
-	  arrayOfAnswers.push({
-		  name: name,
-		  correctAnswer: false,
-		  xCoordinate: gameCanvas.width,
-		  yCoordinate: coinToss ? RUNNERMAXJUMPHEIGHT + 40 : gameCanvas.height*0.75 // NOTE(Gonzalo): 16 is letter height guesstimate
-	  });
-  }
+
+  //   let randomNumber = Math.random()*10;
+  // let name = undefined;
+  // if (randomNumber < 5)
+  // {
+  //   name = 'm';
+  // } else {
+  //   name = 'n';
+  // }
+  // if ((birdGame && birdGame.isPlaying()) || (spaceShooterGame && spaceShooterGame.isPlaying()))
+  // {
+  //   arrayOfAnswers.push({xCoordinate:640,yCoordinate:Math.random()*700, name:name, correctAnswer:false});
+  // } else if (laneGame && laneGame.isPlaying())
+  // {
+  //   let randomNumber2 = Math.random()*10;
+  //   let randomChoiceOf2XStartingPositions = undefined;
+  //   if (randomNumber2 < 5)
+  //   {
+  //     randomChoiceOf2XStartingPositions = 230;
+  //   } else {
+  //     randomChoiceOf2XStartingPositions = 380;
+  //   }
+  //   arrayOfAnswers.push({xCoordinate:randomChoiceOf2XStartingPositions,yCoordinate:-20, name:name, correctAnswer:false});
+  // } else if (runnerGame && runnerGame.isPlaying()) {
+	//   let coinToss = Math.random() < 0.5;
+	//   arrayOfAnswers.push({
+	// 	  name: name,
+	// 	  correctAnswer: false,
+	// 	  xCoordinate: gameCanvas.width,
+	// 	  yCoordinate: coinToss ? RUNNERMAXJUMPHEIGHT + 40 : gameCanvas.height*0.75 // NOTE(Gonzalo): 16 is letter height guesstimate
+	//   });
+  // }
 
 }
 
