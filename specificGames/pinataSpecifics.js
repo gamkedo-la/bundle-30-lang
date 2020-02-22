@@ -1,33 +1,32 @@
 // Pinata minigame
-// work in progress - todo: expand variable names and insert into game
+// v2 - OOP-ized to fit game manager
 
-// physics code comes from this public domain work by XEM
+// physics code adapted from work by XEM 
 // https://github.com/xem/mini2Dphysics
 
 var playerShouldBePlayingPinata = false;
 
+// a global object that the game manager can access
 var pinataGame = new function () {
 
     // list of all known candies
     var objects = [];
-
+    // list of rgba colours
+    var rainbow;
     // game state: have we done the initial smash?
     var pinataSmashed = false;
-
     // how many poppable letter choices will fall out
     const CANDY_COUNT = 16;
     const CANDY_MIN_SIZE = 20;
     const CANDY_START_RADIUS = 40;
     const CANDY_SHRINK = -0.2;
     const CANDY_MASS = 1;
-
     // special case: candies with a "space" as the letter are considered particles of confetti
     const CONFETTI_COUNT = 20; // currently it messes up the physics
     const CONFETTI_RADIUS = 10; // starting size
     const CONFETTI_MASS = 100; // the higher the number, the LESS it weighs! FIXME
     const CONFETTI_SHRINKSPEED = 0.975; // % each frame
     const CONFETTI_ID = " ";
-
     // tiny functions to handle 2d vectors
     var Vec2 = (x, y) => ({ x, y });
     var length = (x) => dot(x, x) ** .5;
@@ -38,7 +37,6 @@ var pinataGame = new function () {
     var cross = (x, y) => x.x * y.y - x.y * y.x;
     var normalize = (x) => scale(x, 1 / (length(x) || 1));
     var rndInt = (minimum, maximum) => Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
-
     // which one we want to click
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var targetLetter = alphabet[rndInt(0, alphabet.length - 1)];
@@ -46,16 +44,55 @@ var pinataGame = new function () {
     // called by the game state machine
     this.initialize = function() {
         console.log("Pinata game initializing...");
+
+        generateRainbowColours();
+        // console.log("Pinata game init!")
+
+        var c = gameCanvasContext;
+        var a = gameCanvas;
+
+        if (currentBackgroundMusic) {
+            currentBackgroundMusic.pause();
+            currentBackgroundMusic = pinataBackgroundMusic;
+        }
+
+        // Init scene ground floor
+        Circle(Vec2(320, 5700), 5000, 0); // floor!
+        Circle(Vec2(2840, 5000), 5000, 0); // r wall
+        Circle(Vec2(-2200, 5000), 5000, 0); // l wall
+
+        // wait for the first click
+        //boom(a.width / 2, a.height / 2, true)// middle of screen
+
+        // TODO FIXME: replace with current global game manager mouse coords
+        document.addEventListener('click', pinataClick, false); 
+
     }
 
     // called by the game state machine
     this.update = function() {
-        // todo: move physics update here from below
+
+        if (levelIsTransitioning || !playerShouldBePlayingPinata) return;
+
     }
 
     // called by the game state machine
     this.draw = function() {
-      this.drawRainbow();
+      
+        if (levelIsTransitioning || !playerShouldBePlayingPinata) return;
+
+        // clear the screen
+        c.fillStyle = "rgba(150,220,255,1)";
+        c.fillRect(0, 0, a.width, a.height);
+
+        // draw a nice sky
+        for (i = 0; i < rainbow.length; i++) {
+            c.fillStyle = rainbow[i];
+            c.beginPath();
+            c.arc(320, 900 + i * 50, 1000, 0, 7);
+            c.fill();
+        }
+
     }
 
     function boom(x, y, wasCorrect) {
@@ -170,10 +207,11 @@ var pinataGame = new function () {
     }
 
     // rainbow generator
-    this.drawRainbow = function()
+    // does not draw it! fills an array with colours
+    function generateRainbowColours()
     {
       var size = 16;
-      var rainbow = new Array(size);
+      rainbow = new Array(size);
       for (var i = 0; i < size; i++) {
           var red = sin_to_hex(i, 0 * Math.PI * 2 / 3); // 0   deg
           var blue = sin_to_hex(i, 1 * Math.PI * 2 / 3); // 120 deg
@@ -190,45 +228,9 @@ var pinataGame = new function () {
 
 
     this.init = function () {
-        // console.log("Pinata game init!")
-
-        var c = gameCanvasContext;
-        var a = gameCanvas;
-
-        if (currentBackgroundMusic) {
-            currentBackgroundMusic.pause();
-            currentBackgroundMusic = pinataBackgroundMusic;
-        }
-
-        // Init scene ground floor
-        Circle(Vec2(320, 5700), 5000, 0); // floor!
-        Circle(Vec2(2840, 5000), 5000, 0); // r wall
-        Circle(Vec2(-2200, 5000), 5000, 0); // l wall
-
-        // wait for the first click
-        //boom(a.width / 2, a.height / 2, true)// middle of screen
-
-        // debug only: spawn new candy on mouseclick
-        // onclick = e => Circle(Vec2(e.pageX, e.pageY));
-
-        document.addEventListener('click', pinataClick, false);
 
         // temp animation loop - FIXME, make more elegant
         setInterval(e => {
-
-            if (levelIsTransitioning || !playerShouldBePlayingPinata) return;
-
-            //a.width ^= 0; // clear the screen hack
-            c.fillStyle = "rgba(150,220,255,1)"; // sky blue
-            c.fillRect(0, 0, a.width, a.height);
-
-            // draw a nice sky
-            for (i = 0; i < rainbow.length; i++) {
-                c.fillStyle = rainbow[i];
-                c.beginPath();
-                c.arc(320, 900 + i * 50, 1000, 0, 7);
-                c.fill();
-            }
 
 
             // iterate through all objects twice
