@@ -133,6 +133,8 @@ Where = pic of a location, When = pic of time, why = because)
 131. whose/hose
 132. whole/who
 133. head/had/hand
+134. ear/air
+135. small/smell/smail
 
 spelling - 
 1. was/saw
