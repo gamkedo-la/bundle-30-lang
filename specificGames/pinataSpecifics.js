@@ -1,7 +1,7 @@
 // Pinata minigame
 // v2 - OOP-ized to fit game manager
 
-// physics code adapted from work by XEM 
+// physics code adapted from work by XEM
 // https://github.com/xem/mini2Dphysics
 
 var playerShouldBePlayingPinata = false; // FIXME is this still used elsewhere?
@@ -14,6 +14,9 @@ var pinataGame = new function () {
     // private vars used internally by the pinata game
     //////////////////////////////////////////////////////
 
+    this.name = 'pinataGame';
+    this.c = undefined;
+    this.a = undefined;
     // list of all known candies
     var objects = [];
     // list of rgba colours
@@ -55,15 +58,15 @@ var pinataGame = new function () {
         customFontFillText(['Click the right letter'], 32, 24, 80, 250);
         customFontFillText(['as fast as you can', symbolExclamationPointImage], 32, 24, 80, 290);
     }
-    
+
     this.initialize = function() {
         console.log("Pinata game initializing...");
 
         generateRainbowColours();
         // console.log("Pinata game init!")
 
-        var c = gameCanvasContext;
-        var a = gameCanvas;
+        this.c = gameCanvasContext;
+        this.a = gameCanvas;
 
         if (currentBackgroundMusic) {
             currentBackgroundMusic.pause();
@@ -79,7 +82,7 @@ var pinataGame = new function () {
         //boom(a.width / 2, a.height / 2, true)// middle of screen
 
         // TODO FIXME: replace with current global game manager mouse coords
-        document.addEventListener('click', pinataClick, false); 
+        document.addEventListener('click', pinataClick, false);
 
     }
 
@@ -162,63 +165,61 @@ var pinataGame = new function () {
 
             }
     }
-
+  }
     // called by the game state machine
-    this.draw = function() {
-      
-        if (levelIsTransitioning || !playerShouldBePlayingPinata) return;
+  this.draw = function() {
 
         // clear the screen
-        c.fillStyle = "rgba(150,220,255,1)";
-        c.fillRect(0, 0, a.width, a.height);
+        this.c.fillStyle = "rgba(150,220,255,1)";
+        this.c.fillRect(0, 0, this.a.width, this.a.height);
 
         // draw a nice sky
         for (i = 0; i < rainbow.length; i++) {
-            c.fillStyle = rainbow[i];
-            c.beginPath();
-            c.arc(320, 900 + i * 50, 1000, 0, 7);
-            c.fill();
+            this.c.fillStyle = rainbow[i];
+            this.c.beginPath();
+            this.c.arc(320, 900 + i * 50, 1000, 0, 7);
+            this.c.fill();
         }
 
 
                 // Draw
-                c.save();
-                c.beginPath();
-                c.translate(b.C.x, b.C.y);
-                c.rotate(b.B);
-                c.arc(0, 0, b.R, 0, 7);
+                this.c.save();
+                this.c.beginPath();
+                this.c.translate(b.C.x, b.C.y);
+                this.c.rotate(b.B);
+                this.c.arc(0, 0, b.R, 0, 7);
                 //c.lineWidth = 3;
-                c.font = b.R * 1.9 + "px a";
-                c.textAlign = "center";
+                this.c.font = b.R * 1.9 + "px a";
+                this.c.textAlign = "center";
 
                 if (objects[i].M) { // does it have mass? then draw a candy
 
                     if (b.Z == targetLetter) {
                         // debug mode: easy to find flashing balls
-                        c.fillStyle = "rgba(" + rndInt(100, 255) + "," + rndInt(100, 255) + "," + rndInt(100, 255) + ",1)";
+                        this.c.fillStyle = "rgba(" + rndInt(100, 255) + "," + rndInt(100, 255) + "," + rndInt(100, 255) + ",1)";
                     } else {
-                        c.fillStyle = objects[i].color; // selet ball colour
+                        this.c.fillStyle = objects[i].color; // selet ball colour
                     }
 
-                    c.fill(); // the circle
+                    this.c.fill(); // the circle
 
                     if (b.Z == CONFETTI_ID) {
                         // draw the letter using html
                         // emoji! works on most modern devices but not all
                         //c.fillStyle = "white"; // txt color
-                        c.fillText(String.fromCodePoint(0x1F600 + (i % 69/*56*/)), b.R * 1.5, 0, 0 - b.R * 0.75, 0 - b.R * 0.75);
+                        this.c.fillText(String.fromCodePoint(0x1F600 + (i % 69/*56*/)), b.R * 1.5, 0, 0 - b.R * 0.75, 0 - b.R * 0.75);
                     } else {
                         // draw the letter using bitmap font
                         customFontFillText([b.Z], b.R * 1.5, 0, 0 - b.R * 0.75, 0 - b.R * 0.75);
                     }
                 }
                 else { // no mass? must be the ground
-                    c.fillStyle = "rgba(80,60,40,1)";
-                    c.fill(); // the ground
+                    this.c.fillStyle = "rgba(80,60,40,1)";
+                    this.c.fill(); // the ground
                 }
                 c.restore();
                 // ^---- end draw
-            } // j
+
 
 
             if (pinataSmashed) {
@@ -228,14 +229,14 @@ var pinataGame = new function () {
                 var wobblex = 180+Math.cos(performance.now()/1000)*60;
                 var wobbley = 100-Math.cos(performance.now()/500)*15;
                 // first the string
-                c.beginPath();
-                c.moveTo(320,0);
-                c.lineTo(wobblex+120,wobbley+108);
-                c.strokeStyle = "rgba(80,80,80,1)";
-                c.lineWidth = 4;
-                c.stroke();
+                this.c.beginPath();
+                this.c.moveTo(320,0);
+                this.c.lineTo(wobblex+120,wobbley+108);
+                this.c.strokeStyle = "rgba(80,80,80,1)";
+                this.c.lineWidth = 4;
+                this.c.stroke();
                 // now the pinata itself
-                c.drawImage(pinataImage,wobblex,wobbley);
+                this.c.drawImage(pinataImage,wobblex,wobbley);
                 // and the instructions
                 customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
             }
