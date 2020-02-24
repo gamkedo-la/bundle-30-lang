@@ -48,12 +48,6 @@ function AudioManager()
   }
 
 
-  //UI section
-  this.arrayOfUIButtonSounds = [];
-  this.arrayOfGeneralPositiveFeedbackSounds = [];
-  this.arrayOfGeneralNegativeFeedbackSounds = [];
-
-
   this.SFXBus = [];
 
   this.initializeSFXBus = function()
@@ -134,69 +128,40 @@ function AudioManager()
 
   this.arrayOfTransitionMusic = [];
   this.arrayOfTransitionMusic.push(this.transitionToLevelMusic1);
+
+  this.transitionToLevelMusic1.onended = function()
+  { fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
+    promptersManager.promptThePlayer();
+    levelIsTransitioning = false;
+    transitionIsFadingIn = false;
+    transitionIsFadingOut = false;
+    gameCanvasContext.globalAlpha = 1;
+
+    if (gameIsOnAServerAndCanUseWebAudioAPI /*&& currentBackgroundMusic.playbackState !== 'playing'*/)
+    {
+      if (currentBackgroundMusic) { // bugfix: skip if undefined
+          currentBackgroundMusic.start();
+      }
+    }
+    else
+    {
+      if (currentBackgroundMusic !== undefined)
+      {
+        currentBackgroundMusic.loop = true;
+        currentBackgroundMusic.addEventListener('timeupdate', function(){
+                        var buffer = 0.32;
+                        if(this.currentTime > this.duration - buffer){
+                          // console.log('hello loop point');
+                            this.currentTime = 0;
+                            this.play();
+                        }}, false);
+        currentBackgroundMusic.play();
+      }
+    }
+  };
 }
 
 let audioManager = new AudioManager();
-
-// transitionToLevelMusic1.onended = "correctLetterAudioTag.play()";
-// transitionToLevelMusic1.addEventListener("ended", playCorrectLetterAudioTag());
-transitionToLevelMusic1.onended = function()
-{ fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
-  promptersManager.promptThePlayer();
-  levelIsTransitioning = false;
-  transitionIsFadingIn = false;
-  transitionIsFadingOut = false;
-  gameCanvasContext.globalAlpha = 1;
-
-  if (gameIsOnAServerAndCanUseWebAudioAPI /*&& currentBackgroundMusic.playbackState !== 'playing'*/)
-  {
-    if (currentBackgroundMusic) { // bugfix: skip if undefined
-        currentBackgroundMusic.start();
-    }
-  }
-  else
-  {
-    if (currentBackgroundMusic !== undefined)
-    {
-      currentBackgroundMusic.loop = true;
-      currentBackgroundMusic.addEventListener('timeupdate', function(){
-                      var buffer = 0.32;
-                      if(this.currentTime > this.duration - buffer){
-                        // console.log('hello loop point');
-                          this.currentTime = 0;
-                          this.play();
-                      }}, false);
-      currentBackgroundMusic.play();
-    }
-  }
-};
-
-
-function populateMultisoundArrays()
-{
-  arrayOfUIButtonSounds.push(uiButtonSound1);
-  arrayOfUIButtonSounds.push(uiButtonSound2);
-  arrayOfUIButtonSounds.push(uiButtonSound3);
-  arrayOfUIButtonSounds.push(uiButtonSound4);
-
-  arrayOfGeneralNegativeFeedbackSounds.push(generalNegativeFeedbackSound1);
-  arrayOfGeneralNegativeFeedbackSounds.push(generalNegativeFeedbackSound2);
-  arrayOfGeneralNegativeFeedbackSounds.push(generalNegativeFeedbackSound3);
-  arrayOfGeneralNegativeFeedbackSounds.push(generalNegativeFeedbackSound4);
-
-  arrayOfGeneralPositiveFeedbackSounds.push(generalPositiveFeedbackSound1);
-  arrayOfGeneralPositiveFeedbackSounds.push(generalPositiveFeedbackSound2);
-  arrayOfGeneralPositiveFeedbackSounds.push(generalPositiveFeedbackSound3);
-  arrayOfGeneralPositiveFeedbackSounds.push(generalPositiveFeedbackSound4);
-}
-
-function playARandomSoundInAMultisoundArray(targetMultisoundArray)
-{
-  let range = targetMultisoundArray.length - 1;
-  let randomNumberInRange = Math.floor(Math.random() * (range - 1) + 1);
-  targetMultisoundArray[randomNumberInRange].play();
-}
-
 
 //Web Audio API section, for extra audio features when necessary or desired
 
