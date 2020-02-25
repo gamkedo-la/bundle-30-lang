@@ -5,33 +5,35 @@ let menPromptAndAnswer = {};
 let hePromptAndAnswer = {};
 let shePromptAndAnswer = {};
 
-let womanVersusWomenPairGrouping = [];
-let manVersusMenPairGrouping = [];
-let heVersusShePairGrouping = [];
+let womanVersusWomenPairGrouping = {};
+let manVersusMenPairGrouping = {};
+let heVersusShePairGrouping = {};
 
 function initializePromptAndAnswerObjects()
 {
-  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings = [];
-  womanVersusWomenPairGrouping = [];
-  manVersusMenPairGrouping = [];
-  heVersusShePairGrouping = [];
+  console.log('initialize prompt and answer objects bing called');
 
-  womanPromptAndAnswer = new PromptAndAnswerClass('woman', 'woman', womanImage, womanAudio);
-  womenPromptAndAnswer = new PromptAndAnswerClass('women', 'women', womenImage, womenAudio);
-  womanVersusWomenPairGrouping.push(womanPromptAndAnswer);
-  womanVersusWomenPairGrouping.push(womenPromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings = [];
+  womanVersusWomenPairGrouping = {name: 'woman vs women', arrayOfObjects: []};
+  manVersusMenPairGrouping = {name: 'man vs men', arrayOfObjects: []};
+  heVersusShePairGrouping = {name: 'he vs she', arrayOfObjects: []};
+
+  womanPromptAndAnswer = new PromptAndAnswerClass('woman', 'woman', womanImage, audioManager.womanAudio);
+  womenPromptAndAnswer = new PromptAndAnswerClass('women', 'women', womenImage, audioManager.womenAudio);
+  womanVersusWomenPairGrouping.arrayOfObjects.push(womanPromptAndAnswer);
+  womanVersusWomenPairGrouping.arrayOfObjects.push(womenPromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(womanVersusWomenPairGrouping);
 
-  manPromptAndAnswer = new PromptAndAnswerClass('man', 'man', manImage, manAudio);
-  menPromptAndAnswer = new PromptAndAnswerClass("men", "men", menImage, menAudio);
-  manVersusMenPairGrouping.push(manPromptAndAnswer);
-  manVersusMenPairGrouping.push(menPromptAndAnswer);
+  manPromptAndAnswer = new PromptAndAnswerClass('man', 'man', manImage, audioManager.manAudio);
+  menPromptAndAnswer = new PromptAndAnswerClass("men", "men", menImage, audioManager.menAudio);
+  manVersusMenPairGrouping.arrayOfObjects.push(manPromptAndAnswer);
+  manVersusMenPairGrouping.arrayOfObjects.push(menPromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(manVersusMenPairGrouping);
 
-  hePromptAndAnswer = new PromptAndAnswerClass('he', 'he', heImage, heAudio);
-  shePromptAndAnswer = new PromptAndAnswerClass('she', 'she', sheImage, sheAudio);
-  heVersusShePairGrouping.push(hePromptAndAnswer);
-  heVersusShePairGrouping.push(shePromptAndAnswer);
+  hePromptAndAnswer = new PromptAndAnswerClass('he', 'he', heImage, audioManager.heAudio);
+  shePromptAndAnswer = new PromptAndAnswerClass('she', 'she', sheImage, audioManager.sheAudio);
+  heVersusShePairGrouping.arrayOfObjects.push(hePromptAndAnswer);
+  heVersusShePairGrouping.arrayOfObjects.push(shePromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(heVersusShePairGrouping);
 }
 
@@ -73,11 +75,19 @@ function PromptsAndAnswersManager()
   this.arrayOfLogicalPromptAnswerGroupings = [];
 
   this.currentLogicalPromptAndAnswerGroup = undefined;
+
   this.pickARandomLogicalPromptAnswerGroup = function()
   {
+    // for (let arrayOfLogicalPromptAnswerGroupingsIndex = 0; arrayOfLogicalPromptAnswerGroupingsIndex < promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.length; arrayOfLogicalPromptAnswerGroupingsIndex)
+    // {
+    //   console.log('promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings[arrayOfLogicalPromptAnswerGroupingsIndex].name: ' + promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings[arrayOfLogicalPromptAnswerGroupingsIndex].name);
+    // }
+
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
-
+    console.log('this.currentLogicalPromptAndAnswerGroup: ' + this.currentLogicalPromptAndAnswerGroup.name);
+    console.log('this.currentLogicalPromptAndAnswerGroup: ' + this.currentLogicalPromptAndAnswerGroup.arrayOfObjects[0].name);
+    console.log('this.currentLogicalPromptAndAnswerGroup: ' + this.currentLogicalPromptAndAnswerGroup.arrayOfObjects[1].name);
   }
 
   this.correctTargetPromptAndAnswerPairing = undefined;
@@ -172,7 +182,7 @@ function PromptsAndAnswersManager()
 
     let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editedPromptAndAnswerGroup.length - 1);
     this.incorrectTargetPromptAndAnswerPairing = this.editedPromptAndAnswerGroup[randomIndexForEditedPromptAndAnswerGroup];
-    //console.log("this.incorrectTargetPromptAndAnswerPairing: " + this.incorrectTargetPromptAndAnswerPairing.name);
+    console.log("this.incorrectTargetPromptAndAnswerPairing: " + this.incorrectTargetPromptAndAnswerPairing.name);
   }
 
 

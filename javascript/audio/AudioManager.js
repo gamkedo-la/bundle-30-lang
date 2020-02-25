@@ -1,6 +1,9 @@
 function AudioManager()
 {
 
+  this.multisoundPlayer = new MultisoundPlayer();
+  this.busManager = new BusManager();
+
   this.createHTMLDocumentAudioTags = function()
   {
     //prompts and answers section
@@ -33,53 +36,6 @@ function AudioManager()
     this.titleScreenMusic = document.createElement("AUDIO");
     this.runnerBackgroundMusic = document.createElement("AUDIO");
     this.pinataBackgroundMusic = document.createElement("AUDIO");
-  }
-
-  this.promptsAndAnswersBus = [];
-
-  this.initializePromptsAndAnswersBus = function()
-  {
-    this.promptsAndAnswersBus.push(this.womanAudio);
-    this.promptsAndAnswersBus.push(this.womenAudio);
-    this.promptsAndAnswersBus.push(this.menAudio);
-    this.promptsAndAnswersBus.push(this.manAudio);
-    this.promptsAndAnswersBus.push(this.heAudio);
-    this.promptsAndAnswersBus.push(this.sheAudio);
-  }
-
-
-  this.SFXBus = [];
-
-  this.initializeSFXBus = function()
-  {
-    //UI
-    this.SFXBus.push(this.uiButtonSound1);
-    this.SFXBus.push(this.uiButtonSound2);
-    this.SFXBus.push(this.uiButtonSound3);
-    this.SFXBus.push(this.uiButtonSound4);
-
-    //correct and incorrect answer feedback sounds
-    this.SFXBus.push(this.generalPositiveFeedbackSound1);
-    this.SFXBus.push(this.generalPositiveFeedbackSound2);
-    this.SFXBus.push(this.generalPositiveFeedbackSound3);
-    this.SFXBus.push(this.generalPositiveFeedbackSound4);
-
-    this.SFXBus.push(this.generalNegativeFeedbackSound1);
-    this.SFXBus.push(this.generalNegativeFeedbackSound2);
-    this.SFXBus.push(this.generalNegativeFeedbackSound3);
-    this.SFXBus.push(this.generalNegativeFeedbackSound4);
-  }
-
-  this.currentBackgroundMusic = undefined;
-
-  this.backgroundMusicBus = [];
-
-  this.initializeArrayOfBackgroundMusicTracks = function()
-  {
-    this.backgroundMusicBus.push(this.runnerBackgroundMusic);
-    this.backgroundMusicBus.push(this.pinataBackgroundMusic);
-    this.backgroundMusicBus.push(this.transitionToLevelMusic1);
-    this.backgroundMusicBus.push(this.titleScreenMusic);
   }
 
   this.setSourcesForAudioObjects = function()
@@ -117,48 +73,55 @@ function AudioManager()
       this.pinataBackgroundMusic.volume = 0.2;
   }
 
-  this.masterBus = [];
-
-  this.initializeMasterBus = function()
-  {
-    this.masterBus.push(this.promptsAndAnswersBus);
-    this.masterBus.push(this.SFXBus);
-    this.masterBus.push(this.backgroundMusicBus);
-  }
+  this.currentBackgroundMusic = undefined;
 
   this.arrayOfTransitionMusic = [];
   this.arrayOfTransitionMusic.push(this.transitionToLevelMusic1);
 
-  this.transitionToLevelMusic1.onended = function()
-  { fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
-    promptersManager.promptThePlayer();
-    levelIsTransitioning = false;
-    transitionIsFadingIn = false;
-    transitionIsFadingOut = false;
-    gameCanvasContext.globalAlpha = 1;
+  this.defineOnendedFunctionOfTransitionToLevel1Music = function()
+  {
+    this.transitionToLevelMusic1.onended = function()
+    {
+      fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
+      promptersManager.promptThePlayer();
+      gameCanvasContext.globalAlpha = 1;
 
-    if (gameIsOnAServerAndCanUseWebAudioAPI /*&& currentBackgroundMusic.playbackState !== 'playing'*/)
-    {
-      if (currentBackgroundMusic) { // bugfix: skip if undefined
-          currentBackgroundMusic.start();
-      }
-    }
-    else
-    {
-      if (currentBackgroundMusic !== undefined)
+      if (gameIsOnAServerAndCanUseWebAudioAPI /*&& currentBackgroundMusic.playbackState !== 'playing'*/)
       {
-        currentBackgroundMusic.loop = true;
-        currentBackgroundMusic.addEventListener('timeupdate', function(){
-                        var buffer = 0.32;
-                        if(this.currentTime > this.duration - buffer){
-                          // console.log('hello loop point');
-                            this.currentTime = 0;
-                            this.play();
-                        }}, false);
-        currentBackgroundMusic.play();
+        if (audioManager.currentBackgroundMusic) { // bugfix: skip if undefined
+            audioManager.currentBackgroundMusic.start();
+        }
+      }
+      else
+      {
+        console.log('inside else of onended function of transition music');
+        console.log('this: ' + this);
+        if (audioManager.currentBackgroundMusic !== undefined)
+        {
+          audioManager.currentBackgroundMusic.loop = true;
+          audioManager.currentBackgroundMusic.addEventListener('timeupdate', function(){
+                          var buffer = 0.32;
+                          if(audioManager.currentBackgroundMusic.currentTime > audioManager.currentBackgroundMusic.duration - buffer){
+                            // console.log('hello loop point');
+                              audioManager.currentBackgroundMusic.currentTime = 0;
+                              audioManager.currentBackgroundMusic.play();
+                          }}, false);
+          audioManager.currentBackgroundMusic.play();
+          console.log('not on a server, standard HTML5 audio tag should be playing');
+        }
       }
     }
-  };
+  }
+
+  this.initialize = function()
+  {
+    this.createHTMLDocumentAudioTags();
+    this.setSourcesForAudioObjects();
+    this.busManager.initializeBuses();
+    this.multisoundPlayer.populateMultisoundArrays();
+    this.defineOnendedFunctionOfTransitionToLevel1Music();
+  }
+
 }
 
 let audioManager = new AudioManager();

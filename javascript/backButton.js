@@ -31,15 +31,15 @@ function BackButton()
           playerShouldBePlayingPinata = false;
           arrayOfAnswers = [];
           promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-          playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
+          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           if (gameIsOnAServerAndCanUseWebAudioAPI)
           {
             backgroundMusicBufferSource.stop();
           } else
           {
-              currentBackgroundMusic.pause();
-              currentBackgroundMusic = titleScreenMusic;
-              currentBackgroundMusic.play();
+              audioManager.currentBackgroundMusic.pause();
+              audioManager.currentBackgroundMusic = audioManager.titleScreenMusic;
+              audioManager.currentBackgroundMusic.play();
           }
         }
   }

@@ -195,8 +195,8 @@ function snakeGameClass()
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
             amountCorrect++;
-            playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
-            initializePromptAndAnswerObjects();
+            audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
+            this.initializePromptAndAnswerObjects();
             this.shuffleAndResetPromptsAndAnswers();
             this.loadPromptsManager();
             this.promptThePlayer();
@@ -210,8 +210,8 @@ function snakeGameClass()
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
           amountIncorrect++;
-          playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
-          initializePromptAndAnswerObjects();
+          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
+          this.initializePromptAndAnswerObjects();
           this.shuffleAndResetPromptsAndAnswers();
           this.loadPromptsManager();
           this.promptThePlayer();
@@ -231,8 +231,8 @@ function snakeGameClass()
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
             amountCorrect++;
-            playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
-            initializePromptAndAnswerObjects();
+            audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
+            this.initializePromptAndAnswerObjects();
             this.shuffleAndResetPromptsAndAnswers();
             this.loadPromptsManager();
             this.promptThePlayer();
@@ -246,8 +246,8 @@ function snakeGameClass()
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
           amountIncorrect++;
-          playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
-          initializePromptAndAnswerObjects();
+          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
+          this.initializePromptAndAnswerObjects();
           this.shuffleAndResetPromptsAndAnswers();
           this.loadPromptsManager();
           this.promptThePlayer();
@@ -267,8 +267,8 @@ function snakeGameClass()
             promptersManager.currentPrompter.currentWidth = 150;
             promptersManager.currentPrompter.currentHeight = 150;
             amountCorrect++;
-            playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
-            initializePromptAndAnswerObjects();
+            audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
+            this.initializePromptAndAnswerObjects();
             this.shuffleAndResetPromptsAndAnswers();
             this.loadPromptsManager();
             this.promptThePlayer();
@@ -282,8 +282,8 @@ function snakeGameClass()
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
           amountIncorrect++;
-          playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
-          initializePromptAndAnswerObjects();
+          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
+          this.initializePromptAndAnswerObjects();
           this.shuffleAndResetPromptsAndAnswers();
           this.loadPromptsManager();
           this.promptThePlayer();
@@ -291,7 +291,6 @@ function snakeGameClass()
           this.snake.speedY = 0;
         }
         calculateAccuracy();
-
     }
   }
 

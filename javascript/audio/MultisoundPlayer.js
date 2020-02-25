@@ -30,5 +30,3 @@ function MultisoundPlayer()
     this.arrayOfGeneralPositiveFeedbackSounds.push(audioManager.generalPositiveFeedbackSound4);
   }
 }
-
-let multisoundPlayer = new MultisoundPlayer();

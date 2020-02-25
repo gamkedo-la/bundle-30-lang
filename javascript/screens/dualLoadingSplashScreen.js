@@ -10,16 +10,12 @@ function LoadingAndSplashScreen()
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
     transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
     console.log('game recognizes click after loading');
-    setSourcesForAudioObjects();
-    populateMultisoundArrays();
-    playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
-    //setInterval(updateGameFrame, frameRate);
-    playerShouldSeePleaseWaitForDownloading = false;
-
-
-    currentBackgroundMusic = titleScreenMusic;
-    currentBackgroundMusic.play();
-    currentBackgroundMusic.loop = true;
+    audioManager.initialize();
+    audioManager.multisoundPlayer.populateMultisoundArrays();
+    audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
+    audioManager.currentBackgroundMusic = audioManager.titleScreenMusic;
+    audioManager.currentBackgroundMusic.play();
+    audioManager.currentBackgroundMusic.loop = true;
     gameInterval.start();
 
     if (gameIsOnAServerAndCanUseWebAudioAPI)

@@ -77,7 +77,7 @@ function TitleScreenClass()
 
   this.handleGameCellClicks = function()
   {
-        
+
     //1st row
     //snake
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
@@ -180,13 +180,13 @@ function TitleScreenClass()
               backgroundMusicBufferSource.loopStart = 6.9;
               backgroundMusicBufferSource.loopEnd = 1;
           }
-        
+
       }
-      //flower     
+      //flower
       else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
              inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
              {
-             gameClassManager.loadCurrentGame(flowerGame);         
+             gameClassManager.loadCurrentGame(flowerGame);
              }
       // FIXME: this may trigger when you click the background and never started a game?
       // any game
@@ -195,11 +195,11 @@ function TitleScreenClass()
         {
           if (gameClassManager.currentGame) console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
           miniGameTransitioner.initialize();
-          currentBackgroundMusic.pause();
+          audioManager.currentBackgroundMusic.pause();
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
 
-          playARandomSoundInAMultisoundArray(arrayOfUIButtonSounds);
-          transitionToLevelMusic1.play();
+          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
+          audioManager.transitionToLevelMusic1.play();
           // gameCanvasContext.globalAlpha = 0.0;
         }
   }
