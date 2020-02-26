@@ -12,9 +12,17 @@ function birdGameClass() {
   const LEFT_ARROW_UP_SPEED = -4;
   const RIGHT_ARROW_UP_SPEED = 4;
 
+  this.frameRate = 1000/30;
+  this.letterSpawnInterval = 2000;
+
   this.initialize = function()
   {
+    console.log('this.frameRate:' + this.frameRate);
     gameInterval.reset(this.frameRate);
+    playerXCoordinate = BIRD_STARTING_X;
+    playerYCoordinate = BIRD_STARTING_Y;
+    playerXSpeed = 0;
+    letterSpeed = 3;
   }
 
   function applyGRAVITYToBird()
@@ -58,17 +66,6 @@ function birdGameClass() {
   {
 	   playerYCoordinate -= 50;
   }
-
-  this.frameRate = 1000/30;
-  this.letterSpawnInterval = 2000;
-
-  this.initialize = function()
-  {
-	playerXCoordinate = BIRD_STARTING_X;
-    playerYCoordinate = BIRD_STARTING_Y;
-    playerXSpeed = 0;
-    letterSpeed = 3;
-  };
 
   this.update = function()
   {
