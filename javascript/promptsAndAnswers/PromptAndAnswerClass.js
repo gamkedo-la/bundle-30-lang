@@ -37,8 +37,6 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
 
 function initializePromptAndAnswerObjects()
 {
-  console.log('initialize prompt and answer objects bing called');
-
   promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings = [];
   womanVersusWomenPairGrouping = {name: 'woman vs women', arrayOfObjects: []};
   manVersusMenPairGrouping = {name: 'man vs men', arrayOfObjects: []};

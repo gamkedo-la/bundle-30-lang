@@ -17,7 +17,6 @@ function birdGameClass() {
 
   this.initialize = function()
   {
-    console.log('this.frameRate:' + this.frameRate);
     gameInterval.reset(this.frameRate);
     playerXCoordinate = BIRD_STARTING_X;
     playerYCoordinate = BIRD_STARTING_Y;
@@ -43,13 +42,11 @@ function birdGameClass() {
   this.handleLeftArrowUp = function()
   {
     playerXSpeed = LEFT_ARROW_UP_SPEED;
-    console.log('inside handle left arrow up in bird game');
   }
 
   this.handleRightArrowUp = function()
   {
     playerXSpeed = RIGHT_ARROW_UP_SPEED;
-    console.log('inside handle left arrow up in bird game');
   }
 
   function moveBirdPlayerLeft()

@@ -94,8 +94,6 @@ function AudioManager()
       }
       else
       {
-        console.log('inside else of onended function of transition music');
-        console.log('this: ' + this);
         if (audioManager.currentBackgroundMusic !== undefined)
         {
           audioManager.currentBackgroundMusic.loop = true;

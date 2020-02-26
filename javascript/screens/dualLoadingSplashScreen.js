@@ -9,7 +9,6 @@ function LoadingAndSplashScreen()
   {
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
     transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
-    console.log('game recognizes click after loading');
     audioManager.initialize();
     audioManager.multisoundPlayer.populateMultisoundArrays();
     audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);

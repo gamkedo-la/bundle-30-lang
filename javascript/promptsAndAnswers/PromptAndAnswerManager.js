@@ -103,7 +103,6 @@ function PromptsAndAnswersManager()
 
     let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editedPromptAndAnswerGroup.arrayOfObjects.length - 1);
     this.incorrectTargetPromptAndAnswerPairing = this.editedPromptAndAnswerGroup.arrayOfObjects[randomIndexForEditedPromptAndAnswerGroup];
-    console.log("this.incorrectTargetPromptAndAnswerPairing: " + this.incorrectTargetPromptAndAnswerPairing.name);
   }
 
 
