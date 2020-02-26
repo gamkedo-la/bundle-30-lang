@@ -11,7 +11,6 @@ function FullGameStateMachineClass()
   };
 
   this.currentState = this.FULL_GAME_ENUMERABLE_STATES.loading;
-  console.log('initial state is loading the game');
 
   this.loadCurrentState = function(stateToLoad)
   {
