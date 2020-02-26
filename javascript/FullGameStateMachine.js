@@ -7,7 +7,7 @@ function FullGameStateMachineClass()
     transitionToTitleScreen: {status:'transitioning to title screen', associatedObject: transitionToTitleScreen},
     titleScreen: {status:'title screen', associatedObject: titleScreen},
     transitionToMiniGame: {status: 'transitioning to mini game', associatedObject: miniGameTransitioner},
-    playingMiniGame: {status: 'playing mini game', assoicatedObject: gameClassManager.currentGame}
+    playingMiniGame: {status: 'playing mini game', associatedObject: gameClassManager.currentGame}
   };
 
   this.currentState = this.FULL_GAME_ENUMERABLE_STATES.loading;

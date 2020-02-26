@@ -13,6 +13,7 @@ var runnerFloorLevel = 0;
 
 runnerGameClass.prototype = new GameClass();
 function runnerGameClass() {
+	this.name = 'runnerGame';
 	let arrayOfRunnerRunningImagesIndex = 0;
 	let runnerImagesIndexDirection = 1;
 	let currentRunnerRunningImage;

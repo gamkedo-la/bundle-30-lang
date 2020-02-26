@@ -11,6 +11,7 @@ var laneBackButtonRectangleColor = 'Fuchsia';
 var laneBackButtonTextColor = 'yellow';
 
 function laneGameClass() {
+	this.name = 'laneGame';
 	let arrayOfYellowCenterDashes = [-1, 0, 1, 2, 3, 4, 5, 6].map(function(dashIndex) {
 		return {x: 320 - 7.5, y: dashIndex*100};
 	});

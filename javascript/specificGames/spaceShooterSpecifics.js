@@ -6,6 +6,7 @@ var spaceShooterLetterSpawnRate = 2000;
 var spaceShooterLetterColor = 'red';
 
 function spaceShooterGameClass() {
+	this.name = 'spaceShooter';
 	let gameIsPlaying = false;
 	//shots section
 	var arrayOfBullets = [];

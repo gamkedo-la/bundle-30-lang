@@ -119,8 +119,10 @@ function InputManager()
       if (debugOn === true)
       {
         debugOn = false;
+        console.log('debug off');
       } else if (debugOn === false)
       {
+        console.log('debug on');
         debugOn = true;
       }
       break;

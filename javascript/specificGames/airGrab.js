@@ -3,6 +3,7 @@ var gameCanvasContext;
 var correctLetterAudioTag;
 var arrayOfAnswers = [];
 
+//TODO: when the game becomes a class, please give it a name property, like this.name = 'airGrab';
 window.onload = function()
 {
   gameCanvas = document.getElementById("gameCanvas");

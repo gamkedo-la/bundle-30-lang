@@ -4,6 +4,7 @@ var letterFrogCanvasContext;
 var letterFrogFrameRate = 1000/30;
 
 var letterFrogLetterColor = 'red';
+//TODO: when the game becomes a class, please give it a name property, like this.name = 'airGrab';
 
 function drawLetterFrogBackground()
 {

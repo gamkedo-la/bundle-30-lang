@@ -4,6 +4,7 @@ const birdLetterColor = 'BlueViolet';
 
 birdGameClass.prototype = new GameClass();
 function birdGameClass() {
+  this.name = 'birdGame';
   const BIRD_STARTING_X = 100;
   const BIRD_STARTING_Y = 100;
   const GRAVITY = 4;

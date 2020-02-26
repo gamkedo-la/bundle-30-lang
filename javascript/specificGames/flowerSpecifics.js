@@ -1,5 +1,5 @@
 //flowerSpecifics
-//Two seeds (WORDS or LETTERS) fall from a tree.  Catching the correct seed in the pot makes a flower, catching the wrong seed makes a weed. 
+//Two seeds (WORDS or LETTERS) fall from a tree.  Catching the correct seed in the pot makes a flower, catching the wrong seed makes a weed.
 
 const flowerBackButtonRectangleColor = 'yellow';
 const flowerBackButtonTextColor = 'red';
@@ -7,6 +7,7 @@ const flowerLetterColor = 'BlueViolet';
 
 flowerGameClass.prototype = new GameClass();
 function flowerGameClass(){
+    this.name = 'flowerGame';
     const SEED_ONE_STARTING_X = 100;
     const SEED_ONE_STARTING_Y = 400;
     const SEED_TWO_STARTING_X = 300;

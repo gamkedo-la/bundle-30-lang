@@ -89,6 +89,7 @@ function TitleScreenClass()
     else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
              inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
     {
+    console.log('inside check coordinates of birdGame mouse click');
     gameClassManager.loadCurrentGame(birdGame);
 
     }

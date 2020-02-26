@@ -5,6 +5,7 @@ const jumperBackButtonTextColor = 'green';
 jumperGameClass.prototype = new GameClass();
 function jumperGameClass()
 {
+  this.name = 'jumperGame';
   const MAX_PLATFORMS = 7;
   const jumperStartingXCoordinate = Math.random() * 640;
   const jumperStartingYCoordinate = (Math.floor(Math.random() * 7) * 100) + 30;

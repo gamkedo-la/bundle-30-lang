@@ -1,5 +1,6 @@
 function SpellingBeesGame()
 {
+  this.name = 'spellingBeesGame';
   this.canvas = undefined;
   this.canvasContext = undefined;
 

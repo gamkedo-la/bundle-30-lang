@@ -29,6 +29,8 @@ function drawSplashScreen()
   whackALetterCanvasContext.fillText('Loading Screen. Click to start.', 0,30);
 }
 
+//TODO: when the game becomes a class, please give it a name property, like this.name = 'airGrab';
+
 window.onload = function()
 {
   whackALetterCanvas = document.getElementById('whackALetterCanvas');

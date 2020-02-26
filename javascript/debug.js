@@ -2,10 +2,13 @@ var debugOn = false;
 
 function drawDebugStuff()
 {
-  if (playerShouldSeeTitleScreen)
+  console.log('inside draw debug stuff');
+  if (fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen)
   {
-    gameCanvasContext.fillText(inputManager.mouseCoordinates.mouseX + "," + inputManager.mouseCoordinates.mouseY,
-                                inputManager.mouseCoordinates.mouseX,inputManager.mouseCoordinates.mouseY);
+    console.log('inside current state check of drawDebugStuff()');
+    gameCanvasContext.fillStyle = 'black';
+    gameCanvasContext.fillText(inputManager.mouseCoordinates.x + "," + inputManager.mouseCoordinates.y,
+                                inputManager.mouseCoordinates.x,inputManager.mouseCoordinates.y);
   } else if (fullGameStateMachine.playingAGameState)
   {
     drawLetterCoordinates();

@@ -9,7 +9,7 @@ var playerShouldBePlayingPinata = false; // FIXME is this still used elsewhere?
 // a global the game manager can access
 ////////////////////////////////////////
 var pinataGame = new function () {
-
+    this.name = 'pinataGame';
     //////////////////////////////////////////////////////
     // private vars used internally by the pinata game
     //////////////////////////////////////////////////////

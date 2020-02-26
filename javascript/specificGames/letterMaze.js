@@ -5,6 +5,7 @@ var letterMazeCanvas2;
 var letterMazeCanvasContext2;
 
 var backgroundMusic = document.createElement("audio");
+//TODO: when the game becomes a class, please give it a name property, like this.name = 'airGrab';
 
 function drawBackground()
 {
