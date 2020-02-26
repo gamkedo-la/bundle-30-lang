@@ -1,10 +1,10 @@
 // Pinata minigame
-// v2 - OOP-ized to fit game manager
-
+// v3 - OOP-ized to fit game manager, refactored variable names
 // physics code adapted from work by XEM
 // https://github.com/xem/mini2Dphysics
 
 var playerShouldBePlayingPinata = false; // FIXME is this still used elsewhere?
+const PINATAFRAMERATE = 1000/60;
 
 // a global the game manager can access
 ////////////////////////////////////////
@@ -13,10 +13,6 @@ var pinataGame = new function () {
     //////////////////////////////////////////////////////
     // private vars used internally by the pinata game
     //////////////////////////////////////////////////////
-
-    this.name = 'pinataGame';
-    this.c = undefined;
-    this.a = undefined;
     // list of all known candies
     var objects = [];
     // list of rgba colours
@@ -48,6 +44,24 @@ var pinataGame = new function () {
     // which one we want to click
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var targetLetter = alphabet[rndInt(0, alphabet.length - 1)];
+    
+    // TODO refactor these private vars
+    var canv;// canvas
+    var nextOne;// c1
+    var ctx;// ctx2d
+    var otherOne;// c2
+    var direction;// vFrom1to2
+    var correction;// correctionAmount
+    var i,j,k;// loop vars
+    var radius1;// r1
+    var radius2;// r2
+    var relVel;// relativeVelocity
+    var velNorm;// rVelocityInNormal
+    var scalarVal;// p
+    var tScalar;// jN
+    var impulseNorm;// impulse
+    var tangentVal;// tangent
+    var power;// jT
 
     //////////////////////////////////////////////////////
     // public functions called by the game state machine
@@ -61,14 +75,14 @@ var pinataGame = new function () {
 
     this.initialize = function() {
         console.log("Pinata game initializing...");
-
+        
         generateRainbowColours();
         // console.log("Pinata game init!")
 
-        this.c = gameCanvasContext;
-        this.a = gameCanvas;
+        ctx = gameCanvasContext;
+        canv = gameCanvas;
 
-        if (currentBackgroundMusic) {
+        if (window.currentBackgroundMusic) { // exists?
             currentBackgroundMusic.pause();
             currentBackgroundMusic = pinataBackgroundMusic;
         }
@@ -80,6 +94,8 @@ var pinataGame = new function () {
 
         // wait for the first click
         //boom(a.width / 2, a.height / 2, true)// middle of screen
+        
+        playerShouldBePlayingPinata = true; // is there a better place for this? in the menu click maybe?
 
         // TODO FIXME: replace with current global game manager mouse coords
         document.addEventListener('click', pinataClick, false);
@@ -95,53 +111,53 @@ var pinataGame = new function () {
         for (i = objects.length; i--;) {
             for (j = objects.length; j-- > i;) {
                 //for(k = 15; k--;){
-                b = objects[i];
-                d = objects[j];
+                nextOne = objects[i];
+                otherOne = objects[j];
                 //if((b.M && b.C.y < 400) || (d.M && d.C.y < 400)){ // perf
 
                 // Test collision
-                e = sub(d.C, b.C);
-                if (length(e) < b.R + d.R) { // close enough?
-                    D = b.R + d.R - length(e), // depth
-                        N = normalize(e), // normal
-                        S = add(d.C, scale(normalize(scale(e, -1)), d.R)), // start
+                direction = sub(otherOne.C, nextOne.C);
+                if (length(direction) < nextOne.R + otherOne.R) { // close enough?
+                    D = nextOne.R + otherOne.R - length(direction), // depth
+                        N = normalize(direction), // normal
+                        S = add(otherOne.C, scale(normalize(scale(direction, -1)), otherOne.R)), // start
                         E = add(S, scale(N, D)) // end
 
                     // Resolve collision
-                    if (b.M || d.M) {
+                    if (nextOne.M || otherOne.M) {
                         //  correct positions
-                        h = scale(N, D / (b.M + d.M) * .8); // .8 = poscorrectionrate = percentage of separation to project objects
-                        b.C = add(b.C, scale(h, -b.M));
-                        d.C = add(d.C, scale(h, d.M));
+                        correction = scale(N, D / (nextOne.M + otherOne.M) * .8); // .8 = poscorrectionrate = percentage of separation to project objects
+                        nextOne.C = add(nextOne.C, scale(correction, -nextOne.M));
+                        otherOne.C = add(otherOne.C, scale(correction, otherOne.M));
                         //the direction of collisionInfo is always from b to d
                         //but the Mass is inversed, so start scale with d and end scale with b
-                        p = add(scale(S, d.M / (b.M + d.M)), scale(E, b.M / (b.M + d.M)));
+                        scalarVal = add(scale(S, otherOne.M / (nextOne.M + otherOne.M)), scale(E, nextOne.M / (nextOne.M + otherOne.M)));
                         //r is vector from center of object to collision point
-                        l = sub(p, b.C);
-                        m = sub(p, d.C);
+                        radius1 = sub(scalarVal, nextOne.C);
+                        radius2 = sub(scalarVal, otherOne.C);
                         //newV = V + D cross R
-                        n = sub(add(d.V, Vec2(-1 * d.D * m.y, d.D * m.x)), add(b.V, Vec2(-1 * b.D * l.y, b.D * l.x)));
+                        relVel = sub(add(otherOne.V, Vec2(-1 * otherOne.D * radius2.y, otherOne.D * radius2.x)), add(nextOne.V, Vec2(-1 * nextOne.D * radius1.y, nextOne.D * radius1.x)));
                         //if objects moving apart ignore
                         //if(dot(n, N) < 0){
                         // Calc t scalar
                         // the formula of s can be found in http://www.myphysicslab.com/collision.html
-                        s = (-1.5 * dot(n, N)) / (b.M + d.M + cross(l, N) ** 2 * b.M + cross(m, N) ** 2 * d.M);
+                        tScalar = (-1.5 * dot(relVel, N)) / (nextOne.M + otherOne.M + cross(radius1, N) ** 2 * nextOne.M + cross(radius2, N) ** 2 * otherOne.M);
                         //t is in direction of normal ( from b to d)
-                        t = scale(N, s);
+                        impulseNorm = scale(N, tScalar);
                         // t = F dt = m * ?v
                         // ?v = t / m
-                        b.V = sub(b.V, scale(t, b.M));
-                        d.V = add(d.V, scale(t, d.M));
-                        b.D -= cross(l, N) * s * b.M;
-                        d.D += cross(m, N) * s * d.M;
-                        u = scale(normalize(sub(n, scale(N, dot(n, N)))), -1);
-                        x = -1.5 * dot(n, u) * .5 / (b.M + d.M + cross(l, u) ** 2 * b.M + cross(m, u) ** 2 * d.M);
+                        nextOne.V = sub(nextOne.V, scale(impulseNorm, nextOne.M));
+                        otherOne.V = add(otherOne.V, scale(impulseNorm, otherOne.M));
+                        nextOne.D -= cross(radius1, N) * tScalar * nextOne.M;
+                        otherOne.D += cross(radius2, N) * tScalar * otherOne.M;
+                        tangentVal = scale(normalize(sub(relVel, scale(N, dot(relVel, N)))), -1);
+                        power = -1.5 * dot(relVel, tangentVal) * .5 / (nextOne.M + otherOne.M + cross(radius1, tangentVal) ** 2 * nextOne.M + cross(radius2, tangentVal) ** 2 * otherOne.M);
                         //t is from b to d (in opposite direction of velocity)
-                        t = scale(u, x);
-                        b.V = sub(b.V, scale(t, b.M));
-                        d.V = add(d.V, scale(t, d.M));
-                        b.D -= cross(l, u) * x * b.M;
-                        d.D += cross(m, u) * x * d.M;
+                        impulseNorm = scale(tangentVal, power);
+                        nextOne.V = sub(nextOne.V, scale(impulseNorm, nextOne.M));
+                        otherOne.V = add(otherOne.V, scale(impulseNorm, otherOne.M));
+                        nextOne.D -= cross(radius1, tangentVal) * power * nextOne.M;
+                        otherOne.D += cross(radius2, tangentVal) * power * otherOne.M;
                     } // collision resolved
                 } // close enough
                 // }
@@ -149,16 +165,16 @@ var pinataGame = new function () {
             if (pinataSmashed) {
 
                 // Update scene
-                b.V = add(b.V, scale(b.A, .01));
-                b.C = add(b.C, scale(b.V, .01));
-                b.D += b.E * .01;
-                b.B += b.M ? b.D * .01 : .001;
+                nextOne.V = add(nextOne.V, scale(nextOne.A, .05)); // A=gravity
+                nextOne.C = add(nextOne.C, scale(nextOne.V, .01));
+                nextOne.D += nextOne.E * .01;
+                nextOne.B += nextOne.M ? nextOne.D * .01 : .001;
 
                 // shrink!
-                if (b.M && b.R > CANDY_MIN_SIZE) b.R += CANDY_SHRINK;
+                if (nextOne.M && nextOne.R > CANDY_MIN_SIZE) nextOne.R += CANDY_SHRINK;
 
-                if (b.Z == CONFETTI_ID) {
-                    b.R *= CONFETTI_SHRINKSPEED;
+                if (nextOne.Z == CONFETTI_ID) {
+                    nextOne.R *= CONFETTI_SHRINKSPEED;
                 }
 
             } else { // if we have not yet pinataSmashed:
@@ -170,54 +186,56 @@ var pinataGame = new function () {
   this.draw = function() {
 
         // clear the screen
-        this.c.fillStyle = "rgba(150,220,255,1)";
-        this.c.fillRect(0, 0, this.a.width, this.a.height);
+        ctx.fillStyle = "rgba(150,220,255,1)";
+        ctx.fillRect(0, 0, canv.width, canv.height);
 
         // draw a nice sky
         for (i = 0; i < rainbow.length; i++) {
-            this.c.fillStyle = rainbow[i];
-            this.c.beginPath();
-            this.c.arc(320, 900 + i * 50, 1000, 0, 7);
-            this.c.fill();
+            ctx.fillStyle = rainbow[i];
+            ctx.beginPath();
+            ctx.arc(320, 900 + i * 50, 1000, 0, 7);
+            ctx.fill();
         }
 
+        for (i = objects.length; i--;) {
+            nextOne = objects[i];
 
                 // Draw
-                this.c.save();
-                this.c.beginPath();
-                this.c.translate(b.C.x, b.C.y);
-                this.c.rotate(b.B);
-                this.c.arc(0, 0, b.R, 0, 7);
+                ctx.save();
+                ctx.beginPath();
+                ctx.translate(nextOne.C.x, nextOne.C.y);
+                ctx.rotate(nextOne.B);
+                ctx.arc(0, 0, nextOne.R, 0, 7);
                 //c.lineWidth = 3;
-                this.c.font = b.R * 1.9 + "px a";
-                this.c.textAlign = "center";
+                ctx.font = nextOne.R * 1.9 + "px a";
+                ctx.textAlign = "center";
 
                 if (objects[i].M) { // does it have mass? then draw a candy
 
-                    if (b.Z == targetLetter) {
+                    if (nextOne.Z == targetLetter) {
                         // debug mode: easy to find flashing balls
-                        this.c.fillStyle = "rgba(" + rndInt(100, 255) + "," + rndInt(100, 255) + "," + rndInt(100, 255) + ",1)";
+                        ctx.fillStyle = "rgba(" + rndInt(100, 255) + "," + rndInt(100, 255) + "," + rndInt(100, 255) + ",1)";
                     } else {
-                        this.c.fillStyle = objects[i].color; // selet ball colour
+                        ctx.fillStyle = objects[i].color; // selet ball colour
                     }
 
-                    this.c.fill(); // the circle
+                    ctx.fill(); // the circle
 
-                    if (b.Z == CONFETTI_ID) {
+                    if (nextOne.Z == CONFETTI_ID) {
                         // draw the letter using html
                         // emoji! works on most modern devices but not all
                         //c.fillStyle = "white"; // txt color
-                        this.c.fillText(String.fromCodePoint(0x1F600 + (i % 69/*56*/)), b.R * 1.5, 0, 0 - b.R * 0.75, 0 - b.R * 0.75);
+                        ctx.fillText(String.fromCodePoint(0x1F600 + (i % 69/*56*/)), nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
                     } else {
                         // draw the letter using bitmap font
-                        customFontFillText([b.Z], b.R * 1.5, 0, 0 - b.R * 0.75, 0 - b.R * 0.75);
+                        customFontFillText([nextOne.Z], nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
                     }
                 }
                 else { // no mass? must be the ground
-                    this.c.fillStyle = "rgba(80,60,40,1)";
-                    this.c.fill(); // the ground
+                    ctx.fillStyle = "rgba(80,60,40,1)";
+                    ctx.fill(); // the ground
                 }
-                c.restore();
+                ctx.restore();
                 // ^---- end draw
 
 
@@ -229,19 +247,19 @@ var pinataGame = new function () {
                 var wobblex = 180+Math.cos(performance.now()/1000)*60;
                 var wobbley = 100-Math.cos(performance.now()/500)*15;
                 // first the string
-                this.c.beginPath();
-                this.c.moveTo(320,0);
-                this.c.lineTo(wobblex+120,wobbley+108);
-                this.c.strokeStyle = "rgba(80,80,80,1)";
-                this.c.lineWidth = 4;
-                this.c.stroke();
+                ctx.beginPath();
+                ctx.moveTo(320,0);
+                ctx.lineTo(wobblex+120,wobbley+108);
+                ctx.strokeStyle = "rgba(80,80,80,1)";
+                ctx.lineWidth = 4;
+                ctx.stroke();
                 // now the pinata itself
-                this.c.drawImage(pinataImage,wobblex,wobbley);
+                ctx.drawImage(pinataImage,wobblex,wobbley);
                 // and the instructions
                 customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
             }
-
-            //drawBackButton(); // FIXME
+        } // loop thru all
+        //drawBackButton(); // FIXME
     }
 
     //////////////////////////////////////////////////////
@@ -308,6 +326,9 @@ var pinataGame = new function () {
 
     function pinataClick(e) {
         // console.log("Pinata game click");
+
+        if (!playerShouldBePlayingPinata) return; // dont do anything if another game is running
+
         let correct = false;
 
         if (levelIsTransitioning) {
@@ -333,17 +354,17 @@ var pinataGame = new function () {
             let checkme = objects[i];
             let dist = sub(clickXY, checkme.C);
             if (length(dist) < checkme.R + 2) { // the +2 is a little extra leeway =)
-                console.log("You clicked letter " + checkme.Z + ' at a distance of ' + length(dist) + ' which is less than ' + checkme.R);
+                //console.log("You clicked letter " + checkme.Z + ' at a distance of ' + length(dist) + ' which is less than ' + checkme.R);
                 // FIXME - handle >1 positive on same frame etc
                 // did we succeed?
                 if (checkme.Z == targetLetter) {
-                    console.log("You clicked the right letter!");
-                    playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
+                    console.log("You clicked the right letter: " + checkme.Z);
+                    //depreciated playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
                     correct = true;
                 }
                 else {
                     console.log("You clicked the wrong answer!");
-                    playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
+                    //depreciated playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
                 }
             }
         }

@@ -164,7 +164,7 @@ function TitleScreenClass()
           inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
       {
         gameClassManager.loadCurrentGame(pinataGame);
-        gameInterval.reset(RUNNERFRAMERATE);
+        gameInterval.reset(PINATAFRAMERATE);
         letterSpawnInterval.reset(999999999999999); // never? FIXME
         //pinataGame.initialize(); // this is now called by the game nanager somewhere
         //runnerGame.startPlaying();
