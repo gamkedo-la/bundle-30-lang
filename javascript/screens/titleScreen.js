@@ -49,7 +49,7 @@ function TitleScreenClass()
     [{name: "Maze", fontSize: 27, spacing: 15, x: 37, y: 385}],//13
     [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
     [{name: "Flower", fontSize: 27, spacing: 15, x: 222, y: 385}],//15
-
+    //[{name: "Penalty", fontSize: 17, spacing: 12, x: 325, y: 375},{name: "Shootout", fontSize: 17, spacing: 12, x: 324, y: 405}],//16 // TODO: game is not implemented yet. Will remove comments when it is implemented.
   ];
 
   this.drawGameNames = function()
@@ -189,6 +189,12 @@ function TitleScreenClass()
              {
              gameClassManager.loadCurrentGame(flowerGame);
              }
+      // TODO: Not implemented yet. Will remove comments when implementation is finished.
+      // else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
+      //        inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
+      //        {
+      //        gameClassManager.loadCurrentGame(penaltyGame);
+      //        }
       // FIXME: this may trigger when you click the background and never started a game?
       // any game
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 620 &&
