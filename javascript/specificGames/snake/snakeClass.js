@@ -6,7 +6,8 @@ function SnakeClass()
     this.y = undefined;
     this.speedX = 0;
     this.speedY = 0;
-    this.dimension = 20;
+    this.width = 20;
+    this.height = 20;
 
     const MAX_TAIL_LENGTH = 5;
 
@@ -49,7 +50,7 @@ function SnakeClass()
       for(let snakeTailIndex = 0; snakeTailIndex < this.tail.pieces.length; snakeTailIndex++)
       {
         gameCanvasContext.fillRect(this.tail.pieces[snakeTailIndex].x,this.tail.pieces[snakeTailIndex].y,
-        this.dimension - 2,this.dimension - 2);
+        this.width - 2,this.height - 2);
       }
     },
 

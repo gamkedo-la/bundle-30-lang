@@ -182,10 +182,21 @@ function PromptsAndAnswersManager()
     )
   }
 
+  this.assignUsableAnswerCoordinates = function()
+  {
+    let randomXCoordinate = undefined;
+    let randomYCoordinate = undefined;
+    let currentPlayerCharacter = gameClassManager.currentGame.playerCharacter;
+    randomXCoordinate = getRandomIntWithExclusionaryRange(0,540, currentPlayerCharacter.x - 40,currentPlayerCharacter.x + 60);
+    randomYCoordinate = getRandomIntWithExclusionaryRange(0,600, currentPlayerCharacter.y - 40,currentPlayerCharacter.y + 60);
+    return {randomXCoordinate,randomYCoordinate};
+  }
+
   this.defineXAndYCoordinatesForTargets = function()
   {
-      let correctAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
-      let incorrectAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
+      let correctAnswerCoordinates = this.assignUsableAnswerCoordinates();
+      let incorrectAnswerCoordinates = this.assignUsableAnswerCoordinates();
+      let currentPlayerCharacter = gameClassManager.currentGame.playerCharacter;
 
       while(
         this.checkIfObjectsAreTooCloseToEachOther(
@@ -196,10 +207,10 @@ function PromptsAndAnswersManager()
 
         this.checkIfObjectsAreTooCloseToEachOther(
           incorrectAnswerCoordinates.randomXCoordinate,incorrectAnswerCoordinates.randomYCoordinate,
-          SNAKE_GAME.snake.x,SNAKE_GAME.snake.y, 60)
+          currentPlayerCharacter.x,currentPlayerCharacter.y, 60)
       )
       {
-        incorrectAnswerCoordinates = SNAKE_GAME.assignUsableAnswerCoordinates();
+        incorrectAnswerCoordinates = this.assignUsableAnswerCoordinates();
       }
 
       this.correctTargetPromptAndAnswerPairing.xCoordinate = correctAnswerCoordinates.randomXCoordinate;

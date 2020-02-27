@@ -43,7 +43,7 @@ function snakeGameClass()
     if (!promptersManager.shouldBeDrawingAPrompt)
     {
       this.playerCharacter.update();
-      this.handleCollisionsWithAnswers();
+      collisionsWithAnswersManager.handleCollisionsWithAnswers();
     }
   }
 
@@ -90,15 +90,6 @@ function snakeGameClass()
   }
 
   this.LETTER_COLOR = 'cyan';
-
-  this.assignUsableAnswerCoordinates = function()
-  {
-    let randomXCoordinate = undefined;
-    let randomYCoordinate = undefined;
-    randomXCoordinate = getRandomIntWithExclusionaryRange(0,540, this.playerCharacter.x - 40,this.playerCharacter.x + 60);
-    randomYCoordinate = getRandomIntWithExclusionaryRange(0,600, this.playerCharacter.y - 40,this.playerCharacter.y + 60);
-    return {randomXCoordinate,randomYCoordinate};
-  }
 
   this.handleLeftArrowDown = function()
   {

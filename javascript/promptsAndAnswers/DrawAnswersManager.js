@@ -10,16 +10,14 @@ function DrawAnswersManager()
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
       gameCanvasContext.fillStyle = this.getTextLetterColor();
-      // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
-      // {
-        // Get answers width
-        var correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
-          this.textAnswerFontStyle
-        )
+      
+      var correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
+        this.textAnswerFontStyle
+      )
 
-        var incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
-          this.textAnswerFontStyle
-        )
+      var incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
+        this.textAnswerFontStyle
+      )
 
         //draw correct answer
         // gameCanvasContext.font = '30px Helvetica';

@@ -18,9 +18,27 @@ function birdGameClass() {
 
   this.initialize = function()
   {
+    initializePromptAndAnswerObjects();
+    this.shuffleAndResetPromptsAndAnswers();
+    this.loadPromptsManager();
     gameInterval.reset(this.frameRate);
     this.playerCharacter = new BirdClass();
     this.playerCharacter.initialize();
+  }
+
+  this.shuffleAndResetPromptsAndAnswers = function()
+  {
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+  }
+
+  this.loadPromptsManager = function()
+  {
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+  }
+
+  this.promptThePlayer = function()
+  {
+    promptersManager.promptThePlayer();
   }
 
   this.applyGRAVITYToBird = function()
@@ -52,12 +70,14 @@ function birdGameClass() {
   {
     this.playerCharacter.move();
     this.playerCharacter.handleOffScreen();
+    collisionsWithAnswersManager.handleCollisionsWithAnswers();
   };
 
   this.draw = function()
   {
     this.drawBackground();
     this.playerCharacter.draw();
+    drawAnswersManager.draw();
   };
 
   this.drawBackground = function()
