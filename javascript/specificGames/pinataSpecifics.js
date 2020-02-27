@@ -44,7 +44,7 @@ var pinataGame = new function () {
     // which one we want to click
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var targetLetter = alphabet[rndInt(0, alphabet.length - 1)];
-    
+
     // TODO refactor these private vars
     var canv;// canvas
     var nextOne;// c1
@@ -75,7 +75,7 @@ var pinataGame = new function () {
 
     this.initialize = function() {
         console.log("Pinata game initializing...");
-        
+
         generateRainbowColours();
         // console.log("Pinata game init!")
 
@@ -94,7 +94,7 @@ var pinataGame = new function () {
 
         // wait for the first click
         //boom(a.width / 2, a.height / 2, true)// middle of screen
-        
+
         playerShouldBePlayingPinata = true; // is there a better place for this? in the menu click maybe?
 
         // TODO FIXME: replace with current global game manager mouse coords
@@ -371,13 +371,21 @@ var pinataGame = new function () {
 
         if (correct) {
             amountCorrect++;
+
+            audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
+            (audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
+
             boom(e.pageX, e.pageY, true)
         } else {
+
             amountIncorrect++;
+
+            audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
+            (audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
+
             boom(e.pageX, e.pageY, false)
+
         }
-
-
     }
 
     // rainbow generator

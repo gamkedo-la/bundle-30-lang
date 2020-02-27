@@ -17,6 +17,12 @@ function BackButton()
     }
   }
 
+  this.insideClickCoordinates = function()
+  {
+    return (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < gameCanvas.width &&
+        inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < gameCanvas.height)
+  }
+
   this.handleClick = function()
   {
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < gameCanvas.width &&
