@@ -9,14 +9,18 @@ flowerGameClass.prototype = new GameClass();
 function flowerGameClass(){
     this.name = 'flowerGame';
     const SEED_ONE_STARTING_X = 100;
-    const SEED_ONE_STARTING_Y = 400;
+    const SEED_ONE_STARTING_Y = 10;
     const SEED_TWO_STARTING_X = 300;
-    const SEED_TWO_STARTING_Y = 400;
+    const SEED_TWO_STARTING_Y = 10;
+    const SEED_WIDTH = 15;
+    const SEED_HEIGHT = 15;
 
     const PLAYER_START_X = 200;
-    const PLAYER_START_Y = 100;
+    const PLAYER_START_Y = 600;
+    const PLAYER_WIDTH = 20;
+    const PLAYER_HEIGHT = 20;
 
-    const GRAVITY = 4;
+    const GRAVITY = 2;
     const LEFT_ARROW_SPEED = -5;
     const RIGHT_ARROW_SPEED = 5;
 
@@ -56,12 +60,13 @@ function flowerGameClass(){
 
     this.update = function(){
         this.movePlayer();
-
+        handleCollisions();
     };
 
     this.movePlayer = function(){
         applyGRAVITY();
         playerXCoordiate += playerXSpeed;
+        handleBoundaries();
     };
 
     this.draw = function(){
@@ -77,16 +82,41 @@ function flowerGameClass(){
 
     this.drawPlayer = function(){
         gameCanvasContext.fillStyle = 'red';
-        gameCanvasContext.fillRect(playerXCoordiate, playerYCoordinate, 20, 20);
+        gameCanvasContext.fillRect(playerXCoordiate, playerYCoordinate, PLAYER_WIDTH, PLAYER_HEIGHT);
     }
 
     this.drawSeeds = function(){
         gameCanvasContext.fillStyle = 'brown';
-        gameCanvasContext.fillRect(seedOneXCoordinate, seedOneYCoordinate, 10, 10);
-        gameCanvasContext.fillRect(seedTwoXCoordinate, seedTwoYCoordinate, 10, 10);
-
+        gameCanvasContext.fillRect(seedOneXCoordinate, seedOneYCoordinate, SEED_WIDTH, SEED_HEIGHT);
+        gameCanvasContext.fillRect(seedTwoXCoordinate, seedTwoYCoordinate, SEED_WIDTH, SEED_HEIGHT);
     }
 
+    function handleCollisions() {
+        if ((playerXCoordiate + PLAYER_WIDTH / 2) >= (seedOneXCoordinate - SEED_WIDTH / 2) &&
+            (playerXCoordiate - PLAYER_WIDTH / 2) <= (seedOneXCoordinate + SEED_WIDTH / 2) &&
+            (playerYCoordinate + PLAYER_HEIGHT / 2) >= (seedOneYCoordinate - SEED_WIDTH / 2) &&
+            (playerYCoordinate - PLAYER_HEIGHT / 2) <= (seedOneYCoordinate + SEED_HEIGHT / 2)) {
+            console.log("collision detected");
+            seedOneYCoordinate = 200;
+        }
+
+        if ((playerXCoordiate + PLAYER_WIDTH / 2) >= (seedTwoXCoordinate - SEED_WIDTH / 2) &&
+        (playerXCoordiate - PLAYER_WIDTH / 2) <= (seedTwoXCoordinate + SEED_WIDTH / 2) &&
+        (playerYCoordinate + PLAYER_HEIGHT / 2) >= (seedTwoYCoordinate - SEED_WIDTH / 2) &&
+        (playerYCoordinate - PLAYER_HEIGHT / 2) <= (seedTwoYCoordinate + SEED_HEIGHT / 2)) {
+        console.log("collision detected");
+        seedTwoYCoordinate = 200;
+    }
+    }
+
+    function handleBoundaries() {
+        if (playerXCoordiate >= 600) {
+            playerXCoordiate = 600;
+        }
+        if (playerXCoordiate <= 30) {
+            playerXCoordiate = 30;
+        }
+    }
 }
 
 var flowerGame = new flowerGameClass();
