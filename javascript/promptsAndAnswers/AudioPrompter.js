@@ -34,8 +34,8 @@ function AudioPrompter()
 
   this.updatePromptImage = function()
   {
-    this.currentWidth += 20;
-    this.currentHeight += 20;
+    this.currentWidth += gameClassManager.currentGame.FRAME_RATE/5;
+    this.currentHeight += gameClassManager.currentGame.FRAME_RATE/5;
   }
 
   this.drawThePrompt = function()

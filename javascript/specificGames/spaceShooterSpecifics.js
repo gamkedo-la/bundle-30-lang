@@ -73,31 +73,31 @@ function spaceShooterGameClass() {
 
 	this.drawPlayer = function() {
 		gameCanvasContext.fillStyle = 'white';
-		gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 20,20);
+		gameCanvasContext.fillRect(gameClassManager.currentGame.playerCharacter.x,gameClassManager.currentGame.playerCharacter.y, 20,20);
 	};
 
 	this.movePlayer = function() {
 		if (inputManager.upArrowIsBeingHeld)
 		{
-			playerYCoordinate -= spaceShooterPlayerSpeed;
+			gameClassManager.currentGame.playerCharacter.y -= spaceShooterPlayerSpeed;
 		}
 		if (inputManager.rightArrowIsBeingHeld)
 		{
-			playerXCoordinate += spaceShooterPlayerSpeed;
+			gameClassManager.currentGame.playerCharacter.x += spaceShooterPlayerSpeed;
 		}
 		if (inputManager.downArrowIsBeingHeld)
 		{
-			playerYCoordinate += spaceShooterPlayerSpeed;
+			gameClassManager.currentGame.playerCharacter.y += spaceShooterPlayerSpeed;
 		}
 		if (inputManager.leftArrowIsBeingHeld)
 		{
-			playerXCoordinate -= spaceShooterPlayerSpeed;
+			gameClassManager.currentGame.playerCharacter.x -= spaceShooterPlayerSpeed;
 		}
 	};
 
 	this.handleSpaceBarDown = function()
 	{
-		arrayOfBullets.push({x:playerXCoordinate,y:playerYCoordinate});
+		arrayOfBullets.push({x:gameClassManager.currentGame.playerCharacter.x,y:gameClassManager.currentGame.playerCharacter.y});
 	}
 };
 

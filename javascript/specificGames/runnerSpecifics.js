@@ -34,8 +34,8 @@ function runnerGameClass() {
 
 	this.initialize = function() {
 		runnerFloorLevel = gameCanvas.height*0.75;
-		playerXCoordinate = (gameCanvas.width - RUNNERWIDTH)/2;
-		playerYCoordinate = runnerFloorLevel - RUNNERHEIGHT;
+		gameClassManager.currentGame.playerCharacter.x = (gameCanvas.width - RUNNERWIDTH)/2;
+		gameClassManager.currentGame.playerCharacter.y = runnerFloorLevel - RUNNERHEIGHT;
 		arrayOfAnswers.splice(0);
 		gameInterval.reset(RUNNERFRAMERATE);
 		letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
@@ -83,8 +83,8 @@ function runnerGameClass() {
 	this.draw = function() {
 		this.drawBackground();
 		gameCanvasContext.fillStyle = 'white';
-		let x = playerXCoordinate;
-		let y = playerYCoordinate;
+		let x = gameClassManager.currentGame.playerCharacter.x;
+		let y = gameClassManager.currentGame.playerCharacter.y;
 		let width = RUNNERWIDTH;
 		let height = RUNNERHEIGHT;
  		if (runnerStatus == 'slide') {
@@ -134,14 +134,14 @@ function runnerGameClass() {
 				runnerRun();
 			}
 			if (runnerIsJumping) {
-				playerYCoordinate -= playerSpeedY;
+				gameClassManager.currentGame.playerCharacter.y -= playerSpeedY;
 				playerSpeedY -= RUNNERGRAVITY;
-				if (playerYCoordinate + RUNNERHEIGHT > runnerFloorLevel) {
-					playerYCoordinate = runnerFloorLevel - RUNNERHEIGHT;
+				if (gameClassManager.currentGame.playerCharacter.y + RUNNERHEIGHT > runnerFloorLevel) {
+					gameClassManager.currentGame.playerCharacter.y = runnerFloorLevel - RUNNERHEIGHT;
 					runnerStatus = 'run';
 				}
-				if (playerYCoordinate < RUNNERMAXJUMPHEIGHT) {
-					playerYCoordinate = RUNNERMAXJUMPHEIGHT;
+				if (gameClassManager.currentGame.playerCharacter.y < RUNNERMAXJUMPHEIGHT) {
+					gameClassManager.currentGame.playerCharacter.y = RUNNERMAXJUMPHEIGHT;
 				}
 			}
 		}

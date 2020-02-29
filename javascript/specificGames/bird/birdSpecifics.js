@@ -13,17 +13,28 @@ function birdGameClass() {
   const LEFT_ARROW_UP_SPEED = -4;
   const RIGHT_ARROW_UP_SPEED = 4;
 
-  this.frameRate = 1000/30;
+  this.FRAME_RATE = 1000/30;
   this.letterSpawnInterval = 2000;
+
+  this.textAnswerFontSize = '30';
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+
+  this.answersXSpeed = 4;
 
   this.initialize = function()
   {
-    initializePromptAndAnswerObjects();
-    this.shuffleAndResetPromptsAndAnswers();
-    this.loadPromptsManager();
-    gameInterval.reset(this.frameRate);
+    gameInterval.reset(this.FRAME_RATE);
     this.playerCharacter = new BirdClass();
     this.playerCharacter.initialize();
+    this.initializePromptAndAnswerObjects();
+    this.shuffleAndResetPromptsAndAnswers();
+    this.assignLeftOrRightDirectionToAnswers();
+    this.loadPromptsManager();
+  }
+
+  this.initializePromptAndAnswerObjects = function()
+  {
+    initializePromptAndAnswerObjects();
   }
 
   this.shuffleAndResetPromptsAndAnswers = function()
@@ -68,16 +79,39 @@ function birdGameClass() {
 
   this.update = function()
   {
-    this.playerCharacter.move();
-    this.playerCharacter.handleOffScreen();
-    collisionsWithAnswersManager.handleCollisionsWithAnswers();
+    if (!promptersManager.shouldBeDrawingAPrompt)
+    {
+      this.playerCharacter.move();
+      this.playerCharacter.handleOffScreen();
+      this.moveAnswers();
+      this.handleAnswersOffScreen();
+      collisionsWithAnswersManager.handleCollisionsWithAnswers();
+    }
   };
+
+  this.assignLeftOrRightDirectionToAnswers = function()
+  {
+    let randomNumber = Math.random();
+    if (randomNumber < 0.5)
+    {
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xDirection = 1;
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xDirection = -1;
+    }
+    else
+    {
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xDirection = -1;
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xDirection = 1;
+    }
+    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xDirection: ' +
+                promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xDirection);
+  }
 
   this.draw = function()
   {
     this.drawBackground();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
+    this.drawPromptsWhenAppropriate();
   };
 
   this.drawBackground = function()
@@ -86,9 +120,21 @@ function birdGameClass() {
   	gameCanvasContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
   };
 
+  this.drawPromptsWhenAppropriate = function()
+  {
+    if (promptersManager.shouldBeDrawingAPrompt)
+    {
+      promptersManager.currentPrompter.updatePromptImage();
+      promptersManager.currentPrompter.drawThePrompt();
+    }
+  }
+
   this.handleSpaceBarDown = function()
   {
-	   this.playerCharacter.flapUp();
+    if (!promptersManager.shouldBeDrawingAPrompt)
+    {
+      this.playerCharacter.flapUp();
+    }
   };
 
   this.shuffleAndResetPromptsAndAnswers = function()
@@ -104,6 +150,32 @@ function birdGameClass() {
   this.promptThePlayer = function()
   {
     promptersManager.promptThePlayer();
+  }
+
+  this.moveAnswers = function()
+  {
+    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate += this.answersXSpeed*promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xDirection;
+    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate += this.answersXSpeed*promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xDirection;
+  }
+
+  this.handleAnswersOffScreen = function()
+  {
+    if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate > gameCanvas.width)
+    {
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = -10;
+    }
+    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate > gameCanvas.width)
+    {
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = -10;
+    }
+    if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate < 0)
+    {
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width;
+    }
+    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate < 0)
+    {
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width;
+    }
   }
 
 

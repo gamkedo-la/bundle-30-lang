@@ -182,22 +182,25 @@ function PromptsAndAnswersManager()
     )
   }
 
-  this.assignUsableAnswerCoordinates = function()
+  this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter = function()
   {
     let randomXCoordinate = undefined;
     let randomYCoordinate = undefined;
     let currentPlayerCharacter = gameClassManager.currentGame.playerCharacter;
-    randomXCoordinate = getRandomIntWithExclusionaryRange(0,540, currentPlayerCharacter.x - 40,currentPlayerCharacter.x + 60);
-    randomYCoordinate = getRandomIntWithExclusionaryRange(0,600, currentPlayerCharacter.y - 40,currentPlayerCharacter.y + 60);
+    //console.log('currentPlayerCharacter.name: ' + currentPlayerCharacter.name);
+    randomXCoordinate = getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100, currentPlayerCharacter.x - 40,currentPlayerCharacter.x + 60);
+    //console.log('randomXCoordinate: ' + randomXCoordinate);
+    randomYCoordinate = getRandomIntWithExclusionaryRange(0,gameCanvas.height - 100, currentPlayerCharacter.y - 40,currentPlayerCharacter.y + 60);
     return {randomXCoordinate,randomYCoordinate};
   }
 
   this.defineXAndYCoordinatesForTargets = function()
   {
-      let correctAnswerCoordinates = this.assignUsableAnswerCoordinates();
-      let incorrectAnswerCoordinates = this.assignUsableAnswerCoordinates();
+      let correctAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
+      let incorrectAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
       let currentPlayerCharacter = gameClassManager.currentGame.playerCharacter;
-
+      console.log('correctAnswerCoordinates.randomXCoordinate: ' + correctAnswerCoordinates.randomXCoordinate);
+      console.log('currentPlayerCharacter.name: ' + currentPlayerCharacter.name);
       while(
         this.checkIfObjectsAreTooCloseToEachOther(
           incorrectAnswerCoordinates.randomXCoordinate,incorrectAnswerCoordinates.randomYCoordinate,
@@ -210,9 +213,9 @@ function PromptsAndAnswersManager()
           currentPlayerCharacter.x,currentPlayerCharacter.y, 60)
       )
       {
-        incorrectAnswerCoordinates = this.assignUsableAnswerCoordinates();
+        incorrectAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
       }
-
+      console.log('correctAnswerCoordinates.randomXCoordinate: ' + correctAnswerCoordinates.randomXCoordinate);
       this.correctTargetPromptAndAnswerPairing.xCoordinate = correctAnswerCoordinates.randomXCoordinate;
       this.correctTargetPromptAndAnswerPairing.yCoordinate = correctAnswerCoordinates.randomYCoordinate;
 

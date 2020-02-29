@@ -5,12 +5,12 @@ function DrawAnswersManager()
     return gameClassManager.currentGame.LETTER_COLOR;
   }
 
-  this.drawAnswers = function()
+  this.draw = function()
   {
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
       gameCanvasContext.fillStyle = this.getTextLetterColor();
-      
+
       var correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
         this.textAnswerFontStyle
       )

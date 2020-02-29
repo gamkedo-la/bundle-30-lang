@@ -3,7 +3,7 @@ console.log('Bundle of 30 Language Games Starting...');
 
 window.onload = function()
 {
-  runnerGame = new runnerGameClass()
+  runnerGame = new runnerGameClass();
   loadImages();
 
   gameCanvas = document.getElementById("gameCanvas");
@@ -21,8 +21,6 @@ window.onload = function()
   document.addEventListener('click', inputManager.gameCanvasClick, false);
   gameCanvas.addEventListener('mousemove', inputManager.calculateMousePosition);
   gameInterval = new frameInterval(advanceGameFrame, gameClassManager.currentFrameRate);
-  letterSpawnInterval = new frameInterval(spawnALetterIfAppropriate, letterSpawnRate);
-  letterSpawnInterval.stop();//workaround for infinite spawning at the initialization
 
   backButton = new BackButton();
 }
@@ -50,7 +48,7 @@ function drawEverythingInTheGame()
 
   if (fullGameStateMachine.currentState.associatedObject) // can sometimes be undefined
     fullGameStateMachine.currentState.associatedObject.draw();
-    
+
   backButton.draw();
   drawStatsBackground();
   drawStats();

@@ -9,7 +9,7 @@ snakeGameClass.prototype = new GameClass();
 function snakeGameClass()
 {
   this.name = 'Snake Game';
-  const FRAME_RATE = 1000/10;
+  this.FRAME_RATE = 1000/10;
 
   this.playerCharacter = undefined;
   this.background = undefined;
@@ -19,7 +19,7 @@ function snakeGameClass()
   this.isTransitioningIn = false;
 
   this.textAnswerFontSize = 30;
-  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica'
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
   this.initialize = function()
   {
@@ -27,7 +27,7 @@ function snakeGameClass()
     this.playerCharacter = new SnakeClass();
     this.background = new SnakeBackground();
     this.playerCharacter.initialize();
-    gameInterval.reset(FRAME_RATE);
+    gameInterval.reset(this.FRAME_RATE);
     this.shuffleAndResetPromptsAndAnswers();
     this.loadPromptsManager();
   }
@@ -52,7 +52,7 @@ function snakeGameClass()
   {
     this.background.draw();
     this.playerCharacter.draw();
-    drawAnswersManager.drawAnswers();
+    drawAnswersManager.draw();
     this.drawPromptsWhenAppropriate();
   }
 

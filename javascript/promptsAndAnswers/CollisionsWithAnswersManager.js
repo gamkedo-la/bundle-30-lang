@@ -19,7 +19,7 @@ function CollisionsWithAnswersManager()
   this.handleCollisionsWithAnswers = function()
   {
     let currentPlayerCharacter = this.getCurrentPlayerCharacter();
-    console.log('currentPlayerCharacter.width: ' + currentPlayerCharacter.width);
+    
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
       // Get answers width

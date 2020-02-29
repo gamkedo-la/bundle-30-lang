@@ -17,13 +17,13 @@ function jumperGameClass()
 
   function jump()
   {
-	playerYCoordinate -= 5;
+	gameClassManager.currentGame.playerCharacter.y -= 5;
   }
 
   this.initialize = function()
   {
-	playerXCoordinate = jumperStartingXCoordinate;
-    playerYCoordinate = jumperStartingYCoordinate;
+	gameClassManager.currentGame.playerCharacter.x = jumperStartingXCoordinate;
+    gameClassManager.currentGame.playerCharacter.y = jumperStartingYCoordinate;
     gameInterval.reset(this.frameRate);
   };
 
@@ -40,7 +40,7 @@ function jumperGameClass()
 
   this.handleLeftArrowBeingHeld = function()
   {
-    playerXCoordinate -= 3;
+    gameClassManager.currentGame.playerCharacter.x -= 3;
   }
 
   this.handleRightArrowDown = function()
@@ -50,7 +50,7 @@ function jumperGameClass()
 
   this.handleRightArrowIsBeingHeld = function()
   {
-    playerXCoordinate += 3;
+    gameClassManager.currentGame.playerCharacter.x += 3;
   }
 
   this.handleSpaceBarDown = function()
@@ -60,30 +60,30 @@ function jumperGameClass()
 
   this.handlePlayerWrapping = function()
   {
-    if (playerXCoordinate < -10)//if the player goes off the left side of the screen
+    if (gameClassManager.currentGame.playerCharacter.x < -10)//if the player goes off the left side of the screen
     {
-      playerXCoordinate = 635;//put them on the right side
+      gameClassManager.currentGame.playerCharacter.x = 635;//put them on the right side
     }
 
-    if (playerXCoordinate > 635)//if the player goes off the right side of the screen
+    if (gameClassManager.currentGame.playerCharacter.x > 635)//if the player goes off the right side of the screen
     {
-      playerXCoordinate = -5;//put them on the left side of the screen
+      gameClassManager.currentGame.playerCharacter.x = -5;//put them on the left side of the screen
     }
   }
 
   this.movePlayer = function()
   {
 	if (!inputManager.upArrowIsBeingHeld &&
-		playerYCoordinate !== 30 && playerYCoordinate !== 130 &&
-		playerYCoordinate !== 230 && playerYCoordinate !== 330 && playerYCoordinate !== 430 &&
-		playerYCoordinate !== 530 && playerYCoordinate !== 630) //if not jumping and not contacting a platform
+		gameClassManager.currentGame.playerCharacter.y !== 30 && gameClassManager.currentGame.playerCharacter.y !== 130 &&
+		gameClassManager.currentGame.playerCharacter.y !== 230 && gameClassManager.currentGame.playerCharacter.y !== 330 && gameClassManager.currentGame.playerCharacter.y !== 430 &&
+		gameClassManager.currentGame.playerCharacter.y !== 530 && gameClassManager.currentGame.playerCharacter.y !== 630) //if not jumping and not contacting a platform
     {
-      playerYCoordinate += 5;//apply GRAVITY
+      gameClassManager.currentGame.playerCharacter.y += 5;//apply GRAVITY
     }
   };
 
   this.handleLeftArrowDown = function() {
-	playerXCoordinate -= 3;
+	gameClassManager.currentGame.playerCharacter.x -= 3;
   };
 
   this.handleUpArrowDown = function() {
@@ -91,15 +91,15 @@ function jumperGameClass()
   };
 
   this.handleRightArrowDown = function() {
-	playerXCoordinate += 3;
+	gameClassManager.currentGame.playerCharacter.x += 3;
   };
 
   this.handleDownArrowDown = function()
   {
-    playerYCoordinate += 100;
-    if (playerYCoordinate > 700)//if the player goes below the screen
+    gameClassManager.currentGame.playerCharacter.y += 100;
+    if (gameClassManager.currentGame.playerCharacter.y > 700)//if the player goes below the screen
     {
-      playerYCoordinate = 30;//put them at the top platform
+      gameClassManager.currentGame.playerCharacter.y = 30;//put them at the top platform
     }
   }
 
@@ -123,12 +123,12 @@ function jumperGameClass()
   this.drawPlayer = function()
   {
   	gameCanvasContext.fillStyle = 'white';
-  	gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 20,20);
+  	gameCanvasContext.fillRect(gameClassManager.currentGame.playerCharacter.x,gameClassManager.currentGame.playerCharacter.y, 20,20);
   };
 
   this.onSpaceBarKeyDown = function()
   {
-  	playerYCoordinate += -5;
+  	gameClassManager.currentGame.playerCharacter.y += -5;
   };
 }
 

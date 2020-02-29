@@ -47,7 +47,7 @@ function flowerGameClass(){
     this.initialize = function(){
         //initialize player
         playerXCoordiate = PLAYER_START_X;
-        playerYCoordinate = PLAYER_START_Y;
+        gameClassManager.currentGame.playerCharacter.y = PLAYER_START_Y;
         playerXSpeed = 0;
         letterSpeed = 3;
 
@@ -82,7 +82,7 @@ function flowerGameClass(){
 
     this.drawPlayer = function(){
         gameCanvasContext.fillStyle = 'red';
-        gameCanvasContext.fillRect(playerXCoordiate, playerYCoordinate, PLAYER_WIDTH, PLAYER_HEIGHT);
+        gameCanvasContext.fillRect(playerXCoordiate, gameClassManager.currentGame.playerCharacter.y, PLAYER_WIDTH, PLAYER_HEIGHT);
     }
 
     this.drawSeeds = function(){
@@ -94,16 +94,16 @@ function flowerGameClass(){
     function handleCollisions() {
         if ((playerXCoordiate + PLAYER_WIDTH / 2) >= (seedOneXCoordinate - SEED_WIDTH / 2) &&
             (playerXCoordiate - PLAYER_WIDTH / 2) <= (seedOneXCoordinate + SEED_WIDTH / 2) &&
-            (playerYCoordinate + PLAYER_HEIGHT / 2) >= (seedOneYCoordinate - SEED_WIDTH / 2) &&
-            (playerYCoordinate - PLAYER_HEIGHT / 2) <= (seedOneYCoordinate + SEED_HEIGHT / 2)) {
+            (gameClassManager.currentGame.playerCharacter.y + PLAYER_HEIGHT / 2) >= (seedOneYCoordinate - SEED_WIDTH / 2) &&
+            (gameClassManager.currentGame.playerCharacter.y - PLAYER_HEIGHT / 2) <= (seedOneYCoordinate + SEED_HEIGHT / 2)) {
             console.log("collision detected");
             seedOneYCoordinate = 200;
         }
 
         if ((playerXCoordiate + PLAYER_WIDTH / 2) >= (seedTwoXCoordinate - SEED_WIDTH / 2) &&
         (playerXCoordiate - PLAYER_WIDTH / 2) <= (seedTwoXCoordinate + SEED_WIDTH / 2) &&
-        (playerYCoordinate + PLAYER_HEIGHT / 2) >= (seedTwoYCoordinate - SEED_WIDTH / 2) &&
-        (playerYCoordinate - PLAYER_HEIGHT / 2) <= (seedTwoYCoordinate + SEED_HEIGHT / 2)) {
+        (gameClassManager.currentGame.playerCharacter.y + PLAYER_HEIGHT / 2) >= (seedTwoYCoordinate - SEED_WIDTH / 2) &&
+        (gameClassManager.currentGame.playerCharacter.y - PLAYER_HEIGHT / 2) <= (seedTwoYCoordinate + SEED_HEIGHT / 2)) {
         console.log("collision detected");
         seedTwoYCoordinate = 200;
     }

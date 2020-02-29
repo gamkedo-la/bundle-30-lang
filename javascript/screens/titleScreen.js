@@ -143,12 +143,10 @@ function TitleScreenClass()
   	else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
   			 inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
   	{
+      gameClassManager.loadCurrentGame(runnerGame);
   		gameInterval.reset(RUNNERFRAMERATE);
         letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
   		runnerGame.startPlaying();
-  		playerShouldSeeTitleScreen = false;
-  		fullGameStateMachine.playingAGameState = true;
-          levelIsTransitioning = true;
           if (gameIsOnAServerAndCanUseWebAudioAPI)
           {
               backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();

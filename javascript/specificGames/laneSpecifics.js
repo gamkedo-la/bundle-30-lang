@@ -21,8 +21,8 @@ function laneGameClass() {
 	this.frameRate = 1000/50;
 
 	this.initialize = function() {
-		playerXCoordinate = laneStartingX;
-		playerYCoordinate = laneStartingY;
+		gameClassManager.currentGame.playerCharacter.x = laneStartingX;
+		gameClassManager.currentGame.playerCharacter.y = laneStartingY;
 		letterSpeed = laneLetterSpeed;
 		gameInterval.reset(this.frameRate);
 	};
@@ -40,7 +40,7 @@ function laneGameClass() {
 	  drawLaneYellowCenterDashes();
 	  // draw player
 	  gameCanvasContext.fillStyle = 'blue';
-	  gameCanvasContext.fillRect(playerXCoordinate,playerYCoordinate, 30,60);
+	  gameCanvasContext.fillRect(gameClassManager.currentGame.playerCharacter.x,gameClassManager.currentGame.playerCharacter.y, 30,60);
 	}
 
 	function drawLaneGrass()
@@ -97,15 +97,15 @@ function laneGameClass() {
 
 	this.handleLeftArrowDown = function()
 	{
-		if (playerXCoordinate > 230)
-		playerXCoordinate = 230;
+		if (gameClassManager.currentGame.playerCharacter.x > 230)
+		gameClassManager.currentGame.playerCharacter.x = 230;
 	}
 
 	this.handleRightArrowDown = function()
 	{
-		if (playerXCoordinate !== 380)
+		if (gameClassManager.currentGame.playerCharacter.x !== 380)
 		{
-			playerXCoordinate = 380;
+			gameClassManager.currentGame.playerCharacter.x = 380;
 		}
 	}
 }

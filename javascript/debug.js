@@ -31,7 +31,7 @@ function drawPlayerCoordinates()
 {
   gameCanvasContext.fillStyle = 'black';
   gameCanvasContext.font = '27px Helvetica';
-  gameCanvasContext.fillText(playerXCoordinate + ',' + playerYCoordinate, playerXCoordinate,playerYCoordinate);
+  gameCanvasContext.fillText(gameClassManager.currentGame.playerCharacter.x + ',' + gameClassManager.currentGame.playerCharacter.y, gameClassManager.currentGame.playerCharacter.x,gameClassManager.currentGame.playerCharacter.y);
 }
 
 function drawLetterColliders()

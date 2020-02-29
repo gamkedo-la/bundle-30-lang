@@ -24,6 +24,8 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
 
   this.xCoordinate = undefined;
   this.yCoordinate = undefined;
+  this.xDirection = undefined;
+  this.xSpeed = undefined;
 
   this.width = undefined;
   this.height = undefined;
@@ -94,8 +96,8 @@ function handleCollisionsWithAnswers()
   {
     for (let answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
     {
-      if (playerXCoordinate > arrayOfAnswers[answerIndex].xCoordinate - 15 && playerXCoordinate < arrayOfAnswers[answerIndex].xCoordinate + 40
-        && playerYCoordinate > arrayOfAnswers[answerIndex].yCoordinate - 30 && playerYCoordinate < arrayOfAnswers[answerIndex].yCoordinate + 5)
+      if (gameClassManager.currentGame.playerCharacter.x > arrayOfAnswers[answerIndex].xCoordinate - 15 && gameClassManager.currentGame.playerCharacter.x < arrayOfAnswers[answerIndex].xCoordinate + 40
+        && gameClassManager.currentGame.playerCharacter.y > arrayOfAnswers[answerIndex].yCoordinate - 30 && gameClassManager.currentGame.playerCharacter.y < arrayOfAnswers[answerIndex].yCoordinate + 5)
         {
           if (arrayOfAnswers[answerIndex] === currentAnswer)
           {
@@ -116,8 +118,8 @@ function handleCollisionsWithAnswers()
   {
     for (let answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
     {
-      if (playerXCoordinate > arrayOfAnswers[answerIndex].xCoordinate - 15 && playerXCoordinate < arrayOfAnswers[answerIndex].xCoordinate + 40
-        && playerYCoordinate > arrayOfAnswers[answerIndex].yCoordinate - 30 && playerYCoordinate < arrayOfAnswers[answerIndex].yCoordinate + 5)
+      if (gameClassManager.currentGame.playerCharacter.x > arrayOfAnswers[answerIndex].xCoordinate - 15 && gameClassManager.currentGame.playerCharacter.x < arrayOfAnswers[answerIndex].xCoordinate + 40
+        && gameClassManager.currentGame.playerCharacter.y > arrayOfAnswers[answerIndex].yCoordinate - 30 && gameClassManager.currentGame.playerCharacter.y < arrayOfAnswers[answerIndex].yCoordinate + 5)
         {
           if (arrayOfAnswers[answerIndex].name === currentCorrectLetter)
           {
@@ -137,8 +139,8 @@ function handleCollisionsWithAnswers()
   {
     for (let answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
     {
-      if (arrayOfAnswers[answerIndex].yCoordinate - 5 > playerYCoordinate && arrayOfAnswers[answerIndex].yCoordinate - 5 < playerYCoordinate + 60 &&
-        arrayOfAnswers[answerIndex].xCoordinate === playerXCoordinate &&
+      if (arrayOfAnswers[answerIndex].yCoordinate - 5 > gameClassManager.currentGame.playerCharacter.y && arrayOfAnswers[answerIndex].yCoordinate - 5 < gameClassManager.currentGame.playerCharacter.y + 60 &&
+        arrayOfAnswers[answerIndex].xCoordinate === gameClassManager.currentGame.playerCharacter.x &&
         arrayOfAnswers[answerIndex].name === currentCorrectLetter)
       {
         amountCorrect++;
@@ -146,8 +148,8 @@ function handleCollisionsWithAnswers()
         calculateAccuracy();
         setOrResetCorrectLetter();
         arrayOfAnswers.splice(answerIndex,1);
-      } else if (arrayOfAnswers[answerIndex].yCoordinate - 5 > playerYCoordinate && arrayOfAnswers[answerIndex].yCoordinate - 5 < playerYCoordinate + 60 &&
-        arrayOfAnswers[answerIndex].xCoordinate === playerXCoordinate &&
+      } else if (arrayOfAnswers[answerIndex].yCoordinate - 5 > gameClassManager.currentGame.playerCharacter.y && arrayOfAnswers[answerIndex].yCoordinate - 5 < gameClassManager.currentGame.playerCharacter.y + 60 &&
+        arrayOfAnswers[answerIndex].xCoordinate === gameClassManager.currentGame.playerCharacter.x &&
         arrayOfAnswers[answerIndex].name !== currentCorrectLetter)
       {
         amountIncorrect++;
@@ -162,10 +164,10 @@ function handleCollisionsWithAnswers()
   {
     for (let answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
     {
-      if (playerYCoordinate + 20 > arrayOfAnswers[answerIndex].yCoordinate - 20 &&
-        playerYCoordinate < arrayOfAnswers[answerIndex].yCoordinate &&
-        playerXCoordinate + 20 > arrayOfAnswers[answerIndex].xCoordinate &&
-        playerXCoordinate < arrayOfAnswers[answerIndex].xCoordinate + 20 &&
+      if (gameClassManager.currentGame.playerCharacter.y + 20 > arrayOfAnswers[answerIndex].yCoordinate - 20 &&
+        gameClassManager.currentGame.playerCharacter.y < arrayOfAnswers[answerIndex].yCoordinate &&
+        gameClassManager.currentGame.playerCharacter.x + 20 > arrayOfAnswers[answerIndex].xCoordinate &&
+        gameClassManager.currentGame.playerCharacter.x < arrayOfAnswers[answerIndex].xCoordinate + 20 &&
         arrayOfAnswers[answerIndex].name === currentCorrectLetter)
       {
         amountCorrect++;
@@ -173,10 +175,10 @@ function handleCollisionsWithAnswers()
         calculateAccuracy();
         setOrResetCorrectLetter();
         initializeLettersForJumper();
-      } else if (playerYCoordinate + 20 > arrayOfAnswers[answerIndex].yCoordinate - 20 &&
-        playerYCoordinate < arrayOfAnswers[answerIndex].yCoordinate &&
-        playerXCoordinate + 20 > arrayOfAnswers[answerIndex].xCoordinate &&
-        playerXCoordinate < arrayOfAnswers[answerIndex].xCoordinate + 20 &&
+      } else if (gameClassManager.currentGame.playerCharacter.y + 20 > arrayOfAnswers[answerIndex].yCoordinate - 20 &&
+        gameClassManager.currentGame.playerCharacter.y < arrayOfAnswers[answerIndex].yCoordinate &&
+        gameClassManager.currentGame.playerCharacter.x + 20 > arrayOfAnswers[answerIndex].xCoordinate &&
+        gameClassManager.currentGame.playerCharacter.x < arrayOfAnswers[answerIndex].xCoordinate + 20 &&
         arrayOfAnswers[answerIndex].name !== currentCorrectLetter)
       {
         amountIncorrect++;
@@ -192,7 +194,7 @@ function handleCollisionsWithAnswers()
 		{
 			const letter = arrayOfAnswers[answerIndex];
 			const letterIsOnFloor = letter.yCoordinate == runnerFloorLevel;
-			const letterIsColliding = letter.xCoordinate <= playerXCoordinate && letter.xCoordinate >= playerXCoordinate - RUNNERWIDTH;
+			const letterIsColliding = letter.xCoordinate <= gameClassManager.currentGame.playerCharacter.x && letter.xCoordinate >= gameClassManager.currentGame.playerCharacter.x - RUNNERWIDTH;
 			const runnerIsStumbling = runnerStatus == 'stumble';
 			const runnerIsJumping = runnerStatus == 'jump';
 			const runnerIsRunning = runnerStatus == 'run';
