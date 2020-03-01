@@ -162,7 +162,7 @@ function TitleScreenClass()
       {
         gameClassManager.loadCurrentGame(pinataGame);
         gameInterval.reset(PINATAFRAMERATE);
-        letterSpawnInterval.reset(999999999999999); // never? FIXME
+        
         //pinataGame.initialize(); // this is now called by the game nanager somewhere
         //runnerGame.startPlaying();
   		playerShouldSeeTitleScreen = false;
