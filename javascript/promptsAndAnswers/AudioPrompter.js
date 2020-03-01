@@ -6,6 +6,7 @@ function AudioPrompter()
 
   this.draw = function()
   {
+    console.log('inside audio prompter draw function');
     gameCanvasContext.drawImage(this.image, gameCanvas.width/2 - this.image.width/2,gameCanvas.height/2 - this.image.height/2);
   }
 

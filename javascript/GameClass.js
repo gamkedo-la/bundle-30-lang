@@ -28,8 +28,6 @@ function GameClassManager()
     console.log('this.currentGame: ' + this.currentGame);
     this.currentGame.initialize();
     fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame.associatedObject = gameToLoad;
-    console.log('fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame.associatedObject.name: ' +
-                 fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame.associatedObject.name)
   }
 
   this.currentFrameRate = 1000/30;

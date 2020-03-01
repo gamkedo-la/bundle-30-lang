@@ -89,7 +89,6 @@ function TitleScreenClass()
     else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
              inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
     {
-    console.log('inside check coordinates of birdGame mouse click');
     gameClassManager.loadCurrentGame(birdGame);
 
     }
@@ -194,7 +193,8 @@ function TitleScreenClass()
       //        gameClassManager.loadCurrentGame(penaltyGame);
       //        }
       // FIXME: this may trigger when you click the background and never started a game?
-      // any game
+
+    // any game
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 620 &&
         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 650)
         {
@@ -202,7 +202,7 @@ function TitleScreenClass()
           miniGameTransitioner.initialize();
           audioManager.currentBackgroundMusic.pause();
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
-
+          collisionsWithAnswersManager.initialize();
           audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           audioManager.transitionToLevelMusic1.play();
           // gameCanvasContext.globalAlpha = 0.0;

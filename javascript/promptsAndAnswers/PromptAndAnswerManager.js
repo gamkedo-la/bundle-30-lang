@@ -196,6 +196,8 @@ function PromptsAndAnswersManager()
 
   this.defineXAndYCoordinatesForTargets = function()
   {
+    if (gameClassManager.currentGame === SNAKE_GAME || gameClassManager.currentGame === birdGame)
+    {
       let correctAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
       let incorrectAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
       let currentPlayerCharacter = gameClassManager.currentGame.playerCharacter;
@@ -218,6 +220,25 @@ function PromptsAndAnswersManager()
 
       this.incorrectTargetPromptAndAnswerPairing.xCoordinate = incorrectAnswerCoordinates.randomXCoordinate;
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = incorrectAnswerCoordinates.randomYCoordinate;
+    }
+    else if (gameClassManager.currentGame === laneGame)
+    {
+      let randomNumber = Math.random();
+      if (randomNumber < 0.5)
+      {
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = laneGame.carLeftLanePosition - 50;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = laneGame.carRightLanePosition - 50;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = -10;
+      }
+      else
+      {
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = laneGame.carRightLanePosition - 50;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = laneGame.carLeftLanePosition - 50;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = -10;
+      }
+    }
   }
 
   this.setOrResetPromptsAndAnswers = function()

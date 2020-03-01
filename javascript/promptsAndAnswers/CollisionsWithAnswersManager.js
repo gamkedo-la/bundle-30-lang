@@ -1,5 +1,11 @@
 function CollisionsWithAnswersManager()
 {
+  let currentPlayerCharacter = undefined;
+
+  this.initialize = function()
+  {
+    currentPlayerCharacter = this.getCurrentPlayerCharacter();
+  }
 
   this.getCurrentPlayerCharacter = function()
   {
@@ -16,125 +22,124 @@ function CollisionsWithAnswersManager()
     return gameClassManager.currentGame.textAnswerFontStyle;
   }
 
-  this.handleCollisionsWithAnswers = function()
+  this.insideBoxColliderForCorrectStringAnswer = function(correctAnswerWidth,incorrectAnswerWidth)
   {
-    let currentPlayerCharacter = this.getCurrentPlayerCharacter();
-    
+    return (currentPlayerCharacter.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 - currentPlayerCharacter.width &&
+        currentPlayerCharacter.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + correctAnswerWidth + 5 + currentPlayerCharacter.width &&
+        currentPlayerCharacter.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - currentPlayerCharacter.height &&
+        currentPlayerCharacter.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 10 + currentPlayerCharacter.height)
+  }
+
+  this.insideBoxColliderForIncorrectStringAnswer = function(correctAnswerWidth,incorrectAnswerWidth)
+  {
+    return (currentPlayerCharacter.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 - currentPlayerCharacter.width &&
+        currentPlayerCharacter.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + incorrectAnswerWidth + 5 + currentPlayerCharacter.width &&
+        currentPlayerCharacter.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - currentPlayerCharacter.height &&
+        currentPlayerCharacter.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 10 + currentPlayerCharacter.height)
+  }
+
+  this.insideBoxColliderForCorrectImageAnswers = function()
+  {
+    return (currentPlayerCharacter.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
+        currentPlayerCharacter.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+        currentPlayerCharacter.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
+        currentPlayerCharacter.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
+  }
+
+  this.insideBoxColliderForIncorrectImageAnswers = function()
+  {
+    return (currentPlayerCharacter.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
+        currentPlayerCharacter.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+        currentPlayerCharacter.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
+        currentPlayerCharacter.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100)
+  }
+
+  this.insideBoxColliderForCorrectAudioAnswer = function()
+  {
+    return (currentPlayerCharacter.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
+        currentPlayerCharacter.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+        currentPlayerCharacter.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
+        currentPlayerCharacter.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
+  }
+
+  this.insideBoxColliderForIncorrectAudioAnswer = function()
+  {
+    return (currentPlayerCharacter.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
+        currentPlayerCharacter.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+        currentPlayerCharacter.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
+        currentPlayerCharacter.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100)
+  }
+
+  this.resetAnswers = function()
+  {
+    promptersManager.currentPrompter.currentWidth = 150;
+    promptersManager.currentPrompter.currentHeight = 150;
+      audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
+      gameClassManager.currentGame.initializePromptAndAnswerObjects();
+      gameClassManager.currentGame.shuffleAndResetPromptsAndAnswers();
+      gameClassManager.currentGame.loadPromptsManager();
+      gameClassManager.currentGame.promptThePlayer();
+      currentPlayerCharacter.speedX = 0;
+      currentPlayerCharacter.speedY = 0;
+  }
+
+  let correctAnswerWidth = undefined;
+  let incorrectAnswerWidth = undefined;
+  let textAnswerFontSixe = undefined;
+
+  this.handleCollisionsWithAnswers = function(correctAnswerWidth, incorrectAnswerWidth)
+  {
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
       // Get answers width
-      var correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
+       correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
         this.getTextAnswerFontStyle()
-      )
+      );
 
-      var incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
+       incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
         this.getTextAnswerFontStyle()
-      )
+      );
 
-      var textAnswerFontSize = this.getTextAnswerFontSize();
+      textAnswerFontSize = this.getTextAnswerFontSize();
 
-      if (currentPlayerCharacter.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 - currentPlayerCharacter.width &&
-          currentPlayerCharacter.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + correctAnswerWidth + 5 + currentPlayerCharacter.width &&
-          currentPlayerCharacter.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - currentPlayerCharacter.height &&
-          currentPlayerCharacter.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 10 + currentPlayerCharacter.height)
+      if (this.insideBoxColliderForCorrectStringAnswer())
         {
-          promptersManager.currentPrompter.currentWidth = 150;
-          promptersManager.currentPrompter.currentHeight = 150;
-            amountCorrect++;
-            audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
-            gameClassManager.currentGame.initializePromptAndAnswerObjects();
-            gameClassManager.currentGame.shuffleAndResetPromptsAndAnswers();
-            gameClassManager.currentGame.loadPromptsManager();
-            gameClassManager.currentGame.promptThePlayer();
-            currentPlayerCharacter.speedX = 0;
-            currentPlayerCharacter.speedY = 0;
-        } else if (currentPlayerCharacter.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 - currentPlayerCharacter.width &&
-            currentPlayerCharacter.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + incorrectAnswerWidth + 5 + currentPlayerCharacter.width &&
-            currentPlayerCharacter.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - currentPlayerCharacter.height &&
-            currentPlayerCharacter.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 10 + currentPlayerCharacter.height)
+          this.resetAnswers();
+          amountCorrect++;
+        }
+      else if (this.insideBoxColliderForIncorrectStringAnswer())
         {
-          promptersManager.currentPrompter.currentWidth = 150;
-          promptersManager.currentPrompter.currentHeight = 150;
+          this.resetAnswers();
           amountIncorrect++;
-          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
-          gameClassManager.currentGame.initializePromptAndAnswerObjects();
-          gameClassManager.currentGame.shuffleAndResetPromptsAndAnswers();
-          gameClassManager.currentGame.loadPromptsManager();
-          gameClassManager.currentGame.promptThePlayer();
-          currentPlayerCharacter.speedX = 0;
-          currentPlayerCharacter.speedY = 0;
         }
         calculateAccuracy();
-
     }
     else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
     {
-      if (currentPlayerCharacter.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-          currentPlayerCharacter.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
-          currentPlayerCharacter.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
-          currentPlayerCharacter.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
+      if (this.insideBoxColliderForCorrectImageAnswers())
         {
-          promptersManager.currentPrompter.currentWidth = 150;
-          promptersManager.currentPrompter.currentHeight = 150;
-            amountCorrect++;
-            audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
-            gameClassManager.currentGame.initializePromptAndAnswerObjects();
-            gameClassManager.currentGame.shuffleAndResetPromptsAndAnswers();
-            gameClassManager.currentGame.loadPromptsManager();
-            gameClassManager.currentGame.promptThePlayer();
-            currentPlayerCharacter.speedX = 0;
-            currentPlayerCharacter.speedY = 0;
-        } else if ((currentPlayerCharacter.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-            currentPlayerCharacter.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
-            currentPlayerCharacter.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
-            currentPlayerCharacter.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100))
+          this.resetAnswers();
+          amountCorrect++;
+        }
+      else if (this.insideBoxColliderForIncorrectImageAnswers())
         {
-          promptersManager.currentPrompter.currentWidth = 150;
-          promptersManager.currentPrompter.currentHeight = 150;
+          this.resetAnswers();
           amountIncorrect++;
-          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
-          gameClassManager.currentGame.initializePromptAndAnswerObjects();
-          gameClassManager.currentGame.shuffleAndResetPromptsAndAnswers();
-          gameClassManager.currentGame.loadPromptsManager();
-          gameClassManager.currentGame.promptThePlayer();
-          currentPlayerCharacter.speedX = 0;
-          currentPlayerCharacter.speedY = 0;
         }
         calculateAccuracy();
 
     }
     else if (promptsAndAnswersManager.currentAnswerDataType === 'AUDIO')
     {
-      if (currentPlayerCharacter.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-          currentPlayerCharacter.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
-          currentPlayerCharacter.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
-          currentPlayerCharacter.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
+      if (this.insideBoxColliderForCorrectAudioAnswer())
         {
-            promptersManager.currentPrompter.currentWidth = 150;
-            promptersManager.currentPrompter.currentHeight = 150;
+            this.resetAnswers();
             amountCorrect++;
-            audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
-            gameClassManager.currentGame.initializePromptAndAnswerObjects();
-            gameClassManager.currentGame.shuffleAndResetPromptsAndAnswers();
-            gameClassManager.currentGame.loadPromptsManager();
-            gameClassManager.currentGame.promptThePlayer();
-            currentPlayerCharacter.speedX = 0;
-            currentPlayerCharacter.speedY = 0;
-        } else if ((currentPlayerCharacter.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-            currentPlayerCharacter.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
-            currentPlayerCharacter.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
-            currentPlayerCharacter.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100))
+        }
+      else if (this.insideBoxColliderForIncorrectAudioAnswer())
         {
-          promptersManager.currentPrompter.currentWidth = 150;
-          promptersManager.currentPrompter.currentHeight = 150;
+          this.resetAnswers();
           amountIncorrect++;
-          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
-          gameClassManager.currentGame.initializePromptAndAnswerObjects();
-          gameClassManager.currentGame.shuffleAndResetPromptsAndAnswers();
-          gameClassManager.currentGame.loadPromptsManager();
-          gameClassManager.currentGame.promptThePlayer();
-          currentPlayerCharacter.speedX = 0;
-          currentPlayerCharacter.speedY = 0;
         }
         calculateAccuracy();
     }

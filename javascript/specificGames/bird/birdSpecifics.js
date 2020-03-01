@@ -152,11 +152,6 @@ function birdGameClass() {
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
   }
 
-  this.promptThePlayer = function()
-  {
-    promptersManager.promptThePlayer();
-  }
-
   this.moveAnswers = function()
   {
     promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate += this.answersXSpeed*promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xDirection;
@@ -174,7 +169,6 @@ function birdGameClass() {
       promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width;
     }
 
-
     if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate > gameCanvas.width)
     {
       promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = -10;
@@ -183,10 +177,7 @@ function birdGameClass() {
     {
       promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width;
     }
-
   }
-
-
 }
 
 var birdGame = new birdGameClass();

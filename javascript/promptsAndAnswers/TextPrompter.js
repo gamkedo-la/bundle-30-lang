@@ -19,6 +19,7 @@ function TextPrompter()
 
   this.drawThePrompt = function()
   {
+    console.log('inside text prompter drawing function');
     gameCanvasContext.fillStyle = this.backgroundColor;
     gameCanvasContext.fillRect(gameCanvas.width/2 - this.currentWidth/2,gameCanvas.height/2 - this.currentHeight/2,
                                this.currentWidth,this.currentHeight);
