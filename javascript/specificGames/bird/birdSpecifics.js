@@ -79,15 +79,21 @@ function birdGameClass() {
 
   this.update = function()
   {
-    if (!promptersManager.shouldBeDrawingAPrompt)
+    if (!promptersManager.shouldBeDrawingAPrompt &&
+        fullGameStateMachine.currentState !== fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame)
     {
       this.playerCharacter.move();
       this.playerCharacter.handleOffScreen();
       this.moveAnswers();
       this.handleAnswersOffScreen();
-      collisionsWithAnswersManager.handleCollisionsWithAnswers();
+      this.handleCollisionsWithAnswers();
     }
   };
+
+  this.handleCollisionsWithAnswers = function()
+  {
+    collisionsWithAnswersManager.handleCollisionsWithAnswers();
+  }
 
   this.assignLeftOrRightDirectionToAnswers = function()
   {
@@ -102,8 +108,6 @@ function birdGameClass() {
       promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xDirection = -1;
       promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xDirection = 1;
     }
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xDirection: ' +
-                promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xDirection);
   }
 
   this.draw = function()
@@ -140,6 +144,7 @@ function birdGameClass() {
   this.shuffleAndResetPromptsAndAnswers = function()
   {
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    this.assignLeftOrRightDirectionToAnswers();
   }
 
   this.loadPromptsManager = function()
@@ -164,18 +169,21 @@ function birdGameClass() {
     {
       promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = -10;
     }
+    else if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate < -10)
+    {
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width;
+    }
+
+
     if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate > gameCanvas.width)
     {
       promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = -10;
     }
-    if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate < 0)
-    {
-      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width;
-    }
-    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate < 0)
+    else if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate < -10)
     {
       promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width;
     }
+
   }
 
 

@@ -134,6 +134,16 @@ function InputManager()
       case 109://number pad -
       turnMasterVolumeDown();
       break;
+
+      case 80://p
+      if (fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame)
+      {
+        fullGameStateMachine.currentState = fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame;
+      }
+      else if (fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
+      {
+        fullGameStateMachine.currentState = fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame;
+      }
     }
   }
 

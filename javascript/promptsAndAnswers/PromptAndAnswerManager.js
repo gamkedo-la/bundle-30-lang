@@ -199,8 +199,6 @@ function PromptsAndAnswersManager()
       let correctAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
       let incorrectAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
       let currentPlayerCharacter = gameClassManager.currentGame.playerCharacter;
-      console.log('correctAnswerCoordinates.randomXCoordinate: ' + correctAnswerCoordinates.randomXCoordinate);
-      console.log('currentPlayerCharacter.name: ' + currentPlayerCharacter.name);
       while(
         this.checkIfObjectsAreTooCloseToEachOther(
           incorrectAnswerCoordinates.randomXCoordinate,incorrectAnswerCoordinates.randomYCoordinate,
@@ -215,7 +213,6 @@ function PromptsAndAnswersManager()
       {
         incorrectAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
       }
-      console.log('correctAnswerCoordinates.randomXCoordinate: ' + correctAnswerCoordinates.randomXCoordinate);
       this.correctTargetPromptAndAnswerPairing.xCoordinate = correctAnswerCoordinates.randomXCoordinate;
       this.correctTargetPromptAndAnswerPairing.yCoordinate = correctAnswerCoordinates.randomYCoordinate;
 
