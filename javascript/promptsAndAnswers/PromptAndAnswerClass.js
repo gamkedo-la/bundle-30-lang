@@ -220,7 +220,28 @@ function handleCollisionsWithAnswers()
 				arrayOfAnswers.splice(answerIndex, 1);
 			}
 		}
-	}
+	}else if(flowerGame.isPlaying()){
+    //handle collissions
+    for (let answerIndex = 0; answerIndex < arrayOfAnswers.length; answerIndex++)
+    {
+      if (gameClassManager.currentGame.playerCharacter.x > arrayOfAnswers[answerIndex].xCoordinate - 15 && gameClassManager.currentGame.playerCharacter.x < arrayOfAnswers[answerIndex].xCoordinate + 40
+        && gameClassManager.currentGame.playerCharacter.y > arrayOfAnswers[answerIndex].yCoordinate - 30 && gameClassManager.currentGame.playerCharacter.y < arrayOfAnswers[answerIndex].yCoordinate + 5)
+        {
+          if (arrayOfAnswers[answerIndex].name === currentCorrectLetter)
+          {
+            amountCorrect++;
+            playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
+          } else if (arrayOfAnswers[answerIndex].name !== currentCorrectLetter)
+          {
+            amountIncorrect++;
+            playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
+          }
+          calculateAccuracy();
+          setOrResetCorrectLetter();
+          arrayOfAnswers.splice(answerIndex,1);
+        }
+    }
+  }
 }
 
 function getRandomIntWithExclusionaryRange(min,max, excludedMin,excludedMax) {

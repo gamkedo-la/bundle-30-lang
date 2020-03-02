@@ -22,6 +22,9 @@ function flowerGameClass(){
     this.initialize = function(){
         gameInterval.reset(this.FRAME_RATE);
         this.playerCharacter = new FlowerClass();
+        this.initializePromptAndAnswerObjects();
+        this.shuffleAndResetPromptsAndAnswers();
+        this.loadPromptsManager();
         console.log(this.playerCharacter);
         letterSpeed = 3;
 
@@ -30,11 +33,6 @@ function flowerGameClass(){
         seedOneYCoordinate = SEED_ONE_STARTING_Y;
         seedTwoXCoordinate = SEED_TWO_STARTING_X;
         seedTwoYCoordinate = SEED_TWO_STARTING_Y;
-    };
-
-    function applyGRAVITY(){
-        seedOneYCoordinate += GRAVITY;
-        seedTwoYCoordinate += GRAVITY;
     };
 
     this.handleLeftArrowDown = function(){
@@ -54,19 +52,27 @@ function flowerGameClass(){
           fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
       {
         this.movePlayer();
-        this.handleCollisions();
+        this.moveAnswers();
+        this.handleAnswersOffScreen();
+        this.handleCollisionsWithAnswers();
       }
     };
 
     this.movePlayer = function(){
-        applyGRAVITY();
         this.playerCharacter.x += this.playerCharacter.xSpeed;
         this.handleBoundaries();
     };
 
+    this.moveAnswers = function(){
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate += GRAVITY;
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate +=GRAVITY;
+    }
+
     this.draw = function(){
         this.drawBackground();
         this.playerCharacter.draw();
+        drawAnswersManager.draw();
+        this.drawPromptsWhenAppropriate();
         this.drawSeeds();
     }
 
@@ -74,6 +80,15 @@ function flowerGameClass(){
         gameCanvasContext.fillStyle = 'cyan';
         gameCanvasContext.fillRect(0,0, gameCanvas.width, gameCanvas.height);
     };
+
+    this.drawPromptsWhenAppropriate = function(){
+        if (promptersManager.shouldBeDrawingAPrompt)
+        {
+                console.log('inside drawing prompt when appropriate');
+          promptersManager.currentPrompter.updatePromptImage();
+          promptersManager.currentPrompter.drawThePrompt();
+        }
+    }
 
     this.drawSeeds = function(){
         gameCanvasContext.fillStyle = 'brown';
@@ -107,6 +122,39 @@ function flowerGameClass(){
             this.playerCharacter.x = 30;
         }
     }
+    this.initializePromptAndAnswerObjects =function(){
+        initializePromptAndAnswerObjects();
+    }
+
+    this.shuffleAndResetPromptsAndAnswers = function(){
+        promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    }
+
+    this.loadPromptsManager = function(){
+        promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+    }
+
+    this.promptThePlayer = function(){
+        promptersManager.promptThePlayer();
+    }
+    
+    this.handleAnswersOffScreen = function()
+    {
+      if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate > gameCanvas.height)
+      {
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate = -10;
+      }
+  
+      if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate > gameCanvas.height)
+      {
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
+      }
+    }
+  
+      this.handleCollisionsWithAnswers = function()
+      {
+          collisionsWithAnswersManager.handleCollisionsWithAnswers();
+      }
 
 }
 
