@@ -26,30 +26,10 @@ function birdGameClass() {
     gameInterval.reset(this.FRAME_RATE);
     this.playerCharacter = new BirdClass();
     this.playerCharacter.initialize();
-    this.initializePromptAndAnswerObjects();
-    this.shuffleAndResetPromptsAndAnswers();
-    this.assignLeftOrRightDirectionToAnswers();
-    this.loadPromptsManager();
-  }
-
-  this.initializePromptAndAnswerObjects = function()
-  {
     initializePromptAndAnswerObjects();
-  }
-
-  this.shuffleAndResetPromptsAndAnswers = function()
-  {
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-  }
-
-  this.loadPromptsManager = function()
-  {
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
-  }
-
-  this.promptThePlayer = function()
-  {
-    promptersManager.promptThePlayer();
+    this.assignLeftOrRightDirectionToAnswers();
   }
 
   this.applyGRAVITYToBird = function()
@@ -86,14 +66,9 @@ function birdGameClass() {
       this.playerCharacter.handleOffScreen();
       this.moveAnswers();
       this.handleAnswersOffScreen();
-      this.handleCollisionsWithAnswers();
+      collisionsWithAnswersManager.handleCollisionsWithAnswers();
     }
   };
-
-  this.handleCollisionsWithAnswers = function()
-  {
-    collisionsWithAnswersManager.handleCollisionsWithAnswers();
-  }
 
   this.assignLeftOrRightDirectionToAnswers = function()
   {
@@ -115,7 +90,7 @@ function birdGameClass() {
     this.drawBackground();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
-    this.drawPromptsWhenAppropriate();
+    promptersManager.drawPromptsWhenAppropriate();
   };
 
   this.drawBackground = function()
@@ -124,15 +99,6 @@ function birdGameClass() {
   	gameCanvasContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
   };
 
-  this.drawPromptsWhenAppropriate = function()
-  {
-    if (promptersManager.shouldBeDrawingAPrompt)
-    {
-      promptersManager.currentPrompter.updatePromptImage();
-      promptersManager.currentPrompter.drawThePrompt();
-    }
-  }
-
   this.handleSpaceBarDown = function()
   {
     if (!promptersManager.shouldBeDrawingAPrompt)
@@ -140,17 +106,6 @@ function birdGameClass() {
       this.playerCharacter.flapUp();
     }
   };
-
-  this.shuffleAndResetPromptsAndAnswers = function()
-  {
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    this.assignLeftOrRightDirectionToAnswers();
-  }
-
-  this.loadPromptsManager = function()
-  {
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
-  }
 
   this.moveAnswers = function()
   {

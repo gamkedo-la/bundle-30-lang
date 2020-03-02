@@ -196,7 +196,7 @@ function PromptsAndAnswersManager()
 
   this.defineXAndYCoordinatesForTargets = function()
   {
-    if (gameClassManager.currentGame.name === 'Snake Game' || gameClassManager.currentGame === 'birdGame')
+    if (gameClassManager.currentGame.name === 'Snake Game' || gameClassManager.currentGame.name === 'birdGame')
     {
       let correctAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
       let incorrectAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
@@ -268,6 +268,9 @@ function PromptsAndAnswersManager()
     this.defineIncorrectTargetPromptAndAnswerPairing();
     this.assignCurrentIncorrectAnswer();
     this.defineXAndYCoordinatesForTargets();
+    if (gameClassManager.currentGame.name === 'birdGame'){
+      birdGame.assignLeftOrRightDirectionToAnswers();
+    }
   }
 }
 
