@@ -19,7 +19,6 @@ function ImagePrompter()
 
   this.drawThePrompt = function()
   {
-    console.log('inside image prompter draw function');
     if (this.image !== undefined)
     {
 
