@@ -6,6 +6,9 @@ function laneGameClass() {
 
 	this.FRAME_RATE = 1000/50;
 
+	this.textAnswerFontSize = 30;
+	this.textAnswerFontStyle = 'px Helvetica';
+
 	this.initialize = function()
 	{
 		gameInterval.reset(this.FRAME_RATE);
@@ -42,7 +45,6 @@ function laneGameClass() {
   {
     if (promptersManager.shouldBeDrawingAPrompt)
     {
-			console.log('inside drawing prompt when appropriate');
       promptersManager.currentPrompter.updatePromptImage();
       promptersManager.currentPrompter.drawThePrompt();
     }
@@ -95,11 +97,10 @@ function laneGameClass() {
     promptersManager.promptThePlayer();
   }
 
-	this.answersYSpeed = 5;
+	this.answersYSpeed = 2.5;
 
 	this.moveAnswers = function()
   {
-		console.log('inside move answers in lane game');
     promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate += this.answersYSpeed;
     promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate += this.answersYSpeed;
   }

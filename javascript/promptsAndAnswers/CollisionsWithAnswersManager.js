@@ -22,15 +22,19 @@ function CollisionsWithAnswersManager()
     return gameClassManager.currentGame.textAnswerFontStyle;
   }
 
-  this.insideBoxColliderForCorrectStringAnswer = function(correctAnswerWidth)
+  this.insideBoxColliderForCorrectStringAnswer = function(correctAnswerWidth, textAnswerFontSize)
   {
+    console.log('currentPlayerCharacter.width: ' + currentPlayerCharacter.width);
+    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
+    console.log('textAnswerFontSize: ' + textAnswerFontSize);
+    console.log('currentPlayerCharacter.height: ' + currentPlayerCharacter.height);
     return (currentPlayerCharacter.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 - currentPlayerCharacter.width &&
         currentPlayerCharacter.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + correctAnswerWidth + 5 + currentPlayerCharacter.width &&
         currentPlayerCharacter.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - currentPlayerCharacter.height &&
         currentPlayerCharacter.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 10 + currentPlayerCharacter.height)
   }
 
-  this.insideBoxColliderForIncorrectStringAnswer = function(incorrectAnswerWidth)
+  this.insideBoxColliderForIncorrectStringAnswer = function(incorrectAnswerWidth, textAnswerFontSize)
   {
     return (currentPlayerCharacter.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 - currentPlayerCharacter.width &&
         currentPlayerCharacter.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + incorrectAnswerWidth + 5 + currentPlayerCharacter.width &&
@@ -74,20 +78,20 @@ function CollisionsWithAnswersManager()
   {
     promptersManager.currentPrompter.currentWidth = 150;
     promptersManager.currentPrompter.currentHeight = 150;
-      audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
-      gameClassManager.currentGame.initializePromptAndAnswerObjects();
-      gameClassManager.currentGame.shuffleAndResetPromptsAndAnswers();
-      gameClassManager.currentGame.loadPromptsManager();
-      gameClassManager.currentGame.promptThePlayer();
-      currentPlayerCharacter.speedX = 0;
-      currentPlayerCharacter.speedY = 0;
+    audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
+    gameClassManager.currentGame.initializePromptAndAnswerObjects();
+    gameClassManager.currentGame.shuffleAndResetPromptsAndAnswers();
+    gameClassManager.currentGame.loadPromptsManager();
+    gameClassManager.currentGame.promptThePlayer();
+    currentPlayerCharacter.speedX = 0;
+    currentPlayerCharacter.speedY = 0;
   }
 
   let correctAnswerWidth = undefined;
   let incorrectAnswerWidth = undefined;
-  let textAnswerFontSixe = undefined;
+  let textAnswerFontSize = undefined;
 
-  this.handleCollisionsWithAnswers = function(correctAnswerWidth, incorrectAnswerWidth)
+  this.handleCollisionsWithAnswers = function(correctAnswerWidth, incorrectAnswerWidth, textAnswerFontSize)
   {
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
@@ -99,14 +103,17 @@ function CollisionsWithAnswersManager()
         this.getTextAnswerFontStyle()
       );
       textAnswerFontSize = this.getTextAnswerFontSize();
+      console.log('textAnswerFontSize: ' + textAnswerFontSize);
 
-      if (this.insideBoxColliderForCorrectStringAnswer(correctAnswerWidth))
+      if (this.insideBoxColliderForCorrectStringAnswer(correctAnswerWidth, textAnswerFontSize))
         {
+          console.log('collision with correct string answer');
           this.resetAnswers();
           amountCorrect++;
         }
-      else if (this.insideBoxColliderForIncorrectStringAnswer(incorrectAnswerWidth))
+      else if (this.insideBoxColliderForIncorrectStringAnswer(incorrectAnswerWidth, textAnswerFontSize))
         {
+          console.log('collision with incorrect string answer');
           this.resetAnswers();
           amountIncorrect++;
         }

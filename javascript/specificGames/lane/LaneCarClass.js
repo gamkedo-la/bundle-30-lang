@@ -1,5 +1,6 @@
 function LaneCarClass()
 {
+  this.name = 'lane car';
   this.x = gameCanvas.width/3;
   this.y = gameCanvas.height - gameCanvas.height/8;
 
