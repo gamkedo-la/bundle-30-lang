@@ -15,9 +15,9 @@ function laneGameClass() {
 		this.playerCharacter = new LaneCarClass();
 		this.background = new LaneBackgroundClass();
 		this.initializeLanePositions();
-		this.initializePromptAndAnswerObjects();
-    this.shuffleAndResetPromptsAndAnswers();
-		this.loadPromptsManager();
+		initializePromptAndAnswerObjects();
+		promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
 	};
 
 	this.update = function()
@@ -38,17 +38,8 @@ function laneGameClass() {
 	  this.background.draw();
 	  this.playerCharacter.draw();
 		drawAnswersManager.draw();
-		this.drawPromptsWhenAppropriate();
+		promptersManager.drawPromptsWhenAppropriate();
 	}
-
-	this.drawPromptsWhenAppropriate = function()
-  {
-    if (promptersManager.shouldBeDrawingAPrompt)
-    {
-      promptersManager.currentPrompter.updatePromptImage();
-      promptersManager.currentPrompter.drawThePrompt();
-    }
-  }
 
 	this.playerCharacter = undefined;
 
@@ -76,26 +67,6 @@ function laneGameClass() {
 			gameClassManager.currentGame.playerCharacter.x = this.carRightLanePosition;
 		}
 	}
-
-	this.initializePromptAndAnswerObjects = function()
-  {
-    initializePromptAndAnswerObjects();
-  }
-
-  this.shuffleAndResetPromptsAndAnswers = function()
-  {
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-  }
-
-  this.loadPromptsManager = function()
-  {
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
-  }
-
-  this.promptThePlayer = function()
-  {
-    promptersManager.promptThePlayer();
-  }
 
 	this.answersYSpeed = 2.5;
 
