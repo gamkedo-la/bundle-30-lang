@@ -239,6 +239,18 @@ function PromptsAndAnswersManager()
         this.incorrectTargetPromptAndAnswerPairing.yCoordinate = -10;
       }
     }
+    else if (gameClassManager.currentGame.name === 'jumperGame')
+    {
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100, currentPlayerCharacter.x - 40,currentPlayerCharacter.x + 60);
+      let randomPlatformIndex = (Math.floor(Math.random() * 7) * 100) + 30;
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
+      console.log(this.correctTargetPromptAndAnswerPairing.xCoordinate);
+      console.log(this.correctTargetPromptAndAnswerPairing.yCoordinate);
+
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100, currentPlayerCharacter.x - 40,currentPlayerCharacter.x + 60);
+      randomPlatformIndex = (Math.floor(Math.random() * 7) * 100) + 30;
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
+    }
   }
 
   this.setOrResetPromptsAndAnswers = function()

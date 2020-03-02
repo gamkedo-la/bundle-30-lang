@@ -110,7 +110,7 @@ function InputManager()
           case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
           if (gameClassManager.currentGame.handleSpaceBarDown)
           {
-			gameClassManager.currentGame.handleSpaceBarDown();
+			      gameClassManager.currentGame.handleSpaceBarDown();
           }
 		}
 		break;
