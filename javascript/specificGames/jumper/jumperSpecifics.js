@@ -22,9 +22,11 @@ function jumperGameClass()
   {
     this.playerCharacter = new JumperClass();
     gameInterval.reset(this.FRAME_RATE);
-    this.initializePromptAndAnswerObjects();
-    this.shuffleAndResetPromptsAndAnswers();
-		this.loadPromptsManager();
+    initializePromptAndAnswerObjects();
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+    drawAnswersManager.draw();
+		promptersManager.drawPromptsWhenAppropriate();
   };
 
   this.update = function()
@@ -34,7 +36,7 @@ function jumperGameClass()
     {
       this.movePlayer();
       this.handlePlayerWrapping();
-      this.handleCollisionsWithAnswers();
+      collisionsWithAnswersManager.handleCollisionsWithAnswers();
     }
   };
 
@@ -107,42 +109,8 @@ function jumperGameClass()
     this.drawBackground();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
-		this.drawPromptsWhenAppropriate();
+		promptersManager.drawPromptsWhenAppropriate();
   };
-
-  this.drawPromptsWhenAppropriate = function()
-  {
-    if (promptersManager.shouldBeDrawingAPrompt)
-    {
-      promptersManager.currentPrompter.updatePromptImage();
-      promptersManager.currentPrompter.drawThePrompt();
-    }
-  }
-
-  this.initializePromptAndAnswerObjects = function()
-  {
-    initializePromptAndAnswerObjects();
-  }
-
-  this.shuffleAndResetPromptsAndAnswers = function()
-  {
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-  }
-
-  this.loadPromptsManager = function()
-  {
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
-  }
-
-  this.promptThePlayer = function()
-  {
-    promptersManager.promptThePlayer();
-  }
-
-  this.handleCollisionsWithAnswers = function()
-	{
-		collisionsWithAnswersManager.handleCollisionsWithAnswers();
-	}
 
   this.drawBackground = function()
   {

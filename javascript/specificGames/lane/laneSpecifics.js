@@ -29,7 +29,7 @@ function laneGameClass() {
 			this.background.handleDashArrayPopulation();
 			this.moveAnswers();
 			this.handleAnswersOffScreen();
-			this.handleCollisionsWithAnswers();
+			collisionsWithAnswersManager.handleCollisionsWithAnswers();
 		}
 	};
 
@@ -88,11 +88,6 @@ function laneGameClass() {
       promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
     }
   }
-
-	this.handleCollisionsWithAnswers = function()
-	{
-		collisionsWithAnswersManager.handleCollisionsWithAnswers();
-	}
 }
 
 const laneGame = new laneGameClass();
