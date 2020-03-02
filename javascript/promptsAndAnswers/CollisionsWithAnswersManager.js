@@ -24,7 +24,6 @@ function CollisionsWithAnswersManager()
 
   this.insideBoxColliderForCorrectStringAnswer = function(correctAnswerWidth)
   {
-    console.log('correctAnswerWidth: ' + correctAnswerWidth);
     return (currentPlayerCharacter.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 - currentPlayerCharacter.width &&
         currentPlayerCharacter.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + correctAnswerWidth + 5 + currentPlayerCharacter.width &&
         currentPlayerCharacter.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - currentPlayerCharacter.height &&
@@ -33,7 +32,6 @@ function CollisionsWithAnswersManager()
 
   this.insideBoxColliderForIncorrectStringAnswer = function(incorrectAnswerWidth)
   {
-    console.log('incorrectAnswerWidth: ' + incorrectAnswerWidth);
     return (currentPlayerCharacter.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 - currentPlayerCharacter.width &&
         currentPlayerCharacter.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + incorrectAnswerWidth + 5 + currentPlayerCharacter.width &&
         currentPlayerCharacter.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - currentPlayerCharacter.height &&
@@ -97,22 +95,18 @@ function CollisionsWithAnswersManager()
        correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
         this.getTextAnswerFontStyle()
       );
-      console.log(correctAnswerWidth);
        incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
         this.getTextAnswerFontStyle()
       );
-      console.log(incorrectAnswerWidth);
       textAnswerFontSize = this.getTextAnswerFontSize();
 
       if (this.insideBoxColliderForCorrectStringAnswer(correctAnswerWidth))
         {
-          console.log('correct srting answer colllision');
           this.resetAnswers();
           amountCorrect++;
         }
       else if (this.insideBoxColliderForIncorrectStringAnswer(incorrectAnswerWidth))
         {
-          console.log('incorrect srting answer colllision');
           this.resetAnswers();
           amountIncorrect++;
         }

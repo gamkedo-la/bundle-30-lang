@@ -196,7 +196,8 @@ function PromptsAndAnswersManager()
 
   this.defineXAndYCoordinatesForTargets = function()
   {
-    if (gameClassManager.currentGame === SNAKE_GAME || gameClassManager.currentGame === birdGame)
+    console.log(gameClassManager.currentGame.name);
+    if (/*gameClassManager.currentGame === SNAKE_GAME || gameClassManager.currentGame === birdGame*/true)
     {
       let correctAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
       let incorrectAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
