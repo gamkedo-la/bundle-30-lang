@@ -110,6 +110,15 @@ function PromptersManager()
 
   this.flashInterval = undefined;
 
+  this.drawPromptsWhenAppropriate = function()
+  {
+    if (this.shouldBeDrawingAPrompt)
+    {
+      this.currentPrompter.updatePromptImage();
+      this.currentPrompter.drawThePrompt();
+    }
+  }
+
 }//end of prompters manager
 
 let promptersManager = new PromptersManager();

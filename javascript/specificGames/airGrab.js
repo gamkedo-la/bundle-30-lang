@@ -3,11 +3,15 @@ var gameCanvasContext;
 var correctLetterAudioTag;
 var arrayOfAnswers = [];
 
+var textAnswerFontSize = 30;
+var textAnswerFontStyle = 'px Helvetica';
+
 //TODO: when the game becomes a class, please give it a name property, like this.name = 'airGrab';
 window.onload = function()
 {
   gameCanvas = document.getElementById("gameCanvas");
   gameCanvasContext = gameCanvas.getContext('2d');
+
 
   document.addEventListener('click', letterBounceClick, false);
 

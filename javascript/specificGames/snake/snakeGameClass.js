@@ -23,18 +23,13 @@ function snakeGameClass()
 
   this.initialize = function()
   {
-    this.initializePromptAndAnswerObjects();
+    initializePromptAndAnswerObjects();
     this.playerCharacter = new SnakeClass();
     this.background = new SnakeBackground();
     this.playerCharacter.initialize();
     gameInterval.reset(this.FRAME_RATE);
-    this.shuffleAndResetPromptsAndAnswers();
-    this.loadPromptsManager();
-  }
-
-  this.initializePromptAndAnswerObjects = function()
-  {
-    initializePromptAndAnswerObjects();
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
   }
 
   //update section
@@ -53,16 +48,7 @@ function snakeGameClass()
     this.background.draw();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
-    this.drawPromptsWhenAppropriate();
-  }
-
-  this.drawPromptsWhenAppropriate = function()
-  {
-    if (promptersManager.shouldBeDrawingAPrompt)
-    {
-      promptersManager.currentPrompter.updatePromptImage();
-      promptersManager.currentPrompter.drawThePrompt();
-    }
+    promptersManager.drawPromptsWhenAppropriate();
   }
 
   this.drawTransitionText = function()
@@ -72,16 +58,6 @@ function snakeGameClass()
     customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' move right'], 30,15, 350,350);
     customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' move down'], 30,15, 200,500);
     customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' move left'], 30,15, 50,350);
-  }
-
-  this.shuffleAndResetPromptsAndAnswers = function()
-  {
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-  }
-
-  this.loadPromptsManager = function()
-  {
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
   }
 
   this.promptThePlayer = function()

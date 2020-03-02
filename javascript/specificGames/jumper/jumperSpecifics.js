@@ -7,6 +7,8 @@ function jumperGameClass()
 {
   this.name = 'jumperGame';
   this.playerCharacter = undefined;
+  this.textAnswerFontSize = '30';
+  this.textAnswerFontStyle = 'px Helvetica';
 
   const MAX_PLATFORMS = 7;
 
@@ -20,12 +22,20 @@ function jumperGameClass()
   {
     this.playerCharacter = new JumperClass();
     gameInterval.reset(this.FRAME_RATE);
+    this.initializePromptAndAnswerObjects();
+    this.shuffleAndResetPromptsAndAnswers();
+		this.loadPromptsManager();
   };
 
   this.update = function()
   {
-    this.movePlayer();
-    this.handlePlayerWrapping();
+    if (!promptersManager.shouldBeDrawingAPrompt &&
+        fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
+    {
+      this.movePlayer();
+      this.handlePlayerWrapping();
+      this.handleCollisionsWithAnswers();
+    }
   };
 
   this.handleLeftArrowDown = function()
@@ -96,7 +106,43 @@ function jumperGameClass()
   {
     this.drawBackground();
     this.playerCharacter.draw();
+    drawAnswersManager.draw();
+		this.drawPromptsWhenAppropriate();
   };
+
+  this.drawPromptsWhenAppropriate = function()
+  {
+    if (promptersManager.shouldBeDrawingAPrompt)
+    {
+      promptersManager.currentPrompter.updatePromptImage();
+      promptersManager.currentPrompter.drawThePrompt();
+    }
+  }
+
+  this.initializePromptAndAnswerObjects = function()
+  {
+    initializePromptAndAnswerObjects();
+  }
+
+  this.shuffleAndResetPromptsAndAnswers = function()
+  {
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+  }
+
+  this.loadPromptsManager = function()
+  {
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+  }
+
+  this.promptThePlayer = function()
+  {
+    promptersManager.promptThePlayer();
+  }
+
+  this.handleCollisionsWithAnswers = function()
+	{
+		collisionsWithAnswersManager.handleCollisionsWithAnswers();
+	}
 
   this.drawBackground = function()
   {
