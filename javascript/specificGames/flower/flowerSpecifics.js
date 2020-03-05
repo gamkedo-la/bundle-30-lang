@@ -8,6 +8,13 @@ const flowerLetterColor = 'BlueViolet';
 flowerGameClass.prototype = new GameClass();
 function flowerGameClass(){
     this.name = 'flowerGame';
+
+    this.FRAME_RATE = 1000/50;
+    this.letterSpawnInterval = 2000;
+
+    this.textAnswerFontSize = 30;
+	this.textAnswerFontStyle = 'px Helvetica';
+
     this.playerCharacter = undefined;
     const SEED_ONE_STARTING_X = 100;
     const SEED_ONE_STARTING_Y = 10;
@@ -16,23 +23,27 @@ function flowerGameClass(){
     const SEED_WIDTH = 15;
     const SEED_HEIGHT = 15;
 
-    const GRAVITY = 2;
+    const GRAVITY = 6;
 
+    this.seedOneXCoordinate = undefined;
+    this.seedOneYCoordinate = undefined;
+    this.seedTwoXCoordinate = undefined;
+    this.seedTwoYCoordinate = undefined;   
 
     this.initialize = function(){
         gameInterval.reset(this.FRAME_RATE);
         this.playerCharacter = new FlowerClass();
-        this.initializePromptAndAnswerObjects();
-        this.shuffleAndResetPromptsAndAnswers();
-        this.loadPromptsManager();
+        initializePromptAndAnswerObjects();       
+		promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+        promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
         console.log(this.playerCharacter);
-        letterSpeed = 3;
+        //letterSpeed = 3;
 
         //initialize seeds
-        seedOneXCoordinate = SEED_ONE_STARTING_X;
-        seedOneYCoordinate = SEED_ONE_STARTING_Y;
-        seedTwoXCoordinate = SEED_TWO_STARTING_X;
-        seedTwoYCoordinate = SEED_TWO_STARTING_Y;
+        this.seedOneXCoordinate = SEED_ONE_STARTING_X;
+        this.seedOneYCoordinate = SEED_ONE_STARTING_Y;
+        this.seedTwoXCoordinate = SEED_TWO_STARTING_X;
+        this.seedTwoYCoordinate = SEED_TWO_STARTING_Y;
     };
 
     this.handleLeftArrowDown = function(){
@@ -43,8 +54,7 @@ function flowerGameClass(){
         this.playerCharacter.xSpeed = this.playerCharacter.RIGHT_ARROW_SPEED;
     };
 
-    this.FRAME_RATE = 1000/30;
-    this.letterSpawnInterval = 2000;
+
 
     this.update = function()
     {
@@ -54,9 +64,17 @@ function flowerGameClass(){
         this.movePlayer();
         this.moveAnswers();
         this.handleAnswersOffScreen();
-        this.handleCollisionsWithAnswers();
+        collisionsWithAnswersManager.handleCollisionsWithAnswers();
       }
     };
+
+    this.draw = function(){
+        this.drawBackground();
+        this.playerCharacter.draw();
+        drawAnswersManager.draw();
+        promptersManager.drawPromptsWhenAppropriate();
+        //this.drawSeeds();
+    }
 
     this.movePlayer = function(){
         this.playerCharacter.x += this.playerCharacter.xSpeed;
@@ -68,51 +86,34 @@ function flowerGameClass(){
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate +=GRAVITY;
     }
 
-    this.draw = function(){
-        this.drawBackground();
-        this.playerCharacter.draw();
-        drawAnswersManager.draw();
-        this.drawPromptsWhenAppropriate();
-        this.drawSeeds();
-    }
-
     this.drawBackground = function(){
         gameCanvasContext.fillStyle = 'cyan';
         gameCanvasContext.fillRect(0,0, gameCanvas.width, gameCanvas.height);
     };
 
-    this.drawPromptsWhenAppropriate = function(){
-        if (promptersManager.shouldBeDrawingAPrompt)
-        {
-                console.log('inside drawing prompt when appropriate');
-          promptersManager.currentPrompter.updatePromptImage();
-          promptersManager.currentPrompter.drawThePrompt();
-        }
-    }
-
     this.drawSeeds = function(){
         gameCanvasContext.fillStyle = 'brown';
-        gameCanvasContext.fillRect(seedOneXCoordinate, seedOneYCoordinate, SEED_WIDTH, SEED_HEIGHT);
-        gameCanvasContext.fillRect(seedTwoXCoordinate, seedTwoYCoordinate, SEED_WIDTH, SEED_HEIGHT);
+        gameCanvasContext.fillRect(this.seedOneXCoordinate, this.seedOneYCoordinate, SEED_WIDTH, SEED_HEIGHT);
+        gameCanvasContext.fillRect(this.seedTwoXCoordinate, this.seedTwoYCoordinate, SEED_WIDTH, SEED_HEIGHT);
     }
 
-    this.handleCollisions = function() {
-        if ((this.playerCharacter.x + this.playerCharacter.width / 2) >= (seedOneXCoordinate - SEED_WIDTH / 2) &&
-            (this.playerCharacter.x - this.playerCharacter.width / 2) <= (seedOneXCoordinate + SEED_WIDTH / 2) &&
-            (this.playerCharacter.y + this.playerCharacter.height / 2) >= (seedOneYCoordinate - SEED_WIDTH / 2) &&
-            (this.playerCharacter.y - this.playerCharacter.height / 2) <= (seedOneYCoordinate + SEED_HEIGHT / 2)) {
+   /* this.handleCollisions = function() {
+        if ((this.playerCharacter.x + this.playerCharacter.width / 2) >= (this.seedOneXCoordinate - SEED_WIDTH / 2) &&
+            (this.playerCharacter.x - this.playerCharacter.width / 2) <= (this.seedOneXCoordinate + SEED_WIDTH / 2) &&
+            (this.playerCharacter.y + this.playerCharacter.height / 2) >= (this.seedOneYCoordinate - SEED_WIDTH / 2) &&
+            (this.playerCharacter.y - this.playerCharacter.height / 2) <= (this.seedOneYCoordinate + SEED_HEIGHT / 2)) {
             console.log("collision detected");
             seedOneYCoordinate = 200;
         }
 
-        if ((this.playerCharacter.x + this.playerCharacter.width / 2) >= (seedTwoXCoordinate - SEED_WIDTH / 2) &&
-        (this.playerCharacter.x - this.playerCharacter.width / 2) <= (seedTwoXCoordinate + SEED_WIDTH / 2) &&
-        (this.playerCharacter.y + this.playerCharacter.height / 2) >= (seedTwoYCoordinate - SEED_WIDTH / 2) &&
-        (this.playerCharacter.y - this.playerCharacter.height / 2) <= (seedTwoYCoordinate + SEED_HEIGHT / 2)) {
+        if ((this.playerCharacter.x + this.playerCharacter.width / 2) >= (this.seedTwoXCoordinate - SEED_WIDTH / 2) &&
+        (this.playerCharacter.x - this.playerCharacter.width / 2) <= (this.seedTwoXCoordinate + SEED_WIDTH / 2) &&
+        (this.playerCharacter.y + this.playerCharacter.height / 2) >= (this.seedTwoYCoordinate - SEED_WIDTH / 2) &&
+        (this.playerCharacter.y - this.playerCharacter.height / 2) <= (this.seedTwoYCoordinate + SEED_HEIGHT / 2)) {
         console.log("collision detected");
         seedTwoYCoordinate = 200;
     }
-    }
+    }*/
 
     this.handleBoundaries = function() {
         if (this.playerCharacter.x >= 600) {
@@ -150,12 +151,6 @@ function flowerGameClass(){
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
       }
     }
-  
-      this.handleCollisionsWithAnswers = function()
-      {
-          collisionsWithAnswersManager.handleCollisionsWithAnswers();
-      }
-
 }
 
-var flowerGame = new flowerGameClass();
+const flowerGame = new flowerGameClass();
