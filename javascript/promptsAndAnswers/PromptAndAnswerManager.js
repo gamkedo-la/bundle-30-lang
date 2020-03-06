@@ -256,13 +256,17 @@ function PromptsAndAnswersManager()
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
     }
     else if(gameClassManager.currentGame.name === "flowerGame"){
+      console.log('inside promptAndAnswersManager function to define x and y coordinates for flower game');
       let randomNumber = Math.random();
       if (randomNumber < 0.5)
       {
+        console.log('flowerGame.seedOneXCoordinate - 25: ' + flowerGame.seedOneXCoordinate);
         this.correctTargetPromptAndAnswerPairing.xCoordinate = flowerGame.seedOneXCoordinate -25;
         this.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
         this.incorrectTargetPromptAndAnswerPairing.xCoordinate = flowerGame.seedTwoXCoordinate-25;
         this.incorrectTargetPromptAndAnswerPairing.yCoordinate = -10;
+
+
       }
       else
       {

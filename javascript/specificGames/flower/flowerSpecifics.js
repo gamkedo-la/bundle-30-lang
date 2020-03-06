@@ -29,23 +29,24 @@ function flowerGameClass(){
     this.seedOneXCoordinate = undefined;
     this.seedOneYCoordinate = undefined;
     this.seedTwoXCoordinate = undefined;
-    this.seedTwoYCoordinate = undefined;   
+    this.seedTwoYCoordinate = undefined;
 
-    this.initialize = function(){
-        gameInterval.reset(this.FRAME_RATE);
-        this.playerCharacter = new FlowerClass();
-        this.background = new FlowerBackgroundClass();
-        initializePromptAndAnswerObjects();       
-		promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-        promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
-        console.log(this.playerCharacter);
+    this.initialize = function()
+    {
+      gameInterval.reset(this.FRAME_RATE);
+      this.playerCharacter = new FlowerClass();
+      this.background = new FlowerBackgroundClass();
 
+      //initialize seeds
+      this.seedOneXCoordinate = SEED_ONE_STARTING_X;
+      this.seedOneYCoordinate = SEED_ONE_STARTING_Y;
+      this.seedTwoXCoordinate = SEED_TWO_STARTING_X;
+      this.seedTwoYCoordinate = SEED_TWO_STARTING_Y;
 
-        //initialize seeds
-        this.seedOneXCoordinate = SEED_ONE_STARTING_X;
-        this.seedOneYCoordinate = SEED_ONE_STARTING_Y;
-        this.seedTwoXCoordinate = SEED_TWO_STARTING_X;
-        this.seedTwoYCoordinate = SEED_TWO_STARTING_Y;
+      initializePromptAndAnswerObjects();
+  		promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+      promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+      console.log(this.playerCharacter);
     };
 
     this.handleLeftArrowDown = function(){
@@ -63,6 +64,7 @@ function flowerGameClass(){
       {
         this.movePlayer();
         this.moveAnswers();
+        this.moveSeeds();
         this.handleAnswersOffScreen();
         collisionsWithAnswersManager.handleCollisionsWithAnswers();
       }
@@ -73,7 +75,7 @@ function flowerGameClass(){
         this.playerCharacter.draw();
         drawAnswersManager.draw();
         promptersManager.drawPromptsWhenAppropriate();
-        //this.drawSeeds();
+        this.drawSeeds();
     }
 
     this.movePlayer = function(){
@@ -92,6 +94,12 @@ function flowerGameClass(){
         gameCanvasContext.fillRect(this.seedTwoXCoordinate, this.seedTwoYCoordinate, SEED_WIDTH, SEED_HEIGHT);
     }
 
+    this.moveSeeds = function()
+    {
+      this.seedOneYCoordinate += GRAVITY;
+      this.seedTwoYCoordinate += GRAVITY;
+    }
+
     this.handleBoundaries = function() {
         if (this.playerCharacter.x >= 600) {
             this.playerCharacter.x = 600;
@@ -100,14 +108,14 @@ function flowerGameClass(){
             this.playerCharacter.x = 30;
         }
     }
-    
+
     this.handleAnswersOffScreen = function()
     {
       if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate > gameCanvas.height)
       {
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate = -10;
       }
-  
+
       if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate > gameCanvas.height)
       {
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
