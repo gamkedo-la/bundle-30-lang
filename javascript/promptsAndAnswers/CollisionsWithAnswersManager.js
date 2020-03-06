@@ -102,13 +102,11 @@ function CollisionsWithAnswersManager()
 
       if (this.insideBoxColliderForCorrectStringAnswer(correctAnswerWidth, textAnswerFontSize))
         {
-          console.log('collision with correct string answer');
           this.resetAnswers();
           amountCorrect++;
         }
       else if (this.insideBoxColliderForIncorrectStringAnswer(incorrectAnswerWidth, textAnswerFontSize))
         {
-          console.log('collision with incorrect string answer');
           this.resetAnswers();
           amountIncorrect++;
         }

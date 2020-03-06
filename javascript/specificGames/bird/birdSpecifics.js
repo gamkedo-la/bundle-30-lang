@@ -95,8 +95,12 @@ function birdGameClass() {
 
   this.drawBackground = function()
   {
-  	gameCanvasContext.fillStyle = 'cyan';
-  	gameCanvasContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+    let startingXOnCanvas = 0;
+    let startingYOnCanvas = 0;
+    let endingXOnCanvas = gameCanvas.width;
+    let endingYOnCanvas = gameCanvas.height;
+  	gameCanvasContext.drawImage(skyBackground, startingXOnCanvas,startingYOnCanvas,
+                                               endingXOnCanvas, endingYOnCanvas);
   };
 
   this.handleSpaceBarDown = function()

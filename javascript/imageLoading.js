@@ -21,6 +21,9 @@ let runnerJumpingImage = document.createElement("img");
 //snake images
 let snakeGrassBackground = document.createElement('img');
 
+//bird images
+let skyBackground = document.createElement('img');
+
 //lane images
 let laneGrassBackground = document.createElement('img');
 let laneRoad = document.createElement('img');
@@ -133,11 +136,14 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: runnerJumpingImage, theFile: 'images/sprites/runner/runnerJumping.png'});
 
   //snake game
-  arrayOfImages.push({imageObjectBinding: snakeGrassBackground, theFile: 'images/Backgrounds/Grass.png'})
+  arrayOfImages.push({imageObjectBinding: snakeGrassBackground, theFile: 'images/Backgrounds/Grass.png'});
+
+  //bird game
+  arrayOfImages.push({imageObjectBinding: skyBackground, theFile: 'images/Backgrounds/Sky.png'});
 
   //lane game
-  arrayOfImages.push({imageObjectBinding: laneGrassBackground, theFile: 'images/Backgrounds/Lane.png'})
-  arrayOfImages.push({imageObjectBinding: laneRoad, theFile: 'images/Backgrounds/road.png'})
+  arrayOfImages.push({imageObjectBinding: laneGrassBackground, theFile: 'images/Backgrounds/Lane.png'});
+  arrayOfImages.push({imageObjectBinding: laneRoad, theFile: 'images/Backgrounds/road.png'});
 
   //pinata game
   arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});
