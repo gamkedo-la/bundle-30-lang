@@ -60,11 +60,6 @@ function snakeGameClass()
     customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' move left'], 30,15, 50,350);
   }
 
-  this.promptThePlayer = function()
-  {
-    promptersManager.promptThePlayer();
-  }
-
   this.LETTER_COLOR = 'cyan';
 
   this.handleLeftArrowDown = function()
