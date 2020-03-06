@@ -5,7 +5,7 @@ const flowerBackButtonRectangleColor = 'yellow';
 const flowerBackButtonTextColor = 'red';
 const flowerLetterColor = 'BlueViolet';
 
-flowerGameClass.prototype = new GameClass();
+//flowerGameClass.prototype = new GameClass();
 function flowerGameClass(){
     this.name = 'flowerGame';
 
@@ -16,6 +16,7 @@ function flowerGameClass(){
 	this.textAnswerFontStyle = 'px Helvetica';
 
     this.playerCharacter = undefined;
+    this.background = undefined;
     const SEED_ONE_STARTING_X = 100;
     const SEED_ONE_STARTING_Y = 10;
     const SEED_TWO_STARTING_X = 300;
@@ -23,7 +24,7 @@ function flowerGameClass(){
     const SEED_WIDTH = 15;
     const SEED_HEIGHT = 15;
 
-    const GRAVITY = 6;
+    const GRAVITY = 3;
 
     this.seedOneXCoordinate = undefined;
     this.seedOneYCoordinate = undefined;
@@ -33,11 +34,12 @@ function flowerGameClass(){
     this.initialize = function(){
         gameInterval.reset(this.FRAME_RATE);
         this.playerCharacter = new FlowerClass();
+        this.background = new FlowerBackgroundClass();
         initializePromptAndAnswerObjects();       
 		promptsAndAnswersManager.setOrResetPromptsAndAnswers();
         promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
         console.log(this.playerCharacter);
-        //letterSpeed = 3;
+
 
         //initialize seeds
         this.seedOneXCoordinate = SEED_ONE_STARTING_X;
@@ -54,8 +56,6 @@ function flowerGameClass(){
         this.playerCharacter.xSpeed = this.playerCharacter.RIGHT_ARROW_SPEED;
     };
 
-
-
     this.update = function()
     {
       if (!promptersManager.shouldBeDrawingAPrompt &&
@@ -69,7 +69,7 @@ function flowerGameClass(){
     };
 
     this.draw = function(){
-        this.drawBackground();
+        this.background.draw();
         this.playerCharacter.draw();
         drawAnswersManager.draw();
         promptersManager.drawPromptsWhenAppropriate();
@@ -86,34 +86,11 @@ function flowerGameClass(){
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate +=GRAVITY;
     }
 
-    this.drawBackground = function(){
-        gameCanvasContext.fillStyle = 'cyan';
-        gameCanvasContext.fillRect(0,0, gameCanvas.width, gameCanvas.height);
-    };
-
     this.drawSeeds = function(){
         gameCanvasContext.fillStyle = 'brown';
         gameCanvasContext.fillRect(this.seedOneXCoordinate, this.seedOneYCoordinate, SEED_WIDTH, SEED_HEIGHT);
         gameCanvasContext.fillRect(this.seedTwoXCoordinate, this.seedTwoYCoordinate, SEED_WIDTH, SEED_HEIGHT);
     }
-
-   /* this.handleCollisions = function() {
-        if ((this.playerCharacter.x + this.playerCharacter.width / 2) >= (this.seedOneXCoordinate - SEED_WIDTH / 2) &&
-            (this.playerCharacter.x - this.playerCharacter.width / 2) <= (this.seedOneXCoordinate + SEED_WIDTH / 2) &&
-            (this.playerCharacter.y + this.playerCharacter.height / 2) >= (this.seedOneYCoordinate - SEED_WIDTH / 2) &&
-            (this.playerCharacter.y - this.playerCharacter.height / 2) <= (this.seedOneYCoordinate + SEED_HEIGHT / 2)) {
-            console.log("collision detected");
-            seedOneYCoordinate = 200;
-        }
-
-        if ((this.playerCharacter.x + this.playerCharacter.width / 2) >= (this.seedTwoXCoordinate - SEED_WIDTH / 2) &&
-        (this.playerCharacter.x - this.playerCharacter.width / 2) <= (this.seedTwoXCoordinate + SEED_WIDTH / 2) &&
-        (this.playerCharacter.y + this.playerCharacter.height / 2) >= (this.seedTwoYCoordinate - SEED_WIDTH / 2) &&
-        (this.playerCharacter.y - this.playerCharacter.height / 2) <= (this.seedTwoYCoordinate + SEED_HEIGHT / 2)) {
-        console.log("collision detected");
-        seedTwoYCoordinate = 200;
-    }
-    }*/
 
     this.handleBoundaries = function() {
         if (this.playerCharacter.x >= 600) {
@@ -122,21 +99,6 @@ function flowerGameClass(){
         if (this.playerCharacter.x <= 30) {
             this.playerCharacter.x = 30;
         }
-    }
-    this.initializePromptAndAnswerObjects =function(){
-        initializePromptAndAnswerObjects();
-    }
-
-    this.shuffleAndResetPromptsAndAnswers = function(){
-        promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    }
-
-    this.loadPromptsManager = function(){
-        promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
-    }
-
-    this.promptThePlayer = function(){
-        promptersManager.promptThePlayer();
     }
     
     this.handleAnswersOffScreen = function()
