@@ -18,6 +18,9 @@ let runnerRunning2Image = document.createElement('img');
 let runnerRunning3Image = document.createElement('img');
 let runnerJumpingImage = document.createElement("img");
 
+//snake images
+let snakeGrassBackground = document.createElement('img');
+
 //special characters for custom font
 let upArrowImage = document.createElement("img");
 let rightArrowImage = document.createElement("img");
@@ -125,7 +128,13 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: runnerRunning3Image, theFile: 'images/sprites/runner/runnerRunning3.png'});
   arrayOfImages.push({imageObjectBinding: runnerJumpingImage, theFile: 'images/sprites/runner/runnerJumping.png'});
 
+  //snake game
+  arrayOfImages.push({imageObjectBinding: snakeGrassBackground, theFile: 'images/Backgrounds/Grass.png'})
 
+  //pinata game
+  arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});
+
+  //symbols
   arrayOfImages.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png' });
   arrayOfImages.push({imageObjectBinding: rightArrowImage, theFile: 'images/Custom Font/pngs/symbols/rightArrow.png' });
   arrayOfImages.push({imageObjectBinding: downArrowImage, theFile: 'images/Custom Font/pngs/symbols/downArrow.png' });
@@ -142,9 +151,8 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: symbolHashImage, theFile: 'images/Custom Font/pngs/symbols/symbolHash.png'});
   arrayOfImages.push({imageObjectBinding: symbolQuestionMarkImage, theFile: 'images/Custom Font/pngs/symbols/symbolQuestionMark.png'});
 
-  arrayOfImages.push({imageObjectBinding: placeholderPlayButtonImage, theFile: 'images/placeholderPlayButtonImage.png'});
 
-  arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});
+  arrayOfImages.push({imageObjectBinding: placeholderPlayButtonImage, theFile: 'images/placeholderPlayButtonImage.png'});
 
   // console.log(arrayOfImages);
 
@@ -174,17 +182,17 @@ function countLoadedImageAndLaunchIfReady()
 
     /*
     const FAST_DEBUG_MODE = true; // skip entire menu and immeditately play a game! use only for debugging!
-    if (FAST_DEBUG_MODE) { 
-    
+    if (FAST_DEBUG_MODE) {
+
         playerShouldBePlayingPinata = true;
         playerShouldSeeTitleScreen = false;
         fullGameStateMachine.playingAGameState = true;
         levelIsTransitioning = false;
         pinataGame.init();
-        //return; 
+        //return;
     }
     */
-    
+
 
     loadingAndSplashScreen.promptPlayerForClickAfterLoading();// in dualLoadingSplashScreen.js
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.clickToLaunch);

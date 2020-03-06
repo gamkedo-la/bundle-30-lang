@@ -76,6 +76,8 @@ function getRandomIntWithExclusionaryRange(min,max, excludedMin,excludedMax) {
 }
 
 
+
+
 //everything below might be obsolete
 let currentAnswer = undefined;
 

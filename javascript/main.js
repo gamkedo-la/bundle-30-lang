@@ -45,7 +45,6 @@ function updateEverythingInTheGame()
 //draw section
 function drawEverythingInTheGame()
 {
-
   if (fullGameStateMachine.currentState.associatedObject) // can sometimes be undefined
     fullGameStateMachine.currentState.associatedObject.draw();
 

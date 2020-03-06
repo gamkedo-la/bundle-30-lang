@@ -45,7 +45,7 @@ function snakeGameClass()
   //draw section
   this.draw = function()
   {
-    this.background.draw();
+    this.background.draw();    // this.background.draw();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
     promptersManager.drawPromptsWhenAppropriate();
