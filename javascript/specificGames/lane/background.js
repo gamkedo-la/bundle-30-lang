@@ -15,14 +15,22 @@ function LaneBackgroundClass()
 
 	function drawLaneGrass()
 	{
-		gameCanvasContext.fillStyle = 'green';
-		gameCanvasContext.fillRect(0,0, 640,700);
+    let startingXOnCanvas = 0;
+    let startingYOnCanvas = 0;
+    let endingXOnCanvas = gameCanvas.width;
+    let endingYOnCanvas = gameCanvas.height;
+		gameCanvasContext.drawImage(laneGrassBackground, startingXOnCanvas,startingYOnCanvas, endingXOnCanvas,endingYOnCanvas);
+
 	}
 
 	function drawLaneRoadAsphalt()
 	{
-		gameCanvasContext.fillStyle = 'gray';
-		gameCanvasContext.fillRect(140,0, 360,700);
+    let startingXOnCanvas = gameCanvas.width/2 - gameCanvas.width/4;
+    let startingYOnCanvas = 0;
+    let endingXOnCanvas = gameCanvas.width/2;
+    let endingYOnCanvas = gameCanvas.height;
+		gameCanvasContext.drawImage(laneRoad, startingXOnCanvas,startingYOnCanvas, endingXOnCanvas,endingYOnCanvas);
+
 	}
 
 	function drawLaneYellowCenterDashes()

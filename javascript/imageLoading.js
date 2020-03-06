@@ -21,6 +21,10 @@ let runnerJumpingImage = document.createElement("img");
 //snake images
 let snakeGrassBackground = document.createElement('img');
 
+//lane images
+let laneGrassBackground = document.createElement('img');
+let laneRoad = document.createElement('img');
+
 //special characters for custom font
 let upArrowImage = document.createElement("img");
 let rightArrowImage = document.createElement("img");
@@ -130,6 +134,10 @@ function loadImages()
 
   //snake game
   arrayOfImages.push({imageObjectBinding: snakeGrassBackground, theFile: 'images/Backgrounds/Grass.png'})
+
+  //lane game
+  arrayOfImages.push({imageObjectBinding: laneGrassBackground, theFile: 'images/Backgrounds/Lane.png'})
+  arrayOfImages.push({imageObjectBinding: laneRoad, theFile: 'images/Backgrounds/road.png'})
 
   //pinata game
   arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});
