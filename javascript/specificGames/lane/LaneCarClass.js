@@ -1,15 +1,15 @@
 function LaneCarClass()
 {
   this.name = 'lane car';
-  this.x = gameCanvas.width/3;
-  this.y = gameCanvas.height - gameCanvas.height/8;
+  this.image = laneCarImage;
+  this.x = gameCanvas.width/3.25;
+  this.y = gameCanvas.height - gameCanvas.height/4;
 
-  this.width = gameCanvas.width/20;
-  this.height = gameCanvas.width/10;
+  this.width = gameCanvas.width/7;
+  this.height = gameCanvas.width/4;
 
   this.draw = function()
   {
-    gameCanvasContext.fillStyle = 'blue';
-	  gameCanvasContext.fillRect(this.x,this.y, this.width,this.height);
+    gameCanvasContext.drawImage(laneCarImage, this.x,this.y, this.width,this.height);
   }
 }

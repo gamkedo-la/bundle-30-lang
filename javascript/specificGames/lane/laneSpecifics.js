@@ -50,8 +50,8 @@ function laneGameClass() {
 
 	this.initializeLanePositions = function()
 	{
-		this.carLeftLanePosition = gameCanvas.width/3;
-		this.carRightLanePosition = gameCanvas.width/3 + gameCanvas.width/3.5;
+		this.carLeftLanePosition = gameCanvas.width/2 - this.playerCharacter.width - this.playerCharacter.width/2;
+		this.carRightLanePosition = gameCanvas.width/2 + this.playerCharacter.width/2;
 	}
 
 	this.handleLeftArrowDown = function()
