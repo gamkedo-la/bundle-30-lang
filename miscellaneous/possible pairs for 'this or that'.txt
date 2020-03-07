@@ -138,6 +138,8 @@ Where = pic of a location, When = pic of time, why = because)
 136. both/all
 137. feet/fit
 138. chair/cheer
+139. eats/its
+140. rain/raining/rainy
 
 spelling - 
 1. was/saw
