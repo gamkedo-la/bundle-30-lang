@@ -28,6 +28,8 @@ let skyBackground = document.createElement('img');
 let laneGrassBackground = document.createElement('img');
 let laneRoad = document.createElement('img');
 let laneCarImage = document.createElement('img');
+let roadDash1 = document.createElement('img');
+let roadDash2 = document.createElement('img');
 
 //special characters for custom font
 let upArrowImage = document.createElement("img");
@@ -146,6 +148,8 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: laneGrassBackground, theFile: 'images/Backgrounds/Lane.png'});
   arrayOfImages.push({imageObjectBinding: laneRoad, theFile: 'images/Backgrounds/road.png'});
   arrayOfImages.push({imageObjectBinding: laneCarImage, theFile: 'images/sprites/Lane/car.png'});
+  arrayOfImages.push({imageObjectBinding: roadDash1, theFile: 'images/Backgrounds/roadDash.png'});
+  arrayOfImages.push({imageObjectBinding: roadDash2, theFile: 'images/Backgrounds/roadDash2.png'});
 
   //pinata game
   arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});

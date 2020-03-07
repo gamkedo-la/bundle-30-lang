@@ -1,7 +1,26 @@
 function LaneBackgroundClass()
 {
+  let dashPictureNumber = 1;
+  let currentDashPicture = roadDash1;
+
+  function chooseDashPicture()
+  {
+    if (dashPictureNumber === 1)
+    {
+      currentDashPicture = roadDash1;
+      dashPictureNumber = 2;
+    }
+    else if (dashPictureNumber === 2)
+    {
+      currentDashPicture = roadDash2;
+      dashPictureNumber = 1;
+    }
+    console.log(currentDashPicture);
+    return currentDashPicture;
+  }
+
   let arrayOfYellowCenterDashes = [-1, 0, 1, 2, 3, 4, 5, 6].map(function(dashIndex) {
-		return {x: 320 - 7.5, y: dashIndex*100};
+		return {x: 320 - 7.5, y: dashIndex*100, image:chooseDashPicture()};
 	});
 	let dashHeight = 75;
 	let dashWidth = 15;
@@ -37,9 +56,11 @@ function LaneBackgroundClass()
 	{
 		for (let dashIndex = 0; dashIndex < arrayOfYellowCenterDashes.length; dashIndex++)
 		{
-			gameCanvasContext.fillStyle = 'yellow';
-			gameCanvasContext.fillRect(arrayOfYellowCenterDashes[dashIndex].x,arrayOfYellowCenterDashes[dashIndex].y,
-									   dashWidth,dashHeight);
+      gameCanvasContext.drawImage(arrayOfYellowCenterDashes[dashIndex].image, arrayOfYellowCenterDashes[dashIndex].x,
+                                  arrayOfYellowCenterDashes[dashIndex].y, dashWidth,dashHeight);
+			// gameCanvasContext.fillStyle = 'yellow';
+			// gameCanvasContext.fillRect(arrayOfYellowCenterDashes[dashIndex].x,arrayOfYellowCenterDashes[dashIndex].y,
+			// 						   dashWidth,dashHeight);
 		}
 	}
 
@@ -55,7 +76,7 @@ function LaneBackgroundClass()
 	{
 		if (arrayOfYellowCenterDashes[0].y > 0)
 		{
-			arrayOfYellowCenterDashes.unshift({x:320 - 7.5,y:-100});
+			arrayOfYellowCenterDashes.unshift({x:320 - 7.5,y:-100,image:chooseDashPicture()});
 		}
 	}
 
