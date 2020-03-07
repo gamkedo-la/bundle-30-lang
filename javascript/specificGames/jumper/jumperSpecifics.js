@@ -116,7 +116,7 @@ function jumperGameClass()
   {
   	gameCanvasContext.fillStyle = 'blue';
   	gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
-  	gameCanvasContext.fillStyle = 'black';
+  	gameCanvasContext.fillStyle = 'gray';
   	for (let platformsIndex = 0; platformsIndex < this.arrayOfJumperPlatforms.length; platformsIndex++)
   	{
         gameCanvasContext.fillRect(this.arrayOfJumperPlatforms[platformsIndex].x, this.arrayOfJumperPlatforms[platformsIndex].y, gameCanvas.width, 50)

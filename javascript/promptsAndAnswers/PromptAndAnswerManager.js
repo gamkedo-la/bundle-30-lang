@@ -241,18 +241,34 @@ function PromptsAndAnswersManager()
     }
     else if (gameClassManager.currentGame.name === 'jumperGame')
     {
+      let audioAnswerOffset = -20;
+      let imageAnswerOffset = -45;
+      let stringAnswerOffset = -50;
+      let currentOffset = undefined;
+
+      if (this.currentAnswerDataType === 'AUDIO')
+      {
+        currentOffset = audioAnswerOffset;
+      }
+      else if (this.currentAnswerDataType === 'IMG')
+      {
+        currentOffset = imageAnswerOffset;
+      }
+      else if (this.currentAnswerDataType === 'string')
+      {
+        currentOffset = stringAnswerOffset;
+      }
+
       this.correctTargetPromptAndAnswerPairing.xCoordinate =
       getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100,
       gameClassManager.currentGame.playerCharacter.x - 40,gameClassManager.currentGame.playerCharacter.x + 60);
-      let randomPlatformIndex = (Math.floor(Math.random() * 7) * 100) + 30;
+      let randomPlatformIndex = (Math.floor(Math.random() * 7) * 100) + currentOffset;
       this.correctTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
-      console.log(this.correctTargetPromptAndAnswerPairing.xCoordinate);
-      console.log(this.correctTargetPromptAndAnswerPairing.yCoordinate);
 
       this.incorrectTargetPromptAndAnswerPairing.xCoordinate =
       getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100,
       gameClassManager.currentGame.playerCharacter.x - 40,gameClassManager.currentGame.playerCharacter.x + 60);
-      randomPlatformIndex = (Math.floor(Math.random() * 7) * 100) + 30;
+      randomPlatformIndex = (Math.floor(Math.random() * 7) * 100) + currentOffset;
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
     }
     else if(gameClassManager.currentGame.name === "flowerGame"){
