@@ -15,7 +15,6 @@ function LaneBackgroundClass()
       currentDashPicture = roadDash2;
       dashPictureNumber = 1;
     }
-    console.log(currentDashPicture);
     return currentDashPicture;
   }
 
