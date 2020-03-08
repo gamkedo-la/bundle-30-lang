@@ -25,11 +25,14 @@ let snakeGrassBackground = document.createElement('img');
 let skyBackground = document.createElement('img');
 
 //lane images
-let laneGrassBackground = document.createElement('img');
-let laneRoad = document.createElement('img');
+let laneGrassBackground1 = document.createElement('img');
+let laneGrassBackground2 = document.createElement('img');
+let laneRoad1 = document.createElement('img');
+let laneRoad2 = document.createElement('img');
 let laneCarImage = document.createElement('img');
 let roadDash1 = document.createElement('img');
 let roadDash2 = document.createElement('img');
+let roadDash3 = document.createElement('img');
 
 //special characters for custom font
 let upArrowImage = document.createElement("img");
@@ -145,11 +148,14 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: skyBackground, theFile: 'images/Backgrounds/Sky.png'});
 
   //lane game
-  arrayOfImages.push({imageObjectBinding: laneGrassBackground, theFile: 'images/Backgrounds/Lane.png'});
-  arrayOfImages.push({imageObjectBinding: laneRoad, theFile: 'images/Backgrounds/road.png'});
+  arrayOfImages.push({imageObjectBinding: laneGrassBackground1, theFile: 'images/Backgrounds/LaneGrass1.png'});
+  arrayOfImages.push({imageObjectBinding: laneGrassBackground2, theFile: 'images/Backgrounds/LaneGrass2.png'});
+  arrayOfImages.push({imageObjectBinding: laneRoad1, theFile: 'images/Backgrounds/road1.png'});
+  arrayOfImages.push({imageObjectBinding: laneRoad2, theFile: 'images/Backgrounds/road2.png'});
   arrayOfImages.push({imageObjectBinding: laneCarImage, theFile: 'images/sprites/Lane/car.png'});
   arrayOfImages.push({imageObjectBinding: roadDash1, theFile: 'images/Backgrounds/roadDash.png'});
   arrayOfImages.push({imageObjectBinding: roadDash2, theFile: 'images/Backgrounds/roadDash2.png'});
+  arrayOfImages.push({imageObjectBinding: roadDash3, theFile: 'images/Backgrounds/roadDash3.png'})
 
   //pinata game
   arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});

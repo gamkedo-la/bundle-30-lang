@@ -1,5 +1,21 @@
 function LaneBackgroundClass()
 {
+
+  this.laneGrassImage1 = undefined;
+  this.laneGrassImage2 = undefined;
+
+  this.asphaltImage1 = undefined;
+  this.asphaltImage2 = undefined;
+
+  this.initialize = function()
+  {
+    this.laneGrassImage1 = new LaneGrassImage(0, laneGrassBackground1);
+    this.laneGrassImage2 = new LaneGrassImage(-gameCanvas.height, laneGrassBackground2);
+
+    this.asphaltImage1 = new AsphaltImage(0, laneRoad1);
+    this.asphaltImage2 = new AsphaltImage(-gameCanvas.height, laneRoad2);
+  }
+
   let dashPictureNumber = 1;
   let currentDashPicture = roadDash1;
 
@@ -12,7 +28,7 @@ function LaneBackgroundClass()
     }
     else if (dashPictureNumber === 2)
     {
-      currentDashPicture = roadDash2;
+      currentDashPicture = roadDash3;
       dashPictureNumber = 1;
     }
     return currentDashPicture;
@@ -26,29 +42,21 @@ function LaneBackgroundClass()
 
   this.draw = function()
 	{
-		drawLaneGrass();
-	  drawLaneRoadAsphalt();
+		this.drawLaneGrass();
+	  this.drawLaneRoadAsphalt();
 	  drawLaneYellowCenterDashes();
 	}
 
-	function drawLaneGrass()
+	this.drawLaneGrass = function()
 	{
-    let startingXOnCanvas = 0;
-    let startingYOnCanvas = 0;
-    let endingXOnCanvas = gameCanvas.width;
-    let endingYOnCanvas = gameCanvas.height;
-		gameCanvasContext.drawImage(laneGrassBackground, startingXOnCanvas,startingYOnCanvas, endingXOnCanvas,endingYOnCanvas);
-
+    this.laneGrassImage1.draw();
+    this.laneGrassImage2.draw();
 	}
 
-	function drawLaneRoadAsphalt()
+	this.drawLaneRoadAsphalt = function()
 	{
-    let startingXOnCanvas = gameCanvas.width/2 - gameCanvas.width/4;
-    let startingYOnCanvas = 0;
-    let endingXOnCanvas = gameCanvas.width/2;
-    let endingYOnCanvas = gameCanvas.height;
-		gameCanvasContext.drawImage(laneRoad, startingXOnCanvas,startingYOnCanvas, endingXOnCanvas,endingYOnCanvas);
-
+    this.asphaltImage1.draw();
+    this.asphaltImage2.draw();
 	}
 
 	function drawLaneYellowCenterDashes()
@@ -57,9 +65,6 @@ function LaneBackgroundClass()
 		{
       gameCanvasContext.drawImage(arrayOfYellowCenterDashes[dashIndex].image, arrayOfYellowCenterDashes[dashIndex].x,
                                   arrayOfYellowCenterDashes[dashIndex].y, dashWidth,dashHeight);
-			// gameCanvasContext.fillStyle = 'yellow';
-			// gameCanvasContext.fillRect(arrayOfYellowCenterDashes[dashIndex].x,arrayOfYellowCenterDashes[dashIndex].y,
-			// 						   dashWidth,dashHeight);
 		}
 	}
 
@@ -92,4 +97,59 @@ function LaneBackgroundClass()
 		this.spawnANewDashIfAppropriate();
 		this.deleteDashesOffBottomOfScreen();
 	}
+}
+
+function LaneGrassImage(drawingStartingY,image)
+{
+  this.drawingStartingX = 0;
+  this.drawingStartingY = drawingStartingY;
+  this.width = gameCanvas.width;
+  this.height = gameCanvas.height;
+  this.image = image;
+
+  this.draw = function()
+  {
+    gameCanvasContext.drawImage(image, this.drawingStartingX,this.drawingStartingY, this.width,this.height);
+  }
+
+  this.scrollDown = function()
+  {
+    this.drawingStartingY += 3;
+  }
+
+  this.handleScrollingOffScreen = function()
+  {
+    if (this.drawingStartingY > gameCanvas.height)
+    {
+      this.drawingStartingY = -gameCanvas.height;
+    }
+  }
+}
+
+function AsphaltImage(drawingStartingY, image)
+{
+  this.drawingStartingX = gameCanvas.width/2 - gameCanvas.width/4;
+  this.drawingStartingY = drawingStartingY;
+  this.width = gameCanvas.width/2;
+  this.height = gameCanvas.height;
+
+  this.image = image;
+
+  this.draw = function()
+  {
+    gameCanvasContext.drawImage(image, this.drawingStartingX,this.drawingStartingY, this.width,this.height);
+  }
+
+  this.scrollDown = function()
+  {
+    this.drawingStartingY += 3;
+  }
+
+  this.handleScrollingOffScreen = function()
+  {
+    if (this.drawingStartingY > gameCanvas.height)
+    {
+      this.drawingStartingY = -gameCanvas.height;
+    }
+  }
 }

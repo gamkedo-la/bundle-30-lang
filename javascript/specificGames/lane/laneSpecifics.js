@@ -14,6 +14,7 @@ function laneGameClass() {
 		gameInterval.reset(this.FRAME_RATE);
 		this.playerCharacter = new LaneCarClass();
 		this.background = new LaneBackgroundClass();
+		this.background.initialize();
 		this.initializeLanePositions();
 		initializePromptAndAnswerObjects();
 		promptsAndAnswersManager.setOrResetPromptsAndAnswers();
@@ -27,6 +28,14 @@ function laneGameClass() {
     {
 			this.background.moveYellowCenterDashes();
 			this.background.handleDashArrayPopulation();
+			this.background.laneGrassImage1.scrollDown();
+			this.background.laneGrassImage2.scrollDown();
+			this.background.laneGrassImage1.handleScrollingOffScreen();
+			this.background.laneGrassImage2.handleScrollingOffScreen();
+			this.background.asphaltImage1.scrollDown();
+			this.background.asphaltImage2.scrollDown();
+			this.background.asphaltImage1.handleScrollingOffScreen();
+			this.background.asphaltImage2.handleScrollingOffScreen();
 			this.moveAnswers();
 			this.handleAnswersOffScreen();
 			collisionsWithAnswersManager.handleCollisionsWithAnswers();
