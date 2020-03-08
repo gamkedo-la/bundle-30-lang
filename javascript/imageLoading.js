@@ -34,6 +34,9 @@ let roadDash1 = document.createElement('img');
 let roadDash2 = document.createElement('img');
 let roadDash3 = document.createElement('img');
 
+//flower images
+let simpleFlower = document.createElement('img');
+
 //special characters for custom font
 let upArrowImage = document.createElement("img");
 let rightArrowImage = document.createElement("img");
@@ -156,6 +159,9 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: roadDash1, theFile: 'images/Backgrounds/roadDash.png'});
   arrayOfImages.push({imageObjectBinding: roadDash2, theFile: 'images/Backgrounds/roadDash2.png'});
   arrayOfImages.push({imageObjectBinding: roadDash3, theFile: 'images/Backgrounds/roadDash3.png'})
+
+  //flower game
+  arrayOfImages.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png"});
 
   //pinata game
   arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});
