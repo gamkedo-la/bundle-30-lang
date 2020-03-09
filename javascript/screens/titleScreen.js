@@ -114,18 +114,12 @@ function TitleScreenClass()
     else if (inputManager.mouseCoordinates.x > 420 && inputManager.mouseCoordinates.x < 520 &&
              inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
         {
-          playerShouldBePlayingFinder = true;
-          playerShouldSeeTitleScreen = false;
-          fullGameStateMachine.playingAGameState = true;
-          levelIsTransitioning = true;
+
         }
     else if (inputManager.mouseCoordinates.x > 520 && inputManager.mouseCoordinates.x < 620 &&
              inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
         {
-          playerShouldBePlayingCatcher = true;
-          playerShouldSeeTitleScreen = false;
-          fullGameStateMachine.playingAGameState = true;
-          levelIsTransitioning = true;
+          gameClassManager.loadCurrentGame(passOrBlockGame);
         }
 
     //2nd row

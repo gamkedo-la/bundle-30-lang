@@ -1,5 +1,3 @@
-passOrBlockGameClass.prototype = new GameClass();
-
 function PassOrBlockGameClass()
 {
   this.name = "Pass or Block Game";
@@ -17,13 +15,18 @@ function PassOrBlockGameClass()
 
   this.LETTER_COLOR = 'cyan';
 
-  this.answersYSpeed = 10;
+  this.correctAnswersYSpeed = 4;
+  this.incorrectAnswersYSpeed = 4;
 
   this.initialize = function()
   {
     initializePromptAndAnswerObjects();
+    gameInterval.reset(this.FRAME_RATE);
+
     this.playerCharacter = new Paddle();
     this.background = new PassOrBlockBackground();
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
   }
 
   this.draw = function()
@@ -36,9 +39,13 @@ function PassOrBlockGameClass()
 
   this.update = function()
   {
-    this.moveAnswers();
-    this.playerCharacter.handleCollisionsWithAnswers();
-    this.background.handleAnswersOffScreen();
+    if (!promptsAndAnswersManager.shouldBeDrawingAPrompt &&
+    fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
+    {
+      this.moveAnswers();
+      this.playerCharacter.handleCollisionsWithAnswers();
+      this.background.handleAnswersOffScreen();
+    }
   }
 
   this.handleLeftArrowDown = function()
@@ -53,14 +60,9 @@ function PassOrBlockGameClass()
 
   this.moveAnswers = function()
   {
-    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate += this.answersYSpeed;
-    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate += this.answersYSpeed;
+    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate += this.correctAnswersYSpeed;
+    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate += this.incorrectAnswersYSpeed;
   }
 }
 
-function updateEverything()
-{
-  handlePaddlePasses();
-  handlePaddleCollisions();
-  handleOffTopSideOfScreen();
-}
+let passOrBlockGame = new PassOrBlockGameClass();

@@ -1,7 +1,11 @@
 function PassOrBlockBackground()
 {
-  gameCanvasContext.fillStyle = 'black';
-  gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+
+  this.draw = function()
+  {
+    gameCanvasContext.fillStyle = 'blue';
+    gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+  }
 
   this.handleAnswersOffScreen = function()
   {
@@ -9,27 +13,50 @@ function PassOrBlockBackground()
     this.handleAnswersOffTopOfScreen();
   }
 
+  this.correctAnswerOffScreen = false;
+  this.incorrectAnswerOffScreen = false;
+
   this.handleAnswersOffBottomOfScreen = function()
   {
-    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.y > gameCanvas.height)
+    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate > gameCanvas.height)
     {
-
+      amountIncorrect++;
+      this.correctAnswerOffScreen = true;
+      this.checkIfBothAnswersAreOffScreenAndResetIfSo();
     }
-    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.y < 0)
+    if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate > gameCanvas.height)
     {
-
+      amountCorrect++;
+      this.checkIfBothAnswersAreOffScreenAndResetIfSo();
     }
   }
 
   this.handleAnswersOffTopOfScreen = function()
   {
-    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.y > gameCanvas.height)
+    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate < 0)
     {
-      
+      amountCorrect++;
+      this.correctAnswerOffScreen = true;
+      this.checkIfBothAnswersAreOffScreenAndResetIfSo();
     }
-    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.y < 0)
+    if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate < 0)
     {
+      amountIncorrect++;
+      this.incorrectAnswerOffScreen = true;
+      this.checkIfBothAnswersAreOffScreenAndResetIfSo();
+    }
+  }
 
+  this.checkIfBothAnswersAreOffScreenAndResetIfSo = function()
+  {
+    if (this.correctAnswerOffScreen && this.incorrectAnswerOffScreen)
+    {
+      this.correctAnswerOffScreen = false;
+      this.incorrectAnswerOffScreen = false;
+
+      initializePromptAndAnswerObjects();
+      promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+      promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     }
   }
 }

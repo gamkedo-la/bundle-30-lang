@@ -182,6 +182,11 @@ function PromptsAndAnswersManager()
     )
   }
 
+  this.checkIfObjectsXCoordinatesAreTooCloseToEachOther = function(firstObjectX,secondObjectX, minDistanceFromEachOther)
+  {
+    return (Math.abs(firstObjectX - secondObjectX) < minDistanceFromEachOther)
+  }
+
   this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter = function()
   {
     let randomXCoordinate = undefined;
@@ -270,6 +275,21 @@ function PromptsAndAnswersManager()
       gameClassManager.currentGame.playerCharacter.x - 40,gameClassManager.currentGame.playerCharacter.x + 60);
       randomPlatformIndex = (Math.floor(Math.random() * 7) * 100) + currentOffset;
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
+    }
+    else if (gameClassManager.currentGame.name === 'Pass or Block Game')
+    {
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,gameCanvas.width - 100);
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,gameCanvas.width - 100);
+      while(
+        this.checkIfObjectsXCoordinatesAreTooCloseToEachOther(this.correctTargetPromptAndAnswerPairing.xCoordinate,this.incorrectTargetPromptAndAnswerPairing.xCoordinate, 100)
+      )
+      {
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,gameCanvas.width - 100);
+      }
+
+
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = 0;
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = 0;
     }
     else if(gameClassManager.currentGame.name === "flowerGame"){
       console.log('inside promptAndAnswersManager function to define x and y coordinates for flower game');
