@@ -139,7 +139,10 @@ Where = pic of a location, When = pic of time, why = because)
 137. feet/fit
 138. chair/cheer
 139. eats/its
-140. rain/raining/rainy
+140. rain/raining/rainy/rained
+150. 5/15/50
+151. will/we/we'll
+152. thirteen/threeteen
 
 spelling - 
 1. was/saw
