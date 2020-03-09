@@ -1,60 +1,66 @@
-var gameCanvas;
-var gameCanvasContext;
+passOrBlockGameClass.prototype = new GameClass();
 
-var firstLetterAudio = false;
-
-window.onload = function()
+function PassOrBlockGameClass()
 {
-  gameCanvas = document.getElementById("letterPassOrBlock");
-  gameCanvasContext = gameCanvas.getContext('2d');
+  this.name = "Pass or Block Game";
+  this.FRAME_RATE = 1000/30;
 
-  statsCanvas = document.getElementById('statsCanvas');
-  statsDrawingContext = statsCanvas.getContext('2d');
+  this.background = undefined;
 
-  gameCanvas.addEventListener('click', canvasClick, false);//canvasClick is in input.js
-  document.addEventListener("keydown",keyPush);//keyPush is in input.js  canvasDrawingContext = gameCanvas.getContext("2d");
+  this.playerCharacter = undefined;
+  this.background = undefined;
+  this.backButtonColor = 'yellow';
+  this.backButtonTextColor = 'blueViolet';
 
-  paddle = new Paddle;
-  m = new letter('m');
-  n = new letter('n');
-  arrayOfLetters.push(m);
-  arrayOfLetters.push(n);
+  this.textAnswerFontSize = 30;
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
-  setInterval(gameLoop, 1000/30);
-}
+  this.LETTER_COLOR = 'cyan';
 
-function gameLoop()
-{
-  updateEverything();
-  drawEverything();
-}
+  this.answersYSpeed = 10;
 
-function drawEverything()
-{
-  if (titleScreen)
+  this.initialize = function()
   {
-    drawTitleScreen();
-  } else
-  {
-    drawBackground();
-    paddle.draw();
-    drawLetters();
-    drawStatsBackground();
-    drawStats();
+    initializePromptAndAnswerObjects();
+    this.playerCharacter = new Paddle();
+    this.background = new PassOrBlockBackground();
   }
-}
 
-function drawBackground()
-{
-  gameCanvasContext.fillStyle = 'black';
-  gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+  this.draw = function()
+  {
+    this.background.draw();
+    this.playerCharacter.draw();
+    drawAnswersManager.draw();
+    promptersManager.drawPromptsWhenAppropriate();
+  }
+
+  this.update = function()
+  {
+    this.moveAnswers();
+    this.playerCharacter.handleCollisionsWithAnswers();
+    this.background.handleAnswersOffScreen();
+  }
+
+  this.handleLeftArrowDown = function()
+  {
+    this.playerCharacter.x -= 10;
+  }
+
+  this.handleRightArrowDown = function()
+  {
+    this.playerCharacter.x += 10;
+  }
+
+  this.moveAnswers = function()
+  {
+    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate += this.answersYSpeed;
+    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate += this.answersYSpeed;
+  }
 }
 
 function updateEverything()
 {
-  moveLetters();
   handlePaddlePasses();
   handlePaddleCollisions();
   handleOffTopSideOfScreen();
-  handleEmptyArrayOfLetters();
 }
