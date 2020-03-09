@@ -31,11 +31,14 @@ function flowerGameClass(){
     this.seedTwoXCoordinate = undefined;
     this.seedTwoYCoordinate = undefined;
 
+    var amountCorrectAtStartOfThisGame = undefined;
+
     this.initialize = function()
     {
       gameInterval.reset(this.FRAME_RATE);
       this.playerCharacter = new FlowerClass();
       this.background = new FlowerBackgroundClass();
+      amountCorrectAtStartOfThisGame = amountCorrect;
 
       //initialize seeds
       this.seedOneXCoordinate = SEED_ONE_STARTING_X;
@@ -67,6 +70,7 @@ function flowerGameClass(){
         this.moveSeeds();
         this.handleAnswersOffScreen();
         collisionsWithAnswersManager.handleCollisionsWithAnswers();
+        
       }
     };
 
@@ -76,6 +80,7 @@ function flowerGameClass(){
         drawAnswersManager.draw();
         promptersManager.drawPromptsWhenAppropriate();
         this.drawSeeds();
+        this.sproutFlowers();
     }
 
     this.movePlayer = function(){
@@ -120,6 +125,17 @@ function flowerGameClass(){
       {
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
       }
+    }
+
+    this.sproutFlowers = function(){
+      this.width = 30;
+      this.height = 60;
+      if(amountCorrect > amountCorrectAtStartOfThisGame){
+        gameCanvasContext.drawImage(simpleFlower, this.playerCharacter.x,(this.playerCharacter.y - this.height), this.width, this.height);
+        console.log("sprouting flower");
+      }
+
+      
     }
 }
 
