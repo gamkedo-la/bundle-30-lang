@@ -39,7 +39,7 @@ function TitleScreenClass()
     [{name: "Lane", fontSize: 27, spacing: 15, x: 237, y: 185}],//3
     [{name: "Jumper", fontSize: 27, spacing: 15, x: 322, y: 185}],//4
     [{name: "Finder", fontSize: 27, spacing: 15, x: 420, y: 185}],//5
-    [{name: "Catcher", fontSize: 22, spacing: 12, x: 527, y: 187}],//6
+    [{name: "Pass", fontSize: 22, spacing: 12, x: 542, y: 167},{name: "Block", fontSize: 22, spacing: 12, x: 535, y: 207}],//6
     [{name: "Shooter", fontSize: 22, spacing: 12, x: 24, y: 285}],//7
     [{name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270}, {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}],//8
     [{name: "Runner", fontSize: 27, spacing: 13, x: 225, y: 285}],//9
