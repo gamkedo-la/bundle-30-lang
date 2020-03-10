@@ -1,4 +1,4 @@
-function Player()
+function ShooterPlayer()
 {
   this.position = 1;
 
