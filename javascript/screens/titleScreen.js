@@ -58,7 +58,9 @@ function TitleScreenClass()
     [{name: "Frog", fontSize: 25, spacing: 15, x: 330, y: 465},{name: "Crate", fontSize: 25, spacing: 10, x: 330, y: 505}],
     [{name: "Flying", fontSize: 25, spacing: 15, x: 420, y: 465},{name: "Bee", fontSize: 25, spacing: 10, x: 440, y: 505}],
     [{name: "Fishing", fontSize: 25, spacing: 12, x: 520, y: 480}],
-    [{name: "Egg", fontSize: 25, spacing: 12, x: 45, y: 565},{name: "Catch", fontSize: 25, spacing: 10, x: 37, y: 605}]
+    [{name: "Egg", fontSize: 25, spacing: 12, x: 45, y: 565},{name: "Catch", fontSize: 25, spacing: 10, x: 37, y: 605}],
+    [{name: "Bubble", fontSize: 27, spacing: 12, x: 130, y: 565},{name: "Wrap", fontSize: 27, spacing: 12, x: 140, y: 605}],
+    
   ];
 
   this.drawGameNames = function()
