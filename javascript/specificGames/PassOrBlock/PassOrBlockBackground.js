@@ -27,6 +27,7 @@ function PassOrBlockBackground()
     if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate > gameCanvas.height)
     {
       amountCorrect++;
+      this.incorrectAnswerOffScreen = true;
       this.checkIfBothAnswersAreOffScreenAndResetIfSo();
     }
   }
@@ -54,9 +55,9 @@ function PassOrBlockBackground()
       this.correctAnswerOffScreen = false;
       this.incorrectAnswerOffScreen = false;
 
-      initializePromptAndAnswerObjects();
-      promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-      promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+      collisionsWithAnswersManager.resetAnswers();
+      gameClassManager.currentGame.correctAnswersYSpeed = 4;
+      gameClassManager.currentGame.incorrectAnswersYSpeed = 4;
     }
   }
 }

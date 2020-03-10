@@ -5,6 +5,9 @@ function DrawAnswersManager()
     return gameClassManager.currentGame.LETTER_COLOR;
   }
 
+  this.imageWidth = 100;
+  this.imageHeight = 100;
+
   this.draw = function()
   {
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
@@ -50,11 +53,11 @@ function DrawAnswersManager()
       // {
         gameCanvasContext.drawImage(promptsAndAnswersManager.currentCorrectAnswer,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
-        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, 100,100);
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);
 
         gameCanvasContext.drawImage(promptsAndAnswersManager.currentIncorrectAnswer,
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
-        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate, 100,100);
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);
       //}
     } else if (promptsAndAnswersManager.currentAnswerDataType === "AUDIO")
     {
@@ -68,7 +71,7 @@ function DrawAnswersManager()
       //gameCanvasContext.globalAlpha = 0;
       gameCanvasContext.drawImage(placeholderPlayButtonImage,
       promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
-      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, 100,100);
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);
       gameCanvasContext.globalCompositeOperation = 'source-over';
       gameCanvasContext.globalAlpha = 1;
 
@@ -80,7 +83,7 @@ function DrawAnswersManager()
       //gameCanvasContext.globalAlpha = 0;
       gameCanvasContext.drawImage(placeholderPlayButtonImage,
       promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
-      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate, 100,100);
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);
       gameCanvasContext.globalCompositeOperation = 'source-over';
       gameCanvasContext.globalAlpha = 1;
       //}

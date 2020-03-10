@@ -39,7 +39,7 @@ function PassOrBlockGameClass()
 
   this.update = function()
   {
-    if (!promptsAndAnswersManager.shouldBeDrawingAPrompt &&
+    if (!promptersManager.shouldBeDrawingAPrompt &&
     fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
     {
       this.moveAnswers();
@@ -60,8 +60,8 @@ function PassOrBlockGameClass()
 
   this.moveAnswers = function()
   {
-    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate += this.correctAnswersYSpeed;
-    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate += this.incorrectAnswersYSpeed;
+    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate += this.incorrectAnswersYSpeed;
+    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate += this.correctAnswersYSpeed;
   }
 }
 

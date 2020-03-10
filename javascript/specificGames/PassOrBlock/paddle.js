@@ -14,28 +14,41 @@ function Paddle()
 
   this.handleCollisionsWithAnswers = function()
   {
-    console.log(this.x);
-    console.log(this.y);
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate);
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100: ' + (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100));
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100: ' + (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100));
-    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 25 > this.x &&
-        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 25 > this.x + this.width &&
-        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 25 > this.y &&
-        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 25 < this.y + this.height)
+    let correctAnswerLeftSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate;
+    let correctAnswerRightSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.width;
+    let correctAnswerTopSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate;
+    let correctAnswerBottomSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.height;
+
+    let incorrectAnswerLeftSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate;
+    let incorrectAnswerRightSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.width;
+    let incorrectAnswerTopSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate;
+    let incorrectAnswerBottomSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.height;
+
+    let paddleRightSide = this.x + this.width;
+    let paddleLeftSide = this.x;
+    let paddleBottomSide = this.y + this.height;
+    let paddleTopSide = this.y;
+
+    if (correctAnswerLeftSide > paddleRightSide || correctAnswerRightSide < paddleLeftSide ||
+        correctAnswerTopSide > paddleBottomSide || correctAnswerBottomSide < paddleTopSide)
+        {
+
+        }
+        else
         {
           console.log('paddle collision with correct answer');
-          gameClassManager.currentGame.answerYSpeed *= -1;
+          gameClassManager.currentGame.correctAnswersYSpeed *= -1;
         }
 
-    if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 25 > this.x &&
-        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 25 > this.x + this.width &&
-        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 25 > this.y &&
-        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 25 < this.y + this.height)
+    if (incorrectAnswerLeftSide > paddleRightSide || incorrectAnswerRightSide < paddleLeftSide ||
+        incorrectAnswerTopSide > paddleBottomSide || incorrectAnswerBottomSide < paddleTopSide)
         {
-          console.log('paddle collision with correct answer');
-          gameClassManager.currentGame.answerYSpeed *= -1;
+
+        }
+        else
+        {
+          console.log('paddle collision with incorrect answer');
+          gameClassManager.currentGame.incorrectAnswersYSpeed *= -1;
         }
   }
 }

@@ -105,6 +105,25 @@ function PromptsAndAnswersManager()
     this.incorrectTargetPromptAndAnswerPairing = this.editedPromptAndAnswerGroup.arrayOfObjects[randomIndexForEditedPromptAndAnswerGroup];
   }
 
+  this.defineWidthAndHeightForTargetAnswers = function()
+  {
+    if (this.currentAnswerDataType === "AUDIO" || this.currentAnswerDataType === "IMG")
+    {
+      this.correctTargetPromptAndAnswerPairing.width = drawAnswersManager.imageWidth;
+      this.incorrectTargetPromptAndAnswerPairing.width = drawAnswersManager.imageWidth;
+      this.correctTargetPromptAndAnswerPairing.height = drawAnswersManager.imageHeight;
+      this.incorrectTargetPromptAndAnswerPairing.height = drawAnswersManager.imageHeight;
+    }
+    else if (this.currentAnswerDataType === 'string')
+    {
+      this.correctTargetPromptAndAnswerPairing.width =
+      gameCanvasContext.measureText(this.correctTargetPromptAndAnswerPairing.textAssociation).width;
+      this.incorrectTargetPromptAndAnswerPairing.width =
+      gameCanvasContext.measureText(this.incorrectTargetPromptAndAnswerPairing.textAssociation).width;
+      this.correctTargetPromptAndAnswerPairing.height = 20;//measureText does not provide height
+      this.incorrectTargetPromptAndAnswerPairing.height = 20;//measureText does not provide height
+    }
+  }
 
   this.currentIncorrectAnswer = undefined;
   this.assignCurrentIncorrectAnswer = function()
@@ -324,6 +343,7 @@ function PromptsAndAnswersManager()
     this.definecurrentAnswerDataType();
     this.defineIncorrectTargetPromptAndAnswerPairing();
     this.assignCurrentIncorrectAnswer();
+    this.defineWidthAndHeightForTargetAnswers();
     this.defineXAndYCoordinatesForTargets();
     if (gameClassManager.currentGame.name === 'birdGame'){
       birdGame.assignLeftOrRightDirectionToAnswers();
