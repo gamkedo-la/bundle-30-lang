@@ -21,15 +21,13 @@ function birdGameClass() {
 
   this.answersXSpeed = 4;
 
+  this.superInitialize = this.initialize;
   this.initialize = function()
   {
-    gameInterval.reset(this.FRAME_RATE);
     this.playerCharacter = new BirdClass();
     this.playerCharacter.initialize();
-    initializePromptAndAnswerObjects();
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     this.assignLeftOrRightDirectionToAnswers();
+	this.superInitialize();
   }
 
   this.applyGRAVITYToBird = function()

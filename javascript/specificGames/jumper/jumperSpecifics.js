@@ -18,15 +18,12 @@ function jumperGameClass()
 
   this.FRAME_RATE = 1000/30;
 
+  this.superInitialize = this.initialize;
   this.initialize = function()
   {
     this.playerCharacter = new JumperClass();
-    gameInterval.reset(this.FRAME_RATE);
-    initializePromptAndAnswerObjects();
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     drawAnswersManager.draw();
-		promptersManager.drawPromptsWhenAppropriate();
+	this.superInitialize();
   };
 
   this.update = function()

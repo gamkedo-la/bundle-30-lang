@@ -1,3 +1,4 @@
+PassOrBlockGameClass.prototype = new GameClass();
 function PassOrBlockGameClass()
 {
   this.name = "Pass or Block Game";
@@ -18,15 +19,12 @@ function PassOrBlockGameClass()
   this.correctAnswersYSpeed = 4;
   this.incorrectAnswersYSpeed = 4;
 
+  this.superInitialize = this.initialize;
   this.initialize = function()
   {
-    initializePromptAndAnswerObjects();
-    gameInterval.reset(this.FRAME_RATE);
-
     this.playerCharacter = new Paddle();
     this.background = new PassOrBlockBackground();
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+	this.superInitialize();
   }
 
   this.draw = function()

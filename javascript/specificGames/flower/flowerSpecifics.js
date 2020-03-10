@@ -5,7 +5,7 @@ const flowerBackButtonRectangleColor = 'yellow';
 const flowerBackButtonTextColor = 'red';
 const flowerLetterColor = 'BlueViolet';
 
-//flowerGameClass.prototype = new GameClass();
+flowerGameClass.prototype = new GameClass();
 function flowerGameClass(){
     this.name = 'flowerGame';
 
@@ -33,23 +33,19 @@ function flowerGameClass(){
 
     var amountCorrectAtStartOfThisGame = undefined;
 
+    this.superInitialize = this.initialize;
     this.initialize = function()
     {
-      gameInterval.reset(this.FRAME_RATE);
       this.playerCharacter = new FlowerClass();
       this.background = new FlowerBackgroundClass();
       amountCorrectAtStartOfThisGame = amountCorrect;
-
       //initialize seeds
       this.seedOneXCoordinate = SEED_ONE_STARTING_X;
       this.seedOneYCoordinate = SEED_ONE_STARTING_Y;
       this.seedTwoXCoordinate = SEED_TWO_STARTING_X;
       this.seedTwoYCoordinate = SEED_TWO_STARTING_Y;
-
-      initializePromptAndAnswerObjects();
-  		promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-      promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
       console.log(this.playerCharacter);
+	  this.superInitialize();
     };
 
     this.handleLeftArrowDown = function(){

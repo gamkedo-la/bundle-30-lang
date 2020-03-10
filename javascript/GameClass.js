@@ -14,6 +14,14 @@ function GameClass()
 	gameIsPlaying = false;
   };
 
+  this.initialize = function()
+  {
+	initializePromptAndAnswerObjects();
+	gameInterval.reset(this.FRAME_RATE);
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+  };
+
   this.gameFrameRate = undefined;//number
   this.update = function(){};
   this.draw = function(){};

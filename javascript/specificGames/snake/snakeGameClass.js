@@ -21,16 +21,14 @@ function snakeGameClass()
   this.textAnswerFontSize = 30;
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
+  this.superInitialize = this.initialize;
   this.initialize = function()
   {
-    initializePromptAndAnswerObjects();
-    this.playerCharacter = new SnakeClass();
+	this.playerCharacter = new SnakeClass();
     this.background = new SnakeBackground();
     this.playerCharacter.initialize();
-    gameInterval.reset(this.FRAME_RATE);
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
-  }
+	this.superInitialize();
+  };
 
   //update section
   this.update = function()

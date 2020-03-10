@@ -1,6 +1,7 @@
 var laneBackButtonRectangleColor = 'Fuchsia';
 var laneBackButtonTextColor = 'yellow';
 
+laneGameClass.prototype = new GameClass();
 function laneGameClass() {
 	this.name = 'laneGame';
 
@@ -9,16 +10,14 @@ function laneGameClass() {
 	this.textAnswerFontSize = 30;
 	this.textAnswerFontStyle = 'px Helvetica';
 
-	this.initialize = function()
+    this.superInitialize = this.initialize;
+  	this.initialize = function()
 	{
-		gameInterval.reset(this.FRAME_RATE);
-		this.playerCharacter = new LaneCarClass();
-		this.background = new LaneBackgroundClass();
-		this.background.initialize();
-		this.initializeLanePositions();
-		initializePromptAndAnswerObjects();
-		promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+	  this.playerCharacter = new LaneCarClass();
+	  this.background = new LaneBackgroundClass();
+	  this.background.initialize();
+	  this.initializeLanePositions();
+	  this.superInitialize();	  
 	};
 
 	this.update = function()
