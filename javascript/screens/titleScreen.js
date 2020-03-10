@@ -146,10 +146,7 @@ function TitleScreenClass()
   			 inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
   	{
       gameClassManager.loadCurrentGame(runnerGame);
-  		gameInterval.reset(RUNNERFRAMERATE);
-        letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
-  		runnerGame.startPlaying();
-          if (gameIsOnAServerAndCanUseWebAudioAPI)
+      if (gameIsOnAServerAndCanUseWebAudioAPI)
           {
               backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
               currentBackgroundMusic = backgroundMusicBufferSource;
@@ -167,7 +164,6 @@ function TitleScreenClass()
         gameInterval.reset(PINATAFRAMERATE);
 
         //pinataGame.initialize(); // this is now called by the game nanager somewhere
-        //runnerGame.startPlaying();
   		playerShouldSeeTitleScreen = false;
   		fullGameStateMachine.playingAGameState = true;
           levelIsTransitioning = true;

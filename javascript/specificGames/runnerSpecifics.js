@@ -32,25 +32,20 @@ function runnerGameClass() {
 		currentRunnerRunningImage = arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex];
 	}
 
-	this.initialize = function() {
-		runnerFloorLevel = gameCanvas.height*0.75;
-		gameClassManager.currentGame.playerCharacter.x = (gameCanvas.width - RUNNERWIDTH)/2;
-		gameClassManager.currentGame.playerCharacter.y = runnerFloorLevel - RUNNERHEIGHT;
-		arrayOfAnswers.splice(0);
-		gameInterval.reset(RUNNERFRAMERATE);
-		letterSpawnInterval.reset(RUNNERLETTERSPAWNRATE);
-		letterSpeed = RUNNERSPEED/5;
-		if (gameIsOnAServerAndCanUseWebAudioAPI)
-		{
-			currentBackgroundMusic = backgroundMusicBufferSource;
-		} else
-		{
-			currentBackgroundMusic = runnerBackgroundMusic;
-		}
-		// setOrResetCorrectLetter();
-		setInterval(cycleRunnerRunningImages, 200);
+  this.superInitialize = this.initialize;
+  this.initialize = function() {
+	runnerFloorLevel = gameCanvas.height*0.75;
+	this.playerCharacter = {
+	  x: (gameCanvas.width - RUNNERWIDTH)/2,
+	  y: runnerFloorLevel - RUNNERHEIGHT
 	};
-
+	if (gameIsOnAServerAndCanUseWebAudioAPI)
+	{
+	  currentBackgroundMusic = backgroundMusicBufferSource;
+	}
+	setInterval(cycleRunnerRunningImages, 200);
+	this.superInitialize();
+  };
 
 	this.update = function() {
 		//cloud 1
@@ -83,8 +78,8 @@ function runnerGameClass() {
 	this.draw = function() {
 		this.drawBackground();
 		gameCanvasContext.fillStyle = 'white';
-		let x = gameClassManager.currentGame.playerCharacter.x;
-		let y = gameClassManager.currentGame.playerCharacter.y;
+		let x = this.playerCharacter.x;
+		let y = this.playerCharacter.y;
 		let width = RUNNERWIDTH;
 		let height = RUNNERHEIGHT;
  		if (runnerStatus == 'slide') {
@@ -134,14 +129,14 @@ function runnerGameClass() {
 				runnerRun();
 			}
 			if (runnerIsJumping) {
-				gameClassManager.currentGame.playerCharacter.y -= playerSpeedY;
+				this.playerCharacter.y -= playerSpeedY;
 				playerSpeedY -= RUNNERGRAVITY;
-				if (gameClassManager.currentGame.playerCharacter.y + RUNNERHEIGHT > runnerFloorLevel) {
-					gameClassManager.currentGame.playerCharacter.y = runnerFloorLevel - RUNNERHEIGHT;
+				if (this.playerCharacter.y + RUNNERHEIGHT > runnerFloorLevel) {
+					this.playerCharacter.y = runnerFloorLevel - RUNNERHEIGHT;
 					runnerStatus = 'run';
 				}
-				if (gameClassManager.currentGame.playerCharacter.y < RUNNERMAXJUMPHEIGHT) {
-					gameClassManager.currentGame.playerCharacter.y = RUNNERMAXJUMPHEIGHT;
+				if (this.playerCharacter.y < RUNNERMAXJUMPHEIGHT) {
+					this.playerCharacter.y = RUNNERMAXJUMPHEIGHT;
 				}
 			}
 		}
@@ -171,4 +166,9 @@ function runnerGameClass() {
 
 		drawParallax();
 	};
+
+  this.handleDownArrowDown = runnerSlide;
+  this.handleUpArrowDown = runnerJump;
+  this.handleUpArrowUp = runnerRun;
+  this.handleDownArrowUp = runnerRun;
 }
