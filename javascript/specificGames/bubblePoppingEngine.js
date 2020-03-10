@@ -1,17 +1,10 @@
 // McF's bubblePoppingEngine
 
-// Used by Pinata minigame, Bubble Wrap,
+// Used by Pinata minigame, Bubble Wrap
 // v4 - abstracted for multiple game use!
 
 // physics code adapted from work by XEM
 // https://github.com/xem/mini2Dphysics
-
-
-////////////////////////////////////////
-var pinataGame = new bubblePoppingEngine('pinataGame',true);
-var playerShouldBePlayingPinata = false; // FIXME is this still used elsewhere?
-const PINATAFRAMERATE = 1000/60;
-////////////////////////////////////////
 
 
 // an abstract mini engine used by multiple games
@@ -22,6 +15,9 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     //////////////////////////////////////////////////////
     this.name = myName;
     this.physicsEnabled = usePhysics;
+    this.titleTXT1 = "Piñata Pop";
+    this.titleTXT2 = "Click the right letter";
+    this.titleTXT3 = "as fast as you can";
 
     //////////////////////////////////////////////////////
     // private vars used internally by the pinata game
@@ -80,14 +76,15 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     // public functions called by the game state machine
     //////////////////////////////////////////////////////
 
+    // FIXME the "this" is invalid here, its a transitioner, not the game itself LOL
     this.drawTransitionText = function () {
-        customFontFillText(['Piñata Pop', symbolExclamationPointImage], 80, 42, 100, 50);
-        customFontFillText(['Click the right letter'], 32, 24, 80, 250);
-        customFontFillText(['as fast as you can', symbolExclamationPointImage], 32, 24, 80, 290);
+        customFontFillText([this.titleTXT1, symbolExclamationPointImage], 80, 42, 100, 50);
+        customFontFillText([this.titleTXT2], 32, 24, 80, 250);
+        customFontFillText([this.titleTXT3, symbolExclamationPointImage], 32, 24, 80, 290);
     }
 
     this.initialize = function() {
-        console.log("Pinata game initializing...");
+        console.log(this.name + " popping game initializing...");
 
         generateRainbowColours();
         // console.log("Pinata game init!")
@@ -204,12 +201,16 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         ctx.fillStyle = "rgba(150,220,255,1)";
         ctx.fillRect(0, 0, canv.width, canv.height);
 
-        // draw a nice sky
-        for (i = 0; i < rainbow.length; i++) {
-            ctx.fillStyle = rainbow[i];
-            ctx.beginPath();
-            ctx.arc(320, 900 + i * 50, 1000, 0, 7);
-            ctx.fill();
+        // do we have a custom background?
+        if (this.drawBG) {
+            this.drawBG();
+        } else { // draw a nice sky
+            for (i = 0; i < rainbow.length; i++) {
+                ctx.fillStyle = rainbow[i];
+                ctx.beginPath();
+                ctx.arc(320, 900 + i * 50, 1000, 0, 7);
+                ctx.fill();
+            }
         }
 
         for (i = objects.length; i--;) {

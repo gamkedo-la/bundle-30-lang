@@ -57,6 +57,10 @@ let symbolPeriodImage = document.createElement("img");//.
 
 let placeholderPlayButtonImage = document.createElement("img");
 
+// bubble wrap game
+let bubbleWrapBG = document.createElement("img");
+let bubbleWrapSpritesheet = document.createElement("img");
+
 let pinataImage = document.createElement("img");
 
 //custom font image loading section, used loops for less typing... just to see if i could
@@ -183,8 +187,12 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: symbolHashImage, theFile: 'images/Custom Font/pngs/symbols/symbolHash.png'});
   arrayOfImages.push({imageObjectBinding: symbolQuestionMarkImage, theFile: 'images/Custom Font/pngs/symbols/symbolQuestionMark.png'});
 
-
   arrayOfImages.push({imageObjectBinding: placeholderPlayButtonImage, theFile: 'images/placeholderPlayButtonImage.png'});
+
+  // bubble wrap game
+  arrayOfImages.push({imageObjectBinding: bubbleWrapBG, theFile: 'images/Backgrounds/bubbleWrapBG.jpg'});
+  arrayOfImages.push({imageObjectBinding: bubbleWrapSpritesheet, theFile: 'images/sprites/bubbleWrap/bubbleWrapSpritesheet.png'});
+  
 
   // console.log(arrayOfImages);
 

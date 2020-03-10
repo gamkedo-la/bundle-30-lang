@@ -89,6 +89,11 @@ function TitleScreenClass()
   this.handleGameCellClicks = function()
   {
 
+    // TODO: all the x,y,w,h are stored in GAME_NAMES
+    // we could use that data and avoid the giant IF and hardcoded values here
+
+    console.log("MAIN MENU mouse pos is "+inputManager.mouseCoordinates.x+"," +inputManager.mouseCoordinates.y);
+
     //1st row
     //snake
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
@@ -158,15 +163,27 @@ function TitleScreenClass()
               backgroundMusicBufferSource.loopEnd = 1;
           }
       }
+      // BUBBLE WRAP:
+      else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
+        inputManager.mouseCoordinates.y > 550 && inputManager.mouseCoordinates.y < 650)
+    {
+      console.log("Clicked Bubble Wrap Button");
+        gameClassManager.loadCurrentGame(bubbleWrapGame);
+      gameInterval.reset(PINATAFRAMERATE);
+      // do we still need to set these?
+        playerShouldSeeTitleScreen = false;
+        fullGameStateMachine.playingAGameState = true;
+        levelIsTransitioning = true;
+    }      
       // PINATA GAME:
       else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
           inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
       {
+        console.log("Clicked Pinata Button");
         gameClassManager.loadCurrentGame(pinataGame);
         gameInterval.reset(PINATAFRAMERATE);
-
-        //pinataGame.initialize(); // this is now called by the game nanager somewhere
-  		playerShouldSeeTitleScreen = false;
+      // do we still need to set these?
+      playerShouldSeeTitleScreen = false;
   		fullGameStateMachine.playingAGameState = true;
           levelIsTransitioning = true;
           if (gameIsOnAServerAndCanUseWebAudioAPI)
