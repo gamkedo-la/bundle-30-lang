@@ -18,16 +18,16 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.titleTXT1 = "Piñata Pop";
     this.titleTXT2 = "Click the right letter";
     this.titleTXT3 = "as fast as you can";
+    this.introComplete = false; // if true, show a pinata
 
     //////////////////////////////////////////////////////
-    // private vars used internally by the pinata game
+    // private vars used internally
     //////////////////////////////////////////////////////
+    var me = this; // because events keep this straight
     // list of all known candies
     var objects = [];
     // list of rgba colours
     var rainbow;
-    // game state: have we done the initial smash?
-    var pinataSmashed = false;
     // how many poppable letter choices will fall out
     const CANDY_COUNT = 16;
     const CANDY_MIN_SIZE = 20;
@@ -78,29 +78,30 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
     // FIXME the "this" is invalid here, its a transitioner, not the game itself LOL
     this.drawTransitionText = function () {
-        customFontFillText([this.titleTXT1, symbolExclamationPointImage], 80, 42, 100, 50);
-        customFontFillText([this.titleTXT2], 32, 24, 80, 250);
-        customFontFillText([this.titleTXT3, symbolExclamationPointImage], 32, 24, 80, 290);
+        customFontFillText([me.titleTXT1, symbolExclamationPointImage], 80, 42, 100, 50);
+        customFontFillText([me.titleTXT2], 32, 24, 80, 250);
+        customFontFillText([me.titleTXT3, symbolExclamationPointImage], 32, 24, 80, 290);
     }
 
     this.initialize = function() {
         console.log(this.name + " popping game initializing...");
-
         generateRainbowColours();
-        // console.log("Pinata game init!")
-
         ctx = gameCanvasContext;
         canv = gameCanvas;
 
-        if (window.currentBackgroundMusic) { // exists?
-            currentBackgroundMusic.pause();
-            currentBackgroundMusic = pinataBackgroundMusic;
-        }
+        //if (window.currentBackgroundMusic) { // exists?
+        //    currentBackgroundMusic.pause();
+        //    currentBackgroundMusic = pinataBackgroundMusic;
+        //}
 
-        // Init scene ground floor
-        Circle(Vec2(320, 5700), 5000, 0); // floor!
-        Circle(Vec2(2840, 5000), 5000, 0); // r wall
-        Circle(Vec2(-2200, 5000), 5000, 0); // l wall
+        if (!this.gameSpecificInits) {
+            // Init scene ground floor - defaults
+            Circle(Vec2(320, 5700), 5000, 0); // floor!
+            Circle(Vec2(2840, 5000), 5000, 0); // r wall
+            Circle(Vec2(-2200, 5000), 5000, 0); // l wall
+        } else {
+            this.gameSpecificInits();            
+        }
 
         // wait for the first click
         //boom(a.width / 2, a.height / 2, true)// middle of screen
@@ -174,7 +175,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 } // close enough
                 // }
             } // i
-            if (pinataSmashed) {
+            if (this.introComplete) {
 
                 // Update scene
                 nextOne.V = add(nextOne.V, scale(nextOne.A, .05)); // A=gravity
@@ -189,7 +190,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                     nextOne.R *= CONFETTI_SHRINKSPEED;
                 }
 
-            } else { // if we have not yet pinataSmashed:
+            } else { // if we have not yet Smashed:
 
             }
     }
@@ -256,7 +257,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
 
 
-            if (pinataSmashed) {
+            if (this.introComplete) {
                 customFontFillText(['Click the letter ' + targetLetter], 32, 24, 80, 32);
             } else {
                 // let's draw an actual pinata here
@@ -279,7 +280,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     }
 
     //////////////////////////////////////////////////////
-    // private functions used internally by the pinata game
+    // private functions used internally
     //////////////////////////////////////////////////////
 
     function boom(x, y, wasCorrect) {
@@ -341,7 +342,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     }
 
     function pinataClick(e) {
-        // console.log("Pinata game click");
+        // console.log("game click");
 
         if (!playerShouldBePlayingPinata) return; // dont do anything if another game is running
 
@@ -357,9 +358,9 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         }
 
         // first click open the pinata!
-        if (!pinataSmashed) {
+        if (!this.introComplete) {
             console.log("Pinata just got smashed!")
-            pinataSmashed = true;
+            this.introComplete = true;
             boom(e.pageX, e.pageY, true);
             return;
         }
@@ -465,6 +466,10 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         };
         objects.push(newCircle);
         return newCircle;
+    }
+
+    this.newcircle = function(x,y,r,m) { // so other games can call this
+        return new Circle(Vec2(x,y),r,m);
     }
 
 }
