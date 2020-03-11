@@ -8,6 +8,9 @@ let menImage = document.createElement("img");
 let heImage = document.createElement("img");
 let sheImage = document.createElement("img");
 
+let cotImage = document.createElement("img");
+let catImage = document.createElement("img");
+
 //runner images
 let runnerSunAndSkyBackgroundImage = document.createElement("img");
 let runnerCloud1 = document.createElement("img");
@@ -138,6 +141,10 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: heImage, theFile: 'images/sprites/PromptsAndAnswers/man.png'});
   arrayOfImages.push({imageObjectBinding: sheImage, theFile: 'images/sprites/PromptsAndAnswers/woman.png'});
 
+  arrayOfImages.push({imageObjectBinding: catImage, theFile: 'images/sprites/PromptsAndAnswers/cat.png'});
+  arrayOfImages.push({imageObjectBinding: cotImage, theFile: 'images/sprites/PromptsAndAnswers/cot.png'});
+
+
   //runner game
   arrayOfImages.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png'});
   arrayOfImages.push({imageObjectBinding: runnerCloud1, theFile: 'images/Backgrounds/runnerCloud1.png'});
@@ -180,7 +187,7 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: symbolExclamationPointImage, theFile: 'images/Custom Font/pngs/symbols/symbol!.png'});
   arrayOfImages.push({imageObjectBinding: symbolEmailAtImage, theFile: 'images/Custom Font/pngs/symbols/symbol@.png'});
   arrayOfImages.push({imageObjectBinding: symbolDollarSignImage, theFile: 'images/Custom Font/pngs/symbols/symbol$.png'});
-  arrayOfImages.push({imageObjectBinding: symbolPercentImage, theFile: 'images/Custom Font/pngs/symbols/symbol%.png'});
+  //arrayOfImages.push({imageObjectBinding: symbolPercentImage, theFile: 'images/Custom Font/pngs/symbols/symbol%.png'});
   arrayOfImages.push({imageObjectBinding: symbolEqualsImage, theFile: 'images/Custom Font/pngs/symbols/symbol=.png'});
   arrayOfImages.push({imageObjectBinding: symbolPeriodImage, theFile: 'images/Custom Font/pngs/symbols/symbol..png'});
 
@@ -192,7 +199,7 @@ function loadImages()
   // bubble wrap game
   arrayOfImages.push({imageObjectBinding: bubbleWrapBG, theFile: 'images/Backgrounds/bubbleWrapBG.jpg'});
   arrayOfImages.push({imageObjectBinding: bubbleWrapSpritesheet, theFile: 'images/sprites/bubbleWrap/bubbleWrapSpritesheet.png'});
-  
+
 
   // console.log(arrayOfImages);
 

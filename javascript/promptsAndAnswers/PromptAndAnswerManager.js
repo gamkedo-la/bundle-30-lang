@@ -2,6 +2,8 @@ function PromptsAndAnswersManager()
 {
   this.arrayOfLogicalPromptAnswerGroupings = [];
 
+  this.arrayOfCVCPromptAnswerGroupings = [];
+
   this.currentLogicalPromptAndAnswerGroup = undefined;
 
   this.pickARandomLogicalPromptAnswerGroup = function()

@@ -1,5 +1,8 @@
-function cVc(firstLetter,secondLetter,thirdLetter)
+function cVc(firstLetter,secondLetter,thirdLetter, imageAssociation, audioAssociation)
 {
+  this.imageAssociation = imageAssociation;
+  this.audioAssociation = audioAssociation;
+  
   this.firstLetter = firstLetter;//string
   this.firstLetterPosition = undefined;//integer from arrayOfLetterPositions
   this.firstLetterCollisionRangeLeftPoint = undefined;

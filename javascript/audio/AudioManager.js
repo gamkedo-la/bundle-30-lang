@@ -14,6 +14,9 @@ function AudioManager()
     this.heAudio = document.createElement("AUDIO");
     this.sheAudio = document.createElement("AUDIO");
 
+    this.blendedCat = document.createElement("AUDIO");
+    this.blendedCot = document.createElement("AUDIO");
+
     //UI section
     this.uiButtonSound1 = document.createElement("AUDIO");
     this.uiButtonSound2 = document.createElement("AUDIO");
@@ -47,6 +50,9 @@ function AudioManager()
       this.manAudio.src = 'audio/PromptsAndAnswers/man.mp3';
       this.heAudio.src = 'audio/PromptsAndAnswers/he.mp3';
       this.sheAudio.src = 'audio/PromptsAndAnswers/she.mp3';
+
+      this.blendedCat.src = 'audio/PromptsAndAnswers/blendedCat.mp3';
+      this.blendedCot.src = 'audio/PromptsAndAnswers/blendedCot.mp3';
 
       //gameplay feedback
       this.generalPositiveFeedbackSound1.src = "audio/Positive_01.mp3";
