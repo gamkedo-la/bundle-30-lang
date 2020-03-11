@@ -6,6 +6,7 @@ bubbleWrapGame.titleTXT1 = "Bubble Wrap";
 bubbleWrapGame.titleTXT2 = "Pop the bubbles";
 bubbleWrapGame.titleTXT3 = "as fast as you can";
 bubbleWrapGame.introComplete = true; // no swinging pinata
+bubbleWrapGame.spritesheet = bubbleWrapSpritesheet; 
 
 // build a grid of bubbles
 bubbleWrapGame.gameSpecificInits = function() {

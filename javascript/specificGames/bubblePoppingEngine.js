@@ -19,6 +19,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.titleTXT2 = "Click the right letter";
     this.titleTXT3 = "as fast as you can";
     this.introComplete = false; // if true, show a pinata
+    this.spritesheet = null;
 
     //////////////////////////////////////////////////////
     // private vars used internally
@@ -219,10 +220,18 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
                 // Draw
                 ctx.save();
+                
                 ctx.beginPath();
                 ctx.translate(nextOne.C.x, nextOne.C.y);
                 ctx.rotate(nextOne.B);
-                ctx.arc(0, 0, nextOne.R, 0, 7);
+
+                if (!this.spritesheet) {
+                    ctx.arc(0, 0, nextOne.R, 0, 7);
+                } else {
+                    //ctx.translate(-nextOne.R, -nextOne.R); // center img
+                    ctx.drawImage(this.spritesheet,0,0,256,256,0,0,50,50);
+                }
+                
                 //c.lineWidth = 3;
                 ctx.font = nextOne.R * 1.9 + "px a";
                 ctx.textAlign = "center";
@@ -236,7 +245,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                         ctx.fillStyle = objects[i].color; // selet ball colour
                     }
 
-                    ctx.fill(); // the circle
+                    if (!this.spritesheet) ctx.fill(); // the circle
 
                     if (nextOne.Z == CONFETTI_ID) {
                         // draw the letter using html
