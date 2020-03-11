@@ -1,6 +1,6 @@
 function Bullet(i)
 {
-  this.xPosition = player.position*200 + 97;
+  this.xPosition = cVcShooterGame.playerCharacter.position*200 + 97;
   this.yPosition = gameCanvas.height - 170;
 
   this.move = function()
@@ -10,7 +10,7 @@ function Bullet(i)
 
   this.draw = function()
   {
-    canvasDrawingContext.fillRect(this.xPosition,this.yPosition, 10,20);
+    gameCanvasContext.fillRect(this.xPosition,this.yPosition, 10,20);
   }
 
   this.handleLetterCollisions = function(i)
@@ -65,6 +65,7 @@ function fireBullet()
 {
   let bullet = new Bullet();
   arrayOfBullets.push(bullet);
+  console.log(arrayOfBullets);
 }
 
 function moveBullets()

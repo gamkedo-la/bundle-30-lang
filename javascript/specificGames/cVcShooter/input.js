@@ -15,21 +15,13 @@ function keyPush(event)
       }
     }
     break;
-    
+
     case 37://left
-    player.position -= 1;
-    if (player.position < 0)
-    {
-      player.position = 2;
-    }
+
     break;
 
     case 39://right
-    player.position += 1;
-    if (player.position > 2)
-    {
-      player.position = 0;
-    }
+    
     break;
 
     case 82://repeat audio

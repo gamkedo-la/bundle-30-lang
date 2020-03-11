@@ -10,9 +10,7 @@ var amountCorrect = 0;
 var amountIncorrect = 0;
 var accuracy = 0;
 
-var playerShouldBeTargetingFirstLetter = true;
-var playerShouldBeTargetingSecondLetter = false;
-var playerShouldBeTargetingThirdLetter = false;
+
 
 function gameLoop()
 {

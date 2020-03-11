@@ -40,7 +40,7 @@ function TitleScreenClass()
     [{name: "Jumper", fontSize: 27, spacing: 15, x: 322, y: 185}],//4
     [{name: "Finder", fontSize: 27, spacing: 15, x: 420, y: 185}],//5
     [{name: "Pass", fontSize: 22, spacing: 12, x: 542, y: 167},{name: "Block", fontSize: 22, spacing: 12, x: 535, y: 207}],//6
-    [{name: "Shooter", fontSize: 22, spacing: 12, x: 24, y: 285}],//7
+    [{name: "cVc", fontSize: 22, spacing: 12, x: 47, y: 270},{name: "Shooter", fontSize: 22, spacing: 12, x: 26, y: 300}],//7
     [{name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270}, {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}],//8
     [{name: "Runner", fontSize: 27, spacing: 13, x: 225, y: 285}],//9
     [{name: "Piñata", fontSize: 27, spacing: 15, x: 322, y: 285}],//10
@@ -60,7 +60,7 @@ function TitleScreenClass()
     [{name: "Fishing", fontSize: 25, spacing: 12, x: 520, y: 480}],
     [{name: "Egg", fontSize: 25, spacing: 12, x: 45, y: 565},{name: "Catch", fontSize: 25, spacing: 10, x: 37, y: 605}],
     [{name: "Bubble", fontSize: 27, spacing: 12, x: 130, y: 565},{name: "Wrap", fontSize: 27, spacing: 12, x: 140, y: 605}],
-    
+
   ];
 
   this.drawGameNames = function()
@@ -130,16 +130,11 @@ function TitleScreenClass()
         }
 
     //2nd row
-    else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
+    else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
              inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
         {
-          spaceShooterGame.startPlaying();
-          playerShouldSeeTitleScreen = false;
-          fullGameStateMachine.playingAGameState = true;
-          gameInterval.reset(spaceShooterFrameRate);
-          // setOrResetCorrectLetter();
-          letterSpawnInterval.reset(spaceShooterLetterSpawnRate);
-          levelIsTransitioning = true;
+          console.log('cVcShooterGame cell click');
+          gameClassManager.loadCurrentGame(cVcShooterGame);
         }
     else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
              inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
@@ -174,7 +169,7 @@ function TitleScreenClass()
         playerShouldSeeTitleScreen = false;
         fullGameStateMachine.playingAGameState = true;
         levelIsTransitioning = true;
-    }      
+    }
       // PINATA GAME:
       else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
           inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)

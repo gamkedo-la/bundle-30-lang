@@ -4,17 +4,17 @@ function ShooterPlayer()
 
   this.draw = function()
   {
-    canvasDrawingContext.beginPath();
-    canvasDrawingContext.moveTo(this.position*200 + 10, gameCanvas.height - 10);
-    canvasDrawingContext.lineTo(this.position*200 + 100, gameCanvas.height - 150);
-    canvasDrawingContext.lineTo(this.position*200 + 190, gameCanvas.height - 10);
-    canvasDrawingContext.closePath();
+    gameCanvasContext.beginPath();
+    gameCanvasContext.moveTo(this.position*200 + 10, gameCanvas.height - 10);
+    gameCanvasContext.lineTo(this.position*200 + 100, gameCanvas.height - 150);
+    gameCanvasContext.lineTo(this.position*200 + 190, gameCanvas.height - 10);
+    gameCanvasContext.closePath();
 
-    canvasDrawingContext.lineWidth = 10;
-    canvasDrawingContext.strokeStyle = '#666666';
-    canvasDrawingContext.stroke();
+    gameCanvasContext.lineWidth = 10;
+    gameCanvasContext.strokeStyle = '#666666';
+    gameCanvasContext.stroke();
 
-    canvasDrawingContext.fillStyle = "#FFCC00";
-    canvasDrawingContext.fill();
+    gameCanvasContext.fillStyle = "#FFCC00";
+    gameCanvasContext.fill();
   }
 }
