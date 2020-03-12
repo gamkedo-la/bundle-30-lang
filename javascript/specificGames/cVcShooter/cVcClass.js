@@ -2,7 +2,7 @@ function cVc(firstLetter,secondLetter,thirdLetter, imageAssociation, audioAssoci
 {
   this.imageAssociation = imageAssociation;
   this.audioAssociation = audioAssociation;
-  
+
   this.firstLetter = firstLetter;//string
   this.firstLetterPosition = undefined;//integer from arrayOfLetterPositions
   this.firstLetterCollisionRangeLeftPoint = undefined;
@@ -22,7 +22,7 @@ function cVc(firstLetter,secondLetter,thirdLetter, imageAssociation, audioAssoci
 
   this.assignLetterPositions = function()
   {
-
+    cVcShooterGame.background.arrayOfGameBoardLetterPositions = [0,1,2];
     let arrayOfGameBoardLetterPositionsLength = 3;
     for (let i = 0; i < arrayOfGameBoardLetterPositionsLength; i++)
     {
@@ -47,6 +47,7 @@ function cVc(firstLetter,secondLetter,thirdLetter, imageAssociation, audioAssoci
   this.initialize = function()
   {
     this.assignLetterPositions();
+    console.log('inside CVC initialization');
     this.defineCollisionRanges();
   }
 
@@ -72,7 +73,7 @@ function cVc(firstLetter,secondLetter,thirdLetter, imageAssociation, audioAssoci
     }
     else
     {
-      gameCanvasContext.fillText("You win!!!", gameCanvas.width/2,gameCanvas.height/2);
+      //gameCanvasContext.fillText("You win!!!", gameCanvas.width/2,gameCanvas.height/2);
     }
   }
 }

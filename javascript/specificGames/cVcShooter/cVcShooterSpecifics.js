@@ -17,7 +17,6 @@ function cVcShooterGameClass()
     this.playerCharacter = new ShooterPlayer();
     this.cVcManager = new CVCManager();
     this.cVcManager.initializeArrayOfCVCs();
-    console.log('this.cVcManager.arrayOfCVCs: ' + this.cVcManager.arrayOfCVCs);
     this.cVcManager.currentCVC = this.cVcManager.chooseARandomCVC();
     this.cVcManager.currentCVC.initialize();
     promptersManager.loadCurrentPrompter(imageAndAudioPrompterForCVCs);
@@ -40,6 +39,10 @@ function cVcShooterGameClass()
         fullGameStateMachine.currentState !== fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame)
     {
       moveBullets();
+      for (let i = 0; i < arrayOfBullets.length; i++)
+      {
+        arrayOfBullets[i].handleLetterCollisions(i);
+      }
     }
   }
 

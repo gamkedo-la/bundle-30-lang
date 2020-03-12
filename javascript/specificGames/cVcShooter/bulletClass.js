@@ -17,34 +17,47 @@ function Bullet(i)
   {
     if (this.yPosition <= 30)
     {
-      if (playerShouldBeTargetingFirstLetter && this.xPosition > cat.firstLetterCollisionRangeLeftPoint && this.xPosition <
-      cat.firstLetterCollisionRangeRightPoint)
+      if (cVcShooterGame.playerShouldBeTargetingFirstLetter &&
+          this.xPosition > cVcShooterGame.cVcManager.currentCVC.firstLetterCollisionRangeLeftPoint &&
+          this.xPosition < cVcShooterGame.cVcManager.currentCVC.firstLetterCollisionRangeRightPoint)
       {
         amountCorrect++;
-        playerShouldBeTargetingFirstLetter = false;
-        playerShouldBeTargetingSecondLetter = true;
+        cVcShooterGame.playerShouldBeTargetingFirstLetter = false;
+        cVcShooterGame.playerShouldBeTargetingSecondLetter = true;
         arrayOfBullets.splice(i,1);
         calculateAccuracy();
         return;
       }
-      else if (playerShouldBeTargetingSecondLetter && this.xPosition > cat.secondLetterCollisionRangeLeftPoint && this.xPosition <
-      cat.secondLetterCollisionRangeRightPoint)
+      else if (cVcShooterGame.playerShouldBeTargetingSecondLetter &&
+               this.xPosition > cVcShooterGame.cVcManager.currentCVC.secondLetterCollisionRangeLeftPoint &&
+               this.xPosition < cVcShooterGame.cVcManager.currentCVC.secondLetterCollisionRangeRightPoint)
       {
           amountCorrect++;
-          playerShouldBeTargetingSecondLetter = false;
-          playerShouldBeTargetingThirdLetter = true;
+          cVcShooterGame.playerShouldBeTargetingSecondLetter = false;
+          cVcShooterGame.playerShouldBeTargetingThirdLetter = true;
           arrayOfBullets.splice(i,1);
           calculateAccuracy();
           return;
       }
-      else if (playerShouldBeTargetingThirdLetter && this.xPosition > cat.thirdLetterCollisionRangeLeftPoint && this.xPosition <
-      cat.thirdLetterCollisionRangeRightPoint)
+      else if (cVcShooterGame.playerShouldBeTargetingThirdLetter &&
+               this.xPosition > cVcShooterGame.cVcManager.currentCVC.thirdLetterCollisionRangeLeftPoint &&
+               this.xPosition < cVcShooterGame.cVcManager.currentCVC.thirdLetterCollisionRangeRightPoint)
       {
         {
           amountCorrect++;
-          playerShouldBeTargetingThirdLetter = false;
-          arrayOfBullets.splice(i,1);
+          cVcShooterGame.playerShouldBeTargetingThirdLetter = false;
+          arrayOfBullets = [];
           calculateAccuracy();
+          cVcShooterGame.cVcManager.currentCVC = cVcShooterGame.cVcManager.chooseARandomCVC();
+          cVcShooterGame.cVcManager.currentCVC.initialize();
+          promptersManager.loadCurrentPrompter(imageAndAudioPrompterForCVCs);
+          promptersManager.currentPrompter.loadCurrentImage(cVcShooterGame.cVcManager.currentCVC.imageAssociation);
+          promptersManager.currentPrompter.loadCurrentAudio(cVcShooterGame.cVcManager.currentCVC.audioAssociation);
+          cVcShooterGame.playerShouldBeTargetingFirstLetter = true;
+          // promptersManager.currentPrompter.togglePromptingBoolean();
+          promptersManager.currentPrompter.currentWidth = 150;
+          promptersManager.currentPrompter.currentHeight = 150;
+          promptersManager.currentPrompter.promptThePlayer();
           return;
         }
       }
