@@ -35,7 +35,10 @@ function GameClassManager()
     this.currentGame = gameToLoad;
     console.log('this.currentGame.name: ' + this.currentGame.name);
     this.currentGame.initialize();
-    this.currentGame.superInitialize();
+    if (this.superInitialize !== undefined)
+    {
+      this.currentGame.superInitialize();
+    }
     fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame.associatedObject = gameToLoad;
   }
 
