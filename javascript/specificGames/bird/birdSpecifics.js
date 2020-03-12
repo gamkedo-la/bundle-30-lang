@@ -6,7 +6,12 @@ birdGameClass.prototype = new GameClass();
 function birdGameClass() {
   this.name = 'birdGame';
   this.playerCharacter = undefined;
-
+  this.titleScreenData = [{
+	name: "Bird",
+	fontSize: 27,
+	spacing: 15,
+	x: 138, y: 185
+  }];
   const GRAVITY = 4;
   const LEFT_ARROW_DOWN_SPEED = -8;
   const RIGHT_ARROW_DOWN_SPEED = 8;
@@ -137,4 +142,5 @@ function birdGameClass() {
   }
 }
 
-var birdGame = new birdGameClass();
+const birdGame = new birdGameClass();
+AVAILABLE_GAMES.push(birdGame);

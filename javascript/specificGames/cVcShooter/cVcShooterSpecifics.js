@@ -2,7 +2,10 @@ function cVcShooterGameClass()
 {
   this.name = 'cVcShooter Game';
   this.FRAME_RATE = 1000/30;
-
+  this.titleScreenData = [
+	{name: "cVc", fontSize: 22, spacing: 12, x: 47, y: 270},
+	{name: "Shooter", fontSize: 22, spacing: 12, x: 26, y: 300}
+  ];
   this.playerCharacter = undefined;
   this.cVcManager = undefined;
   this.background = undefined;
@@ -71,4 +74,5 @@ function cVcShooterGameClass()
   }
 }
 
-let cVcShooterGame = new cVcShooterGameClass();
+const cVcShooterGame = new cVcShooterGameClass();
+AVAILABLE_GAMES.push(cVcShooterGame);

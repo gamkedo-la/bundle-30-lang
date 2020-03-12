@@ -5,7 +5,10 @@ function PassOrBlockGameClass()
   this.FRAME_RATE = 1000/30;
 
   this.background = undefined;
-
+  this.titleScreenData = [
+	{name: "Pass", fontSize: 22, spacing: 12, x: 542, y: 167},
+	{name: "Block", fontSize: 22, spacing: 12, x: 535, y: 207}
+  ];
   this.playerCharacter = undefined;
   this.background = undefined;
   this.backButtonColor = 'yellow';
@@ -63,4 +66,5 @@ function PassOrBlockGameClass()
   }
 }
 
-let passOrBlockGame = new PassOrBlockGameClass();
+const passOrBlockGame = new PassOrBlockGameClass();
+AVAILABLE_GAMES.push(passOrBlockGame);

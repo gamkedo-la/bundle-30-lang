@@ -9,7 +9,12 @@ function jumperGameClass()
   this.playerCharacter = undefined;
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = 'px Helvetica';
-
+  this.titleScreenData = [{
+	name: "Jumper",
+	fontSize: 27,
+	spacing: 15,
+	x: 322, y: 185
+  }];
   const MAX_PLATFORMS = 7;
 
   this.arrayOfJumperPlatforms = [...Array(MAX_PLATFORMS).keys()].map(function(i) {
@@ -127,3 +132,4 @@ function jumperGameClass()
 }
 
 const jumperGame = new jumperGameClass();
+AVAILABLE_GAMES.push(jumperGame);

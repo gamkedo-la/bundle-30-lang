@@ -14,6 +14,12 @@ var runnerFloorLevel = 0;
 runnerGameClass.prototype = new GameClass();
 function runnerGameClass() {
 	this.name = 'runnerGame';
+	this.titleScreenData = [{
+	  name: "Runner",
+	  fontSize: 27,
+	  spacing: 13,
+	  x: 225, y: 285
+	}];
 	let arrayOfRunnerRunningImagesIndex = 0;
 	let runnerImagesIndexDirection = 1;
 	let currentRunnerRunningImage;
@@ -172,3 +178,6 @@ function runnerGameClass() {
   this.handleUpArrowUp = runnerRun;
   this.handleDownArrowUp = runnerRun;
 }
+
+const runnerGame = new runnerGameClass();
+AVAILABLE_GAMES.push(runnerGame);

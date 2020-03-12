@@ -1,6 +1,9 @@
 
 var bubbleWrapGame = new bubblePoppingEngine('bubbleWrap',false);
-
+bubbleWrapGame.titleScreenData = [
+  {name: "Bubble", fontSize: 27, spacing: 12, x: 130, y: 565},
+  {name: "Wrap", fontSize: 27, spacing: 12, x: 140, y: 605}
+];
 // morph the defaults
 bubbleWrapGame.titleTXT1 = "Bubble Wrap";
 bubbleWrapGame.titleTXT2 = "Pop the bubbles";
@@ -26,4 +29,4 @@ bubbleWrapGame.gameSpecificInits = function() {
 bubbleWrapGame.drawBG = function() { 
     gameCanvasContext.drawImage(bubbleWrapBG,0,0);
 }
-
+AVAILABLE_GAMES.push(bubbleWrapGame);

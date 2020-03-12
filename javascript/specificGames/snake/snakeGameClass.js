@@ -9,6 +9,13 @@ snakeGameClass.prototype = new GameClass();
 function snakeGameClass()
 {
   this.name = 'Snake Game';
+  this.titleScreenData = [{
+	name: "Snake",
+	fontSize: 27,
+	spacing: 15,
+	x: 30, y: 185
+  }];
+
   this.FRAME_RATE = 1000/10;
 
   this.playerCharacter = undefined;
@@ -87,3 +94,4 @@ function snakeGameClass()
 }
 
 const SNAKE_GAME = new snakeGameClass();
+AVAILABLE_GAMES.push(SNAKE_GAME);

@@ -11,7 +11,12 @@ function flowerGameClass(){
 
     this.FRAME_RATE = 1000/50;
     this.letterSpawnInterval = 2000;
-
+	this.titleScreenData = [{
+	  name: "Flower",
+	  fontSize: 27,
+	  spacing: 15,
+	  x: 222, y: 385
+	}];
     this.textAnswerFontSize = 30;
 	this.textAnswerFontStyle = 'px Helvetica';
 
@@ -136,3 +141,4 @@ function flowerGameClass(){
 }
 
 const flowerGame = new flowerGameClass();
+AVAILABLE_GAMES.push(flowerGame);

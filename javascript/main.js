@@ -1,9 +1,9 @@
-var gameCanvas, gameCanvasContext, statsCanvas, statsCanvasContext, runnerGame, backButton;
+var gameCanvas, gameCanvasContext, statsCanvas, statsCanvasContext, backButton;
 console.log('Bundle of 30 Language Games Starting...');
 
+const AVAILABLE_GAMES = []; // NOTE: this array should get filled when each game is instantiated
 window.onload = function()
 {
-  runnerGame = new runnerGameClass();
   loadImages();
 
   gameCanvas = document.getElementById("gameCanvas");

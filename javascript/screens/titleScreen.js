@@ -31,24 +31,15 @@ function TitleScreenClass()
             }
       }
     }
-  }
-
+  };
+  /* NOTE: this is a list of game names for unimplemented games, when implementing a game,
+	 move the corresponding data to its titleScreenData attribute */
   const GAME_NAMES = [
-    [{name: "Snake", fontSize: 27, spacing: 15, x: 30, y: 185}],//1
-    [{name: "Bird", fontSize: 27, spacing: 15, x: 138, y: 185}],//2
-    [{name: "Lane", fontSize: 27, spacing: 15, x: 237, y: 185}],//3
-    [{name: "Jumper", fontSize: 27, spacing: 15, x: 322, y: 185}],//4
     [{name: "Finder", fontSize: 27, spacing: 15, x: 420, y: 185}],//5
-    [{name: "Pass", fontSize: 22, spacing: 12, x: 542, y: 167},{name: "Block", fontSize: 22, spacing: 12, x: 535, y: 207}],//6
-    [{name: "cVc", fontSize: 22, spacing: 12, x: 47, y: 270},{name: "Shooter", fontSize: 22, spacing: 12, x: 26, y: 300}],//7
-    [{name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270}, {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}],//8
-    [{name: "Runner", fontSize: 27, spacing: 13, x: 225, y: 285}],//9
-    [{name: "Piñata", fontSize: 27, spacing: 15, x: 322, y: 285}],//10
     [{name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265}, {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}],//11
     [{name: "Frogger", fontSize: 27, spacing: 13, x: 520, y: 285}],//12
     [{name: "Maze", fontSize: 27, spacing: 15, x: 37, y: 385}],//13
     [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
-    [{name: "Flower", fontSize: 27, spacing: 15, x: 222, y: 385}],//15
     [{name: "Penalty", fontSize: 17, spacing: 12, x: 325, y: 375},{name: "Shootout", fontSize: 17, spacing: 12, x: 324, y: 405}],//16 // TODO: game is not implemented yet. Will remove comments when it is implemented.
     [{name: "Balloon", fontSize: 17, spacing: 12, x: 425, y: 375},{name: "Pop", fontSize: 17, spacing: 12, x: 450, y: 405}],
     [{name: "Daytime", fontSize: 24, spacing: 12, x: 525, y: 380}],
@@ -58,17 +49,22 @@ function TitleScreenClass()
     [{name: "Frog", fontSize: 25, spacing: 15, x: 330, y: 465},{name: "Crate", fontSize: 25, spacing: 10, x: 330, y: 505}],
     [{name: "Flying", fontSize: 25, spacing: 15, x: 420, y: 465},{name: "Bee", fontSize: 25, spacing: 10, x: 440, y: 505}],
     [{name: "Fishing", fontSize: 25, spacing: 12, x: 520, y: 480}],
-    [{name: "Egg", fontSize: 25, spacing: 12, x: 45, y: 565},{name: "Catch", fontSize: 25, spacing: 10, x: 37, y: 605}],
-    [{name: "Bubble", fontSize: 27, spacing: 12, x: 130, y: 565},{name: "Wrap", fontSize: 27, spacing: 12, x: 140, y: 605}],
-
+    [{name: "Egg", fontSize: 25, spacing: 12, x: 45, y: 565},{name: "Catch", fontSize: 25, spacing: 10, x: 37, y: 605}]
   ];
 
   this.drawGameNames = function()
   {
-    GAME_NAMES.forEach(function (nameDataArray) {
-  	nameDataArray.forEach(function(nameData) {
-  	  customFontFillText(nameData.name, nameData.fontSize, nameData.spacing, nameData.x, nameData.y);
-  	});
+    AVAILABLE_GAMES.forEach(function (game) {
+	  const nameDataArray = game.titleScreenData;
+  	  nameDataArray.forEach(function(nameData) {
+  		customFontFillText(nameData.name, nameData.fontSize, nameData.spacing, nameData.x, nameData.y);
+  	  });
+    });
+	// NOTE: old code kept for drawing names of unavailable games
+	GAME_NAMES.forEach(function (nameDataArray) {
+  	  nameDataArray.forEach(function(nameData) {
+  		customFontFillText(nameData.name, nameData.fontSize, nameData.spacing, nameData.x, nameData.y);
+  	  });
     });
   }
 
@@ -86,6 +82,7 @@ function TitleScreenClass()
     this.drawGameNames();
   }
 
+  
   this.handleGameCellClicks = function()
   {
 

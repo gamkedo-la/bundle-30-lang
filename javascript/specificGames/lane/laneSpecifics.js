@@ -4,9 +4,13 @@ var laneBackButtonTextColor = 'yellow';
 laneGameClass.prototype = new GameClass();
 function laneGameClass() {
 	this.name = 'laneGame';
-
 	this.FRAME_RATE = 1000/50;
-
+	this.titleScreenData = [{
+	  name: "Lane",
+	  fontSize: 27,
+	  spacing: 15,
+	  x: 237, y: 185
+	}];
 	this.textAnswerFontSize = 30;
 	this.textAnswerFontStyle = 'px Helvetica';
 
@@ -99,3 +103,4 @@ function laneGameClass() {
 }
 
 const laneGame = new laneGameClass();
+AVAILABLE_GAMES.push(laneGame);

@@ -13,7 +13,10 @@ function spaceShooterGameClass() {
 	var bulletDimensionX = 4;
 	var bulletDimensionY = 4;
 	var bulletSpeed = 7;
-
+	this.titleScreenData = [
+	  {name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270},
+	  {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}
+	];
 	this.frameRate = 1000/30;
 
 	this.isPlaying = function() {
@@ -102,3 +105,4 @@ function spaceShooterGameClass() {
 };
 
 const spaceShooterGame = new spaceShooterGameClass();
+AVAILABLE_GAMES.push(spaceShooterGame);
