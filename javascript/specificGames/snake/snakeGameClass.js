@@ -33,7 +33,8 @@ function snakeGameClass()
   //update section
   this.update = function()
   {
-    if (!promptersManager.shouldBeDrawingAPrompt)
+    if (!promptersManager.shouldBeDrawingAPrompt &&
+        fullGameStateMachine.currentState !== fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame)
     {
       this.playerCharacter.update();
       collisionsWithAnswersManager.handleCollisionsWithAnswers();

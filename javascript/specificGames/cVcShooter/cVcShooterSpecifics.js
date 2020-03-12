@@ -1,7 +1,7 @@
 function cVcShooterGameClass()
 {
   this.name = 'cVcShooter Game';
-  this.FRAME_RATE = 1000/15;
+  this.FRAME_RATE = 1000/30;
 
   this.playerCharacter = undefined;
   this.cVcManager = undefined;
@@ -20,6 +20,9 @@ function cVcShooterGameClass()
     console.log('this.cVcManager.arrayOfCVCs: ' + this.cVcManager.arrayOfCVCs);
     this.cVcManager.currentCVC = this.cVcManager.chooseARandomCVC();
     this.cVcManager.currentCVC.initialize();
+    promptersManager.loadCurrentPrompter(imageAndAudioPrompterForCVCs);
+    promptersManager.currentPrompter.loadCurrentImage(this.cVcManager.currentCVC.imageAssociation);
+    promptersManager.currentPrompter.loadCurrentAudio(this.cVcManager.currentCVC.audioAssociation);
   }
 
   this.draw = function()
@@ -28,11 +31,16 @@ function cVcShooterGameClass()
     this.playerCharacter.draw();
     this.cVcManager.currentCVC.draw();
     drawBullets();
+    promptersManager.drawPromptsWhenAppropriate();
   }
 
   this.update = function()
   {
-    moveBullets();
+    if (!promptersManager.shouldBeDrawingAPrompt &&
+        fullGameStateMachine.currentState !== fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame)
+    {
+      moveBullets();
+    }
   }
 
   this.handleLeftArrowDown = function()

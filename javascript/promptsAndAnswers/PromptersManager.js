@@ -5,6 +5,7 @@ function PromptersManager()
     textPrompter = new TextPrompter();
     imagePrompter = new ImagePrompter();
     audioPrompter = new AudioPrompter();
+    imageAndAudioPrompterForCVCs = new ImageAndAudioPrompterForCVCs();
   }
 
   this.currentPrompter = undefined;
