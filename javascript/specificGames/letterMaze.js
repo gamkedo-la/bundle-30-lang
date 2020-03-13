@@ -542,6 +542,7 @@ function LetterClass(nameString)
     let randomDeadEndIndex = getRandomIntInclusive(0,arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation.length - 1);
     console.log('random dead end index: ' + randomDeadEndIndex);
     this.cell = arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation[randomDeadEndIndex];
+    this.cellIndex = this.cell.cellIndex;
     arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation.splice(randomDeadEndIndex,1);
     console.log('letter cell index: letter ' + this.name + ': ' + this.cellIndex);
   }
@@ -644,22 +645,18 @@ function handleKeyDowns(builtInDocumentEventObject)
   switch(builtInDocumentEventObject.keyCode)
     {
       case 87://w
-      console.log('recognizing w press');
       movePlayer1UpIfPossible();
       break;
 
       case 68://d
-      console.log('recognizing d press');
       moverPlayer1RightIfPossible();
       break;
 
       case 83://s
-      console.log('recognizing s press');
       moverPlayer1DownIfPossible();
       break;
 
       case 65://a
-      console.log('recognizing a press');
       moverPlayer1LeftIfPossible();
       break;
 
@@ -688,9 +685,7 @@ function movePlayer1UpIfPossible()
   {
     player1.cell = player1.cell.topNeighboringCell;
     checkForLetterCollisions();
-  } else {
-    player1.cell = player1.cell;
-  }
+  } 
 }
 
 function movePlayer2UpIfPossible()
@@ -699,8 +694,6 @@ function movePlayer2UpIfPossible()
   {
     player2.cell = player2.cell.topNeighboringCell;
     checkForLetterCollisions();
-  } else {
-    player2.cell = player2.cell;
   }
 }
 
@@ -711,9 +704,6 @@ function moverPlayer1RightIfPossible()
     player1.cell = player1.cell.rightNeighboringCell;
     checkForLetterCollisions();
   }
-  else {
-    player1.cell = player1.cell;
-  }
 }
 
 function moverPlayer2RightIfPossible()
@@ -722,9 +712,6 @@ function moverPlayer2RightIfPossible()
   {
     player2.cell = player2.cell.rightNeighboringCell;
     checkForLetterCollisions();
-  }
-  else {
-    player2.cell = player2.cell;
   }
 }
 
@@ -735,9 +722,6 @@ function moverPlayer1DownIfPossible()
     player1.cell = player1.cell.bottomNeighboringCell;
     checkForLetterCollisions();
   }
-  else {
-    player1.cell = player1.cell;
-  }
 }
 
 function moverPlayer2DownIfPossible()
@@ -746,9 +730,6 @@ function moverPlayer2DownIfPossible()
   {
     player2.cell = player2.cell.bottomNeighboringCell;
     checkForLetterCollisions();
-  }
-  else {
-    player2.cell = player2.cell;
   }
 }
 
@@ -759,9 +740,6 @@ function moverPlayer1LeftIfPossible()
     player1.cell = player1.cell.leftNeighboringCell;
     checkForLetterCollisions();
   }
-  else {
-    player1.cell = player1.cell;
-  }
 }
 
 function moverPlayer2LeftIfPossible()
@@ -770,9 +748,6 @@ function moverPlayer2LeftIfPossible()
   {
     player2.cell = player2.cell.leftNeighboringCell;
     checkForLetterCollisions();
-  }
-  else {
-    player2.cell = player2.cell;
   }
 }
 
@@ -789,6 +764,7 @@ function checkForLetterCollisions()
             console.log('correct letter choice');
             backgroundMusic.pause();
             backgroundMusic.currentTime = 0;
+            return;
           }
       else if (arrayOfPlayers[arrayOfPlayersIndex].cell === arrayOfAnswers[arrayOfAnswersIndex].cell &&
                arrayOfAnswers[arrayOfAnswersIndex].name !== currentCorrectLetter)
