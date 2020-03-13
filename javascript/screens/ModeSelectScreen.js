@@ -52,7 +52,8 @@ function ModeSelectScreen()
       if ( Math.sqrt(xDistanceSquared + yDistanceSquared) < radioButtonRadius )
         {
           this.arrayOfModeSelectBoxes[radioButtonIndex].selectedStatus = true;
-
+          nextGame = this.arrayOfModeSelectBoxes[radioButtonIndex].mode;
+          console.log('nextGame: ' + nextGame);
           for (let reiterativeArrayIndex = 0; reiterativeArrayIndex < this.arrayOfModeSelectBoxes.length; reiterativeArrayIndex++)
           {
             if (reiterativeArrayIndex !== radioButtonIndex)
