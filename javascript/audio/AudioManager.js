@@ -91,7 +91,6 @@ function AudioManager()
       fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
       promptersManager.promptThePlayer();
       gameCanvasContext.globalAlpha = 1;
-
       if (gameIsOnAServerAndCanUseWebAudioAPI /*&& currentBackgroundMusic.playbackState !== 'playing'*/)
       {
         if (audioManager.currentBackgroundMusic) { // bugfix: skip if undefined

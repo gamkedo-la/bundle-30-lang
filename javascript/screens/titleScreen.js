@@ -93,148 +93,141 @@ function TitleScreenClass()
 
     var gameNum = -1;
 
-
     var mouseCol = Math.floor((inputManager.mouseCoordinates.x - 20)/100);
     var mouseRow = Math.floor((inputManager.mouseCoordinates.y - 150)/100);
     if (mouseCol >= 0 && mouseCol < 6 && mouseRow >= 0 && mouseRow < 5)
     {
-      gameNum = mouseCol + mouseRow *6
+      gameNum = mouseCol + mouseRow *6;
     }
     if (gameNum !== -1)
     {
       loadGameNum(gameNum);
+      gameClassManager.initializeCurrentGame();
     }
-    /*//1st row
-    //snake
-    if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
-        inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-    {
-      gameClassManager.loadCurrentGame(SNAKE_GAME);
-    }
-    //bird
-    else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
-             inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-    {
-    gameClassManager.loadCurrentGame(birdGame);
 
-    }
-    else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
-             inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-    {
-	  gameClassManager.loadCurrentGame(laneGame);
-    }
-    else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
-             inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-    {
-	  gameClassManager.loadCurrentGame(jumperGame);
-    }
-    else if (inputManager.mouseCoordinates.x > 420 && inputManager.mouseCoordinates.x < 520 &&
-             inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-        {
-
-        }
-    else if (inputManager.mouseCoordinates.x > 520 && inputManager.mouseCoordinates.x < 620 &&
-             inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-        {
-          gameClassManager.loadCurrentGame(passOrBlockGame);
-        }
-
-    //2nd row
-    else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
-             inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
-        {
-          console.log('cVcShooterGame cell click');
-          gameClassManager.loadCurrentGame(cVcShooterGame);
-        }
-    else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
-             inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
-        {
-          spaceShooterGame.startPlaying();
-          playerShouldSeeTitleScreen = false;
-          fullGameStateMachine.playingAGameState = true;
-          levelIsTransitioning = true;
-        }
-  	else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
-  			 inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
-  	{
-      gameClassManager.loadCurrentGame(runnerGame);
-      if (gameIsOnAServerAndCanUseWebAudioAPI)
-          {
-              backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
-              currentBackgroundMusic = backgroundMusicBufferSource;
-              loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
-              backgroundMusicBufferSource.loop = true;
-              backgroundMusicBufferSource.loopStart = 6.9;
-              backgroundMusicBufferSource.loopEnd = 1;
-          }
-      }
-      // BUBBLE WRAP:
-      else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
-        inputManager.mouseCoordinates.y > 550 && inputManager.mouseCoordinates.y < 650)
-    {
-      console.log("Clicked Bubble Wrap Button");
-        gameClassManager.loadCurrentGame(bubbleWrapGame);
-      gameInterval.reset(PINATAFRAMERATE);
-      // do we still need to set these?
-        playerShouldSeeTitleScreen = false;
-        fullGameStateMachine.playingAGameState = true;
-        levelIsTransitioning = true;
-    }
-      // PINATA GAME:
-      else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
-          inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
-      {
-        console.log("Clicked Pinata Button");
-        gameClassManager.loadCurrentGame(pinataGame);
-        gameInterval.reset(PINATAFRAMERATE);
-      // do we still need to set these?
-      playerShouldSeeTitleScreen = false;
-  		fullGameStateMachine.playingAGameState = true;
-          levelIsTransitioning = true;
-          if (gameIsOnAServerAndCanUseWebAudioAPI)
-          {
-              backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
-              currentBackgroundMusic = backgroundMusicBufferSource;
-              // FIXME: change to a new song for pinata
-              loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
-              backgroundMusicBufferSource.loop = true;
-              backgroundMusicBufferSource.loopStart = 6.9;
-              backgroundMusicBufferSource.loopEnd = 1;
-          }
-
-      }
-      //flower
-      else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
-             inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
-             {
-             gameClassManager.loadCurrentGame(flowerGame);
-             }
-      // TODO: Not implemented yet. Will remove comments when implementation is finished.
-      // else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
-      //        inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
-      //        {
-      //        gameClassManager.loadCurrentGame(penaltyGame);
-      //        }
-      // FIXME: this may trigger when you click the background and never started a game?
-      */
     // any game
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 620 &&
         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 650)
         {
-          this.startGame();
+          fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.modeSelectScreen);
         }
   }
 
-  this.startGame = function()
-  {
-    if (gameClassManager.currentGame) console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
-    miniGameTransitioner.initialize();
-    audioManager.currentBackgroundMusic.pause();
-    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
-    collisionsWithAnswersManager.initialize();
-    audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
-    audioManager.transitionToLevelMusic1.play();
-  }
+
 }
 
 let titleScreen = new TitleScreenClass();
+
+/*//1st row
+//snake
+if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
+    inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
+{
+  gameClassManager.loadCurrentGame(SNAKE_GAME);
+}
+//bird
+else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
+         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
+{
+gameClassManager.loadCurrentGame(birdGame);
+
+}
+else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
+         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
+{
+gameClassManager.loadCurrentGame(laneGame);
+}
+else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
+         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
+{
+gameClassManager.loadCurrentGame(jumperGame);
+}
+else if (inputManager.mouseCoordinates.x > 420 && inputManager.mouseCoordinates.x < 520 &&
+         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
+    {
+
+    }
+else if (inputManager.mouseCoordinates.x > 520 && inputManager.mouseCoordinates.x < 620 &&
+         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
+    {
+      gameClassManager.loadCurrentGame(passOrBlockGame);
+    }
+
+//2nd row
+else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
+         inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
+    {
+      console.log('cVcShooterGame cell click');
+      gameClassManager.loadCurrentGame(cVcShooterGame);
+    }
+else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
+         inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
+    {
+      spaceShooterGame.startPlaying();
+      playerShouldSeeTitleScreen = false;
+      fullGameStateMachine.playingAGameState = true;
+      levelIsTransitioning = true;
+    }
+else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
+     inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
+{
+  gameClassManager.loadCurrentGame(runnerGame);
+  if (gameIsOnAServerAndCanUseWebAudioAPI)
+      {
+          backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
+          currentBackgroundMusic = backgroundMusicBufferSource;
+          loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
+          backgroundMusicBufferSource.loop = true;
+          backgroundMusicBufferSource.loopStart = 6.9;
+          backgroundMusicBufferSource.loopEnd = 1;
+      }
+  }
+  // BUBBLE WRAP:
+  else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
+    inputManager.mouseCoordinates.y > 550 && inputManager.mouseCoordinates.y < 650)
+{
+  console.log("Clicked Bubble Wrap Button");
+    gameClassManager.loadCurrentGame(bubbleWrapGame);
+  gameInterval.reset(PINATAFRAMERATE);
+  // do we still need to set these?
+    playerShouldSeeTitleScreen = false;
+    fullGameStateMachine.playingAGameState = true;
+    levelIsTransitioning = true;
+}
+  // PINATA GAME:
+  else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
+      inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
+  {
+    console.log("Clicked Pinata Button");
+    gameClassManager.loadCurrentGame(pinataGame);
+    gameInterval.reset(PINATAFRAMERATE);
+  // do we still need to set these?
+  playerShouldSeeTitleScreen = false;
+  fullGameStateMachine.playingAGameState = true;
+      levelIsTransitioning = true;
+      if (gameIsOnAServerAndCanUseWebAudioAPI)
+      {
+          backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
+          currentBackgroundMusic = backgroundMusicBufferSource;
+          // FIXME: change to a new song for pinata
+          loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
+          backgroundMusicBufferSource.loop = true;
+          backgroundMusicBufferSource.loopStart = 6.9;
+          backgroundMusicBufferSource.loopEnd = 1;
+      }
+
+  }
+  //flower
+  else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
+         inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
+         {
+         gameClassManager.loadCurrentGame(flowerGame);
+         }
+  // TODO: Not implemented yet. Will remove comments when implementation is finished.
+  // else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
+  //        inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
+  //        {
+  //        gameClassManager.loadCurrentGame(penaltyGame);
+  //        }
+  // FIXME: this may trigger when you click the background and never started a game?
+  */

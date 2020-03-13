@@ -6,6 +6,7 @@ function FullGameStateMachineClass()
     clickToLaunch: {status:'waiting for user click to launch full game', associatedObject: loadingAndSplashScreen},
     transitionToTitleScreen: {status:'transitioning to title screen', associatedObject: transitionToTitleScreen},
     titleScreen: {status:'title screen', associatedObject: titleScreen},
+    modeSelectScreen: {status:'mode select screen', associatedObject: modeSelectScreen},
     transitionToMiniGame: {status: 'transitioning to mini game', associatedObject: miniGameTransitioner},
     playingMiniGame: {status: 'playing mini game', associatedObject: gameClassManager.currentGame},
     pausedMiniGame: {status: 'mini game paused', associatedObject: gameClassManager.currentGame}

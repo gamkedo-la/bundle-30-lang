@@ -31,10 +31,10 @@ function snakeGameClass()
   this.superInitialize = this.initialize;
   this.initialize = function()
   {
-	this.playerCharacter = new SnakeClass();
+	  this.playerCharacter = new SnakeClass();
     this.background = new SnakeBackground();
     this.playerCharacter.initialize();
-	this.superInitialize();
+	  this.superInitialize();
   };
 
   //update section

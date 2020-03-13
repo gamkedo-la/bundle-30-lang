@@ -3,21 +3,21 @@ function GameClass()
   let gameIsPlaying = false;
 
   this.isPlaying = function() {
-	return gameIsPlaying;
+	   return gameIsPlaying;
   };
 
   this.startPlaying = function() {
-	gameIsPlaying = true;
+	   gameIsPlaying = true;
   };
 
   this.stopPlaying = function() {
-	gameIsPlaying = false;
+	   gameIsPlaying = false;
   };
 
   this.initialize = function()
   {
-	initializePromptAndAnswerObjects();
-	gameInterval.reset(this.FRAME_RATE);
+	  initializePromptAndAnswerObjects();
+	  gameInterval.reset(this.FRAME_RATE);
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
   };
@@ -33,13 +33,17 @@ function GameClassManager()
   this.loadCurrentGame = function(gameToLoad)
   {
     this.currentGame = gameToLoad;
+    fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame.associatedObject = gameToLoad;
     console.log('this.currentGame.name: ' + this.currentGame.name);
+  }
+
+  this.initializeCurrentGame = function()
+  {
     this.currentGame.initialize();
     if (this.superInitialize !== undefined)
     {
       this.currentGame.superInitialize();
     }
-    fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame.associatedObject = gameToLoad;
   }
 
   this.currentFrameRate = 1000/30;

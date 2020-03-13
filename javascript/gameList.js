@@ -5,27 +5,36 @@ var gameList = [SNAKE_GAME,birdGame,laneGame,jumperGame,null,passOrBlockGame,
                 null,bubbleWrapGame,null,null,null,null];
 
 var currentlyLoadedGame = -1;
-var NEXT_GAME_NONE = 0;
-var NEXT_GAME_REPEAT = 1;
-var NEXT_GAME_RANDOM = 2;
-var nextGame = NEXT_GAME_NONE;
+var SINGLE_PLAYER_ENDLESS = 0;
+var SINGLE_PLAYER_RANDOM = 1;
+var TWO_PLAYER_RANDOM = 2;
+var nextGame = SINGLE_PLAYER_ENDLESS;
 
-function loadGameNum(whichGame)
+
+// switch (nextGame)
+// {
+//   case SINGLE_PLAYER_ENDLESS:
+//     break;
+//   case SINGLE_PLAYER_RANDOM:
+//     break;
+//   case TWO_PLAYER_RANDOM:
+//     break;
+// }
+
+function loadGameNum(gameListIndex)
 {
-  currentlyLoadedGame = whichGame;
-  gameClassManager.loadCurrentGame(gameList[currentlyLoadedGame]);
+  gameClassManager.loadCurrentGame(gameList[gameListIndex]);
 }
 
 function loadRandomGame()
 {
   do
   {
-    currentlyLoadedGame = Math.floor(Math.random()*30);
-  } while (gameList[currentlyLoadedGame] == null)
-  reloadLastGame();
+    gameListIndex = Math.floor(Math.random()*30);
+  } while (gameList[gameListIndex] == null)
 }
 
 function reloadLastGame()
 {
-  gameClassManager.loadCurrentGame(gameList[currentlyLoadedGame]);
+  gameClassManager.loadCurrentGame(gameClassManager.currentGame);
 }
