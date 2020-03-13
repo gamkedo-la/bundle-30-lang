@@ -82,7 +82,7 @@ function TitleScreenClass()
     this.drawGameNames();
   }
 
-  
+
   this.handleGameCellClicks = function()
   {
 
@@ -91,7 +91,24 @@ function TitleScreenClass()
 
     console.log("MAIN MENU mouse pos is "+inputManager.mouseCoordinates.x+"," +inputManager.mouseCoordinates.y);
 
-    //1st row
+    var gameNum = -1;
+    var gameList = [SNAKE_GAME,birdGame,laneGame,jumperGame,null,passOrBlockGame,
+                    cVcShooterGame,null,runnerGame,pinataGame,null,null,
+                    null,null,flowerGame,null,null,null,
+                    null,null,null,null,null,null,
+                    null,bubbleWrapGame,null,null,null,null];
+
+    var mouseCol = Math.floor((inputManager.mouseCoordinates.x - 20)/100);
+    var mouseRow = Math.floor((inputManager.mouseCoordinates.y - 150)/100);
+    if (mouseCol >= 0 && mouseCol < 6 && mouseRow >= 0 && mouseRow < 5)
+    {
+      gameNum = mouseCol + mouseRow *6
+    }
+    if (gameNum !== -1)
+    {
+      gameClassManager.loadCurrentGame(gameList[gameNum]);
+    }
+    /*//1st row
     //snake
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
@@ -203,20 +220,24 @@ function TitleScreenClass()
       //        gameClassManager.loadCurrentGame(penaltyGame);
       //        }
       // FIXME: this may trigger when you click the background and never started a game?
-
+      */
     // any game
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 620 &&
         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 650)
         {
-          if (gameClassManager.currentGame) console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
-          miniGameTransitioner.initialize();
-          audioManager.currentBackgroundMusic.pause();
-          fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
-          collisionsWithAnswersManager.initialize();
-          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
-          audioManager.transitionToLevelMusic1.play();
-          // gameCanvasContext.globalAlpha = 0.0;
+          this.startGame();
         }
+  }
+
+  this.startGame = function()
+  {
+    if (gameClassManager.currentGame) console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
+    miniGameTransitioner.initialize();
+    audioManager.currentBackgroundMusic.pause();
+    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
+    collisionsWithAnswersManager.initialize();
+    audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
+    audioManager.transitionToLevelMusic1.play();
   }
 }
 
