@@ -28,6 +28,15 @@ function BackButton()
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < gameCanvas.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < gameCanvas.height)
         {
+          switch (nextGame)
+          {
+            case NEXT_GAME_NONE:
+              break;
+            case NEXT_GAME_REPEAT:
+              break;
+            case NEXT_GAME_RANDOM:
+              break;
+          }
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
           transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
           promptersManager.currentPrompter.currentWidth = 150;

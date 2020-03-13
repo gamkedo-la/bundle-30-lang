@@ -92,11 +92,7 @@ function TitleScreenClass()
     console.log("MAIN MENU mouse pos is "+inputManager.mouseCoordinates.x+"," +inputManager.mouseCoordinates.y);
 
     var gameNum = -1;
-    var gameList = [SNAKE_GAME,birdGame,laneGame,jumperGame,null,passOrBlockGame,
-                    cVcShooterGame,null,runnerGame,pinataGame,null,null,
-                    null,null,flowerGame,null,null,null,
-                    null,null,null,null,null,null,
-                    null,bubbleWrapGame,null,null,null,null];
+
 
     var mouseCol = Math.floor((inputManager.mouseCoordinates.x - 20)/100);
     var mouseRow = Math.floor((inputManager.mouseCoordinates.y - 150)/100);
@@ -106,7 +102,7 @@ function TitleScreenClass()
     }
     if (gameNum !== -1)
     {
-      gameClassManager.loadCurrentGame(gameList[gameNum]);
+      loadGameNum(gameNum);
     }
     /*//1st row
     //snake
