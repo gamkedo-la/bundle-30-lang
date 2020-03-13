@@ -52,10 +52,14 @@ function ModeSelectScreen()
       if ( Math.sqrt(xDistanceSquared + yDistanceSquared) < radioButtonRadius )
         {
           this.arrayOfModeSelectBoxes[radioButtonIndex].selectedStatus = true;
-        }
-      else
-        {
-          this.arrayOfModeSelectBoxes[radioButtonIndex].selectedStatus = false;
+
+          for (let reiterativeArrayIndex = 0; reiterativeArrayIndex < this.arrayOfModeSelectBoxes.length; reiterativeArrayIndex++)
+          {
+            if (reiterativeArrayIndex !== radioButtonIndex)
+            {
+              this.arrayOfModeSelectBoxes[reiterativeArrayIndex].selectedStatus = false;
+            }
+          }
         }
     }
   }
