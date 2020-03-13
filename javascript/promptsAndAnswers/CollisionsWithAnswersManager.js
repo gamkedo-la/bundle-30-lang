@@ -89,6 +89,7 @@ function CollisionsWithAnswersManager()
 
   this.handleCollisionsWithAnswers = function(correctAnswerWidth, incorrectAnswerWidth, textAnswerFontSize)
   {
+    console.log('inside handleCollisionsWithAnswers()');
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
       // Get answers width
@@ -104,13 +105,22 @@ function CollisionsWithAnswersManager()
         {
           this.resetAnswers();
           amountCorrect++;
+          if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
+          {
+            cycleCount++;
+          }
         }
       else if (this.insideBoxColliderForIncorrectStringAnswer(incorrectAnswerWidth, textAnswerFontSize))
         {
           this.resetAnswers();
           amountIncorrect++;
+          if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
+          {
+            cycleCount++;
+          }
         }
         calculateAccuracy();
+
     }
     else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
     {
@@ -118,14 +128,21 @@ function CollisionsWithAnswersManager()
         {
           this.resetAnswers();
           amountCorrect++;
+          if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
+          {
+            cycleCount++;
+          }
         }
       else if (this.insideBoxColliderForIncorrectImageAnswers())
         {
           this.resetAnswers();
           amountIncorrect++;
+          if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
+          {
+            cycleCount++;
+          }
         }
         calculateAccuracy();
-
     }
     else if (promptsAndAnswersManager.currentAnswerDataType === 'AUDIO')
     {
@@ -133,15 +150,30 @@ function CollisionsWithAnswersManager()
         {
             this.resetAnswers();
             amountCorrect++;
+            if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
+            {
+              cycleCount++;
+            }
         }
       else if (this.insideBoxColliderForIncorrectAudioAnswer())
         {
           this.resetAnswers();
           amountIncorrect++;
+          if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
+          {
+            cycleCount++;
+          }
         }
         calculateAccuracy();
+    }//end of else if for data type checks;
+    console.log('cycle count: ' + cycleCount);
+    if ( (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM) &&
+          cycleCount === CYCLE_LIMIT_FOR_RANDOM_GAME_RELOAD )
+    {
+      loadRandomGame();
+      cycleCount = 0;
     }
-  }
-}
+  }//end of handleCollisionsWithAnswers();
+}//end of CollisionsWithAnswersManager();
 
 let collisionsWithAnswersManager = new CollisionsWithAnswersManager();

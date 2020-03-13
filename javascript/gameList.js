@@ -10,6 +10,9 @@ var SINGLE_PLAYER_RANDOM = 1;
 var TWO_PLAYER_RANDOM = 2;
 var nextGame = SINGLE_PLAYER_ENDLESS;
 
+var CYCLE_LIMIT_FOR_RANDOM_GAME_RELOAD = 3;
+var cycleCount = 0;
+
 
 // switch (nextGame)
 // {
@@ -32,6 +35,8 @@ function loadRandomGame()
   {
     gameListIndex = Math.floor(Math.random()*30);
   } while (gameList[gameListIndex] == null)
+  gameClassManager.loadCurrentGame(gameList[gameListIndex]);
+  gameClassManager.initializeCurrentGame();
 }
 
 function reloadLastGame()

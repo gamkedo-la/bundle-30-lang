@@ -103,6 +103,7 @@ function TitleScreenClass()
     {
       loadGameNum(gameNum);
       gameClassManager.initializeCurrentGame();
+      promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     }
 
     // any game
