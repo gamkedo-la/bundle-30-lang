@@ -81,7 +81,7 @@ function ModeSelectScreen()
     let width = gameCanvas.width/4;
     let height = gameCanvas.height/7;
     let startingX = gameCanvas.width/2 - (width/2);
-    let startingY = gameCanvas.height - (height*2);
+    let startingY = gameCanvas.height - (height*1.5);
 
     if (inputManager.mouseCoordinates.x > startingX && inputManager.mouseCoordinates.x < startingX + width &&
         inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height)
