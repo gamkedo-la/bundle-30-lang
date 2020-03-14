@@ -109,7 +109,9 @@ function TitleScreenClass()
         fullGameStateMachine.playingAGameState = true;
         levelIsTransitioning = true;
 
-        loadGameNum(gameNum);
+        if(loadGameNum(gameNum) == false) {
+          return;
+        }
         gameClassManager.initializeCurrentGame();
         promptsAndAnswersManager.setOrResetPromptsAndAnswers();
       } else {
