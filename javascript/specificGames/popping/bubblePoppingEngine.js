@@ -19,6 +19,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.titleTXT2 = "Click the right letter";
     this.titleTXT3 = "as fast as you can";
     this.spritesheet = null;
+    this.gravity = 0.05;
 
     //////////////////////////////////////////////////////
     // private vars used internally
@@ -116,6 +117,13 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         
         if (window.levelIsTransitioning) return; // update should never be called in this case, but just in case
 
+        if (this.spawnRandomly) {
+            if (Math.random()<this.spawnChance) {
+                //console.log("Randomly spawning a new popable!");
+                this.newcircle(Math.random()*gameCanvas.width, gameCanvas.height+100, 50, 1);
+            }
+        }
+
         // iterate through all objects twice
         for (i = objects.length; i--;) {
             for (j = objects.length; j-- > i;) {
@@ -173,10 +181,10 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
             } // i
             
             // animate them falling and bouncing
-            if (introComplete) { // not waiting for smash?
+            if (introComplete || this.noIntro) { // not waiting for smash?
 
                 // Update scene
-                nextOne.V = add(nextOne.V, scale(nextOne.A, .05)); // A=gravity
+                nextOne.V = add(nextOne.V, scale(nextOne.A, this.gravity)); // A=gravity
                 nextOne.C = add(nextOne.C, scale(nextOne.V, .01));
                 nextOne.D += nextOne.E * .01;
                 nextOne.B += nextOne.M ? nextOne.D * .01 : .001;
@@ -225,8 +233,8 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 if (!this.spritesheet) {
                     ctx.arc(0, 0, nextOne.R, 0, 7);
                 } else {
-                    //ctx.translate(-nextOne.R, -nextOne.R); // center img
-                    ctx.drawImage(this.spritesheet,0,0,256,256,-nextOne.R,-nextOne.R,50,50);
+                    // really big: balloons assumed: FIXME
+                    ctx.drawImage(this.spritesheet,0,0,256,256,-nextOne.R,-nextOne.R,nextOne.R*8,nextOne.R*8);
                 }
                 
                 //c.lineWidth = 3;
