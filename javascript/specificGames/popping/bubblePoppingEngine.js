@@ -222,8 +222,8 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 ctx.save();
                 
                 ctx.beginPath();
-                ctx.translate(nextOne.C.x, nextOne.C.y);
                 ctx.rotate(nextOne.B);
+                ctx.translate(nextOne.C.x, nextOne.C.y);
 
                 if (!this.spritesheet) {
                     ctx.arc(0, 0, nextOne.R, 0, 7);

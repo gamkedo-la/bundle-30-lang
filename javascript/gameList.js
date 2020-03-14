@@ -1,8 +1,8 @@
 var gameList = [SNAKE_GAME,birdGame,laneGame,jumperGame,null,passOrBlockGame,
-                cVcShooterGame,null,runnerGame,pinataGame,null,null,
-                MAZE_GAME,null,flowerGame,null,null,null,
+                cVcShooterGame,null,runnerGame,null/*pinataGame*/,null,null,
+                MAZE_GAME,null,flowerGame,null,null/*balloonPop*/,null,
                 null,null,null,null,null,null,
-                null,bubbleWrapGame,null,null,null,null];
+                null,null/*bubbleWrapGame*/,null,null,null,null];
 
 var currentlyLoadedGame = -1;
 var SINGLE_PLAYER_ENDLESS = 0;

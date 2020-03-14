@@ -40,7 +40,7 @@ function TitleScreenClass()
     [{name: "Frogger", fontSize: 27, spacing: 13, x: 520, y: 285}],//12
     [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
     [{name: "Penalty", fontSize: 17, spacing: 12, x: 325, y: 375},{name: "Shootout", fontSize: 17, spacing: 12, x: 324, y: 405}],//16 // TODO: game is not implemented yet. Will remove comments when it is implemented.
-    [{name: "Balloon", fontSize: 17, spacing: 12, x: 425, y: 375},{name: "Pop", fontSize: 17, spacing: 12, x: 450, y: 405}],
+    //[{name: "Balloon", fontSize: 17, spacing: 12, x: 425, y: 375},{name: "Pop", fontSize: 17, spacing: 12, x: 450, y: 405}],
     [{name: "Daytime", fontSize: 24, spacing: 12, x: 525, y: 380}],
     [{name: "Dodgeball", fontSize: 20, spacing: 10, x: 22, y: 480}],
     [{name: "Unscrambler", fontSize: 19, spacing: 9, x: 122, y: 480}],
