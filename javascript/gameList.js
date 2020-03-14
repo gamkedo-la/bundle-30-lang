@@ -1,6 +1,6 @@
-var gameList = [SNAKE_GAME,birdGame,laneGame,jumperGame,null,passOrBlockGame,
+var gameList = [snakeGame,birdGame,laneGame,jumperGame,null,passOrBlockGame,
                 cVcShooterGame,null,runnerGame,null/*pinataGame*/,null,null,
-                MAZE_GAME,null,flowerGame,null,null/*balloonPop*/,null,
+                mazeGame,null,flowerGame,null,null/*balloonPop*/,null,
                 null,null,null,null,null,null,
                 null,null/*bubbleWrapGame*/,null,null,null,null];
 
