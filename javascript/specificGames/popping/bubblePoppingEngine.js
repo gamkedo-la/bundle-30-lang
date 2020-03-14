@@ -226,7 +226,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                     ctx.arc(0, 0, nextOne.R, 0, 7);
                 } else {
                     //ctx.translate(-nextOne.R, -nextOne.R); // center img
-                    ctx.drawImage(this.spritesheet,0,0,256,256,0,0,50,50);
+                    ctx.drawImage(this.spritesheet,0,0,256,256,-nextOne.R,-nextOne.R,50,50);
                 }
                 
                 //c.lineWidth = 3;
@@ -277,19 +277,21 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                     ctx.fillText('Click the letter ' + targetLetter,200,32);
                 }
             } else {
-                // let's draw an actual pinata here
-                var wobblex = 180+Math.cos(performance.now()/1000)*60;
-                var wobbley = 100-Math.cos(performance.now()/500)*15;
-                // first the string
-                ctx.beginPath();
-                ctx.moveTo(320,0);
-                ctx.lineTo(wobblex+120,wobbley+108);
-                ctx.strokeStyle = "rgba(80,80,80,1)";
-                ctx.lineWidth = 4;
-                ctx.stroke();
-                // now the pinata itself
-                ctx.drawImage(pinataImage,wobblex,wobbley);
-                // and the instructions
+                if (window.pinataImage) {
+                    // let's draw an actual pinata here
+                    var wobblex = 180+Math.cos(performance.now()/1000)*60;
+                    var wobbley = 100-Math.cos(performance.now()/500)*15;
+                    // first the string
+                    ctx.beginPath();
+                    ctx.moveTo(320,0);
+                    ctx.lineTo(wobblex+120,wobbley+108);
+                    ctx.strokeStyle = "rgba(80,80,80,1)";
+                    ctx.lineWidth = 4;
+                    ctx.stroke();
+                    // now the pinata itself
+                    ctx.drawImage(pinataImage,wobblex,wobbley);
+                    // and the instructions
+                }
                 if (window.customFontFillText) customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
             }
         } // loop thru all
@@ -302,7 +304,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
     function boom(x, y, wasCorrect) {
 
-        if (wasCorrect) {
+        if (wasCorrect && !me.alwaysPopLetters) {
 
             //pinataSmashed = false; // reset!!!!!!!! fixme: or do we like spam
 
@@ -317,6 +319,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
             // select a new letter
             targetLetter = alphabet[rndInt(0, alphabet.length - 1)];
+            
             // ensure the target one is there at least one matching letter, quite high up
             Circle(Vec2(x + Math.random() * 300 - 250, y + Math.random() * -100 - 75), 40, 5 / 40, targetLetter);
 
@@ -326,36 +329,37 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
             }
         }
 
-        // reuse old confetti
-        let found = 0;
-        for (let i = objects.length; i--;) {
-            if (objects[i].Z == CONFETTI_ID) { // gotcha
-                found++;
-                objects[i].R = CONFETTI_RADIUS;
-                objects[i].M = CONFETTI_MASS;
-                objects[i].C.x = x + Math.random() * 80 - 40;
-                objects[i].C.y = y + Math.random() * -80 - 40;
-                // add some random velocity
-                objects[i].V.x = Math.random() * 2000 - 1000;
-                objects[i].V.y = Math.random() * 2000 - 1000;
+        if (!me.noConfetti) {
+            // reuse old confetti
+            let found = 0;
+            for (let i = objects.length; i--;) {
+                if (objects[i].Z == CONFETTI_ID) { // gotcha
+                    found++;
+                    objects[i].R = CONFETTI_RADIUS;
+                    objects[i].M = CONFETTI_MASS;
+                    objects[i].C.x = x + Math.random() * 80 - 40;
+                    objects[i].C.y = y + Math.random() * -80 - 40;
+                    // add some random velocity
+                    objects[i].V.x = Math.random() * 2000 - 1000;
+                    objects[i].V.y = Math.random() * 2000 - 1000;
+                }
+            }
+
+            // spawn some particles of confetti if we need them
+            if (!found) { // first time init
+                for (i = CONFETTI_COUNT; i--;) {
+                    let c = new Circle(
+                        Vec2(x + Math.random() * 80 - 40,
+                            y + Math.random() * -80 - 40),
+                        CONFETTI_RADIUS,
+                        CONFETTI_MASS,
+                        CONFETTI_ID);
+                    // add some random velocity
+                    c.V.x = Math.random() * 2000 - 1000;
+                    c.V.y = Math.random() * 2000 - 1000;
+                }
             }
         }
-
-        // spawn some particles of confetti if we need them
-        if (!found) { // first time init
-            for (i = CONFETTI_COUNT; i--;) {
-                let c = new Circle(
-                    Vec2(x + Math.random() * 80 - 40,
-                        y + Math.random() * -80 - 40),
-                    CONFETTI_RADIUS,
-                    CONFETTI_MASS,
-                    CONFETTI_ID);
-                // add some random velocity
-                c.V.x = Math.random() * 2000 - 1000;
-                c.V.y = Math.random() * 2000 - 1000;
-            }
-        }
-
     }
 
     function pinataClick(e) { // NOTE: the "this" is *not* the game
@@ -376,7 +380,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         }
 
         // first click open the pinata!
-        if (!introComplete) {
+        if (!introComplete && !me.noIntro) {
             console.log("Pinata just got smashed!")
             introComplete = true;
             boom(e.pageX, e.pageY, true);
@@ -398,8 +402,13 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                     correct = true;
                 }
                 else {
-                    console.log("You clicked the wrong answer!");
+                    console.log("You clicked the wrong answer: " + checkme.Z + " not " + targetLetter);
                     //depreciated playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
+                }
+
+                if (me.alwaysPopLetters) {
+                    // destroy the clicked bubble (only)
+                    objects.splice(i, 1);
                 }
             }
         }
@@ -474,7 +483,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
             V: Vec2(M ? Math.random() * 1000 - 500 : 0, M ? Math.random() * -500 : 0), // velocity (speed)
             M, // inverseMass (0 if immobile)
             A: Vec2(0, M ? 250 : 0), // acceleration
-            B: M ? Math.random() * 7 : 0, // angle
+            B: 0, //M ? Math.random() * 7 : 0, // angle? could start at random rotation
             D: 0, // angle velocity (stays on!)
             E: 0, // angle acceleration,
             R, // radius

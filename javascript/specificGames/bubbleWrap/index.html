@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body onload='debuginit()'>
+<canvas id='gameCanvas' width='640' height='700'></canvas>
+<script>
+
+function imgloaded() {
+    this.loaded = true;
+}
+
+// 30-in-one pretend integration
+var gameCanvas = document.getElementById('gameCanvas');
+var gameCanvasContext = gameCanvas.getContext('2d');
+
+var bubbleWrapSpritesheet = new Image(); 
+bubbleWrapSpritesheet.src = '../../../images/sprites/bubbleWrap/bubbleWrapSpritesheet.png'; 
+bubbleWrapSpritesheet.onload = imgloaded;
+
+var bubbleWrapBG = new Image(); 
+bubbleWrapBG.src = '../../../images/Backgrounds/bubbleWrapBG.jpg';
+bubbleWrapBG.onload = imgloaded;
+
+var amountIncorrect = 0;
+var amountCorrect = 0;
+var playerShouldBePlayingPinata = true;
+var levelIsTransitioning = false;
+
+function debuginit() {
+    bubbleWrapGame.initialize();
+    run();
+}
+
+function run() {
+    if (bubbleWrapSpritesheet.loaded && bubbleWrapBG.loaded) {
+        bubbleWrapGame.update();
+        bubbleWrapGame.draw();
+    }
+	setTimeout(run,1000/60);
+}
+
+</script>
+
+<script src='../popping/bubblePoppingEngine.js'></script>
+<script src='bubbleWrapSpecifics.js'></script>
+
+</body>
+</html>
