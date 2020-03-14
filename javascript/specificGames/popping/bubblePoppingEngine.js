@@ -18,13 +18,13 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.titleTXT1 = "Piñata Pop";
     this.titleTXT2 = "Click the right letter";
     this.titleTXT3 = "as fast as you can";
-    this.introComplete = false; // if true, show a pinata
     this.spritesheet = null;
 
     //////////////////////////////////////////////////////
     // private vars used internally
     //////////////////////////////////////////////////////
     var me = this; // because events keep this straight
+    var introComplete = false; // if false, show a pinata
     // list of all known candies
     var objects = [];
     // list of rgba colours
@@ -114,7 +114,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
         if (!this.physicsEnabled) return;
         
-        if (window.levelIsTransitioning) return;
+        if (window.levelIsTransitioning) return; // update should never be called in this case, but just in case
 
         // iterate through all objects twice
         for (i = objects.length; i--;) {
@@ -171,7 +171,9 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 } // close enough
                 // }
             } // i
-            if (this.introComplete) {
+            
+            // animate them falling and bouncing
+            if (introComplete) { // not waiting for smash?
 
                 // Update scene
                 nextOne.V = add(nextOne.V, scale(nextOne.A, .05)); // A=gravity
@@ -217,8 +219,8 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 ctx.save();
                 
                 ctx.beginPath();
-                ctx.rotate(nextOne.B);
                 ctx.translate(nextOne.C.x, nextOne.C.y);
+                ctx.rotate(nextOne.B);
 
                 if (!this.spritesheet) {
                     ctx.arc(0, 0, nextOne.R, 0, 7);
@@ -249,7 +251,12 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                         ctx.fillText(String.fromCodePoint(0x1F600 + (i % 69/*56*/)), nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
                     } else {
                         // draw the letter using bitmap font
-                        if (window.customFontFillText) customFontFillText([nextOne.Z], nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
+                        if (window.customFontFillText) {
+                            customFontFillText([nextOne.Z], nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
+                        } else { // debug only
+                            ctx.fillStyle = 'black';
+                            ctx.fillText(nextOne.Z,0,nextOne.R*0.666);
+                        }
                     }
                 }
                 else { // no mass? must be the ground
@@ -261,8 +268,14 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
 
 
-            if (this.introComplete) {
-                customFontFillText(['Click the letter ' + targetLetter], 32, 24, 80, 32);
+            if (introComplete) {
+                if (window.customFontFillText) {
+                    customFontFillText(['Click the letter ' + targetLetter], 32, 24, 80, 32);
+                } else { // debug only
+                    ctx.fillStyle = 'white';
+                    ctx.font = "32px Arial";
+                    ctx.fillText('Click the letter ' + targetLetter,200,32);
+                }
             } else {
                 // let's draw an actual pinata here
                 var wobblex = 180+Math.cos(performance.now()/1000)*60;
@@ -345,7 +358,8 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
     }
 
-    function pinataClick(e) {
+    function pinataClick(e) { // NOTE: the "this" is *not* the game
+
         // console.log("game click");
 
         if (!playerShouldBePlayingPinata) return; // dont do anything if another game is running
@@ -362,9 +376,9 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         }
 
         // first click open the pinata!
-        if (!this.introComplete) {
+        if (!introComplete) {
             console.log("Pinata just got smashed!")
-            this.introComplete = true;
+            introComplete = true;
             boom(e.pageX, e.pageY, true);
             return;
         }

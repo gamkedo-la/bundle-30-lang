@@ -4,28 +4,29 @@
 <script src='../popping/bubblePoppingEngine.js'></script>
 <script src='pinataSpecifics.js'></script>
 </head>
-<body>
+<body onload='debuginit()'>
 <canvas id='gameCanvas' width='640' height='700'></canvas>
 <script>
 
+// 30-in-one pretend integration
 var gameCanvas = document.getElementById('gameCanvas');
 var gameCanvasContext = gameCanvas.getContext('2d');
 var pinataImage = new Image(); pinataImage.src = '../../../images/sprites/pinata/pinata.png';
-
 var amountIncorrect = 0;
 var amountCorrect = 0;
+var playerShouldBePlayingPinata = true;
+var levelIsTransitioning = false;
+
+function debuginit() {
+    pinataGame.initialize();
+    run();
+}
 
 function run() {
     pinataGame.update();
     pinataGame.draw();
 	setTimeout(run,1000/60);
 }
-
-var playerShouldBePlayingPinata = true;
-var levelIsTransitioning = false;
-
-pinataGame.initialize();
-run();
 
 </script>
 </body>
