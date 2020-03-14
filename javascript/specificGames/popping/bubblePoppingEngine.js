@@ -1,7 +1,7 @@
 // McF's bubblePoppingEngine
 
 // Used by Pinata minigame, Bubble Wrap
-// v4 - abstracted for multiple game use!
+// v5 - abstracted for multiple game use!
 
 // physics code adapted from work by XEM
 // https://github.com/xem/mini2Dphysics
@@ -87,9 +87,10 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.initialize = function() {
         console.log(this.name + " popping game initializing...");
         generateRainbowColours();
+
         ctx = gameCanvasContext;
         canv = gameCanvas;
-
+        
         //if (window.currentBackgroundMusic) { // exists?
         //    currentBackgroundMusic.pause();
         //    currentBackgroundMusic = pinataBackgroundMusic;
@@ -104,12 +105,6 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
             this.gameSpecificInits();            
         }
 
-        // wait for the first click
-        //boom(a.width / 2, a.height / 2, true)// middle of screen
-
-        playerShouldBePlayingPinata = true; // is there a better place for this? in the menu click maybe?
-
-        // TODO FIXME: replace with current global game manager mouse coords
         document.addEventListener('click', pinataClick, false);
 
     }
@@ -119,7 +114,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
         if (!this.physicsEnabled) return;
         
-        if (levelIsTransitioning || !playerShouldBePlayingPinata) return;
+        if (window.levelIsTransitioning) return;
 
         // iterate through all objects twice
         for (i = objects.length; i--;) {
@@ -254,7 +249,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                         ctx.fillText(String.fromCodePoint(0x1F600 + (i % 69/*56*/)), nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
                     } else {
                         // draw the letter using bitmap font
-                        customFontFillText([nextOne.Z], nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
+                        if (window.customFontFillText) customFontFillText([nextOne.Z], nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
                     }
                 }
                 else { // no mass? must be the ground
@@ -282,7 +277,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 // now the pinata itself
                 ctx.drawImage(pinataImage,wobblex,wobbley);
                 // and the instructions
-                customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
+                if (window.customFontFillText) customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
             }
         } // loop thru all
         //drawBackButton(); // FIXME
@@ -398,16 +393,20 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         if (correct) {
             amountCorrect++;
 
-            audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
-            (audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
-
+            if (window.audioManager) {
+                audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
+                (audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
+            }
+            
             boom(e.pageX, e.pageY, true)
         } else {
 
             amountIncorrect++;
 
-            audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
-            (audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
+            if (window.audioManager) {
+                audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
+                (audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
+            }
 
             boom(e.pageX, e.pageY, false)
 

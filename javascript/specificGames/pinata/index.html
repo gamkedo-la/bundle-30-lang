@@ -1,25 +1,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src = 'javascript/specificGames/bubblePoppingEngine.js'></script>
-<script src = 'javascript/specificGames/bubbleWrapSpecifics.js'></script>
-<script src = 'javascript/specificGames/pinataSpecifics.js'></script>
+<script src='../popping/bubblePoppingEngine.js'></script>
+<script src='pinataSpecifics.js'></script>
 </head>
 <body>
-<canvas id = 'gameCanvas' width='640' height='700'></canvas>
+<canvas id='gameCanvas' width='640' height='700'></canvas>
 <script>
 
+var gameCanvas = document.getElementById('gameCanvas');
+var gameCanvasContext = gameCanvas.getContext('2d');
+var pinataImage = new Image(); pinataImage.src = '../../../images/sprites/pinata/pinata.png';
 
-var 
-function init() {
-}
+var amountIncorrect = 0;
+var amountCorrect = 0;
 
 function run() {
-
-	
+    pinataGame.update();
+    pinataGame.draw();
 	setTimeout(run,1000/60);
 }
 
+var playerShouldBePlayingPinata = true;
+var levelIsTransitioning = false;
+
+pinataGame.initialize();
 run();
 
 </script>

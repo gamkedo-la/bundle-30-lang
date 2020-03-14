@@ -6,7 +6,6 @@ pinataGame.titleScreenData = [{
   spacing: 15,
   x: 322, y: 285
 }];
-var playerShouldBePlayingPinata = false; // FIXME is this still used elsewhere?
 const PINATAFRAMERATE = 1000/60;
-AVAILABLE_GAMES.push(pinataGame);
+if (window.AVAILABLE_GAMES) AVAILABLE_GAMES.push(pinataGame);
 ////////////////////////////////////////
