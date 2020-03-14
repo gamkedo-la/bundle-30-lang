@@ -1,8 +1,11 @@
 var gameList = [snakeGame,birdGame,laneGame,jumperGame,null,passOrBlockGame,
-                cVcShooterGame,null,runnerGame,null/*pinataGame*/,null,null,
+                cVcShooterGame,spaceShooterGame,runnerGame,null/*pinataGame*/,null,null,
                 mazeGame,null,flowerGame,null,null/*balloonPop*/,null,
                 null,null,null,null,null,null,
                 null,null/*bubbleWrapGame*/,null,null,null,null];
+// array indexes for special game starts
+const GAME_SPACE_SHOOTER = 7;
+const GAME_RUNNER = 8;
 
 var currentlyLoadedGame = -1;
 var SINGLE_PLAYER_ENDLESS = 0;

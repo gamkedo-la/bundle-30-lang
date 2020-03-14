@@ -100,9 +100,18 @@ function TitleScreenClass()
     }
     if (gameNum !== -1)
     {
+      if(gameNum == GAME_SPACE_SHOOTER) {
+        spaceShooterGame.startPlaying();
+        playerShouldSeeTitleScreen = false;
+        fullGameStateMachine.playingAGameState = true;
+        levelIsTransitioning = true;
+      }
+
       loadGameNum(gameNum);
       gameClassManager.initializeCurrentGame();
       promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+
+      gameClassManager.currentGame.postLoadInit();
     }
 
     // any game
@@ -120,46 +129,6 @@ let titleScreen = new TitleScreenClass();
 
 /*//1st row
 //snake
-if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
-    inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-{
-  gameClassManager.loadCurrentGame(SNAKE_GAME);
-}
-//bird
-else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
-         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-{
-gameClassManager.loadCurrentGame(birdGame);
-
-}
-else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
-         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-{
-gameClassManager.loadCurrentGame(laneGame);
-}
-else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
-         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-{
-gameClassManager.loadCurrentGame(jumperGame);
-}
-else if (inputManager.mouseCoordinates.x > 420 && inputManager.mouseCoordinates.x < 520 &&
-         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-    {
-
-    }
-else if (inputManager.mouseCoordinates.x > 520 && inputManager.mouseCoordinates.x < 620 &&
-         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-    {
-      gameClassManager.loadCurrentGame(passOrBlockGame);
-    }
-
-//2nd row
-else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
-         inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
-    {
-      console.log('cVcShooterGame cell click');
-      gameClassManager.loadCurrentGame(cVcShooterGame);
-    }
 else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
          inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
     {
@@ -172,16 +141,7 @@ else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.
      inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
 {
   gameClassManager.loadCurrentGame(runnerGame);
-  if (gameIsOnAServerAndCanUseWebAudioAPI)
-      {
-          backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
-          currentBackgroundMusic = backgroundMusicBufferSource;
-          loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
-          backgroundMusicBufferSource.loop = true;
-          backgroundMusicBufferSource.loopStart = 6.9;
-          backgroundMusicBufferSource.loopEnd = 1;
-      }
-  }
+  
   // BUBBLE WRAP:
   else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
     inputManager.mouseCoordinates.y > 550 && inputManager.mouseCoordinates.y < 650)
