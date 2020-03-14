@@ -26,6 +26,16 @@ bubbleWrapGame.gameSpecificInits = function() {
     }
 }
 
+// attempting to leverage for this game type, seems to not work for this case though
+bubbleWrapGame.postLoadInit = function() { // code may not be getting called
+    console.log("postLoadInit for bubble wrap");
+    gameInterval.reset(PINATAFRAMERATE);
+    // do we still need to set these?
+    playerShouldSeeTitleScreen = false;
+    fullGameStateMachine.playingAGameState = true;
+    levelIsTransitioning = true;
+}
+
 bubbleWrapGame.drawBG = function() { 
     gameCanvasContext.drawImage(bubbleWrapBG,0,0);
 }

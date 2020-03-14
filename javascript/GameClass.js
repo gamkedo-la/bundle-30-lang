@@ -42,7 +42,11 @@ function GameClassManager()
   this.loadCurrentGame = function(gameToLoad)
   {
     this.currentGame = gameToLoad;
-    this.currentGame.pregameSpecialCode();
+    if(typeof this.currentGame.pregameSpecialCode !== 'undefined') {
+      this.currentGame.pregameSpecialCode();
+    } else {
+      console.log("no pregameSpecialCode function for this game type");
+    }
     fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame.associatedObject = gameToLoad;
     console.log('this.currentGame.name: ' + this.currentGame.name);
   }

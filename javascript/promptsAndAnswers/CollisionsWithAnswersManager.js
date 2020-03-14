@@ -9,7 +9,15 @@ function CollisionsWithAnswersManager()
 
   this.getCurrentPlayerCharacter = function()
   {
-      return gameClassManager.currentGame.playerCharacter;
+    if(typeof gameClassManager.currentGame !== 'undefined') {
+      console.log("COULD NOT FIND currentGame - adding a crude empty placeholder to unblock code");
+      gameClassManager.currentGame = {x:50,y:50};
+    }
+    if(typeof gameClassManager.currentGame.playerCharacter !== 'undefined') {
+      console.log("COULD NOT FIND playerCharacter - adding a crude empty placeholder to unblock code - may be related to collision issues");
+      gameClassManager.currentGame.playerCharacter = {x:50,y:50};
+    }
+    return gameClassManager.currentGame.playerCharacter;
   }
 
   this.getTextAnswerFontSize = function()

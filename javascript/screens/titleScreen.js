@@ -1,3 +1,5 @@
+const GAME_SPACE_SHOOTER = 7;
+
 function TitleScreenClass()
 {
   this.cellXTopLeftCoordinate = 0;
@@ -101,16 +103,20 @@ function TitleScreenClass()
     if (gameNum !== -1)
     {
       if(gameNum == GAME_SPACE_SHOOTER) {
+        console.log("trying to load space shooter, special casing it");
         spaceShooterGame.startPlaying();
         playerShouldSeeTitleScreen = false;
         fullGameStateMachine.playingAGameState = true;
         levelIsTransitioning = true;
+
+        loadGameNum(gameNum);
+        gameClassManager.initializeCurrentGame();
+        promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+      } else {
+        loadGameNum(gameNum);
+        gameClassManager.initializeCurrentGame();
+        promptsAndAnswersManager.setOrResetPromptsAndAnswers();
       }
-
-      loadGameNum(gameNum);
-      gameClassManager.initializeCurrentGame();
-      promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-
       gameClassManager.currentGame.postLoadInit();
     }
 
@@ -139,20 +145,14 @@ else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x
     }
 else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
      inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
-{
-  gameClassManager.loadCurrentGame(runnerGame);
-  
+{  
   // BUBBLE WRAP:
   else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
     inputManager.mouseCoordinates.y > 550 && inputManager.mouseCoordinates.y < 650)
 {
   console.log("Clicked Bubble Wrap Button");
     gameClassManager.loadCurrentGame(bubbleWrapGame);
-  gameInterval.reset(PINATAFRAMERATE);
-  // do we still need to set these?
-    playerShouldSeeTitleScreen = false;
-    fullGameStateMachine.playingAGameState = true;
-    levelIsTransitioning = true;
+  
 }
   // PINATA GAME:
   else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
@@ -177,17 +177,5 @@ else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.
       }
 
   }
-  //flower
-  else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
-         inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
-         {
-         gameClassManager.loadCurrentGame(flowerGame);
-         }
-  // TODO: Not implemented yet. Will remove comments when implementation is finished.
-  // else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
-  //        inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
-  //        {
-  //        gameClassManager.loadCurrentGame(penaltyGame);
-  //        }
   // FIXME: this may trigger when you click the background and never started a game?
   */
