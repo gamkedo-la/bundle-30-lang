@@ -341,18 +341,25 @@ function PromptsAndAnswersManager()
 
   this.setOrResetPromptsAndAnswers = function()
   {
-    this.pickARandomLogicalPromptAnswerGroup();
-    this.pickATargetPromptAndAnswerPairing();
-    this.pickARandomPromptFromTargetPromptAndAnswerPairing();
-    this.defineDataTypeOfCurrentPrompt();
-    this.assignAnAnswerBasedOnPrompt();
-    this.definecurrentAnswerDataType();
-    this.defineIncorrectTargetPromptAndAnswerPairing();
-    this.assignCurrentIncorrectAnswer();
-    this.defineWidthAndHeightForTargetAnswers();
-    this.defineXAndYCoordinatesForTargets();
-    if (gameClassManager.currentGame.name === 'birdGame'){
-      birdGame.assignLeftOrRightDirectionToAnswers();
+    if (gameClassManager.currentGame === cVcShooterGame)
+    {
+      return;
+    }
+    else
+    {
+      this.pickARandomLogicalPromptAnswerGroup();
+      this.pickATargetPromptAndAnswerPairing();
+      this.pickARandomPromptFromTargetPromptAndAnswerPairing();
+      this.defineDataTypeOfCurrentPrompt();
+      this.assignAnAnswerBasedOnPrompt();
+      this.definecurrentAnswerDataType();
+      this.defineIncorrectTargetPromptAndAnswerPairing();
+      this.assignCurrentIncorrectAnswer();
+      this.defineWidthAndHeightForTargetAnswers();
+      this.defineXAndYCoordinatesForTargets();
+      if (gameClassManager.currentGame.name === 'birdGame'){
+        birdGame.assignLeftOrRightDirectionToAnswers();
+      }
     }
   }
 }
