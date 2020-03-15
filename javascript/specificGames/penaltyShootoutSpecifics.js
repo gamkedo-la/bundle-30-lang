@@ -21,9 +21,17 @@ function penaltyGameClass(){
       middle : {number : 2, isCorrect : false, drawX : 350, drawY : 300},
       right : {number : 3, isCorrect : false, drawX : 550, drawY : 300}
     };
-    this.intialize = function(){
+    this.titleScreenData = [{
+    name: "Penalty",
+    fontSize: 17,
+    spacing: 12,
+    x: 324, y: 405
+    }];
+    this.superInitialize = this.initialize;
+    this.initialize = function(){
         gameInterval.reset(this.frameRate);
         this.drawLettersAndCorrectSide();
+        this.superInitialize();
     };
 
 
@@ -49,12 +57,12 @@ function penaltyGameClass(){
     this.initialize = function(){
       this.setCorrectSide();
       this.currentstate = penaltyGameState.DecisionState;
-      this.correctSide = Math.floor(Math.random() * 3) + 1;
     };
 
     this.update = function(){
         this.draw();
         this.movePlayer();
+        collisionsWithAnswersManager.handleCollisionsWithAnswers();
     };
 
     this.movePlayer = function(){
@@ -65,8 +73,15 @@ function penaltyGameClass(){
 
     this.draw = function(){
         this.drawBackground();
+      if (this.currentState === penaltyGameState.DecisionState) {
         this.drawPlayer();
         this.drawLetters();
+        drawAnswersManager.draw();
+        promptersManager.drawPromptsWhenAppropriate();
+      }
+      else if (this.currentState === penaltyGameState.PenaltyShootingState){
+        this.drawShootingAnimation();
+      }
     };
 
     this.drawBackground = function(){
@@ -78,12 +93,16 @@ function penaltyGameClass(){
 
 
     this.drawLetters = function(){
-      //FIX ME:there is a better way to do this probably. Maybe storing the draw values in the "sides" object?
-      if (this.currentState === penaltyGameState.DecisionState){
-        debugger;
-        for (var key of Object.keys(this.sides)) {
-          gameCanvasContext.fillStyle = gameClassManager.currentGame.backButtonColor;
-          gameCanvasContext.fillRect( this.sides[key].drawX, this.sides[key].drawY, 50, 50);
+      for (var key of Object.keys(this.sides)) {
+        // gameCanvasContext.fillStyle = gameClassManager.currentGame.backButtonColor;// FIXME: There will be drawing of the letters here.
+        // gameCanvasContext.fillRect( this.sides[key].drawX, this.sides[key].drawY, 50, 50);
+        if (this.correctSide === this.sides[key].number) {
+          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate = this.sides[key].drawY;
+          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = this.sides[key].drawX;
+        }
+        else {
+          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate = this.sides[key].drawY;
+          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = this.sides[key].drawX;
         }
       }
     };
@@ -91,12 +110,20 @@ function penaltyGameClass(){
     this.changeState = function(){
       switch (this.currentState) {
         case penaltyGameState.DecisionState:
+          if (this.correctSide === this.selectedSide) {
+            console.log("Right Choice");
+          }
+          else {
+            console.log("Wrong Choice");
+          }
+          this.selectedSide == null;
           this.ResetStrikerAndGoalKeeper();
           this.currentState = penaltyGameState.PenaltyShootingState;
+          this.setCorrectSide();
           break;
         case penaltyGameState.PenaltyShootingState:
           this.ResetSelectionScreen();
-          this.UpdateScore();
+          // this.UpdateScore();
           this.currentState = penaltyGameState.DecisionState;
           break;
         default:
@@ -105,7 +132,7 @@ function penaltyGameClass(){
     };
 
     this.setCorrectSide = function(){
-
+      this.correctSide = Math.floor(Math.random() * 3) + 1;
     };
 
     this.ResetStrikerAndGoalKeeper = function(){
@@ -115,6 +142,12 @@ function penaltyGameClass(){
     this.ResetSelectionScreen = function(){
       // TODO: not implemented yet. Will be used for reseting selection when animation is finished.
     };
+
+    this.drawShootingAnimation = function(){
+     // TODO: animation drawing not implemented yet. So this function only switches to the other state at the moment.
+     this.changeState();
+    }
 }
 
 var penaltyGame = new penaltyGameClass();
+AVAILABLE_GAMES.push(penaltyGame);

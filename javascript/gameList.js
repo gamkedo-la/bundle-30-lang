@@ -1,6 +1,6 @@
 var gameList = [snakeGame,birdGame,laneGame,jumperGame,null,passOrBlockGame,
                 cVcShooterGame,spaceShooterGame,runnerGame,null/*pinataGame*/,null,null,
-                mazeGame,null,flowerGame,null,null/*balloonPop*/,null,
+                mazeGame,null,flowerGame,penaltyGame,null/*balloonPop*/,null,
                 null,null,null,null,null,null,
                 null,/*bubbleWrapGame*/,null,null,null,null];
 
