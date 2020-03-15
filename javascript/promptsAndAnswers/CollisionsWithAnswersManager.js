@@ -9,6 +9,17 @@ function CollisionsWithAnswersManager()
 
   this.getCurrentPlayerCharacter = function()
   {
+
+    //////////////////////////////////////////////////
+    // quick fix for external temp projects TODO FIXME
+    if (gameClassManager.currentGame==bubbleWrapGame)
+        location.href = "javascript/specificGames/bubbleWrap/";
+    if (gameClassManager.currentGame==pinataGame)
+        location.href = "javascript/specificGames/pinata/";
+    if (gameClassManager.currentGame==balloonPopGame)
+        location.href = "javascript/specificGames/balloonPop/";
+    //////////////////////////////////////////////////
+
     console.log(typeof gameClassManager.currentGame);
     if(typeof gameClassManager.currentGame === 'undefined') {
       console.log("COULD NOT FIND currentGame - adding a crude empty placeholder to unblock code");
