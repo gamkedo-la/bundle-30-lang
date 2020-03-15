@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body onload='debuginit()'>
+<canvas id='gameCanvas' width='640' height='700'></canvas>
+<script>
+
+function imgloaded() {
+    this.loaded = true;
+}
+
+// 30-in-one pretend integration
+var gameCanvas = document.getElementById('gameCanvas');
+var gameCanvasContext = gameCanvas.getContext('2d');
+
+var balloonPopSpritesheet = new Image(); 
+balloonPopSpritesheet.src = '../../../images/sprites/balloonPop/balloonPopSpritesheet.png'; 
+balloonPopSpritesheet.onload = imgloaded;
+
+//var balloonPopBG = new Image(); 
+//balloonPopBG.src = '../../../images/Backgrounds/balloonPopBG.jpg';
+//balloonPopBG.onload = imgloaded;
+
+var amountIncorrect = 0;
+var amountCorrect = 0;
+var playerShouldBePlayingPinata = true;
+var levelIsTransitioning = false;
+
+function debuginit() {
+    balloonPopGame.initialize();
+    run();
+}
+
+function run() {
+    if (balloonPopSpritesheet.loaded) { // && balloonPopBG.loaded) {
+        balloonPopGame.update();
+        balloonPopGame.draw();
+    }
+	setTimeout(run,1000/60);
+}
+
+</script>
+
+<script src='../popping/bubblePoppingEngine.js'></script>
+<script src='balloonPopSpecifics.js'></script>
+
+</body>
+</html>

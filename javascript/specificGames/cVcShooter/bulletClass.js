@@ -57,6 +57,17 @@ function Bullet(i)
           // promptersManager.currentPrompter.togglePromptingBoolean();
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
+          if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
+          {
+            cycleCount++;
+            if (cycleCount === CYCLE_LIMIT_FOR_RANDOM_GAME_RELOAD)
+            {
+              loadRandomGame();
+              gameClassManager.initializeCurrentGame();
+              cycleCount = 0;
+            }
+          }
+
           promptersManager.currentPrompter.promptThePlayer();
           return;
         }

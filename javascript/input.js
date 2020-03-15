@@ -21,6 +21,11 @@ function InputManager()
       titleScreen.handleGameCellClicks(builtInDocumentEventObject);
       break;
 
+      case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.modeSelectScreen:
+      modeSelectScreen.handlePlayButtonClick();
+      modeSelectScreen.handleRadioButtonClicks();
+      break;
+
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
       backButton.handleClick();//backButton.js, player goes back to menu/title screen
       break;

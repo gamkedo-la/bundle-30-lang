@@ -23,6 +23,9 @@ window.onload = function()
   gameInterval = new frameInterval(advanceGameFrame, gameClassManager.currentFrameRate);
 
   backButton = new BackButton();
+  modeSelectScreen = new ModeSelectScreen();
+  modeSelectScreen.initialize();
+  fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.modeSelectScreen.associatedObject = modeSelectScreen;
 }
 
 function advanceGameFrame()
@@ -35,7 +38,8 @@ function advanceGameFrame()
 //update section
 function updateEverythingInTheGame()
 {
-  if (gameClassManager.currentGame !== undefined)
+  if (gameClassManager.currentGame !== undefined &&
+      fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
   {
     gameClassManager.currentGame.update();
   }

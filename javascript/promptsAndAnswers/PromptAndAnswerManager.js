@@ -15,6 +15,10 @@ function PromptsAndAnswersManager()
   this.correctTargetPromptAndAnswerPairing = undefined;
   this.pickATargetPromptAndAnswerPairing = function()
   {
+    if(typeof this.currentLogicalPromptAndAnswerGroup === 'undefined') {
+      console.log("PromptsAndAnswersManager not set up yet -- how do we fill this in with functional (even placeholder) data when this happens?");
+      return;
+    }
     let randomIndexFromCurrentPromptAndAnswerGroup = getRandomIntInclusive(0,this.currentLogicalPromptAndAnswerGroup.arrayOfObjects.length - 1);
     this.correctTargetPromptAndAnswerPairing = this.currentLogicalPromptAndAnswerGroup.arrayOfObjects[randomIndexFromCurrentPromptAndAnswerGroup];
   }

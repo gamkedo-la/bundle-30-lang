@@ -23,6 +23,14 @@ function spaceShooterGameClass() {
 		return gameIsPlaying;
 	};
 
+  this.pregameSpecialCode = function()
+  {
+    console.log("pregame special code for space shooter");
+	playerShouldSeeTitleScreen = false;
+    fullGameStateMachine.playingAGameState = true;
+    levelIsTransitioning = true;
+  };
+
 	this.initialize = function()
 	{
 		gameInterval.reset(this.frameRate);
