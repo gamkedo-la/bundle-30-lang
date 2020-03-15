@@ -13,11 +13,11 @@ function CollisionsWithAnswersManager()
     //////////////////////////////////////////////////
     // quick fix for external temp projects TODO FIXME
     if (gameClassManager.currentGame==bubbleWrapGame)
-        location.href = "javascript/specificGames/bubbleWrap/";
+        location.href = "javascript/specificGames/bubbleWrap/index.html";
     if (gameClassManager.currentGame==pinataGame)
-        location.href = "javascript/specificGames/pinata/";
+        location.href = "javascript/specificGames/pinata/index.html";
     if (gameClassManager.currentGame==balloonPopGame)
-        location.href = "javascript/specificGames/balloonPop/";
+        location.href = "javascript/specificGames/balloonPop/index.html";
     //////////////////////////////////////////////////
 
     console.log(typeof gameClassManager.currentGame);
