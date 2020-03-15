@@ -27,6 +27,10 @@ function PromptsAndAnswersManager()
   this.currentPrompt = undefined;
   this.pickARandomPromptFromTargetPromptAndAnswerPairing = function()
   {
+    if(typeof this.correctTargetPromptAndAnswerPairing === 'undefined') {
+        console.log("correctTargetPromptAndAnswerPairing not set up yet");
+        return;
+      }
     let randomIndexForArrayOfPossiblePrompts = getRandomIntInclusive(0,this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts.length - 1);
     this.currentPrompt = this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts[randomIndexForArrayOfPossiblePrompts];
   }
@@ -35,6 +39,10 @@ function PromptsAndAnswersManager()
   this.dataTypeOfCurrentPrompt = undefined;
   this.defineDataTypeOfCurrentPrompt = function()
   {
+    if (typeof this.currentPrompt === 'undefined') {
+        console.log("currentPrompt not set up yet");
+        return;
+    }
     if (typeof this.currentPrompt === 'string')
     {
       this.dataTypeOfCurrentPrompt = 'string';
