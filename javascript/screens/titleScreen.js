@@ -82,7 +82,7 @@ function TitleScreenClass()
     this.drawGameNames();
   }
 
-  
+
   this.handleGameCellClicks = function()
   {
 
@@ -197,11 +197,11 @@ function TitleScreenClass()
              gameClassManager.loadCurrentGame(flowerGame);
              }
       // TODO: Not implemented yet. Will remove comments when implementation is finished.
-      // else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
-      //        inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
-      //        {
-      //        gameClassManager.loadCurrentGame(penaltyGame);
-      //        }
+      else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
+             inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
+             {
+             gameClassManager.loadCurrentGame(penaltyGame);
+             }
       // FIXME: this may trigger when you click the background and never started a game?
 
     // any game
