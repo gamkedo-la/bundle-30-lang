@@ -9,3 +9,8 @@ function getRandomIntWithExclusionaryRange(min,max, excludedMin,excludedMax) {
     return (randomNumber >= excludedMin && randomNumber <= excludedMax) ?
     getRandomIntWithExclusionaryRange(min,max, excludedMin,excludedMax) : randomNumber;
 }
+
+function getRandomElementFromArray(myArray){
+  var randomIdx = getRandomIntInclusive(0, myArray.length - 1);
+  return myArray[randomIdx];
+}

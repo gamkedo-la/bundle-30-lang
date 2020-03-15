@@ -105,7 +105,7 @@ function MazeClass(){
             return this.previousCellsVisitedByGenerationAlgo.pop();
         }
 
-        return this.getRandomElementFromArray(arrayOfNextCandidates);
+        return getRandomElementFromArray(arrayOfNextCandidates);
     }
 
     this.getArrayOfNextPossibleCandidates = function () {
@@ -126,7 +126,7 @@ function MazeClass(){
 
     this.initializeGeneration = function () 
     {
-        this.currentCellVisitedByGenerationAlgo = this.getRandomElementFromArray(this.arrayOfCells);
+        this.currentCellVisitedByGenerationAlgo = getRandomElementFromArray(this.arrayOfCells);
         this.currentCellVisitedByGenerationAlgo.isVisitedByGenerationAlgorithm = true;
         this.isGenerationInitialized = true;
     }
@@ -137,12 +137,6 @@ function MazeClass(){
         {
             this.arrayOfCells[currentCellIndex].draw();
         }
-    }
-
-    
-    this.getRandomElementFromArray = function(myArray){
-        var randomIdx = getRandomIntInclusive(0, myArray.length - 1);
-        return myArray[randomIdx];
     }
 }
 
