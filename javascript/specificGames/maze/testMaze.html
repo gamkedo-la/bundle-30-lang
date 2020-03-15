@@ -3,7 +3,32 @@
 <canvas id = 'gameCanvas' width = 640 height = 700></canvas>
 
 <script src='../../GameClass.js'></script>
-<script src='../snake/snakeGameClass.js'></script>
+<script src='../../main.js'></script>
 <script src='MazeGameClass.js'></script>
+<script src='MazeClass.js'></script>
+<script src='CellClass.js'></script>
+
+<script>
+
+var gameCanvas = document.getElementById("gameCanvas");
+var gameCanvasContext = gameCanvas.getContext('2d');
+
+window.onload = function() {
+    // MAZE_GAME.initialize();
+    MAZE_GAME.superInitialize();
+
+    setInterval(update, MAZE_GAME.FRAME_RATE);
+}
+
+function update() {
+    drawAll();
+}
+
+function drawAll() {
+    MAZE_GAME.draw();
+}
+
+</script>
+
 
 </html>
