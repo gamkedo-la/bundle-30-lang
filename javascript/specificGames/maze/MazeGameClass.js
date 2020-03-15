@@ -41,8 +41,7 @@ function MazeGameClass(){
 
     this.drawBackGround = function () 
     {
-        gameCanvasContext.fillStyle = 'black';
-        gameCanvasContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+        gameCanvasContext.drawImage(mazeFloor, 0, 0, gameCanvas.width, gameCanvas.height);
     }
 }
 MazeGameClass.prototype = new GameClass();

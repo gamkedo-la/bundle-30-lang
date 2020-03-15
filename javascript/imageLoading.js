@@ -40,6 +40,13 @@ let roadDash3 = document.createElement('img');
 //flower images
 let simpleFlower = document.createElement('img');
 
+// maze images 
+let mazeFloor = document.createElement('img');
+let mazeTopWall = document.createElement('img');
+let mazeBottomWall = document.createElement('img');
+let mazeLeftWall = document.createElement('img');
+let mazeRightWall = document.createElement('img');
+
 //special characters for custom font
 let upArrowImage = document.createElement("img");
 let rightArrowImage = document.createElement("img");
@@ -174,6 +181,13 @@ function loadImages()
 
   //flower game
   arrayOfImages.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png"});
+
+  // maze game
+  arrayOfImages.push({imageObjectBinding: mazeFloor, theFile: "images/Backgrounds/mazefloor.png"});
+  arrayOfImages.push({imageObjectBinding: mazeTopWall, theFile: "images/Backgrounds/topWall.png"});
+  arrayOfImages.push({imageObjectBinding: mazeBottomWall, theFile: "images/Backgrounds/bottomWall.png"});
+  arrayOfImages.push({imageObjectBinding: mazeLeftWall, theFile: "images/Backgrounds/leftWall.png"});
+  arrayOfImages.push({imageObjectBinding: mazeRightWall, theFile: "images/Backgrounds/rightWall.png"});
 
   //pinata game
   arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});

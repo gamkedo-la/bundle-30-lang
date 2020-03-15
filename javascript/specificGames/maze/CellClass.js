@@ -64,53 +64,44 @@ function CellClass(
     gameCanvasContext.lineWidth = 15;
     gameCanvasContext.strokeStyle = 'blue';
 
-    //visitation of algorithm in purple
-    if (this.hasBeenVisited)
-    {
-      gameCanvasContext.fillStyle = 'purple';
-      gameCanvasContext.fillRect(xCoordinate,yCoordinate, CELL_WIDTH,CELL_HEIGHT);
-    }
-
     if (this.isVisitedByGenerationAlgorithm)
     {
       gameCanvasContext.fillStyle = 'orange';
-      gameCanvasContext.fillRect(xCoordinate,yCoordinate, CELL_WIDTH,CELL_HEIGHT);
+      gameCanvasContext.fillRect(xCoordinate,yCoordinate, CELL_WIDTH, CELL_HEIGHT);
     }
 
     //top wall
     if (this.topWallExist)
     {
-      gameCanvasContext.beginPath();
-      gameCanvasContext.moveTo(xCoordinate,yCoordinate + 5);
-      gameCanvasContext.lineTo(xCoordinate + CELL_WIDTH, yCoordinate + 5);
-      gameCanvasContext.stroke();
+      gameCanvasContext.drawImage(
+        mazeTopWall, xCoordinate, yCoordinate, CELL_WIDTH, 15
+      );
     }
 
     //bottom wall
     if (this.bottomWallExist)
     {
-      gameCanvasContext.beginPath();
-      gameCanvasContext.moveTo(xCoordinate + CELL_WIDTH,yCoordinate + CELL_HEIGHT - 5);
-      gameCanvasContext.lineTo(xCoordinate, yCoordinate + CELL_HEIGHT - 5);
-      gameCanvasContext.stroke();
+      gameCanvasContext.drawImage(
+        mazeBottomWall, xCoordinate, 
+        yCoordinate + CELL_HEIGHT-15, CELL_WIDTH, 15
+      );
     }
 
     //left wall
     if (this.leftWallExist)
     {
-      gameCanvasContext.beginPath();
-      gameCanvasContext.moveTo(xCoordinate + 5,yCoordinate + CELL_HEIGHT);
-      gameCanvasContext.lineTo(xCoordinate + 5, yCoordinate);
-      gameCanvasContext.stroke();
+      gameCanvasContext.drawImage(
+        mazeLeftWall, xCoordinate, yCoordinate, 15, CELL_HEIGHT
+      );
     }
 
     //right wall
     if (this.rightWallExist)
     {
-      gameCanvasContext.beginPath();
-      gameCanvasContext.moveTo(xCoordinate + CELL_WIDTH - 5,yCoordinate);
-      gameCanvasContext.lineTo(xCoordinate + CELL_WIDTH - 5, yCoordinate + CELL_HEIGHT);
-      gameCanvasContext.stroke();
+      gameCanvasContext.drawImage(
+        mazeRightWall, xCoordinate + CELL_WIDTH - 15, 
+        yCoordinate, 15, CELL_HEIGHT
+      );
     }
 
     
