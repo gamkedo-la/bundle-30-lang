@@ -40,7 +40,7 @@ function GameClassManager()
   this.initializeCurrentGame = function()
   {
     this.currentGame.initialize();
-    if (this.superInitialize !== undefined)
+    if (this.currentGame.superInitialize !== undefined)
     {
       this.currentGame.superInitialize();
     }
