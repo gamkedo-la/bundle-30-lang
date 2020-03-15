@@ -5,6 +5,8 @@ function MazeGameClass(){
     this.FRAME_RATE = 1000/30;
 
     this.maze = undefined;
+    this.isGenerationAlgoRunning = true;
+    this.isGamePlaying = false;
 
     this.titleScreenData = [
         {
@@ -22,7 +24,13 @@ function MazeGameClass(){
     }
 
     this.update = function (){
-        
+        if (this.maze.isGenerationRunning){
+            this.maze.generate();
+        }
+    }
+
+    this.generateMaze = function () {
+
     }
 
     this.draw = function()

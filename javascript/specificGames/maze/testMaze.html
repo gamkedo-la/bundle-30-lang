@@ -4,6 +4,7 @@
 
 <script src='../../GameClass.js'></script>
 <script src='../../main.js'></script>
+<script src='../../commonFunctions.js'></script>
 <script src='MazeGameClass.js'></script>
 <script src='MazeClass.js'></script>
 <script src='CellClass.js'></script>
@@ -21,7 +22,12 @@ window.onload = function() {
 }
 
 function update() {
+    updateAll();
     drawAll();
+}
+
+function updateAll() {
+    mazeGame.update();
 }
 
 function drawAll() {
