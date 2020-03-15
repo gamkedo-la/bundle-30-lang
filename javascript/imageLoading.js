@@ -63,7 +63,8 @@ let placeholderPlayButtonImage = document.createElement("img");
 // bubble wrap game
 let bubbleWrapBG = document.createElement("img");
 let bubbleWrapSpritesheet = document.createElement("img");
-
+//let balloonPopBG = document.createElement("img");
+let balloonPopSpritesheet = document.createElement("img");
 let pinataImage = document.createElement("img");
 
 //custom font image loading section, used loops for less typing... just to see if i could
@@ -199,6 +200,8 @@ function loadImages()
   // bubble wrap game
   arrayOfImages.push({imageObjectBinding: bubbleWrapBG, theFile: 'images/Backgrounds/bubbleWrapBG.jpg'});
   arrayOfImages.push({imageObjectBinding: bubbleWrapSpritesheet, theFile: 'images/sprites/bubbleWrap/bubbleWrapSpritesheet.png'});
+  //arrayOfImages.push({imageObjectBinding: balloonPopBG, theFile: 'images/Backgrounds/balloonPopBG.jpg'});
+  arrayOfImages.push({imageObjectBinding: balloonPopSpritesheet, theFile: 'images/sprites/balloonPop/balloonPopSpritesheet.png'});
 
 
   // console.log(arrayOfImages);

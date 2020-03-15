@@ -1,8 +1,8 @@
 
 var balloonPopGame = new bubblePoppingEngine('balloonPop',true);
 balloonPopGame.titleScreenData = [
-  {name: "Balloon", fontSize: 27, spacing: 12, x: 130, y: 565},
-  {name: "Pop", fontSize: 27, spacing: 12, x: 140, y: 605}
+  {name: "Balloon", fontSize: 27, spacing: 12, x: 420, y: 370},
+  {name: "Pop", fontSize: 27, spacing: 12, x: 440, y: 405}
 ];
 
 // morph the defaults
@@ -51,4 +51,5 @@ balloonPopGame.postLoadInit = function() { // code may not be getting called
     //gameCanvasContext.drawImage(balloonPopBG,0,0);
 //}
 
-if (window.AVAILABLE_GAMES) AVAILABLE_GAMES.push(balloonPopGame);
+if (window.AVAILABLE_GAMES) 
+    AVAILABLE_GAMES.push(balloonPopGame);

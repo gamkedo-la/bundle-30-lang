@@ -20,6 +20,8 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.titleTXT3 = "as fast as you can";
     this.spritesheet = null;
     this.gravity = 0.05;
+    this.spriteH = 256;
+    this.spriteW = 256;
 
     //////////////////////////////////////////////////////
     // private vars used internally
@@ -77,6 +79,10 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     //////////////////////////////////////////////////////
     // public functions called by the game state machine
     //////////////////////////////////////////////////////
+
+    this.postLoadInit = function() {
+        console.log(this.name+" postLoadInit...");
+    }
 
     // FIXME the "this" is invalid here, its a transitioner, not the game itself LOL
     this.drawTransitionText = function () {
@@ -234,7 +240,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                     ctx.arc(0, 0, nextOne.R, 0, 7);
                 } else {
                     // really big: balloons assumed: FIXME
-                    ctx.drawImage(this.spritesheet,0,0,256,256,-nextOne.R,-nextOne.R,nextOne.R*8,nextOne.R*8);
+                    ctx.drawImage(this.spritesheet,0,0,this.spriteW,this.spriteH,-nextOne.R,-nextOne.R,nextOne.R*2,nextOne.R*2);
                 }
                 
                 //c.lineWidth = 3;
@@ -374,7 +380,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
         // console.log("game click");
 
-        if (!playerShouldBePlayingPinata) return; // dont do anything if another game is running
+        if (!window.playerShouldBePlayingPinata) return; // dont do anything if another game is running
 
         let correct = false;
 

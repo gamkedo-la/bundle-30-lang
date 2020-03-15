@@ -27,6 +27,10 @@ function PromptsAndAnswersManager()
   this.currentPrompt = undefined;
   this.pickARandomPromptFromTargetPromptAndAnswerPairing = function()
   {
+    if(typeof this.correctTargetPromptAndAnswerPairing === 'undefined') {
+        console.log("correctTargetPromptAndAnswerPairing not set up yet");
+        return;
+      }
     let randomIndexForArrayOfPossiblePrompts = getRandomIntInclusive(0,this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts.length - 1);
     this.currentPrompt = this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts[randomIndexForArrayOfPossiblePrompts];
   }
@@ -35,6 +39,10 @@ function PromptsAndAnswersManager()
   this.dataTypeOfCurrentPrompt = undefined;
   this.defineDataTypeOfCurrentPrompt = function()
   {
+    if (typeof this.currentPrompt === 'undefined') {
+        console.log("currentPrompt not set up yet");
+        return;
+    }
     if (typeof this.currentPrompt === 'string')
     {
       this.dataTypeOfCurrentPrompt = 'string';
@@ -60,6 +68,11 @@ function PromptsAndAnswersManager()
   this.currentCorrectAnswer = undefined;
   this.assignAnAnswerBasedOnPrompt = function()
   {
+    if (typeof this.correctTargetPromptAndAnswerPairing === 'undefined') {
+        console.log("correctTargetPromptAndAnswerPairing not set up.");
+        return;
+    }
+    
     let temporaryArrayOfPossibleAnswers = this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers;
 
     let randomIndexForTemporaryArray = undefined;
@@ -79,6 +92,13 @@ function PromptsAndAnswersManager()
   this.currentAnswerDataType = undefined;
   this.definecurrentAnswerDataType = function()
   {
+    
+    if (typeof this.currentCorrectAnswer === 'undefined') {
+        console.log("currentCorrectAnswer not set up.");
+        return;
+    }
+        
+    
     if (typeof this.currentCorrectAnswer === 'string')
     {
       this.currentAnswerDataType = 'string';
@@ -95,6 +115,10 @@ function PromptsAndAnswersManager()
   this.editedPromptAndAnswerGroup = undefined;
   this.defineIncorrectTargetPromptAndAnswerPairing = function()
   {
+    if (typeof this.currentLogicalPromptAndAnswerGroup === 'undefined') {
+        console.log("currentLogicalPromptAndAnswerGroup not set up.");
+        return;
+    }
 
     let editablePromptAndAnswerGroup = this.currentLogicalPromptAndAnswerGroup;
 
@@ -134,6 +158,12 @@ function PromptsAndAnswersManager()
   this.currentIncorrectAnswer = undefined;
   this.assignCurrentIncorrectAnswer = function()
   {
+    
+    if (typeof this.editedPromptAndAnswerGroup === 'undefined') {
+        console.log("editedPromptAndAnswerGroup not set up");
+        return;
+    }
+    
     let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editedPromptAndAnswerGroup.length - 1);
 
     for (let arrayOfPossibleAnswersIndex = 0; arrayOfPossibleAnswersIndex < this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers.length; arrayOfPossibleAnswersIndex++)
@@ -341,18 +371,25 @@ function PromptsAndAnswersManager()
 
   this.setOrResetPromptsAndAnswers = function()
   {
-    this.pickARandomLogicalPromptAnswerGroup();
-    this.pickATargetPromptAndAnswerPairing();
-    this.pickARandomPromptFromTargetPromptAndAnswerPairing();
-    this.defineDataTypeOfCurrentPrompt();
-    this.assignAnAnswerBasedOnPrompt();
-    this.definecurrentAnswerDataType();
-    this.defineIncorrectTargetPromptAndAnswerPairing();
-    this.assignCurrentIncorrectAnswer();
-    this.defineWidthAndHeightForTargetAnswers();
-    this.defineXAndYCoordinatesForTargets();
-    if (gameClassManager.currentGame.name === 'birdGame'){
-      birdGame.assignLeftOrRightDirectionToAnswers();
+    if (gameClassManager.currentGame === cVcShooterGame)
+    {
+      return;
+    }
+    else
+    {
+      this.pickARandomLogicalPromptAnswerGroup();
+      this.pickATargetPromptAndAnswerPairing();
+      this.pickARandomPromptFromTargetPromptAndAnswerPairing();
+      this.defineDataTypeOfCurrentPrompt();
+      this.assignAnAnswerBasedOnPrompt();
+      this.definecurrentAnswerDataType();
+      this.defineIncorrectTargetPromptAndAnswerPairing();
+      this.assignCurrentIncorrectAnswer();
+      this.defineWidthAndHeightForTargetAnswers();
+      this.defineXAndYCoordinatesForTargets();
+      if (gameClassManager.currentGame.name === 'birdGame'){
+        birdGame.assignLeftOrRightDirectionToAnswers();
+      }
     }
   }
 }

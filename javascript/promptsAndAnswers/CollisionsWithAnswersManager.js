@@ -9,6 +9,17 @@ function CollisionsWithAnswersManager()
 
   this.getCurrentPlayerCharacter = function()
   {
+
+    //////////////////////////////////////////////////
+    // quick fix for external temp projects TODO FIXME
+    if (gameClassManager.currentGame==bubbleWrapGame)
+        location.href = "javascript/specificGames/bubbleWrap/index.html";
+    if (gameClassManager.currentGame==pinataGame)
+        location.href = "javascript/specificGames/pinata/index.html";
+    if (gameClassManager.currentGame==balloonPopGame)
+        location.href = "javascript/specificGames/balloonPop/index.html";
+    //////////////////////////////////////////////////
+
     console.log(typeof gameClassManager.currentGame);
     if(typeof gameClassManager.currentGame === 'undefined') {
       console.log("COULD NOT FIND currentGame - adding a crude empty placeholder to unblock code");
@@ -98,7 +109,6 @@ function CollisionsWithAnswersManager()
 
   this.handleCollisionsWithAnswers = function(correctAnswerWidth, incorrectAnswerWidth, textAnswerFontSize)
   {
-    console.log('inside handleCollisionsWithAnswers()');
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
       // Get answers width
@@ -175,7 +185,6 @@ function CollisionsWithAnswersManager()
         }
         calculateAccuracy();
     }//end of else if for data type checks;
-    console.log('cycle count: ' + cycleCount);
     if ( (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM) &&
           cycleCount === CYCLE_LIMIT_FOR_RANDOM_GAME_RELOAD )
     {

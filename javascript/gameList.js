@@ -1,8 +1,8 @@
 var gameList = [snakeGame,birdGame,laneGame,jumperGame,null,passOrBlockGame,
-                cVcShooterGame,spaceShooterGame,runnerGame,null/*pinataGame*/,null,null,
-                mazeGame,null,flowerGame,null,null/*balloonPop*/,null,
+                cVcShooterGame,spaceShooterGame,runnerGame,pinataGame,null,null,
+                mazeGame,null,flowerGame,penaltyGame,balloonPopGame,null,
                 null,null,null,null,null,null,
-                null,/*bubbleWrapGame*/,null,null,null,null];
+                null,bubbleWrapGame,null,null,null,null];
 
 var currentlyLoadedGame = -1;
 var SINGLE_PLAYER_ENDLESS = 0;
