@@ -119,6 +119,7 @@ function TitleScreenClass()
         gameClassManager.initializeCurrentGame();
         promptsAndAnswersManager.setOrResetPromptsAndAnswers();
       }
+      if (gameClassManager.currentGame !== cVcShooterGame)
       gameClassManager.currentGame.postLoadInit();
     }
 
