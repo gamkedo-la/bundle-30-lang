@@ -38,6 +38,17 @@ function runnerGameClass() {
 		currentRunnerRunningImage = arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex];
 	}
 
+	this.postLoadInit = function() {
+		if (gameIsOnAServerAndCanUseWebAudioAPI) {
+          backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
+          currentBackgroundMusic = backgroundMusicBufferSource;
+          loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
+          backgroundMusicBufferSource.loop = true;
+          backgroundMusicBufferSource.loopStart = 6.9;
+          backgroundMusicBufferSource.loopEnd = 1;
+      	}
+	}
+
   this.superInitialize = this.initialize;
   this.initialize = function() {
 	runnerFloorLevel = gameCanvas.height*0.75;

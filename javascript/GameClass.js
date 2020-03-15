@@ -14,6 +14,15 @@ function GameClass()
 	   gameIsPlaying = false;
   };
 
+  this.pregameSpecialCode = function()
+  {
+    console.log("no pregame special code is used by this game");
+  };
+  this.postLoadInit = function()
+  {
+    console.log("no post load special code is used by this game");
+  };
+
   this.initialize = function()
   {
 	  initializePromptAndAnswerObjects();
@@ -33,6 +42,11 @@ function GameClassManager()
   this.loadCurrentGame = function(gameToLoad)
   {
     this.currentGame = gameToLoad;
+    if(typeof this.currentGame.pregameSpecialCode !== 'undefined') {
+      this.currentGame.pregameSpecialCode();
+    } else {
+      console.log("no pregameSpecialCode function for this game type");
+    }
     fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame.associatedObject = gameToLoad;
     console.log('this.currentGame.name: ' + this.currentGame.name);
   }

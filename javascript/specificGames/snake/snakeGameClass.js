@@ -93,5 +93,5 @@ function snakeGameClass()
   }
 }
 
-const SNAKE_GAME = new snakeGameClass();
-AVAILABLE_GAMES.push(SNAKE_GAME);
+const snakeGame = new snakeGameClass();
+AVAILABLE_GAMES.push(snakeGame);

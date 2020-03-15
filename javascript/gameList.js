@@ -1,8 +1,8 @@
-var gameList = [SNAKE_GAME,birdGame,laneGame,jumperGame,null,passOrBlockGame,
-                cVcShooterGame,null,runnerGame,pinataGame,null,null,
-                MAZE_GAME,null,flowerGame,null,null,null,
+var gameList = [snakeGame,birdGame,laneGame,jumperGame,null,passOrBlockGame,
+                cVcShooterGame,spaceShooterGame,runnerGame,null/*pinataGame*/,null,null,
+                mazeGame,null,flowerGame,null,null/*balloonPop*/,null,
                 null,null,null,null,null,null,
-                null,bubbleWrapGame,null,null,null,null];
+                null,/*bubbleWrapGame*/,null,null,null,null];
 
 var currentlyLoadedGame = -1;
 var SINGLE_PLAYER_ENDLESS = 0;
@@ -26,7 +26,12 @@ var cycleCount = 0;
 
 function loadGameNum(gameListIndex)
 {
+  if(gameList[gameListIndex] == null) {
+    console.log("gameToLoad is null, bailing");
+    return false;
+  }
   gameClassManager.loadCurrentGame(gameList[gameListIndex]);
+  return true;
 }
 
 function loadRandomGame()

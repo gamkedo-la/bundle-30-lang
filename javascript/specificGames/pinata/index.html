@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script src='../popping/bubblePoppingEngine.js'></script>
+<script src='pinataSpecifics.js'></script>
+</head>
+<body onload='debuginit()'>
+<canvas id='gameCanvas' width='640' height='700'></canvas>
+<script>
+
+function imgloaded() {
+    this.loaded = true;
+}
+
+// 30-in-one pretend integration
+var gameCanvas = document.getElementById('gameCanvas');
+var gameCanvasContext = gameCanvas.getContext('2d');
+var pinataImage = new Image(); pinataImage.src = '../../../images/sprites/pinata/pinata.png'; pinataImage.onload = imgloaded;
+var amountIncorrect = 0;
+var amountCorrect = 0;
+var playerShouldBePlayingPinata = true;
+var levelIsTransitioning = false;
+
+function debuginit() {
+    pinataGame.initialize();
+    run();
+}
+
+function run() {
+    if (pinataImage.loaded) {
+        pinataGame.update();
+        pinataGame.draw();
+    }
+	setTimeout(run,1000/60);
+}
+
+</script>
+</body>
+</html>

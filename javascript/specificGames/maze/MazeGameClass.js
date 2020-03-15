@@ -40,5 +40,5 @@ function MazeGameClass(){
 MazeGameClass.prototype = new GameClass();
 MazeGameClass.prototype.constructor = MazeGameClass;
 
-const MAZE_GAME = new MazeGameClass();
-AVAILABLE_GAMES.push(MAZE_GAME);
+const mazeGame = new MazeGameClass();
+AVAILABLE_GAMES.push(mazeGame);

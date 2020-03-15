@@ -1,3 +1,5 @@
+const GAME_SPACE_SHOOTER = 7;
+
 function TitleScreenClass()
 {
   this.cellXTopLeftCoordinate = 0;
@@ -40,7 +42,7 @@ function TitleScreenClass()
     [{name: "Frogger", fontSize: 27, spacing: 13, x: 520, y: 285}],//12
     [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
     [{name: "Penalty", fontSize: 17, spacing: 12, x: 325, y: 375},{name: "Shootout", fontSize: 17, spacing: 12, x: 324, y: 405}],//16 // TODO: game is not implemented yet. Will remove comments when it is implemented.
-    [{name: "Balloon", fontSize: 17, spacing: 12, x: 425, y: 375},{name: "Pop", fontSize: 17, spacing: 12, x: 450, y: 405}],
+    //[{name: "Balloon", fontSize: 17, spacing: 12, x: 425, y: 375},{name: "Pop", fontSize: 17, spacing: 12, x: 450, y: 405}],
     [{name: "Daytime", fontSize: 24, spacing: 12, x: 525, y: 380}],
     [{name: "Dodgeball", fontSize: 20, spacing: 10, x: 22, y: 480}],
     [{name: "Unscrambler", fontSize: 19, spacing: 9, x: 122, y: 480}],
@@ -100,9 +102,24 @@ function TitleScreenClass()
     }
     if (gameNum !== -1)
     {
-      loadGameNum(gameNum);
-      gameClassManager.initializeCurrentGame();
-      promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+      if(gameNum == GAME_SPACE_SHOOTER) {
+        console.log("trying to load space shooter, special casing it");
+        spaceShooterGame.startPlaying();
+        playerShouldSeeTitleScreen = false;
+        fullGameStateMachine.playingAGameState = true;
+        levelIsTransitioning = true;
+
+        if(loadGameNum(gameNum) == false) {
+          return;
+        }
+        gameClassManager.initializeCurrentGame();
+        promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+      } else {
+        loadGameNum(gameNum);
+        gameClassManager.initializeCurrentGame();
+        promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+      }
+      gameClassManager.currentGame.postLoadInit();
     }
 
     // any game
@@ -120,46 +137,6 @@ let titleScreen = new TitleScreenClass();
 
 /*//1st row
 //snake
-if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
-    inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-{
-  gameClassManager.loadCurrentGame(SNAKE_GAME);
-}
-//bird
-else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
-         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-{
-gameClassManager.loadCurrentGame(birdGame);
-
-}
-else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
-         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-{
-gameClassManager.loadCurrentGame(laneGame);
-}
-else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
-         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-{
-gameClassManager.loadCurrentGame(jumperGame);
-}
-else if (inputManager.mouseCoordinates.x > 420 && inputManager.mouseCoordinates.x < 520 &&
-         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-    {
-
-    }
-else if (inputManager.mouseCoordinates.x > 520 && inputManager.mouseCoordinates.x < 620 &&
-         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 250)
-    {
-      gameClassManager.loadCurrentGame(passOrBlockGame);
-    }
-
-//2nd row
-else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
-         inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
-    {
-      console.log('cVcShooterGame cell click');
-      gameClassManager.loadCurrentGame(cVcShooterGame);
-    }
 else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 120 &&
          inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
     {
@@ -170,29 +147,14 @@ else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x
     }
 else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
      inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
-{
-  gameClassManager.loadCurrentGame(runnerGame);
-  if (gameIsOnAServerAndCanUseWebAudioAPI)
-      {
-          backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
-          currentBackgroundMusic = backgroundMusicBufferSource;
-          loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
-          backgroundMusicBufferSource.loop = true;
-          backgroundMusicBufferSource.loopStart = 6.9;
-          backgroundMusicBufferSource.loopEnd = 1;
-      }
-  }
+{  
   // BUBBLE WRAP:
   else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
     inputManager.mouseCoordinates.y > 550 && inputManager.mouseCoordinates.y < 650)
 {
   console.log("Clicked Bubble Wrap Button");
     gameClassManager.loadCurrentGame(bubbleWrapGame);
-  gameInterval.reset(PINATAFRAMERATE);
-  // do we still need to set these?
-    playerShouldSeeTitleScreen = false;
-    fullGameStateMachine.playingAGameState = true;
-    levelIsTransitioning = true;
+  
 }
   // PINATA GAME:
   else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
@@ -217,17 +179,5 @@ else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.
       }
 
   }
-  //flower
-  else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
-         inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
-         {
-         gameClassManager.loadCurrentGame(flowerGame);
-         }
-  // TODO: Not implemented yet. Will remove comments when implementation is finished.
-  // else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
-  //        inputManager.mouseCoordinates.y > 350 && inputManager.mouseCoordinates.y < 450)
-  //        {
-  //        gameClassManager.loadCurrentGame(penaltyGame);
-  //        }
   // FIXME: this may trigger when you click the background and never started a game?
   */
