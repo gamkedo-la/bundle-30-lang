@@ -49,6 +49,9 @@ function flowerGameClass(){
       this.seedOneYCoordinate = SEED_ONE_STARTING_Y;
       this.seedTwoXCoordinate = SEED_TWO_STARTING_X;
       this.seedTwoYCoordinate = SEED_TWO_STARTING_Y;
+      initializePromptAndAnswerObjects();
+      promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+      promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
       console.log(this.playerCharacter);
 	  this.superInitialize();
     };
@@ -71,7 +74,7 @@ function flowerGameClass(){
         this.moveSeeds();
         this.handleAnswersOffScreen();
         collisionsWithAnswersManager.handleCollisionsWithAnswers();
-        
+
       }
     };
 
@@ -136,7 +139,7 @@ function flowerGameClass(){
         console.log("sprouting flower");
       }
 
-      
+
     }
 }
 
