@@ -20,6 +20,8 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.titleTXT3 = "as fast as you can";
     this.spritesheet = null;
     this.gravity = 0.05;
+    this.spriteH = 256;
+    this.spriteW = 256;
 
     //////////////////////////////////////////////////////
     // private vars used internally
@@ -238,7 +240,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                     ctx.arc(0, 0, nextOne.R, 0, 7);
                 } else {
                     // really big: balloons assumed: FIXME
-                    ctx.drawImage(this.spritesheet,0,0,256,256,-nextOne.R,-nextOne.R,nextOne.R*8,nextOne.R*8);
+                    ctx.drawImage(this.spritesheet,0,0,this.spriteW,this.spriteH,-nextOne.R,-nextOne.R,nextOne.R*2,nextOne.R*2);
                 }
                 
                 //c.lineWidth = 3;
