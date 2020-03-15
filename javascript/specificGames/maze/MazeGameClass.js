@@ -4,6 +4,8 @@ function MazeGameClass(){
     this.name = "MazeGame";
     this.FRAME_RATE = 1000/30;
 
+    this.maze = undefined;
+
     this.titleScreenData = [
         {
             name: "Maze", 
@@ -14,6 +16,26 @@ function MazeGameClass(){
         }
     ];
 
+    this.superInitialize = function () {
+        this.maze = new MazeClass();
+        this.maze.initializeArrayOfCells();
+    }
+
+    this.update = function (){
+        
+    }
+
+    this.draw = function()
+    {
+      this.drawBackGround();
+      this.maze.drawCells();
+    }
+
+    this.drawBackGround = function () 
+    {
+        gameCanvasContext.fillStyle = 'black';
+        gameCanvasContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+    }
 }
 MazeGameClass.prototype = new GameClass();
 MazeGameClass.prototype.constructor = MazeGameClass;
