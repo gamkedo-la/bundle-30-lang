@@ -14,10 +14,10 @@ var gameCanvas = document.getElementById("gameCanvas");
 var gameCanvasContext = gameCanvas.getContext('2d');
 
 window.onload = function() {
-    // MAZE_GAME.initialize();
-    MAZE_GAME.superInitialize();
+    // mazeGame.initialize();
+    mazeGame.superInitialize();
 
-    setInterval(update, MAZE_GAME.FRAME_RATE);
+    setInterval(update, mazeGame.FRAME_RATE);
 }
 
 function update() {
@@ -25,7 +25,7 @@ function update() {
 }
 
 function drawAll() {
-    MAZE_GAME.draw();
+    mazeGame.draw();
 }
 
 </script>
