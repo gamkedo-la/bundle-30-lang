@@ -41,7 +41,7 @@ function TitleScreenClass()
     [{name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265}, {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}],//11
     [{name: "Frogger", fontSize: 27, spacing: 13, x: 520, y: 285}],//12
     [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
-    [{name: "Penalty", fontSize: 17, spacing: 12, x: 325, y: 375},{name: "Shootout", fontSize: 17, spacing: 12, x: 324, y: 405}],//16 // TODO: game is not implemented yet. Will remove comments when it is implemented.
+    // [{name: "Penalty", fontSize: 17, spacing: 12, x: 325, y: 375},{name: "Shootout", fontSize: 17, spacing: 12, x: 324, y: 405}],//16 // TODO: game is not implemented yet. Will remove comments when it is implemented.
     //[{name: "Balloon", fontSize: 17, spacing: 12, x: 425, y: 375},{name: "Pop", fontSize: 17, spacing: 12, x: 450, y: 405}],
     [{name: "Daytime", fontSize: 24, spacing: 12, x: 525, y: 380}],
     [{name: "Dodgeball", fontSize: 20, spacing: 10, x: 22, y: 480}],
@@ -147,14 +147,14 @@ else if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x
     }
 else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.x < 320 &&
      inputManager.mouseCoordinates.y > 250 && inputManager.mouseCoordinates.y < 350)
-{  
+{
   // BUBBLE WRAP:
   else if (inputManager.mouseCoordinates.x > 120 && inputManager.mouseCoordinates.x < 220 &&
     inputManager.mouseCoordinates.y > 550 && inputManager.mouseCoordinates.y < 650)
 {
   console.log("Clicked Bubble Wrap Button");
     gameClassManager.loadCurrentGame(bubbleWrapGame);
-  
+
 }
   // PINATA GAME:
   else if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 420 &&
