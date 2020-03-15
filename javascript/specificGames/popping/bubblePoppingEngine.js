@@ -78,6 +78,10 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     // public functions called by the game state machine
     //////////////////////////////////////////////////////
 
+    this.postLoadInit = function() {
+        console.log(this.name+" postLoadInit...");
+    }
+
     // FIXME the "this" is invalid here, its a transitioner, not the game itself LOL
     this.drawTransitionText = function () {
         customFontFillText([me.titleTXT1, symbolExclamationPointImage], 80, 42, 100, 50);
@@ -374,7 +378,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
         // console.log("game click");
 
-        if (!playerShouldBePlayingPinata) return; // dont do anything if another game is running
+        if (!window.playerShouldBePlayingPinata) return; // dont do anything if another game is running
 
         let correct = false;
 
