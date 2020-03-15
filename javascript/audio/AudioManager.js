@@ -158,6 +158,7 @@ function loadWebAudioAPISound(audioURL, targetWebAudioAPIBuffer) {
   requestForAudioDataToBeDecoded.send();
 }
 
+//not sure if this is obsolete
 var masterAudioBus = [];
 
 function turnMasterVolumeUp()

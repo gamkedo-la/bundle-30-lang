@@ -98,7 +98,6 @@ function CollisionsWithAnswersManager()
 
   this.handleCollisionsWithAnswers = function(correctAnswerWidth, incorrectAnswerWidth, textAnswerFontSize)
   {
-    console.log('inside handleCollisionsWithAnswers()');
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
       // Get answers width
@@ -175,7 +174,6 @@ function CollisionsWithAnswersManager()
         }
         calculateAccuracy();
     }//end of else if for data type checks;
-    console.log('cycle count: ' + cycleCount);
     if ( (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM) &&
           cycleCount === CYCLE_LIMIT_FOR_RANDOM_GAME_RELOAD )
     {

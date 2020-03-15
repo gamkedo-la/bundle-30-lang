@@ -39,6 +39,7 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
 
 function initializePromptAndAnswerObjects()
 {
+  console.log('prompts and answers initializing');
   promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings = [];
   womanVersusWomenPairGrouping = {name: 'woman vs women', arrayOfObjects: []};
   manVersusMenPairGrouping = {name: 'man vs men', arrayOfObjects: []};

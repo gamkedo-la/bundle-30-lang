@@ -29,10 +29,14 @@ function birdGameClass() {
   this.superInitialize = this.initialize;
   this.initialize = function()
   {
+    console.log('inside initialization of bird, which it seems like is also superInitialize');
     this.playerCharacter = new BirdClass();
     this.playerCharacter.initialize();
+    initializePromptAndAnswerObjects();
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     this.assignLeftOrRightDirectionToAnswers();
-	this.superInitialize();
+	  this.superInitialize();
   }
 
   this.applyGRAVITYToBird = function()
