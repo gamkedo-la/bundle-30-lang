@@ -56,6 +56,7 @@ function TitleScreenClass()
   this.drawGameNames = function()
   {
     AVAILABLE_GAMES.forEach(function (game) {
+      //console.log("Adding game to title screen: " + game.name);
 	  const nameDataArray = game.titleScreenData;
   	  nameDataArray.forEach(function(nameData) {
   		customFontFillText(nameData.name, nameData.fontSize, nameData.spacing, nameData.x, nameData.y);
