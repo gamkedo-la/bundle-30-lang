@@ -37,10 +37,13 @@ let roadDash1 = document.createElement('img');
 let roadDash2 = document.createElement('img');
 let roadDash3 = document.createElement('img');
 
+//jumper images
+let jumperBackground = document.createElement('img');
+
 //flower images
 let simpleFlower = document.createElement('img');
 
-// maze images 
+// maze images
 let mazeFloor = document.createElement('img');
 let mazeTopWall = document.createElement('img');
 let mazeBottomWall = document.createElement('img');
@@ -178,6 +181,9 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: roadDash1, theFile: 'images/Backgrounds/roadDash.png'});
   arrayOfImages.push({imageObjectBinding: roadDash2, theFile: 'images/Backgrounds/roadDash2.png'});
   arrayOfImages.push({imageObjectBinding: roadDash3, theFile: 'images/Backgrounds/roadDash3.png'})
+
+  //jumper game
+  arrayOfImages.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/Cliff.png'})
 
   //flower game
   arrayOfImages.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png"});

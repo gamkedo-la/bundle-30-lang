@@ -123,6 +123,7 @@ function jumperGameClass()
   	{
         gameCanvasContext.fillRect(this.arrayOfJumperPlatforms[platformsIndex].x, this.arrayOfJumperPlatforms[platformsIndex].y, gameCanvas.width, 50)
   	}
+    gameCanvasContext.drawImage(jumperBackground, 0,0, gameCanvas.width,gameCanvas.height);
   };
 
   this.onSpaceBarKeyDown = function()
