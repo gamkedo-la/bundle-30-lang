@@ -63,7 +63,6 @@ function Bullet(i)
             if (cycleCount === CYCLE_LIMIT_FOR_RANDOM_GAME_RELOAD)
             {
               loadRandomGame();
-              gameClassManager.initializeCurrentGame();
               cycleCount = 0;
             }
           }

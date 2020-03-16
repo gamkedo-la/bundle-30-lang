@@ -31,6 +31,7 @@ function loadGameNum(gameListIndex)
     return false;
   }
   gameClassManager.loadCurrentGame(gameList[gameListIndex]);
+  gameClassManager.initializeCurrentGame();
   return true;
 }
 

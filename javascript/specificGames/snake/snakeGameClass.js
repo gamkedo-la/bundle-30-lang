@@ -34,7 +34,10 @@ function snakeGameClass()
 	  this.playerCharacter = new SnakeClass();
     this.background = new SnakeBackground();
     this.playerCharacter.initialize();
-	  this.superInitialize();
+    //initializePromptAndAnswerObjects();
+    // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    // promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+	  //this.superInitialize();
   };
 
   //update section

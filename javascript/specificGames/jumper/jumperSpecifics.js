@@ -28,7 +28,7 @@ function jumperGameClass()
   {
     this.playerCharacter = new JumperClass();
     drawAnswersManager.draw();
-	this.superInitialize();
+	//this.superInitialize();
   };
 
   this.update = function()

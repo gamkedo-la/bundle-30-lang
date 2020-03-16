@@ -36,7 +36,7 @@ function birdGameClass() {
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     this.assignLeftOrRightDirectionToAnswers();
-	  this.superInitialize();
+	  //this.superInitialize();
   }
 
   this.applyGRAVITYToBird = function()

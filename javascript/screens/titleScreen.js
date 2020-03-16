@@ -113,12 +113,8 @@ function TitleScreenClass()
         if(loadGameNum(gameNum) == false) {
           return;
         }
-        gameClassManager.initializeCurrentGame();
-        promptsAndAnswersManager.setOrResetPromptsAndAnswers();
       } else {
         loadGameNum(gameNum);
-        gameClassManager.initializeCurrentGame();
-        promptsAndAnswersManager.setOrResetPromptsAndAnswers();
       }
       if (gameClassManager.currentGame !== cVcShooterGame)
       gameClassManager.currentGame.postLoadInit();

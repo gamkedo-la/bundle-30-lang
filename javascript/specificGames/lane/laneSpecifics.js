@@ -21,7 +21,7 @@ function laneGameClass() {
 	  this.background = new LaneBackgroundClass();
 	  this.background.initialize();
 	  this.initializeLanePositions();
-	  this.superInitialize();	  
+	  //this.superInitialize();	  
 	};
 
 	this.update = function()
