@@ -42,6 +42,7 @@ let jumperBackground = document.createElement('img');
 
 //flower images
 let simpleFlower = document.createElement('img');
+let flowerBackground = document.createElement('img');
 
 // maze images
 let mazeFloor = document.createElement('img');
@@ -187,6 +188,8 @@ function loadImages()
 
   //flower game
   arrayOfImages.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png"});
+  arrayOfImages.push({imageObjectBinding: flowerBackground, theFile: "images/Backgrounds/Flower2.png"});
+
 
   // maze game
   arrayOfImages.push({imageObjectBinding: mazeFloor, theFile: "images/Backgrounds/mazefloor.png"});
