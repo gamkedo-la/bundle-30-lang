@@ -51,6 +51,9 @@ let mazeBottomWall = document.createElement('img');
 let mazeLeftWall = document.createElement('img');
 let mazeRightWall = document.createElement('img');
 
+//Frog
+let frogRiverBackground = document.createElement('img');
+
 //special characters for custom font
 let upArrowImage = document.createElement("img");
 let rightArrowImage = document.createElement("img");
@@ -197,6 +200,10 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: mazeBottomWall, theFile: "images/Backgrounds/bottomWall.png"});
   arrayOfImages.push({imageObjectBinding: mazeLeftWall, theFile: "images/Backgrounds/leftWall.png"});
   arrayOfImages.push({imageObjectBinding: mazeRightWall, theFile: "images/Backgrounds/rightWall.png"});
+
+  //frog
+  arrayOfImages.push({imageObjectBinding: frogRiverBackground, theFile: "images/Backgrounds/river.png"});
+
 
   //pinata game
   arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});
