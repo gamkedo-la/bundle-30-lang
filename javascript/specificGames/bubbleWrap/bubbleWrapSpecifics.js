@@ -15,9 +15,9 @@ bubbleWrapGame.titleTXT3 = "as fast as you can";
 bubbleWrapGame.introComplete = true; // no swinging pinata
 bubbleWrapGame.spritesheet = bubbleWrapSpritesheet; 
 bubbleWrapGame.shrinking = false;
-bubbleWrapGame.smashSound = null;
-bubbleWrapGame.successSound = audioManager.bubbleWrapPopSound;
-bubbleWrapGame.failSound = null;
+bubbleWrapGame.smashSound = null;//window.audioManager?audioManager.balloonPopSound:document.getElementById('smashSound');
+bubbleWrapGame.successSound = window.audioManager?audioManager.bubbleWrapPopSound:document.getElementById('successSound');
+bubbleWrapGame.failSound = null;//window.audioManager?audioManager.pinataFailSound:document.getElementById('failSound');;
 
 // build a grid of bubbles
 bubbleWrapGame.gameSpecificInits = function() {

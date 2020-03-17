@@ -34,6 +34,14 @@ function AudioManager()
     this.generalNegativeFeedbackSound3 = document.createElement("AUDIO");
     this.generalNegativeFeedbackSound4 = document.createElement("AUDIO");
 
+    // game specific sound effects
+    this.balloonPopSound = document.createElement("AUDIO");
+    this.bubbleWrapPopSound = document.createElement("AUDIO");
+    
+    this.pinataEatSound = document.createElement("AUDIO");
+    this.pinataHitSound = document.createElement("AUDIO");
+    this.pinataFailSound = undefined;
+
     //background music
     this.transitionToLevelMusic1 = document.createElement("AUDIO");
     this.titleScreenMusic = document.createElement("AUDIO");
@@ -70,6 +78,12 @@ function AudioManager()
       this.uiButtonSound2.src = "audio/UI_02.mp3";
       this.uiButtonSound3.src = "audio/UI_03.mp3";
       this.uiButtonSound4.src = "audio/UI_04.mp3";
+
+        // game specific
+      this.balloonPopSound.src = "audio/balloonPop.mp3";
+      this.bubbleWrapPopSound.src = "audio/bubbleWrapPop.mp3";
+      this.pinataEatSound.src = "audio/pinataEat.mp3";
+      this.pinataHitSound.src = "audio/pinataHit.mp3";
 
       //music
       this.transitionToLevelMusic1.src = "audio/levelTransitionSound.mp3";
