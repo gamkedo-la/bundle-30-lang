@@ -150,4 +150,3 @@ function penaltyGameClass(){
 }
 
 var penaltyGame = new penaltyGameClass();
-AVAILABLE_GAMES.push(penaltyGame);

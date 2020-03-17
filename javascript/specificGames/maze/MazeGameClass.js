@@ -48,4 +48,3 @@ MazeGameClass.prototype = new GameClass();
 MazeGameClass.prototype.constructor = MazeGameClass;
 
 const mazeGame = new MazeGameClass();
-AVAILABLE_GAMES.push(mazeGame);

@@ -57,12 +57,14 @@ function TitleScreenClass()
 
   this.drawGameNames = function()
   {
-    AVAILABLE_GAMES.forEach(function (game) {
-      //console.log("Adding game to title screen: " + game.name);
-	  const nameDataArray = game.titleScreenData;
-  	  nameDataArray.forEach(function(nameData) {
-  		customFontFillText(nameData.name, nameData.fontSize, nameData.spacing, nameData.x, nameData.y);
-  	  });
+    gameList.forEach(function (game) {
+	  if (game !== null) {
+		//console.log("Adding game to title screen: " + game.name);
+		const nameDataArray = game.titleScreenData;
+  		nameDataArray.forEach(function(nameData) {
+  		  customFontFillText(nameData.name, nameData.fontSize, nameData.spacing, nameData.x, nameData.y);
+  		});
+	  }
     });
 	// NOTE: old code kept for drawing names of unavailable games
 	GAME_NAMES.forEach(function (nameDataArray) {

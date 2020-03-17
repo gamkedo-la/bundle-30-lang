@@ -133,4 +133,3 @@ function jumperGameClass()
 }
 
 const jumperGame = new jumperGameClass();
-AVAILABLE_GAMES.push(jumperGame);

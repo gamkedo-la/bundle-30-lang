@@ -191,4 +191,3 @@ function runnerGameClass() {
 }
 
 const runnerGame = new runnerGameClass();
-AVAILABLE_GAMES.push(runnerGame);

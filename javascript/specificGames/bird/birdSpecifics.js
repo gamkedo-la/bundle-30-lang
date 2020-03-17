@@ -147,4 +147,3 @@ function birdGameClass() {
 }
 
 const birdGame = new birdGameClass();
-AVAILABLE_GAMES.push(birdGame);

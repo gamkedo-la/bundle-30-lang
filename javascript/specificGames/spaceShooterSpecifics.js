@@ -113,4 +113,3 @@ function spaceShooterGameClass() {
 };
 
 const spaceShooterGame = new spaceShooterGameClass();
-AVAILABLE_GAMES.push(spaceShooterGame);

@@ -67,4 +67,3 @@ function PassOrBlockGameClass()
 }
 
 const passOrBlockGame = new PassOrBlockGameClass();
-AVAILABLE_GAMES.push(passOrBlockGame);

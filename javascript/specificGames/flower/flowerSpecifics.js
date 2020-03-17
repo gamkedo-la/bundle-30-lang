@@ -144,4 +144,3 @@ function flowerGameClass(){
 }
 
 const flowerGame = new flowerGameClass();
-AVAILABLE_GAMES.push(flowerGame);

@@ -50,6 +50,3 @@ balloonPopGame.postLoadInit = function() { // code may not be getting called
 //balloonPopGame.drawBG = function() { 
     //gameCanvasContext.drawImage(balloonPopBG,0,0);
 //}
-
-if (window.AVAILABLE_GAMES) 
-    AVAILABLE_GAMES.push(balloonPopGame);

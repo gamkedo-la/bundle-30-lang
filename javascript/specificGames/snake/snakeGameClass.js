@@ -90,4 +90,3 @@ function snakeGameClass()
 }
 
 const snakeGame = new snakeGameClass();
-AVAILABLE_GAMES.push(snakeGame);

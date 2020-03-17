@@ -103,4 +103,3 @@ function laneGameClass() {
 }
 
 const laneGame = new laneGameClass();
-AVAILABLE_GAMES.push(laneGame);

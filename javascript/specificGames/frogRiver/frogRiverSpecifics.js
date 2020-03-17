@@ -72,4 +72,3 @@ function frogRiverGameClass()
 }
 
 const frogRiverGame = new frogRiverGameClass();
-AVAILABLE_GAMES.push(frogRiverGame);

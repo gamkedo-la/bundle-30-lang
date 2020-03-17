@@ -75,4 +75,3 @@ function cVcShooterGameClass()
 }
 
 const cVcShooterGame = new cVcShooterGameClass();
-AVAILABLE_GAMES.push(cVcShooterGame);
