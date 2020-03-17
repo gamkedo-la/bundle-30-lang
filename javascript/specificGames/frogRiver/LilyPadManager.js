@@ -4,6 +4,8 @@ function LilyPadManager()
 
   this.arrayOfLilyPadImages = [lilyImage1,lilyImage2,lilyImage3,lilyImage4];
 
+  this.answerCount = 0;
+
   this.initializeLilyPads = function()
   {
     for (let arrayOfLilyPadsIndex = 1; arrayOfLilyPadsIndex < 6; arrayOfLilyPadsIndex++)

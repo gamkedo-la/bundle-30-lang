@@ -40,9 +40,14 @@ let roadDash3 = document.createElement('img');
 //jumper images
 let jumperBackground = document.createElement('img');
 
+//space shooter images
+let spaceShooterBackgroundImage = document.createElement('img');
+let spaceshipImage = document.createElement('img');
+
 //flower images
 let simpleFlower = document.createElement('img');
 let flowerBackground = document.createElement('img');
+let jupiterImage = document.createElement('img');
 
 // maze images
 let mazeFloor = document.createElement('img');
@@ -192,6 +197,13 @@ function loadImages()
 
   //jumper game
   arrayOfImages.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/Cliff.png'})
+
+  //space shooter game
+  arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/Space.png'})
+  arrayOfImages.push({imageObjectBinding: spaceshipImage, theFile: 'images/Sprites/spaceShooter/spaceship.png'})
+  arrayOfImages.push({imageObjectBinding: jupiterImage, theFile: 'images/Sprites/spaceShooter/Jupiter.png'})
+
+
 
   //flower game
   arrayOfImages.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png"});

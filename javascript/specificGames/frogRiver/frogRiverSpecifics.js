@@ -25,6 +25,9 @@ function frogRiverGameClass()
     this.background = new FrogRiverBackground();
     this.lilyPadManager = new LilyPadManager();
     this.lilyPadManager.initializeLilyPads();
+    initializePromptAndAnswerObjects();
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
   }
 
   this.draw = function()

@@ -59,13 +59,14 @@ function spaceShooterGameClass() {
 	}
 
 	this.drawBackground = function() {
-		gameCanvasContext.fillStyle = 'black';
-		gameCanvasContext.fillRect(0,0, 640,700);
+		gameCanvasContext.drawImage(spaceShooterBackgroundImage, 0,0, gameCanvas.width,gameCanvas.height);
+		gameCanvasContext.drawImage(jupiterImage, gameCanvas.width*0.2,gameCanvas.height*0.4, gameCanvas.width*0.3,gameCanvas.height*0.4);
 	};
 
 	this.drawPlayer = function() {
-		gameCanvasContext.fillStyle = 'white';
-		gameCanvasContext.fillRect(gameClassManager.currentGame.playerCharacter.x,gameClassManager.currentGame.playerCharacter.y, 20,20);
+		gameCanvasContext.drawImage(spaceshipImage,
+					gameClassManager.currentGame.playerCharacter.x,gameClassManager.currentGame.playerCharacter.y,
+					gameCanvas.width/10,gameCanvas.height/10);
 	};
 
 	this.movePlayer = function() {

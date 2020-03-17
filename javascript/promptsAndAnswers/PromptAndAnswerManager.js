@@ -72,7 +72,7 @@ function PromptsAndAnswersManager()
         console.log("correctTargetPromptAndAnswerPairing not set up.");
         return;
     }
-    
+
     let temporaryArrayOfPossibleAnswers = this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers;
 
     let randomIndexForTemporaryArray = undefined;
@@ -92,13 +92,13 @@ function PromptsAndAnswersManager()
   this.currentAnswerDataType = undefined;
   this.definecurrentAnswerDataType = function()
   {
-    
+
     if (typeof this.currentCorrectAnswer === 'undefined') {
         console.log("currentCorrectAnswer not set up.");
         return;
     }
-        
-    
+
+
     if (typeof this.currentCorrectAnswer === 'string')
     {
       this.currentAnswerDataType = 'string';
@@ -158,12 +158,12 @@ function PromptsAndAnswersManager()
   this.currentIncorrectAnswer = undefined;
   this.assignCurrentIncorrectAnswer = function()
   {
-    
+
     if (typeof this.editedPromptAndAnswerGroup === 'undefined') {
         console.log("editedPromptAndAnswerGroup not set up");
         return;
     }
-    
+
     let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editedPromptAndAnswerGroup.length - 1);
 
     for (let arrayOfPossibleAnswersIndex = 0; arrayOfPossibleAnswersIndex < this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers.length; arrayOfPossibleAnswersIndex++)
@@ -330,6 +330,25 @@ function PromptsAndAnswersManager()
       gameClassManager.currentGame.playerCharacter.x - 40,gameClassManager.currentGame.playerCharacter.x + 60);
       randomPlatformIndex = (Math.floor(Math.random() * 7) * 100) + currentOffset;
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
+    }
+    else if (gameClassManager.currentGame.name === 'frogRiverGame')
+    {
+      // let answerCount = frogRiverGame.lilyPadManager.answerCount;
+      // let randomNumber = Math.random();
+      // if (randomNumber < 0.5)
+      // {
+      //   this.correctTargetPromptAndAnswerPairing.xCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount].x;
+      //   this.correctTargetPromptAndAnswerPairing.yCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount].y;
+      //   this.incorrectTargetPromptAndAnswerPairing.xCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + 1].x;
+      //   this.incorrectTargetPromptAndAnswerPairing.yCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + 1].y;
+      // }
+      // else
+      // {
+      //   this.correctTargetPromptAndAnswerPairing.xCoordinate = laneGame.carRightLanePosition - 25;
+      //   this.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
+      //   this.incorrectTargetPromptAndAnswerPairing.xCoordinate = laneGame.carLeftLanePosition - 25;
+      //   this.incorrectTargetPromptAndAnswerPairing.yCoordinate = -10;
+      // }
     }
     else if (gameClassManager.currentGame.name === 'Pass or Block Game')
     {
