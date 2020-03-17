@@ -55,9 +55,11 @@ function GameClassManager()
   this.initializeCurrentGame = function()
   {
     this.currentGame.initialize();
+    console.log('inside initialize of gameClassManager');
     if (this.currentGame.superInitialize !== undefined)
     {
       this.currentGame.superInitialize();
+      console.log('should be superInitializing');
     }
   }
 
