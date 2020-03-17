@@ -5,6 +5,7 @@ var spaceShooterPlayerSpeed = 15;
 var spaceShooterLetterSpawnRate = 2000;
 var spaceShooterLetterColor = 'red';
 
+spaceShooterGameClass.prototype = new GameClass();
 function spaceShooterGameClass() {
 	this.name = 'spaceShooter';
 	//shots section
@@ -16,8 +17,7 @@ function spaceShooterGameClass() {
 	  {name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270},
 	  {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}
 	];
-	this.frameRate = 1000/30;
-
+	this.FRAME_RATE = 1000/30;
 
   this.pregameSpecialCode = function()
   {
@@ -26,12 +26,6 @@ function spaceShooterGameClass() {
     fullGameStateMachine.playingAGameState = true;
     levelIsTransitioning = true;
   };
-
-	this.initialize = function()
-	{
-		gameInterval.reset(this.frameRate);
-	};
-
 
 	this.update = function()
 	{
