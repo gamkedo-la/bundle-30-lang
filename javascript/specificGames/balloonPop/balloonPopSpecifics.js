@@ -18,6 +18,10 @@ balloonPopGame.spritesheet = balloonPopSpritesheet;
 balloonPopGame.spawnRandomly = true;
 balloonPopGame.spawnChance = 0.05;
 balloonPopGame.shrinking = false;
+balloonPopGame.smashSound = null;//window.audioManager?audioManager.balloonPopSound:document.getElementById('smashSound');
+balloonPopGame.successSound = window.audioManager?audioManager.pinataEatSound:document.getElementById('successSound');;
+balloonPopGame.failSound = null;//window.audioManager?audioManager.pinataFailSound:document.getElementById('failSound');;
+
 
 // build a grid of bubbles
 balloonPopGame.gameSpecificInits = function() {

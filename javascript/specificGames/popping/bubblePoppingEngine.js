@@ -29,6 +29,10 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.spawnRandomly = false;
     this.spawnChance = 0.05;
 
+    this.smashSound = null;
+    this.successSound = null;
+    this.failSound = null;
+
     //////////////////////////////////////////////////////
     // private vars used internally
     //////////////////////////////////////////////////////
@@ -404,6 +408,14 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
             console.log("Pinata just got smashed!")
             introComplete = true;
             boom(e.pageX, e.pageY, true);
+            if (window.audioManager) {
+                audioManager.pinataHitSound.play();
+            }
+
+            if (me.smashSound) {
+                me.smashSound.play();
+            }
+
             return;
         }
 
@@ -429,6 +441,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 if (me.alwaysPopLetters) {
                     // destroy the clicked bubble (only)
                     objects.splice(i, 1);
+                    correct = true; // always!
                 }
             }
         }
@@ -439,8 +452,11 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
             if (window.audioManager) {
                 audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
                 (audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
+                audioManager.pinataEatSound.play();
             }
-            
+
+            if (me.successSound) me.successSound.play();
+
             boom(e.pageX, e.pageY, true)
         } else {
 
@@ -450,7 +466,9 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
                 (audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
             }
-
+            
+            if (me.failSound) me.failSound.play();
+            
             boom(e.pageX, e.pageY, false)
 
         }
