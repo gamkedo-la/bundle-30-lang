@@ -143,6 +143,7 @@ Where = pic of a location, When = pic of time, why = because)
 150. 5/15/50
 151. will/we/we'll
 152. thirteen/threeteen
+153. head/hand
 
 spelling - 
 1. was/saw
@@ -159,4 +160,5 @@ Chinese -
 5. Bǎ - put, Bà - dad, Bā - eight, 
 6. Ta - he, Ye - also (characters)
 7. Wo - Me, Wo de - my
+8. j er - here, n er - there
 
