@@ -17,6 +17,7 @@ balloonPopGame.introComplete = true; // no swinging pinata
 balloonPopGame.spritesheet = balloonPopSpritesheet; 
 balloonPopGame.spawnRandomly = true;
 balloonPopGame.spawnChance = 0.05;
+balloonPopGame.shrinking = false;
 
 // build a grid of bubbles
 balloonPopGame.gameSpecificInits = function() {

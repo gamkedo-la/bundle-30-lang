@@ -22,6 +22,12 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.gravity = 0.05;
     this.spriteH = 256;
     this.spriteW = 256;
+    this.shrinking = true;
+    
+    // for balloons etc constant new ones appear
+    this.spawnRadius = 50; // size when randomly spawning
+    this.spawnRandomly = false;
+    this.spawnChance = 0.05;
 
     //////////////////////////////////////////////////////
     // private vars used internally
@@ -126,7 +132,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         if (this.spawnRandomly) {
             if (Math.random()<this.spawnChance) {
                 //console.log("Randomly spawning a new popable!");
-                this.newcircle(Math.random()*gameCanvas.width, gameCanvas.height+100, 50, 1);
+                this.newcircle(Math.random()*gameCanvas.width, gameCanvas.height+100, this.spawnRadius, 1);
             }
         }
 
@@ -196,7 +202,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 nextOne.B += nextOne.M ? nextOne.D * .01 : .001;
 
                 // shrink!
-                if (nextOne.M && nextOne.R > CANDY_MIN_SIZE) nextOne.R += CANDY_SHRINK;
+                if (this.shrinking && nextOne.M && nextOne.R > CANDY_MIN_SIZE) nextOne.R += CANDY_SHRINK;
 
                 if (nextOne.Z == CONFETTI_ID) {
                     nextOne.R *= CONFETTI_SHRINKSPEED;
