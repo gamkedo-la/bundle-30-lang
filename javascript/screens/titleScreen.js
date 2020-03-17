@@ -109,7 +109,6 @@ function TitleScreenClass()
     {
       if(gameNum == GAME_SPACE_SHOOTER) {
         console.log("trying to load space shooter, special casing it");
-        spaceShooterGame.startPlaying();
         playerShouldSeeTitleScreen = false;
         fullGameStateMachine.playingAGameState = true;
         levelIsTransitioning = true;

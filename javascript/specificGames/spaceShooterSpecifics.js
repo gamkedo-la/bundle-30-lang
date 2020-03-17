@@ -7,7 +7,6 @@ var spaceShooterLetterColor = 'red';
 
 function spaceShooterGameClass() {
 	this.name = 'spaceShooter';
-	let gameIsPlaying = false;
 	//shots section
 	var arrayOfBullets = [];
 	var bulletDimensionX = 4;
@@ -19,9 +18,6 @@ function spaceShooterGameClass() {
 	];
 	this.frameRate = 1000/30;
 
-	this.isPlaying = function() {
-		return gameIsPlaying;
-	};
 
   this.pregameSpecialCode = function()
   {
@@ -36,15 +32,6 @@ function spaceShooterGameClass() {
 		gameInterval.reset(this.frameRate);
 	};
 
-	this.startPlaying = function()
-	{
-		gameIsPlaying = true;
-	};
-
-	this.stopPlaying = function()
-	{
-		gameIsPlaying = false;
-	};
 
 	this.update = function()
 	{

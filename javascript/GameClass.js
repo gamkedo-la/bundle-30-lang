@@ -1,19 +1,5 @@
 function GameClass()
 {
-  let gameIsPlaying = false;
-
-  this.isPlaying = function() {
-	   return gameIsPlaying;
-  };
-
-  this.startPlaying = function() {
-	   gameIsPlaying = true;
-  };
-
-  this.stopPlaying = function() {
-	   gameIsPlaying = false;
-  };
-
   this.pregameSpecialCode = function()
   {
     console.log("no pregame special code is used by this game");

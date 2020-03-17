@@ -33,7 +33,6 @@ function BackButton()
           transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
-          gameClassManager.currentGame.stopPlaying();
           gameClassManager.currentGame = undefined;
           playerShouldBePlayingPinata = false;
           arrayOfAnswers = [];
