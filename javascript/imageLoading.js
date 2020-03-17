@@ -56,6 +56,9 @@ let mazeBottomWall = document.createElement('img');
 let mazeLeftWall = document.createElement('img');
 let mazeRightWall = document.createElement('img');
 
+//air grab
+let airBoothImage = document.createElement('img');
+
 //Frog
 let frogRiverBackgroundImage = document.createElement('img');
 let lilyImage1 = document.createElement('img');
@@ -216,6 +219,9 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: mazeBottomWall, theFile: "images/Backgrounds/bottomWall.png"});
   arrayOfImages.push({imageObjectBinding: mazeLeftWall, theFile: "images/Backgrounds/leftWall.png"});
   arrayOfImages.push({imageObjectBinding: mazeRightWall, theFile: "images/Backgrounds/rightWall.png"});
+
+  //air booth
+  arrayOfImages.push({imageObjectBinding: airBoothImage, theFile: "images/Backgrounds/airBooth.png"});
 
   //frog
   arrayOfImages.push({imageObjectBinding: frogRiverBackgroundImage, theFile: "images/Backgrounds/river.png"});
