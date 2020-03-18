@@ -39,8 +39,7 @@ function MazeClass(){
 
     this.checkIfAllCellsHaveBeenVisited = function() {
         if (this.numVisitedCellsByGenerationAlgo == this.arrayOfCells.length){
-            console.log(this.numVisitedCellsByGenerationAlgo);
-            console.log(this.arrayOfCells.length);
+            this.currentCellVisitedByGenerationAlgo.isVisitedByGenerationAlgorithm = false;
             this.isGenerationRunning = false;
         }
     }

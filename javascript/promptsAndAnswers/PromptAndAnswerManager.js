@@ -386,6 +386,12 @@ function PromptsAndAnswersManager()
         this.incorrectTargetPromptAndAnswerPairing.yCoordinate = -10;
       }
     }
+    else if(gameClassManager.currentGame.name === "MazeGame"){
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,gameCanvas.width - 1);
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = getRandomIntInclusive(0,gameCanvas.height - 1);
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,gameCanvas.width - 1);
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomIntInclusive(0,gameCanvas.height - 1);
+    }
   }
 
   this.setOrResetPromptsAndAnswers = function()
