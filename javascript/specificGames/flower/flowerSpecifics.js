@@ -26,7 +26,7 @@ function flowerGameClass(){
     const SEED_ONE_STARTING_Y = 10;
     const SEED_TWO_STARTING_X = 300;
     const SEED_TWO_STARTING_Y = 10;
-    const SEED_WIDTH = 15;
+    const SEED_flowerWidth = 15;
     const SEED_HEIGHT = 15;
 
     const GRAVITY = 3;
@@ -36,14 +36,16 @@ function flowerGameClass(){
     this.seedTwoXCoordinate = undefined;
     this.seedTwoYCoordinate = undefined;
 
-    var amountCorrectAtStartOfThisGame = undefined;
+    this.flowerArray = new Array(simpleFlower, simpleFlower, simpleFlower, simpleFlower, simpleFlower);
+
+    var amountCorrectThisGameSession = undefined;
 
     this.superInitialize = this.initialize;
     this.initialize = function()
     {
       this.playerCharacter = new FlowerClass();
       this.background = new FlowerBackgroundClass();
-      amountCorrectAtStartOfThisGame = amountCorrect;
+      amountCorrectThisGameSession = amountCorrect;
       //initialize seeds
       this.seedOneXCoordinate = SEED_ONE_STARTING_X;
       this.seedOneYCoordinate = SEED_ONE_STARTING_Y;
@@ -99,8 +101,8 @@ function flowerGameClass(){
 
     this.drawSeeds = function(){
         gameCanvasContext.fillStyle = 'brown';
-        gameCanvasContext.fillRect(this.seedOneXCoordinate, this.seedOneYCoordinate, SEED_WIDTH, SEED_HEIGHT);
-        gameCanvasContext.fillRect(this.seedTwoXCoordinate, this.seedTwoYCoordinate, SEED_WIDTH, SEED_HEIGHT);
+        gameCanvasContext.fillRect(this.seedOneXCoordinate, this.seedOneYCoordinate, SEED_flowerWidth, SEED_HEIGHT);
+        gameCanvasContext.fillRect(this.seedTwoXCoordinate, this.seedTwoYCoordinate, SEED_flowerWidth, SEED_HEIGHT);
     }
 
     this.moveSeeds = function()
@@ -132,11 +134,14 @@ function flowerGameClass(){
     }
 
     this.sproutFlowers = function(){
-      this.width = 30;
-      this.height = 60;
-      if(amountCorrect > amountCorrectAtStartOfThisGame){
-        gameCanvasContext.drawImage(simpleFlower, this.playerCharacter.x,(this.playerCharacter.y - this.height), this.width, this.height);
-        console.log("sprouting flower");
+      this.flowerWidth = 30;
+      this.flowerHeight = 60;
+      for(i = 0; i < amountCorrectThisGameSession; i++){
+        gameCanvasContext.drawImage(this.flowerArray[i], (this.playerCharacter.x + this.flowerWidth*i),(this.playerCharacter.y - this.flowerHeight), this.flowerWidth, this.flowerHeight);
+      }
+      if(amountCorrect > amountCorrectThisGameSession){
+          amountCorrectThisGameSession = amountCorrect;
+          console.log("amount correct this game session " + amountCorrectThisGameSession);
       }
 
 
