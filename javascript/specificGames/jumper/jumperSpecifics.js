@@ -83,9 +83,9 @@ function jumperGameClass()
   this.movePlayer = function()
   {
 	if (!inputManager.upArrowIsBeingHeld &&
-		this.playerCharacter.y !== 30 && this.playerCharacter.y !== 130 &&
-		this.playerCharacter.y !== 230 && this.playerCharacter.y !== 330 && this.playerCharacter.y !== 430 &&
-		this.playerCharacter.y !== 530 && this.playerCharacter.y !== 630) //if not jumping and not contacting a platform
+		this.playerCharacter.y !== 40 && this.playerCharacter.y !== 140 &&
+		this.playerCharacter.y !== 240 && this.playerCharacter.y !== 340 && this.playerCharacter.y !== 440 &&
+		this.playerCharacter.y !== 540 && this.playerCharacter.y !== 640) //if not jumping and not contacting a platform
     {
       this.playerCharacter.y += 5;//apply GRAVITY
     }

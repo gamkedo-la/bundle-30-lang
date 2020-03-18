@@ -199,7 +199,7 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: roadDash3, theFile: 'images/Backgrounds/roadDash3.png'})
 
   //jumper game
-  arrayOfImages.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/Cliff.png'})
+  arrayOfImages.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/editedJumperBackground.png'})
 
   //space shooter game
   arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/Space.png'})
