@@ -49,7 +49,7 @@ function TitleScreenClass()
     [{name: "Nighttime", fontSize: 20, spacing: 10, x: 222, y: 480}],
     [{name: "Frog", fontSize: 25, spacing: 15, x: 330, y: 465},{name: "Crate", fontSize: 25, spacing: 10, x: 330, y: 505}],
     [{name: "Flying", fontSize: 25, spacing: 15, x: 420, y: 465},{name: "Bee", fontSize: 25, spacing: 10, x: 440, y: 505}],
-    [{name: "Fishing", fontSize: 25, spacing: 12, x: 520, y: 480}],
+    //[{name: "Fishing", fontSize: 25, spacing: 12, x: 520, y: 480}],
     [{name: "Egg", fontSize: 25, spacing: 12, x: 45, y: 565},{name: "Catch", fontSize: 25, spacing: 10, x: 37, y: 605}],
     [{name: "Whack", fontSize: 25, spacing: 12, x: 235, y: 550},{name: "a", fontSize: 25, spacing: 10, x: 260, y: 580},{name: "Letter", fontSize: 25, spacing: 10, x: 235, y: 615}],
     [{name: "Vacuum", fontSize: 25, spacing: 12, x: 327, y: 580}]

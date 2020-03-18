@@ -66,6 +66,8 @@ let lilyImage2 = document.createElement('img');
 let lilyImage3 = document.createElement('img');
 let lilyImage4 = document.createElement('img');
 
+let fishingGameWaterBackgroundImage = document.createElement('img');
+
 //special characters for custom font
 let upArrowImage = document.createElement("img");
 let rightArrowImage = document.createElement("img");
@@ -234,6 +236,10 @@ function loadImages()
 
   //pinata game
   arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});
+
+  //fishing game
+  arrayOfImages.push({imageObjectBinding: fishingGameWaterBackgroundImage, theFile: 'images/Backgrounds/underwater2.png'});
+
 
   //symbols
   arrayOfImages.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png' });
