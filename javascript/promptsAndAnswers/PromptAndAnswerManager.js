@@ -249,14 +249,15 @@ function PromptsAndAnswersManager()
     let currentPlayerCharacter = gameClassManager.currentGame.playerCharacter;
     //console.log('currentPlayerCharacter.name: ' + currentPlayerCharacter.name);
     randomXCoordinate = getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100, currentPlayerCharacter.x - 40,currentPlayerCharacter.x + 60);
-    //console.log('randomXCoordinate: ' + randomXCoordinate);
+    console.log('randomXCoordinate: ' + randomXCoordinate);
     randomYCoordinate = getRandomIntWithExclusionaryRange(0,gameCanvas.height - 100, currentPlayerCharacter.y - 40,currentPlayerCharacter.y + 60);
     return {randomXCoordinate,randomYCoordinate};
   }
 
   this.defineXAndYCoordinatesForTargets = function()
   {
-    if (gameClassManager.currentGame.name === 'Snake Game' || gameClassManager.currentGame.name === 'birdGame')
+    if (gameClassManager.currentGame.name === 'Snake Game' || gameClassManager.currentGame.name === 'birdGame'
+        || gameClassManager.currentGame.name === 'spaceShooter')
     {
       let correctAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
       let incorrectAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();

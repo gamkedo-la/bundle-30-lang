@@ -6,6 +6,7 @@ birdGameClass.prototype = new GameClass();
 function birdGameClass() {
   this.name = 'birdGame';
   this.playerCharacter = undefined;
+  this.collidingObject = undefined;
   this.titleScreenData = [{
 	name: "Bird",
 	fontSize: 27,
@@ -32,6 +33,7 @@ function birdGameClass() {
     console.log('inside initialization of bird, which it seems like is also superInitialize');
     this.playerCharacter = new BirdClass();
     this.playerCharacter.initialize();
+    this.collidingObject = this.playerCharacter;
     initializePromptAndAnswerObjects();
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();

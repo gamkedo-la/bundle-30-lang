@@ -13,6 +13,7 @@ function spaceShooterGameClass() {
 	var bulletDimensionX = 4;
 	var bulletDimensionY = 4;
 	var bulletSpeed = 7;
+	this.playerCharacter = undefined;
 	this.titleScreenData = [
 	  {name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270},
 	  {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}
@@ -34,16 +35,25 @@ function spaceShooterGameClass() {
 		this.jupiter1XCoordinate = gameCanvas.width*0.2;
 		this.jupiter2XCoordinate = gameCanvas.width*0.2 + gameCanvas.width;
 
-		this.playerCharacterWidth = gameCanvas.width/10;
-		this.playerCharacterHeight = gameCanvas.height/10;
+		this.playerCharacter = new Spaceship();
+		console.log(this.playerCharacter);
+		this.playerCharacter.initialize();
+
+		initializePromptAndAnswerObjects();
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
 	}
 
 	this.update = function()
 	{
-		this.movePlayer();
+		this.playerCharacter.move();
 		this.moveBullets();
 		this.scrollBackgroundsFromRightToLeft();
 		this.handleBackgroundPicsOffScreen();
+
+		this.moveAnswers();
+		this.handleAnswersOffScreen();
+		collisionsWithAnswersManager.handleCollisionsWithAnswers();
 	};
 
 	this.moveBullets = function()
@@ -57,9 +67,41 @@ function spaceShooterGameClass() {
 	this.draw = function()
 	{
 		this.drawBackground();
-		this.drawPlayer();
+		this.playerCharacter.draw();
 		this.drawBullets();
+
+		drawAnswersManager.draw();
+    promptersManager.drawPromptsWhenAppropriate();
 	};
+
+	this.answersXSpeed = -3;
+
+	this.moveAnswers = function()
+  {
+    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate += this.answersXSpeed;
+    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate += this.answersXSpeed;
+  }
+
+	this.handleAnswersOffScreen = function()
+  {
+    if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate > gameCanvas.width)
+    {
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = -10;
+    }
+    else if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate < -10)
+    {
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width;
+    }
+
+    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate > gameCanvas.width)
+    {
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = -10;
+    }
+    else if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate < -10)
+    {
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width;
+    }
+  }
 
 	this.drawBullets = function()
 	{
@@ -76,13 +118,10 @@ function spaceShooterGameClass() {
 	this.jupiter1XCoordinate = undefined;
 	this.jupiter2XCoordinate = undefined;//defined in superInitialize to pull gameCanvas width/height
 
-	this.drawBackground = function() {
-
+	this.drawBackground = function()
+	{
 		gameCanvasContext.drawImage(spaceShooterBackgroundImage, this.backgroundPic1XCoordinate,0, gameCanvas.width,gameCanvas.height);
 		gameCanvasContext.drawImage(spaceShooterBackgroundImage2, this.backgroundPic2XCoordinate,0, gameCanvas.width,gameCanvas.height);
-
-		//gameCanvasContext.drawImage(jupiterImage, this.jupiter1XCoordinate,gameCanvas.height*0.4, gameCanvas.width*0.3,gameCanvas.height*0.4);
-		//gameCanvasContext.drawImage(jupiterImage, this.jupiter2XCoordinate,gameCanvas.height*0.4, gameCanvas.width*0.3,gameCanvas.height*0.4);
 	};
 
 	this.scrollBackgroundsFromRightToLeft = function()
@@ -103,26 +142,7 @@ function spaceShooterGameClass() {
 		{
 			this.backgroundPic2XCoordinate = gameCanvas.width;
 		}
-
-		// if (this.jupiter1XCoordinate + gameCanvas.width*0.3 < 0)
-		// {
-		// 	this.jupiter1XCoordinate = gameCanvas.width;
-		// }
-		// if (this.jupiter2XCoordinate + gameCanvas.width*0.3 < 0)
-		// {
-		// 	this.jupiter2XCoordinate = gameCanvas.width;
-		// }
 	}
-
-	this.playerCharacterWidth = undefined;
-	this.playerCharacterHeight = undefined;
-
-	this.drawPlayer = function()
-	{
-		gameCanvasContext.drawImage(spaceshipImage,
-					gameClassManager.currentGame.playerCharacter.x,gameClassManager.currentGame.playerCharacter.y,
-					this.playerCharacterWidth,this.playerCharacterHeight);
-	};
 
 	this.handleLeftArrowDown = function()
 	{
@@ -164,52 +184,24 @@ function spaceShooterGameClass() {
 		inputManager.downArrowIsBeingHeld = false;
 	}
 
-	this.movePlayer = function()
-	{
-		//console.log('inside space shooter movePlayer');
-		if (inputManager.upArrowIsBeingHeld)
-		{
-			gameClassManager.currentGame.playerCharacter.y -= spaceShooterPlayerSpeed;
-		}
-		if (inputManager.rightArrowIsBeingHeld)
-		{
-			gameClassManager.currentGame.playerCharacter.x += spaceShooterPlayerSpeed;
-		}
-		if (inputManager.downArrowIsBeingHeld)
-		{
-			gameClassManager.currentGame.playerCharacter.y += spaceShooterPlayerSpeed;
-		}
-		if (inputManager.leftArrowIsBeingHeld)
-		{
-			gameClassManager.currentGame.playerCharacter.x -= spaceShooterPlayerSpeed;
-		}
-		this.handleShipAtCanvasBoundaries();
-	};
-
-	this.handleShipAtCanvasBoundaries = function()
-	{
-			if (gameClassManager.currentGame.playerCharacter.x + this.playerCharacterWidth >= gameCanvas.width)
-			{
-				gameClassManager.currentGame.playerCharacter.x = gameCanvas.width - this.playerCharacterHeight;
-			}
-			if (gameClassManager.currentGame.playerCharacter.x <= 0)
-			{
-				gameClassManager.currentGame.playerCharacter.x = 0;
-			}
-			if (gameClassManager.currentGame.playerCharacter.y + this.playerCharacterHeight >= gameCanvas.height)
-			{
-				gameClassManager.currentGame.playerCharacter.y = gameCanvas.height - this.playerCharacterHeight;
-			}
-			if (gameClassManager.currentGame.playerCharacter.y <= 0)
-			{
-				gameClassManager.currentGame.playerCharacter.y = 0
-			}
-	}
-
 	this.handleSpaceBarDown = function()
 	{
-		arrayOfBullets.push({x:gameClassManager.currentGame.playerCharacter.x + this.playerCharacterWidth,
-												 y:gameClassManager.currentGame.playerCharacter.y + this.playerCharacterHeight/2 - 2});
+		arrayOfBullets.push({x:this.playerCharacter.x + this.playerCharacter.width,
+												 y:this.playerCharacter.y + this.playerCharacter.height/2 - 2});
+	}
+
+	this.handleBulletCollisionsWithAnswers = function()
+	{
+		for (let bulletIndex = 0; bulletIndex < arrayOfBullets.length; bulletIndex++)
+		{
+			if (arrayOfBullets[bulletIndex].x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
+					arrayOfBullets[bulletIndex].x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+				  arrayOfBullets[bulletIndex].y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
+				  arrayOfBullets[bulletIndex].y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100)
+					{
+
+					}
+		}
 	}
 };
 

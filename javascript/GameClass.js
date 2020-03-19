@@ -12,10 +12,10 @@ function GameClass()
   this.initialize = function()
   {
     console.log('initialize function from GameClass');
-	  initializePromptAndAnswerObjects();
-	  gameInterval.reset(this.FRAME_RATE);
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+	  //initializePromptAndAnswerObjects();
+	  //gameInterval.reset(this.FRAME_RATE);
+    //promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    //promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
   };
 
   this.gameFrameRate = undefined;//number
