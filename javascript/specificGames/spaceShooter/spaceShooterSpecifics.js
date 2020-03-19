@@ -9,11 +9,13 @@ spaceShooterGameClass.prototype = new GameClass();
 function spaceShooterGameClass() {
 	this.name = 'spaceShooter';
 	//shots section
-	var arrayOfBullets = [];
+	this.arrayOfBullets = [];
 	var bulletDimensionX = 4;
 	var bulletDimensionY = 4;
 	var bulletSpeed = 7;
 	this.playerCharacter = undefined;
+	this.textAnswerFontSize = '30';
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 	this.titleScreenData = [
 	  {name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270},
 	  {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}
@@ -53,14 +55,15 @@ function spaceShooterGameClass() {
 
 		this.moveAnswers();
 		this.handleAnswersOffScreen();
-		collisionsWithAnswersManager.handleCollisionsWithAnswers();
+		this.handleBulletCollisionsWithAnswers();
+		this.handleBulletsOffScreen();
 	};
 
 	this.moveBullets = function()
 	{
-		for (var bulletIndex = 0; bulletIndex < arrayOfBullets.length; bulletIndex++)
+		for (var bulletIndex = 0; bulletIndex < this.arrayOfBullets.length; bulletIndex++)
 		{
-			arrayOfBullets[bulletIndex].x+=bulletSpeed;
+			this.arrayOfBullets[bulletIndex].x+=bulletSpeed;
 		}
 	}
 
@@ -106,9 +109,9 @@ function spaceShooterGameClass() {
 	this.drawBullets = function()
 	{
 		gameCanvasContext.fillStyle = 'white';
-		for (var bulletIndex = 0; bulletIndex < arrayOfBullets.length; bulletIndex++)
+		for (var bulletIndex = 0; bulletIndex < this.arrayOfBullets.length; bulletIndex++)
 		{
-			gameCanvasContext.fillRect(arrayOfBullets[bulletIndex].x,arrayOfBullets[bulletIndex].y,
+			gameCanvasContext.fillRect(this.arrayOfBullets[bulletIndex].x,this.arrayOfBullets[bulletIndex].y,
 									   bulletDimensionX,bulletDimensionY);
 		}
 	}
@@ -186,21 +189,33 @@ function spaceShooterGameClass() {
 
 	this.handleSpaceBarDown = function()
 	{
-		arrayOfBullets.push({x:this.playerCharacter.x + this.playerCharacter.width,
-												 y:this.playerCharacter.y + this.playerCharacter.height/2 - 2});
+		this.arrayOfBullets.push({x:this.playerCharacter.x + this.playerCharacter.width,
+												 y:this.playerCharacter.y + this.playerCharacter.height/2 - 2,
+											 	 width: bulletDimensionX, height: bulletDimensionY});
+		console.log('this.arrayOfBullets:' + this.arrayOfBullets);
 	}
 
 	this.handleBulletCollisionsWithAnswers = function()
 	{
-		for (let bulletIndex = 0; bulletIndex < arrayOfBullets.length; bulletIndex++)
+		if (this.arrayOfBullets.length !== 0)
 		{
-			if (arrayOfBullets[bulletIndex].x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-					arrayOfBullets[bulletIndex].x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
-				  arrayOfBullets[bulletIndex].y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
-				  arrayOfBullets[bulletIndex].y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100)
-					{
+			console.log('this.arrayOfBullets.length: ' + this.arrayOfBullets.length);
+			for (let bulletIndex = 0; bulletIndex < this.arrayOfBullets.length; bulletIndex++)
+			{
+				console.log('this.arrayOfBullets[bulletIndex].x: ' + this.arrayOfBullets[bulletIndex].x);
+				collisionsWithAnswersManager.handleCollisionsWithAnswers(this.arrayOfBullets[bulletIndex]);
+			}
+		}
+	}
 
-					}
+	this.handleBulletsOffScreen = function()
+	{
+		for (let bulletIndex = 0; bulletIndex < this.arrayOfBullets.length; bulletIndex++)
+		{
+			if (this.arrayOfBullets[bulletIndex].x > gameCanvas.width)
+			{
+				this.arrayOfBullets.splice(this.arrayOfBullets[bulletIndex],1);
+			}
 		}
 	}
 };

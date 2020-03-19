@@ -44,18 +44,35 @@ function CollisionsWithAnswersManager()
 
   this.insideBoxColliderForCorrectStringAnswer = function(collidingObject, correctAnswerWidth, textAnswerFontSize)
   {
-    return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 - currentPlayerCharacter.width &&
-        collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + correctAnswerWidth + 5 + currentPlayerCharacter.width &&
-        collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - currentPlayerCharacter.height &&
-        collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 10 + currentPlayerCharacter.height)
+    console.log('collidingObject.x: ' + collidingObject.x);
+    console.log('collidingObject.y: ' + collidingObject.y);
+    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate);
+    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
+    console.log('correctAnswerWidth: ' + correctAnswerWidth);
+    console.log('textAnswerFontSize: ' + textAnswerFontSize);
+    console.log('collidingObject.width: ' + collidingObject.width);
+    console.log('collidingObject.height: ' + collidingObject.height);
+
+    return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 - collidingObject.width &&
+        collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + correctAnswerWidth + 5 + collidingObject.width &&
+        collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - collidingObject.height &&
+        collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 10 + collidingObject.height)
   }
 
   this.insideBoxColliderForIncorrectStringAnswer = function(collidingObject, incorrectAnswerWidth, textAnswerFontSize)
   {
-    return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 - currentPlayerCharacter.width &&
-        collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + incorrectAnswerWidth + 5 + currentPlayerCharacter.width &&
-        collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - currentPlayerCharacter.height &&
-        collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 10 + currentPlayerCharacter.height)
+    console.log('collidingObject.x: ' + collidingObject.x);
+    console.log('collidingObject.y: ' + collidingObject.y);
+    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate);
+    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
+    console.log('correctAnswerWidth: ' + correctAnswerWidth);
+    console.log('textAnswerFontSize: ' + textAnswerFontSize);
+    console.log('collidingObject.width: ' + collidingObject.width);
+    console.log('collidingObject.height: ' + collidingObject.height);
+    return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 - collidingObject.width &&
+        collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + incorrectAnswerWidth + 5 + collidingObject.width &&
+        collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - collidingObject.height &&
+        collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 10 + collidingObject.height)
   }
 
   this.insideBoxColliderForCorrectImageAnswers = function(collidingObject)
@@ -101,22 +118,19 @@ function CollisionsWithAnswersManager()
     promptersManager.promptThePlayer();
     currentPlayerCharacter.speedX = 0;
     currentPlayerCharacter.speedY = 0;
+
+    if (gameClassManager.currentGame.name === 'spaceShooter')
+    {
+      gameClassManager.currentGame.arrayOfBullets = [];
+    }
   }
 
   let correctAnswerWidth = undefined;
   let incorrectAnswerWidth = undefined;
   let textAnswerFontSize = undefined;
 
-  this.handleCollisionsWithAnswers = function(correctAnswerWidth, incorrectAnswerWidth, textAnswerFontSize)
+  this.handleCollisionsWithAnswers = function(collidingObject, correctAnswerWidth, incorrectAnswerWidth, textAnswerFontSize)
   {
-    let collidingObject = undefined;
-
-    if (gameClassManager.currentGame.collidingObject)
-    {
-      collidingObject = gameClassManager.currentGame.collidingObject;
-    }
-
-    //if ()
 
     if (promptsAndAnswersManager.currentAnswerDataType === 'string')
     {
