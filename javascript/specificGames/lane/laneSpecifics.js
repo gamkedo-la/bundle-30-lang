@@ -14,15 +14,22 @@ function laneGameClass() {
 	this.textAnswerFontSize = 30;
 	this.textAnswerFontStyle = 'px Helvetica';
 
-    this.superInitialize = this.initialize;
-  	this.initialize = function()
+	this.playerCharacter = undefined;
+	this.defineAndInitializePlayerCharacter = function()
 	{
-	  this.playerCharacter = new LaneCarClass();
+		this.playerCharacter = new LaneCarClass();
+		this.collidingObject = this.playerCharacter;
+	}
+
+
+  	this.superInitialize = function()
+	{
+
 		this.collidingObject = this.playerCharacter;
 	  this.background = new LaneBackgroundClass();
 	  this.background.initialize();
 	  this.initializeLanePositions();
-	  //this.superInitialize();
+	  promptsAndAnswersManager.defineXAndYCoordinatesForTargets();
 	};
 
 	this.update = function()

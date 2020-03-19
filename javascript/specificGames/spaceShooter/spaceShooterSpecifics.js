@@ -14,6 +14,12 @@ function spaceShooterGameClass() {
 	var bulletDimensionY = 4;
 	var bulletSpeed = 7;
 	this.playerCharacter = undefined;
+	this.defineAndInitializePlayerCharacter = function()
+	{
+		this.playerCharacter = new Spaceship();
+		this.playerCharacter.initialize();
+	}
+
 	this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 	this.titleScreenData = [
@@ -36,10 +42,6 @@ function spaceShooterGameClass() {
 		this.backgroundPic2XCoordinate = gameCanvas.width;
 		this.jupiter1XCoordinate = gameCanvas.width*0.2;
 		this.jupiter2XCoordinate = gameCanvas.width*0.2 + gameCanvas.width;
-
-		this.playerCharacter = new Spaceship();
-		console.log(this.playerCharacter);
-		this.playerCharacter.initialize();
 
 		initializePromptAndAnswerObjects();
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
@@ -199,10 +201,8 @@ function spaceShooterGameClass() {
 	{
 		if (this.arrayOfBullets.length !== 0)
 		{
-			console.log('this.arrayOfBullets.length: ' + this.arrayOfBullets.length);
 			for (let bulletIndex = 0; bulletIndex < this.arrayOfBullets.length; bulletIndex++)
 			{
-				console.log('this.arrayOfBullets[bulletIndex].x: ' + this.arrayOfBullets[bulletIndex].x);
 				collisionsWithAnswersManager.handleCollisionsWithAnswers(this.arrayOfBullets[bulletIndex]);
 			}
 		}

@@ -11,7 +11,11 @@ function GameClass()
 
   this.initialize = function()
   {
-    console.log('initialize function from GameClass');
+    console.log('inside initialization of GameClass');
+    if (gameClassManager.currentGame.playerCharacter === undefined)
+    {
+      gameClassManager.currentGame.defineAndInitializePlayerCharacter();
+    }
 	  initializePromptAndAnswerObjects();
 	  gameInterval.reset(this.FRAME_RATE);
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
@@ -40,12 +44,11 @@ function GameClassManager()
 
   this.initializeCurrentGame = function()
   {
+    console.log('inside initialization of GameClassManager.initializeCurrentGame');
     this.currentGame.initialize();
-    console.log('inside initialize of gameClassManager');
     if (this.currentGame.superInitialize !== undefined)
     {
       this.currentGame.superInitialize();
-      console.log('should be superInitializing');
     }
   }
 

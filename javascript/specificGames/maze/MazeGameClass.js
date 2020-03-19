@@ -10,12 +10,18 @@ function MazeGameClass(){
 
     this.areAnswersCenteredInCells = false;
 
+    this.playerCharacter = undefined;
+    this.defineAndInitializePlayerCharacter = function()
+    {
+      
+    }
+
     this.titleScreenData = [
         {
-            name: "Maze", 
-            fontSize: 27, 
-            spacing: 15, 
-            x: 37, 
+            name: "Maze",
+            fontSize: 27,
+            spacing: 15,
+            x: 37,
             y: 385
         }
     ];
@@ -48,7 +54,7 @@ function MazeGameClass(){
       promptersManager.drawPromptsWhenAppropriate();
     }
 
-    this.drawBackGround = function () 
+    this.drawBackGround = function ()
     {
         gameCanvasContext.drawImage(mazeFloor, 0, 0, gameCanvas.width, gameCanvas.height);
     }
@@ -97,7 +103,7 @@ function MazeGameClass(){
             y: adjustShifY
         }
     }
-    
+
     this.centerXPositionInCorrespondingCell = function(x) {
         var centerX  = Math.floor(x / CELL_WIDTH);
         centerX *= CELL_WIDTH;

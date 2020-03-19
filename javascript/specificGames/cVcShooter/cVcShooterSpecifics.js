@@ -69,7 +69,6 @@ function cVcShooterGameClass()
 
   this.handleSpaceBarDown = function()
   {
-    console.log('bullet fired from space bar');
     fireBullet();
   }
 }

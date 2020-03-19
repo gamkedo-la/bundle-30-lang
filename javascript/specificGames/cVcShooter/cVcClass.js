@@ -47,7 +47,6 @@ function cVc(firstLetter,secondLetter,thirdLetter, imageAssociation, audioAssoci
   this.initialize = function()
   {
     this.assignLetterPositions();
-    console.log('inside CVC initialization');
     this.defineCollisionRanges();
   }
 

@@ -20,7 +20,6 @@ function CollisionsWithAnswersManager()
         location.href = "javascript/specificGames/balloonPop/index.html";
     //////////////////////////////////////////////////
 
-    console.log(typeof gameClassManager.currentGame);
     if(typeof gameClassManager.currentGame === 'undefined') {
       console.log("COULD NOT FIND currentGame - adding a crude empty placeholder to unblock code");
       gameClassManager.currentGame = snakeGame;
@@ -44,15 +43,6 @@ function CollisionsWithAnswersManager()
 
   this.insideBoxColliderForCorrectStringAnswer = function(collidingObject, correctAnswerWidth, textAnswerFontSize)
   {
-    console.log('collidingObject.x: ' + collidingObject.x);
-    console.log('collidingObject.y: ' + collidingObject.y);
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate);
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
-    console.log('correctAnswerWidth: ' + correctAnswerWidth);
-    console.log('textAnswerFontSize: ' + textAnswerFontSize);
-    console.log('collidingObject.width: ' + collidingObject.width);
-    console.log('collidingObject.height: ' + collidingObject.height);
-
     return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 - collidingObject.width &&
         collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + correctAnswerWidth + 5 + collidingObject.width &&
         collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - collidingObject.height &&
@@ -61,14 +51,6 @@ function CollisionsWithAnswersManager()
 
   this.insideBoxColliderForIncorrectStringAnswer = function(collidingObject, incorrectAnswerWidth, textAnswerFontSize)
   {
-    console.log('collidingObject.x: ' + collidingObject.x);
-    console.log('collidingObject.y: ' + collidingObject.y);
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate);
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
-    console.log('correctAnswerWidth: ' + correctAnswerWidth);
-    console.log('textAnswerFontSize: ' + textAnswerFontSize);
-    console.log('collidingObject.width: ' + collidingObject.width);
-    console.log('collidingObject.height: ' + collidingObject.height);
     return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 - collidingObject.width &&
         collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + incorrectAnswerWidth + 5 + collidingObject.width &&
         collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - collidingObject.height &&

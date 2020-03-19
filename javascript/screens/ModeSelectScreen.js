@@ -87,7 +87,6 @@ function ModeSelectScreen()
     if (inputManager.mouseCoordinates.x > startingX && inputManager.mouseCoordinates.x < startingX + width &&
         inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height)
         {
-          console.log('play button click');
           this.startGame();
         }
   }

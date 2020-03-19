@@ -21,6 +21,11 @@ function flowerGameClass(){
 	this.textAnswerFontStyle = 'px Helvetica';
 
     this.playerCharacter = undefined;
+    this.defineAndInitializePlayerCharacter = function()
+    {
+      this.playerCharacter = new FlowerClass();
+      this.collidingObject = this.playerCharacter;
+    }
     this.background = undefined;
     const SEED_ONE_STARTING_X = 100;
     const SEED_ONE_STARTING_Y = 10;
@@ -43,7 +48,7 @@ function flowerGameClass(){
     this.superInitialize = this.initialize;
     this.initialize = function()
     {
-      this.playerCharacter = new FlowerClass();
+
       this.collidingObject = this.playerCharacter;
       this.background = new FlowerBackgroundClass();
       amountCorrectThisGameSession = amountCorrect;
@@ -142,7 +147,6 @@ function flowerGameClass(){
       }
       if(amountCorrect > amountCorrectThisGameSession){
           amountCorrectThisGameSession = amountCorrect;
-          console.log("amount correct this game session " + amountCorrectThisGameSession);
       }
 
 

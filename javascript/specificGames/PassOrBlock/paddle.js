@@ -36,7 +36,6 @@ function Paddle()
         }
         else
         {
-          console.log('paddle collision with correct answer');
           gameClassManager.currentGame.correctAnswersYSpeed *= -1;
         }
 
@@ -47,7 +46,6 @@ function Paddle()
         }
         else
         {
-          console.log('paddle collision with incorrect answer');
           gameClassManager.currentGame.incorrectAnswersYSpeed *= -1;
         }
   }

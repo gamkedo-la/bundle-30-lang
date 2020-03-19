@@ -12,6 +12,12 @@ function snakeGameClass()
   this.FRAME_RATE = 1000/10;
 
   this.playerCharacter = undefined;
+  this.defineAndInitializePlayerCharacter = function()
+  {
+    this.playerCharacter = new SnakeClass();
+    this.playerCharacter.initialize();
+    this.collidingObject = this.playerCharacter;
+  }
   this.background = undefined;
   this.backButtonColor = 'yellow';
   this.backButtonTextColor = 'blueViolet';

@@ -13,6 +13,10 @@ function frogRiverGameClass()
   this.FRAME_RATE = 1000/30;
 
   this.playerCharacter = undefined;
+  this.defineAndInitializePlayerCharacter = function()
+  {
+    this.playerCharacter = new FrogRiverPlayer();
+  }
   this.background = undefined;
   this.lilyPadManager = undefined;
   this.backButtonColor = 'yellow';
@@ -21,7 +25,6 @@ function frogRiverGameClass()
   this.superInitialize = function()
   {
     console.log('inside superInitialize of frogRiverGame');
-    this.playerCharacter = new FrogRiverPlayer();
     this.background = new FrogRiverBackground();
     this.lilyPadManager = new LilyPadManager();
     this.lilyPadManager.initializeLilyPads();

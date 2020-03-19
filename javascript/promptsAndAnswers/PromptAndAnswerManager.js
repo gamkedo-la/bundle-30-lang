@@ -249,7 +249,6 @@ function PromptsAndAnswersManager()
     let currentPlayerCharacter = gameClassManager.currentGame.playerCharacter;
     //console.log('currentPlayerCharacter.name: ' + currentPlayerCharacter.name);
     randomXCoordinate = getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100, currentPlayerCharacter.x - 40,currentPlayerCharacter.x + 60);
-    console.log('randomXCoordinate: ' + randomXCoordinate);
     randomYCoordinate = getRandomIntWithExclusionaryRange(0,gameCanvas.height - 100, currentPlayerCharacter.y - 40,currentPlayerCharacter.y + 60);
     return {randomXCoordinate,randomYCoordinate};
   }
@@ -367,11 +366,9 @@ function PromptsAndAnswersManager()
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = 0;
     }
     else if(gameClassManager.currentGame.name === "flowerGame"){
-      console.log('inside promptAndAnswersManager function to define x and y coordinates for flower game');
       let randomNumber = Math.random();
       if (randomNumber < 0.5)
       {
-        console.log('flowerGame.seedOneXCoordinate - 25: ' + flowerGame.seedOneXCoordinate);
         this.correctTargetPromptAndAnswerPairing.xCoordinate = flowerGame.seedOneXCoordinate -25;
         this.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
         this.incorrectTargetPromptAndAnswerPairing.xCoordinate = flowerGame.seedTwoXCoordinate-25;
