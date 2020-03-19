@@ -57,6 +57,7 @@ function InputManager()
       {
         case 37://left arrow
         this.leftArrowIsBeingHeld = true;
+        //console.log('this.leftArrowIsBeingHeld: ' + this.leftArrowIsBeingHeld);
         switch(fullGameStateMachine.currentState)
         {
           case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
@@ -158,6 +159,7 @@ function InputManager()
     {
       case 37://left arrow
       this.leftArrowIsBeingHeld = false;
+      //console.log('this.leftArrowIsBeingHeld: ' + this.leftArrowIsBeingHeld);
       switch(fullGameStateMachine.currentState)
       {
         case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
