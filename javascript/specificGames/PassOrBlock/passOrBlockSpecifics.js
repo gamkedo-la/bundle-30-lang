@@ -26,6 +26,7 @@ function PassOrBlockGameClass()
   this.initialize = function()
   {
     this.playerCharacter = new Paddle();
+    this.collidingObject = this.playerCharacter;
     this.background = new PassOrBlockBackground();
 	this.superInitialize();
   }
@@ -35,7 +36,7 @@ function PassOrBlockGameClass()
     this.background.draw();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
-    promptersManager.drawPromptsWhenAppropriate();
+    promptersManager.drawPromptsWhenAppropriate(this.collidingObject);
   }
 
   this.update = function()

@@ -44,6 +44,7 @@ function flowerGameClass(){
     this.initialize = function()
     {
       this.playerCharacter = new FlowerClass();
+      this.collidingObject = this.playerCharacter;
       this.background = new FlowerBackgroundClass();
       amountCorrectThisGameSession = amountCorrect;
       //initialize seeds
@@ -75,7 +76,7 @@ function flowerGameClass(){
         this.moveAnswers();
         this.moveSeeds();
         this.handleAnswersOffScreen();
-        collisionsWithAnswersManager.handleCollisionsWithAnswers();
+        collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
 
       }
     };

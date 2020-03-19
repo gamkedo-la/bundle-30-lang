@@ -27,6 +27,7 @@ function jumperGameClass()
   this.initialize = function()
   {
     this.playerCharacter = new JumperClass();
+    this.collidingObject = this.playerCharacter;
     drawAnswersManager.draw();
 	//this.superInitialize();
   };
@@ -38,7 +39,7 @@ function jumperGameClass()
     {
       this.movePlayer();
       this.handlePlayerWrapping();
-      collisionsWithAnswersManager.handleCollisionsWithAnswers();
+      collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
     }
   };
 

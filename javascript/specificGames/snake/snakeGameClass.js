@@ -27,10 +27,11 @@ function snakeGameClass()
 	  this.playerCharacter = new SnakeClass();
     this.background = new SnakeBackground();
     this.playerCharacter.initialize();
-    //initializePromptAndAnswerObjects();
-    // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    // promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
-	  //this.superInitialize();
+    this.collidingObject = this.playerCharacter;
+    initializePromptAndAnswerObjects();
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+	  this.superInitialize();
   };
 
   //update section
@@ -40,7 +41,7 @@ function snakeGameClass()
         fullGameStateMachine.currentState !== fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame)
     {
       this.playerCharacter.update();
-      collisionsWithAnswersManager.handleCollisionsWithAnswers();
+      collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
     }
   }
 
