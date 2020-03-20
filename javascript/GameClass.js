@@ -16,6 +16,10 @@ function GameClass()
     {
       gameClassManager.currentGame.defineAndInitializePlayerCharacter();
     }
+    if (gameClassManager.currentGame.pregameSpecialCode !== undefined)
+    {
+      gameClassManager.currentGame.pregameSpecialCode();
+    }
 	  initializePromptAndAnswerObjects();
 	  gameInterval.reset(this.FRAME_RATE);
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();

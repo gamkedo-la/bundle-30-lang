@@ -1,6 +1,6 @@
 function LilyPadClass()
 {
-  this.xCoordinate = Math.floor(Math.random()*640);
+  this.xCoordinate = undefined;
   this.yCoordinate = undefined;
 
   this.image = undefined;
@@ -23,6 +23,10 @@ function LilyPadClass()
   this.move = function()
   {
     this.xCoordinate += this.speed*this.direction;
+    if (this.answer !== undefined)
+    {
+      this.answer.xCoordinate += this.speed*this.direction;
+    }
   }
 
   this.handleOffScreen = function()
@@ -31,11 +35,20 @@ function LilyPadClass()
     {
       {
         this.xCoordinate = -50;
+        if (this.answer !== undefined)
+        {
+          this.answer.xCoordinate = -50;
+        }
       }
     }
+
     if (this.xCoordinate < -50)
     {
       this.xCoordinate = 690;
+      if (this.answer !== undefined)
+      {
+        this.answer.xCoordinate = 690;
+      }
     }
   }
 }

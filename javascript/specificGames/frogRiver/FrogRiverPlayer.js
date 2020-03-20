@@ -22,29 +22,57 @@ function FrogRiverPlayer()
 
   this.checkForLilyLanding = function()
   {
-    console.log(this.centerX);
-    for (let arrayOfLilyPadsIndex = 0; arrayOfLilyPadsIndex < frogRiverGame.lilyPadManager.arrayOfLilyPads.length; arrayOfLilyPadsIndex++)
+    let answerCount = frogRiverGame.answerCount;
+    console.log('answerCount: ' + answerCount);
+    let additive = frogRiverGame.additiveToAnswers;
+    console.log('additive: ' + additive);
+    let leftLilyIndex = answerCount + additive;
+    console.log('leftLilyIndex: ' + leftLilyIndex);
+
+
+    for (let i = leftLilyIndex; i < leftLilyIndex + 2; i++)
     {
-      console.log(frogRiverGame.lilyPadManager.arrayOfLilyPads[arrayOfLilyPadsIndex]);
-      if (this.centerX > frogRiverGame.lilyPadManager.arrayOfLilyPads[arrayOfLilyPadsIndex].x &&
-          this.centerX < frogRiverGame.lilyPadManager.arrayOfLilyPads[arrayOfLilyPadsIndex].x + 50 &&
-          this.y - 50 === frogRiverGame.lilyPadManager.arrayOfLilyPads[arrayOfLilyPadsIndex].y //&&
-        /*lilyPadManager.arrayOfLilyPads[arrayOfLilyPadsIndex].letter === currentCorrectLetter*/)
-          {
-            console.log('lily landing detected');
-            this.y -= 50;
-            this.currentLilyPad = frogRiverGame.lilyPadManager.arrayOfLilyPads[arrayOfLilyPadsIndex];
-            //setOrResetCorrectLetterAudio();
-            //correctLetterAudio.play();
-          }
+
+        console.log('i: ' + i);
+        console.log(frogRiverGame.lilyPadManager.arrayOfLilyPads[i]);
+        let lilyToCheck = frogRiverGame.lilyPadManager.arrayOfLilyPads[i];
+        let lilyLeftBoundary = lilyToCheck.xCoordinate;
+        let lilyRightBoundary = lilyLeftBoundary + lilyToCheck.width;
+        let frogCenterPoint = this.centerX;
+
+        if (frogCenterPoint > lilyLeftBoundary && frogCenterPoint < lilyRightBoundary)
+            {
+              this.y = lilyToCheck.yCoordinate + 10;
+              console.log('this.y: ' + this.y);
+              this.currentLilyPad = lilyToCheck;
+              if (answerCount === -1)
+              {
+                frogRiverGame.playerCharacter.currentLilyPad = undefined;
+              }
+
+              if (lilyToCheck.answer === promptsAndAnswersManager.correctTargetPromptAndAnswerPairing)
+              {
+                amountCorrect++;
+              }
+              else
+              {
+                amountIncorrect++;
+              }
+              frogRiverGame.answerCount--;
+              frogRiverGame.additiveToAnswers--;
+              collisionsWithAnswersManager.resetAnswers();
+
+            }
+      }
+
     }
-  }
+
 
   this.currentLilyPad = undefined;
 
   this.moveWhileOnLilyPad = function()
   {
-    if (this.currentLilyPad)
+    if (this.currentLilyPad !== undefined)
     {
       this.x += this.currentLilyPad.speed*this.currentLilyPad.direction;
     }

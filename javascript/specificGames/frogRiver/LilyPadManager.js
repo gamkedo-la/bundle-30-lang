@@ -8,16 +8,25 @@ function LilyPadManager()
 
   this.initializeLilyPads = function()
   {
-    for (let arrayOfLilyPadsIndex = 1; arrayOfLilyPadsIndex < 6; arrayOfLilyPadsIndex++)
+    for (let arrayOfLilyPadsIndex = 0; arrayOfLilyPadsIndex < 5; arrayOfLilyPadsIndex++)
     {
       let lilyPad1 = new LilyPadClass();
-      lilyPad1.yCoordinate = 60 + arrayOfLilyPadsIndex*90;
+      lilyPad1.yCoordinate = 150 + arrayOfLilyPadsIndex*90;
+      lilyPad1.xCoordinate = Math.floor(Math.random()*640);
       let randomNumber = getRandomIntInclusive(0,this.arrayOfLilyPadImages.length - 1);
       lilyPad1.image = this.arrayOfLilyPadImages[randomNumber];
       let lilyPad2 = new LilyPadClass();
+      lilyPad2.xCoordinate = Math.floor(Math.random()*640);
+
+      do
+      {
+        lilyPad2.xCoordinate = Math.floor(Math.random()*640);
+      }
+      while (lilyPad2.xCoordinate > lilyPad1.xCoordinate && lilyPad2.xCoordinate < lilyPad1.xCoordinate + 150)
+
       randomNumber = getRandomIntInclusive(0,this.arrayOfLilyPadImages.length - 1);
       lilyPad2.image = this.arrayOfLilyPadImages[randomNumber];
-      lilyPad2.yCoordinate = 60 + arrayOfLilyPadsIndex*90;
+      lilyPad2.yCoordinate = 150 + arrayOfLilyPadsIndex*90;
 
       if (arrayOfLilyPadsIndex%2 === 0)
       {
