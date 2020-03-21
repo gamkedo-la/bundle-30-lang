@@ -13,6 +13,9 @@ function CellClass(
 
   this.index = (this.rowIndex * numCols) + this.columnIndex;
 
+  this.worldCenterX = this.columnIndex * CELL_WIDTH + CELL_WIDTH / 2;
+  this.worldCenterY = this.rowIndex * CELL_HEIGHT + CELL_HEIGHT / 2;
+
   this.hasBeenVisited = false;
   this.isVisitedByGenerationAlgorithm = false;
 
@@ -86,12 +89,12 @@ function CellClass(
 
   }
 
-  this.getCellCenterPositionInCanvas = function() {
-    return {
-      x: this.columnIndex * CELL_WIDTH + CELL_WIDTH / 2,
-      y: this.rowIndex * CELL_HEIGHT + CELL_HEIGHT / 2
-    };
-  }
+  // this.getCellCenterPositionInCanvas = function() {
+  //   return {
+  //     x: this.columnIndex * CELL_WIDTH + CELL_WIDTH / 2,
+  //     y: this.rowIndex * CELL_HEIGHT + CELL_HEIGHT / 2
+  //   };
+  // }
 
   this.draw = function()
   {

@@ -53,6 +53,9 @@ function MazeGameClass(){
         else if (!this.playerCharacter.isPlaced){
             this.playerCharacter.placeInMazeAndAvoidAnswersCells();
         }
+        else{
+            // this.playerCharacter.move();
+        }
         
     }
 
@@ -140,6 +143,22 @@ function MazeGameClass(){
             x: adjustShifX,
             y: adjustShifY
         }
+    }
+
+    this.handleUpArrowDown = function(){
+        this.playerCharacter.moveUp();
+    }
+
+    this.handleDownArrowDown = function(){
+        this.playerCharacter.moveDown();
+    }
+
+    this.handleLeftArrowDown = function(){
+        this.playerCharacter.moveLeft();
+    }
+
+    this.handleRightArrowDown = function(){
+        this.playerCharacter.moveRight();
     }
 }
 MazeGameClass.prototype = new GameClass();

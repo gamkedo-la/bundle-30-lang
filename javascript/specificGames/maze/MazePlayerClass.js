@@ -1,5 +1,10 @@
+const MIN_DISTANCE_PLAYER_TO_WALL = 10;
+
 function MazePlayer()
 {
+    this.sizeX = Math.min(CELL_WIDTH, CELL_HEIGHT) - 2*WALL_THICKNESS - 5;
+    this.sizeY = Math.min(CELL_WIDTH, CELL_HEIGHT) - 2*WALL_THICKNESS - 5;
+
     this.x = undefined;
     this.y = undefined;
     this.currentCell = undefined;
@@ -22,21 +27,61 @@ function MazePlayer()
     }
 
     this.placeAtCenteOfCurrentCell = function(){
-        var centerOfCurrentCell = this.currentCell.getCellCenterPositionInCanvas();
-        this.x = centerOfCurrentCell.x;
-        this.y = centerOfCurrentCell.y;
+        this.x = this.currentCell.worldCenterX;
+        this.y = this.currentCell.worldCenterY;
     }
 
     this.draw = function() {
         if (this.isPlaced){
+            gameCanvasContext.save()
             gameCanvasContext.fillStyle = "red";
-            gameCanvasContext.beginPath();
-            gameCanvasContext.arc(
-                this.x, this.y, 
-                Math.min(CELL_HEIGHT, CELL_WIDTH)/2 - WALL_THICKNESS,
-                0, 2*Math.PI, true
-            );
-            gameCanvasContext.fill();
+            gameCanvasContext.fillRect(
+                this.x - this.sizeX / 2,
+                this.y - this.sizeY / 2,
+                this.sizeX, this.sizeY
+            )
+            gameCanvasContext.restore();
         }
     }
+
+    this.moveUp = function(){
+        if (!this.currentCell.topWallExist)
+        {
+            this.currentCell = mazeGame.maze.getCellAtIndex(
+                this.currentCell.topNeighboringCellIndex
+            );
+            this.placeAtCenteOfCurrentCell();
+        }
+    }
+
+    this.moveDown = function(){
+        if (!this.currentCell.bottomWallExist)
+        {
+            this.currentCell = mazeGame.maze.getCellAtIndex(
+                this.currentCell.bottomNeighboringCellIndex
+            );
+            this.placeAtCenteOfCurrentCell();
+        }
+    }
+
+    this.moveLeft = function(){
+        if (!this.currentCell.leftWallExist)
+        {
+            this.currentCell = mazeGame.maze.getCellAtIndex(
+                this.currentCell.leftNeighboringCellIndex
+            );
+            this.placeAtCenteOfCurrentCell();
+        }
+    }
+
+    this.moveRight = function(){
+        if (!this.currentCell.rightWallExist)
+        {
+            this.currentCell = mazeGame.maze.getCellAtIndex(
+                this.currentCell.rightNeighboringCellIndex
+            );
+            this.placeAtCenteOfCurrentCell();
+        }
+    }
+
 }
