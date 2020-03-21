@@ -26,7 +26,9 @@ function CellClass(
   this.topWallExist    = true;
   this.bottomWallExist = true;
   this.leftWallExist   = true;
-  this.rightWallExist   = true;
+  this.rightWallExist  = true;
+
+  this.isDeadEnd = false;
 
   this.checkForExistenceOfNeighboringCells = function(numRows, numCols)
   {
@@ -54,6 +56,34 @@ function CellClass(
       this.neighborIdx.push(this.rightNeighboringCellIndex);
     } 
     
+  }
+
+  this.checkIfIsDeadEnd = function(){
+    var numWalls = 0;
+
+    if (this.topWallExist){
+      numWalls++;
+    }
+
+    if (this.bottomWallExist){
+      numWalls++;
+    }
+
+    if (this.leftWallExist){
+      numWalls++;
+    }
+
+    if (this.rightWallExist){
+      numWalls++;
+    }
+
+    if (numWalls == 3){
+      this.isDeadEnd = true;
+    }
+    else {
+      this.isDeadEnd = false;
+    }
+
   }
 
   this.draw = function()

@@ -13,6 +13,8 @@ function MazeClass(){
 
     this.numVisitedCellsByGenerationAlgo = 0;
 
+    this.arrayOfDeadEndCells = [];
+
     this.initializeArrayOfCells = function ()
     {
         for (let rowIndex = 0; rowIndex < NUMBER_OF_ROWS; rowIndex++)
@@ -39,8 +41,18 @@ function MazeClass(){
 
     this.checkIfAllCellsHaveBeenVisited = function() {
         if (this.numVisitedCellsByGenerationAlgo == this.arrayOfCells.length){
+            this.detectDeadEndCells();
             this.currentCellVisitedByGenerationAlgo.isVisitedByGenerationAlgorithm = false;
             this.isGenerationRunning = false;
+        }
+    }
+
+    this.detectDeadEndCells = function () {
+        for (var i = 0 ; i < this.arrayOfCells.length ; i++){
+            var cell = this.arrayOfCells[i];
+            if (cell.isDeadEnd){
+                this.arrayOfDeadEndCells.push(cell);
+            }
         }
     }
 
@@ -52,6 +64,7 @@ function MazeClass(){
                 this.currentCellVisitedByGenerationAlgo, nextCellToVisit
             ); 
         }
+        this.currentCellVisitedByGenerationAlgo.checkIfIsDeadEnd();
         this.markCurrentCellAsVisited();
         this.moveFromCurrentCellTo(nextCellToVisit);
     }
@@ -129,6 +142,7 @@ function MazeClass(){
         this.currentCellVisitedByGenerationAlgo.isVisitedByGenerationAlgorithm = true;
         this.isGenerationInitialized = true;
     }
+
 
     this.drawCells = function ()
     {
