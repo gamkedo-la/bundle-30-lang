@@ -93,7 +93,6 @@ function CollisionsWithAnswersManager()
   {
     promptersManager.currentPrompter.currentWidth = 150;
     promptersManager.currentPrompter.currentHeight = 150;
-    audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
     initializePromptAndAnswerObjects();
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
@@ -128,6 +127,7 @@ function CollisionsWithAnswersManager()
       if (this.insideBoxColliderForCorrectStringAnswer(collidingObject, correctAnswerWidth, textAnswerFontSize))
         {
           this.resetAnswers();
+		  audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
           amountCorrect++;
           if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
           {
@@ -137,6 +137,7 @@ function CollisionsWithAnswersManager()
       else if (this.insideBoxColliderForIncorrectStringAnswer(collidingObject, incorrectAnswerWidth, textAnswerFontSize))
         {
           this.resetAnswers();
+		  audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
           amountIncorrect++;
           if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
           {
@@ -151,6 +152,7 @@ function CollisionsWithAnswersManager()
       if (this.insideBoxColliderForCorrectImageAnswers(collidingObject))
         {
           this.resetAnswers();
+		  audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
           amountCorrect++;
           if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
           {
@@ -160,6 +162,7 @@ function CollisionsWithAnswersManager()
       else if (this.insideBoxColliderForIncorrectImageAnswers(collidingObject))
         {
           this.resetAnswers();
+		  audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
           amountIncorrect++;
           if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
           {
@@ -173,6 +176,7 @@ function CollisionsWithAnswersManager()
       if (this.insideBoxColliderForCorrectAudioAnswer(collidingObject))
         {
             this.resetAnswers();
+		    audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
             amountCorrect++;
             if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
             {
@@ -182,6 +186,7 @@ function CollisionsWithAnswersManager()
       else if (this.insideBoxColliderForIncorrectAudioAnswer(collidingObject))
         {
           this.resetAnswers();
+		  audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
           amountIncorrect++;
           if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
           {
