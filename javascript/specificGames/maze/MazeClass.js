@@ -151,6 +151,14 @@ function MazeClass(){
             this.arrayOfCells[currentCellIndex].draw();
         }
     }
+
+    this.getCellAtIndex = function(index){
+        return this.arrayOfCells[index]
+    }
+
+    this.getRandomCell = function() {
+        return getRandomElementFromArray(this.arrayOfCells);
+    }
 }
 
 var maze = new MazeClass();

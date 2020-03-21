@@ -15,7 +15,8 @@ function MazeGameClass(){
     this.playerCharacter = undefined;
     this.defineAndInitializePlayerCharacter = function()
     {
-      
+        this.playerCharacter = new MazePlayer();
+        this.playerCharacter.isPlaced = false;
     }
 
     this.titleScreenData = [
@@ -49,6 +50,10 @@ function MazeGameClass(){
 
             this.areAnswersPlacedInDeadEndCells = true;
         }
+        else if (!this.playerCharacter.isPlaced){
+            this.playerCharacter.placeInMazeAndAvoidAnswersCells();
+        }
+        
     }
 
     this.draw = function()
@@ -58,29 +63,35 @@ function MazeGameClass(){
         if (this.areAnswersPlacedInDeadEndCells){
             drawAnswersManager.draw();
         }
+        
+        this.playerCharacter.draw();
 
         promptersManager.drawPromptsWhenAppropriate();
 
         // FOR DEBUG
-        // gameCanvasContext.save();
-        // gameCanvasContext.font = "15px Arial"
-        // gameCanvasContext.fillStyle = "gold";
-        // gameCanvasContext.fillText(
-        //     "( " + inputManager.mouseCoordinates.x +
-        //     " , " + inputManager.mouseCoordinates.y +
-        //     " )",
-        //     inputManager.mouseCoordinates.x,
-        //     inputManager.mouseCoordinates.y
-        // );
-        // gameCanvasContext.fillStyle = "red";
-        // gameCanvasContext.fillText(
-        //     "( "  + Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) +
-        //     " , " + Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)+
-        //     " )",
-        //     inputManager.mouseCoordinates.x,
-        //     inputManager.mouseCoordinates.y + 20
-        // );
-        // gameCanvasContext.restore();
+        gameCanvasContext.save();
+        gameCanvasContext.font = "15px Arial"
+        gameCanvasContext.fillStyle = "gold";
+        gameCanvasContext.fillText(
+            "( " + inputManager.mouseCoordinates.x +
+            " , " + inputManager.mouseCoordinates.y +
+            " )",
+            inputManager.mouseCoordinates.x + 10,
+            inputManager.mouseCoordinates.y
+        );
+        gameCanvasContext.fillStyle = "red";
+        gameCanvasContext.fillText(
+            (
+                Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) * NUMBER_OF_COLUMNS + 
+                Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)
+            ) + " : " +
+            "( "  + Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) +
+            " , " + Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)+
+            " )",
+            inputManager.mouseCoordinates.x + 10,
+            inputManager.mouseCoordinates.y + 20
+        );
+        gameCanvasContext.restore();
     }
 
     this.drawBackGround = function ()

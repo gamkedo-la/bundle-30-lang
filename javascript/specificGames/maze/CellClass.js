@@ -86,6 +86,13 @@ function CellClass(
 
   }
 
+  this.getCellCenterPositionInCanvas = function() {
+    return {
+      x: this.columnIndex * CELL_WIDTH + CELL_WIDTH / 2,
+      y: this.rowIndex * CELL_HEIGHT + CELL_HEIGHT / 2
+    };
+  }
+
   this.draw = function()
   {
     var xCoordinate = this.columnIndex * CELL_WIDTH;
