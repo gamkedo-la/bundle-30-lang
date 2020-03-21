@@ -32,6 +32,12 @@ function MazeGameClass(){
     this.superInitialize = function () {
         this.maze = new MazeClass();
         this.maze.initializeArrayOfCells();
+        this.isGenerationAlgoRunning = true;
+        this.isGamePlaying = false;
+
+        this.deadEndCellForCorrectAnswer = undefined
+        this.deadEndCellForIncorrectAnswer = undefined
+        this.areAnswersPlacedInDeadEndCells = false;
     }
 
     this.update = function (){
@@ -54,7 +60,7 @@ function MazeGameClass(){
             this.playerCharacter.placeInMazeAndAvoidAnswersCells();
         }
         else{
-            // this.playerCharacter.move();
+            collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
         }
         
     }
@@ -72,29 +78,29 @@ function MazeGameClass(){
         promptersManager.drawPromptsWhenAppropriate();
 
         // FOR DEBUG
-        gameCanvasContext.save();
-        gameCanvasContext.font = "15px Arial"
-        gameCanvasContext.fillStyle = "gold";
-        gameCanvasContext.fillText(
-            "( " + inputManager.mouseCoordinates.x +
-            " , " + inputManager.mouseCoordinates.y +
-            " )",
-            inputManager.mouseCoordinates.x + 10,
-            inputManager.mouseCoordinates.y
-        );
-        gameCanvasContext.fillStyle = "red";
-        gameCanvasContext.fillText(
-            (
-                Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) * NUMBER_OF_COLUMNS + 
-                Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)
-            ) + " : " +
-            "( "  + Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) +
-            " , " + Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)+
-            " )",
-            inputManager.mouseCoordinates.x + 10,
-            inputManager.mouseCoordinates.y + 20
-        );
-        gameCanvasContext.restore();
+        // gameCanvasContext.save();
+        // gameCanvasContext.font = "15px Arial"
+        // gameCanvasContext.fillStyle = "gold";
+        // gameCanvasContext.fillText(
+        //     "( " + inputManager.mouseCoordinates.x +
+        //     " , " + inputManager.mouseCoordinates.y +
+        //     " )",
+        //     inputManager.mouseCoordinates.x + 10,
+        //     inputManager.mouseCoordinates.y
+        // );
+        // gameCanvasContext.fillStyle = "red";
+        // gameCanvasContext.fillText(
+        //     (
+        //         Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) * NUMBER_OF_COLUMNS + 
+        //         Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)
+        //     ) + " : " +
+        //     "( "  + Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) +
+        //     " , " + Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)+
+        //     " )",
+        //     inputManager.mouseCoordinates.x + 10,
+        //     inputManager.mouseCoordinates.y + 20
+        // );
+        // gameCanvasContext.restore();
     }
 
     this.drawBackGround = function ()
@@ -105,8 +111,15 @@ function MazeGameClass(){
     this.selectDeadEndCellsForAnswers = function () {
 
         this.deadEndCellForCorrectAnswer = getRandomElementFromArray(this.maze.arrayOfDeadEndCells);
+        while (this.deadEndCellForCorrectAnswer.isOccupiedByPlayer){
+            this.deadEndCellForCorrectAnswer = getRandomElementFromArray(this.maze.arrayOfDeadEndCells);
+        }
+
         this.deadEndCellForIncorrectAnswer = getRandomElementFromArray(this.maze.arrayOfDeadEndCells);
-        while (this.deadEndCellForCorrectAnswer.index == this.deadEndCellForIncorrectAnswer.index) {
+        while (
+            this.deadEndCellForCorrectAnswer.index == this.deadEndCellForIncorrectAnswer.index ||
+            this.deadEndCellForCorrectAnswer.isOccupiedByPlayer
+        ) {
             this.deadEndCellForIncorrectAnswer = getRandomElementFromArray(this.maze.arrayOfDeadEndCells);
         }
     }

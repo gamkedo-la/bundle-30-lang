@@ -22,6 +22,7 @@ function MazePlayer()
         {
             this.currentCell = getRandomElementFromArray(mazeGame.maze);
         }
+        this.currentCell.isOccupiedByPlayer = true;
         this.placeAtCenteOfCurrentCell();
         this.isPlaced = true;
     }
@@ -47,7 +48,7 @@ function MazePlayer()
     this.moveUp = function(){
         if (!this.currentCell.topWallExist)
         {
-            this.currentCell = mazeGame.maze.getCellAtIndex(
+            this.movePlayerToCellAtIndex(
                 this.currentCell.topNeighboringCellIndex
             );
             this.placeAtCenteOfCurrentCell();
@@ -57,7 +58,7 @@ function MazePlayer()
     this.moveDown = function(){
         if (!this.currentCell.bottomWallExist)
         {
-            this.currentCell = mazeGame.maze.getCellAtIndex(
+            this.movePlayerToCellAtIndex(
                 this.currentCell.bottomNeighboringCellIndex
             );
             this.placeAtCenteOfCurrentCell();
@@ -67,7 +68,7 @@ function MazePlayer()
     this.moveLeft = function(){
         if (!this.currentCell.leftWallExist)
         {
-            this.currentCell = mazeGame.maze.getCellAtIndex(
+            this.movePlayerToCellAtIndex(
                 this.currentCell.leftNeighboringCellIndex
             );
             this.placeAtCenteOfCurrentCell();
@@ -77,11 +78,17 @@ function MazePlayer()
     this.moveRight = function(){
         if (!this.currentCell.rightWallExist)
         {
-            this.currentCell = mazeGame.maze.getCellAtIndex(
+            this.movePlayerToCellAtIndex(
                 this.currentCell.rightNeighboringCellIndex
             );
             this.placeAtCenteOfCurrentCell();
         }
+    }
+
+    this.movePlayerToCellAtIndex = function(index){
+        this.currentCell.isOccupiedByPlayer = false;
+        this.currentCell = mazeGame.maze.getCellAtIndex(index);
+        this.currentCell.isOccupiedByPlayer = true;
     }
 
 }

@@ -104,6 +104,10 @@ function CollisionsWithAnswersManager()
     {
       gameClassManager.currentGame.arrayOfBullets = [];
     }
+    else if (gameClassManager.currentGame.name == "MazeGame")
+    {
+      gameClassManager.currentGame.areAnswersPlacedInDeadEndCells = false;
+    }
   }
 
   let correctAnswerWidth = undefined;

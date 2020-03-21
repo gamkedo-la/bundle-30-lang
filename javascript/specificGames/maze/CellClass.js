@@ -33,6 +33,8 @@ function CellClass(
 
   this.isDeadEnd = false;
 
+  this.isOccupiedByPlayer = false;
+
   this.checkForExistenceOfNeighboringCells = function(numRows, numCols)
   {
     if (rowIndex > 0)
