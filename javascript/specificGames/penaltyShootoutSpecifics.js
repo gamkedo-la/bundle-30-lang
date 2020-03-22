@@ -33,7 +33,9 @@ function penaltyGameClass(){
         this.drawLettersAndCorrectSide();
         this.superInitialize();
     };
+    this.defineAndInitializePlayerCharacter = function () {
 
+    };
 
     this.handleLeftArrowDown = function(){
         if (this.currentState === penaltyGameState.DecisionState) {
@@ -51,6 +53,22 @@ function penaltyGameClass(){
       }
     };
 
+    this.handleUpArrowDown = function(){
+      if (this.currentState === penaltyGameState.DecisionState) {
+        console.log("upArrowPressed");
+        this.selectedSide = this.sides.middle;
+        this.changeState();
+      }
+    };
+
+    this.handleDownArrowDown = function(){
+      if (this.currentState === penaltyGameState.DecisionState) {
+        console.log("downArrowPressed");
+        this.selectedSide = this.sides.middle;
+        this.changeState();
+      }
+    };
+
     this.frameRate = 1000/30;
     this.letterSpawnInterval = 2000;
 
@@ -62,7 +80,7 @@ function penaltyGameClass(){
     this.update = function(){
         this.draw();
         this.movePlayer();
-        collisionsWithAnswersManager.handleCollisionsWithAnswers();
+        //collisionsWithAnswersManager.handleCollisionsWithAnswers();
     };
 
     this.movePlayer = function(){
@@ -110,7 +128,7 @@ function penaltyGameClass(){
     this.changeState = function(){
       switch (this.currentState) {
         case penaltyGameState.DecisionState:
-          if (this.correctSide === this.selectedSide) {
+          if (this.correctSide === this.selectedSide.number) {
             console.log("Right Choice");
           }
           else {
@@ -120,6 +138,7 @@ function penaltyGameClass(){
           this.ResetStrikerAndGoalKeeper();
           this.currentState = penaltyGameState.PenaltyShootingState;
           this.setCorrectSide();
+          setTimeout(stateChanger, 2000, this);
           break;
         case penaltyGameState.PenaltyShootingState:
           this.ResetSelectionScreen();
@@ -145,8 +164,9 @@ function penaltyGameClass(){
 
     this.drawShootingAnimation = function(){
      // TODO: animation drawing not implemented yet. So this function only switches to the other state at the moment.
-     this.changeState();
     }
 }
-
+function stateChanger(objWhoseStateShouldChange) {
+    penaltyGame.changeState();
+}
 var penaltyGame = new penaltyGameClass();
