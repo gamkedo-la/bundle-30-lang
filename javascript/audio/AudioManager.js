@@ -37,7 +37,7 @@ function AudioManager()
     // game specific sound effects
     this.balloonPopSound = document.createElement("AUDIO");
     this.bubbleWrapPopSound = document.createElement("AUDIO");
-    
+
     this.pinataEatSound = document.createElement("AUDIO");
     this.pinataHitSound = document.createElement("AUDIO");
     this.pinataFailSound = undefined;
@@ -124,6 +124,7 @@ function AudioManager()
                               audioManager.currentBackgroundMusic.play();
                           }}, false);
           audioManager.currentBackgroundMusic.play();
+          audioManager.currentBackgroundMusic.volume = 0; //for meetings
           console.log('not on a server, standard HTML5 audio tag should be playing');
         }
       }

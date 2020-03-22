@@ -14,6 +14,7 @@ function LoadingAndSplashScreen()
     audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
     audioManager.currentBackgroundMusic = audioManager.titleScreenMusic;
     audioManager.currentBackgroundMusic.play();
+    audioManager.currentBackgroundMusic.volume = 0;// for meetings
     audioManager.currentBackgroundMusic.loop = true;
     gameInterval.start();
 
