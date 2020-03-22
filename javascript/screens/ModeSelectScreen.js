@@ -101,6 +101,7 @@ function ModeSelectScreen()
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
     collisionsWithAnswersManager.initialize();
     audioManager.transitionToLevelMusic1.play();
+    audioManager.transitionToLevelMusic1.volume = 0;// for meetings
   }
 
   this.drawBackground = function()
