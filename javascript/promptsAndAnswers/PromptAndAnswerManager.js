@@ -137,19 +137,24 @@ function PromptsAndAnswersManager()
 
   this.defineWidthAndHeightForTargetAnswers = function()
   {
-    if (this.currentAnswerDataType === "AUDIO" || this.currentAnswerDataType === "IMG")
+    if (this.currentAnswerDataType === "AUDIO")
     {
-      this.correctTargetPromptAndAnswerPairing.width = drawAnswersManager.imageWidth;
-      this.incorrectTargetPromptAndAnswerPairing.width = drawAnswersManager.imageWidth;
-      this.correctTargetPromptAndAnswerPairing.height = drawAnswersManager.imageHeight;
-      this.incorrectTargetPromptAndAnswerPairing.height = drawAnswersManager.imageHeight;
+      this.correctTargetPromptAndAnswerPairing.width = drawAnswersManager.audioImageAnswerWidth;
+      this.incorrectTargetPromptAndAnswerPairing.width = drawAnswersManager.audioImageAnswerWidth;
+      this.correctTargetPromptAndAnswerPairing.height = drawAnswersManager.audioImageAnswerHeight;
+      this.incorrectTargetPromptAndAnswerPairing.height = drawAnswersManager.audioImageAnswerHeight;
+    }
+    else if (this.currentAnswerDataType === "IMG")
+    {
+      this.correctTargetPromptAndAnswerPairing.width = drawAnswersManager.imageAnswerWidth;
+      this.incorrectTargetPromptAndAnswerPairing.width = drawAnswersManager.imageAnswerWidth;
+      this.correctTargetPromptAndAnswerPairing.height = drawAnswersManager.imageAnswerHeight;
+      this.incorrectTargetPromptAndAnswerPairing.height = drawAnswersManager.imageAnswerHeight;
     }
     else if (this.currentAnswerDataType === 'string')
     {
-      this.correctTargetPromptAndAnswerPairing.width =
-      gameCanvasContext.measureText(this.correctTargetPromptAndAnswerPairing.textAssociation).width;
-      this.incorrectTargetPromptAndAnswerPairing.width =
-      gameCanvasContext.measureText(this.incorrectTargetPromptAndAnswerPairing.textAssociation).width;
+      this.correctTargetPromptAndAnswerPairing.width = this.getCorrectAnswerWidthFromFontStyle(drawAnswersManager.fontStyle);
+      this.incorrectTargetPromptAndAnswerPairing.width = this.getIncorrectAnswerWidthFromFontStyle(drawAnswersManager.fontStyle);
       this.correctTargetPromptAndAnswerPairing.height = 20;//measureText does not provide height
       this.incorrectTargetPromptAndAnswerPairing.height = 20;//measureText does not provide height
     }
@@ -206,8 +211,11 @@ function PromptsAndAnswersManager()
   }
 
   this.getTextWidthFromFontStyle = function(text, fontStyle){
+    gameCanvasContext.save();
     gameCanvasContext.font = fontStyle;
-    return gameCanvasContext.measureText(text).width;
+    var textWidth = gameCanvasContext.measureText(text).width
+    gameCanvasContext.restore();
+    return textWidth;
   }
 
   this.getCorrectAnswerWidthFromFontStyle = function(fontStyle){

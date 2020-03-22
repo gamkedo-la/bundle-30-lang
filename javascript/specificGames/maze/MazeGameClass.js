@@ -12,8 +12,15 @@ function MazeGameClass(){
     this.deadEndCellForIncorrectAnswer = undefined
     this.areAnswersPlacedInDeadEndCells = false;
 
-    this.textAnswerFontSize = 30;
+    this.textAnswerFontSize = 20;
     this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+
+    this.imageAnswerWidth = 50;
+    this.imageAnswerHeight = 50;
+    this.audioImageAnswerWidth = 50;
+    this.audioImageAnswerHeight = 50;
+
+    this.LETTER_COLOR = "gold";
 
     this.playerCharacter = undefined;
     this.defineAndInitializePlayerCharacter = function()
@@ -65,7 +72,6 @@ function MazeGameClass(){
         else{
             collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
         }
-        
     }
 
     this.draw = function()

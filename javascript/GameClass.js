@@ -21,12 +21,22 @@ function GameClass()
       gameClassManager.currentGame.pregameSpecialCode();
     }
 	  initializePromptAndAnswerObjects();
-	  gameInterval.reset(this.FRAME_RATE);
+    gameInterval.reset(this.FRAME_RATE);
+    drawAnswersManager.initialize();
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
   };
 
   this.gameFrameRate = undefined;//number
+  
+  this.imageAnswerWidth = 100;
+  this.imageAnswerHeight = 100;
+  this.audioImageAnswerWidth = 100;
+  this.audioImageAnswerHeight = 100;
+
+  this.textAnswerFontSize  = 30;
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+  
   this.update = function(){};
   this.draw = function(){};
 }
