@@ -12,6 +12,9 @@ function MazeGameClass(){
     this.deadEndCellForIncorrectAnswer = undefined
     this.areAnswersPlacedInDeadEndCells = false;
 
+    this.textAnswerFontSize = 30;
+    this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+
     this.playerCharacter = undefined;
     this.defineAndInitializePlayerCharacter = function()
     {
@@ -145,6 +148,7 @@ function MazeGameClass(){
             var answerWidth = promptsAndAnswersManager.getTextWidthFromFontStyle(
                 answer.textAssociation, drawAnswersManager.textAnswerFontStyle
             );
+
             adjustShifX = answerWidth / 2;
         }
         else {
