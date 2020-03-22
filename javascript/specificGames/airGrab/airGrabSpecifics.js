@@ -11,6 +11,14 @@ function AirGrabGameClass()
 	  {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}
 	];
 
+  this.playerCharacter = undefined;
+  this.defineAndInitializePlayerCharacter = function()
+  {
+    this.playerCharacter = new GrabberPlayer();
+    this.playerCharacter.initialize();
+    this.collidingObject = this.playerCharacter;
+  }
+
   this.background = undefined;
 
   this.superInitialize = function()
@@ -21,6 +29,7 @@ function AirGrabGameClass()
   this.draw = function()
   {
     this.background.draw();
+    this.playerCharacter.draw();
   }
 
   this.update = function()
