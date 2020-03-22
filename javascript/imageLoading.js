@@ -231,7 +231,7 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: airBoothImage, theFile: "images/Backgrounds/airBooth.png"});
   arrayOfImages.push({imageObjectBinding: armlessBodyImage, theFile: "images/sprites/air grab/armlessBody.png"});
   arrayOfImages.push({imageObjectBinding: leftArmImage, theFile: "images/sprites/air grab/leftArm.png"});
-  arrayOfImages.push({imageObjectBinding: rightArmImage, theFile: "images/sprites/air grab/rightArm.png"});
+  arrayOfImages.push({imageObjectBinding: rightArmImage, theFile: "images/sprites/air grab/leftArm.png"});
 
 
   //frog
