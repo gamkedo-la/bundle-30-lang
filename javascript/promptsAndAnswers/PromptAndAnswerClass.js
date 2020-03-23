@@ -9,6 +9,11 @@ let womanVersusWomenPairGrouping = {};
 let manVersusMenPairGrouping = {};
 let heVersusShePairGrouping = {};
 
+let 买promptAndAnswer = {};//'buy' in English
+let 卖promptAndAnswer = {};//'sell' in English
+
+let 买Versus卖PairGrouping = {};
+
 function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, audioAssociation)
 {
   this.name = nameString;
@@ -62,4 +67,6 @@ function initializePromptAndAnswerObjects()
   heVersusShePairGrouping.arrayOfObjects.push(hePromptAndAnswer);
   heVersusShePairGrouping.arrayOfObjects.push(shePromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(heVersusShePairGrouping);
+
+  买promptAndAnswer = new PromptAndAnswerClass('买','买', )
 }
