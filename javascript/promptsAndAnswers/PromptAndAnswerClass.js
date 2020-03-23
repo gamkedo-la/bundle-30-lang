@@ -69,8 +69,8 @@ function initializePromptAndAnswerObjects()
   heVersusShePairGrouping.arrayOfObjects.push(shePromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(heVersusShePairGrouping);
 
-  mandarinBuyPromptAndAnswer = new PromptAndAnswerClass('mandarinBuy','mandarinBuy', mandarinBuyImage, audioManager.mandarinBuyAudio);
-  mandarinSellPromptAndAnswer = new PromptAndAnswerClass('mandarinSell','mandarinSell', mandarinSellImage, audioManager.mandarinSellAudio);
+  mandarinBuyPromptAndAnswer = new PromptAndAnswerClass('买','买', mandarinBuyImage, audioManager.mandarinBuyAudio);
+  mandarinSellPromptAndAnswer = new PromptAndAnswerClass('卖','卖', mandarinSellImage, audioManager.mandarinSellAudio);
   mandarinBuyVersusMandarinSellPairGrouping.arrayOfObjects.push(mandarinBuyPromptAndAnswer);
   mandarinBuyVersusMandarinSellPairGrouping.arrayOfObjects.push(mandarinSellPromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(mandarinBuyVersusMandarinSellPairGrouping);
