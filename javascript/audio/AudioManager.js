@@ -14,8 +14,8 @@ function AudioManager()
     this.heAudio = document.createElement("AUDIO");
     this.sheAudio = document.createElement("AUDIO");
 
-    this.买audio = document.createElement("AUDIO");//'buy' in English
-    this.卖audio = document.createElement("AUDIO");//'sell' in English
+    this.mandarinBuyAudio = document.createElement("AUDIO");//'buy' in English
+    this.mandarinSellAudio = document.createElement("AUDIO");//'sell' in English
 
     this.blendedCat = document.createElement("AUDIO");
     this.blendedCot = document.createElement("AUDIO");
@@ -65,8 +65,8 @@ function AudioManager()
       this.blendedCat.src = 'audio/PromptsAndAnswers/blendedCat.mp3';
       this.blendedCot.src = 'audio/PromptsAndAnswers/blendedCot.mp3';
 
-      this.买audio.src = 'audio/PromptsAndAnswers/买.mp3';
-      this.卖audio.src = 'audio/PromptsAndAnswers/卖.mp3';
+      this.mandarinBuyAudio.src = 'audio/PromptsAndAnswers/Mandarin/mandarinBuy.mp3';
+      this.mandarinSellAudio.src = 'audio/PromptsAndAnswers/Mandarin/mandarinSell.mp3';
 
       //gameplay feedback
       this.generalPositiveFeedbackSound1.src = "audio/Positive_01.mp3";

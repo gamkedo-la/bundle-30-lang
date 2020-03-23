@@ -9,10 +9,10 @@ let womanVersusWomenPairGrouping = {};
 let manVersusMenPairGrouping = {};
 let heVersusShePairGrouping = {};
 
-let 买promptAndAnswer = {};//'buy' in English
-let 卖promptAndAnswer = {};//'sell' in English
+let mandarinBuyPromptAndAnswer = {};//'buy' in English
+let mandarinSellPromptAndAnswer = {};//'sell' in English
 
-let 买Versus卖PairGrouping = {};
+let mandarinBuyVersusMandarinSellPairGrouping = {};
 
 function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, audioAssociation)
 {
@@ -49,6 +49,7 @@ function initializePromptAndAnswerObjects()
   womanVersusWomenPairGrouping = {name: 'woman vs women', arrayOfObjects: []};
   manVersusMenPairGrouping = {name: 'man vs men', arrayOfObjects: []};
   heVersusShePairGrouping = {name: 'he vs she', arrayOfObjects: []};
+  mandarinBuyVersusMandarinSellPairGrouping = {name: 'mandarin buy vs sell', arrayOfObjects:[]};
 
   womanPromptAndAnswer = new PromptAndAnswerClass('woman', 'woman', womanImage, audioManager.womanAudio);
   womenPromptAndAnswer = new PromptAndAnswerClass('women', 'women', womenImage, audioManager.womenAudio);
@@ -68,5 +69,9 @@ function initializePromptAndAnswerObjects()
   heVersusShePairGrouping.arrayOfObjects.push(shePromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(heVersusShePairGrouping);
 
-  买promptAndAnswer = new PromptAndAnswerClass('买','买', )
+  mandarinBuyPromptAndAnswer = new PromptAndAnswerClass('mandarinBuy','mandarinBuy', mandarinBuyImage, audioManager.mandarinBuyAudio);
+  mandarinSellPromptAndAnswer = new PromptAndAnswerClass('mandarinSell','mandarinSell', mandarinSellImage, audioManager.mandarinSellAudio);
+  mandarinBuyVersusMandarinSellPairGrouping.arrayOfObjects.push(mandarinBuyPromptAndAnswer);
+  mandarinBuyVersusMandarinSellPairGrouping.arrayOfObjects.push(mandarinSellPromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(mandarinBuyVersusMandarinSellPairGrouping);
 }

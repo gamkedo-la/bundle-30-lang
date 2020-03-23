@@ -11,8 +11,8 @@ let sheImage = document.createElement("img");
 let cotImage = document.createElement("img");
 let catImage = document.createElement("img");
 
-let 买image = document.createElement("img");//'buy' in English
-let 卖image = document.createElement("img");//'sell' in English
+let mandarinBuyImage = document.createElement("img");//'buy' in English
+let mandarinSellImage = document.createElement("img");//'sell' in English
 
 //runner images
 let runnerSunAndSkyBackgroundImage = document.createElement("img");
@@ -180,8 +180,8 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: catImage, theFile: 'images/sprites/PromptsAndAnswers/cat.png'});
   arrayOfImages.push({imageObjectBinding: cotImage, theFile: 'images/sprites/PromptsAndAnswers/cot.png'});
 
-  arrayOfImages.push({imageObjectBinding: 买image, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/买.png'});//'buy' in English
-  arrayOfImages.push({imageObjectBinding: 卖image, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/卖.png'});//'sell' in English
+  arrayOfImages.push({imageObjectBinding: mandarinBuyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinBuy.png'});//'buy' in English
+  arrayOfImages.push({imageObjectBinding: mandarinSellImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinSell.png'});//'sell' in English
 
 
   //runner game
