@@ -152,6 +152,8 @@ pill/pale/peel,
 158. big/bag
 159. small/smile/smell
 160. where/we're
+161. clock/cock
+162. left/felt
 
 spelling - 
 1. was/saw
