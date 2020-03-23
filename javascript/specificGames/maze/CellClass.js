@@ -91,12 +91,16 @@ function CellClass(
 
   }
 
-  // this.getCellCenterPositionInCanvas = function() {
-  //   return {
-  //     x: this.columnIndex * CELL_WIDTH + CELL_WIDTH / 2,
-  //     y: this.rowIndex * CELL_HEIGHT + CELL_HEIGHT / 2
-  //   };
-  // }
+  this.reset = function() {
+    this.topWallExist    = true;
+    this.bottomWallExist = true;
+    this.leftWallExist   = true;
+    this.rightWallExist  = true;
+    this.isDeadEnd = false;
+    this.isOccupiedByPlayer = false;
+    this.hasBeenVisited = false;
+    this.isVisitedByGenerationAlgorithm = false;
+  }
 
   this.draw = function()
   {

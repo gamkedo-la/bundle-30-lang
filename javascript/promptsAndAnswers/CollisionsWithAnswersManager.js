@@ -106,7 +106,7 @@ function CollisionsWithAnswersManager()
     }
     else if (gameClassManager.currentGame.name == "MazeGame")
     {
-      gameClassManager.currentGame.areAnswersPlacedInDeadEndCells = false;
+      gameClassManager.currentGame.reset();
     }
   }
 

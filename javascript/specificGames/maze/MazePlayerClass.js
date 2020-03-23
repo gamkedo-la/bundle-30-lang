@@ -13,6 +13,15 @@ function MazePlayer()
     this.speedY = 10;
     this.isPlaced = false;
 
+    this.resetPosition = function (){
+        this.x = undefined;
+        this.y = undefined;
+        this.currentCell = undefined;
+        
+        this.isPlaced = false;
+    }
+
+
     this.placeInMazeAndAvoidAnswersCells = function() {
         this.currentCell = mazeGame.maze.getRandomCell();
         

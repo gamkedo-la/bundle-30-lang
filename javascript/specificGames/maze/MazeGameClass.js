@@ -74,10 +74,23 @@ function MazeGameClass(){
         }
     }
 
+    this.reset = function (){
+        this.isGenerationAlgoRunning = true;
+        this.isGamePlaying = false;
+
+        this.areAnswersPlacedInDeadEndCells = false;
+        this.deadEndCellForCorrectAnswer = undefined
+        this.deadEndCellForIncorrectAnswer = undefined
+
+        this.playerCharacter.resetPosition();
+        this.maze.reset();
+    }
+
     this.draw = function()
     {
         this.drawBackGround();
         this.maze.drawCells();
+
         if (this.areAnswersPlacedInDeadEndCells){
             drawAnswersManager.draw();
         }
@@ -169,19 +182,27 @@ function MazeGameClass(){
     }
 
     this.handleUpArrowDown = function(){
-        this.playerCharacter.moveUp();
+        if (this.playerCharacter.isPlaced){
+            this.playerCharacter.moveUp();
+        }
     }
 
     this.handleDownArrowDown = function(){
-        this.playerCharacter.moveDown();
+        if (this.playerCharacter.isPlaced){
+            this.playerCharacter.moveDown();
+        }
     }
 
     this.handleLeftArrowDown = function(){
-        this.playerCharacter.moveLeft();
+        if (this.playerCharacter.isPlaced){
+            this.playerCharacter.moveLeft();
+        }
     }
 
     this.handleRightArrowDown = function(){
-        this.playerCharacter.moveRight();
+        if (this.playerCharacter.isPlaced){
+            this.playerCharacter.moveRight();
+        }
     }
 }
 MazeGameClass.prototype = new GameClass();

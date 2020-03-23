@@ -143,6 +143,22 @@ function MazeClass(){
         this.isGenerationInitialized = true;
     }
 
+    
+    this.reset = function()
+    {
+        this.arrayOfCells.forEach(function(cell){cell.reset();});
+
+        this.currentCellVisitedByGenerationAlgo = undefined;
+        this.previousCellsVisitedByGenerationAlgo = [];
+
+        this.isGenerationInitialized = false;
+        this.isGenerationRunning = true;
+
+        this.numVisitedCellsByGenerationAlgo = 0;
+
+        this.arrayOfDeadEndCells = [];
+    }
+
 
     this.drawCells = function ()
     {
