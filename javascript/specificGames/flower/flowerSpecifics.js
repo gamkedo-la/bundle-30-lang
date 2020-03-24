@@ -149,13 +149,7 @@ function flowerGameClass(){
         gameCanvasContext.drawImage(this.flowerArray[i], (this.playerCharacter.x + this.flowerWidth*i),(this.playerCharacter.y - this.flowerHeight), this.flowerWidth, this.flowerHeight);
       }
       if(amountCorrect > amountCorrectThisGameSession){
-<<<<<<< HEAD
-          amou = amountCorrect;
-
-          console.log("amount correct this game session " + amountCorrectThisGameSession);
-=======
           amountCorrectThisGameSession = amountCorrect;
->>>>>>> 5f1dc408386bf26f362db081bf89dc2b0e032f74
       }
 
 
