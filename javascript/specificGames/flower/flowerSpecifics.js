@@ -146,8 +146,19 @@ function flowerGameClass(){
       this.flowerHeight = 60;
       amountCorrectThisGameSession = amountCorrect - amountCorrectAtStart; 
       for(i = 0; i < amountCorrectThisGameSession; i++){
-        gameCanvasContext.drawImage(this.flowerArray[i], (this.playerCharacter.x + this.flowerWidth*i),(this.playerCharacter.y - this.flowerHeight), this.flowerWidth, this.flowerHeight);
+        var LeftOrRight = Math.cos(Math.PI*i);
+        var flowerLocationX = this.playerCharacter.x;
+        if(i > 0){
+        flowerLocationX = this.playerCharacter.x + (this.flowerWidth*LeftOrRight*(-1));
+        }
+        if(i > 2){
+          flowerLocationX = this.playerCharacter.x + (this.flowerWidth*LeftOrRight*(-2));
+        }
+
+        gameCanvasContext.drawImage(this.flowerArray[i], (flowerLocationX),(this.playerCharacter.y - this.flowerHeight), this.flowerWidth, this.flowerHeight);
+      
       }
+
       if(amountCorrect > amountCorrectThisGameSession){
           amountCorrectThisGameSession = amountCorrect;
       }
