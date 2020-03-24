@@ -53,6 +53,7 @@ function initializePromptAndAnswerObjects()
   promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings = [];
   promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings = [];
   promptsAndAnswersManager.arrayOfLogicalVietnamesePromptAnswerGroupings = [];
+  //promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings = [];
 
   womanVersusWomenPairGrouping = {name: 'woman vs women', arrayOfObjects: []};
   manVersusMenPairGrouping = {name: 'man vs men', arrayOfObjects: []};
@@ -60,11 +61,14 @@ function initializePromptAndAnswerObjects()
   mandarinBuyVersusMandarinSellPairGrouping = {name: 'mandarin buy vs sell', arrayOfObjects:[]};
   mandarinMomVersusHorsePairGrouping = {name: 'mandarin mom vs horse', arrayOfObjects:[]};
 
+
+  //English section
   womanPromptAndAnswer = new PromptAndAnswerClass('woman', 'woman', womanImage, audioManager.womanAudio);
   womenPromptAndAnswer = new PromptAndAnswerClass('women', 'women', womenImage, audioManager.womenAudio);
   womanVersusWomenPairGrouping.arrayOfObjects.push(womanPromptAndAnswer);
   womanVersusWomenPairGrouping.arrayOfObjects.push(womenPromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings.push(womanVersusWomenPairGrouping);
+
 
   manPromptAndAnswer = new PromptAndAnswerClass('man', 'man', manImage, audioManager.manAudio);
   menPromptAndAnswer = new PromptAndAnswerClass("men", "men", menImage, audioManager.menAudio);
@@ -78,6 +82,10 @@ function initializePromptAndAnswerObjects()
   heVersusShePairGrouping.arrayOfObjects.push(shePromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings.push(heVersusShePairGrouping);
 
+  promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings);
+
+
+  //Mandarin section
   mandarinBuyPromptAndAnswer = new PromptAndAnswerClass('mandarin buy','买', mandarinBuyImage, audioManager.mandarinBuyAudio);
   mandarinSellPromptAndAnswer = new PromptAndAnswerClass('mandarin sell','卖', mandarinSellImage, audioManager.mandarinSellAudio);
   mandarinBuyVersusMandarinSellPairGrouping.arrayOfObjects.push(mandarinBuyPromptAndAnswer);
@@ -90,5 +98,14 @@ function initializePromptAndAnswerObjects()
   mandarinMomVersusHorsePairGrouping.arrayOfObjects.push(mandarinHorsePromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinMomVersusHorsePairGrouping);
 
-  console.log('promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
+
+  promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
+
+
+  //Vietnamese Section
+
+  promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalVietnamesePromptAnswerGroupings);
+
+
+  //console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings);
 }

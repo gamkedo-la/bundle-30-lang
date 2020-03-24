@@ -18,7 +18,6 @@ function TextPrompter()
     this.currentWidth += gameClassManager.currentGame.FRAME_RATE/5;
     this.currentHeight += gameClassManager.currentGame.FRAME_RATE/5;
     this.currentTextPixelSize += 1;
-    console.log('this.currentTextPixelSize: ' + this.currentTextPixelSize);
   }
 
   this.drawThePrompt = function()
@@ -38,7 +37,6 @@ function TextPrompter()
       // gameCanvas.width/2 - this.currentWidth/2 + this.currentWidth*0.1,//xCoordinate
       // gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.25//yCoordinate
       // );
-      console.log('this.currentText: ' + this.currentText);
       gameCanvasContext.fillStyle = 'black';
       gameCanvasContext.font = this.currentTextPixelSize + 'px Helvetica';
       gameCanvasContext.fillText(this.currentText,

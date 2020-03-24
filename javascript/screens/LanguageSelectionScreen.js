@@ -116,6 +116,7 @@ function LanguageSelectionScreen()
     }
   }
 
+  this.languageNum = -1;
 
   this.handleLanguageCellClicks = function()
   {
@@ -123,22 +124,27 @@ function LanguageSelectionScreen()
     // TODO: all the x,y,w,h are stored in GAME_NAMES
     // we could use that data and avoid the giant IF and hardcoded values here
 
-    console.log("MAIN MENU mouse pos is "+inputManager.mouseCoordinates.x+"," +inputManager.mouseCoordinates.y);
-
-    var languageNum = -1;
+    //console.log("MAIN MENU mouse pos is "+inputManager.mouseCoordinates.x+"," +inputManager.mouseCoordinates.y);
 
     var mouseCol = Math.floor((inputManager.mouseCoordinates.x - 20)/100);
     var mouseRow = Math.floor((inputManager.mouseCoordinates.y - 150)/100);
-    if (mouseCol >= 0 && mouseCol < 6 && mouseRow >= 0 && mouseRow < 5)
+    if (mouseCol >= 0 && mouseCol < 3 && mouseRow >= 0 && mouseRow < 1)
     {
-      languageNum = mouseCol + mouseRow *6;
-    }
-    console.log('languageNum: ' + languageNum);
+      //initializePromptAndAnswerObjects();
 
-    promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings =
-    promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[languageNum];
-    console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[languageNum]: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[languageNum]);
-    console.log('promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
+      this.languageNum = mouseCol + mouseRow *6;
+      console.log('this.languageNum: ' + this.languageNum);
+      console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings);
+      console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[this.languageNum]: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[this.languageNum]);
+      promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings = promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[this.languageNum];
+
+      gameClassManager.initializeCurrentGame();
+      promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    }
+    //console.log('languageNum: ' + this.languageNum);
+    //promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings = promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[this.languageNum];
+    //console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[languageNum]: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[this.languageNum]);
+    //console.log('promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
   }
 }
 

@@ -96,7 +96,7 @@ function TitleScreenClass()
     // TODO: all the x,y,w,h are stored in GAME_NAMES
     // we could use that data and avoid the giant IF and hardcoded values here
 
-    console.log("MAIN MENU mouse pos is "+inputManager.mouseCoordinates.x+"," +inputManager.mouseCoordinates.y);
+    //console.log("MAIN MENU mouse pos is "+inputManager.mouseCoordinates.x+"," +inputManager.mouseCoordinates.y);
 
     var mouseCol = Math.floor((inputManager.mouseCoordinates.x - 20)/100);
     var mouseRow = Math.floor((inputManager.mouseCoordinates.y - 150)/100);
@@ -104,7 +104,10 @@ function TitleScreenClass()
     {
       this.gameNum = mouseCol + mouseRow *6;
     }
-
+    //console.log('this.gameNum: ' + this.gameNum);
+    //console.log('gameList[this.gameNum].name: ' + gameList[this.gameNum].name);
+    gameClassManager.loadCurrentGame(gameList[this.gameNum]);
+    //console.log('gameClassManager.currentGame.name: ' + gameClassManager.currentGame.name);
     // any game
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 620 &&
         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 650)

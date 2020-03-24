@@ -1,9 +1,6 @@
 function PromptsAndAnswersManager()
 {
-  this.arrayOfLanguagePromptAndAnswerGroupings =
-  [this.arrayOfLogicalEnglishPromptAnswerGroupings,
-   this.arrayOfLogicalMandarinPromptAnswerGroupings,
-   this.arrayOfLogicalVietnamesePromptAnswerGroupings];
+  this.arrayOfLanguagePromptAndAnswerGroupings = [];
 
   this.arrayOfLogicalEnglishPromptAnswerGroupings = [];
   this.arrayOfLogicalMandarinPromptAnswerGroupings = [];
@@ -19,6 +16,7 @@ function PromptsAndAnswersManager()
   {
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
+    console.log('this.currentLogicalPromptAndAnswerGroup: ' + this.currentLogicalPromptAndAnswerGroup);
   }
 
   this.correctTargetPromptAndAnswerPairing = undefined;
@@ -172,7 +170,7 @@ function PromptsAndAnswersManager()
   this.currentIncorrectAnswer = undefined;
   this.assignCurrentIncorrectAnswer = function()
   {
-
+    //console.log('inside assignCurrentIncorrectAnswer()');
     if (typeof this.editedPromptAndAnswerGroup === 'undefined') {
         console.log("editedPromptAndAnswerGroup not set up");
         return;
@@ -425,6 +423,7 @@ function PromptsAndAnswersManager()
     }
     else
     {
+      initializePromptAndAnswerObjects();
       this.pickARandomLogicalPromptAnswerGroup();
       this.pickATargetPromptAndAnswerPairing();
       this.pickARandomPromptFromTargetPromptAndAnswerPairing();

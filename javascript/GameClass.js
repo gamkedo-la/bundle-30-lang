@@ -11,7 +11,7 @@ function GameClass()
 
   this.initialize = function()
   {
-    console.log('inside initialization of GameClass');
+    //console.log('inside initialization of GameClass');
     if (gameClassManager.currentGame.playerCharacter === undefined)
     {
       gameClassManager.currentGame.defineAndInitializePlayerCharacter();
@@ -20,15 +20,12 @@ function GameClass()
     {
       gameClassManager.currentGame.pregameSpecialCode();
     }
-	  initializePromptAndAnswerObjects();
     gameInterval.reset(this.FRAME_RATE);
     drawAnswersManager.initialize();
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
   };
 
   this.gameFrameRate = undefined;//number
-  
+
   this.imageAnswerWidth = 100;
   this.imageAnswerHeight = 100;
   this.audioImageAnswerWidth = 100;
@@ -36,7 +33,7 @@ function GameClass()
 
   this.textAnswerFontSize  = 30;
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
-  
+
   this.update = function(){};
   this.draw = function(){};
 }
@@ -46,9 +43,11 @@ function GameClassManager()
   this.currentGame = undefined;
   this.loadCurrentGame = function(gameToLoad)
   {
+    //console.log('inside loadCurrentGame()');
     this.currentGame = gameToLoad;
     if(typeof this.currentGame.pregameSpecialCode !== 'undefined') {
       this.currentGame.pregameSpecialCode();
+      //this.initializeCurrentGame();
     } else {
       console.log("no pregameSpecialCode function for this game type");
     }
@@ -58,8 +57,15 @@ function GameClassManager()
 
   this.initializeCurrentGame = function()
   {
-    console.log('inside initialization of GameClassManager.initializeCurrentGame');
+    //console.log('inside initialization of GameClassManager.initializeCurrentGame');
     this.currentGame.initialize();
+    //initializePromptAndAnswerObjects();
+
+    promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings =
+    promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[languageSelectionScreen.languageNum];
+
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     if (this.currentGame.superInitialize !== undefined)
     {
       this.currentGame.superInitialize();
