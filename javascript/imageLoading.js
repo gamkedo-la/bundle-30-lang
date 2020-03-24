@@ -14,6 +14,9 @@ let catImage = document.createElement("img");
 let mandarinBuyImage = document.createElement("img");//'buy' in English
 let mandarinSellImage = document.createElement("img");//'sell' in English
 
+let mandarinMomImage = document.createElement("img");
+let mandarinHorseImage = document.createElement('img');
+
 //runner images
 let runnerSunAndSkyBackgroundImage = document.createElement("img");
 let runnerCloud1 = document.createElement("img");
@@ -183,6 +186,8 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: mandarinBuyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinBuy.png'});//'buy' in English
   arrayOfImages.push({imageObjectBinding: mandarinSellImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinSell.png'});//'sell' in English
 
+  arrayOfImages.push({imageObjectBinding: mandarinMomImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mom.png'});//'sell' in English
+  arrayOfImages.push({imageObjectBinding: mandarinHorseImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/horse.png'});//'sell' in English
 
   //runner game
   arrayOfImages.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png'});

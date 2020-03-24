@@ -16,6 +16,8 @@ function AudioManager()
 
     this.mandarinBuyAudio = document.createElement("AUDIO");//'buy' in English
     this.mandarinSellAudio = document.createElement("AUDIO");//'sell' in English
+    this.mandarinMomAudio = document.createElement("AUDIO");
+    this.mandarinHorseAudio = document.createElement("AUDIO");
 
     this.blendedCat = document.createElement("AUDIO");
     this.blendedCot = document.createElement("AUDIO");
@@ -67,6 +69,8 @@ function AudioManager()
 
       this.mandarinBuyAudio.src = 'audio/PromptsAndAnswers/Mandarin/mandarinBuy.mp3';
       this.mandarinSellAudio.src = 'audio/PromptsAndAnswers/Mandarin/mandarinSell.mp3';
+      this.mandarinMomAudio.src = 'audio/PromptsAndAnswers/Mandarin/mandarinMom.mp3';
+      this.mandarinHorseAudio.src = 'audio/PromptsAndAnswers/Mandarin/mandarinHorse.mp3';
 
       //gameplay feedback
       this.generalPositiveFeedbackSound1.src = "audio/Positive_01.mp3";
