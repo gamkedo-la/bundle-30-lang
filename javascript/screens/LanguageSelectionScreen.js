@@ -90,9 +90,32 @@ function LanguageSelectionScreen()
         inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height)
         {
           audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
+          this.loadGame();
           this.startGame();
         }
   }
+
+  this.loadGame = function()
+  {
+    if (titleScreen.gameNum !== -1)
+    {
+      if(titleScreen.gameNum == GAME_SPACE_SHOOTER) {
+        console.log("trying to load space shooter, special casing it");
+        playerShouldSeeTitleScreen = false;
+        fullGameStateMachine.playingAGameState = true;
+        levelIsTransitioning = true;
+
+        if(loadGameNum(titleScreen.gameNum) == false) {
+          return;
+        }
+      } else {
+        loadGameNum(titleScreen.gameNum);
+      }
+      if (gameClassManager.currentGame !== cVcShooterGame && gameClassManager.currentGame !== undefined)
+      gameClassManager.currentGame.postLoadInit();
+    }
+  }
+
 
   this.handleLanguageCellClicks = function()
   {
@@ -114,6 +137,8 @@ function LanguageSelectionScreen()
 
     promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings =
     promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[languageNum];
+    console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[languageNum]: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[languageNum]);
+    console.log('promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
   }
 }
 

@@ -88,6 +88,7 @@ function TitleScreenClass()
     this.drawGameNames();
   }
 
+  this.gameNum = -1;
 
   this.handleGameCellClicks = function()
   {
@@ -97,30 +98,11 @@ function TitleScreenClass()
 
     console.log("MAIN MENU mouse pos is "+inputManager.mouseCoordinates.x+"," +inputManager.mouseCoordinates.y);
 
-    var gameNum = -1;
-
     var mouseCol = Math.floor((inputManager.mouseCoordinates.x - 20)/100);
     var mouseRow = Math.floor((inputManager.mouseCoordinates.y - 150)/100);
     if (mouseCol >= 0 && mouseCol < 6 && mouseRow >= 0 && mouseRow < 5)
     {
-      gameNum = mouseCol + mouseRow *6;
-    }
-    if (gameNum !== -1)
-    {
-      if(gameNum == GAME_SPACE_SHOOTER) {
-        console.log("trying to load space shooter, special casing it");
-        playerShouldSeeTitleScreen = false;
-        fullGameStateMachine.playingAGameState = true;
-        levelIsTransitioning = true;
-
-        if(loadGameNum(gameNum) == false) {
-          return;
-        }
-      } else {
-        loadGameNum(gameNum);
-      }
-      if (gameClassManager.currentGame !== cVcShooterGame && gameClassManager.currentGame !== undefined)
-      gameClassManager.currentGame.postLoadInit();
+      this.gameNum = mouseCol + mouseRow *6;
     }
 
     // any game
