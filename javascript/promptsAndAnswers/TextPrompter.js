@@ -64,6 +64,7 @@ function TextPrompter()
       promptersManager.shouldBeDrawingAPrompt = true;
       this.currentHeight = 150;
       this.currentHeight = 150;
+      this.currentTextPixelSize = 30;
     }
   }
 

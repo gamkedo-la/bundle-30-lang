@@ -93,7 +93,6 @@ function CollisionsWithAnswersManager()
   {
     promptersManager.currentPrompter.currentWidth = 150;
     promptersManager.currentPrompter.currentHeight = 150;
-    textPrompter.currentTextPixelSize = 30;
     initializePromptAndAnswerObjects();
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
