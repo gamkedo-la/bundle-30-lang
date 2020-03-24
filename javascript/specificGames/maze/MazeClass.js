@@ -166,6 +166,29 @@ function MazeClass(){
         {
             this.arrayOfCells[currentCellIndex].draw();
         }
+
+        gameCanvasContext.drawImage(
+            mazeTopWall, 0, -WALL_THICKNESS/2, 
+            gameCanvas.width, WALL_THICKNESS
+        );
+
+        
+        gameCanvasContext.drawImage(
+            mazeBottomWall, 0, gameCanvas.height - WALL_THICKNESS/2, 
+            gameCanvas.width, WALL_THICKNESS
+        );
+
+        
+        gameCanvasContext.drawImage(
+            mazeLeftWall, -WALL_THICKNESS/2, 0, 
+            WALL_THICKNESS, gameCanvas.height
+        );
+
+        
+        gameCanvasContext.drawImage(
+            mazeRightWall, gameCanvas.width - WALL_THICKNESS/2, 0,
+            WALL_THICKNESS, gameCanvas.height
+        );
     }
 
     this.getCellAtIndex = function(index){

@@ -1,6 +1,6 @@
 const CELL_WIDTH  = 80;
 const CELL_HEIGHT = 100;
-const WALL_THICKNESS = 15;
+const WALL_THICKNESS = 20;
 
 function CellClass(
   rowIndex, columnIndex, 
@@ -121,35 +121,39 @@ function CellClass(
     if (this.topWallExist)
     {
       gameCanvasContext.drawImage(
-        mazeTopWall, xCoordinate, yCoordinate, CELL_WIDTH, WALL_THICKNESS
+        mazeTopWall, xCoordinate - WALL_THICKNESS/2, 
+        yCoordinate - WALL_THICKNESS/2, 
+        CELL_WIDTH + WALL_THICKNESS, WALL_THICKNESS
       );
     }
 
-    //bottom wall
-    if (this.bottomWallExist)
-    {
-      gameCanvasContext.drawImage(
-        mazeBottomWall, xCoordinate, 
-        yCoordinate + CELL_HEIGHT-WALL_THICKNESS, CELL_WIDTH, WALL_THICKNESS
-      );
-    }
+    // //bottom wall
+    // if (this.bottomWallExist)
+    // {
+    //   gameCanvasContext.drawImage(
+    //     mazeBottomWall, xCoordinate, 
+    //     yCoordinate + CELL_HEIGHT-WALL_THICKNESS/2, CELL_WIDTH, WALL_THICKNESS
+    //   );
+    // }
 
     //left wall
     if (this.leftWallExist)
     {
       gameCanvasContext.drawImage(
-        mazeLeftWall, xCoordinate, yCoordinate, WALL_THICKNESS, CELL_HEIGHT
+        mazeLeftWall, xCoordinate-WALL_THICKNESS/2, 
+        yCoordinate - WALL_THICKNESS/2, 
+        WALL_THICKNESS, CELL_HEIGHT + WALL_THICKNESS
       );
     }
 
-    //right wall
-    if (this.rightWallExist)
-    {
-      gameCanvasContext.drawImage(
-        mazeRightWall, xCoordinate + CELL_WIDTH - WALL_THICKNESS, 
-        yCoordinate, WALL_THICKNESS, CELL_HEIGHT
-      );
-    }
+    // //right wall
+    // if (this.rightWallExist)
+    // {
+    //   gameCanvasContext.drawImage(
+    //     mazeRightWall, xCoordinate + CELL_WIDTH - WALL_THICKNESS/2, 
+    //     yCoordinate, WALL_THICKNESS, CELL_HEIGHT
+    //   );
+    // }
 
     
     gameCanvasContext.restore();

@@ -15,10 +15,10 @@ function MazeGameClass(){
     this.textAnswerFontSize = 20;
     this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
-    this.imageAnswerWidth = 50;
-    this.imageAnswerHeight = 50;
-    this.audioImageAnswerWidth = 50;
-    this.audioImageAnswerHeight = 50;
+    this.imageAnswerWidth = 75;
+    this.imageAnswerHeight = 75;
+    this.audioImageAnswerWidth = 75;
+    this.audioImageAnswerHeight = 75;
 
     this.LETTER_COLOR = "gold";
 
