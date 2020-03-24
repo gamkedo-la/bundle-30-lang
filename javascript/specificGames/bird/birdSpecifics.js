@@ -6,6 +6,14 @@ birdGameClass.prototype = new GameClass();
 function birdGameClass() {
   this.name = 'birdGame';
   this.playerCharacter = undefined;
+  this.defineAndInitializePlayerCharacter = function()
+  {
+    console.log('inside define and initialize of bird player character');
+    this.playerCharacter = new BirdClass();
+    this.playerCharacter.initialize();
+    this.collidingObject = this.playerCharacter;
+  }
+  this.collidingObject = undefined;
   this.titleScreenData = [{
 	name: "Bird",
 	fontSize: 27,
@@ -26,12 +34,8 @@ function birdGameClass() {
 
   this.answersXSpeed = 4;
 
-  this.superInitialize = this.initialize;
-  this.initialize = function()
+  this.superInitialize = function()
   {
-    console.log('inside initialization of bird, which it seems like is also superInitialize');
-    this.playerCharacter = new BirdClass();
-    this.playerCharacter.initialize();
     initializePromptAndAnswerObjects();
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
@@ -73,7 +77,7 @@ function birdGameClass() {
       this.playerCharacter.handleOffScreen();
       this.moveAnswers();
       this.handleAnswersOffScreen();
-      collisionsWithAnswersManager.handleCollisionsWithAnswers();
+      collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
     }
   };
 

@@ -10,6 +10,11 @@ function PassOrBlockGameClass()
 	{name: "Block", fontSize: 22, spacing: 12, x: 535, y: 207}
   ];
   this.playerCharacter = undefined;
+  this.defineAndInitializePlayerCharacter = function()
+  {
+    this.playerCharacter = new Paddle();
+    this.collidingObject = this.playerCharacter;
+  }
   this.background = undefined;
   this.backButtonColor = 'yellow';
   this.backButtonTextColor = 'blueViolet';
@@ -25,7 +30,7 @@ function PassOrBlockGameClass()
   this.superInitialize = this.initialize;
   this.initialize = function()
   {
-    this.playerCharacter = new Paddle();
+
     this.background = new PassOrBlockBackground();
 	this.superInitialize();
   }
@@ -35,7 +40,7 @@ function PassOrBlockGameClass()
     this.background.draw();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
-    promptersManager.drawPromptsWhenAppropriate();
+    promptersManager.drawPromptsWhenAppropriate(this.collidingObject);
   }
 
   this.update = function()

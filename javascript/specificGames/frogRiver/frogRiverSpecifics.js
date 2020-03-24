@@ -13,21 +13,28 @@ function frogRiverGameClass()
   this.FRAME_RATE = 1000/30;
 
   this.playerCharacter = undefined;
+  this.defineAndInitializePlayerCharacter = function()
+  {
+    this.playerCharacter = new FrogRiverPlayer();
+  }
   this.background = undefined;
   this.lilyPadManager = undefined;
   this.backButtonColor = 'yellow';
   this.backButtonTextColor = 'blueViolet';
 
+  this.pregameSpecialCode = function()
+  {
+    this.lilyPadManager = new LilyPadManager();
+    this.lilyPadManager.initializeLilyPads();
+  }
+
   this.superInitialize = function()
   {
     console.log('inside superInitialize of frogRiverGame');
-    this.playerCharacter = new FrogRiverPlayer();
     this.background = new FrogRiverBackground();
-    this.lilyPadManager = new LilyPadManager();
-    this.lilyPadManager.initializeLilyPads();
-    initializePromptAndAnswerObjects();
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+    // initializePromptAndAnswerObjects();
+    // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    // promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
   }
 
   this.draw = function()
@@ -35,12 +42,17 @@ function frogRiverGameClass()
     this.background.draw();
     this.lilyPadManager.drawLilyPads();
     this.playerCharacter.draw();
+    drawAnswersManager.draw();
+    promptersManager.drawPromptsWhenAppropriate();
   }
 
   this.update = function()
   {
     this.lilyPadManager.moveLilyPads();
     this.lilyPadManager.handleOffScreenLilyPads();
+    this.playerCharacter.updateCenterX();
+    this.playerCharacter.moveWhileOnLilyPad();
+    this.playerCharacter.handleOffScreen();
   }
 
   this.handleLeftArrowDown = function()
@@ -61,17 +73,24 @@ function frogRiverGameClass()
 
   this.handleUpArrowDown = function()
   {
-    this.playerCharacter.checkForLilyLanding();
-    if (this.playerCharacter.y === 50)
+    if (frogRiverGame.answerCount !== -1)
     {
-      this.playerCharacter.y -= 50;
+      this.playerCharacter.checkForLilyLanding();
+    }
+
+    if (this.answerCount === -1)
+    {
+      this.playerCharacter.y = 600;
+      collisionsWithAnswersManager.resetAnswers();
       this.playerCharacter.currentLilyPad = undefined;
+      this.answerCount = 4;
+      this.additiveToAnswers = 4;
     }
-    if (this.playerCharacter.y === 0)
-    {
-      this.playerCharacter.y = 650;
-    }
+
   }
+
+  this.answerCount = 4;
+  this.additiveToAnswers = 4;
 }
 
 const frogRiverGame = new frogRiverGameClass();

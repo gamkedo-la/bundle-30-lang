@@ -31,13 +31,13 @@ function BackButton()
           
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
           transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
+          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
           gameClassManager.currentGame = undefined;
           playerShouldBePlayingPinata = false;
           arrayOfAnswers = [];
           promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           if (gameIsOnAServerAndCanUseWebAudioAPI)
           {
             backgroundMusicBufferSource.stop();

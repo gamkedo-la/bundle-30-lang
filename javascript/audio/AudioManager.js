@@ -14,6 +14,9 @@ function AudioManager()
     this.heAudio = document.createElement("AUDIO");
     this.sheAudio = document.createElement("AUDIO");
 
+    this.mandarinBuyAudio = document.createElement("AUDIO");//'buy' in English
+    this.mandarinSellAudio = document.createElement("AUDIO");//'sell' in English
+
     this.blendedCat = document.createElement("AUDIO");
     this.blendedCot = document.createElement("AUDIO");
 
@@ -37,7 +40,7 @@ function AudioManager()
     // game specific sound effects
     this.balloonPopSound = document.createElement("AUDIO");
     this.bubbleWrapPopSound = document.createElement("AUDIO");
-    
+
     this.pinataEatSound = document.createElement("AUDIO");
     this.pinataHitSound = document.createElement("AUDIO");
     this.pinataFailSound = undefined;
@@ -61,6 +64,9 @@ function AudioManager()
 
       this.blendedCat.src = 'audio/PromptsAndAnswers/blendedCat.mp3';
       this.blendedCot.src = 'audio/PromptsAndAnswers/blendedCot.mp3';
+
+      this.mandarinBuyAudio.src = 'audio/PromptsAndAnswers/Mandarin/mandarinBuy.mp3';
+      this.mandarinSellAudio.src = 'audio/PromptsAndAnswers/Mandarin/mandarinSell.mp3';
 
       //gameplay feedback
       this.generalPositiveFeedbackSound1.src = "audio/Positive_01.mp3";
@@ -124,6 +130,7 @@ function AudioManager()
                               audioManager.currentBackgroundMusic.play();
                           }}, false);
           audioManager.currentBackgroundMusic.play();
+          audioManager.currentBackgroundMusic.volume = 0; //for meetings
           console.log('not on a server, standard HTML5 audio tag should be playing');
         }
       }

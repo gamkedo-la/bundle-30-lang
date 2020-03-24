@@ -8,14 +8,33 @@ function MazeGameClass(){
     this.isGenerationAlgoRunning = true;
     this.isGamePlaying = false;
 
-    this.areAnswersCenteredInCells = false;
+    this.deadEndCellForCorrectAnswer = undefined
+    this.deadEndCellForIncorrectAnswer = undefined
+    this.areAnswersPlacedInDeadEndCells = false;
+
+    this.textAnswerFontSize = 20;
+    this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+
+    this.imageAnswerWidth = 50;
+    this.imageAnswerHeight = 50;
+    this.audioImageAnswerWidth = 50;
+    this.audioImageAnswerHeight = 50;
+
+    this.LETTER_COLOR = "gold";
+
+    this.playerCharacter = undefined;
+    this.defineAndInitializePlayerCharacter = function()
+    {
+        this.playerCharacter = new MazePlayer();
+        this.playerCharacter.isPlaced = false;
+    }
 
     this.titleScreenData = [
         {
-            name: "Maze", 
-            fontSize: 27, 
-            spacing: 15, 
-            x: 37, 
+            name: "Maze",
+            fontSize: 27,
+            spacing: 15,
+            x: 37,
             y: 385
         }
     ];
@@ -23,58 +42,121 @@ function MazeGameClass(){
     this.superInitialize = function () {
         this.maze = new MazeClass();
         this.maze.initializeArrayOfCells();
+        this.isGenerationAlgoRunning = true;
+        this.isGamePlaying = false;
+
+        this.deadEndCellForCorrectAnswer = undefined
+        this.deadEndCellForIncorrectAnswer = undefined
+        this.areAnswersPlacedInDeadEndCells = false;
     }
 
     this.update = function (){
+
         if (this.maze.isGenerationRunning){
             this.maze.generate();
         }
-        else if (!this.areAnswersCenteredInCells){
-            this.centerCorrectAnswerInCorrespondingCell();
-            this.centerIncorrectAnswerInCorrespondingCell();
+        else if (!this.areAnswersPlacedInDeadEndCells){
+            this.selectDeadEndCellsForAnswers();
+            this.placeAnswerAtCenterOfCell(
+                promptsAndAnswersManager.correctTargetPromptAndAnswerPairing, this.deadEndCellForCorrectAnswer
+            )
+            this.placeAnswerAtCenterOfCell(
+                promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing, this.deadEndCellForIncorrectAnswer
+            )
 
-            this.areAnswersCenteredInCells = true;
+            this.areAnswersPlacedInDeadEndCells = true;
         }
+        else if (!this.playerCharacter.isPlaced){
+            this.playerCharacter.placeInMazeAndAvoidAnswersCells();
+        }
+        else{
+            collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
+        }
+    }
+
+    this.reset = function (){
+        this.isGenerationAlgoRunning = true;
+        this.isGamePlaying = false;
+
+        this.areAnswersPlacedInDeadEndCells = false;
+        this.deadEndCellForCorrectAnswer = undefined
+        this.deadEndCellForIncorrectAnswer = undefined
+
+        this.playerCharacter.resetPosition();
+        this.maze.reset();
     }
 
     this.draw = function()
     {
-      this.drawBackGround();
-      this.maze.drawCells();
-      if (this.areAnswersCenteredInCells){
-          drawAnswersManager.draw();
-      }
+        this.drawBackGround();
+        this.maze.drawCells();
 
-      promptersManager.drawPromptsWhenAppropriate();
+        if (this.areAnswersPlacedInDeadEndCells){
+            drawAnswersManager.draw();
+        }
+        
+        this.playerCharacter.draw();
+
+        promptersManager.drawPromptsWhenAppropriate();
+
+        // FOR DEBUG
+        // gameCanvasContext.save();
+        // gameCanvasContext.font = "15px Arial"
+        // gameCanvasContext.fillStyle = "gold";
+        // gameCanvasContext.fillText(
+        //     "( " + inputManager.mouseCoordinates.x +
+        //     " , " + inputManager.mouseCoordinates.y +
+        //     " )",
+        //     inputManager.mouseCoordinates.x + 10,
+        //     inputManager.mouseCoordinates.y
+        // );
+        // gameCanvasContext.fillStyle = "red";
+        // gameCanvasContext.fillText(
+        //     (
+        //         Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) * NUMBER_OF_COLUMNS + 
+        //         Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)
+        //     ) + " : " +
+        //     "( "  + Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) +
+        //     " , " + Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)+
+        //     " )",
+        //     inputManager.mouseCoordinates.x + 10,
+        //     inputManager.mouseCoordinates.y + 20
+        // );
+        // gameCanvasContext.restore();
     }
 
-    this.drawBackGround = function () 
+    this.drawBackGround = function ()
     {
         gameCanvasContext.drawImage(mazeFloor, 0, 0, gameCanvas.width, gameCanvas.height);
     }
 
-    this.centerCorrectAnswerInCorrespondingCell = function() {
-        var correctAnswerCenteredPosition = this.centerAnswerPositionInCorrespondingCell(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing);
-        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = correctAnswerCenteredPosition.x;
-        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate = correctAnswerCenteredPosition.y;
+    this.selectDeadEndCellsForAnswers = function () {
+
+        this.deadEndCellForCorrectAnswer = getRandomElementFromArray(this.maze.arrayOfDeadEndCells);
+        while (this.deadEndCellForCorrectAnswer.isOccupiedByPlayer){
+            this.deadEndCellForCorrectAnswer = getRandomElementFromArray(this.maze.arrayOfDeadEndCells);
+        }
+
+        this.deadEndCellForIncorrectAnswer = getRandomElementFromArray(this.maze.arrayOfDeadEndCells);
+        while (
+            this.deadEndCellForCorrectAnswer.index == this.deadEndCellForIncorrectAnswer.index ||
+            this.deadEndCellForCorrectAnswer.isOccupiedByPlayer
+        ) {
+            this.deadEndCellForIncorrectAnswer = getRandomElementFromArray(this.maze.arrayOfDeadEndCells);
+        }
     }
 
-    this.centerIncorrectAnswerInCorrespondingCell = function() {
-        var incorrectAnswerCenteredPosition = this.centerAnswerPositionInCorrespondingCell(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing);
-        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = incorrectAnswerCenteredPosition.x;
-        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate = incorrectAnswerCenteredPosition.y;
+    this.placeAnswerAtCenterOfCell = function(answer, cell){
+        answer.xCoordinate = cell.columnIndex * CELL_WIDTH;
+        answer.yCoordinate = cell.rowIndex * CELL_HEIGHT;
+        this.centerAnswerPositionInCorrespondingCell(answer);
     }
 
     this.centerAnswerPositionInCorrespondingCell = function(answer) {
-        var centerX = this.centerXPositionInCorrespondingCell(answer.xCoordinate);
-        var centerY = this.centerYPositionInCorrespondingCell(answer.yCoordinate);
-
         var adjustShift = this.adjustAnswerCenteringDependingOnDataType(answer);
 
-        return {
-            x: centerX - adjustShift.x,
-            y: centerY - adjustShift.y,
-        }
+        answer.xCoordinate += CELL_WIDTH / 2  - adjustShift.x;
+        answer.yCoordinate += CELL_HEIGHT / 2 - adjustShift.y;
     }
 
     this.adjustAnswerCenteringDependingOnDataType = function(answer){
@@ -85,6 +167,7 @@ function MazeGameClass(){
             var answerWidth = promptsAndAnswersManager.getTextWidthFromFontStyle(
                 answer.textAssociation, drawAnswersManager.textAnswerFontStyle
             );
+
             adjustShifX = answerWidth / 2;
         }
         else {
@@ -97,21 +180,29 @@ function MazeGameClass(){
             y: adjustShifY
         }
     }
-    
-    this.centerXPositionInCorrespondingCell = function(x) {
-        var centerX  = Math.floor(x / CELL_WIDTH);
-        centerX *= CELL_WIDTH;
-        centerX += CELL_WIDTH / 2;
 
-        return centerX;
+    this.handleUpArrowDown = function(){
+        if (this.playerCharacter.isPlaced){
+            this.playerCharacter.moveUp();
+        }
     }
 
-    this.centerYPositionInCorrespondingCell = function(y) {
-        var centerY  = Math.floor(y / CELL_HEIGHT);
-        centerY *= CELL_HEIGHT;
-        centerY += CELL_HEIGHT / 2;
+    this.handleDownArrowDown = function(){
+        if (this.playerCharacter.isPlaced){
+            this.playerCharacter.moveDown();
+        }
+    }
 
-        return centerY;
+    this.handleLeftArrowDown = function(){
+        if (this.playerCharacter.isPlaced){
+            this.playerCharacter.moveLeft();
+        }
+    }
+
+    this.handleRightArrowDown = function(){
+        if (this.playerCharacter.isPlaced){
+            this.playerCharacter.moveRight();
+        }
     }
 }
 MazeGameClass.prototype = new GameClass();

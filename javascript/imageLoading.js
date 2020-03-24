@@ -11,6 +11,9 @@ let sheImage = document.createElement("img");
 let cotImage = document.createElement("img");
 let catImage = document.createElement("img");
 
+let mandarinBuyImage = document.createElement("img");//'buy' in English
+let mandarinSellImage = document.createElement("img");//'sell' in English
+
 //runner images
 let runnerSunAndSkyBackgroundImage = document.createElement("img");
 let runnerCloud1 = document.createElement("img");
@@ -42,6 +45,7 @@ let jumperBackground = document.createElement('img');
 
 //space shooter images
 let spaceShooterBackgroundImage = document.createElement('img');
+let spaceShooterBackgroundImage2 = document.createElement('img');
 let spaceshipImage = document.createElement('img');
 
 //flower images
@@ -58,6 +62,9 @@ let mazeRightWall = document.createElement('img');
 
 //air grab
 let airBoothImage = document.createElement('img');
+let armlessBodyImage = document.createElement('img');
+let rightArmImage = document.createElement('img');
+let leftArmImage = document.createElement('img');
 
 //Frog
 let frogRiverBackgroundImage = document.createElement('img');
@@ -173,6 +180,9 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: catImage, theFile: 'images/sprites/PromptsAndAnswers/cat.png'});
   arrayOfImages.push({imageObjectBinding: cotImage, theFile: 'images/sprites/PromptsAndAnswers/cot.png'});
 
+  arrayOfImages.push({imageObjectBinding: mandarinBuyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinBuy.png'});//'buy' in English
+  arrayOfImages.push({imageObjectBinding: mandarinSellImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinSell.png'});//'sell' in English
+
 
   //runner game
   arrayOfImages.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png'});
@@ -198,15 +208,16 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: laneCarImage, theFile: 'images/sprites/Lane/car.png'});
   arrayOfImages.push({imageObjectBinding: roadDash1, theFile: 'images/Backgrounds/roadDash.png'});
   arrayOfImages.push({imageObjectBinding: roadDash2, theFile: 'images/Backgrounds/roadDash2.png'});
-  arrayOfImages.push({imageObjectBinding: roadDash3, theFile: 'images/Backgrounds/roadDash3.png'})
+  arrayOfImages.push({imageObjectBinding: roadDash3, theFile: 'images/Backgrounds/roadDash3.png'});
 
   //jumper game
-  arrayOfImages.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/editedJumperBackground.png'})
+  arrayOfImages.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/editedJumperBackground.png'});
 
   //space shooter game
-  arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/Space.png'})
-  arrayOfImages.push({imageObjectBinding: spaceshipImage, theFile: 'images/Sprites/spaceShooter/spaceship.png'})
-  arrayOfImages.push({imageObjectBinding: jupiterImage, theFile: 'images/Sprites/spaceShooter/Jupiter.png'})
+  arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/SpaceWithJupiter1.png'});
+  arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage2, theFile: 'images/Backgrounds/SpaceWithJupiter2.png'});
+  arrayOfImages.push({imageObjectBinding: spaceshipImage, theFile: 'images/Sprites/spaceShooter/spaceship.png'});
+  arrayOfImages.push({imageObjectBinding: jupiterImage, theFile: 'images/Sprites/spaceShooter/Jupiter.png'});
 
 
 
@@ -224,6 +235,10 @@ function loadImages()
 
   //air booth
   arrayOfImages.push({imageObjectBinding: airBoothImage, theFile: "images/Backgrounds/airBooth.png"});
+  arrayOfImages.push({imageObjectBinding: armlessBodyImage, theFile: "images/sprites/air grab/armlessBody.png"});
+  arrayOfImages.push({imageObjectBinding: leftArmImage, theFile: "images/sprites/air grab/leftArm.png"});
+  arrayOfImages.push({imageObjectBinding: rightArmImage, theFile: "images/sprites/air grab/leftArm.png"});
+
 
   //frog
   arrayOfImages.push({imageObjectBinding: frogRiverBackgroundImage, theFile: "images/Backgrounds/river.png"});

@@ -127,6 +127,7 @@ function TitleScreenClass()
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 620 &&
         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 650)
         {
+          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.modeSelectScreen);
         }
   }

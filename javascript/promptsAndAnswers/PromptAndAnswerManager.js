@@ -137,19 +137,24 @@ function PromptsAndAnswersManager()
 
   this.defineWidthAndHeightForTargetAnswers = function()
   {
-    if (this.currentAnswerDataType === "AUDIO" || this.currentAnswerDataType === "IMG")
+    if (this.currentAnswerDataType === "AUDIO")
     {
-      this.correctTargetPromptAndAnswerPairing.width = drawAnswersManager.imageWidth;
-      this.incorrectTargetPromptAndAnswerPairing.width = drawAnswersManager.imageWidth;
-      this.correctTargetPromptAndAnswerPairing.height = drawAnswersManager.imageHeight;
-      this.incorrectTargetPromptAndAnswerPairing.height = drawAnswersManager.imageHeight;
+      this.correctTargetPromptAndAnswerPairing.width = drawAnswersManager.audioImageAnswerWidth;
+      this.incorrectTargetPromptAndAnswerPairing.width = drawAnswersManager.audioImageAnswerWidth;
+      this.correctTargetPromptAndAnswerPairing.height = drawAnswersManager.audioImageAnswerHeight;
+      this.incorrectTargetPromptAndAnswerPairing.height = drawAnswersManager.audioImageAnswerHeight;
+    }
+    else if (this.currentAnswerDataType === "IMG")
+    {
+      this.correctTargetPromptAndAnswerPairing.width = drawAnswersManager.imageAnswerWidth;
+      this.incorrectTargetPromptAndAnswerPairing.width = drawAnswersManager.imageAnswerWidth;
+      this.correctTargetPromptAndAnswerPairing.height = drawAnswersManager.imageAnswerHeight;
+      this.incorrectTargetPromptAndAnswerPairing.height = drawAnswersManager.imageAnswerHeight;
     }
     else if (this.currentAnswerDataType === 'string')
     {
-      this.correctTargetPromptAndAnswerPairing.width =
-      gameCanvasContext.measureText(this.correctTargetPromptAndAnswerPairing.textAssociation).width;
-      this.incorrectTargetPromptAndAnswerPairing.width =
-      gameCanvasContext.measureText(this.incorrectTargetPromptAndAnswerPairing.textAssociation).width;
+      this.correctTargetPromptAndAnswerPairing.width = this.getCorrectAnswerWidthFromFontStyle(drawAnswersManager.fontStyle);
+      this.incorrectTargetPromptAndAnswerPairing.width = this.getIncorrectAnswerWidthFromFontStyle(drawAnswersManager.fontStyle);
       this.correctTargetPromptAndAnswerPairing.height = 20;//measureText does not provide height
       this.incorrectTargetPromptAndAnswerPairing.height = 20;//measureText does not provide height
     }
@@ -206,8 +211,11 @@ function PromptsAndAnswersManager()
   }
 
   this.getTextWidthFromFontStyle = function(text, fontStyle){
+    gameCanvasContext.save();
     gameCanvasContext.font = fontStyle;
-    return gameCanvasContext.measureText(text).width;
+    var textWidth = gameCanvasContext.measureText(text).width
+    gameCanvasContext.restore();
+    return textWidth;
   }
 
   this.getCorrectAnswerWidthFromFontStyle = function(fontStyle){
@@ -249,14 +257,14 @@ function PromptsAndAnswersManager()
     let currentPlayerCharacter = gameClassManager.currentGame.playerCharacter;
     //console.log('currentPlayerCharacter.name: ' + currentPlayerCharacter.name);
     randomXCoordinate = getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100, currentPlayerCharacter.x - 40,currentPlayerCharacter.x + 60);
-    //console.log('randomXCoordinate: ' + randomXCoordinate);
     randomYCoordinate = getRandomIntWithExclusionaryRange(0,gameCanvas.height - 100, currentPlayerCharacter.y - 40,currentPlayerCharacter.y + 60);
     return {randomXCoordinate,randomYCoordinate};
   }
 
   this.defineXAndYCoordinatesForTargets = function()
   {
-    if (gameClassManager.currentGame.name === 'Snake Game' || gameClassManager.currentGame.name === 'birdGame')
+    if (gameClassManager.currentGame.name === 'Snake Game' || gameClassManager.currentGame.name === 'birdGame'
+        || gameClassManager.currentGame.name === 'spaceShooter')
     {
       let correctAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
       let incorrectAnswerCoordinates = this.pickRandomCoordinatesWithinCanvasAndAwayFromCharacter();
@@ -333,22 +341,30 @@ function PromptsAndAnswersManager()
     }
     else if (gameClassManager.currentGame.name === 'frogRiverGame')
     {
-      // let answerCount = frogRiverGame.lilyPadManager.answerCount;
-      // let randomNumber = Math.random();
-      // if (randomNumber < 0.5)
-      // {
-      //   this.correctTargetPromptAndAnswerPairing.xCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount].x;
-      //   this.correctTargetPromptAndAnswerPairing.yCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount].y;
-      //   this.incorrectTargetPromptAndAnswerPairing.xCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + 1].x;
-      //   this.incorrectTargetPromptAndAnswerPairing.yCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + 1].y;
-      // }
-      // else
-      // {
-      //   this.correctTargetPromptAndAnswerPairing.xCoordinate = laneGame.carRightLanePosition - 25;
-      //   this.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
-      //   this.incorrectTargetPromptAndAnswerPairing.xCoordinate = laneGame.carLeftLanePosition - 25;
-      //   this.incorrectTargetPromptAndAnswerPairing.yCoordinate = -10;
-      // }
+      let answerCount = frogRiverGame.answerCount;
+      let additive = frogRiverGame.additiveToAnswers;
+
+      let randomNumber = Math.random();
+      if (randomNumber < 0.5)
+      {
+        frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive].answer = this.correctTargetPromptAndAnswerPairing;
+        frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive + 1].answer = this.incorrectTargetPromptAndAnswerPairing;
+
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive].xCoordinate;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive].yCoordinate;
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive + 1].xCoordinate;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive + 1].yCoordinate;
+      }
+      else
+      {
+        frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive].answer = this.incorrectTargetPromptAndAnswerPairing;
+        frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive + 1].answer = this.correctTargetPromptAndAnswerPairing;
+
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive + 1].xCoordinate;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive + 1].yCoordinate;
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive].xCoordinate;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive].yCoordinate;
+      }
     }
     else if (gameClassManager.currentGame.name === 'Pass or Block Game')
     {
@@ -366,11 +382,9 @@ function PromptsAndAnswersManager()
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = 0;
     }
     else if(gameClassManager.currentGame.name === "flowerGame"){
-      console.log('inside promptAndAnswersManager function to define x and y coordinates for flower game');
       let randomNumber = Math.random();
       if (randomNumber < 0.5)
       {
-        console.log('flowerGame.seedOneXCoordinate - 25: ' + flowerGame.seedOneXCoordinate);
         this.correctTargetPromptAndAnswerPairing.xCoordinate = flowerGame.seedOneXCoordinate -25;
         this.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
         this.incorrectTargetPromptAndAnswerPairing.xCoordinate = flowerGame.seedTwoXCoordinate-25;

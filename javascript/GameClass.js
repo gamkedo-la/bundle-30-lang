@@ -11,14 +11,32 @@ function GameClass()
 
   this.initialize = function()
   {
-    console.log('initialize function from GameClass');
+    console.log('inside initialization of GameClass');
+    if (gameClassManager.currentGame.playerCharacter === undefined)
+    {
+      gameClassManager.currentGame.defineAndInitializePlayerCharacter();
+    }
+    if (gameClassManager.currentGame.pregameSpecialCode !== undefined)
+    {
+      gameClassManager.currentGame.pregameSpecialCode();
+    }
 	  initializePromptAndAnswerObjects();
-	  gameInterval.reset(this.FRAME_RATE);
+    gameInterval.reset(this.FRAME_RATE);
+    drawAnswersManager.initialize();
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
   };
 
   this.gameFrameRate = undefined;//number
+  
+  this.imageAnswerWidth = 100;
+  this.imageAnswerHeight = 100;
+  this.audioImageAnswerWidth = 100;
+  this.audioImageAnswerHeight = 100;
+
+  this.textAnswerFontSize  = 30;
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+  
   this.update = function(){};
   this.draw = function(){};
 }
@@ -40,12 +58,11 @@ function GameClassManager()
 
   this.initializeCurrentGame = function()
   {
+    console.log('inside initialization of GameClassManager.initializeCurrentGame');
     this.currentGame.initialize();
-    console.log('inside initialize of gameClassManager');
     if (this.currentGame.superInitialize !== undefined)
     {
       this.currentGame.superInitialize();
-      console.log('should be superInitializing');
     }
   }
 

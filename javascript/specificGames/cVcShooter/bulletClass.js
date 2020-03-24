@@ -88,7 +88,6 @@ function fireBullet()
 {
   let bullet = new Bullet();
   arrayOfBullets.push(bullet);
-  console.log(arrayOfBullets);
 }
 
 function moveBullets()

@@ -52,6 +52,7 @@ function ModeSelectScreen()
       if ( Math.sqrt(xDistanceSquared + yDistanceSquared) < radioButtonRadius )
         {
           this.arrayOfModeSelectBoxes[radioButtonIndex].selectedStatus = true;
+          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           nextGame = this.arrayOfModeSelectBoxes[radioButtonIndex].mode;
           console.log('nextGame: ' + nextGame);
           for (let reiterativeArrayIndex = 0; reiterativeArrayIndex < this.arrayOfModeSelectBoxes.length; reiterativeArrayIndex++)
@@ -87,7 +88,7 @@ function ModeSelectScreen()
     if (inputManager.mouseCoordinates.x > startingX && inputManager.mouseCoordinates.x < startingX + width &&
         inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height)
         {
-          console.log('play button click');
+          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           this.startGame();
         }
   }
@@ -99,8 +100,8 @@ function ModeSelectScreen()
     audioManager.currentBackgroundMusic.pause();
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
     collisionsWithAnswersManager.initialize();
-    audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
     audioManager.transitionToLevelMusic1.play();
+    audioManager.transitionToLevelMusic1.volume = 0;// for meetings
   }
 
   this.drawBackground = function()

@@ -21,6 +21,11 @@ function flowerGameClass(){
 	this.textAnswerFontStyle = 'px Helvetica';
 
     this.playerCharacter = undefined;
+    this.defineAndInitializePlayerCharacter = function()
+    {
+      this.playerCharacter = new FlowerClass();
+      this.collidingObject = this.playerCharacter;
+    }
     this.background = undefined;
     const SEED_ONE_STARTING_X = 100;
     const SEED_ONE_STARTING_Y = 10;
@@ -44,7 +49,8 @@ function flowerGameClass(){
     this.superInitialize = this.initialize;
     this.initialize = function()
     {
-      this.playerCharacter = new FlowerClass();
+
+      this.collidingObject = this.playerCharacter;
       this.background = new FlowerBackgroundClass();
       amountCorrectAtStart = amountCorrect;
       amountCorrectThisGameSession = 0;
@@ -77,7 +83,7 @@ function flowerGameClass(){
         this.moveAnswers();
         this.moveSeeds();
         this.handleAnswersOffScreen();
-        collisionsWithAnswersManager.handleCollisionsWithAnswers();
+        collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
 
       }
     };
@@ -143,9 +149,13 @@ function flowerGameClass(){
         gameCanvasContext.drawImage(this.flowerArray[i], (this.playerCharacter.x + this.flowerWidth*i),(this.playerCharacter.y - this.flowerHeight), this.flowerWidth, this.flowerHeight);
       }
       if(amountCorrect > amountCorrectThisGameSession){
+<<<<<<< HEAD
           amou = amountCorrect;
 
           console.log("amount correct this game session " + amountCorrectThisGameSession);
+=======
+          amountCorrectThisGameSession = amountCorrect;
+>>>>>>> 5f1dc408386bf26f362db081bf89dc2b0e032f74
       }
 
 

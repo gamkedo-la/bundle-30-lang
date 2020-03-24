@@ -7,6 +7,11 @@ function jumperGameClass()
 {
   this.name = 'jumperGame';
   this.playerCharacter = undefined;
+  this.defineAndInitializePlayerCharacter = function()
+  {
+    this.playerCharacter = new JumperClass();
+    this.collidingObject = this.playerCharacter;
+  }
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = 'px Helvetica';
   this.titleScreenData = [{
@@ -27,6 +32,7 @@ function jumperGameClass()
   this.initialize = function()
   {
     this.playerCharacter = new JumperClass();
+    this.collidingObject = this.playerCharacter;
     drawAnswersManager.draw();
 	//this.superInitialize();
   };
@@ -38,7 +44,7 @@ function jumperGameClass()
     {
       this.movePlayer();
       this.handlePlayerWrapping();
-      collisionsWithAnswersManager.handleCollisionsWithAnswers();
+      collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
     }
   };
 

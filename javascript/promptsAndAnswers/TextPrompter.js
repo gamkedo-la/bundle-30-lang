@@ -7,6 +7,8 @@ function TextPrompter()
     this.currentText = textToLoad;
   }
 
+  this.currentTextPixelSize = 30;
+
   this.backgroundColor = 'white';
   this.currentWidth = 150;
   this.currentHeight = 150;
@@ -15,6 +17,8 @@ function TextPrompter()
   {
     this.currentWidth += gameClassManager.currentGame.FRAME_RATE/5;
     this.currentHeight += gameClassManager.currentGame.FRAME_RATE/5;
+    this.currentTextPixelSize += 1;
+    console.log('this.currentTextPixelSize: ' + this.currentTextPixelSize);
   }
 
   this.drawThePrompt = function()
@@ -30,10 +34,17 @@ function TextPrompter()
 
     if (this.currentText !== undefined)
     {
-      customFontFillText(this.currentText, this.currentWidth*0.45 /*font size*/,this.currentWidth*0.2 /*spacing*/,
-      gameCanvas.width/2 - this.currentWidth/2 + this.currentWidth*0.1,//xCoordinate
-      gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.25,//yCoordinate
-      );
+      // customFontFillText(this.currentText, this.currentWidth*0.45 /*font size*/,this.currentWidth*0.2 /*spacing*/,
+      // gameCanvas.width/2 - this.currentWidth/2 + this.currentWidth*0.1,//xCoordinate
+      // gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.25//yCoordinate
+      // );
+      console.log('this.currentText: ' + this.currentText);
+      gameCanvasContext.fillStyle = 'black';
+      gameCanvasContext.font = this.currentTextPixelSize + 'px Helvetica';
+      gameCanvasContext.fillText(this.currentText,
+      gameCanvas.width/2 - this.currentWidth*0.175, /* - this.currentWidth/2 + this.currentWidth*0.1*///xCoordinate
+      gameCanvas.height/2/* - this.currentHeight/2 + this.currentHeight*0.25*///yCoordinate
+      )
     }
   }
 
@@ -44,6 +55,7 @@ function TextPrompter()
       promptersManager.shouldBeDrawingAPrompt = false;
       this.currentHeight = 150;
       this.currentHeight = 150;
+      this.currentTextPixelSize = 30;
       if (promptsAndAnswersManager.currentAnswerDataType === "AUDIO")
       {
         promptersManager.promptAudioAnswersWhenAppropriate();

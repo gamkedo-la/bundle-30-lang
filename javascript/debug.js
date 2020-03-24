@@ -3,7 +3,8 @@ var debugOn = false;
 function drawDebugStuff()
 {
   console.log('inside draw debug stuff');
-  if (fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen)
+  if (fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen ||
+      fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
   {
     console.log('inside current state check of drawDebugStuff()');
     gameCanvasContext.fillStyle = 'black';
