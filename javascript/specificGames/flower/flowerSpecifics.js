@@ -39,13 +39,15 @@ function flowerGameClass(){
     this.flowerArray = new Array(simpleFlower, simpleFlower, simpleFlower, simpleFlower, simpleFlower);
 
     var amountCorrectThisGameSession = undefined;
+    var amountCorrectAtStart = undefined;
 
     this.superInitialize = this.initialize;
     this.initialize = function()
     {
       this.playerCharacter = new FlowerClass();
       this.background = new FlowerBackgroundClass();
-      amountCorrectThisGameSession = amountCorrect;
+      amountCorrectAtStart = amountCorrect;
+      amountCorrectThisGameSession = 0;
       //initialize seeds
       this.seedOneXCoordinate = SEED_ONE_STARTING_X;
       this.seedOneYCoordinate = SEED_ONE_STARTING_Y;
@@ -136,11 +138,13 @@ function flowerGameClass(){
     this.sproutFlowers = function(){
       this.flowerWidth = 30;
       this.flowerHeight = 60;
+      amountCorrectThisGameSession = amountCorrect - amountCorrectAtStart; 
       for(i = 0; i < amountCorrectThisGameSession; i++){
         gameCanvasContext.drawImage(this.flowerArray[i], (this.playerCharacter.x + this.flowerWidth*i),(this.playerCharacter.y - this.flowerHeight), this.flowerWidth, this.flowerHeight);
       }
       if(amountCorrect > amountCorrectThisGameSession){
-          amountCorrectThisGameSession = amountCorrect;
+          amou = amountCorrect;
+
           console.log("amount correct this game session " + amountCorrectThisGameSession);
       }
 
