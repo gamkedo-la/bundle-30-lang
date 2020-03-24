@@ -25,6 +25,9 @@ window.onload = function()
   modeSelectScreen = new ModeSelectScreen();
   modeSelectScreen.initialize();
   fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.modeSelectScreen.associatedObject = modeSelectScreen;
+  languageSelectionScreen = new LanguageSelectionScreen();
+  fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.languageSelectionScreen.associatedObject = languageSelectionScreen;
+
 }
 
 function advanceGameFrame()

@@ -22,8 +22,13 @@ function InputManager()
       break;
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.modeSelectScreen:
-      modeSelectScreen.handlePlayButtonClick();
+      modeSelectScreen.handleNextButtonClick();
       modeSelectScreen.handleRadioButtonClicks();
+      break;
+
+      case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.languageSelectionScreen:
+      languageSelectionScreen.handlePlayButtonClick();
+      languageSelectionScreen.handleLanguageCellClicks();
       break;
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:

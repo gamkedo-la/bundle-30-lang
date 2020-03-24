@@ -66,7 +66,7 @@ function ModeSelectScreen()
     }
   }
 
-  this.drawPlayButton = function()
+  this.drawNextButton = function()
   {
     let width = gameCanvas.width/4;
     let height = gameCanvas.height/7;
@@ -75,10 +75,10 @@ function ModeSelectScreen()
 
     gameCanvasContext.strokeStyle = 'black';
     gameCanvasContext.strokeRect(startingX,startingY, width,height);
-    customFontFillText('Play', 30, 15, startingX + width/4,startingY + height/4);
+    customFontFillText('Next', 30, 15, startingX + width/4,startingY + height/4);
   }
 
-  this.handlePlayButtonClick = function()
+  this.handleNextButtonClick = function()
   {
     let width = gameCanvas.width/4;
     let height = gameCanvas.height/7;
@@ -89,20 +89,11 @@ function ModeSelectScreen()
         inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height)
         {
           audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
-          this.startGame();
+          fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.languageSelectionScreen);
         }
   }
 
-  this.startGame = function()
-  {
-    if (gameClassManager.currentGame) console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
-    miniGameTransitioner.initialize();
-    audioManager.currentBackgroundMusic.pause();
-    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
-    collisionsWithAnswersManager.initialize();
-    audioManager.transitionToLevelMusic1.play();
-    audioManager.transitionToLevelMusic1.volume = 0;// for meetings
-  }
+
 
   this.drawBackground = function()
   {
@@ -115,7 +106,7 @@ function ModeSelectScreen()
     //console.log('inside mode select screen draw');
     this.drawBackground();
     this.drawRadioButtons();
-    this.drawPlayButton();
+    this.drawNextButton();
   }
 }//end of mode select screen
 

@@ -1,6 +1,15 @@
 function PromptsAndAnswersManager()
 {
-  this.arrayOfLogicalPromptAnswerGroupings = [];
+  this.arrayOfLanguagePromptAndAnswerGroupings =
+  [this.arrayOfLogicalEnglishPromptAnswerGroupings,
+   this.arrayOfLogicalMandarinPromptAnswerGroupings,
+   this.arrayOfLogicalVietnamesePromptAnswerGroupings];
+
+  this.arrayOfLogicalEnglishPromptAnswerGroupings = [];
+  this.arrayOfLogicalMandarinPromptAnswerGroupings = [];
+  this.arrayOfLogicalVietnamesePromptAnswerGroupings = [];
+
+  this.currentArrayOfLogicalPromptAnswerGroupings = undefined;
 
   this.arrayOfCVCPromptAnswerGroupings = [];
 
@@ -8,8 +17,8 @@ function PromptsAndAnswersManager()
 
   this.pickARandomLogicalPromptAnswerGroup = function()
   {
-    let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.length - 1);
-    this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
+    let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length - 1);
+    this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
   }
 
   this.correctTargetPromptAndAnswerPairing = undefined;

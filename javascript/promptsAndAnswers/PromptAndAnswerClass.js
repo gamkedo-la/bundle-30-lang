@@ -50,7 +50,10 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
 function initializePromptAndAnswerObjects()
 {
   console.log('prompts and answers initializing');
-  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings = [];
+  promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings = [];
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings = [];
+  promptsAndAnswersManager.arrayOfLogicalVietnamesePromptAnswerGroupings = [];
+
   womanVersusWomenPairGrouping = {name: 'woman vs women', arrayOfObjects: []};
   manVersusMenPairGrouping = {name: 'man vs men', arrayOfObjects: []};
   heVersusShePairGrouping = {name: 'he vs she', arrayOfObjects: []};
@@ -61,30 +64,31 @@ function initializePromptAndAnswerObjects()
   womenPromptAndAnswer = new PromptAndAnswerClass('women', 'women', womenImage, audioManager.womenAudio);
   womanVersusWomenPairGrouping.arrayOfObjects.push(womanPromptAndAnswer);
   womanVersusWomenPairGrouping.arrayOfObjects.push(womenPromptAndAnswer);
-  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(womanVersusWomenPairGrouping);
+  promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings.push(womanVersusWomenPairGrouping);
 
   manPromptAndAnswer = new PromptAndAnswerClass('man', 'man', manImage, audioManager.manAudio);
   menPromptAndAnswer = new PromptAndAnswerClass("men", "men", menImage, audioManager.menAudio);
   manVersusMenPairGrouping.arrayOfObjects.push(manPromptAndAnswer);
   manVersusMenPairGrouping.arrayOfObjects.push(menPromptAndAnswer);
-  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(manVersusMenPairGrouping);
+  promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings.push(manVersusMenPairGrouping);
 
   hePromptAndAnswer = new PromptAndAnswerClass('he', 'he', heImage, audioManager.heAudio);
   shePromptAndAnswer = new PromptAndAnswerClass('she', 'she', sheImage, audioManager.sheAudio);
   heVersusShePairGrouping.arrayOfObjects.push(hePromptAndAnswer);
   heVersusShePairGrouping.arrayOfObjects.push(shePromptAndAnswer);
-  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(heVersusShePairGrouping);
+  promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings.push(heVersusShePairGrouping);
 
   mandarinBuyPromptAndAnswer = new PromptAndAnswerClass('mandarin buy','买', mandarinBuyImage, audioManager.mandarinBuyAudio);
   mandarinSellPromptAndAnswer = new PromptAndAnswerClass('mandarin sell','卖', mandarinSellImage, audioManager.mandarinSellAudio);
   mandarinBuyVersusMandarinSellPairGrouping.arrayOfObjects.push(mandarinBuyPromptAndAnswer);
   mandarinBuyVersusMandarinSellPairGrouping.arrayOfObjects.push(mandarinSellPromptAndAnswer);
-  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(mandarinBuyVersusMandarinSellPairGrouping);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinBuyVersusMandarinSellPairGrouping);
 
   mandarinMomPromptAndAnswer = new PromptAndAnswerClass('mandarin mom', '妈', mandarinMomImage, audioManager.mandarinMomAudio);
   mandarinHorsePromptAndAnswer = new PromptAndAnswerClass('mandarin horse', '马', mandarinHorseImage, audioManager.mandarinHorseAudio);
   mandarinMomVersusHorsePairGrouping.arrayOfObjects.push(mandarinMomPromptAndAnswer);
   mandarinMomVersusHorsePairGrouping.arrayOfObjects.push(mandarinHorsePromptAndAnswer);
-  promptsAndAnswersManager.arrayOfLogicalPromptAnswerGroupings.push(mandarinMomVersusHorsePairGrouping);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinMomVersusHorsePairGrouping);
 
+  console.log('promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
 }
