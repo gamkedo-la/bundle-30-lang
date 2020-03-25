@@ -112,7 +112,6 @@ function LanguageSelectionScreen()
     {
       this.languageNum = mouseCol + mouseRow *6;
       console.log('this.languageNum: ' + this.languageNum);
-      repopulatePromptAndAnswerArrays();
       promptsAndAnswersManager.assignCurrentLanguageArray();
     }
   }

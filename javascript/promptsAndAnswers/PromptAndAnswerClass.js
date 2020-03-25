@@ -72,9 +72,9 @@ function initializePromptAndAnswerObjects()
   //Vietnamese Section
 }
 
-function repopulatePromptAndAnswerArrays()
+function populatePromptAndAnswerArrays()
 {
-  console.log('inside repopulatePromptAndAnswerArrays');
+  console.log('inside populatePromptAndAnswerArrays');
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings = [];
 
   promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings = [];
