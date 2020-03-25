@@ -62,6 +62,7 @@ let mazeTopWall = document.createElement('img');
 let mazeBottomWall = document.createElement('img');
 let mazeLeftWall = document.createElement('img');
 let mazeRightWall = document.createElement('img');
+let mazeCharacter = document.createElement('img');
 
 //air grab
 let airBoothImage = document.createElement('img');
@@ -237,6 +238,7 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: mazeBottomWall, theFile: "images/Backgrounds/bottomWall.png"});
   arrayOfImages.push({imageObjectBinding: mazeLeftWall, theFile: "images/Backgrounds/leftWall.png"});
   arrayOfImages.push({imageObjectBinding: mazeRightWall, theFile: "images/Backgrounds/rightWall.png"});
+  arrayOfImages.push({imageObjectBinding: mazeCharacter, theFile: "images/sprites/Maze/mole.png"});
 
   //air booth
   arrayOfImages.push({imageObjectBinding: airBoothImage, theFile: "images/Backgrounds/airBooth.png"});

@@ -2,8 +2,8 @@ const MIN_DISTANCE_PLAYER_TO_WALL = 10;
 
 function MazePlayer()
 {
-    this.width = Math.min(CELL_WIDTH, CELL_HEIGHT) - 2*WALL_THICKNESS - 5;
-    this.height = Math.min(CELL_WIDTH, CELL_HEIGHT) - 2*WALL_THICKNESS - 5;
+    this.width  = 80; //Math.min(CELL_WIDTH, CELL_HEIGHT) - 2*WALL_THICKNESS - 5;
+    this.height = 80; //Math.min(CELL_WIDTH, CELL_HEIGHT) - 2*WALL_THICKNESS - 5;
 
     this.x = undefined;
     this.y = undefined;
@@ -43,14 +43,21 @@ function MazePlayer()
 
     this.draw = function() {
         if (this.isPlaced){
-            gameCanvasContext.save()
-            gameCanvasContext.fillStyle = "red";
-            gameCanvasContext.fillRect(
+            // gameCanvasContext.save()
+            // gameCanvasContext.fillStyle = "red";
+            // gameCanvasContext.fillRect(
+            //     this.x - this.width / 2,
+            //     this.y - this.height / 2,
+            //     this.width, this.height
+            // )
+            // gameCanvasContext.restore();
+
+            gameCanvasContext.drawImage(
+                mazeCharacter, 
                 this.x - this.width / 2,
                 this.y - this.height / 2,
                 this.width, this.height
             )
-            gameCanvasContext.restore();
         }
     }
 
