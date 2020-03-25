@@ -162,6 +162,7 @@ pill/pale/peel,
 168. live/leave
 169. where/we're/were
 170. cup/cop
+171. weather/water
 
 spelling - 
 1. was/saw
