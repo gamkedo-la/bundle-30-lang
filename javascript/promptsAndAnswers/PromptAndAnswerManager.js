@@ -152,6 +152,7 @@ function PromptsAndAnswersManager()
 
     let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editedPromptAndAnswerGroup.arrayOfObjects.length - 1);
     this.incorrectTargetPromptAndAnswerPairing = this.editedPromptAndAnswerGroup.arrayOfObjects[randomIndexForEditedPromptAndAnswerGroup];
+
     console.log("this.incorrectTargetPromptAndAnswerPairing: " + this.incorrectTargetPromptAndAnswerPairing);
   }
 
@@ -437,7 +438,8 @@ function PromptsAndAnswersManager()
     }
     else
     {
-      this.assignCurrentLanguageArray();
+      console.log('inside setOrResetPromptsAndAnswers() of promptsAndAnswersManager');
+      //this.assignCurrentLanguageArray();
       this.pickARandomLogicalPromptAnswerGroup();
       this.pickATargetPromptAndAnswerPairing();
       this.pickARandomPromptFromTargetPromptAndAnswerPairing();

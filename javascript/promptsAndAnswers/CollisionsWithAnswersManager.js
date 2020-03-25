@@ -91,6 +91,7 @@ function CollisionsWithAnswersManager()
 
   this.resetAnswers = function()
   {
+    console.log('inside reset answers of collisionsWithAnswersManager');
     promptersManager.currentPrompter.currentWidth = 150;
     promptersManager.currentPrompter.currentHeight = 150;
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();

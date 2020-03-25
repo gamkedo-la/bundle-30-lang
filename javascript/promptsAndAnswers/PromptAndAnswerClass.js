@@ -76,7 +76,7 @@ function repopulatePromptAndAnswerArrays()
 {
   console.log('inside repopulatePromptAndAnswerArrays');
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings = [];
-  
+
   promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings = [];
   promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings = [];
   promptsAndAnswersManager.arrayOfLogicalVietnamesePromptAnswerGroupings = [];
