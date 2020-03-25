@@ -16,6 +16,7 @@ function LoadingAndSplashScreen()
     audioManager.currentBackgroundMusic.play();
     audioManager.currentBackgroundMusic.volume = 0;// for meetings
     audioManager.currentBackgroundMusic.loop = true;
+
     gameInterval.start();
 
     if (gameIsOnAServerAndCanUseWebAudioAPI)
@@ -24,6 +25,7 @@ function LoadingAndSplashScreen()
     }
 
     promptersManager.instantiatePrompters();
+    initializePromptAndAnswerObjects();
   }
 
   this.promptPlayerForClickAfterLoading = function()

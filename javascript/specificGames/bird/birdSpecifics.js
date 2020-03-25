@@ -36,8 +36,8 @@ function birdGameClass() {
 
   this.superInitialize = function()
   {
-    initializePromptAndAnswerObjects();
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    // initializePromptAndAnswerObjects();
+    // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     this.assignLeftOrRightDirectionToAnswers();
 	  //this.superInitialize();

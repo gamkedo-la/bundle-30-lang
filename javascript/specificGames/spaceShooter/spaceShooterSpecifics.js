@@ -43,8 +43,8 @@ function spaceShooterGameClass() {
 		this.jupiter1XCoordinate = gameCanvas.width*0.2;
 		this.jupiter2XCoordinate = gameCanvas.width*0.2 + gameCanvas.width;
 
-		initializePromptAndAnswerObjects();
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+		// initializePromptAndAnswerObjects();
+    // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
 	}
 

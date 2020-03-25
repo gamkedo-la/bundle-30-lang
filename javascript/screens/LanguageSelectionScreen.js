@@ -56,17 +56,6 @@ function LanguageSelectionScreen()
     customFontFillText('Vietnamese', 15,9, 225,200);
   }
 
-  this.startGame = function()
-  {
-    if (gameClassManager.currentGame) console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
-    miniGameTransitioner.initialize();
-    audioManager.currentBackgroundMusic.pause();
-    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
-    collisionsWithAnswersManager.initialize();
-    audioManager.transitionToLevelMusic1.play();
-    audioManager.transitionToLevelMusic1.volume = 0;// for meetings
-  }
-
   this.drawPlayButton = function()
   {
     let width = gameCanvas.width/4;
@@ -76,7 +65,20 @@ function LanguageSelectionScreen()
 
     gameCanvasContext.strokeStyle = 'black';
     gameCanvasContext.strokeRect(startingX,startingY, width,height);
-    customFontFillText('Next', 30, 15, startingX + width/4,startingY + height/4);
+    customFontFillText('Play', 30, 15, startingX + width/4,startingY + height/4);
+  }
+
+  this.startGame = function()
+  {
+    gameClassManager.initializeCurrentGame();
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    if (gameClassManager.currentGame) console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
+    miniGameTransitioner.initialize();
+    audioManager.currentBackgroundMusic.pause();
+    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
+    collisionsWithAnswersManager.initialize();
+    audioManager.transitionToLevelMusic1.play();
+    audioManager.transitionToLevelMusic1.volume = 0;// for meetings
   }
 
   this.handlePlayButtonClick = function()
@@ -90,30 +92,8 @@ function LanguageSelectionScreen()
         inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height)
         {
           audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
-          this.loadGame();
           this.startGame();
         }
-  }
-
-  this.loadGame = function()
-  {
-    if (titleScreen.gameNum !== -1)
-    {
-      if(titleScreen.gameNum == GAME_SPACE_SHOOTER) {
-        console.log("trying to load space shooter, special casing it");
-        playerShouldSeeTitleScreen = false;
-        fullGameStateMachine.playingAGameState = true;
-        levelIsTransitioning = true;
-
-        if(loadGameNum(titleScreen.gameNum) == false) {
-          return;
-        }
-      } else {
-        loadGameNum(titleScreen.gameNum);
-      }
-      if (gameClassManager.currentGame !== cVcShooterGame && gameClassManager.currentGame !== undefined)
-      gameClassManager.currentGame.postLoadInit();
-    }
   }
 
   this.languageNum = -1;
@@ -130,21 +110,11 @@ function LanguageSelectionScreen()
     var mouseRow = Math.floor((inputManager.mouseCoordinates.y - 150)/100);
     if (mouseCol >= 0 && mouseCol < 3 && mouseRow >= 0 && mouseRow < 1)
     {
-      //initializePromptAndAnswerObjects();
-
       this.languageNum = mouseCol + mouseRow *6;
       console.log('this.languageNum: ' + this.languageNum);
-      console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings);
-      console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[this.languageNum]: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[this.languageNum]);
+      repopulatePromptAndAnswerArrays();
       promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings = promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[this.languageNum];
-
-      gameClassManager.initializeCurrentGame();
-      promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     }
-    //console.log('languageNum: ' + this.languageNum);
-    //promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings = promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[this.languageNum];
-    //console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[languageNum]: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[this.languageNum]);
-    //console.log('promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
   }
 }
 

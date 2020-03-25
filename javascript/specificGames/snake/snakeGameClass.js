@@ -34,8 +34,8 @@ function snakeGameClass()
     this.background = new SnakeBackground();
     this.playerCharacter.initialize();
     this.collidingObject = this.playerCharacter;
-    initializePromptAndAnswerObjects();
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    // initializePromptAndAnswerObjects();
+    // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
 	  this.superInitialize();
   };

@@ -57,15 +57,8 @@ function GameClassManager()
 
   this.initializeCurrentGame = function()
   {
-    //console.log('inside initialization of GameClassManager.initializeCurrentGame');
     this.currentGame.initialize();
-    //initializePromptAndAnswerObjects();
 
-    promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings =
-    promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings[languageSelectionScreen.languageNum];
-
-    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     if (this.currentGame.superInitialize !== undefined)
     {
       this.currentGame.superInitialize();

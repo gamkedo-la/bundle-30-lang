@@ -91,6 +91,14 @@ function ModeSelectScreen()
           audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.languageSelectionScreen);
         }
+
+    for (let i = 0; i < this.arrayOfModeSelectBoxes.length; i++)
+    {
+      if (this.arrayOfModeSelectBoxes[i].selectedStatus === true)
+      {
+        console.log(this.arrayOfModeSelectBoxes[i].name + ' mode selected');
+      }
+    }
   }
 
 

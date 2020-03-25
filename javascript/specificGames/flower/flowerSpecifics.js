@@ -59,8 +59,8 @@ function flowerGameClass(){
       this.seedOneYCoordinate = SEED_ONE_STARTING_Y;
       this.seedTwoXCoordinate = SEED_TWO_STARTING_X;
       this.seedTwoYCoordinate = SEED_TWO_STARTING_Y;
-      initializePromptAndAnswerObjects();
-      promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+      // initializePromptAndAnswerObjects();
+      // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
       promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
       console.log(this.playerCharacter);
 	  this.superInitialize();
@@ -144,7 +144,7 @@ function flowerGameClass(){
     this.sproutFlowers = function(){
       this.flowerWidth = 30;
       this.flowerHeight = 60;
-      amountCorrectThisGameSession = amountCorrect - amountCorrectAtStart; 
+      amountCorrectThisGameSession = amountCorrect - amountCorrectAtStart;
       for(i = 0; i < amountCorrectThisGameSession; i++){
         var LeftOrRight = Math.cos(Math.PI*i);
         var flowerLocationX = this.playerCharacter.x;
@@ -156,7 +156,7 @@ function flowerGameClass(){
         }
 
         gameCanvasContext.drawImage(this.flowerArray[i], (flowerLocationX),(this.playerCharacter.y - this.flowerHeight), this.flowerWidth, this.flowerHeight);
-      
+
       }
 
       if(amountCorrect > amountCorrectThisGameSession){

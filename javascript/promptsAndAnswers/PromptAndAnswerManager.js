@@ -12,11 +12,18 @@ function PromptsAndAnswersManager()
 
   this.currentLogicalPromptAndAnswerGroup = undefined;
 
+  this.assignCurrentLanguageArray = function()
+  {
+    this.currentArrayOfLogicalPromptAnswerGroupings = this.arrayOfLanguagePromptAndAnswerGroupings[languageSelectionScreen.languageNum];
+    console.log('this.currentArrayOfLogicalPromptAnswerGroupings: ' + this.currentArrayOfLogicalPromptAnswerGroupings);
+  }
+
   this.pickARandomLogicalPromptAnswerGroup = function()
   {
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
-    console.log('this.currentLogicalPromptAndAnswerGroup: ' + this.currentLogicalPromptAndAnswerGroup);
+    console.log('this.currentLogicalPromptAndAnswerGroup.name: ' + this.currentLogicalPromptAndAnswerGroup.name);
+    console.log('this.currentLogicalPromptAndAnswerGroup.arrayOfObjects: ' + this.currentLogicalPromptAndAnswerGroup.arrayOfObjects);
   }
 
   this.correctTargetPromptAndAnswerPairing = undefined;
@@ -28,6 +35,7 @@ function PromptsAndAnswersManager()
     }
     let randomIndexFromCurrentPromptAndAnswerGroup = getRandomIntInclusive(0,this.currentLogicalPromptAndAnswerGroup.arrayOfObjects.length - 1);
     this.correctTargetPromptAndAnswerPairing = this.currentLogicalPromptAndAnswerGroup.arrayOfObjects[randomIndexFromCurrentPromptAndAnswerGroup];
+    console.log('this.correctTargetPromptAndAnswerPairing: ' + this.correctTargetPromptAndAnswerPairing);
   }
 
 
@@ -40,6 +48,7 @@ function PromptsAndAnswersManager()
       }
     let randomIndexForArrayOfPossiblePrompts = getRandomIntInclusive(0,this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts.length - 1);
     this.currentPrompt = this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts[randomIndexForArrayOfPossiblePrompts];
+    console.log('this.currentPrompt: ' + this.currentPrompt);
   }
 
 
@@ -69,6 +78,7 @@ function PromptsAndAnswersManager()
     {
       console.log("unknown data type for current prompt");
     }
+    console.log('this.dataTypeOfCurrentPrompt: ' + this.dataTypeOfCurrentPrompt);
   }
 
 
@@ -93,6 +103,7 @@ function PromptsAndAnswersManager()
         this.currentCorrectAnswer = temporaryArrayOfPossibleAnswers[randomIndexToChooseAnswerInTemporaryArray];
       }//end of checking for prompt/answer overlap
     }//end of for loop through temporary answers array
+    console.log('this.currentCorrectAnswer: ' + this.currentCorrectAnswer);
   }//end of answer assignment
 
 
@@ -115,6 +126,7 @@ function PromptsAndAnswersManager()
     {
       this.currentAnswerDataType = 'AUDIO';
     }
+    console.log('this.currentAnswerDataType: ' + this.currentAnswerDataType);
   }
 
 
@@ -140,6 +152,7 @@ function PromptsAndAnswersManager()
 
     let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editedPromptAndAnswerGroup.arrayOfObjects.length - 1);
     this.incorrectTargetPromptAndAnswerPairing = this.editedPromptAndAnswerGroup.arrayOfObjects[randomIndexForEditedPromptAndAnswerGroup];
+    console.log("this.incorrectTargetPromptAndAnswerPairing: " + this.incorrectTargetPromptAndAnswerPairing);
   }
 
   this.defineWidthAndHeightForTargetAnswers = function()
@@ -215,6 +228,7 @@ function PromptsAndAnswersManager()
           }
         }
     }
+    console.log('this.currentIncorrectAnswer: ' + this.currentIncorrectAnswer);
   }
 
   this.getTextWidthFromFontStyle = function(text, fontStyle){
@@ -423,7 +437,7 @@ function PromptsAndAnswersManager()
     }
     else
     {
-      initializePromptAndAnswerObjects();
+      this.assignCurrentLanguageArray();
       this.pickARandomLogicalPromptAnswerGroup();
       this.pickATargetPromptAndAnswerPairing();
       this.pickARandomPromptFromTargetPromptAndAnswerPairing();
@@ -437,6 +451,8 @@ function PromptsAndAnswersManager()
       if (gameClassManager.currentGame.name === 'birdGame'){
         birdGame.assignLeftOrRightDirectionToAnswers();
       }
+      promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+      repopulatePromptAndAnswerArrays();
     }
   }
 }
