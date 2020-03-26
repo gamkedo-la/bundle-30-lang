@@ -34,6 +34,8 @@ function GameClass()
   this.textAnswerFontSize  = 30;
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/titleScreenMusic.mp3', 6.15);
+
   this.update = function(){};
   this.draw = function(){};
 }

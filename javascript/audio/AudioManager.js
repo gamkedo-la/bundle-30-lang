@@ -108,6 +108,7 @@ function AudioManager()
   this.arrayOfTransitionMusic = [];
   this.arrayOfTransitionMusic.push(this.transitionToLevelMusic1);
 
+  
   this.defineOnendedFunctionOfTransitionToLevel1Music = function()
   {
     this.transitionToLevelMusic1.onended = function()
@@ -140,6 +141,7 @@ function AudioManager()
       }
     }
   }
+
 
   this.initialize = function()
   {

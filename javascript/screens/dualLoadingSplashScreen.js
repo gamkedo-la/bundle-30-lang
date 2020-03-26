@@ -9,13 +9,15 @@ function LoadingAndSplashScreen()
   {
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
     transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
-    audioManager.initialize();
-    audioManager.multisoundPlayer.populateMultisoundArrays();
-    audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
-    audioManager.currentBackgroundMusic = audioManager.titleScreenMusic;
-    audioManager.currentBackgroundMusic.play();
-    audioManager.currentBackgroundMusic.volume = 0;// for meetings
-    audioManager.currentBackgroundMusic.loop = true;
+    // audioManager.initialize();
+    // audioManager.multisoundPlayer.populateMultisoundArrays();
+    // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
+    // audioManager.currentBackgroundMusic = audioManager.titleScreenMusic;
+    // audioManager.currentBackgroundMusic.play();
+    // audioManager.currentBackgroundMusic.volume = 0;// for meetings
+    // audioManager.currentBackgroundMusic.loop = true;
+    genAudio.playClick();
+    genAudio.playTitleMusic();
 
     gameInterval.start();
 

@@ -8,6 +8,7 @@ function MusicManager() {
 	var trackList = new Array();
 	var musicVolume = 0.7;
 	this.playing = false;
+	this.onEndFunction = function() {return};
 	var currentTrackDuration = null;
 	var nextTrackDuration = null;
 
@@ -94,6 +95,13 @@ function MusicManager() {
 	}
 
 	this.playNextTrack = function(fading = true) {
+		this.onEndFunction();
+
+		this.onEndFunction = function() {return};
+
+		if (fadeTrack != null) {
+			fadeTrack.pause();
+		}
 		if (fading) {
 			fadeTrack = currentTrack;
 		}
@@ -104,6 +112,12 @@ function MusicManager() {
 			trackList.shift();
 		}
 		this.play();
+	}
+
+	this.moveToLastTrack = function() {
+		while (trackList.length > 1) {
+			trackList.shift();
+		}
 	}
 
 	this.setVolume = function(value) {
@@ -118,4 +132,41 @@ function MusicManager() {
 function MusicTrack(source, duration) {
 	this.src = source;
 	this.dur = duration;
+}
+
+var genAudio = {};
+genAudio.transitionMusic1 = new MusicTrack("audio/levelTransitionSound.mp3", 5);
+genAudio.playTransitionMusic = function() {
+	musicManager.addTrack(randItem([genAudio.transitionMusic1]));
+	musicManager.moveToLastTrack();
+	musicManager.playNextTrack();
+	musicManager.addTrack(gameClassManager.currentGame.backgroundMusic);
+	musicManager.onEndFunction = function() {
+		// fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
+		// promptersManager.promptThePlayer();
+		// gameCanvasContext.globalAlpha = 1;
+	}
+}
+genAudio.titleMusic = new MusicTrack('audio/backgroundTracks/titleScreenMusic.mp3', 6.15);
+genAudio.playTitleMusic = function() {
+	musicManager.addTrack(genAudio.titleMusic);
+	musicManager.moveToLastTrack();
+	musicManager.playNextTrack();
+}
+genAudio.playClick = function() {
+	console.log("Sound: Click")
+}
+genAudio.playPositive = function() {
+	console.log("Sound: Positive")
+}
+genAudio.playNegative = function() {
+	console.log("Sound: Negative")
+}
+
+promptAudio = {};
+
+gameAudio = {};
+
+function randItem(array) {
+	return array[Math.floor(Math.random() * array.length)];
 }

@@ -74,11 +74,12 @@ function LanguageSelectionScreen()
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     if (gameClassManager.currentGame) console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
     miniGameTransitioner.initialize();
-    audioManager.currentBackgroundMusic.pause();
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
     collisionsWithAnswersManager.initialize();
-    audioManager.transitionToLevelMusic1.play();
-    audioManager.transitionToLevelMusic1.volume = 0;// for meetings
+    // audioManager.currentBackgroundMusic.pause();
+    // audioManager.transitionToLevelMusic1.play();
+    // audioManager.transitionToLevelMusic1.volume = 0;// for meetings
+    genAudio.playTransitionMusic();
   }
 
   this.handlePlayButtonClick = function()
@@ -91,7 +92,8 @@ function LanguageSelectionScreen()
     if (inputManager.mouseCoordinates.x > startingX && inputManager.mouseCoordinates.x < startingX + width &&
         inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height)
         {
-          audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
+          // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
+          genAudio.playClick();
           this.startGame();
         }
   }
