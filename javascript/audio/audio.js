@@ -1,4 +1,4 @@
-const VOLUME_INCREMENT = 0.1
+const VOLUME_INCREMENT = 0.05
 
 var musicManager = new MusicManager();
 function MusicManager() {
@@ -20,7 +20,7 @@ function MusicManager() {
 		}
 
 		if (fadeTrack != null) {
-			fadeTrack.volume = Math.pow(fadeTrack.volume - VOLUME_INCREMENT, 2);
+			fadeTrack.volume -= 0.05;
 			if (fadeTrack.volume <= 0.2) {
 				fadeTrack.pause();
 				fadeTrack = null;
@@ -145,10 +145,31 @@ function sfxMulti(arrayOfSources) {
 	this.play = function() {
 		var currentSource = randItem(sfxList);
 		currentSource.currentTime = 0;
-		currentSource.volume = sfxVolume;
+		currentSource.volume = Math.pow(sfxVolume, 2);
 		currentSource.play();
 	}
+}
 
+function sfxOneShot(source) {
+	var sfx = new Audio(source);
+
+	this.play = function() {
+		sfx.currentTime = 0;
+		sfx.volume = Math.pow(sfxVolume, 2);
+		sfx.play();
+	}
+}
+
+var promptVolume = 1;
+
+function promptSound(source) {
+	var sfx = new Audio(source);
+
+	this.play = function() {
+		sfx.currentTime = 0;
+		sfx.volume = Math.pow(promptVolume, 2);
+		sfx.play();
+	}
 }
 
 var genAudio = {};
@@ -184,6 +205,20 @@ genAudio.playNegative = function() {
 }
 
 promptAudio = {};
+promptAudio.woman = new promptSound('audio/PromptsAndAnswers/woman.mp3');
+promptAudio.women = new promptSound('audio/PromptsAndAnswers/women.mp3');
+promptAudio.man = new promptSound('audio/PromptsAndAnswers/man.mp3');
+promptAudio.men = new promptSound('audio/PromptsAndAnswers/men.mp3');
+promptAudio.he = new promptSound('audio/PromptsAndAnswers/he.mp3');
+promptAudio.she = new promptSound('audio/PromptsAndAnswers/she.mp3');
+
+promptAudio.blendedCat = new promptSound('audio/PromptsAndAnswers/blendedCat.mp3');
+promptAudio.blendedCot = new promptSound('audio/PromptsAndAnswers/blendedCot.mp3');
+
+promptAudio.mandarinBuy = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinBuy.mp3');
+promptAudio.mandarinSell = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinSell.mp3');
+promptAudio.mandarinMom = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinMom.mp3');
+promptAudio.mandarinHorse = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHorse.mp3');
 
 gameAudio = {};
 
