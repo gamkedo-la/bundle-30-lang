@@ -22,6 +22,7 @@ function PromptsAndAnswersManager()
   {
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
+    console.log('*****');
     console.log('this.currentLogicalPromptAndAnswerGroup.name: ' + this.currentLogicalPromptAndAnswerGroup.name);
   }
 
@@ -35,6 +36,7 @@ function PromptsAndAnswersManager()
     let randomIndexFromCurrentPromptAndAnswerGroup = getRandomIntInclusive(0,this.currentLogicalPromptAndAnswerGroup.arrayOfObjects.length - 1);
     this.correctTargetPromptAndAnswerPairing = this.currentLogicalPromptAndAnswerGroup.arrayOfObjects[randomIndexFromCurrentPromptAndAnswerGroup];
     console.log('this.correctTargetPromptAndAnswerPairing: ' + this.correctTargetPromptAndAnswerPairing.name);
+    console.log('this.currentLogicalPromptAndAnswerGroup.arrayOfObjects: ' + this.currentLogicalPromptAndAnswerGroup.arrayOfObjects);
   }
 
 
@@ -68,7 +70,7 @@ function PromptsAndAnswersManager()
       this.dataTypeOfCurrentPrompt = 'IMG';
       imagePrompter.loadCurrentImage(this.currentPrompt);
     }
-    else if (this.currentPrompt.sfx.nodeName === 'AUDIO')
+    else if (this.currentPrompt.nodeName === 'AUDIO')
     {
       this.dataTypeOfCurrentPrompt = 'AUDIO';
       audioPrompter.loadCurrentAudioPrompt(this.currentPrompt);
@@ -126,7 +128,7 @@ function PromptsAndAnswersManager()
       this.currentAnswerDataType = 'string';
     } else if (this.currentCorrectAnswer.nodeName === 'IMG') {
       this.currentAnswerDataType = 'IMG';
-    } else if (this.currentCorrectAnswer.sfx.nodeName === 'AUDIO')
+    } else if (this.currentCorrectAnswer.nodeName === 'AUDIO')
     {
       this.currentAnswerDataType = 'AUDIO';
     }
