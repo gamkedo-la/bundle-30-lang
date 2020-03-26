@@ -70,7 +70,7 @@ function PromptsAndAnswersManager()
       this.dataTypeOfCurrentPrompt = 'IMG';
       imagePrompter.loadCurrentImage(this.currentPrompt);
     }
-    else if (this.currentPrompt.nodeName === 'AUDIO')
+    else if (this.currentPrompt.type === 'AUDIO')
     {
       this.dataTypeOfCurrentPrompt = 'AUDIO';
       audioPrompter.loadCurrentAudioPrompt(this.currentPrompt);
@@ -123,7 +123,7 @@ function PromptsAndAnswersManager()
       this.currentAnswerDataType = 'string';
     } else if (this.currentCorrectAnswer.nodeName === 'IMG') {
       this.currentAnswerDataType = 'IMG';
-    } else if (this.currentCorrectAnswer.nodeName === 'AUDIO')
+    } else if (this.currentCorrectAnswer.type === 'AUDIO')
     {
       this.currentAnswerDataType = 'AUDIO';
     }
@@ -224,7 +224,7 @@ function PromptsAndAnswersManager()
             }
           }
         }
-        else if (this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex].nodeName === 'AUDIO')
+        else if (this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex].type === 'AUDIO')
         {
           currentIncorrectAnswerDataType = 'AUDIO';
           if (currentIncorrectAnswerDataType !== undefined)
