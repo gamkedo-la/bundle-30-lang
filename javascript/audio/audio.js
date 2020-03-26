@@ -150,6 +150,21 @@ function sfxMulti(arrayOfSources) {
 	}
 }
 
+function sfxOverlap(source) {
+	var sfxList = new Array();
+	var index = 0;
+	sfxList[0] = new Audio(source);
+	sfxList[1] = new Audio(source);
+
+	this.play = function() {
+		sfxList[index].currentTime = 0;
+		sfxList[index].volume = Math.pow(sfxVolume, 2);
+		sfxList[index].play();
+
+		index == 0 ? 1 : 0;
+	}
+}
+
 function sfxOneShot(source) {
 	var sfx = new Audio(source);
 
