@@ -86,7 +86,7 @@ function MazePlayer()
         if (this.orientation != 0){
             this.orientation = 0;
         }
-        else if (!this.currentCell.topWallExist)
+        if (!this.currentCell.topWallExist)
         {
             this.movePlayerToCellAtIndex(
                 this.currentCell.topNeighboringCellIndex
@@ -99,7 +99,7 @@ function MazePlayer()
         if (this.orientation != 1){
             this.orientation = 1;
         }
-        else if (!this.currentCell.leftWallExist)
+        if (!this.currentCell.leftWallExist)
         {
             this.movePlayerToCellAtIndex(
                 this.currentCell.leftNeighboringCellIndex
@@ -112,7 +112,7 @@ function MazePlayer()
         if (this.orientation != 2){
             this.orientation = 2;
         }
-        else if (!this.currentCell.bottomWallExist)
+        if (!this.currentCell.bottomWallExist)
         {
             this.movePlayerToCellAtIndex(
                 this.currentCell.bottomNeighboringCellIndex
@@ -125,7 +125,7 @@ function MazePlayer()
         if (this.orientation != 3){
             this.orientation = 3;
         }
-        else if (!this.currentCell.rightWallExist)
+        if (!this.currentCell.rightWallExist)
         {
             this.movePlayerToCellAtIndex(
                 this.currentCell.rightNeighboringCellIndex
