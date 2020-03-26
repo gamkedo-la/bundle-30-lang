@@ -38,16 +38,18 @@ function runnerGameClass() {
 		currentRunnerRunningImage = arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex];
 	}
 
-	this.postLoadInit = function() {
-		if (gameIsOnAServerAndCanUseWebAudioAPI) {
-          backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
-          currentBackgroundMusic = backgroundMusicBufferSource;
-          loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
-          backgroundMusicBufferSource.loop = true;
-          backgroundMusicBufferSource.loopStart = 6.9;
-          backgroundMusicBufferSource.loopEnd = 1;
-      	}
-	}
+	// this.postLoadInit = function() {
+	// 	if (gameIsOnAServerAndCanUseWebAudioAPI) {
+ //          backgroundMusicBufferSource = webAudioAPIContext.createBufferSource();
+ //          currentBackgroundMusic = backgroundMusicBufferSource;
+ //          loadWebAudioAPISound('audio/backgroundTracks/runnerBackground.mp3', backgroundMusicBufferSource);
+ //          backgroundMusicBufferSource.loop = true;
+ //          backgroundMusicBufferSource.loopStart = 6.9;
+ //          backgroundMusicBufferSource.loopEnd = 1;
+ //      	}
+	// }
+
+	this.backgroundMusic = new MusicTrack('audio/backgroundTracks/runnerBackground.mp3', 13);
 
   this.superInitialize = this.initialize;
   this.initialize = function() {

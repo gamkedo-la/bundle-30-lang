@@ -90,7 +90,8 @@ function LanguageSelectionScreen()
     let startingY = gameCanvas.height - (height*1.5);
 
     if (inputManager.mouseCoordinates.x > startingX && inputManager.mouseCoordinates.x < startingX + width &&
-        inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height)
+        inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height &&
+        this.languageNum >= 0)
         {
           // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           genAudio.playClick();
