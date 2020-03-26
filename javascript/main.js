@@ -45,6 +45,10 @@ function updateEverythingInTheGame()
   {
     gameClassManager.currentGame.update();
   }
+
+  musicManager.update();
+
+
 }
 //end of update section
 
