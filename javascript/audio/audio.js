@@ -179,6 +179,7 @@ var promptVolume = 1;
 
 function promptSound(source) {
 	this.sfx = new Audio(source);
+	this.type = 'AUDIO';
 
 	this.play = function() {
 		this.sfx.currentTime = 0;

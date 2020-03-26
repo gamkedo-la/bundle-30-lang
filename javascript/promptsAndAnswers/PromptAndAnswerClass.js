@@ -52,22 +52,22 @@ function initializePromptAndAnswerObjects()
   console.log('prompts and answers initializing');
 
   //English section
-  womanPromptAndAnswer = new PromptAndAnswerClass('woman', 'woman', womanImage, promptAudio.woman.sfx);
-  womenPromptAndAnswer = new PromptAndAnswerClass('women', 'women', womenImage, promptAudio.women.sfx);
+  womanPromptAndAnswer = new PromptAndAnswerClass('woman', 'woman', womanImage, promptAudio.woman);
+  womenPromptAndAnswer = new PromptAndAnswerClass('women', 'women', womenImage, promptAudio.women);
 
-  manPromptAndAnswer = new PromptAndAnswerClass('man', 'man', manImage, promptAudio.man.sfx);
-  menPromptAndAnswer = new PromptAndAnswerClass("men", "men", menImage, promptAudio.men.sfx);
+  manPromptAndAnswer = new PromptAndAnswerClass('man', 'man', manImage, promptAudio.man);
+  menPromptAndAnswer = new PromptAndAnswerClass("men", "men", menImage, promptAudio.men);
 
-  hePromptAndAnswer = new PromptAndAnswerClass('he', 'he', heImage, promptAudio.he.sfx);
-  shePromptAndAnswer = new PromptAndAnswerClass('she', 'she', sheImage, promptAudio.she.sfx);
+  hePromptAndAnswer = new PromptAndAnswerClass('he', 'he', heImage, promptAudio.he);
+  shePromptAndAnswer = new PromptAndAnswerClass('she', 'she', sheImage, promptAudio.she);
 
   //Mandarin section
-  mandarinBuyPromptAndAnswer = new PromptAndAnswerClass('mandarin buy','买', mandarinBuyImage, promptAudio.mandarinBuy.sfx);
-  mandarinSellPromptAndAnswer = new PromptAndAnswerClass('mandarin sell','卖', mandarinSellImage, promptAudio.mandarinSell.sfx);
+  mandarinBuyPromptAndAnswer = new PromptAndAnswerClass('mandarin buy','买', mandarinBuyImage, promptAudio.mandarinBuy);
+  mandarinSellPromptAndAnswer = new PromptAndAnswerClass('mandarin sell','卖', mandarinSellImage, promptAudio.mandarinSell);
 
 
-  mandarinMomPromptAndAnswer = new PromptAndAnswerClass('mandarin mom', '妈', mandarinMomImage, promptAudio.mandarinMom.sfx);
-  mandarinHorsePromptAndAnswer = new PromptAndAnswerClass('mandarin horse', '马', mandarinHorseImage, promptAudio.mandarinHorse.sfx);
+  mandarinMomPromptAndAnswer = new PromptAndAnswerClass('mandarin mom', '妈', mandarinMomImage, promptAudio.mandarinMom);
+  mandarinHorsePromptAndAnswer = new PromptAndAnswerClass('mandarin horse', '马', mandarinHorseImage, promptAudio.mandarinHorse);
 
   //Vietnamese Section
 }
