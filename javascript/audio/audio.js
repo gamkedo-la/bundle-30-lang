@@ -142,9 +142,9 @@ genAudio.playTransitionMusic = function() {
 	musicManager.playNextTrack();
 	musicManager.addTrack(gameClassManager.currentGame.backgroundMusic);
 	musicManager.onEndFunction = function() {
-		// fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
-		// promptersManager.promptThePlayer();
-		// gameCanvasContext.globalAlpha = 1;
+		fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
+		promptersManager.promptThePlayer();
+		gameCanvasContext.globalAlpha = 1;
 	}
 }
 genAudio.titleMusic = new MusicTrack('audio/backgroundTracks/titleScreenMusic.mp3', 6.15);

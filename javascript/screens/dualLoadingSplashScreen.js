@@ -9,7 +9,7 @@ function LoadingAndSplashScreen()
   {
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
     transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
-    // audioManager.initialize();
+    audioManager.initialize();
     // audioManager.multisoundPlayer.populateMultisoundArrays();
     // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
     // audioManager.currentBackgroundMusic = audioManager.titleScreenMusic;
