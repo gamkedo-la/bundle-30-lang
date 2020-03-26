@@ -13,6 +13,8 @@ function MazePlayer()
     this.speedY = 10;
     this.isPlaced = false;
 
+    this.orientation = 0;
+
     this.resetPosition = function (){
         this.x = undefined;
         this.y = undefined;
@@ -52,17 +54,39 @@ function MazePlayer()
             // )
             // gameCanvasContext.restore();
 
+            gameCanvasContext.save();
+            gameCanvasContext.translate(
+                this.x, this.y
+            )
+            switch(this.orientation){
+                case 0:
+                    break;
+                case 1:
+                    gameCanvasContext.rotate(-Math.PI / 2);
+                    break;
+                case 2:
+                    gameCanvasContext.rotate(Math.PI);
+                    break;
+                case 3:
+                    gameCanvasContext.rotate(Math.PI / 2);
+                    break;
+            }
+
             gameCanvasContext.drawImage(
                 mazeCharacter, 
-                this.x - this.width / 2,
-                this.y - this.height / 2,
+                - this.width / 2,
+                - this.height / 2,
                 this.width, this.height
             )
+            gameCanvasContext.restore();
         }
     }
 
     this.moveUp = function(){
-        if (!this.currentCell.topWallExist)
+        if (this.orientation != 0){
+            this.orientation = 0;
+        }
+        else if (!this.currentCell.topWallExist)
         {
             this.movePlayerToCellAtIndex(
                 this.currentCell.topNeighboringCellIndex
@@ -71,18 +95,11 @@ function MazePlayer()
         }
     }
 
-    this.moveDown = function(){
-        if (!this.currentCell.bottomWallExist)
-        {
-            this.movePlayerToCellAtIndex(
-                this.currentCell.bottomNeighboringCellIndex
-            );
-            this.placeAtCenteOfCurrentCell();
-        }
-    }
-
     this.moveLeft = function(){
-        if (!this.currentCell.leftWallExist)
+        if (this.orientation != 1){
+            this.orientation = 1;
+        }
+        else if (!this.currentCell.leftWallExist)
         {
             this.movePlayerToCellAtIndex(
                 this.currentCell.leftNeighboringCellIndex
@@ -91,8 +108,24 @@ function MazePlayer()
         }
     }
 
+    this.moveDown = function(){
+        if (this.orientation != 2){
+            this.orientation = 2;
+        }
+        else if (!this.currentCell.bottomWallExist)
+        {
+            this.movePlayerToCellAtIndex(
+                this.currentCell.bottomNeighboringCellIndex
+            );
+            this.placeAtCenteOfCurrentCell();
+        }
+    }
+
     this.moveRight = function(){
-        if (!this.currentCell.rightWallExist)
+        if (this.orientation != 3){
+            this.orientation = 3;
+        }
+        else if (!this.currentCell.rightWallExist)
         {
             this.movePlayerToCellAtIndex(
                 this.currentCell.rightNeighboringCellIndex
