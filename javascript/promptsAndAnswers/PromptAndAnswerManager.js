@@ -23,7 +23,6 @@ function PromptsAndAnswersManager()
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
     console.log('this.currentLogicalPromptAndAnswerGroup.name: ' + this.currentLogicalPromptAndAnswerGroup.name);
-    console.log('this.currentLogicalPromptAndAnswerGroup.arrayOfObjects: ' + this.currentLogicalPromptAndAnswerGroup.arrayOfObjects);
   }
 
   this.correctTargetPromptAndAnswerPairing = undefined;
@@ -69,7 +68,7 @@ function PromptsAndAnswersManager()
       this.dataTypeOfCurrentPrompt = 'IMG';
       imagePrompter.loadCurrentImage(this.currentPrompt);
     }
-    else if (this.currentPrompt.nodeName === 'AUDIO')
+    else if (this.currentPrompt.sfx.nodeName === 'AUDIO')
     {
       this.dataTypeOfCurrentPrompt = 'AUDIO';
       audioPrompter.loadCurrentAudioPrompt(this.currentPrompt);
@@ -127,7 +126,7 @@ function PromptsAndAnswersManager()
       this.currentAnswerDataType = 'string';
     } else if (this.currentCorrectAnswer.nodeName === 'IMG') {
       this.currentAnswerDataType = 'IMG';
-    } else if (this.currentCorrectAnswer.nodeName === 'AUDIO')
+    } else if (this.currentCorrectAnswer.sfx.nodeName === 'AUDIO')
     {
       this.currentAnswerDataType = 'AUDIO';
     }

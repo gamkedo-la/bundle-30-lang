@@ -27,7 +27,7 @@ function MusicManager() {
 			}
 		}
 
-			
+
 	}
 
 	this.play = function() {
@@ -178,12 +178,12 @@ function sfxOneShot(source) {
 var promptVolume = 1;
 
 function promptSound(source) {
-	var sfx = new Audio(source);
+	this.sfx = new Audio(source);
 
 	this.play = function() {
-		sfx.currentTime = 0;
-		sfx.volume = Math.pow(promptVolume, 2);
-		sfx.play();
+		this.sfx.currentTime = 0;
+		this.sfx.volume = Math.pow(promptVolume, 2);
+		this.sfx.play();
 	}
 }
 
