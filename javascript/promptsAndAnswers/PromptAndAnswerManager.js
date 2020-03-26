@@ -26,7 +26,7 @@ function PromptsAndAnswersManager()
     console.log('this.currentLogicalPromptAndAnswerGroup.name: ' + this.currentLogicalPromptAndAnswerGroup.name);
   }
 
-  this.correctTargetPromptAndAnswerPairing = undefined;
+  this.correctTargetPromptAndAnswerPairing = {};
   this.pickATargetPromptAndAnswerPairing = function()
   {
     if(typeof this.currentLogicalPromptAndAnswerGroup === 'undefined') {
@@ -40,7 +40,7 @@ function PromptsAndAnswersManager()
   }
 
 
-  this.currentPrompt = undefined;
+  this.currentPrompt = {};
   this.pickARandomPromptFromTargetPromptAndAnswerPairing = function()
   {
     if(typeof this.correctTargetPromptAndAnswerPairing === 'undefined') {
@@ -83,8 +83,8 @@ function PromptsAndAnswersManager()
   }
 
 
-  this.currentCorrectAnswer = undefined;
-  this.temporaryArrayOfPossibleAnswers = undefined;
+  this.currentCorrectAnswer = {};
+  this.removedPromptMatchToReinsertLater = undefined;
   this.assignAnAnswerBasedOnPrompt = function()
   {
     if (typeof this.correctTargetPromptAndAnswerPairing === 'undefined') {
@@ -92,23 +92,18 @@ function PromptsAndAnswersManager()
         return;
     }
 
-    this.temporaryArrayOfPossibleAnswers = Object.assign([],this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers);
-    console.log('temporaryArrayOfPossibleAnswers: ' + this.temporaryArrayOfPossibleAnswers);
-    let randomIndexForTemporaryArray = undefined;
+    let randomIndexForPossibleAnswersArray = undefined;
 
-    //console.log('this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers: ' + this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers);
-    for (let arrayOfTemporaryAnswersIndex = 0; arrayOfTemporaryAnswersIndex < this.temporaryArrayOfPossibleAnswers.length; arrayOfTemporaryAnswersIndex++)
+    for (let arrayOfAnswersIndex = 0; arrayOfAnswersIndex < this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers.length; arrayOfAnswersIndex++)
     {
-      if (this.temporaryArrayOfPossibleAnswers[arrayOfTemporaryAnswersIndex] === this.currentPrompt)
+      if (this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfAnswersIndex] === this.currentPrompt)
       {
-        this.temporaryArrayOfPossibleAnswers.splice(arrayOfTemporaryAnswersIndex,1);
-        randomIndexToChooseAnswerInTemporaryArray = getRandomIntInclusive(0, this.temporaryArrayOfPossibleAnswers.length - 1);
-        this.currentCorrectAnswer = this.temporaryArrayOfPossibleAnswers[randomIndexToChooseAnswerInTemporaryArray];
+        this.removedPromptMatchToReinsertLater = this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers.splice(arrayOfAnswersIndex,1);
+        randomIndexForPossibleAnswersArray = getRandomIntInclusive(0, this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers.length - 1);
+        this.currentCorrectAnswer = this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[randomIndexForPossibleAnswersArray];
       }//end of checking for prompt/answer overlap
     }//end of for loop through temporary answers array
     //console.log('this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers: ' + this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers);
-    console.log('temporaryArrayOfPossibleAnswers: ' + this.temporaryArrayOfPossibleAnswers);
-
     console.log('this.currentCorrectAnswer: ' + this.currentCorrectAnswer);
   }//end of answer assignment
 
@@ -136,8 +131,8 @@ function PromptsAndAnswersManager()
   }
 
 
-  this.incorrectTargetPromptAndAnswerPairing = undefined;
-  this.editablePromptAndAnswerGroup = undefined;
+  this.incorrectTargetPromptAndAnswerPairing = {};
+  this.removedCorrectAnswerToReinsertLater = undefined;
   this.defineIncorrectTargetPromptAndAnswerPairing = function()
   {
     if (typeof this.currentLogicalPromptAndAnswerGroup === 'undefined') {
@@ -145,21 +140,27 @@ function PromptsAndAnswersManager()
         return;
     }
 
-    this.editablePromptAndAnswerGroup = Object.assign([],this.currentLogicalPromptAndAnswerGroup);
-    console.log('editablePromptAndAnswerGroup: ' + this.editablePromptAndAnswerGroup.name);
-    for (let editablePromptAndAnswerGroupIndex = 0; editablePromptAndAnswerGroupIndex < this.editablePromptAndAnswerGroup.arrayOfObjects.length; editablePromptAndAnswerGroupIndex++)
+    console.log('this.currentLogicalPromptAndAnswerGroup: ' + this.currentLogicalPromptAndAnswerGroup.name);
+    for (let logicalPromptAndAnswerGroupIndex = 0; logicalPromptAndAnswerGroupIndex < this.currentLogicalPromptAndAnswerGroup.arrayOfObjects.length; logicalPromptAndAnswerGroupIndex++)
     {
-      if (this.correctTargetPromptAndAnswerPairing === this.editablePromptAndAnswerGroup.arrayOfObjects[editablePromptAndAnswerGroupIndex])
+      if (this.correctTargetPromptAndAnswerPairing === this.currentLogicalPromptAndAnswerGroup.arrayOfObjects[logicalPromptAndAnswerGroupIndex])
       {
         console.log('inside splice call for editable group');
-        this.editablePromptAndAnswerGroup.arrayOfObjects.splice(editablePromptAndAnswerGroupIndex,1);
+        this.removedCorrectAnswerToReinsertLater = this.currentLogicalPromptAndAnswerGroup.arrayOfObjects.splice(logicalPromptAndAnswerGroupIndex,1);
+        console.log('this.removedCorrectAnswerToReinsertLater[0].name: ' + this.removedCorrectAnswerToReinsertLater[0].name);
       }
     }
-    console.log('this.editablePromptAndAnswerGroup.arrayOfObjects[0]: ' + this.editablePromptAndAnswerGroup.arrayOfObjects[0]);
-    console.log('this.editablePromptAndAnswerGroup.arrayOfObjects[1]: ' + this.editablePromptAndAnswerGroup.arrayOfObjects[1]);
 
-    let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editablePromptAndAnswerGroup.arrayOfObjects.length - 1);
-    this.incorrectTargetPromptAndAnswerPairing = this.editablePromptAndAnswerGroup.arrayOfObjects[randomIndexForEditedPromptAndAnswerGroup];
+    let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.currentLogicalPromptAndAnswerGroup.arrayOfObjects.length - 1);
+    this.incorrectTargetPromptAndAnswerPairing = this.currentLogicalPromptAndAnswerGroup.arrayOfObjects[randomIndexForEditedPromptAndAnswerGroup];
+  }
+
+  this.reinsertAnswersIntoEditedArrayForNextShuffle = function()
+  {
+    this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers.push(this.removedPromptMatchToReinsertLater[0]);
+    console.log('this.removedPromptMatchToReinsertLater: ' + this.removedPromptMatchToReinsertLater[0].name);
+    this.currentLogicalPromptAndAnswerGroup.arrayOfObjects.push(this.removedCorrectAnswerToReinsertLater[0]);
+    console.log('this.removedCorrectAnswerToReinsertLater.name: ' + this.removedCorrectAnswerToReinsertLater[0].name);
   }
 
   this.defineWidthAndHeightForTargetAnswers = function()
@@ -187,16 +188,16 @@ function PromptsAndAnswersManager()
     }
   }
 
-  this.currentIncorrectAnswer = undefined;
+  this.currentIncorrectAnswer = {};
   this.assignCurrentIncorrectAnswer = function()
   {
     //console.log('inside assignCurrentIncorrectAnswer()');
-    if (typeof this.editablePromptAndAnswerGroup === 'undefined') {
-        console.log("editablePromptAndAnswerGroup not set up");
+    if (typeof this.incorrectTargetPromptAndAnswerPairing === 'undefined') {
+        console.log("this.incorrectTargetPromptAndAnswerPairing not set up");
         return;
     }
 
-    let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.editablePromptAndAnswerGroup.length - 1);
+    let randomIndexForEditedPromptAndAnswerGroup = getRandomIntInclusive(0,this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers.length - 1);
 
     for (let arrayOfPossibleAnswersIndex = 0; arrayOfPossibleAnswersIndex < this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers.length; arrayOfPossibleAnswersIndex++)
     {
@@ -460,6 +461,7 @@ function PromptsAndAnswersManager()
         birdGame.assignLeftOrRightDirectionToAnswers();
       }
       promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+      this.reinsertAnswersIntoEditedArrayForNextShuffle();
     }
   }
 }
