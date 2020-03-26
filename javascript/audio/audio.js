@@ -134,6 +134,23 @@ function MusicTrack(source, duration) {
 	this.dur = duration;
 }
 
+var sfxVolume = 0.7;
+
+function sfxMulti(arrayOfSources) {
+	var sfxList = new Array();
+	for (var i in arrayOfSources) {
+		sfxList[i] = new Audio(arrayOfSources[i]);
+	}
+
+	this.play = function() {
+		var currentSource = randItem(sfxList);
+		currentSource.currentTime = 0;
+		currentSource.volume = sfxVolume;
+		currentSource.play();
+	}
+
+}
+
 var genAudio = {};
 genAudio.transitionMusic1 = new MusicTrack("audio/levelTransitionSound.mp3", 5);
 genAudio.playTransitionMusic = function() {
@@ -153,14 +170,17 @@ genAudio.playTitleMusic = function() {
 	musicManager.moveToLastTrack();
 	musicManager.playNextTrack();
 }
+genAudio.click = new sfxMulti(["audio/UI_01.mp3", "audio/UI_02.mp3", "audio/UI_03.mp3", "audio/UI_04.mp3"]);
 genAudio.playClick = function() {
-	console.log("Sound: Click")
+	genAudio.click.play();
 }
+genAudio.positive = new sfxMulti(["audio/Positive_01.mp3", "audio/Positive_02.mp3", "audio/Positive_03.mp3", "audio/Positive_04.mp3"]);
 genAudio.playPositive = function() {
-	console.log("Sound: Positive")
+	genAudio.positive.play();
 }
+genAudio.negative = new sfxMulti(["audio/Negative_01.mp3", "audio/Negative_02.mp3", "audio/Negative_03.mp3", "audio/UINegative_04.mp3"]);
 genAudio.playNegative = function() {
-	console.log("Sound: Negative")
+	genAudio.negative.play();
 }
 
 promptAudio = {};
