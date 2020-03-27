@@ -25,6 +25,9 @@ let mandarinThoseOnesImage = document.createElement("img");
 let mandarinCouchImage = document.createElement("img");
 let mandarinTowerImage = document.createElement("img");
 
+let hereImage = document.createElement("img");
+let thereImage = document.createElement("img");
+
 //runner images
 let runnerSunAndSkyBackgroundImage = document.createElement("img");
 let runnerCloud1 = document.createElement("img");
@@ -205,6 +208,9 @@ function loadImages()
 
   arrayOfImages.push({imageObjectBinding: mandarinCouchImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/couch.png'});//'sell' in English
   arrayOfImages.push({imageObjectBinding: mandarinTowerImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/tower.png'});//'sell' in English
+
+  arrayOfImages.push({imageObjectBinding: hereImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/here.png'});
+  arrayOfImages.push({imageObjectBinding: thereImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/there.png'});
 
   //runner game
   arrayOfImages.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png'});

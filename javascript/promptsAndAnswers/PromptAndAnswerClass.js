@@ -76,6 +76,9 @@ function initializePromptAndAnswerObjects()
   mandarinHePromptAndAnswer = new PromptAndAnswerClass('mandarin he', '他', heImage, promptAudio.mandarinHe);
   mandarinCouchPromptAndAnswer = new PromptAndAnswerClass("mandarin couch", '榻', mandarinCouchImage, promptAudio.mandarinCouch);
   mandarinTowerPromptAndAnswer = new PromptAndAnswerClass("mandarin tower", '塔', mandarinTowerImage, promptAudio.mandarinTower);
+
+  mandarinThisAreaPromptAndAnswer = new PromptAndAnswerClass('mandarin this area', '这里', hereImage, promptAudio.mandarinThisArea);
+  mandarinThatAreaPromptAndAnswer = new PromptAndAnswerClass("mandarin that area", '那里', thereImage, promptAudio.mandarinThatArea);
   //Vietnamese Section
 }
 
@@ -91,12 +94,14 @@ function populatePromptAndAnswerArrays()
   womanVersusWomenPairGrouping = {name: 'woman vs women', arrayOfObjects: []};
   manVersusMenPairGrouping = {name: 'man vs men', arrayOfObjects: []};
   heVersusShePairGrouping = {name: 'he vs she', arrayOfObjects: []};
+
   mandarinBuyVersusMandarinSellPairGrouping = {name: 'mandarin buy vs sell', arrayOfObjects:[]};
   mandarinMomVersusHorsePairGrouping = {name: 'mandarin mom vs horse', arrayOfObjects:[]};
   mandarinThisVersusThatPairGrouping = {name: 'mandarin this vs that', arrayOfObjects:[]};
   mandarinTheseVersusThosePairGrouping = {name: 'mandarin these vs those', arrayOfObjects:[]};
   mandarinHeVersusCouchPairGrouping = {name: 'mandarin he vs couch', arrayOfObjects:[]};
   mandarinHeVersusTowerPairGrouping = {name: 'mandarin he vs tower', arrayOfObjects:[]};
+  mandarinHereVersusTherePairGrouping = {name: 'mandarin here vs there', arrayOfObjects:[]};
 
   //English
   womanVersusWomenPairGrouping.arrayOfObjects.push(womanPromptAndAnswer);
@@ -137,6 +142,11 @@ function populatePromptAndAnswerArrays()
   mandarinHeVersusTowerPairGrouping.arrayOfObjects.push(mandarinHePromptAndAnswer);
   mandarinHeVersusTowerPairGrouping.arrayOfObjects.push(mandarinTowerPromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinHeVersusTowerPairGrouping);
+
+  mandarinHereVersusTherePairGrouping.arrayOfObjects.push(mandarinThisAreaPromptAndAnswer);
+  mandarinHereVersusTherePairGrouping.arrayOfObjects.push(mandarinThatAreaPromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinHereVersusTherePairGrouping);
+
 
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
 
