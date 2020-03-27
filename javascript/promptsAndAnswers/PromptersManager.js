@@ -53,39 +53,39 @@ function PromptersManager()
 
     if (randomNumber < 0.5)
     {
-      promptsAndAnswersManager.currentCorrectAnswer.onended = function()
+      promptsAndAnswersManager.currentCorrectAnswer.sfx.onended = function()
       {
         promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = false;
-        promptsAndAnswersManager.currentIncorrectAnswer.play();
+        promptsAndAnswersManager.currentIncorrectAnswer.sfx.play();
         promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = true;
-        promptsAndAnswersManager.currentIncorrectAnswer.onended = function()
+        promptsAndAnswersManager.currentIncorrectAnswer.sfx.onended = function()
         {
-          promptsAndAnswersManager.currentCorrectAnswer.onended = undefined;
-          promptsAndAnswersManager.currentIncorrectAnswer.onended = undefined;
+          promptsAndAnswersManager.currentCorrectAnswer.sfx.onended = undefined;
+          promptsAndAnswersManager.currentIncorrectAnswer.sfx.onended = undefined;
           promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = false;
           promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = false;
           promptersManager.flashInterval.stop();
         }//clear both onended functions to account for unintended play calls
       }
-      promptsAndAnswersManager.currentCorrectAnswer.play();
+      promptsAndAnswersManager.currentCorrectAnswer.sfx.play();
       promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = true;
     } else
     {
-      promptsAndAnswersManager.currentIncorrectAnswer.onended = function()
+      promptsAndAnswersManager.currentIncorrectAnswer.sfx.onended = function()
       {
         promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = false;
-        promptsAndAnswersManager.currentCorrectAnswer.play();
+        promptsAndAnswersManager.currentCorrectAnswer.sfx.play();
         promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = true;
-        promptsAndAnswersManager.currentCorrectAnswer.onended = function()
+        promptsAndAnswersManager.currentCorrectAnswer.sfx.onended = function()
         {
-          promptsAndAnswersManager.currentCorrectAnswer.onended = undefined;
-          promptsAndAnswersManager.currentIncorrectAnswer.onended = undefined;
+          promptsAndAnswersManager.currentCorrectAnswer.sfx.onended = undefined;
+          promptsAndAnswersManager.currentIncorrectAnswer.sfx.onended = undefined;
           promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = false;
           promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = false;
           promptersManager.flashInterval.stop();
         }//clear both onended functions to account for unintended play calls
       }//end of incorrect answer audio being played first
-      promptsAndAnswersManager.currentIncorrectAnswer.play();
+      promptsAndAnswersManager.currentIncorrectAnswer.sfx.play();
       promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = true;
     }//end of else for coin flip
   }
