@@ -22,14 +22,16 @@ bubbleWrapGame.failSound = null;//window.audioManager?audioManager.pinataFailSou
 // build a grid of bubbles
 bubbleWrapGame.gameSpecificInits = function() {
     console.log("Bubble Wrap game specific inits...");
-    var r = 25;
-    var margin = 24;
+    var r = 30;
+    var margin = -8;
     var spacing = (r*2)+margin;
     var rows = Math.floor(gameCanvas.height / spacing);
-    var cols = Math.floor(gameCanvas.width / spacing)-1;
+    var cols = Math.floor(gameCanvas.width / spacing);//-1;
+    var offsetx=8;
+    var offsety=12;
     for (var col=0; col<cols; col++) {
         for (var row=0; row<rows; row++) {
-            this.newcircle(margin+r+col*spacing, margin+r+row*spacing, r, 10); // given some mass
+            this.newcircle(margin+r+col*spacing+offsetx, margin+r+row*spacing+offsety, r, 10); // given some mass
         }
     }
 }
