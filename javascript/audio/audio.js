@@ -244,6 +244,9 @@ promptAudio.mandarinCouch = new promptSound('audio/PromptsAndAnswers/Mandarin/ma
 promptAudio.mandarinTower = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinTower.mp3');
 promptAudio.mandarinThisArea = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinThisArea.mp3');
 promptAudio.mandarinThatArea = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinThatArea.mp3');
+promptAudio.mandarinSleep = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinSleep.mp3');
+promptAudio.mandarinDumplings = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinDumplings.mp3');
+
 
 
 

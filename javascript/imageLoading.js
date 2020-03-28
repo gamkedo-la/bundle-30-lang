@@ -25,6 +25,9 @@ let mandarinThoseOnesImage = document.createElement("img");
 let mandarinCouchImage = document.createElement("img");
 let mandarinTowerImage = document.createElement("img");
 
+let sleepImage = document.createElement("img");
+let dumplingsImage = document.createElement("img");
+
 let hereImage = document.createElement("img");
 let thereImage = document.createElement("img");
 
@@ -208,6 +211,9 @@ function loadImages()
 
   arrayOfImages.push({imageObjectBinding: mandarinCouchImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/couch.png'});//'sell' in English
   arrayOfImages.push({imageObjectBinding: mandarinTowerImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/tower.png'});//'sell' in English
+
+  arrayOfImages.push({imageObjectBinding: sleepImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/sleep.png'});
+  arrayOfImages.push({imageObjectBinding: dumplingsImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/dumplings.png'});
 
   arrayOfImages.push({imageObjectBinding: hereImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/here.png'});
   arrayOfImages.push({imageObjectBinding: thereImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/there.png'});
