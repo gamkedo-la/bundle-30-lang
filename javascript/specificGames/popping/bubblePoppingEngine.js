@@ -122,7 +122,8 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
             this.gameSpecificInits();            
         }
 
-        document.addEventListener('click', pinataClick, false);
+        //document.addEventListener('click', pinataClick, false);
+        document.addEventListener('mousedown', pinataClick, false);
 
     }
 
