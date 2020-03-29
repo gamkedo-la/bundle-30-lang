@@ -199,3 +199,4 @@ Chinese -
 23. 那个/that, 这个/this, 那些/those, 这些/these
 24. older sister/younger sister
 25. older brother/younger brother
+26. today/今天, tomorrow/明天, yesterday/昨天
