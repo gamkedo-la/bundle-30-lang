@@ -29,6 +29,7 @@ function LoadingAndSplashScreen()
     promptersManager.instantiatePrompters();
     initializePromptAndAnswerObjects();
     populatePromptAndAnswerArrays();
+    
   }
 
   this.promptPlayerForClickAfterLoading = function()

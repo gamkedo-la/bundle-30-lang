@@ -8,7 +8,7 @@ function DateAndTime()
   const JUNE = 5;
   const JULY = 6;
   const AUGUST = 7;
-  const SEPTEMPBER = 8;
+  const SEPTEMBER = 8;
   const OCTOBER = 9;
   const NOVEMBER = 10;
   const DECEMBEER = 11;
@@ -44,24 +44,24 @@ function DateAndTime()
   }
 
   this.currentMonth = undefined;
-  this.assigncurrentMonth = function()
+  this.assignCurrentMonth = function()
   {
-    this.currentMonth = this.builtInJavascriptDateObject.getcurrentMonth();
+    this.currentMonth = this.builtInJavascriptDateObject.getMonth();
   }
 
   this.tomorrowsDay = undefined;
   this.nextMonth = undefined;
-  this.tomorrowShouldDisplayThisMonth = undefined;
-  this.tomorrowShouldDisplayNextMonth = undefined;
+  this.tomorrowShouldDisplayThisMonth = true;
   this.calculateTomorrowsDay = function()
   {
-    this.tomorrowsDay = this.todaysDate + 1;
+    this.tomorrowsDay = this.todaysDay + 1;
 
     if (this.currentMonth === (JANUARY || MARCH || MAY || JULY || AUGUST || OCTOBER || DECEMBER) &&
         this.tomorrowsDay > 31)
         {
           this.nextMonth = this.currentMonth + 1;
           this.tomorrowsDay = 1;
+          this.tomorrowShouldDisplayThisMonth = false;
           if (this.nextMonth > DECEMBER)
           {
             this.nextMonth = JANUARY;
@@ -71,23 +71,27 @@ function DateAndTime()
     {
       this.nextMonth = this.currentMonth + 1;
       this.tomorrowsDay = 1;
+      this.tomorrowShouldDisplayThisMonth = false;
     }
     else if (this.currentMonth === (FEBRUARY) && !this.isALeapYear && this.tomorrowsDay > 28)
     {
       this.nextMonth = this.currentMonth + 1;
       this.tomorrowsDay = 1;
+      this.tomorrowShouldDisplayThisMonth = false;
     }
     else if (this.currentMonth === FEBRUARY && this.isALeapYear && this.tomorrowsDay > 29)
     {
       this.nextMonth = this.currentMonth + 1;
       this.tomorrowsDay = 1;
+      this.tomorrowShouldDisplayThisMonth = false;
+    } else {
+      this.tomorrowShouldDisplayThisMonth = true;
     }
   }
 
   this.yesterdaysDay = undefined;
   this.lastMonth = undefined;
-  this.yesterdayShouldDisplayCurrentMonth = false;
-  this.yesterdayShouldDisplayLastMonth = false;
+  this.yesterdayShouldDisplayCurrentMonth = true;
   this.calculateYesterdaysDay = function()
   {
     this.yesterdaysDay = this.todaysDay - 1;
@@ -95,6 +99,7 @@ function DateAndTime()
     if (this.yesterdaysDay < 1)
     {
       this.lastMonth = this.currentMonth - 1;
+      this.yesterdayShouldDisplayCurrentMonth = false;
       if (this.lastMonth === (JANUARY || MARCH || MAY || JULY || AUGUST || OCTOBER || DECEMBER) )
       {
         this.yesterdaysDay = 31;
@@ -112,58 +117,92 @@ function DateAndTime()
         {
           this.yesterdaysDay = 28;
         }
+    } else {
+      this.yesterdayShouldDisplayCurrentMonth = true;
     }
   }
 
   this.todaysDate =
   {
-    day: this.todaysDay,
-    month: this.currentMonth
+    day: undefined,
+    month: undefined
+  }
+
+  this.determineTodaysDateDay = function()
+  {
+    this.todaysDate.day = this.todaysDay;
+  }
+
+  this.determineTodaysDateMonth = function()
+  {
+    this.todaysDate.month = this.currentMonth;
   }
 
   this.tomorrowsDate =
   {
-    day: this.tomorrowsDay,
-    determineMonth: function()
-    {
-      if (this.tomorrowShouldDisplayNextMonth)
-      {
-        this.tomorrowsDate.month = this.nextMonth;
-      }
-      else {
-        this.tomorrowsDate.month = this.currentMonth;
-      }
-    },
-    month: undefined,
+    day: undefined,
+    month: undefined
+  }
 
-    draw: function(x,y)
+  this.determineTomorrowsDateDay = function()
+  {
+    this.tomorrowsDate.day = this.tomorrowsDay;
+  }
+
+  this.determineTomorrowsMonth = function()
+  {
+    if (this.tomorrowShouldDisplayThisMonth)
     {
-      gameCanvasContext.fillStyle = 'blue';
-      gameCanvasContext.font = '30px Helvetica';
-      gameCanvasContext.fillText(month + ', ' + day, x,y);
+      this.tomorrowsDate.month = this.currentMonth;
+    }
+    else {
+      this.tomorrowsDate.month = this.nextMonth;
     }
   }
 
   this.yesterdaysDate =
   {
-    day: this.yesterdaysDay,
+    day: undefined,
     month: undefined,
-    determineDay: function()
+
+
+  }
+
+  this.determineYesterdaysDateDay = function()
+  {
+    this.yesterdaysDate.day = this.yesterdaysDay;
+  }
+
+  this.determineYesterdaysMonth = function()
+  {
+    if (this.yesterdayShouldDisplayCurrentMonth)
     {
-      if (this.yesterdayShouldDisplayLastMonth)
-      {
-        this.yesterdaysDate.month = this.lastMonth;
-      }
-      else {
-        this.yesterdaysDate.month = this.currentMonth;
-      }
+      this.yesterdaysDate.month = this.currentMonth;
+    }
+    else {
+      this.yesterdaysDate.month = this.lastMonth;
     }
   }
 
-  this.update = function()
+  this.initialize = function()
   {
     this.setOrResetParentDateObject();
+    this.assignTodaysDay();
+    this.assignYear();
+    this.assignCurrentMonth();
+    this.determineIfLeapYear();
+    this.determineTodaysDateDay();
+    this.determineTodaysDateMonth();
+    this.calculateYesterdaysDay();
+    this.calculateTomorrowsDay();
+    this.determineYesterdaysDateDay();
+    this.determineTomorrowsDateDay();
     this.calculateTomorrowsDay();
     this.calculateYesterdaysDay();
+    this.determineYesterdaysMonth();
+    this.determineTomorrowsMonth();
   }
 }
+
+let dateAndTime = new DateAndTime();
+dateAndTime.initialize();

@@ -17,6 +17,14 @@ let mandarinMomPromptAndAnswer = {};
 let mandarinHorsePromptAndAnswer = {};
 let mandarinMomVersusHorsePairGrouping = {};
 
+let mandarinTodayPromptAndAnswer = {};
+let mandarinTomorrowPromptAndAnswer = {};
+let mandarinYesterdayPromptAndAnswer = {};
+
+let mandarinTodayVersusTomorrowPairGrouping = {};
+let mandarinTodayVersusYesterdayPairGrouping = {};
+let mandarinYesterdayVersusTomorrowPairGrouping = {};
+
 
 
 function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, audioAssociation)
