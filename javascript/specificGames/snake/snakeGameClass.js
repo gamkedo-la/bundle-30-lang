@@ -27,6 +27,15 @@ function snakeGameClass()
   this.textAnswerFontSize = 30;
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
+  this.pregameSpecialCode = function()
+  {
+    gameAudio = {};
+    gameAudio.slither = new sfxMulti(["audio/snake_slither_01.mp3", "audio/snake_slither_02.mp3", "audio/snake_slither_03.mp3", "audio/snake_slither_04.mp3"]);
+	gameAudio.playSlither = function() {
+		gameAudio.slither.play();
+	}
+  };
+
   this.superInitialize = this.initialize;
   this.initialize = function()
   {
@@ -34,8 +43,8 @@ function snakeGameClass()
     this.background = new SnakeBackground();
     this.playerCharacter.initialize();
     this.collidingObject = this.playerCharacter;
-    // initializePromptAndAnswerObjects();
-    // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    initializePromptAndAnswerObjects();
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
 	  this.superInitialize();
   };
@@ -75,24 +84,28 @@ function snakeGameClass()
   {
     this.playerCharacter.speedX = -20;
     this.playerCharacter.speedY = 0;
+    gameAudio.playSlither();
   }
 
   this.handleUpArrowDown = function()
   {
     this.playerCharacter.speedX = 0;
     this.playerCharacter.speedY = -20;
+    gameAudio.playSlither();
   }
 
   this.handleRightArrowDown = function()
   {
     this.playerCharacter.speedX = 20;
     this.playerCharacter.speedY = 0;
+    gameAudio.playSlither();
   }
 
   this.handleDownArrowDown = function()
   {
     this.playerCharacter.speedX = 0;
     this.playerCharacter.speedY = 20;
+    gameAudio.playSlither();
   }
 }
 
