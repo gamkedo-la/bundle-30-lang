@@ -208,12 +208,14 @@ function DateAndTime()
   this.checkForNecessityOfUsingDates = function()
   {
     console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name);
-    if ( promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name !==
-        ('mandarin today' || 'mandarin tomorrow' || 'mandarin yesterday') )
+    if ( promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name !== 'mandarin today' &&
+         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name !== 'mandarin tomorrow' &&
+         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name !== 'mandarin yesterday')
         {
           this.shouldDrawADate = false;
         }
-        else {
+        else
+        {
           console.log('inside checkForNecessityOfUsingDates()');
           let dateToDraw = undefined;
           if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name === 'mandarin today')

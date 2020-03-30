@@ -47,12 +47,12 @@ function ImagePrompter()
     if (dateAndTime.shouldDrawADate)
     {
       console.log('dateAndTime.dateToDraw.month: ' + dateAndTime.dateToDraw.month);
-      customFontFillText(dateAndTime.dateToDraw.month, 30/*this.currentWidth*0.15 /*font size*/, 15/*this.currentWidth*0.055 /*spacing*/,
-                         gameCanvas.width/2, /*- this.currentWidth/2  + this.currentWidth*0.0175,*///xCoordinate)
-                         gameCanvas.height/2);/* - this.currentHeight/2 + this.currentHeight*0.1);*///yCoordinate
+      customFontFillText( (dateAndTime.dateToDraw.month + 1).toString(), this.currentWidth*0.1 /*font size*/, this.currentWidth*0.055 /*spacing*/,
+                         gameCanvas.width/2 - 20, /*- this.currentWidth/2  + this.currentWidth*0.0175,*///xCoordinate)
+                         gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.3);/* - this.currentHeight/2 + this.currentHeight*0.1);*///yCoordinate
 
-      customFontFillText(dateAndTime.dateToDraw.day, this.currentWidth*0.15 /*font size*/,this.currentWidth*0.055 /*spacing*/,
-                         gameCanvas.width/2 - this.currentWidth/2  + this.currentWidth*0.0175,//xCoordinate)
+      customFontFillText(dateAndTime.dateToDraw.day.toString(), this.currentWidth*0.15 /*font size*/,this.currentWidth*0.055 /*spacing*/,
+                         gameCanvas.width/2 - 20,//xCoordinate)
                          gameCanvas.height/2);//yCoordinate
     }
   }
