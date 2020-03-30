@@ -205,7 +205,7 @@ function DateAndTime()
 
   this.dateToDraw = undefined;
   this.shouldDrawADate = false;
-  this.checkForNecessityOfUsingDates = function()
+  this.checkForNecessityOfUsingDatesForImagePrompter = function()
   {
     console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name);
     if ( promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name !== 'mandarin today' &&
@@ -231,6 +231,23 @@ function DateAndTime()
           console.log('dateToDraw: ' + dateToDraw);
           this.dateToDraw = dateToDraw;
           this.shouldDrawADate = true;;
+        }
+  }
+
+  this.shouldDrawADateOnAnswers = false;
+  this.checkForNecessityOfUsingDatesForDrawAnswersManager = function()
+  {
+    
+    if ( (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing === mandarinTodayPromptAndAnswer ||
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing === mandarinTomorrowPromptAndAnswer ||
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing === mandarinYesterdayPromptAndAnswer )
+        &&
+        promptsAndAnswersManager.currentAnswerDataType === "IMG" )
+        {
+          this.shouldDrawADateOnAnswers = true;
+        }
+        else {
+          this.shouldDrawADateOnAnswers = false;
         }
   }
 }

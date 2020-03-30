@@ -48,13 +48,69 @@ function DrawAnswersManager()
     {
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
+
+        dateAndTime.checkForNecessityOfUsingDatesForDrawAnswersManager();
+
         gameCanvasContext.drawImage(promptsAndAnswersManager.currentCorrectAnswer,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);
 
+        if (dateAndTime.shouldDrawADateOnAnswers)
+        {
+          let correctDateToDraw = undefined;
+          console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name);
+          if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name === 'mandarin today')
+          {
+            correctDateToDraw = dateAndTime.todaysDate;
+          }
+          else if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name === 'mandarin tomorrow')
+          {
+            correctDateToDraw = dateAndTime.tomorrowsDate;
+          }
+          else if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name === 'mandarin yesterday')
+          {
+            correctDateToDraw = dateAndTime.yesterdaysDate;
+          }
+          console.log('should be seeing date numbers');
+          console.log('correctDateToDraw: ' + correctDateToDraw);
+          customFontFillText( (correctDateToDraw.month + 1).toString(), 25, 15,
+          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + this.imageWidth/2 - 20,
+          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + this.imageHeight*0.1)
+
+            customFontFillText( (correctDateToDraw.day).toString(), 30, 15,
+            promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + this.imageWidth/2 - 20,
+            promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + this.imageHeight/2);
+        }
+
         gameCanvasContext.drawImage(promptsAndAnswersManager.currentIncorrectAnswer,
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);
+
+        if (dateAndTime.shouldDrawADateOnAnswers)
+        {
+          let incorrectDateToDraw = undefined;
+          if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.name === 'mandarin today')
+          {
+            incorrectDateToDraw = dateAndTime.todaysDate;
+          }
+          else if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.name === 'mandarin tomorrow')
+          {
+            incorrectDateToDraw = dateAndTime.tomorrowsDate;
+          }
+          else if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.name === 'mandarin yesterday')
+          {
+            incorrectDateToDraw = dateAndTime.yesterdaysDate;
+          }
+            console.log('should be seeing date numbers');
+            customFontFillText( (incorrectDateToDraw.month + 1).toString(), 25, 15,
+            promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + this.imageWidth/2 - 20,
+            promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + this.imageHeight*0.1);
+
+            customFontFillText( (incorrectDateToDraw.day).toString(), 30, 15,
+            promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + this.imageWidth/2 - 20,
+            promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + this.imageHeight/2);
+        }
+
       //}
     } else if (promptsAndAnswersManager.currentAnswerDataType === "AUDIO")
     {

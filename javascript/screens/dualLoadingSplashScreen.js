@@ -17,7 +17,7 @@ function LoadingAndSplashScreen()
     // audioManager.currentBackgroundMusic.volume = 0;// for meetings
     // audioManager.currentBackgroundMusic.loop = true;
     genAudio.playClick();
-    genAudio.playTitleMusic();
+    //genAudio.playTitleMusic();//muted so I can listen to other music while playing and debugging, lol
 
     gameInterval.start();
 
@@ -29,7 +29,7 @@ function LoadingAndSplashScreen()
     promptersManager.instantiatePrompters();
     initializePromptAndAnswerObjects();
     populatePromptAndAnswerArrays();
-    
+
   }
 
   this.promptPlayerForClickAfterLoading = function()

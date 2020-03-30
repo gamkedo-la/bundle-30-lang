@@ -42,7 +42,7 @@ function ImagePrompter()
                            this.currentWidth*0.6,this.currentHeight*0.7);
     }
 
-    dateAndTime.checkForNecessityOfUsingDates();
+    dateAndTime.checkForNecessityOfUsingDatesForImagePrompter();
     console.log('dateAndTime.shouldDrawADate: ' + dateAndTime.shouldDrawADate);
     if (dateAndTime.shouldDrawADate)
     {
