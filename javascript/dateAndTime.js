@@ -203,13 +203,15 @@ function DateAndTime()
     this.determineTomorrowsMonth();
   }
 
+  this.dateToDraw = undefined;
+  this.shouldDrawADate = false;
   this.checkForNecessityOfUsingDates = function()
   {
     console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name);
     if ( promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name !==
         ('mandarin today' || 'mandarin tomorrow' || 'mandarin yesterday') )
         {
-          return;
+          this.shouldDrawADate = false;
         }
         else {
           console.log('inside checkForNecessityOfUsingDates()');
@@ -224,6 +226,9 @@ function DateAndTime()
           {
             dateToDraw = this.yesterdaysDate;
           }
+          console.log('dateToDraw: ' + dateToDraw);
+          this.dateToDraw = dateToDraw;
+          this.shouldDrawADate = true;;
         }
   }
 }
