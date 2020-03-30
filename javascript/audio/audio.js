@@ -1,12 +1,25 @@
 const VOLUME_INCREMENT = 0.05
 
+
+var volume = {}
+volume.music = {};
+volume._musicValue = 0.0; //muted so I can listen to other music while playing and debugging, lol
+Object.defineProperty(volume, 'music', {
+	get() {	return volume._musicValue; },
+	set(value) {
+		volume._musicValue = value;
+		if (volume._musicValue > 1) {volume._musicValue = 1;}
+		if (volume._musicValue < 0) {volume._musicValue = 0;}
+		musicManager.setVolume();
+	}
+});
+
 var musicManager = new MusicManager();
 function MusicManager() {
 	var currentTrack = null;
 	var fadeTrack = null;
 	var nextTrack = null;
 	var trackList = new Array();
-	var musicVolume = 0.7;
 	this.playing = false;
 	this.onEndFunction = function() {return};
 	var currentTrackDuration = null;
@@ -26,8 +39,6 @@ function MusicManager() {
 				fadeTrack = null;
 			}
 		}
-
-
 	}
 
 	this.play = function() {
@@ -38,7 +49,7 @@ function MusicManager() {
 		if (currentTrack == null) {
 			currentTrack = new Audio(trackList[0].src);
 			currentTrackDuration = trackList[0].dur;
-			currentTrack.volume = Math.pow(musicVolume, 2);
+			currentTrack.volume = Math.pow(volume.music, 2);
 		}
 		currentTrack.play();
 
@@ -50,7 +61,7 @@ function MusicManager() {
 				nextTrack = new Audio(trackList[0].src);
 				nextTrackDuration = trackList[0].dur;
 			}
-			nextTrack.volume = Math.pow(musicVolume, 2);
+			nextTrack.volume = Math.pow(volume.music, 2);
 		}
 
 		this.playing = true;
@@ -90,7 +101,7 @@ function MusicManager() {
 				nextTrack = new Audio(trackList[0].src);
 				nextTrackDuration = trackList[0].dur;
 			}
-			nextTrack.volume = Math.pow(musicVolume, 2);
+			nextTrack.volume = Math.pow(volume.music, 2);
 		}
 	}
 
@@ -120,12 +131,9 @@ function MusicManager() {
 		}
 	}
 
-	this.setVolume = function(value) {
-		musicVolume = value;
-		if (musicVolume > 1) {musicVolume = 1;}
-		if (musicVolume < 0) {musicVolume = 0;}
-		currentTrack.volume = Math.pow(musicVolume, 2);
-		nextTrack.volume = Math.pow(musicVolume, 2);
+	this.setVolume = function() {
+		currentTrack.volume = Math.pow(volume.music, 2);
+		nextTrack.volume = Math.pow(volume.music, 2);
 	}
 }
 
@@ -134,7 +142,17 @@ function MusicTrack(source, duration) {
 	this.dur = duration;
 }
 
-var sfxVolume = 0.7;
+
+volume.sfx = {};
+volume._sfxValue = 0.7;
+Object.defineProperty(volume, 'sfx', {
+	get() {	return volume._sfxValue; },
+	set(value) {
+		volume._sfxValue = value;
+		if (volume._sfxValue > 1) {volume._sfxValue = 1;}
+		if (volume._sfxValue < 0) {volume._sfxValue = 0;}
+	}
+});
 
 function sfxMulti(arrayOfSources) {
 	var sfxList = new Array();
@@ -145,7 +163,7 @@ function sfxMulti(arrayOfSources) {
 	this.play = function() {
 		var currentSource = randItem(sfxList);
 		currentSource.currentTime = 0;
-		currentSource.volume = Math.pow(sfxVolume, 2);
+		currentSource.volume = Math.pow(volume.sfx, 2);
 		currentSource.play();
 	}
 }
@@ -158,7 +176,6 @@ function sfxOverlap(source) {
 
 	this.play = function() {
 		sfxList[index].currentTime = 0;
-		sfxList[index].volume = Math.pow(sfxVolume, 2);
 		sfxList[index].play();
 
 		index == 0 ? 1 : 0;
@@ -170,12 +187,21 @@ function sfxOneShot(source) {
 
 	this.play = function() {
 		sfx.currentTime = 0;
-		sfx.volume = Math.pow(sfxVolume, 2);
 		sfx.play();
 	}
 }
 
-var promptVolume = 1;
+
+volume.prompt = {};
+volume._promptValue = 0.7;
+Object.defineProperty(volume, 'prompt', {
+	get() {	return volume._promptValue; },
+	set(value) {
+		volume._promptValue = value;
+		if (volume._promptValue > 1) {volume._promptValue = 1;}
+		if (volume._promptValue < 0) {volume._promptValue = 0;}
+	}
+});
 
 function promptSound(source) {
 	this.sfx = new Audio(source);
@@ -183,7 +209,7 @@ function promptSound(source) {
 
 	this.play = function() {
 		this.sfx.currentTime = 0;
-		this.sfx.volume = Math.pow(promptVolume, 2);
+		this.sfx.volume = Math.pow(volume.prompt, 2);
 		this.sfx.play();
 	}
 }

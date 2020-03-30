@@ -17,7 +17,7 @@ function LoadingAndSplashScreen()
     // audioManager.currentBackgroundMusic.volume = 0;// for meetings
     // audioManager.currentBackgroundMusic.loop = true;
     genAudio.playClick();
-    //genAudio.playTitleMusic();//muted so I can listen to other music while playing and debugging, lol
+    genAudio.playTitleMusic();
 
     gameInterval.start();
 
