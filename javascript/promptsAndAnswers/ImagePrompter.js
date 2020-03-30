@@ -41,6 +41,18 @@ function ImagePrompter()
                            gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.2,
                            this.currentWidth*0.6,this.currentHeight*0.7);
     }
+
+    if (dateAndTime.checkForNecessityOfUsingDates())
+    {
+      console.log('dateToDraw: ' + dateToDraw);
+      customFontFillText(dateToDraw.month, this.currentWidth*0.15 /*font size*/,this.currentWidth*0.055 /*spacing*/,
+                         gameCanvas.width/2 - this.currentWidth/2  + this.currentWidth*0.0175,//xCoordinate)
+                         gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.1);//yCoordinate
+
+      customFontFillText(dateToDraw.day, this.currentWidth*0.15 /*font size*/,this.currentWidth*0.055 /*spacing*/,
+                         gameCanvas.width/2 - this.currentWidth/2  + this.currentWidth*0.0175,//xCoordinate)
+                         gameCanvas.height/2);//yCoordinate
+    }
   }
 
   this.togglePromptingBoolean = function()

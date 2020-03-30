@@ -202,6 +202,30 @@ function DateAndTime()
     this.determineYesterdaysMonth();
     this.determineTomorrowsMonth();
   }
+
+  this.checkForNecessityOfUsingDates = function()
+  {
+    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name);
+    if ( promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name !==
+        ('mandarin today' || 'mandarin tomorrow' || 'mandarin yesterday') )
+        {
+          return;
+        }
+        else {
+          console.log('inside checkForNecessityOfUsingDates()');
+          let dateToDraw = undefined;
+          if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name === 'mandarin today')
+          {
+            dateToDraw = this.todaysDate;
+          } else if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name === 'mandarin tomorrow')
+          {
+            dateToDraw = this.tomorrowsDate;
+          } else if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name === 'mandarin yesterday')
+          {
+            dateToDraw = this.yesterdaysDate;
+          }
+        }
+  }
 }
 
 let dateAndTime = new DateAndTime();

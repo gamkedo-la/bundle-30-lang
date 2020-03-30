@@ -231,21 +231,32 @@ promptAudio.she = new promptSound('audio/PromptsAndAnswers/she.mp3');
 promptAudio.blendedCat = new promptSound('audio/PromptsAndAnswers/blendedCat.mp3');
 promptAudio.blendedCot = new promptSound('audio/PromptsAndAnswers/blendedCot.mp3');
 
+
 promptAudio.mandarinBuy = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinBuy.mp3');
 promptAudio.mandarinSell = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinSell.mp3');
+
 promptAudio.mandarinMom = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinMom.mp3');
 promptAudio.mandarinHorse = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHorse.mp3');
+
 promptAudio.mandarinThisOne = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinThisOne.mp3');
 promptAudio.mandarinThatOne = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinThatOne.mp3');
 promptAudio.mandarinTheseOnes = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinTheseOnes.mp3');
 promptAudio.mandarinThoseOnes = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinThoseOnes.mp3');
+
 promptAudio.mandarinHe = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHe.mp3');
 promptAudio.mandarinCouch = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinCouch.mp3')
 promptAudio.mandarinTower = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinTower.mp3');
+
 promptAudio.mandarinThisArea = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinThisArea.mp3');
 promptAudio.mandarinThatArea = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinThatArea.mp3');
+
 promptAudio.mandarinSleep = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinSleep.mp3');
 promptAudio.mandarinDumplings = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinDumplings.mp3');
+
+promptAudio.mandarinToday = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinToday.mp3');
+promptAudio.mandarinTomorrow = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinTomorrow.mp3');
+promptAudio.mandarinYesterday = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinYesterday.mp3');
+
 
 
 

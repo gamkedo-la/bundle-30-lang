@@ -26,7 +26,6 @@ let mandarinTodayVersusYesterdayPairGrouping = {};
 let mandarinYesterdayVersusTomorrowPairGrouping = {};
 
 
-
 function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, audioAssociation)
 {
   this.name = nameString;
@@ -90,6 +89,10 @@ function initializePromptAndAnswerObjects()
 
   mandarinSleepPromptAndAnswer = new PromptAndAnswerClass('mandarin sleep', '睡觉', sleepImage, promptAudio.mandarinSleep);
   mandarinDumplingsPromptAndAnswer = new PromptAndAnswerClass('mandarin dumplings', '水饺', dumplingsImage, promptAudio.mandarinDumplings);
+
+  mandarinTodayPromptAndAnswer = new PromptAndAnswerClass("mandarin today", '今天', calendarImage, promptAudio.mandarinToday);
+  mandarinTomorrowPromptAndAnswer = new PromptAndAnswerClass("mandarin tomorrow", '明天', calendarImage, promptAudio.mandarinTomorrow);
+  mandarinYesterdayPromptAndAnswer = new PromptAndAnswerClass('mandarin yesterday', '昨天', calendarImage, promptAudio.mandarinYesterday);
   //Vietnamese Section
 }
 
@@ -114,6 +117,9 @@ function populatePromptAndAnswerArrays()
   mandarinHeVersusTowerPairGrouping = {name: 'mandarin he vs tower', arrayOfObjects:[]};
   mandarinHereVersusTherePairGrouping = {name: 'mandarin here vs there', arrayOfObjects:[]};
   mandarinSleepVersusDumplingsPairGrouping = {name: 'mandarin sleep vs dumplings', arrayOfObjects:[]};
+  mandarinTodayVersusTomorrowPairGrouping = {name: 'mandarin today vs tomorrow', arrayOfObjects:[]};
+  mandarinTodayVersusYesterdayPairGrouping = {name: 'mandarin today vs yesterday', arrayOfObjects:[]};
+  mandarinYesterdayVersusTomorrowPairGrouping = {name: 'mandarin yesterday vs tomorrow', arrayOfObjects:[]};
 
   //English
   womanVersusWomenPairGrouping.arrayOfObjects.push(womanPromptAndAnswer);
@@ -163,6 +169,17 @@ function populatePromptAndAnswerArrays()
   mandarinSleepVersusDumplingsPairGrouping.arrayOfObjects.push(mandarinDumplingsPromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinSleepVersusDumplingsPairGrouping);
 
+  mandarinTodayVersusTomorrowPairGrouping.arrayOfObjects.push(mandarinTodayPromptAndAnswer);
+  mandarinTodayVersusTomorrowPairGrouping.arrayOfObjects.push(mandarinTomorrowPromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinTodayVersusTomorrowPairGrouping);
+
+  mandarinTodayVersusYesterdayPairGrouping.arrayOfObjects.push(mandarinTodayPromptAndAnswer);
+  mandarinTodayVersusYesterdayPairGrouping.arrayOfObjects.push(mandarinYesterdayPromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinTodayVersusYesterdayPairGrouping);
+
+  mandarinYesterdayVersusTomorrowPairGrouping.arrayOfObjects.push(mandarinYesterdayPromptAndAnswer);
+  mandarinYesterdayVersusTomorrowPairGrouping.arrayOfObjects.push(mandarinTomorrowPromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinYesterdayVersusTomorrowPairGrouping);
 
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
 
