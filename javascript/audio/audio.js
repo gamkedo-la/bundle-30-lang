@@ -176,9 +176,10 @@ function sfxOverlap(source) {
 
 	this.play = function() {
 		sfxList[index].currentTime = 0;
+		sfxList[index].volume = Math.pow(volume.sfx, 2);
 		sfxList[index].play();
 
-		index == 0 ? 1 : 0;
+		index = index == 0 ? 1 : 0;
 	}
 }
 
@@ -187,6 +188,7 @@ function sfxOneShot(source) {
 
 	this.play = function() {
 		sfx.currentTime = 0;
+		sfx.volume = Math.pow(volume.sfx, 2);
 		sfx.play();
 	}
 }
