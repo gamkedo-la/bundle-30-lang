@@ -254,8 +254,8 @@ function loadImages()
   //space shooter game
   arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/SpaceWithJupiter1.png'});
   arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage2, theFile: 'images/Backgrounds/SpaceWithJupiter2.png'});
-  arrayOfImages.push({imageObjectBinding: spaceshipImage, theFile: 'images/Sprites/spaceShooter/spaceship.png'});
-  arrayOfImages.push({imageObjectBinding: jupiterImage, theFile: 'images/Sprites/spaceShooter/Jupiter.png'});
+  arrayOfImages.push({imageObjectBinding: spaceshipImage, theFile: 'images/sprites/spaceShooter/spaceship.png'});
+  arrayOfImages.push({imageObjectBinding: jupiterImage, theFile: 'images/sprites/spaceShooter/Jupiter.png'});
 
 
 
