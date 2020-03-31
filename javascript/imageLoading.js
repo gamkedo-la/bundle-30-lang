@@ -59,6 +59,11 @@ let snakeGrassBackground = document.createElement('img');
 
 //bird images
 let skyBackground = document.createElement('img');
+let cloud1Image = document.createElement('img');
+let cloud2Image = document.createElement('img');
+let cloud3Image = document.createElement('img');
+let cloud4Image = document.createElement('img');
+
 
 //lane images
 let laneGrassBackground1 = document.createElement('img');
@@ -259,6 +264,11 @@ function loadImages()
 
   //bird game
   arrayOfImages.push({imageObjectBinding: skyBackground, theFile: 'images/Backgrounds/Sky.png'});
+  arrayOfImages.push({imageObjectBinding: cloud1Image, theFile: 'images/Backgrounds/cloud1.png'});
+  arrayOfImages.push({imageObjectBinding: cloud2Image, theFile: 'images/Backgrounds/cloud2.png'});
+  arrayOfImages.push({imageObjectBinding: cloud3Image, theFile: 'images/Backgrounds/cloud3.png'});
+  arrayOfImages.push({imageObjectBinding: cloud4Image, theFile: 'images/Backgrounds/cloud4.png'});
+
 
   //lane game
   arrayOfImages.push({imageObjectBinding: laneGrassBackground1, theFile: 'images/Backgrounds/LaneGrass1.png'});

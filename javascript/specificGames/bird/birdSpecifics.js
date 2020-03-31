@@ -38,6 +38,7 @@ function birdGameClass() {
   {
     // initializePromptAndAnswerObjects();
     // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    cloudManager.initialize();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     this.assignLeftOrRightDirectionToAnswers();
 	  //this.superInitialize();
@@ -78,6 +79,7 @@ function birdGameClass() {
       this.moveAnswers();
       this.handleAnswersOffScreen();
       collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
+      cloudManager.update();
     }
   };
 
@@ -99,6 +101,7 @@ function birdGameClass() {
   this.draw = function()
   {
     this.drawBackground();
+    cloudManager.drawClouds();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
     promptersManager.drawPromptsWhenAppropriate();
