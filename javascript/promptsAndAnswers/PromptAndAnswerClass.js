@@ -31,6 +31,10 @@ let mandarinGrayPromptAndAnswer = {};
 let mandarinRedPromptAndAnswer = {};
 let mandarinBrownPromptAndAnswer = {};
 let mandarinYellowPromptAndAnswer = {};
+let mandarinBluePromptAndAnswer = {};
+let mandarinPurplePromptAndAnswer = {};
+let mandarinPinkPromptAndAnswer = {};
+let mandarinGreenPromptAndAnswer = {};
 let mandarinColorsGrouping = {};
 
 
@@ -108,6 +112,10 @@ function initializePromptAndAnswerObjects()
   mandarinRedPromptAndAnswer = new PromptAndAnswerClass("mandarin red", '红色', redImage, promptAudio.mandarinRed);
   mandarinBrownPromptAndAnswer = new PromptAndAnswerClass("mandarin brown", '棕色', brownImage, promptAudio.mandarinBrown);
   mandarinYellowPromptAndAnswer = new PromptAndAnswerClass("mandarin yellow", '黄色', yellowImage, promptAudio.mandarinYellow);
+  mandarinPurplePromptAndAnswer = new PromptAndAnswerClass("mandarin purple", '黄色', purpleImage, promptAudio.mandarinPurple);
+  mandarinPinkPromptAndAnswer = new PromptAndAnswerClass("mandarin pink", '黄色', pinkImage, promptAudio.mandarinPink);
+  mandarinGreenPromptAndAnswer = new PromptAndAnswerClass("mandarin green", '黄色', greenImage, promptAudio.mandarinGreen);
+  mandarinBluePromptAndAnswer = new PromptAndAnswerClass("mandarin blue", '黄色', blueImage, promptAudio.mandarinBlue);
 
   //Vietnamese Section
 }
@@ -204,8 +212,11 @@ function populatePromptAndAnswerArrays()
   mandarinColorsGrouping.arrayOfObjects.push(mandarinRedPromptAndAnswer);
   mandarinColorsGrouping.arrayOfObjects.push(mandarinBrownPromptAndAnswer);
   mandarinColorsGrouping.arrayOfObjects.push(mandarinYellowPromptAndAnswer);
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinPurplePromptAndAnswer);
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinPinkPromptAndAnswer);
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinGreenPromptAndAnswer);
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinBluePromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinColorsGrouping);
-
 
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
 
