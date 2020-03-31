@@ -25,6 +25,14 @@ let mandarinTodayVersusTomorrowPairGrouping = {};
 let mandarinTodayVersusYesterdayPairGrouping = {};
 let mandarinYesterdayVersusTomorrowPairGrouping = {};
 
+let mandarinBlackPromptAndAnswer = {};
+let mandarinWhitePromptAndAnswer = {};
+let mandarinGrayPromptAndAnswer = {};
+let mandarinRedPromptAndAnswer = {};
+let mandarinBrownPromptAndAnswer = {};
+let mandarinYellowPromptAndAnswer = {};
+let mandarinColorsGrouping = {};
+
 
 function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, audioAssociation)
 {
@@ -93,6 +101,14 @@ function initializePromptAndAnswerObjects()
   mandarinTodayPromptAndAnswer = new PromptAndAnswerClass("mandarin today", '今天', calendarImage, promptAudio.mandarinToday);
   mandarinTomorrowPromptAndAnswer = new PromptAndAnswerClass("mandarin tomorrow", '明天', calendarImage, promptAudio.mandarinTomorrow);
   mandarinYesterdayPromptAndAnswer = new PromptAndAnswerClass('mandarin yesterday', '昨天', calendarImage, promptAudio.mandarinYesterday);
+
+  mandarinBlackPromptAndAnswer = new PromptAndAnswerClass("mandarin black", '黑色', blackImage, promptAudio.mandarinBlack);
+  mandarinWhitePromptAndAnswer = new PromptAndAnswerClass("mandarin white", '白色', whiteImage, promptAudio.mandarinWhite);
+  mandarinGrayPromptAndAnswer = new PromptAndAnswerClass("mandarin gray", '灰色', grayImage, promptAudio.mandarinGray);
+  mandarinRedPromptAndAnswer = new PromptAndAnswerClass("mandarin red", '红色', redImage, promptAudio.mandarinRed);
+  mandarinBrownPromptAndAnswer = new PromptAndAnswerClass("mandarin brown", '棕色', brownImage, promptAudio.mandarinBrown);
+  mandarinYellowPromptAndAnswer = new PromptAndAnswerClass("mandarin yellow", '黄色', yellowImage, promptAudio.mandarinYellow);
+
   //Vietnamese Section
 }
 
@@ -120,6 +136,7 @@ function populatePromptAndAnswerArrays()
   mandarinTodayVersusTomorrowPairGrouping = {name: 'mandarin today vs tomorrow', arrayOfObjects:[]};
   mandarinTodayVersusYesterdayPairGrouping = {name: 'mandarin today vs yesterday', arrayOfObjects:[]};
   mandarinYesterdayVersusTomorrowPairGrouping = {name: 'mandarin yesterday vs tomorrow', arrayOfObjects:[]};
+  mandarinColorsGrouping = {name: 'mandarin colors', arrayOfObjects:[]};
 
   //English
   womanVersusWomenPairGrouping.arrayOfObjects.push(womanPromptAndAnswer);
@@ -180,6 +197,15 @@ function populatePromptAndAnswerArrays()
   mandarinYesterdayVersusTomorrowPairGrouping.arrayOfObjects.push(mandarinYesterdayPromptAndAnswer);
   mandarinYesterdayVersusTomorrowPairGrouping.arrayOfObjects.push(mandarinTomorrowPromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinYesterdayVersusTomorrowPairGrouping);
+
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinBlackPromptAndAnswer);
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinWhitePromptAndAnswer);
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinGrayPromptAndAnswer);
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinRedPromptAndAnswer);
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinBrownPromptAndAnswer);
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinYellowPromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinColorsGrouping);
+
 
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
 

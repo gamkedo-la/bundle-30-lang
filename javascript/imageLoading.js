@@ -31,6 +31,17 @@ let dumplingsImage = document.createElement("img");
 let hereImage = document.createElement("img");
 let thereImage = document.createElement("img");
 
+let blackImage = document.createElement("img");
+let whiteImage = document.createElement("img");
+let grayImage = document.createElement("img");
+let redImage = document.createElement("img");
+let brownImage = document.createElement("img");
+let yellowImage = document.createElement("img");
+let greenImage = document.createElement("img");
+let blueImage = document.createElement("img");
+let purpleImage = document.createElement("img");
+let pinkImage = document.createElement("img");
+
 let calendarImage = document.createElement("img");
 
 //runner images
@@ -221,6 +232,17 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: thereImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/there.png'});
 
   arrayOfImages.push({imageObjectBinding: calendarImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/blankCalendarPage.png'});
+
+  arrayOfImages.push({imageObjectBinding: blackImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/black.png'});
+  arrayOfImages.push({imageObjectBinding: whiteImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/white.png'});
+  arrayOfImages.push({imageObjectBinding: grayImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/gray.png'});
+  arrayOfImages.push({imageObjectBinding: redImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/red.png'});
+  arrayOfImages.push({imageObjectBinding: brownImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/brown.png'});
+  arrayOfImages.push({imageObjectBinding: yellowImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/yellow.png'});
+  arrayOfImages.push({imageObjectBinding: greenImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/green.png'});
+  arrayOfImages.push({imageObjectBinding: blueImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/blue.png'});
+  arrayOfImages.push({imageObjectBinding: purpleImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/purple.png'});
+  arrayOfImages.push({imageObjectBinding: pinkImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/pink.png'});
 
   //runner game
   arrayOfImages.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png'});

@@ -285,6 +285,16 @@ promptAudio.mandarinToday = new promptSound('audio/PromptsAndAnswers/Mandarin/ma
 promptAudio.mandarinTomorrow = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinTomorrow.mp3');
 promptAudio.mandarinYesterday = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinYesterday.mp3');
 
+promptAudio.mandarinBlack = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinBlack.mp3');//黑色
+promptAudio.mandarinWhite = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinWhite.mp3');//白色
+promptAudio.mandarinGray = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinGray.mp3');//灰色
+promptAudio.mandarinRed = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinRed.mp3');//红色
+promptAudio.mandarinBrown = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinBrown.mp3');//棕色
+promptAudio.mandarinYellow = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinYellow.mp3');//黄色
+promptAudio.mandarinGreen = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinGreen.mp3');//绿色
+promptAudio.mandarinBlue = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinBlue.mp3');//蓝色
+promptAudio.mandarinPurple = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinPurple.mp3');//紫色
+promptAudio.mandarinPink = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinPink.mp3');//粉
 
 
 
