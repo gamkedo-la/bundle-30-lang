@@ -237,19 +237,16 @@ function DateAndTime()
   this.shouldDrawADateOnAnswers = false;
   this.checkForNecessityOfUsingDatesForDrawAnswersManager = function()
   {
-    console.log('inside checkForNecessityOfUsingDatesForDrawAnswersManager');
+
     if ( (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name === 'mandarin today' ||
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name === 'mandarin tomorrow' ||
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name === 'mandarin yesterday')
         &&
         promptsAndAnswersManager.currentAnswerDataType === "IMG" )
         {
-          console.log('necessity for drawing dates should be true');
           this.shouldDrawADateOnAnswers = true;
         }
         else {
-          console.log('necessity for drawing dates should be false');
-
           this.shouldDrawADateOnAnswers = false;
         }
   }
