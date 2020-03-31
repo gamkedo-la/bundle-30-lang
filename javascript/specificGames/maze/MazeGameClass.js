@@ -102,29 +102,37 @@ function MazeGameClass(){
         promptersManager.drawPromptsWhenAppropriate();
 
         // FOR DEBUG
-        // gameCanvasContext.save();
-        // gameCanvasContext.font = "15px Arial"
-        // gameCanvasContext.fillStyle = "gold";
-        // gameCanvasContext.fillText(
-        //     "( " + inputManager.mouseCoordinates.x +
-        //     " , " + inputManager.mouseCoordinates.y +
-        //     " )",
-        //     inputManager.mouseCoordinates.x + 10,
-        //     inputManager.mouseCoordinates.y
-        // );
-        // gameCanvasContext.fillStyle = "red";
-        // gameCanvasContext.fillText(
-        //     (
-        //         Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) * NUMBER_OF_COLUMNS + 
-        //         Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)
-        //     ) + " : " +
-        //     "( "  + Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) +
-        //     " , " + Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)+
-        //     " )",
-        //     inputManager.mouseCoordinates.x + 10,
-        //     inputManager.mouseCoordinates.y + 20
-        // );
-        // gameCanvasContext.restore();
+        if (debugOn){
+            this.drawMousePosition();
+            gameCanvasContext.fillStyle="white";
+            gameCanvasContext.fillRect(this.playerCharacter.x-5, this.playerCharacter.y-5, 10, 10);
+        }
+    }
+
+    this.drawMousePosition = function(){
+        gameCanvasContext.save();
+        gameCanvasContext.font = "15px Arial"
+        gameCanvasContext.fillStyle = "gold";
+        gameCanvasContext.fillText(
+            "( " + inputManager.mouseCoordinates.x +
+            " , " + inputManager.mouseCoordinates.y +
+            " )",
+            inputManager.mouseCoordinates.x + 10,
+            inputManager.mouseCoordinates.y
+        );
+        gameCanvasContext.fillStyle = "red";
+        gameCanvasContext.fillText(
+            (
+                Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) + 
+                Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)* NUMBER_OF_COLUMNS 
+            ) + " : " +
+            "( "  + Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) +
+            " , " + Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)+
+            " )",
+            inputManager.mouseCoordinates.x + 10,
+            inputManager.mouseCoordinates.y + 20
+        );
+        gameCanvasContext.restore();
     }
 
     this.drawBackGround = function ()
@@ -180,6 +188,16 @@ function MazeGameClass(){
         return {
             x: adjustShifX,
             y: adjustShifY
+        }
+    }
+
+    this.handleSpaceBarDown = function () {
+        if (debugOn){
+            var cellIdx = Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) + 
+                Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT) * NUMBER_OF_COLUMNS;
+            
+            this.playerCharacter.currentCell = this.maze.arrayOfCells[cellIdx];
+            this.playerCharacter.placeAtCenteOfCurrentCell();
         }
     }
 
