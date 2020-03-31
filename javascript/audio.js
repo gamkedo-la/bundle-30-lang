@@ -229,7 +229,7 @@ genAudio.playTransitionMusic = function() {
 		gameCanvasContext.globalAlpha = 1;
 	}
 }
-genAudio.titleMusic = new MusicTrack('audio/backgroundTracks/titleScreenMusic.mp3', 6.1);
+genAudio.titleMusic = new MusicTrack('audio/backgroundTracks/titleScreenMusic.mp3', 6.175);
 genAudio.playTitleMusic = function() {
 	musicManager.addTrack(genAudio.titleMusic);
 	musicManager.moveToLastTrack();
