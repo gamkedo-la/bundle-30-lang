@@ -41,6 +41,23 @@ function CollisionsWithAnswersManager()
     return gameClassManager.currentGame.textAnswerFontStyle;
   }
 
+
+  this.getImageAnswerSize = function()
+  {
+    return {
+      width : gameClassManager.currentGame.imageAnswerWidth,
+      height: gameClassManager.currentGame.imageAnswerHeight
+    }
+  }
+
+  this.getAudioImageAnswerSize = function()
+  {
+    return {
+      width : gameClassManager.currentGame.audioImageAnswerWidth,
+      height: gameClassManager.currentGame.audioImageAnswerHeight
+    }
+  }
+
   this.insideBoxColliderForCorrectStringAnswer = function(collidingObject, correctAnswerWidth, textAnswerFontSize)
   {
     return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 - collidingObject.width &&
@@ -59,34 +76,42 @@ function CollisionsWithAnswersManager()
 
   this.insideBoxColliderForCorrectImageAnswers = function(collidingObject)
   {
+    var imageAnswerSize = this.getImageAnswerSize();
+
     return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-        collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+        collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + imageAnswerSize.width &&
         collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
-        collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
+        collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + imageAnswerSize.height)
   }
 
   this.insideBoxColliderForIncorrectImageAnswers = function(collidingObject)
   {
+    var imageAnswerSize = this.getImageAnswerSize()
+
     return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-        collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+        collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + imageAnswerSize.width &&
         collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
-        collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100)
+        collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + imageAnswerSize.height)
   }
 
   this.insideBoxColliderForCorrectAudioAnswer = function(collidingObject)
   {
+    var audioImageSize = this.getAudioImageAnswerSize();
+
     return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-        collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+        collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + audioImageSize.width &&
         collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
-        collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 100)
+        collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + audioImageSize.height)
   }
 
   this.insideBoxColliderForIncorrectAudioAnswer = function(collidingObject)
   {
+    var audioImageSize = this.getAudioImageAnswerSize();
+
     return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-        collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 100 &&
+        collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + audioImageSize.width &&
         collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
-        collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 100)
+        collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + audioImageSize.height)
   }
 
   this.resetAnswers = function()
