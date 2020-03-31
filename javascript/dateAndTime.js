@@ -11,7 +11,7 @@ function DateAndTime()
   const SEPTEMBER = 8;
   const OCTOBER = 9;
   const NOVEMBER = 10;
-  const DECEMBEER = 11;
+  const DECEMBER = 11;
 
   this.builtInJavascriptDateObject = undefined;
   this.setOrResetParentDateObject = function()
@@ -237,7 +237,7 @@ function DateAndTime()
   this.shouldDrawADateOnAnswers = false;
   this.checkForNecessityOfUsingDatesForDrawAnswersManager = function()
   {
-    
+
     if ( (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing === mandarinTodayPromptAndAnswer ||
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing === mandarinTomorrowPromptAndAnswer ||
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing === mandarinYesterdayPromptAndAnswer )

@@ -3,7 +3,7 @@ const VOLUME_INCREMENT = 0.05
 
 var volume = {}
 volume.music = {};
-volume._musicValue = 0.0; //muted so I can listen to other music while playing and debugging, lol
+volume._musicValue = 0.75; //muted so I can listen to other music while playing and debugging, lol
 Object.defineProperty(volume, 'music', {
 	get() {	return volume._musicValue; },
 	set(value) {
