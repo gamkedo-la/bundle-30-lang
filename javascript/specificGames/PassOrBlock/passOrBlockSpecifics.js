@@ -22,6 +22,12 @@ function PassOrBlockGameClass()
   this.textAnswerFontSize = 30;
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
+  this.imageAnswerWidth = undefined;
+  this.imageAnswerHeight = undefined;
+
+  this.audioAnswerWidth = undefined;
+  this.audioImageAnswerHeight = undefined;
+
   this.LETTER_COLOR = 'cyan';
 
   this.correctAnswersYSpeed = 4;
@@ -30,6 +36,11 @@ function PassOrBlockGameClass()
   this.superInitialize = this.initialize;
   this.initialize = function()
   {
+    this.imageAnswerWidth = gameCanvas.width/6;
+    this.imageAnswerHeight = gameCanvas.height/7;
+
+    this.audioAnswerWidth = gameCanvas.width/6;
+    this.audioImageAnswerHeight = gameCanvas.height/7;
 
     this.background = new PassOrBlockBackground();
 	this.superInitialize();
@@ -40,7 +51,7 @@ function PassOrBlockGameClass()
     this.background.draw();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
-    promptersManager.drawPromptsWhenAppropriate(this.collidingObject);
+    promptersManager.drawPromptsWhenAppropriate();
   }
 
   this.update = function()
@@ -49,7 +60,8 @@ function PassOrBlockGameClass()
     fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
     {
       this.moveAnswers();
-      this.playerCharacter.handleCollisionsWithAnswers();
+      collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
+      //this.playerCharacter.handleCollisionsWithAnswers();
       this.background.handleAnswersOffScreen();
     }
   }

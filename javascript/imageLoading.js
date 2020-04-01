@@ -78,6 +78,10 @@ let roadDash3 = document.createElement('img');
 //jumper images
 let jumperBackground = document.createElement('img');
 
+//volcano
+let volcanoImage = document.createElement('img');
+let spaceBackgroundForVolcanoGame = document.createElement('img');
+
 //space shooter images
 let spaceShooterBackgroundImage = document.createElement('img');
 let spaceShooterBackgroundImage2 = document.createElement('img');
@@ -282,6 +286,11 @@ function loadImages()
 
   //jumper game
   arrayOfImages.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/editedJumperBackground.png'});
+
+  //pass or block
+  arrayOfImages.push({imageObjectBinding: volcanoImage, theFile: 'images/Backgrounds/Volcano.png'});
+  arrayOfImages.push({imageObjectBinding: spaceBackgroundForVolcanoGame, theFile: 'images/Backgrounds/spaceBackgroundForVolcanoGame.png'});
+
 
   //space shooter game
   arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/SpaceWithJupiter1.png'});

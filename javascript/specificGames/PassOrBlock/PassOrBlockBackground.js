@@ -1,10 +1,12 @@
 function PassOrBlockBackground()
 {
 
+  this.volcanoImage = volcanoImage;
+  this.spaceBackgrondImage = spaceBackgroundForVolcanoGame;
   this.draw = function()
   {
-    gameCanvasContext.fillStyle = 'blue';
-    gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+    gameCanvasContext.drawImage(this.spaceBackgrondImage, 0,0, gameCanvas.width,gameCanvas.height);
+    gameCanvasContext.drawImage(this.volcanoImage, 0,gameCanvas.height*0.7, gameCanvas.width,gameCanvas.height*0.3);
   }
 
   this.handleAnswersOffScreen = function()
@@ -34,13 +36,15 @@ function PassOrBlockBackground()
 
   this.handleAnswersOffTopOfScreen = function()
   {
-    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate < 0)
+    if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate //-
+        /*promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.height*/ < 0)
     {
       amountCorrect++;
       this.correctAnswerOffScreen = true;
       this.checkIfBothAnswersAreOffScreenAndResetIfSo();
     }
-    if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate < 0)
+    if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate //-
+        /*promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.height*/ < 0)
     {
       amountIncorrect++;
       this.incorrectAnswerOffScreen = true;

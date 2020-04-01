@@ -155,6 +155,13 @@ function CollisionsWithAnswersManager()
 
       if (this.insideBoxColliderForCorrectStringAnswer(collidingObject, correctAnswerWidth, textAnswerFontSize))
         {
+          if (gameClassManager.currentGame === passOrBlockGame)
+          {
+            console.log('inside collision for an answer');
+
+            gameClassManager.currentGame.correctAnswersYSpeed *= -1;
+            return;
+          }
           this.resetAnswers();
           console.log('******');
 		      // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
@@ -167,6 +174,12 @@ function CollisionsWithAnswersManager()
         }
       else if (this.insideBoxColliderForIncorrectStringAnswer(collidingObject, incorrectAnswerWidth, textAnswerFontSize))
         {
+          if (gameClassManager.currentGame === passOrBlockGame)
+          {
+            console.log('inside collision for an answer');
+            gameClassManager.currentGame.incorrectAnswersYSpeed *= -1;
+            return;
+          }
           this.resetAnswers();
           console.log('******');
 		      // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
@@ -184,6 +197,13 @@ function CollisionsWithAnswersManager()
     {
       if (this.insideBoxColliderForCorrectImageAnswers(collidingObject))
         {
+          if (gameClassManager.currentGame === passOrBlockGame)
+          {
+            console.log('inside collision for an answer');
+
+            gameClassManager.currentGame.correctAnswersYSpeed *= -1;
+            return;
+          }
           this.resetAnswers();
           console.log('******');
 		      // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
@@ -196,6 +216,13 @@ function CollisionsWithAnswersManager()
         }
       else if (this.insideBoxColliderForIncorrectImageAnswers(collidingObject))
         {
+          if (gameClassManager.currentGame === passOrBlockGame)
+          {
+            console.log('inside collision for an answer');
+
+            gameClassManager.currentGame.incorrectAnswersYSpeed *= -1;
+            return;
+          }
           this.resetAnswers();
           console.log('******');
 		      // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
@@ -212,6 +239,13 @@ function CollisionsWithAnswersManager()
     {
       if (this.insideBoxColliderForCorrectAudioAnswer(collidingObject))
         {
+          if (gameClassManager.currentGame === passOrBlockGame)
+          {
+            console.log('inside collision for an answer');
+
+            gameClassManager.currentGame.correctAnswersYSpeed *= -1;
+            return;
+          }
             this.resetAnswers();
             console.log('******');
 		        // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
@@ -224,6 +258,13 @@ function CollisionsWithAnswersManager()
         }
       else if (this.insideBoxColliderForIncorrectAudioAnswer(collidingObject))
         {
+          if (gameClassManager.currentGame === passOrBlockGame)
+          {
+            console.log('inside collision for an answer');
+
+            gameClassManager.currentGame.incorrectAnswersYSpeed *= -1;
+            return;
+          }
           this.resetAnswers();
           console.log('******');
 	    	  // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
