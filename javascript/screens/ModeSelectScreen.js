@@ -52,7 +52,6 @@ function ModeSelectScreen()
       if ( Math.sqrt(xDistanceSquared + yDistanceSquared) < radioButtonRadius )
         {
           this.arrayOfModeSelectBoxes[radioButtonIndex].selectedStatus = true;
-          // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           genAudio.playClick();
           nextGame = this.arrayOfModeSelectBoxes[radioButtonIndex].mode;
           console.log('nextGame: ' + nextGame);
@@ -89,7 +88,6 @@ function ModeSelectScreen()
     if (inputManager.mouseCoordinates.x > startingX && inputManager.mouseCoordinates.x < startingX + width &&
         inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height)
         {
-          // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           genAudio.playClick();
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.languageSelectionScreen);
         }
