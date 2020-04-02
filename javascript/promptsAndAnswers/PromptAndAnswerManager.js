@@ -464,6 +464,29 @@ function PromptsAndAnswersManager()
       this.reinsertAnswersIntoEditedArrayForNextShuffle();
     }
   }
+
+
+  this.arrayOfWrongAnswers = [];
+  this.recordWrongAnswer = function()
+  {
+    this.arrayOfWrongAnswers.push(this.currentLogicalPromptAndAnswerGroup.name);
+    console.log('this.arrayOfWrongAnswers: ' + this.arrayOfWrongAnswers);
+
+    var tally = [];
+    for (let wrongAnswerIndex = 0; wrongAnswerIndex < this.arrayOfWrongAnswers.length; wrongAnswerIndex++)
+    {
+      if (tally[this.arrayOfWrongAnswers[wrongAnswerIndex]] === undefined)
+      {
+        tally[this.arrayOfWrongAnswers[wrongAnswerIndex]] = 0;
+      }
+      tally[this.arrayOfWrongAnswers[wrongAnswerIndex]]++;
+      if (tally[this.arrayOfWrongAnswers[wrongAnswerIndex]] >= 3)
+      {
+        helperPrompt.popUp(this.arrayOfWrongAnswers[wrongAnswerIndex]);
+        this.arrayOfWrongAnswers = [];
+      }
+    }
+  }
 }
 
 let promptsAndAnswersManager = new PromptsAndAnswersManager();

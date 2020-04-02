@@ -55,6 +55,13 @@ function updateEverythingInTheGame()
 //draw section
 function drawEverythingInTheGame()
 {
+
+  if (helperPrompt.isOn)
+  {
+    helperPrompt.draw();
+    return;
+  }
+
   if (fullGameStateMachine.currentState.associatedObject) // can sometimes be undefined
     fullGameStateMachine.currentState.associatedObject.draw();
 

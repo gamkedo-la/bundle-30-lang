@@ -180,11 +180,14 @@ function CollisionsWithAnswersManager()
             gameClassManager.currentGame.incorrectAnswersYSpeed *= -1;
             return;
           }
+          promptsAndAnswersManager.recordWrongAnswer();
           this.resetAnswers();
           console.log('******');
 		      // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
           genAudio.playNegative();
+
           amountIncorrect++;
+
           if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
           {
             cycleCount++;
@@ -227,7 +230,10 @@ function CollisionsWithAnswersManager()
           console.log('******');
 		      // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
           genAudio.playNegative();
+          promptsAndAnswersManager.recordWrongAnswer();
           amountIncorrect++;
+
+
           if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
           {
             cycleCount++;
@@ -265,7 +271,10 @@ function CollisionsWithAnswersManager()
             gameClassManager.currentGame.incorrectAnswersYSpeed *= -1;
             return;
           }
+          promptsAndAnswersManager.recordWrongAnswer();
           this.resetAnswers();
+
+
           console.log('******');
 	    	  // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
           genAudio.playNegative();

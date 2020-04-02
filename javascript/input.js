@@ -2,6 +2,13 @@ function InputManager()
 {
   this.gameCanvasClick = function(builtInDocumentEventObject)
   {
+    
+    if (helperPrompt.isOn)
+    {
+      helperPrompt.isOn = false;
+      return;
+    }
+
     switch(fullGameStateMachine.currentState)
     {
       case  fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.loading:

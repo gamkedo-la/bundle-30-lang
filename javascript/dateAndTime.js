@@ -207,7 +207,6 @@ function DateAndTime()
   this.shouldDrawADate = false;
   this.checkForNecessityOfUsingDatesForImagePrompter = function()
   {
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name);
     if ( promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name !== 'mandarin today' &&
          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name !== 'mandarin tomorrow' &&
          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name !== 'mandarin yesterday')

@@ -43,7 +43,6 @@ function ImagePrompter()
     }
 
     dateAndTime.checkForNecessityOfUsingDatesForImagePrompter();
-    console.log('dateAndTime.shouldDrawADate: ' + dateAndTime.shouldDrawADate);
     if (dateAndTime.shouldDrawADate)
     {
       console.log('dateAndTime.dateToDraw.month: ' + dateAndTime.dateToDraw.month);
