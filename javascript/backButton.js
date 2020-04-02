@@ -31,7 +31,6 @@ function BackButton()
           
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
           transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
-          // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           genAudio.playClick();
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
@@ -39,15 +38,6 @@ function BackButton()
           playerShouldBePlayingPinata = false;
           arrayOfAnswers = [];
           promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-          // if (gameIsOnAServerAndCanUseWebAudioAPI)
-          // {
-          //   backgroundMusicBufferSource.stop();
-          // } else
-          // {
-          //     audioManager.currentBackgroundMusic.pause();
-          //     audioManager.currentBackgroundMusic = audioManager.titleScreenMusic;
-          //     audioManager.currentBackgroundMusic.play();
-          // }
           genAudio.playTitleMusic();
         }
   }

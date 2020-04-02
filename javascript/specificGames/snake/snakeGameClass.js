@@ -31,9 +31,9 @@ function snakeGameClass()
   {
     gameAudio = {};
     gameAudio.slither = new sfxMulti(["audio/snake_slither_01.mp3", "audio/snake_slither_02.mp3", "audio/snake_slither_03.mp3", "audio/snake_slither_04.mp3"]);
-	gameAudio.playSlither = function() {
-		gameAudio.slither.play();
-	}
+	  gameAudio.playSlither = function() {
+	    gameAudio.slither.play();
+  	}
   };
 
   this.superInitialize = this.initialize;

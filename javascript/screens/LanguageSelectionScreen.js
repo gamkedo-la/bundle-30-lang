@@ -76,9 +76,6 @@ function LanguageSelectionScreen()
     miniGameTransitioner.initialize();
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
     collisionsWithAnswersManager.initialize();
-    // audioManager.currentBackgroundMusic.pause();
-    // audioManager.transitionToLevelMusic1.play();
-    // audioManager.transitionToLevelMusic1.volume = 0;// for meetings
     genAudio.playTransitionMusic();
   }
 
@@ -93,7 +90,6 @@ function LanguageSelectionScreen()
         inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height &&
         this.languageNum >= 0)
         {
-          // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfUIButtonSounds);
           genAudio.playClick();
           this.startGame();
         }
@@ -116,6 +112,7 @@ function LanguageSelectionScreen()
       this.languageNum = mouseCol + mouseRow *6;
       console.log('this.languageNum: ' + this.languageNum);
       promptsAndAnswersManager.assignCurrentLanguageArray();
+      genAudio.playClick();
     }
   }
 }

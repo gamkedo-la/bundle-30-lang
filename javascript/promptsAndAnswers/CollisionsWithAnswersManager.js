@@ -164,7 +164,6 @@ function CollisionsWithAnswersManager()
           }
           this.resetAnswers();
           console.log('******');
-		      // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
           genAudio.playPositive();
           amountCorrect++;
           if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
@@ -183,7 +182,6 @@ function CollisionsWithAnswersManager()
           promptsAndAnswersManager.recordWrongAnswer();
           this.resetAnswers();
           console.log('******');
-		      // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
           genAudio.playNegative();
 
           amountIncorrect++;
@@ -209,7 +207,6 @@ function CollisionsWithAnswersManager()
           }
           this.resetAnswers();
           console.log('******');
-		      // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
           genAudio.playPositive();
           amountCorrect++;
           if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
@@ -228,7 +225,6 @@ function CollisionsWithAnswersManager()
           }
           this.resetAnswers();
           console.log('******');
-		      // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
           genAudio.playNegative();
           promptsAndAnswersManager.recordWrongAnswer();
           amountIncorrect++;
@@ -254,7 +250,6 @@ function CollisionsWithAnswersManager()
           }
             this.resetAnswers();
             console.log('******');
-		        // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
             genAudio.playPositive();
             amountCorrect++;
             if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
@@ -276,7 +271,6 @@ function CollisionsWithAnswersManager()
 
 
           console.log('******');
-	    	  // audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray(audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
           genAudio.playNegative();
           amountIncorrect++;
           if (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM)
