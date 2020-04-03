@@ -109,8 +109,11 @@ function TitleScreenClass()
         var yy = 900 + (i * 50) - bgcounter;
         gameCanvasContext.arc(320, yy, 1000, 0, 7);
         gameCanvasContext.fill();
-    }    
-  }
+    }   
+    
+    // a cute little picture frame
+    gameCanvasContext.drawImage(menu_borderImage,0,0);
+}
 
   this.draw = function()
   {

@@ -63,7 +63,7 @@ let cloud1Image = document.createElement('img');
 let cloud2Image = document.createElement('img');
 let cloud3Image = document.createElement('img');
 let cloud4Image = document.createElement('img');
-
+let menu_borderImage = document.createElement('img');
 
 //lane images
 let laneGrassBackground1 = document.createElement('img');
@@ -273,6 +273,8 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: cloud3Image, theFile: 'images/Backgrounds/cloud3.png'});
   arrayOfImages.push({imageObjectBinding: cloud4Image, theFile: 'images/Backgrounds/cloud4.png'});
 
+  // main menu bg
+  arrayOfImages.push({imageObjectBinding: menu_borderImage, theFile: 'images/Backgrounds/menu_border.png'});
 
   //lane game
   arrayOfImages.push({imageObjectBinding: laneGrassBackground1, theFile: 'images/Backgrounds/LaneGrass1.png'});
