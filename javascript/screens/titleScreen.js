@@ -75,10 +75,41 @@ function TitleScreenClass()
     });
   }
 
+  var bgrainbow;
+  function generateBGColours()
+  {
+    var size = 32;
+    bgrainbow = new Array(size);
+    for (var i = 0; i < size; i++) {
+        var red = sin_to_hex(i, 0 * Math.PI * 2 / 3); // 0   deg
+        var blue = sin_to_hex(i, 1 * Math.PI * 2 / 3); // 120 deg
+        var green = sin_to_hex(i, 2 * Math.PI * 2 / 3); // 240 deg
+        bgrainbow[i] = "#" + red + green + blue;
+    }
+    function sin_to_hex(i, phase) {
+        var sin = Math.sin(Math.PI / size * 2 * i + phase);
+        var int = Math.floor(sin * 127) + 128;
+        var hex = int.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+    }
+  }
+
+  var bgcounter = 0;
   this.drawBackground = function()
   {
     gameCanvasContext.fillStyle = 'orange';
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+
+    // a fun scrolling rainbow
+    bgcounter = Math.cos(performance.now()/2500) * 450 + 450;
+    if (!bgrainbow) generateBGColours();
+    for (i = 0; i < bgrainbow.length; i++) {
+        gameCanvasContext.fillStyle = bgrainbow[i];
+        gameCanvasContext.beginPath();
+        var yy = 900 + (i * 50) - bgcounter;
+        gameCanvasContext.arc(320, yy, 1000, 0, 7);
+        gameCanvasContext.fill();
+    }    
   }
 
   this.draw = function()
