@@ -28,13 +28,13 @@ function BackButton()
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < gameCanvas.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < gameCanvas.height)
         {
-          
+
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
           transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
           genAudio.playClick();
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
-          gameClassManager.currentGame = undefined;
+          //gameClassManager.currentGame = undefined;
           playerShouldBePlayingPinata = false;
           arrayOfAnswers = [];
           promptsAndAnswersManager.setOrResetPromptsAndAnswers();
