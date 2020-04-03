@@ -1,3 +1,4 @@
+cVcShooterGameClass.prototype = new GameClass();
 function cVcShooterGameClass()
 {
   this.name = 'cVcShooter Game';

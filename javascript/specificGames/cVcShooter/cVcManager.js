@@ -1,7 +1,7 @@
 function CVCManager()
 {
-  this.CVCcat = new cVc('c','a','t', catImage, audioManager.blendedCat);
-  this.CVCcot = new cVc('c','o','t', cotImage, audioManager.blendedCot);
+  this.CVCcat = new cVc('c','a','t', catImage, promptAudio.blendedCat);
+  this.CVCcot = new cVc('c','o','t', cotImage, promptAudio.blendedCot);
 
   this.arrayOfCVCs = [];
 
