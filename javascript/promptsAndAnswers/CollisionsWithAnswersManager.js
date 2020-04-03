@@ -223,10 +223,10 @@ function CollisionsWithAnswersManager()
             gameClassManager.currentGame.incorrectAnswersYSpeed *= -1;
             return;
           }
+          promptsAndAnswersManager.recordWrongAnswer();
           this.resetAnswers();
           console.log('******');
           genAudio.playNegative();
-          promptsAndAnswersManager.recordWrongAnswer();
           amountIncorrect++;
 
 

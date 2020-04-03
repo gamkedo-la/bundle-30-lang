@@ -9,8 +9,8 @@ function HelperPrompt()
     gameCanvasContext.fillStyle = 'white';
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
     gameCanvasContext.fillStyle = 'black';
-    gameCanvasContext.fillText('The game suggests that you practice: ', gameCanvas.width/2,gameCanvas.height/2);
-    gameCanvasContext.fillText(this.wrongWord, gameCanvas.width/2,gameCanvas.height/2 + 50);
+    customFontFillText('The game suggests that you practice: ', 20, 15, 50,gameCanvas.height/2 - 30);
+    customFontFillText(this.wrongWord, 30, 20, gameCanvas.width/2 - 100,gameCanvas.height/2);
   }
 
   this.popUp = function(gotWrong)

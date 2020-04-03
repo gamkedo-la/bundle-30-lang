@@ -243,7 +243,7 @@ genAudio.positive = new sfxMulti(["audio/Positive_01.mp3", "audio/Positive_02.mp
 genAudio.playPositive = function() {
 	genAudio.positive.play();
 }
-genAudio.negative = new sfxMulti(["audio/Negative_01.mp3", "audio/Negative_02.mp3", "audio/Negative_03.mp3", "audio/UINegative_04.mp3"]);
+genAudio.negative = new sfxMulti(["audio/Negative_01.mp3", "audio/Negative_02.mp3", "audio/Negative_03.mp3", "audio/Negative_04.mp3"]);
 genAudio.playNegative = function() {
 	genAudio.negative.play();
 }
