@@ -5,8 +5,8 @@ function frogRiverGameClass()
   this.name = 'frogRiverGame';
   this.playerCharacter = undefined;
   this.textAnswerFontSize = '30';
-  this.textAnswerFontStyle = 'px Helvetica';
-
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+  
   this.titleScreenData = [{name: "Frog",fontSize: 27,spacing: 15,x: 530, y: 265},
                           {name: "River",fontSize: 27,spacing: 15,x: 525, y: 305}];
 

@@ -12,7 +12,9 @@ function laneGameClass() {
 	  x: 237, y: 185
 	}];
 	this.textAnswerFontSize = 30;
-	this.textAnswerFontStyle = 'px Helvetica';
+	this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+
+	this.LETTER_COLOR = 'white';
 
 	this.playerCharacter = undefined;
 	this.defineAndInitializePlayerCharacter = function()

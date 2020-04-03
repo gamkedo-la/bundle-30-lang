@@ -14,6 +14,10 @@ var runnerFloorLevel = 0;
 runnerGameClass.prototype = new GameClass();
 function runnerGameClass() {
 	this.name = 'runnerGame';
+
+	this.textAnswerFontSize = '30';
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+	
 	this.titleScreenData = [{
 	  name: "Runner",
 	  fontSize: 27,

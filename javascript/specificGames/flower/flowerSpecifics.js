@@ -18,7 +18,7 @@ function flowerGameClass(){
 	  x: 222, y: 385
 	}];
     this.textAnswerFontSize = 30;
-	this.textAnswerFontStyle = 'px Helvetica';
+    this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
     this.playerCharacter = undefined;
     this.defineAndInitializePlayerCharacter = function()

@@ -100,7 +100,7 @@ function DrawAnswersManager()
           {
             incorrectDateToDraw = dateAndTime.yesterdaysDate;
           }
-            
+
             customFontFillText( (incorrectDateToDraw.month + 1).toString(), 25, 15,
             promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + this.imageWidth/2 - 20,
             promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + this.imageHeight*0.1);

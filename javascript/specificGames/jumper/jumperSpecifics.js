@@ -12,8 +12,10 @@ function jumperGameClass()
     this.playerCharacter = new JumperClass();
     this.collidingObject = this.playerCharacter;
   }
+  
   this.textAnswerFontSize = '30';
-  this.textAnswerFontStyle = 'px Helvetica';
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+
   this.titleScreenData = [{
 	name: "Jumper",
 	fontSize: 27,

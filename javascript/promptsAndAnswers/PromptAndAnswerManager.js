@@ -324,16 +324,16 @@ function PromptsAndAnswersManager()
       if (randomNumber < 0.5)
       {
         this.correctTargetPromptAndAnswerPairing.xCoordinate = laneGame.carLeftLanePosition - 25;
-        this.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = -75;
         this.incorrectTargetPromptAndAnswerPairing.xCoordinate = laneGame.carRightLanePosition - 25;
-        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = -10;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = -75;
       }
       else
       {
         this.correctTargetPromptAndAnswerPairing.xCoordinate = laneGame.carRightLanePosition - 25;
-        this.correctTargetPromptAndAnswerPairing.yCoordinate = -10;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = -75;
         this.incorrectTargetPromptAndAnswerPairing.xCoordinate = laneGame.carLeftLanePosition - 25;
-        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = -10;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = -75;
       }
     }
     else if (gameClassManager.currentGame.name === 'jumperGame')
