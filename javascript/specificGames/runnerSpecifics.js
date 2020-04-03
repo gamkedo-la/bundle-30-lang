@@ -49,7 +49,7 @@ function runnerGameClass() {
  //      	}
 	// }
 
-	this.backgroundMusic = new MusicTrack('audio/backgroundTracks/runnerBackground.mp3', 13);
+	this.backgroundMusic = new MusicTrack('audio/backgroundTracks/runnerBackground.mp3', 12.8);
 
   this.superInitialize = this.initialize;
   this.initialize = function() {
@@ -58,10 +58,7 @@ function runnerGameClass() {
 	  x: (gameCanvas.width - RUNNERWIDTH)/2,
 	  y: runnerFloorLevel - RUNNERHEIGHT
 	};
-	if (gameIsOnAServerAndCanUseWebAudioAPI)
-	{
-	  currentBackgroundMusic = backgroundMusicBufferSource;
-	}
+
 	setInterval(cycleRunnerRunningImages, 200);
 	this.superInitialize();
   };
