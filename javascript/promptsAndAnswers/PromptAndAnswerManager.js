@@ -340,7 +340,7 @@ function PromptsAndAnswersManager()
     {
       let audioAnswerOffset = -20;
       let imageAnswerOffset = -45;
-      let stringAnswerOffset = -50;
+      let stringAnswerOffset = 50;
       let currentOffset = undefined;
 
       if (this.currentAnswerDataType === 'AUDIO')
@@ -356,17 +356,37 @@ function PromptsAndAnswersManager()
         currentOffset = stringAnswerOffset;
       }
 
+      console.log('currentOffset: ' + currentOffset);
       this.correctTargetPromptAndAnswerPairing.xCoordinate =
       getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100,
-      gameClassManager.currentGame.playerCharacter.x - 40,gameClassManager.currentGame.playerCharacter.x + 60);
-      let randomPlatformIndex = (Math.floor(Math.random() * 7) * 100) + currentOffset;
+      Math.floor(gameClassManager.currentGame.playerCharacter.x - 40),Math.floor(gameClassManager.currentGame.playerCharacter.x + 60));
+      let randomPlatformIndex = (getRandomIntInclusive(1,8)*100) + currentOffset;
       this.correctTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
 
       this.incorrectTargetPromptAndAnswerPairing.xCoordinate =
       getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100,
-      gameClassManager.currentGame.playerCharacter.x - 40,gameClassManager.currentGame.playerCharacter.x + 60);
-      randomPlatformIndex = (Math.floor(Math.random() * 7) * 100) + currentOffset;
+      Math.floor(gameClassManager.currentGame.playerCharacter.x - 40),Math.floor(gameClassManager.currentGame.playerCharacter.x + 60));
+      randomPlatformIndex = (getRandomIntInclusive(1,8)*100) + currentOffset;
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
+
+      while(
+        this.checkIfObjectsAreTooCloseToEachOther(
+          this.incorrectTargetPromptAndAnswerPairing.xCoordinate,this.incorrectTargetPromptAndAnswerPairing.yCoordinate,
+          this.correctTargetPromptAndAnswerPairing.xCoordinate,this.correctTargetPromptAndAnswerPairing.yCoordinate, 100)
+
+          ||
+
+        this.checkIfObjectsAreTooCloseToEachOther(
+          this.incorrectTargetPromptAndAnswerPairing.xCoordinate,this.incorrectTargetPromptAndAnswerPairing.yCoordinate,
+          gameClassManager.currentGame.playerCharacter.x,gameClassManager.currentGame.playerCharacter.y, 60)
+      )
+      {
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate =
+        getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100,
+        Math.floor(gameClassManager.currentGame.playerCharacter.x - 40),Math.floor(gameClassManager.currentGame.playerCharacter.x + 60));
+        randomPlatformIndex = (getRandomIntInclusive(1,8)*100) + currentOffset;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
+      }
     }
     else if (gameClassManager.currentGame.name === 'frogRiverGame')
     {
