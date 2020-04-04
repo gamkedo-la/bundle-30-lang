@@ -1,6 +1,6 @@
 function Paddle()
 {
-  this.width = 100;
+  this.width = 120;
   this.height = 25;
 
   this.x = gameCanvas.width/2 - this.width/2;

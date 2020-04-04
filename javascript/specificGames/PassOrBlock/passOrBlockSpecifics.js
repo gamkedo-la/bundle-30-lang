@@ -40,7 +40,7 @@ function PassOrBlockGameClass()
     this.imageAnswerHeight = gameCanvas.height/7;
 
     this.audioAnswerWidth = gameCanvas.width/6;
-    this.audioImageAnswerHeight = gameCanvas.height/7;
+    this.audioAnswerHeight = gameCanvas.height/7;
 
     this.background = new PassOrBlockBackground();
 	this.superInitialize();
