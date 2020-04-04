@@ -60,7 +60,7 @@ function CollisionsWithAnswersManager()
 
   this.insideBoxColliderForCorrectStringAnswer = function(collidingObject, correctAnswerWidth, textAnswerFontSize)
   {
-    if (gameClassManager.currentGame.name = 'laneGame')
+    if (gameClassManager.currentGame.name === 'laneGame')
     {
       return (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + correctAnswerWidth/2 > collidingObject.y)
     }
@@ -76,7 +76,7 @@ function CollisionsWithAnswersManager()
 
   this.insideBoxColliderForIncorrectStringAnswer = function(collidingObject, incorrectAnswerWidth, textAnswerFontSize)
   {
-    if (gameClassManager.currentGame.name = 'laneGame')
+    if (gameClassManager.currentGame.name === 'laneGame')
     {
       return (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + incorrectAnswerWidth/2 > collidingObject.y)
     }
@@ -179,6 +179,8 @@ function CollisionsWithAnswersManager()
           }
           console.log('collidingObject.y: ' + collidingObject.y);
           console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate: ' + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
+          console.log('promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate: ' + promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate);
+
           this.resetAnswers();
           console.log('******');
           genAudio.playPositive();

@@ -215,7 +215,7 @@ function DateAndTime()
         }
         else
         {
-          console.log('inside checkForNecessityOfUsingDates()');
+
           let dateToDraw = undefined;
           if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.name === 'mandarin today')
           {
@@ -227,7 +227,7 @@ function DateAndTime()
           {
             dateToDraw = this.yesterdaysDate;
           }
-          console.log('dateToDraw: ' + dateToDraw);
+          
           this.dateToDraw = dateToDraw;
           this.shouldDrawADate = true;;
         }

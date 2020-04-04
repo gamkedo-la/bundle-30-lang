@@ -338,9 +338,9 @@ function PromptsAndAnswersManager()
     }
     else if (gameClassManager.currentGame.name === 'jumperGame')
     {
-      let audioAnswerOffset = -20;
-      let imageAnswerOffset = -45;
-      let stringAnswerOffset = 50;
+      let audioAnswerOffset = -110;
+      let imageAnswerOffset = -120;
+      let stringAnswerOffset = -40;
       let currentOffset = undefined;
 
       if (this.currentAnswerDataType === 'AUDIO')
@@ -359,15 +359,20 @@ function PromptsAndAnswersManager()
       console.log('currentOffset: ' + currentOffset);
       this.correctTargetPromptAndAnswerPairing.xCoordinate =
       getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100,
-      Math.floor(gameClassManager.currentGame.playerCharacter.x - 40),Math.floor(gameClassManager.currentGame.playerCharacter.x + 60));
-      let randomPlatformIndex = (getRandomIntInclusive(1,8)*100) + currentOffset;
+      Math.floor(gameClassManager.currentGame.playerCharacter.x - 40),Math.floor(gameClassManager.currentGame.playerCharacter.x + 100));
+      let randomPlatformIndex = (getRandomIntInclusive(1,7)*100) + currentOffset;
       this.correctTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
+      console.log('this.correctTargetPromptAndAnswerPairing.xCoordinate: ' + this.correctTargetPromptAndAnswerPairing.xCoordinate);
+      console.log('this.correctTargetPromptAndAnswerPairing.yCoordinate: ' + this.correctTargetPromptAndAnswerPairing.yCoordinate);
 
       this.incorrectTargetPromptAndAnswerPairing.xCoordinate =
       getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100,
-      Math.floor(gameClassManager.currentGame.playerCharacter.x - 40),Math.floor(gameClassManager.currentGame.playerCharacter.x + 60));
-      randomPlatformIndex = (getRandomIntInclusive(1,8)*100) + currentOffset;
+      Math.floor(gameClassManager.currentGame.playerCharacter.x - 40),Math.floor(gameClassManager.currentGame.playerCharacter.x + 100));
+      randomPlatformIndex = (getRandomIntInclusive(1,7)*100) + currentOffset;
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
+
+      console.log('this.incorrectTargetPromptAndAnswerPairing.xCoordinate: ' + this.incorrectTargetPromptAndAnswerPairing.xCoordinate);
+      console.log('this.incorrectTargetPromptAndAnswerPairing.yCoordinate: ' + this.incorrectTargetPromptAndAnswerPairing.yCoordinate);
 
       while(
         this.checkIfObjectsAreTooCloseToEachOther(
@@ -378,15 +383,21 @@ function PromptsAndAnswersManager()
 
         this.checkIfObjectsAreTooCloseToEachOther(
           this.incorrectTargetPromptAndAnswerPairing.xCoordinate,this.incorrectTargetPromptAndAnswerPairing.yCoordinate,
-          gameClassManager.currentGame.playerCharacter.x,gameClassManager.currentGame.playerCharacter.y, 60)
+          gameClassManager.currentGame.playerCharacter.x,gameClassManager.currentGame.playerCharacter.y, 100)
       )
       {
         this.incorrectTargetPromptAndAnswerPairing.xCoordinate =
         getRandomIntWithExclusionaryRange(0,gameCanvas.width - 100,
-        Math.floor(gameClassManager.currentGame.playerCharacter.x - 40),Math.floor(gameClassManager.currentGame.playerCharacter.x + 60));
-        randomPlatformIndex = (getRandomIntInclusive(1,8)*100) + currentOffset;
+        Math.floor(gameClassManager.currentGame.playerCharacter.x - 40),Math.floor(gameClassManager.currentGame.playerCharacter.x + 100));
+        randomPlatformIndex = (getRandomIntInclusive(1,7)*100) + currentOffset;
         this.incorrectTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
       }
+      console.log('this.correctTargetPromptAndAnswerPairing.xCoordinate: ' + this.correctTargetPromptAndAnswerPairing.xCoordinate);
+      console.log('this.correctTargetPromptAndAnswerPairing.yCoordinate: ' + this.correctTargetPromptAndAnswerPairing.yCoordinate);
+
+      console.log('this.incorrectTargetPromptAndAnswerPairing.xCoordinate: ' + this.incorrectTargetPromptAndAnswerPairing.xCoordinate);
+      console.log('this.incorrectTargetPromptAndAnswerPairing.yCoordinate: ' + this.incorrectTargetPromptAndAnswerPairing.yCoordinate);
+
     }
     else if (gameClassManager.currentGame.name === 'frogRiverGame')
     {
