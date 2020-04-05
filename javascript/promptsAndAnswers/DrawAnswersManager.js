@@ -115,6 +115,9 @@ function DrawAnswersManager()
     {
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
+      this.audioImageWidth = gameClassManager.currentGame.audioImageAnswerWidth;
+      this.audioImageHeight = gameClassManager.currentGame.audioImageAnswerHeight;
+
       if (promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing)
       {
         gameCanvasContext.globalCompositeOperation = promptersManager.globalCompositeOperationForCanvasContext;

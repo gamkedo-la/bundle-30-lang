@@ -15,7 +15,7 @@ function Bullet(i)
 
   this.handleLetterCollisions = function(i)
   {
-    if (this.yPosition <= 30)
+    if (this.yPosition <= 150)
     {
       if (cVcShooterGame.playerShouldBeTargetingFirstLetter &&
           this.xPosition > cVcShooterGame.cVcManager.currentCVC.firstLetterCollisionRangeLeftPoint &&

@@ -82,6 +82,10 @@ let jumperBackground = document.createElement('img');
 let volcanoImage = document.createElement('img');
 let spaceBackgroundForVolcanoGame = document.createElement('img');
 
+//cVc shooter/shoot gallery game
+let shootGalleryImage = document.createElement('img');
+let shootGalleryTargetImage = document.createElement('img');
+
 //space shooter images
 let spaceShooterBackgroundImage = document.createElement('img');
 let spaceShooterBackgroundImage2 = document.createElement('img');
@@ -293,6 +297,9 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: volcanoImage, theFile: 'images/Backgrounds/Volcano.png'});
   arrayOfImages.push({imageObjectBinding: spaceBackgroundForVolcanoGame, theFile: 'images/Backgrounds/spaceBackgroundForVolcanoGame.png'});
 
+  //cVc shooter/shoot gallery game
+  arrayOfImages.push({imageObjectBinding: shootGalleryImage, theFile: 'images/Backgrounds/shootGallery.png'});
+  arrayOfImages.push({imageObjectBinding: shootGalleryTargetImage, theFile: 'images/Backgrounds/target.png'});
 
   //space shooter game
   arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/SpaceWithJupiter1.png'});
