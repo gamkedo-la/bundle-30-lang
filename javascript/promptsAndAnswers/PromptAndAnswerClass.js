@@ -4,10 +4,13 @@ let manPromptAndAnswer = {};
 let menPromptAndAnswer = {};
 let hePromptAndAnswer = {};
 let shePromptAndAnswer = {};
+let beePromptAndAnswer = {};
+let flowerPromptAndAnswer = {};
 
 let womanVersusWomenPairGrouping = {};
 let manVersusMenPairGrouping = {};
 let heVersusShePairGrouping = {};
+let flowerVersusBeePairGrouping = {};
 
 let mandarinBuyPromptAndAnswer = {};//'buy' in English
 let mandarinSellPromptAndAnswer = {};//'sell' in English
@@ -80,6 +83,9 @@ function initializePromptAndAnswerObjects()
   hePromptAndAnswer = new PromptAndAnswerClass('he', 'he', heImage, promptAudio.he);
   shePromptAndAnswer = new PromptAndAnswerClass('she', 'she', sheImage, promptAudio.she);
 
+  beePromptAndAnswer = new PromptAndAnswerClass('bee', 'bee', beeImage, promptAudio.englishBee);
+  flowerPromptAndAnswer = new PromptAndAnswerClass('flower', 'flower', flowerImage, promptAudio.englishFlower);
+
   //Mandarin section
   mandarinBuyPromptAndAnswer = new PromptAndAnswerClass('mandarin buy','买', mandarinBuyImage, promptAudio.mandarinBuy);
   mandarinSellPromptAndAnswer = new PromptAndAnswerClass('mandarin sell','卖', mandarinSellImage, promptAudio.mandarinSell);
@@ -133,6 +139,8 @@ function populatePromptAndAnswerArrays()
   manVersusMenPairGrouping = {name: 'man vs men', arrayOfObjects: []};
   heVersusShePairGrouping = {name: 'he vs she', arrayOfObjects: []};
 
+  flowerVersusBeePairGrouping = {name: 'flower vs bee', arrayOfObjects: []};
+
   mandarinBuyVersusMandarinSellPairGrouping = {name: 'mandarin buy vs sell', arrayOfObjects:[]};
   mandarinMomVersusHorsePairGrouping = {name: 'mandarin mom vs horse', arrayOfObjects:[]};
   mandarinThisVersusThatPairGrouping = {name: 'mandarin this vs that', arrayOfObjects:[]};
@@ -158,6 +166,10 @@ function populatePromptAndAnswerArrays()
   heVersusShePairGrouping.arrayOfObjects.push(hePromptAndAnswer);
   heVersusShePairGrouping.arrayOfObjects.push(shePromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings.push(heVersusShePairGrouping);
+
+  flowerVersusBeePairGrouping.arrayOfObjects.push(flowerPromptAndAnswer);
+  flowerVersusBeePairGrouping.arrayOfObjects.push(beePromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings.push(flowerVersusBeePairGrouping);
 
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings);
 
