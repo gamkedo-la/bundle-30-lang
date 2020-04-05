@@ -44,6 +44,9 @@ let pinkImage = document.createElement("img");
 
 let calendarImage = document.createElement("img");
 
+let beeImage = document.createElement("img");
+let flowerImage = document.createElement("img");
+
 //runner images
 let runnerSunAndSkyBackgroundImage = document.createElement("img");
 let runnerCloud1 = document.createElement("img");
@@ -256,6 +259,10 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: blueImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/blue.png'});
   arrayOfImages.push({imageObjectBinding: purpleImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/purple.png'});
   arrayOfImages.push({imageObjectBinding: pinkImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/pink.png'});
+
+  arrayOfImages.push({imageObjectBinding: beeImage, theFile: 'images/sprites/PromptsAndAnswers/bee.png'});
+  arrayOfImages.push({imageObjectBinding: flowerImage, theFile: 'images/sprites/PromptsAndAnswers/flower.png'});
+
 
   //runner game
   arrayOfImages.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png'});
