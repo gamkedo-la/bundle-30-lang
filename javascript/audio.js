@@ -296,6 +296,8 @@ promptAudio.mandarinBlue = new promptSound('audio/PromptsAndAnswers/Mandarin/man
 promptAudio.mandarinPurple = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinPurple.mp3');//紫色
 promptAudio.mandarinPink = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinPink.mp3');//粉
 
+promptAudio.englishBee = new promptSound('audio/PromptsAndAnswers/bee.mp3');
+promptAudio.englishFlower = new promptSound('audio/PromptsAndAnswers/flower.mp3');
 
 
 
