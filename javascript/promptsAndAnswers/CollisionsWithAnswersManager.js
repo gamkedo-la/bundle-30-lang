@@ -58,7 +58,7 @@ function CollisionsWithAnswersManager()
     }
   }
 
-  this.outsideBoxColliderForCorrectStringAnswer = function(collidingObject, correctAnswerWidth, textAnswerFontSize)
+  this.insideBoxColliderForCorrectStringAnswer = function(collidingObject, correctAnswerWidth, textAnswerFontSize)
   {
     if (gameClassManager.currentGame.name === 'laneGame')
     {
@@ -66,97 +66,127 @@ function CollisionsWithAnswersManager()
     }
     else
     {
-      // return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 - collidingObject.width &&
-      //     collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + correctAnswerWidth + 5 + collidingObject.width &&
-      //     collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - collidingObject.height &&
-      //     collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 10 + collidingObject.height)
+      return (collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 + correctAnswerWidth &&
+          collidingObject.x + collidingObject.width > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 5  &&
+          collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 5 + correctAnswerWidth &&
+          collidingObject.y + collidingObject.height < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + correctAnswerWidth)
 
-   //    (rect1.x < rect2.x + rect2.width &&
-   // rect1.x + rect1.width > rect2.x &&
-   // rect1.y < rect2.y + rect2.height &&
-   // rect1.y + rect1.height > rect2.y) {
-
-      return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.width &&
-              collidingObject.x - collidingObject.width < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-              collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.height &&
-              collidingObject.y + collidingObject.height < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate)
+      // return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.width &&
+      //         collidingObject.x - collidingObject.width < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
+      //         collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.height &&
+      //         collidingObject.y + collidingObject.height < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate)
     }
 
   }
 
-  this.outsideBoxColliderForIncorrectStringAnswer = function(collidingObject, incorrectAnswerWidth, textAnswerFontSize)
+  this.insideBoxColliderForIncorrectStringAnswer = function(collidingObject, incorrectAnswerWidth, textAnswerFontSize)
   {
     if (gameClassManager.currentGame.name === 'laneGame')
     {
       return (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + incorrectAnswerWidth/2 > collidingObject.y)
     }
     else
-    {
-    // return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 - collidingObject.width &&
-    //     collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + incorrectAnswerWidth + 5 + collidingObject.width &&
-    //     collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - textAnswerFontSize - collidingObject.height &&
-    //     collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 10 + collidingObject.height)
-    return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.width &&
-            collidingObject.x - collidingObject.width < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-            collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.height &&
-            collidingObject.y + collidingObject.height < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate)
+    {          
+      return (collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 + incorrectAnswerWidth &&
+          collidingObject.x + collidingObject.width > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 5  &&
+          collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 5 + incorrectAnswerWidth &&
+          collidingObject.y + collidingObject.height < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + incorrectAnswerWidth)
+    // return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.width &&
+    //         collidingObject.x - collidingObject.width < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
+    //         collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.height &&
+    //         collidingObject.y + collidingObject.height < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate)
     }
   }
 
-  this.outsideBoxColliderForCorrectImageAnswers = function(collidingObject)
+  this.insideBoxColliderForCorrectImageAnswers = function(collidingObject)
   {
     var imageAnswerSize = this.getImageAnswerSize();
+    let correctAnswerRightSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + imageAnswerSize.width;
+    let correctAnswerLeftSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate;
+    let correctAnswerBottomSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + imageAnswerSize.height;
+    let correctAnswerTopSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate;
+    let collidingObjectLeftSide = collidingObject.x;
+    let collidingObjectRightSide = collidingObject.x + collidingObject.width;
+    let collidingObjectTopSide = collidingObject.y;
+    let collidingObjectBottomSide = collidingObject.y + collidingObject.height;
 
-    // return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-    //     collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + imageAnswerSize.width &&
-    //     collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
-    //     collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + imageAnswerSize.height)
-    return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + imageAnswerSize.width &&
-            collidingObject.x - collidingObject.width < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-            collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + imageAnswerSize.height &&
-            collidingObject.y + collidingObject.height < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate)
+    return (collidingObjectLeftSide < correctAnswerRightSide &&
+            collidingObjectRightSide > correctAnswerLeftSide &&
+            collidingObjectTopSide < correctAnswerBottomSide &&
+            collidingObjectBottomSide > correctAnswerTopSide)
+    // return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + imageAnswerSize.width &&
+    //         collidingObject.x - collidingObject.width < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
+    //         collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + imageAnswerSize.height &&
+    //         collidingObject.y + collidingObject.height < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate)
   }
 
-  this.outsideBoxColliderForIncorrectImageAnswers = function(collidingObject)
+  this.insideBoxColliderForIncorrectImageAnswers = function(collidingObject)
   {
     var imageAnswerSize = this.getImageAnswerSize()
 
-    // return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-    //     collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + imageAnswerSize.width &&
-    //     collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
-    //     collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + imageAnswerSize.height)
-    return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + imageAnswerSize.width &&
-            collidingObject.x - collidingObject.width < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-            collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + imageAnswerSize.height &&
-            collidingObject.y + collidingObject.height < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate)
+    let incorrectAnswerRightSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + imageAnswerSize.width;
+    let incorrectAnswerLeftSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate;
+    let incorrectAnswerBottomSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + imageAnswerSize.height;
+    let incorrectAnswerTopSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate;
+    let collidingObjectLeftSide = collidingObject.x;
+    let collidingObjectRightSide = collidingObject.x + collidingObject.width;
+    let collidingObjectTopSide = collidingObject.y;
+    let collidingObjectBottomSide = collidingObject.y + collidingObject.height;
+
+    return (collidingObjectLeftSide < incorrectAnswerRightSide &&
+            collidingObjectRightSide > incorrectAnswerLeftSide &&
+            collidingObjectTopSide < incorrectAnswerBottomSide &&
+            collidingObjectBottomSide > incorrectAnswerTopSide)
+    // return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + imageAnswerSize.width &&
+    //         collidingObject.x - collidingObject.width < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
+    //         collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + imageAnswerSize.height &&
+    //         collidingObject.y + collidingObject.height < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate)
   }
 
-  this.outsideBoxColliderForCorrectAudioAnswer = function(collidingObject)
+  this.insideBoxColliderForCorrectAudioAnswer = function(collidingObject)
   {
     var audioImageSize = this.getAudioImageAnswerSize();
 
-    // return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-    //     collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + audioImageSize.width &&
-    //     collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate &&
-    //     collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + audioImageSize.height)
-    return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + audioImageSize.width &&
-            collidingObject.x - collidingObject.width < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
-            collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + audioImageSize.height &&
-            collidingObject.y + collidingObject.height < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate)
+    let correctAnswerRightSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + audioImageSize.width;
+    let correctAnswerLeftSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate;
+    let correctAnswerBottomSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + audioImageSize.height;
+    let correctAnswerTopSide = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate;
+    let collidingObjectLeftSide = collidingObject.x;
+    let collidingObjectRightSide = collidingObject.x + collidingObject.width;
+    let collidingObjectTopSide = collidingObject.y;
+    let collidingObjectBottomSide = collidingObject.y + collidingObject.height;
+
+    return (collidingObjectLeftSide < correctAnswerRightSide &&
+            collidingObjectRightSide > correctAnswerLeftSide &&
+            collidingObjectTopSide < correctAnswerBottomSide &&
+            collidingObjectBottomSide > correctAnswerTopSide)
+    // return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + audioImageSize.width &&
+    //         collidingObject.x - collidingObject.width < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
+    //         collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + audioImageSize.height &&
+    //         collidingObject.y + collidingObject.height < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate)
   }
 
-  this.outsideBoxColliderForIncorrectAudioAnswer = function(collidingObject)
+  this.insideBoxColliderForIncorrectAudioAnswer = function(collidingObject)
   {
     var audioImageSize = this.getAudioImageAnswerSize();
 
-    // return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-    //     collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + audioImageSize.width &&
-    //     collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate &&
-    //     collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + audioImageSize.height)
-    return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + audioImageSize.width &&
-            collidingObject.x - collidingObject.width < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
-            collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + audioImageSize.height &&
-            collidingObject.y + collidingObject.height < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate)
+    let incorrectAnswerRightSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + audioImageSize.width;
+    let incorrectAnswerLeftSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate;
+    let incorrectAnswerBottomSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + audioImageSize.height;
+    let incorrectAnswerTopSide = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate;
+    let collidingObjectLeftSide = collidingObject.x;
+    let collidingObjectRightSide = collidingObject.x + collidingObject.width;
+    let collidingObjectTopSide = collidingObject.y;
+    let collidingObjectBottomSide = collidingObject.y + collidingObject.height;
+
+    return (collidingObjectLeftSide < incorrectAnswerRightSide &&
+            collidingObjectRightSide > incorrectAnswerLeftSide &&
+            collidingObjectTopSide < incorrectAnswerBottomSide &&
+            collidingObjectBottomSide > incorrectAnswerTopSide)
+    // return (collidingObject.x > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + audioImageSize.width &&
+    //         collidingObject.x - collidingObject.width < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate &&
+    //         collidingObject.y > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + audioImageSize.height &&
+    //         collidingObject.y + collidingObject.height < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate)
   }
 
   this.resetAnswers = function()
@@ -198,12 +228,8 @@ function CollisionsWithAnswersManager()
       );
       textAnswerFontSize = this.getTextAnswerFontSize();
 
-      if (this.outsideBoxColliderForCorrectStringAnswer(collidingObject, correctAnswerWidth, textAnswerFontSize))
+      if (this.insideBoxColliderForCorrectStringAnswer(collidingObject, correctAnswerWidth, textAnswerFontSize))
         {
-          return
-        }
-      else
-      {
           if (gameClassManager.currentGame === passOrBlockGame)
           {
             console.log('inside collision for an answer');
@@ -224,14 +250,9 @@ function CollisionsWithAnswersManager()
             cycleCount++;
           }
         }
-      }
 
-      else if (this.outsideBoxColliderForIncorrectStringAnswer(collidingObject, incorrectAnswerWidth, textAnswerFontSize))
+      else if (this.insideBoxColliderForIncorrectStringAnswer(collidingObject, incorrectAnswerWidth, textAnswerFontSize))
         {
-          return
-        }
-          else
-          {
             if (gameClassManager.currentGame === passOrBlockGame)
             {
               console.log('inside collision for an answer');
@@ -252,9 +273,9 @@ function CollisionsWithAnswersManager()
           }
           calculateAccuracy();
 
-          }
+      }
 
-    }
+
     else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
     {
       if (this.insideBoxColliderForCorrectImageAnswers(collidingObject))

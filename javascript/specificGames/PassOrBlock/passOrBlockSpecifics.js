@@ -25,7 +25,7 @@ function PassOrBlockGameClass()
   this.imageAnswerWidth = undefined;
   this.imageAnswerHeight = undefined;
 
-  this.audioAnswerWidth = undefined;
+  this.audioImageAnswerWidth = undefined;
   this.audioImageAnswerHeight = undefined;
 
   this.LETTER_COLOR = 'cyan';
@@ -39,8 +39,8 @@ function PassOrBlockGameClass()
     this.imageAnswerWidth = gameCanvas.width/6;
     this.imageAnswerHeight = gameCanvas.height/7;
 
-    this.audioAnswerWidth = gameCanvas.width/6;
-    this.audioAnswerHeight = gameCanvas.height/7;
+    this.audioImageAnswerWidth = gameCanvas.width/6;
+    this.audioImageAnswerHeight = gameCanvas.height/7;
 
     this.background = new PassOrBlockBackground();
 	this.superInitialize();
