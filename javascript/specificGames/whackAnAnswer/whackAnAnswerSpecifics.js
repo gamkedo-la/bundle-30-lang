@@ -17,9 +17,18 @@ function whackAnAnswerGameClass()
        this.background = new WhackBackground();
        this.playerCharacter.initialize();
        this.collidingObject = this.playerCharacter;
-       initializePromptAndAnswerObjects();
-       promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-       promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
-   	  this.superInitialize();
+       //initializePromptAndAnswerObjects();
+       //promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+       //promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+   	   //this.superInitialize();
      };
+
+     this.superInitialize = this.initialize;
+
+     this.draw = function()
+     {
+       this.background.draw();
+     }
   }
+
+let whackAnAnswerGame = new whackAnAnswerGameClass();

@@ -2,7 +2,7 @@ var gameList = [snakeGame,birdGame,laneGame,jumperGame,null,passOrBlockGame,
                 cVcShooterGame,spaceShooterGame,runnerGame,pinataGame,airGrabGame,frogRiverGame,
                 mazeGame,null,flowerGame,penaltyGame,balloonPopGame,null,
                 null,null,null,null,null,fishingGame,
-                null,bubbleWrapGame,null,null,null,null];
+                null,bubbleWrapGame,whackAnAnswerGame,null,null,null];
 
 var currentlyLoadedGame = -1;
 var SINGLE_PLAYER_ENDLESS = 0;

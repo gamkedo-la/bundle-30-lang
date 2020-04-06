@@ -121,7 +121,8 @@ let lilyImage3 = document.createElement('img');
 let lilyImage4 = document.createElement('img');
 
 //whackAnAnswer
-let whackBackgroundImage = document.createElement('img');
+let whackTableSurface = document.createElement('img');
+let whackTableBeneathSurface = document.createElement('img');
 let hammerImage = document.createElement('img');
 
 let fishingGameWaterBackgroundImage = document.createElement('img');
@@ -356,8 +357,9 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: fishingGameWaterBackgroundImage, theFile: 'images/Backgrounds/underwater2.png'});
 
   //whackAnAnswer
-  arrayOfImages.push({imageObjectBinding: whackBackgroundImage, theFile: 'images/Backgrounds/Wack.png'});
-  arrayOfImages.push({imageObjectBinding: hammerImage, theFile: 'images/Backgrounds/whackHammer.png'});
+  arrayOfImages.push({imageObjectBinding: whackTableSurface, theFile: 'images/Backgrounds/WackTableSurface.png'});
+  arrayOfImages.push({imageObjectBinding: whackTableBeneathSurface, theFile: 'images/Backgrounds/WackTableBeneathSurface.png'});
+  arrayOfImages.push({imageObjectBinding: hammerImage, theFile: 'images/sprites/whackAnAnswer/whackHammer.png'});
 
   //symbols
   arrayOfImages.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png' });
