@@ -13,6 +13,7 @@ function whackAnAnswerGameClass()
 
      this.initialize = function()
      {
+       //document.body.style.cursor = 'none';
    	   this.playerCharacter = new Hammer();
        this.background = new WhackBackground();
        this.playerCharacter.initialize();
@@ -28,6 +29,17 @@ function whackAnAnswerGameClass()
      this.draw = function()
      {
        this.background.draw();
+       this.playerCharacter.draw();
+     }
+
+     this.update = function()
+     {
+       this.playerCharacter.update();
+     }
+
+     this.handleClick = function()
+     {
+       this.playerCharacter.handleMouseClick();
      }
   }
 

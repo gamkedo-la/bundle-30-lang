@@ -2,7 +2,7 @@ function InputManager()
 {
   this.gameCanvasClick = function(builtInDocumentEventObject)
   {
-    
+
     if (helperPrompt.isOn)
     {
       helperPrompt.isOn = false;
@@ -39,6 +39,10 @@ function InputManager()
       break;
 
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
+      if (gameClassManager.currentGame.handleClick !== undefined)
+      {
+        gameClassManager.currentGame.handleClick();
+      }
       backButton.handleClick();//backButton.js, player goes back to menu/title screen
       break;
     }
