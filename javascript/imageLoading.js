@@ -120,6 +120,10 @@ let lilyImage2 = document.createElement('img');
 let lilyImage3 = document.createElement('img');
 let lilyImage4 = document.createElement('img');
 
+//whackAnAnswer
+let whackBackgroundImage = document.createElement('img');
+let hammerImage = document.createElement('img');
+
 let fishingGameWaterBackgroundImage = document.createElement('img');
 
 //special characters for custom font
@@ -351,6 +355,9 @@ function loadImages()
   //fishing game
   arrayOfImages.push({imageObjectBinding: fishingGameWaterBackgroundImage, theFile: 'images/Backgrounds/underwater2.png'});
 
+  //whackAnAnswer
+  arrayOfImages.push({imageObjectBinding: whackBackgroundImage, theFile: 'images/Backgrounds/Wack.png'});
+  arrayOfImages.push({imageObjectBinding: hammerImage, theFile: 'images/Backgrounds/whackHammer.png'});
 
   //symbols
   arrayOfImages.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png' });
