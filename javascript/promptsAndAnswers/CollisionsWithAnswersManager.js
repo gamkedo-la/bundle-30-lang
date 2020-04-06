@@ -68,9 +68,18 @@ function CollisionsWithAnswersManager()
     {
       return (collidingObject.x < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5 + correctAnswerWidth &&
           collidingObject.x + collidingObject.width > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + 5  &&
-          collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 5 + correctAnswerWidth &&
-          collidingObject.y + collidingObject.height < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + correctAnswerWidth)
+          collidingObject.y < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 10 &&
+          collidingObject.y + collidingObject.height > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 10)
 
+          // (rect1.x < rect2.x + rect2.width &&
+          //    rect1.x + rect1.width > rect2.x &&
+          //    rect1.y < rect2.y + rect2.height &&
+          //    rect1.y + rect1.height > rect2.y)
+          //
+          // return (collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 + incorrectAnswerWidth &&
+          //     collidingObject.x + collidingObject.width > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 5  &&
+          //     collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 5 + incorrectAnswerWidth &&
+          //     collidingObject.y + collidingObject.height < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + incorrectAnswerWidth)
       // return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.width &&
       //         collidingObject.x - collidingObject.width < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
       //         collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.height &&
@@ -86,11 +95,11 @@ function CollisionsWithAnswersManager()
       return (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + incorrectAnswerWidth/2 > collidingObject.y)
     }
     else
-    {          
+    {
       return (collidingObject.x < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5 + incorrectAnswerWidth &&
           collidingObject.x + collidingObject.width > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate + 5  &&
-          collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 5 + incorrectAnswerWidth &&
-          collidingObject.y + collidingObject.height < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + incorrectAnswerWidth)
+          collidingObject.y < promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 10 &&
+          collidingObject.y + collidingObject.height > promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 10 )
     // return (collidingObject.x > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.width &&
     //         collidingObject.x - collidingObject.width < promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate &&
     //         collidingObject.y > promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.height &&
