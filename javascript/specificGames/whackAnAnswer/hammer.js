@@ -49,6 +49,6 @@ function Hammer()
   this.unClickMouse = function()
   {
     console.log('should be unclicking mouse');
-    this.mouseClicked = false;
+    gameClassManager.currentGame.playerCharacter.mouseClicked = false;
   }
 }
