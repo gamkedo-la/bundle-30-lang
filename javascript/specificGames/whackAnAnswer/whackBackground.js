@@ -5,6 +5,7 @@ function WhackBackground()
     gameCanvasContext.fillStyle = 'orange';
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
     gameCanvasContext.drawImage(whackTableBeneathSurface, 0,0, gameCanvas.width,gameCanvas.height);
+    drawAnswersManager.draw();
     gameCanvasContext.drawImage(whackTableSurface, 0,0, gameCanvas.width,gameCanvas.height);
     this.drawGrid();
   }
@@ -59,7 +60,7 @@ function WhackTile(rowIndex,columnIndex)
   {
     if (this.answer !== undefined)
     {
-      
+
     }
   }
 }

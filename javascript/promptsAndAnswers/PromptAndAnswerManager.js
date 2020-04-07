@@ -475,10 +475,73 @@ function PromptsAndAnswersManager()
         randomGridIndex2 = getRandomIntInclusive(0,8);
       }
 
-      // this.correctTargetPromptAndAnswerPairing.xCoordinate
-      // gameClassManager.currentGame.background.grid[randomGridIndex1].answer = this.correctTargetPromptAndAnswerPairing;
-      // gameClassManager.currentGame.background.grid[randomGridIndex1].answer = this.incorrectTargetPromptAndAnswerPairing;
+      let randomOfFourDirections1 = undefined;
+      let correctAnswerXOffSet = undefined;
+      let correctAnswerYOffSet = undefined;
 
+      let randomDirectionNumber = Math.random();
+      if (randomDirectionNumber >= 0.75)
+      {
+        randomOfFourDirections1 = 'left';
+        correctAnswerXOffSet = -75;
+        correctAnswerYOffSet = 0;
+      }
+      else if (randomDirectionNumber >= 0.5)
+      {
+        randomOfFourDirections1 = 'down';
+        correctAnswerYOffSet = 75;
+        correctAnswerXOffSet = 0;
+      }
+      else if (randomDirectionNumber >= 0.25)
+      {
+        randomOfFourDirections1 = 'right';
+        correctAnswerXOffSet = 75;
+        correctAnswerYOffSet = 0;
+      }
+      else if (randomDirectionNumber < 0.25)
+      {
+        randomOfFourDirections1 = 'up';
+        correctAnswerYOffSet = -75;
+        correctAnswerXOffSet = 0;
+      }
+
+      let randomOfFourDirections2 = undefined;
+      let incorrectAnswerXOffSet = undefined;
+      let incorrectAnswerYOffSet = undefined;
+      randomDirectionNumber = Math.random();
+      if (randomDirectionNumber >= 0.75)
+      {
+        randomOfFourDirections2 = 'left';
+        incorrectAnswerXOffSet = -75;
+        incorrectAnswerYOffSet = 0;
+      }
+      else if (randomDirectionNumber >= 0.5)
+      {
+        randomOfFourDirections2 = 'down';
+        incorrectAnswerYOffSet = 75;
+        incorrectAnswerXOffSet = 0;
+      }
+      else if (randomDirectionNumber >= 0.25)
+      {
+        randomOfFourDirections2 = 'right';
+        incorrectAnswerXOffSet = 75;
+        incorrectAnswerYOffSet = 0;
+      }
+      else if (randomDirectionNumber < 0.25)
+      {
+        randomOfFourDirections2 = 'up';
+        incorrectAnswerYOffSet = -75;
+        incorrectAnswerXOffSet = 0;
+      }
+
+      gameClassManager.currentGame.oscillationVelocity1 = getRandomArbitrary(0.1,0.3);
+      gameClassManager.currentGame.oscillationVelocity2 = getRandomArbitrary(0.1,0.3);
+
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = gameClassManager.currentGame.background.grid[randomGridIndex1].x + correctAnswerXOffSet;
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = gameClassManager.currentGame.background.grid[randomGridIndex1].y + correctAnswerYOffSet;
+
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = gameClassManager.currentGame.background.grid[randomGridIndex2].x + incorrectAnswerXOffSet;
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = gameClassManager.currentGame.background.grid[randomGridIndex2].y + incorrectAnswerYOffSet;
     }
   }
 

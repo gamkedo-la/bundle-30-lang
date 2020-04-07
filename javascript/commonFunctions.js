@@ -14,3 +14,7 @@ function getRandomElementFromArray(myArray){
   var randomIdx = getRandomIntInclusive(0, myArray.length - 1);
   return myArray[randomIdx];
 }
+
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
