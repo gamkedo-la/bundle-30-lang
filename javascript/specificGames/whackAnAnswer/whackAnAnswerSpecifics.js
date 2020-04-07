@@ -16,6 +16,7 @@ function whackAnAnswerGameClass()
        //document.body.style.cursor = 'none';
    	   this.playerCharacter = new Hammer();
        this.background = new WhackBackground();
+       this.background.createTiles();
        this.playerCharacter.initialize();
        this.collidingObject = this.playerCharacter;
        //initializePromptAndAnswerObjects();
