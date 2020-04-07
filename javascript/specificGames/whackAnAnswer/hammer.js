@@ -12,25 +12,27 @@ function Hammer()
 
   this.initialize = function()
   {
-    this.width = gameCanvas.width/5;
-    this.height = gameCanvas.height/5;
+    this.width = gameCanvas.width*0.4;
+    this.height = gameCanvas.height*0.4;
   }
 
   this.draw = function()
   {
+    document.body.style.cursor = 'none';
     if (this.mouseClicked === true)
     {
       gameCanvasContext.save();
-      gameCanvasContext.translate(this.x + 35,this.y + 25);
-      gameCanvasContext.rotate(-45*Math.PI/180);
-      gameCanvasContext.translate(-(this.x + 35),-(this.y + 25));
+      gameCanvasContext.translate(this.x + this.width,this.y);
+      gameCanvasContext.rotate(-25*Math.PI/180);
+      gameCanvasContext.translate(-(this.x + this.width),-(this.y));
 
-      gameCanvasContext.drawImage(this.image, this.x - 35,this.y - 25, this.width,this.height);
+      gameCanvasContext.drawImage(this.image, this.x - 20,this.y - 215, this.width,this.height);
       gameCanvasContext.restore();
     }
     else if (this.mouseClicked === false)
     {
-      gameCanvasContext.drawImage(this.image, this.x - 35,this.y - 25, this.width,this.height);
+      gameCanvasContext.drawImage(this.image, this.x - 20,this.y - 215,
+                                              this.width,this.height);
     }
   }
 

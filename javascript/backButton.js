@@ -28,7 +28,10 @@ function BackButton()
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < gameCanvas.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < gameCanvas.height)
         {
-
+          if (gameClassManager.currentGame.name === 'whack an answer game')
+          {
+            document.body.style.cursor = 'default';
+          }
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
           transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
           genAudio.playClick();
