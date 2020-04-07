@@ -19,9 +19,9 @@ function whackAnAnswerGameClass()
        this.background.createTiles();
        this.playerCharacter.initialize();
        this.collidingObject = this.playerCharacter;
-       //initializePromptAndAnswerObjects();
-       //promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-       //promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+       initializePromptAndAnswerObjects();
+       promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+       promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
    	   //this.superInitialize();
      };
 

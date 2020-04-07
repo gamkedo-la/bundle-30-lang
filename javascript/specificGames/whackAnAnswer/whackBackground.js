@@ -37,15 +37,29 @@ function WhackTile(rowIndex,columnIndex)
   this.rowIndex = rowIndex;
   this.columnIndex = columnIndex;
 
-  this.gridIndex = this.rowIndex*this.columnIndex + this.columnIndex + 1;
+  this.answer = undefined;
+
+  this.gridIndex = this.rowIndex*3 + this.columnIndex;
 
   this.width = 150;
   this.height = 150;
 
+  this.x = this.columnIndex*this.height + 95;
+  this.y = this.rowIndex*this.height + 120;
+
   this.draw = function()
   {
     gameCanvasContext.strokeStyle = 'white';
-    gameCanvasContext.strokeRect(this.columnIndex*this.height + 95,this.rowIndex*this.height + 120,
-                               this.width,this.height);
+    gameCanvasContext.strokeRect(this.x,this.y, this.width,this.height);
+    gameCanvasContext.fillStyle = 'white';
+    gameCanvasContext.fillText(this.gridIndex.toString(), this.x + 30,this.y + 30);
+  }
+
+  this.drawAnswer = function()
+  {
+    if (this.answer !== undefined)
+    {
+      
+    }
   }
 }

@@ -466,6 +466,20 @@ function PromptsAndAnswersManager()
       this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,gameCanvas.width - 1);
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomIntInclusive(0,gameCanvas.height - 1);
     }
+    else if (gameClassManager.currentGame.name === 'whack an answer game')
+    {
+      let randomGridIndex1 = getRandomIntInclusive(0,8);
+      let randomGridIndex2 = getRandomIntInclusive(0,8);
+      while (randomGridIndex1 === randomGridIndex2)
+      {
+        randomGridIndex2 = getRandomIntInclusive(0,8);
+      }
+
+      // this.correctTargetPromptAndAnswerPairing.xCoordinate
+      // gameClassManager.currentGame.background.grid[randomGridIndex1].answer = this.correctTargetPromptAndAnswerPairing;
+      // gameClassManager.currentGame.background.grid[randomGridIndex1].answer = this.incorrectTargetPromptAndAnswerPairing;
+
+    }
   }
 
   this.setOrResetPromptsAndAnswers = function()
