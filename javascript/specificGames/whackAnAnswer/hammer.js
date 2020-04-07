@@ -18,7 +18,7 @@ function Hammer()
 
   this.draw = function()
   {
-    document.body.style.cursor = 'none';
+    //document.body.style.cursor = 'none';
     if (this.mouseClicked === true)
     {
       gameCanvasContext.save();
