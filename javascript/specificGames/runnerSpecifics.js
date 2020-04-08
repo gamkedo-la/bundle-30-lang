@@ -58,15 +58,26 @@ function runnerGameClass() {
 	runnerFloorLevel = gameCanvas.height*0.75;
 	this.playerCharacter = {
 	  x: (gameCanvas.width - RUNNERWIDTH)/2,
-	  y: runnerFloorLevel - RUNNERHEIGHT
+	  y: runnerFloorLevel - RUNNERHEIGHT,
+	  width: RUNNERWIDTH,
+	  height: RUNNERHEIGHT
 	};
-
+	this.collidingObject = this.playerCharacter;
 	setInterval(cycleRunnerRunningImages, 200);
+	initializePromptAndAnswerObjects();
+    promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
 	this.superInitialize();
   };
 
   this.update = function() {
-	this.movePlayerCharacter();
+	if (!promptersManager.shouldBeDrawingAPrompt &&
+        fullGameStateMachine.currentState !== fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame)
+    {
+	  this.movePlayerCharacter();
+	  moveAnswers();
+	  collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
+	}
 	//cloud 1
 	parallaxPos[0] -= RUNNERSPEED/100;
 	if (parallaxPos[0] + gameCanvasContext.measureText('AMAZING').width < 0) {
@@ -119,6 +130,8 @@ function runnerGameClass() {
 	  // gameCanvasContext.fillRect(x, y, width, height);
 	  gameCanvasContext.drawImage(currentRunnerRunningImage, x,y, width,height);
 	}
+	drawAnswersManager.draw();
+	promptersManager.drawPromptsWhenAppropriate();
   };
 
   function runnerJump() {
@@ -153,6 +166,11 @@ function runnerGameClass() {
 	}
   };
 
+  function moveAnswers() {
+	promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate -= RUNNERSPEED/20;
+    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate -= RUNNERSPEED/20;
+  }
+
   function drawParallax() {
 	//clouds
 	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[0],gameCanvas.height*0.20, 200,150);
@@ -176,6 +194,20 @@ function runnerGameClass() {
 	gameCanvasContext.drawImage(runnerGrassImage, 0,gameCanvas.height*0.7, gameCanvas.width,gameCanvas.height*0.3);
 
 	drawParallax();
+  };
+
+  this.getPromptAndAnswerPairingsCoordinates = function() {
+	const coinFlip = Math.random() < 0.5;
+	return {
+	  correct: {
+		x: gameCanvas.width - 80,
+		y: coinFlip ? RUNNERMAXJUMPHEIGHT : runnerFloorLevel - 70
+	  },
+	  incorrect: {
+		x: gameCanvas.width - 80,
+		y: coinFlip ? runnerFloorLevel - 70 : RUNNERMAXJUMPHEIGHT
+	  }
+	};
   };
 
   this.handleDownArrowDown = runnerSlide;
