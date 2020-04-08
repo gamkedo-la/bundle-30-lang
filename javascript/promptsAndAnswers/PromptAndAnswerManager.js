@@ -525,56 +525,56 @@ function PromptsAndAnswersManager()
       if (this.currentAnswerDataType === "AUDIO" &&
           this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
       {
-        correctAnswerXOffSet = -65;
-        correctAnswerYOffSet = 0;
+        correctAnswerXOffSet = -55;
+        correctAnswerYOffSet = 20;
       }
       else if (this.currentAnswerDataType === "AUDIO" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
+      {
+        correctAnswerXOffSet = 35;
+        correctAnswerYOffSet = -75;
+      }
+      else if (this.currentAnswerDataType === "AUDIO" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
+      {
+        correctAnswerXOffSet = 140;
+        correctAnswerYOffSet = 30;
+      }
+      else if (this.currentAnswerDataType === "AUDIO" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
+      {
+        correctAnswerXOffSet = 35;
+        correctAnswerYOffSet = 125;
+      }
+      else if (this.currentAnswerDataType === "IMG" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
+      {
+        correctAnswerXOffSet = -45;
+        correctAnswerYOffSet = 30;
+      }
+      else if (this.currentAnswerDataType === "IMG" &&
                this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
       {
         correctAnswerXOffSet = 25;
         correctAnswerYOffSet = -75;
       }
-      else if (this.currentAnswerDataType === "AUDIO" &&
-               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
-      {
-        correctAnswerXOffSet = 130;
-        correctAnswerYOffSet = 20;
-      }
-      else if (this.currentAnswerDataType === "AUDIO" &&
-               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
-      {
-        correctAnswerXOffSet = 0;
-        correctAnswerYOffSet = 75;
-      }
-      else if (this.currentAnswerDataType === "IMG" &&
-               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
-      {
-        correctAnswerXOffSet = -45;
-        correctAnswerYOffSet = 10;
-      }
-      else if (this.currentAnswerDataType === "IMG" &&
-               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
-      {
-        correctAnswerXOffSet = 0;
-        correctAnswerYOffSet = -75;
-      }
       else if (this.currentAnswerDataType === "IMG" &&
                this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
       {
-        correctAnswerXOffSet = 75;
-        correctAnswerYOffSet = 0;
+        correctAnswerXOffSet = 145;
+        correctAnswerYOffSet = 25;
       }
       else if (this.currentAnswerDataType === "IMG" &&
                this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
       {
         correctAnswerXOffSet = 30;
-        correctAnswerYOffSet = 100;
+        correctAnswerYOffSet = 125;
       }
       else if (this.currentAnswerDataType === "string" &&
                this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
       {
-        correctAnswerXOffSet = -45;
-        correctAnswerYOffSet = 70;
+        correctAnswerXOffSet = -35;
+        correctAnswerYOffSet = 85;
       }
       else if (this.currentAnswerDataType === "string" &&
                this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
@@ -591,64 +591,64 @@ function PromptsAndAnswersManager()
       else if (this.currentAnswerDataType === "string" &&
                this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
       {
-        correctAnswerXOffSet = 65;
-        correctAnswerYOffSet = 150;
+        correctAnswerXOffSet = 60;
+        correctAnswerYOffSet = 175;
       }
 
 
       if (this.currentAnswerDataType === "AUDIO" &&
           this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
       {
-        incorrectAnswerXOffSet = -65;
-        incorrectAnswerYOffSet = 0;
+        incorrectAnswerXOffSet = -55;
+        incorrectAnswerYOffSet = 20;
       }
       else if (this.currentAnswerDataType === "AUDIO" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
+      {
+        incorrectAnswerXOffSet = 35;
+        incorrectAnswerYOffSet = -75;
+      }
+      else if (this.currentAnswerDataType === "AUDIO" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
+      {
+        incorrectAnswerXOffSet = 140;
+        incorrectAnswerYOffSet = 30;
+      }
+      else if (this.currentAnswerDataType === "AUDIO" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
+      {
+        incorrectAnswerXOffSet = 35;
+        incorrectAnswerYOffSet = 125;
+      }
+      else if (this.currentAnswerDataType === "IMG" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
+      {
+        incorrectAnswerXOffSet = -45;
+        incorrectAnswerYOffSet = 30;
+      }
+      else if (this.currentAnswerDataType === "IMG" &&
                this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
       {
         incorrectAnswerXOffSet = 25;
         incorrectAnswerYOffSet = -75;
       }
-      else if (this.currentAnswerDataType === "AUDIO" &&
-               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
-      {
-        incorrectAnswerXOffSet = 130;
-        incorrectAnswerYOffSet = 20;
-      }
-      else if (this.currentAnswerDataType === "AUDIO" &&
-               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
-      {
-        incorrectAnswerXOffSet = 0;
-        incorrectAnswerYOffSet = 75;
-      }
-      else if (this.currentAnswerDataType === "IMG" &&
-               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
-      {
-        incorrectAnswerXOffSet = -45;
-        incorrectAnswerYOffSet = 10;
-      }
-      else if (this.currentAnswerDataType === "IMG" &&
-               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
-      {
-        incorrectAnswerXOffSet = 0;
-        incorrectAnswerYOffSet = -75;
-      }
       else if (this.currentAnswerDataType === "IMG" &&
                this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
       {
-        incorrectAnswerXOffSet = 75;
-        incorrectAnswerYOffSet = 0;
+        incorrectAnswerXOffSet = 145;
+        incorrectAnswerYOffSet = 25;
       }
       else if (this.currentAnswerDataType === "IMG" &&
                this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
       {
         incorrectAnswerXOffSet = 30;
-        incorrectAnswerYOffSet = 100;
+        incorrectAnswerYOffSet = 125;
       }
       else if (this.currentAnswerDataType === "string" &&
                this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
       {
-        incorrectAnswerXOffSet = -45;
-        incorrectAnswerYOffSet = 70;
+        incorrectAnswerXOffSet = -35;
+        incorrectAnswerYOffSet = 80;
       }
       else if (this.currentAnswerDataType === "string" &&
                this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
@@ -665,8 +665,8 @@ function PromptsAndAnswersManager()
       else if (this.currentAnswerDataType === "string" &&
                this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
       {
-        incorrectAnswerXOffSet = 65;
-        incorrectAnswerYOffSet = 150;
+        incorrectAnswerXOffSet = 60;
+        incorrectAnswerYOffSet = 175;
       }
 
 
