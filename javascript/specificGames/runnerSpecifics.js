@@ -1,34 +1,31 @@
-const RUNNERSPEED = 10;
-const RUNNERWIDTH = 100;
-const RUNNERHEIGHT = 220;
-const RUNNERGRAVITY = 1.5;
-const RUNNERJUMPSPEED = 30;
-const RUNNERMAXJUMPHEIGHT = 75;
-const RUNNERFRAMERATE = 1000/30;
-const RUNNERLETTERSPAWNRATE = 5555;
-const RUNNERLETTERCOLOR = 'red';
 var arrayOfRunnerRunningImages = [];
-var runnerStatus = 'run'; // 'run', 'jump', 'slide', or 'stumble'
-var runnerFloorLevel = 0;
 
 runnerGameClass.prototype = new GameClass();
 function runnerGameClass() {
-  this.name = 'runnerGame';
+  const RUNNERSPEED = 10;
+  const RUNNERWIDTH = 100;
+  const RUNNERHEIGHT = 220;
+  const RUNNERGRAVITY = 0.1;
+  const RUNNERJUMPSPEED = 10;
+  const RUNNERMAXJUMPHEIGHT = 75;
+  const RUNNERFRAMERATE = 1000/30;
+  const parallaxPos = [320,200,440, 0, 0];
+  let runnerStatus = 'run'; // 'run', 'jump', 'slide', or 'stumble'
+  let arrayOfRunnerRunningImagesIndex = 0;
+  let runnerImagesIndexDirection = 1;
+  let currentRunnerRunningImage;
+  let runnerSpeedY = 0;
+  let runnerFloorLevel = 0;
 
+  this.name = 'runnerGame';
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
-
   this.titleScreenData = [{
 	name: "Runner",
 	fontSize: 27,
 	spacing: 13,
 	x: 225, y: 285
   }];
-  let arrayOfRunnerRunningImagesIndex = 0;
-  let runnerImagesIndexDirection = 1;
-  let currentRunnerRunningImage;
-
-  const parallaxPos = [320,200,440, 0, 0];
 
   function cycleRunnerRunningImages()
   {
@@ -114,7 +111,7 @@ function runnerGameClass() {
 	  gameCanvasContext.translate(x, y);
 	  gameCanvasContext.rotate(Math.PI/4);
 	  // gameCanvasContext.fillRect(width, -height/2, width, height);
-	  gameCanvasContext.drawImage(arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex], x,y, width,height);
+	  gameCanvasContext.drawImage(arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex], x, y, width,height);
 	  gameCanvasContext.restore();
 	} else if (runnerStatus == 'jump'){
 	  gameCanvasContext.drawImage(runnerJumpingImage, x,y, width,height);
