@@ -26,7 +26,7 @@ function laneGameClass() {
   this.pregameSpecialCode = function()
   {
     gameAudio = {};
-    gameAudio.car = new sfxLooping("audio/carEngine1.mp3");
+    gameAudio.car = new sfxLooping("audio/carEngine02.mp3");
     gameAudio.lane = new sfxOneShot("audio/carRev.mp3");
     gameAudio.playLane = function() {
     	gameAudio.lane.play();
