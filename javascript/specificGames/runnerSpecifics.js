@@ -57,6 +57,7 @@ function runnerGameClass() {
 
   this.superInitialize = this.initialize;
   this.initialize = function() {
+	runnerSpeedY = 0;
 	runnerFloorLevel = gameCanvas.height*0.75;
 	this.playerCharacter = {
 	  x: (gameCanvas.width - RUNNERWIDTH)/2,
@@ -68,6 +69,7 @@ function runnerGameClass() {
   };
 
   this.update = function() {
+	this.movePlayerCharacter();
 	//cloud 1
 	parallaxPos[0] -= RUNNERSPEED/100;
 	if (parallaxPos[0] + gameCanvasContext.measureText('AMAZING').width < 0) {
@@ -123,8 +125,10 @@ function runnerGameClass() {
   };
 
   function runnerJump() {
-	runnerStatus = 'jump';
-	playerSpeedY = RUNNERJUMPSPEED;
+	if (runnerStatus == 'run') {
+	  runnerStatus = 'jump';
+	  runnerSpeedY = RUNNERJUMPSPEED;
+	}
   }
 
   function runnerSlide() {
@@ -133,31 +137,20 @@ function runnerGameClass() {
 
   function runnerRun() {
 	runnerStatus = 'run';
-	playerSpeedY = 0;
+	runnerSpeedY = 0;
   }
 
   this.movePlayerCharacter = function() {
-	let runnerIsRunning = runnerStatus == 'run';
-	let runnerIsStumbling = runnerStatus == 'stumble';
-	let runnerIsJumping = runnerStatus == 'jump';
-	if (!runnerIsStumbling) {
-	  if (upArrowIsBeingHeld && runnerIsRunning) {
-		runnerJump();
-	  } else if (downArrowIsBeingHeld && !runnerIsJumping) {
-		runnerSlide();
-	  } else if (!runnerIsJumping) {
-		runnerRun();
+	if (runnerStatus == 'jump') {
+	  this.playerCharacter.y -= runnerSpeedY;
+	  console.log('JUMP Y', this.playerCharacter.y);
+	  runnerSpeedY -= RUNNERGRAVITY;
+	  if (this.playerCharacter.y + RUNNERHEIGHT > runnerFloorLevel) {
+		this.playerCharacter.y = runnerFloorLevel - RUNNERHEIGHT;
+		runnerStatus = 'run';
 	  }
-	  if (runnerIsJumping) {
-		this.playerCharacter.y -= playerSpeedY;
-		playerSpeedY -= RUNNERGRAVITY;
-		if (this.playerCharacter.y + RUNNERHEIGHT > runnerFloorLevel) {
-		  this.playerCharacter.y = runnerFloorLevel - RUNNERHEIGHT;
-		  runnerStatus = 'run';
-		}
-		if (this.playerCharacter.y < RUNNERMAXJUMPHEIGHT) {
-		  this.playerCharacter.y = RUNNERMAXJUMPHEIGHT;
-		}
+	  if (this.playerCharacter.y < RUNNERMAXJUMPHEIGHT) {
+		this.playerCharacter.y = RUNNERMAXJUMPHEIGHT;
 	  }
 	}
   };
@@ -189,7 +182,6 @@ function runnerGameClass() {
 
   this.handleDownArrowDown = runnerSlide;
   this.handleUpArrowDown = runnerJump;
-  this.handleUpArrowUp = runnerRun;
   this.handleDownArrowUp = runnerRun;
 }
 
