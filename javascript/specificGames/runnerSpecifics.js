@@ -142,7 +142,6 @@ function runnerGameClass() {
   this.movePlayerCharacter = function() {
 	if (runnerStatus == 'jump') {
 	  this.playerCharacter.y -= runnerSpeedY;
-	  console.log('JUMP Y', this.playerCharacter.y);
 	  runnerSpeedY -= RUNNERGRAVITY;
 	  if (this.playerCharacter.y + RUNNERHEIGHT > runnerFloorLevel) {
 		this.playerCharacter.y = runnerFloorLevel - RUNNERHEIGHT;
