@@ -154,7 +154,7 @@ Object.defineProperty(volume, 'sfx', {
 	}
 });
 
-function sfxMulti(arrayOfSources) {
+function sfxMulti(arrayOfSources, volume = 1) {
 	var sfxList = new Array();
 	for (var i in arrayOfSources) {
 		sfxList[i] = new Audio(arrayOfSources[i]);
@@ -163,12 +163,12 @@ function sfxMulti(arrayOfSources) {
 	this.play = function() {
 		var currentSource = randItem(sfxList);
 		currentSource.currentTime = 0;
-		currentSource.volume = Math.pow(volume.sfx, 2);
+		currentSource.volume = Math.pow(volume.sfx * volume, 2);
 		currentSource.play();
 	}
 }
 
-function sfxOverlap(source) {
+function sfxOverlap(source, volume = 1) {
 	var sfxList = new Array();
 	var index = 0;
 	sfxList[0] = new Audio(source);
@@ -176,20 +176,35 @@ function sfxOverlap(source) {
 
 	this.play = function() {
 		sfxList[index].currentTime = 0;
-		sfxList[index].volume = Math.pow(volume.sfx, 2);
+		sfxList[index].volume = Math.pow(volume.sfx * volume, 2);
 		sfxList[index].play();
 
 		index = index == 0 ? 1 : 0;
 	}
 }
 
-function sfxOneShot(source) {
+function sfxOneShot(source, volume = 1) {
 	var sfx = new Audio(source);
 
 	this.play = function() {
 		sfx.currentTime = 0;
-		sfx.volume = Math.pow(volume.sfx, 2);
+		sfx.volume = Math.pow(volume.sfx * volume, 2);
 		sfx.play();
+	}
+}
+
+function sfxLooping(source, volume = 1) {
+	var sfx = new Audio(source);
+	sfx.loop = true;
+
+	this.play = function() {
+		sfx.currentTime = 0;
+		sfx.volume = Math.pow(volume.sfx * volume, 2);
+		sfx.play();
+	}
+
+	this.stop = function() {
+		sfx.pause();
 	}
 }
 
