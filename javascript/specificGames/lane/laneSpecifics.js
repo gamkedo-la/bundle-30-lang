@@ -23,6 +23,17 @@ function laneGameClass() {
 		this.collidingObject = this.playerCharacter;
 	}
 
+  this.pregameSpecialCode = function()
+  {
+    gameAudio = {};
+    gameAudio.car = new sfxLooping("audio/carEngine02.mp3");
+    gameAudio.lane = new sfxOneShot("audio/carRev.mp3");
+    gameAudio.playLane = function() {
+    	gameAudio.lane.play();
+    }
+	
+  };
+
 
   	this.superInitialize = function()
 	{
@@ -79,7 +90,10 @@ function laneGameClass() {
 	this.handleLeftArrowDown = function()
 	{
 		if (gameClassManager.currentGame.playerCharacter.x !== this.carLeftLanePosition)
-		gameClassManager.currentGame.playerCharacter.x = this.carLeftLanePosition;
+		{
+			gameClassManager.currentGame.playerCharacter.x = this.carLeftLanePosition;
+			gameAudio.playLane();
+		}
 	}
 
 	this.handleRightArrowDown = function()
@@ -87,6 +101,7 @@ function laneGameClass() {
 		if (gameClassManager.currentGame.playerCharacter.x !== this.carRightLanePosition)
 		{
 			gameClassManager.currentGame.playerCharacter.x = this.carRightLanePosition;
+			gameAudio.playLane();
 		}
 	}
 

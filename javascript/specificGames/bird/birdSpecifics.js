@@ -34,6 +34,23 @@ function birdGameClass() {
 
   this.answersXSpeed = 4;
 
+  this.pregameSpecialCode = function()
+  {
+    gameAudio = {};
+    gameAudio.flap1 = new sfxOneShot("audio/flap01.mp3");
+    gameAudio.flap2 = new sfxOneShot("audio/flap02.mp3");
+    gameAudio.flapIndex = 0;
+    gameAudio.playFlap = function() {
+      if (gameAudio.flapIndex == 0) {
+        gameAudio.flap1.play();
+      } else {
+        gameAudio.flap2.play();
+      }
+      gameAudio.flapIndex = gameAudio.flapIndex == 0 ? 1 : 0;
+    }
+  
+  };
+
   this.superInitialize = function()
   {
     // initializePromptAndAnswerObjects();
@@ -122,6 +139,7 @@ function birdGameClass() {
     if (!promptersManager.shouldBeDrawingAPrompt)
     {
       this.playerCharacter.flapUp();
+      gameAudio.playFlap();
     }
   };
 
