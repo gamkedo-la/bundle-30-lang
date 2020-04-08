@@ -475,73 +475,213 @@ function PromptsAndAnswersManager()
         randomGridIndex2 = getRandomIntInclusive(0,8);
       }
 
-      let randomOfFourDirections1 = undefined;
-      let correctAnswerXOffSet = undefined;
-      let correctAnswerYOffSet = undefined;
+      this.correctTargetPromptAndAnswerPairing.whackAnAnswerGridIndex = randomGridIndex1;
+      this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerGridIndex = randomGridIndex2;
 
       let randomDirectionNumber = Math.random();
+      console.log('randomDirectionNumber: ' + randomDirectionNumber);
       if (randomDirectionNumber >= 0.75)
       {
-        randomOfFourDirections1 = 'left';
-        correctAnswerXOffSet = -75;
+        this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName = 'left';
+      }
+      else if (randomDirectionNumber >= 0.5 && randomDirectionNumber < 0.75)
+      {
+        this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName = 'below';
+      }
+      else if (randomDirectionNumber >= 0.25 && randomDirectionNumber < 0.5)
+      {
+        this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName = 'right';
+      }
+      else if (randomDirectionNumber < 0.25)
+      {
+        this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName = 'above';
+      }
+
+      randomDirectionNumber = Math.random();
+      console.log('randomDirectionNumber: ' + randomDirectionNumber);
+
+      if (randomDirectionNumber >= 0.75)
+      {
+        this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName = 'left';
+      }
+      else if (randomDirectionNumber >= 0.5 && randomDirectionNumber < 0.75)
+      {
+        this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName = 'below';
+      }
+      else if (randomDirectionNumber >= 0.25 && randomDirectionNumber < 0.5)
+      {
+        this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName = 'right';
+      }
+      else if (randomDirectionNumber < 0.25)
+      {
+        this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName = 'above';
+      }
+
+      let correctAnswerXOffSet = undefined;
+      let correctAnswerYOffSet = undefined;
+      let incorrectAnswerXOffSet = undefined;
+      let incorrectAnswerYOffSet = undefined;
+
+      if (this.currentAnswerDataType === "AUDIO" &&
+          this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
+      {
+        correctAnswerXOffSet = -65;
         correctAnswerYOffSet = 0;
       }
-      else if (randomDirectionNumber >= 0.5)
+      else if (this.currentAnswerDataType === "AUDIO" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
       {
-        randomOfFourDirections1 = 'down';
-        correctAnswerYOffSet = 75;
-        correctAnswerXOffSet = 0;
+        correctAnswerXOffSet = 25;
+        correctAnswerYOffSet = -75;
       }
-      else if (randomDirectionNumber >= 0.25)
+      else if (this.currentAnswerDataType === "AUDIO" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
       {
-        randomOfFourDirections1 = 'right';
+        correctAnswerXOffSet = 130;
+        correctAnswerYOffSet = 20;
+      }
+      else if (this.currentAnswerDataType === "AUDIO" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
+      {
+        correctAnswerXOffSet = 0;
+        correctAnswerYOffSet = 75;
+      }
+      else if (this.currentAnswerDataType === "IMG" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
+      {
+        correctAnswerXOffSet = -45;
+        correctAnswerYOffSet = 10;
+      }
+      else if (this.currentAnswerDataType === "IMG" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
+      {
+        correctAnswerXOffSet = 0;
+        correctAnswerYOffSet = -75;
+      }
+      else if (this.currentAnswerDataType === "IMG" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
+      {
         correctAnswerXOffSet = 75;
         correctAnswerYOffSet = 0;
       }
-      else if (randomDirectionNumber < 0.25)
+      else if (this.currentAnswerDataType === "IMG" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
       {
-        randomOfFourDirections1 = 'up';
-        correctAnswerYOffSet = -75;
-        correctAnswerXOffSet = 0;
+        correctAnswerXOffSet = 30;
+        correctAnswerYOffSet = 100;
+      }
+      else if (this.currentAnswerDataType === "string" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
+      {
+        correctAnswerXOffSet = -45;
+        correctAnswerYOffSet = 70;
+      }
+      else if (this.currentAnswerDataType === "string" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
+      {
+        correctAnswerXOffSet = 50;
+        correctAnswerYOffSet = -30;
+      }
+      else if (this.currentAnswerDataType === "string" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
+      {
+        correctAnswerXOffSet = 150;
+        correctAnswerYOffSet = 80;
+      }
+      else if (this.currentAnswerDataType === "string" &&
+               this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
+      {
+        correctAnswerXOffSet = 65;
+        correctAnswerYOffSet = 150;
       }
 
-      let randomOfFourDirections2 = undefined;
-      let incorrectAnswerXOffSet = undefined;
-      let incorrectAnswerYOffSet = undefined;
-      randomDirectionNumber = Math.random();
-      if (randomDirectionNumber >= 0.75)
+
+      if (this.currentAnswerDataType === "AUDIO" &&
+          this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
       {
-        randomOfFourDirections2 = 'left';
-        incorrectAnswerXOffSet = -75;
+        incorrectAnswerXOffSet = -65;
         incorrectAnswerYOffSet = 0;
       }
-      else if (randomDirectionNumber >= 0.5)
+      else if (this.currentAnswerDataType === "AUDIO" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
       {
-        randomOfFourDirections2 = 'down';
-        incorrectAnswerYOffSet = 75;
-        incorrectAnswerXOffSet = 0;
+        incorrectAnswerXOffSet = 25;
+        incorrectAnswerYOffSet = -75;
       }
-      else if (randomDirectionNumber >= 0.25)
+      else if (this.currentAnswerDataType === "AUDIO" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
       {
-        randomOfFourDirections2 = 'right';
+        incorrectAnswerXOffSet = 130;
+        incorrectAnswerYOffSet = 20;
+      }
+      else if (this.currentAnswerDataType === "AUDIO" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
+      {
+        incorrectAnswerXOffSet = 0;
+        incorrectAnswerYOffSet = 75;
+      }
+      else if (this.currentAnswerDataType === "IMG" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
+      {
+        incorrectAnswerXOffSet = -45;
+        incorrectAnswerYOffSet = 10;
+      }
+      else if (this.currentAnswerDataType === "IMG" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
+      {
+        incorrectAnswerXOffSet = 0;
+        incorrectAnswerYOffSet = -75;
+      }
+      else if (this.currentAnswerDataType === "IMG" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
+      {
         incorrectAnswerXOffSet = 75;
         incorrectAnswerYOffSet = 0;
       }
-      else if (randomDirectionNumber < 0.25)
+      else if (this.currentAnswerDataType === "IMG" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
       {
-        randomOfFourDirections2 = 'up';
-        incorrectAnswerYOffSet = -75;
-        incorrectAnswerXOffSet = 0;
+        incorrectAnswerXOffSet = 30;
+        incorrectAnswerYOffSet = 100;
+      }
+      else if (this.currentAnswerDataType === "string" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'left')
+      {
+        incorrectAnswerXOffSet = -45;
+        incorrectAnswerYOffSet = 70;
+      }
+      else if (this.currentAnswerDataType === "string" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'above')
+      {
+        incorrectAnswerXOffSet = 50;
+        incorrectAnswerYOffSet = -30;
+      }
+      else if (this.currentAnswerDataType === "string" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'right')
+      {
+        incorrectAnswerXOffSet = 150;
+        incorrectAnswerYOffSet = 80;
+      }
+      else if (this.currentAnswerDataType === "string" &&
+               this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerPositionName === 'below')
+      {
+        incorrectAnswerXOffSet = 65;
+        incorrectAnswerYOffSet = 150;
       }
 
-      gameClassManager.currentGame.oscillationVelocity1 = getRandomArbitrary(0.1,0.3);
-      gameClassManager.currentGame.oscillationVelocity2 = getRandomArbitrary(0.1,0.3);
 
-      this.correctTargetPromptAndAnswerPairing.xCoordinate = gameClassManager.currentGame.background.grid[randomGridIndex1].x + correctAnswerXOffSet;
-      this.correctTargetPromptAndAnswerPairing.yCoordinate = gameClassManager.currentGame.background.grid[randomGridIndex1].y + correctAnswerYOffSet;
+      this.correctTargetPromptAndAnswerPairing.oscillationVelocity = getRandomArbitrary(0.1,0.3);
+      this.incorrectTargetPromptAndAnswerPairing.oscillationVelocity = getRandomArbitrary(0.1,0.3);
 
-      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = gameClassManager.currentGame.background.grid[randomGridIndex2].x + incorrectAnswerXOffSet;
-      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = gameClassManager.currentGame.background.grid[randomGridIndex2].y + incorrectAnswerYOffSet;
+      this.correctTargetPromptAndAnswerPairing.whackAnAnswerXStartingPosition = gameClassManager.currentGame.background.grid[randomGridIndex1].x + correctAnswerXOffSet;
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = this.correctTargetPromptAndAnswerPairing.whackAnAnswerXStartingPosition;
+      this.correctTargetPromptAndAnswerPairing.whackAnAnswerYStartingPosition = gameClassManager.currentGame.background.grid[randomGridIndex1].y + correctAnswerYOffSet;
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = this.correctTargetPromptAndAnswerPairing.whackAnAnswerYStartingPosition;
+
+      this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerXStartingPosition = gameClassManager.currentGame.background.grid[randomGridIndex2].x + incorrectAnswerXOffSet;
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerXStartingPosition;
+      this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerYStartingPosition = gameClassManager.currentGame.background.grid[randomGridIndex2].y + incorrectAnswerYOffSet;
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerYStartingPosition;
     }
   }
 

@@ -145,6 +145,12 @@ function DrawAnswersManager()
     }
   }
 
+  this.imageWidth = undefined;
+  this.imageHeight = undefined;
+  this.audioImageWidth = undefined;
+  this.audioImageHeight = undefined;
+  this.textAnswerFontStyle = undefined;
+  
   this.initialize = function () {
     this.imageWidth  = gameClassManager.currentGame.imageAnswerWidth;
     this.imageHeight = gameClassManager.currentGame.imageAnswerHeight;

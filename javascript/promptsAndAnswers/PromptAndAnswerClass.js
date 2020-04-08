@@ -58,6 +58,15 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
   this.yCoordinate = undefined;
   this.xDirection = undefined;
   this.xSpeed = undefined;
+  this.ySpeed = undefined;
+
+  this.whackAnAnswerPositionName = undefined;
+  this.whackAnAnswerXStartingPosition = undefined;
+  this.whackAnAnswerYStartingPosition = undefined;
+  this.whackAnAnswerGridIndex = undefined;
+
+  this.oscillationVelocity = undefined;
+  this.radians = 0;
 
   this.width = undefined;
   this.height = undefined;
