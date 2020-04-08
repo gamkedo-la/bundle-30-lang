@@ -132,7 +132,9 @@ function runnerGameClass() {
   }
 
   function runnerSlide() {
-	runnerStatus = 'slide';
+	if (runnerStatus == 'run') {
+	  runnerStatus = 'slide';
+	}
   }
 
   function runnerRun() {
