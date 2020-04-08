@@ -310,7 +310,7 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: spaceBackgroundForVolcanoGame, theFile: 'images/Backgrounds/spaceBackgroundForVolcanoGame.png'});
 
   //cVc shooter/shoot gallery game
-  arrayOfImages.push({imageObjectBinding: shootGalleryImage, theFile: 'images/Backgrounds/shootGallery.png'});
+  arrayOfImages.push({imageObjectBinding: shootGalleryImage, theFile: 'images/Backgrounds/ShootGallery.png'});
   arrayOfImages.push({imageObjectBinding: shootGalleryTargetImage, theFile: 'images/Backgrounds/target.png'});
 
   //space shooter game
