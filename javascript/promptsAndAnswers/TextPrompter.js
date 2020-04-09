@@ -9,7 +9,7 @@ function TextPrompter()
 
   this.currentTextPixelSize = 30;
 
-  this.backgroundColor = 'white';
+  this.backgroundColor = 'rgb(224,224,224)';
   this.currentWidth = 150;
   this.currentHeight = 150;
 
