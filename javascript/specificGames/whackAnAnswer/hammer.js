@@ -63,14 +63,22 @@ function Hammer()
 
     if (mouseGridIndex === promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.whackAnAnswerGridIndex)
     {
+      genAudio.playPositive();
+      promptersManager.currentPrompter.currentWidth = 150;
+      promptersManager.currentPrompter.currentHeight = 150;
       promptsAndAnswersManager.setOrResetPromptsAndAnswers();
       promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+      promptersManager.promptThePlayer();
       correctAnswer++;
     }
     else if (mouseGridIndex === promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.whackAnAnswerGridIndex)
     {
+      genAudio.playNegative();
+      promptersManager.currentPrompter.currentWidth = 150;
+      promptersManager.currentPrompter.currentHeight = 150;
       promptsAndAnswersManager.setOrResetPromptsAndAnswers();
       promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
+      promptersManager.promptThePlayer();
       incorrectAnswer++;
     }
   }

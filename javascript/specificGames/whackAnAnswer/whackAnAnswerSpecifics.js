@@ -13,6 +13,8 @@ function whackAnAnswerGameClass()
     this.textAnswerFontSize = 30;
     this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
+    this.FRAME_RATE = 1000/30;
+    
     this.titleScreenData =
      [
       {name: "Whack",fontSize: 25, spacing: 12, x: 235, y: 550},

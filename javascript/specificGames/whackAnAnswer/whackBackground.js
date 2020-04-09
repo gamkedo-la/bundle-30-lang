@@ -7,7 +7,7 @@ function WhackBackground()
     gameCanvasContext.drawImage(whackTableBeneathSurface, 0,0, gameCanvas.width,gameCanvas.height);
     drawAnswersManager.draw();
     gameCanvasContext.drawImage(whackTableSurface, 0,0, gameCanvas.width,gameCanvas.height);
-    this.drawGrid();  
+    //this.drawGrid();  
   }
 
   this.grid = [];

@@ -115,6 +115,7 @@ function PromptersManager()
   {
     if (this.shouldBeDrawingAPrompt)
     {
+      console.log('should be drawing a prompt');
       this.currentPrompter.updatePromptImage();
       this.currentPrompter.drawThePrompt();
     }
