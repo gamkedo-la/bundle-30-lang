@@ -9,7 +9,7 @@ function CVCManager()
   this.CVCMandarinHowAreWe = new cVc('我们','怎么','样', howAreWeImage, promptAudio.mandarinHowAreWe);
   this.CVCMandarinHowIsHe = new cVc('他','怎么','样', howIsHeImage, promptAudio.mandarinHowIsHe);
   this.CVCMandarinHowIsShe = new cVc('她','怎么','样', howIsHeImage, promptAudio.mandarinHowIsShe);
-  this.CVCMandarinHowIsItDoing = new cVc('怎么','样','了', howIsItDoingImage, promptAudio.mandarinHowIsItDoing);
+  this.CVCMandarinHowIsItDoing = new cVc('它','怎么','样', howIsItDoingImage, promptAudio.mandarinHowIsHe);
 
   this.arrayOfEnglishCVCs = [];
   this.arrayOfMandarinCVCs = [];
