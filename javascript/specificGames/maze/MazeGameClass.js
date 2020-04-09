@@ -72,7 +72,7 @@ function MazeGameClass(){
             this.playerCharacter.placeInMazeAndAvoidAnswersCells();
         }
         else{
-            collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
+            this.collisionWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
         }
     }
 

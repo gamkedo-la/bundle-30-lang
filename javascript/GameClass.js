@@ -36,6 +36,8 @@ function GameClass()
 
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/titleScreenMusic.mp3', 6.1);
 
+  this.collisionWithAnswersManager = undefined;
+
   this.update = function(){};
   this.draw = function(){};
 }
@@ -64,6 +66,11 @@ function GameClassManager()
     if (this.currentGame.superInitialize !== undefined)
     {
       this.currentGame.superInitialize();
+    }
+
+    if (this.currentGame.collisionWithAnswersManager == undefined){
+      this.currentGame.collisionWithAnswersManager = new CollisionManager();
+      this.currentGame.collisionWithAnswersManager.initialize(this.currentGame);
     }
   }
 
