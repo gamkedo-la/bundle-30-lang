@@ -48,7 +48,7 @@ function Bullet(i)
           cVcShooterGame.playerShouldBeTargetingThirdLetter = false;
           arrayOfBullets = [];
           calculateAccuracy();
-          cVcShooterGame.cVcManager.currentCVC = cVcShooterGame.cVcManager.chooseARandomCVC();
+          cVcShooterGame.cVcManager.currentCVC = cVcShooterGame.cVcManager.chooseARandomCVC(cVcShooterGame.currentLanguageArray);
           cVcShooterGame.cVcManager.currentCVC.initialize();
           promptersManager.loadCurrentPrompter(imageAndAudioPrompterForCVCs);
           promptersManager.currentPrompter.loadCurrentImage(cVcShooterGame.cVcManager.currentCVC.imageAssociation);

@@ -11,6 +11,15 @@ let sheImage = document.createElement("img");
 let cotImage = document.createElement("img");
 let catImage = document.createElement("img");
 
+let howAreYouImage = document.createElement("img");
+let howAmIImage = document.createElement("img");
+let howAreTheyImage = document.createElement("img");
+let howAreWeImage = document.createElement("img");
+let howIsSheImage = document.createElement("img");
+let howIsHeImage = document.createElement("img");
+let howIsItDoingImage = document.createElement("img");
+
+
 let mandarinBuyImage = document.createElement("img");//'buy' in English
 let mandarinSellImage = document.createElement("img");//'sell' in English
 
@@ -229,8 +238,24 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: heImage, theFile: 'images/sprites/PromptsAndAnswers/man.png'});
   arrayOfImages.push({imageObjectBinding: sheImage, theFile: 'images/sprites/PromptsAndAnswers/woman.png'});
 
+
+  //cVc shooter section
+
+  //English cVcs
   arrayOfImages.push({imageObjectBinding: catImage, theFile: 'images/sprites/PromptsAndAnswers/cat.png'});
   arrayOfImages.push({imageObjectBinding: cotImage, theFile: 'images/sprites/PromptsAndAnswers/cot.png'});
+
+  //Mandarin cVcs
+  arrayOfImages.push({imageObjectBinding: howAreYouImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAreYou.png'});
+  arrayOfImages.push({imageObjectBinding: howAmIImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAmI.png'});
+  arrayOfImages.push({imageObjectBinding: howAreTheyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAreThey.png'});
+  arrayOfImages.push({imageObjectBinding: howAreWeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAreWe.png'});
+  arrayOfImages.push({imageObjectBinding: howIsHeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsHe.png'});
+  arrayOfImages.push({imageObjectBinding: howIsSheImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsShe.png'});
+  arrayOfImages.push({imageObjectBinding: howIsItDoingImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsItDoing.png'});
+
+  //end of cVc shooter
+
 
   arrayOfImages.push({imageObjectBinding: mandarinBuyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinBuy.png'});//'buy' in English
   arrayOfImages.push({imageObjectBinding: mandarinSellImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinSell.png'});//'sell' in English

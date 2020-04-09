@@ -275,8 +275,20 @@ promptAudio.men = new promptSound('audio/PromptsAndAnswers/men.mp3');
 promptAudio.he = new promptSound('audio/PromptsAndAnswers/he.mp3');
 promptAudio.she = new promptSound('audio/PromptsAndAnswers/she.mp3');
 
+
+//cVc Section
+//English cVcs
 promptAudio.blendedCat = new promptSound('audio/PromptsAndAnswers/blendedCat.mp3');
 promptAudio.blendedCot = new promptSound('audio/PromptsAndAnswers/blendedCot.mp3');
+
+//mandarin cVcs
+promptAudio.mandarinHowAreYou = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHowAreYou.mp3');
+promptAudio.mandarinHowAmI = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHowAmI.mp3');
+promptAudio.mandarinHowAreThey = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHowAreThey.mp3');
+promptAudio.mandarinHowAreWe = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHowAreWe.mp3');
+promptAudio.mandarinHowIsHe = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHowIsHe.mp3');
+promptAudio.mandarinHowIsShe = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHowIsHe.mp3');
+promptAudio.mandarinHowIsItDoing = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHowIsItDoing.mp3');
 
 
 promptAudio.mandarinBuy = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinBuy.mp3');

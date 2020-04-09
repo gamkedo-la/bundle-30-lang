@@ -54,7 +54,7 @@ function cVc(firstLetter,secondLetter,thirdLetter, imageAssociation, audioAssoci
 
   this.draw = function()
   {
-    gameCanvasContext.fillStyle = 'brown';
+    gameCanvasContext.fillStyle = 'black';
     gameCanvasContext.font = '30px Helvetica';
 
     if (cVcShooterGame.playerShouldBeTargetingFirstLetter)

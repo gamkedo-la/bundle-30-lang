@@ -11,6 +11,9 @@ function cVcShooterGameClass()
   this.cVcManager = undefined;
   this.background = undefined;
 
+  this.backButtonColor = 'rgb(227,227,227)';
+  this.backButtonTextColor = 'brown';
+
   this.playerShouldBeTargetingFirstLetter = true;
   this.playerShouldBeTargetingSecondLetter = false;
   this.playerShouldBeTargetingThirdLetter = false;
@@ -20,12 +23,27 @@ function cVcShooterGameClass()
     this.background = new cVcShooterBackground();
     this.playerCharacter = new ShooterPlayer();
     this.cVcManager = new CVCManager();
-    this.cVcManager.initializeArrayOfCVCs();
-    this.cVcManager.currentCVC = this.cVcManager.chooseARandomCVC();
+    this.cVcManager.initializeArraysOfCVCs();
+    this.setCurrentLanguageArray();
+    this.cVcManager.currentCVC = this.cVcManager.chooseARandomCVC(this.currentLanguageArray);
     this.cVcManager.currentCVC.initialize();
     promptersManager.loadCurrentPrompter(imageAndAudioPrompterForCVCs);
     promptersManager.currentPrompter.loadCurrentImage(this.cVcManager.currentCVC.imageAssociation);
     promptersManager.currentPrompter.loadCurrentAudio(this.cVcManager.currentCVC.audioAssociation);
+  }
+
+  this.currentLanguageArray = undefined;
+  this.setCurrentLanguageArray = function()
+  {
+    if (languageSelectionScreen.languageNum === 0)
+    {
+      this.currentLanguageArray = this.cVcManager.arrayOfEnglishCVCs;
+    }
+    else if (languageSelectionScreen.languageNum === 1)
+    {
+      this.currentLanguageArray = this.cVcManager.arrayOfMandarinCVCs;
+    }
+    console.log('this.currentLanguageArray: ' + this.currentLanguageArray);
   }
 
   this.draw = function()
