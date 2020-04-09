@@ -44,6 +44,7 @@ function InputManager()
         gameClassManager.currentGame.handleClick();
       }
       backButton.handleClick();//backButton.js, player goes back to menu/title screen
+      replayPromptButton.handleClick();
       break;
     }
   }//

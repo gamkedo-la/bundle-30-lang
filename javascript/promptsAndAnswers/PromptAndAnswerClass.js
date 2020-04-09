@@ -230,8 +230,8 @@ function populatePromptAndAnswerArrays()
   mandarinColorsGrouping.arrayOfObjects.push(mandarinBlackPromptAndAnswer);
   mandarinColorsGrouping.arrayOfObjects.push(mandarinWhitePromptAndAnswer);
   mandarinColorsGrouping.arrayOfObjects.push(mandarinGrayPromptAndAnswer);
-  // mandarinColorsGrouping.arrayOfObjects.push(mandarinRedPromptAndAnswer);
-  // mandarinColorsGrouping.arrayOfObjects.push(mandarinBrownPromptAndAnswer);
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinRedPromptAndAnswer);
+  mandarinColorsGrouping.arrayOfObjects.push(mandarinBrownPromptAndAnswer);
   // mandarinColorsGrouping.arrayOfObjects.push(mandarinYellowPromptAndAnswer);
   // mandarinColorsGrouping.arrayOfObjects.push(mandarinPurplePromptAndAnswer);
   // mandarinColorsGrouping.arrayOfObjects.push(mandarinPinkPromptAndAnswer);

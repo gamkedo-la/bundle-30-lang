@@ -1,6 +1,6 @@
-function BackButton()
+function ReplayPromptButton()
 {
-  this.x = gameCanvas.width - gameCanvas.width/6;
+  this.x = 0;
   this.y = gameCanvas.height - gameCanvas.height/12;
 
   this.width = gameCanvas.width/6;
@@ -16,7 +16,8 @@ function BackButton()
 
       //text
       //gameCanvasContext.fillStyle = gameClassManager.currentGame.backButtonTextColor;
-      customFontFillText('Back', 27, 15, 555,660);
+      customFontFillText('Replay', 23, 15, 0,642);
+      customFontFillText('Prompt', 23, 15, 0,670);
     }
   }
 
@@ -31,20 +32,10 @@ function BackButton()
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < gameCanvas.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < gameCanvas.height)
         {
-          if (gameClassManager.currentGame.name === 'whack an answer game')
-          {
-            document.body.style.cursor = 'default';
-          }
-          fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
-          transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
-          genAudio.playClick();
+
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
-          //gameClassManager.currentGame = undefined;
-          playerShouldBePlayingPinata = false;
-          arrayOfAnswers = [];
-          promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-          genAudio.playTitleMusic();
+          promptersManager.promptThePlayer();
         }
   }
 }

@@ -14,7 +14,10 @@ function whackAnAnswerGameClass()
     this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
     this.FRAME_RATE = 1000/30;
-    
+
+    this.backButtonColor = 'rgb(0,127,127)';
+    this.backButtonTextColor = 'rgb(224,224,224)';
+
     this.titleScreenData =
      [
       {name: "Whack",fontSize: 25, spacing: 12, x: 235, y: 550},
