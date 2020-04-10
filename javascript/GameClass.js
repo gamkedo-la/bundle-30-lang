@@ -69,7 +69,7 @@ function GameClassManager()
     }
 
     if (this.currentGame.collisionsWithAnswersManager == undefined){
-      this.currentGame.collisionsWithAnswersManager = new CollisionManager();
+      this.currentGame.collisionsWithAnswersManager = new CollisionsWithAnswersManager();
     }
 
     this.currentGame.collisionsWithAnswersManager.initialize(this.currentGame);

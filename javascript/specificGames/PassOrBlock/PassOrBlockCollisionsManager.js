@@ -1,5 +1,5 @@
 function PassOrBlockCollisionsManager() {
-    // CollisionManager.call(this);
+    CollisionsWithAnswersManager.call(this);
 
     this.processCollisionWithAnswer = function (){
         if (nextGame === SINGLE_PLAYER_RANDOM || 
@@ -11,15 +11,15 @@ function PassOrBlockCollisionsManager() {
     }
 
     this.processCollisionWithCorrectAnswer = function(){
-        CollisionManager.prototype.processCollisionWithCorrectAnswer();
+        CollisionsWithAnswersManager.prototype.processCollisionWithCorrectAnswer();
         gameClassManager.currentGame.correctAnswersYSpeed *= -1;
     }
 
     this.processCollisionWithIncorrectAnswer = function(){
-        CollisionManager.prototype.processCollisionWithIncorrectAnswer();
+        CollisionsWithAnswersManager.prototype.processCollisionWithIncorrectAnswer();
         gameClassManager.currentGame.incorrectAnswersYSpeed *= -1;
     }
 }
 
-PassOrBlockCollisionsManager.prototype = new CollisionManager();
+PassOrBlockCollisionsManager.prototype = new CollisionsWithAnswersManager();
 PassOrBlockCollisionsManager.prototype.constructor = PassOrBlockCollisionsManager;

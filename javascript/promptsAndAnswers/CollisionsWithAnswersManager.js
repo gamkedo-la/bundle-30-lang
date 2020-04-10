@@ -2,7 +2,7 @@ const NO_COLLISION = 0
 const COLLISION_WITH_CORRECT_ANSWER   = 1
 const COLLISION_WITH_INCORRECT_ANSWER = 2
 
-function CollisionManager()
+function CollisionsWithAnswersManager()
 {
     this.initialize = function(game)
     {   
@@ -217,4 +217,4 @@ function CollisionManager()
         }
     }
 }
-CollisionManager.prototype = new CollisionManager();
+CollisionsWithAnswersManager.prototype = new CollisionsWithAnswersManager();
