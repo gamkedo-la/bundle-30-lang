@@ -83,7 +83,7 @@ function flowerGameClass(){
         this.moveAnswers();
         this.moveSeeds();
         this.handleAnswersOffScreen();
-        collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
+        this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
 
       }
     };

@@ -59,7 +59,7 @@ function PassOrBlockBackground()
       this.correctAnswerOffScreen = false;
       this.incorrectAnswerOffScreen = false;
 
-      collisionsWithAnswersManager.resetAnswers();
+      gameClassManager.currentGame.collisionsWithAnswersManager.resetAnswers();
       gameClassManager.currentGame.correctAnswersYSpeed = 4;
       gameClassManager.currentGame.incorrectAnswersYSpeed = 4;
     }

@@ -36,7 +36,7 @@ function GameClass()
 
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/titleScreenMusic.mp3', 6.1);
 
-  this.collisionWithAnswersManager = undefined;
+  this.collisionsWithAnswersManager = undefined;
 
   this.update = function(){};
   this.draw = function(){};
@@ -68,10 +68,11 @@ function GameClassManager()
       this.currentGame.superInitialize();
     }
 
-    if (this.currentGame.collisionWithAnswersManager == undefined){
-      this.currentGame.collisionWithAnswersManager = new CollisionManager();
-      this.currentGame.collisionWithAnswersManager.initialize(this.currentGame);
+    if (this.currentGame.collisionsWithAnswersManager == undefined){
+      this.currentGame.collisionsWithAnswersManager = new CollisionManager();
     }
+
+    this.currentGame.collisionsWithAnswersManager.initialize(this.currentGame);
   }
 
   this.currentFrameRate = 1000/30;

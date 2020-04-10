@@ -95,7 +95,7 @@ function birdGameClass() {
       this.playerCharacter.handleOffScreen();
       this.moveAnswers();
       this.handleAnswersOffScreen();
-      collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
+      this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
       cloudManager.update();
     }
   };

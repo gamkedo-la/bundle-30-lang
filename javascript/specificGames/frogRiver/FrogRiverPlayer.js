@@ -60,7 +60,7 @@ function FrogRiverPlayer()
               }
               frogRiverGame.answerCount--;
               frogRiverGame.additiveToAnswers--;
-              collisionsWithAnswersManager.resetAnswers();
+              frogRiverGame.collisionsWithAnswersManager.resetAnswers();
 
             }
       }

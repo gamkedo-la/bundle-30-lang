@@ -60,7 +60,7 @@ function PassOrBlockGameClass()
     fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
     {
       this.moveAnswers();
-      collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
+      this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
       //this.playerCharacter.handleCollisionsWithAnswers();
       this.background.handleAnswersOffScreen();
     }

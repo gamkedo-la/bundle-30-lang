@@ -46,7 +46,7 @@ function jumperGameClass()
     {
       this.movePlayer();
       this.handlePlayerWrapping();
-      collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
+      this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
     }
   };
 

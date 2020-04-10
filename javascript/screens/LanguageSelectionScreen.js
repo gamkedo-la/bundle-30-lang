@@ -75,7 +75,6 @@ function LanguageSelectionScreen()
     if (gameClassManager.currentGame) console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
     miniGameTransitioner.initialize();
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
-    collisionsWithAnswersManager.initialize();
     genAudio.playTransitionMusic();
   }
 

@@ -81,7 +81,7 @@ function frogRiverGameClass()
     if (this.answerCount === -1)
     {
       this.playerCharacter.y = 600;
-      collisionsWithAnswersManager.resetAnswers();
+      this.collisionsWithAnswersManager.resetAnswers();
       this.playerCharacter.currentLilyPad = undefined;
       this.answerCount = 4;
       this.additiveToAnswers = 4;

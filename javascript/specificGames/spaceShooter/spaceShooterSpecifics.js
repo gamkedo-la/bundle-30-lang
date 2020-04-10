@@ -203,7 +203,7 @@ function spaceShooterGameClass() {
 		{
 			for (let bulletIndex = 0; bulletIndex < this.arrayOfBullets.length; bulletIndex++)
 			{
-				collisionsWithAnswersManager.handleCollisionsWithAnswers(this.arrayOfBullets[bulletIndex]);
+				this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.arrayOfBullets[bulletIndex]);
 			}
 		}
 	}

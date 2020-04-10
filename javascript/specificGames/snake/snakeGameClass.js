@@ -56,7 +56,7 @@ function snakeGameClass()
         fullGameStateMachine.currentState !== fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame)
     {
       this.playerCharacter.update();
-      collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
+      this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
     }
   }
 

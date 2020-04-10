@@ -62,7 +62,7 @@ function laneGameClass() {
 			this.background.asphaltImage2.handleScrollingOffScreen();
 			this.moveAnswers();
 			this.handleAnswersOffScreen();
-			collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
+			this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
 		}
 	};
 

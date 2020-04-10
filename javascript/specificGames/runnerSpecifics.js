@@ -76,7 +76,7 @@ function runnerGameClass() {
     {
 	  this.movePlayerCharacter();
 	  moveAnswers();
-	  collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
+	  this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
 	}
 	//cloud 1
 	parallaxPos[0] -= RUNNERSPEED/100;
