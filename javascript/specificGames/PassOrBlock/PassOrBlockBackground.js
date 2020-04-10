@@ -22,13 +22,13 @@ function PassOrBlockBackground()
   {
     if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate > gameCanvas.height)
     {
-      amountIncorrect++;
+      // amountIncorrect++;
       this.correctAnswerOffScreen = true;
       this.checkIfBothAnswersAreOffScreenAndResetIfSo();
     }
     if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate > gameCanvas.height)
     {
-      amountCorrect++;
+      // amountCorrect++;
       this.incorrectAnswerOffScreen = true;
       this.checkIfBothAnswersAreOffScreenAndResetIfSo();
     }
@@ -39,14 +39,14 @@ function PassOrBlockBackground()
     if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate //-
         /*promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.height*/ < 0)
     {
-      amountCorrect++;
+      // amountCorrect++;
       this.correctAnswerOffScreen = true;
       this.checkIfBothAnswersAreOffScreenAndResetIfSo();
     }
     if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate //-
         /*promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.height*/ < 0)
     {
-      amountIncorrect++;
+      // amountIncorrect++;
       this.incorrectAnswerOffScreen = true;
       this.checkIfBothAnswersAreOffScreenAndResetIfSo();
     }

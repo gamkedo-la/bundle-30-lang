@@ -181,36 +181,19 @@ function CollisionManager()
             cycleCount++;
         }
 
-        if (gameClassManager.currentGame != passOrBlockGame){
-            this.resetAnswers();
-        }
-        
+        this.resetAnswers();
         calculateAccuracy();
     }
 
     this.processCollisionWithCorrectAnswer = function(){
         genAudio.playPositive();
         amountCorrect++;
-        
-        if (gameClassManager.currentGame === passOrBlockGame)
-        {
-            console.log('inside collision for an answer');
-            gameClassManager.currentGame.correctAnswersYSpeed *= -1;
-            return;
-        }
     }
 
     this.processCollisionWithIncorrectAnswer = function(){
         promptsAndAnswersManager.recordWrongAnswer();
         genAudio.playNegative();
         amountIncorrect++;
-
-        if (gameClassManager.currentGame === passOrBlockGame)
-        {
-            console.log('inside collision for an answer');
-            gameClassManager.currentGame.incorrectAnswersYSpeed *= -1;
-            return;
-        }
     }
 
     this.resetAnswers = function()
@@ -234,3 +217,4 @@ function CollisionManager()
         }
     }
 }
+CollisionManager.prototype = new CollisionManager();

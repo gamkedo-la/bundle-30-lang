@@ -33,6 +33,8 @@ function PassOrBlockGameClass()
   this.correctAnswersYSpeed = 4;
   this.incorrectAnswersYSpeed = 4;
 
+  this.collisionsWithAnswersManager = new PassOrBlockCollisionsManager();
+
   this.superInitialize = this.initialize;
   this.initialize = function()
   {
@@ -43,7 +45,7 @@ function PassOrBlockGameClass()
     this.audioImageAnswerHeight = gameCanvas.height/7;
 
     this.background = new PassOrBlockBackground();
-	this.superInitialize();
+    this.superInitialize();
   }
 
   this.draw = function()
