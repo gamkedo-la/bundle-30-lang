@@ -47,6 +47,8 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
       let languageGroupDiv = new LanguageGroupDiv(this, this.arrayOfPromptAndAnswerGroupCheckBoxes[arrayOfGroupCheckBoxesIndex],
                                                   this.currentColumnIndex, arrayOfGroupCheckBoxesIndex);
       languageGroupDiv.defineXAndYCoordinates();
+      languageGroupDiv.defineGroupCheckBoxXandY();
+      languageGroupDiv.defineChildCheckBoxXandYs();
       this.arrayOfDivs.push(languageGroupDiv);
     }
   }
@@ -121,35 +123,67 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
     this.x = 15 + this.columnIndex*parentScreenObject.columnWidth;
   }
 
+  this.defineGroupCheckBoxXandY = function()
+  {
+    this.parentPromptAndAnswerGroupCheckBox.x = this.x;
+    this.parentPromptAndAnswerGroupCheckBox.y = this.y;
+
+    this.parentPromptAndAnswerGroupCheckBox.textX = this.x + this.parentPromptAndAnswerGroupCheckBox.width + 5;
+    this.parentPromptAndAnswerGroupCheckBox.textY = this.y + this.parentPromptAndAnswerGroupCheckBox.height/2 + 3;
+  }
+
+  this.defineChildCheckBoxXandYs = function()
+  {
+    console.log('inside definition of child coordinates function');
+    for (let childIndex = 0; childIndex < this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes.length; childIndex++)
+    {
+      console.log('inside for look of child coordinates function');
+      let childBox = this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex];
+      let currentYOffSet = (childBox.height*1.1*(childIndex + 1)) + 17;
+      childBox.x = this.x + 10;
+      childBox.y = this.y + currentYOffSet;
+
+      childBox.textX = childBox.x + childBox.width + 5;
+      childBox.textY = childBox.y + childBox.height/2 + 3;
+    }
+  }
+
   this.draw = function()
   {
     // console.log('inside draw div function');
-    gameCanvasContext.drawImage(this.parentPromptAndAnswerGroupCheckBox.boxImage, this.x,this.y,
+    gameCanvasContext.drawImage(this.parentPromptAndAnswerGroupCheckBox.boxImage,
+                                this.parentPromptAndAnswerGroupCheckBox.x,this.parentPromptAndAnswerGroupCheckBox.y,
                                 this.parentPromptAndAnswerGroupCheckBox.width,this.parentPromptAndAnswerGroupCheckBox.height);
+    if (this.parentPromptAndAnswerGroupCheckBox.checked)
+    {
+      gameCanvasContext.drawImage(this.parentPromptAndAnswerGroupCheckBox.checkImage,
+                                this.parentPromptAndAnswerGroupCheckBox.x,this.parentPromptAndAnswerGroupCheckBox.y,
+                                this.parentPromptAndAnswerGroupCheckBox.width,this.parentPromptAndAnswerGroupCheckBox.height);
+    }
 
     gameCanvasContext.fillStyle = 'black';
     gameCanvasContext.font = '15px Helvetica';
-    let textStartingX = this.x + this.parentPromptAndAnswerGroupCheckBox.width + 5;
-    let textStartingY = this.y + this.parentPromptAndAnswerGroupCheckBox.height/2 + 3;
-    gameCanvasContext.fillText(this.parentPromptAndAnswerGroupCheckBox.name, textStartingX,textStartingY);
+
+    gameCanvasContext.fillText(this.parentPromptAndAnswerGroupCheckBox.name,
+      this.parentPromptAndAnswerGroupCheckBox.textX,this.parentPromptAndAnswerGroupCheckBox.textY);
 
 
     for (let childIndex = 0; childIndex < this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes.length; childIndex++)
     {
 
-
       let childBox = this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex];
-      let currentYOffSet = (childBox.height*1.1*(childIndex + 1)) + 17;
-      let childBoxStartingX = this.x + 10;
-      let childBoxStartingY = this.y + currentYOffSet;
-      gameCanvasContext.drawImage(childBox.boxImage, childBoxStartingX,childBoxStartingY,
-                                  childBox.width,childBox.height);
 
-      let childTextStartingX = childBoxStartingX + childBox.width + 5;
-      let childTextStartingY = childBoxStartingY + childBox.height/2 + 3;
+      gameCanvasContext.drawImage(childBox.boxImage, childBox.x,childBox.y,
+                                  childBox.width,childBox.height);
+      if (childBox.checked)
+      {
+        gameCanvasContext.drawImage(childBox.checkImage, childBox.x,childBox.y,
+                                    childBox.width,childBox.height);
+      }
+
       gameCanvasContext.fillStyle = 'black';
       gameCanvasContext.font = '15px Helvetica';
-      gameCanvasContext.fillText(childBox.name, childTextStartingX,childTextStartingY);
+      gameCanvasContext.fillText(childBox.name, childBox.textX,childBox.textY);
 
     }
   }
@@ -162,6 +196,9 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
   this.promptAndAnswerGroup = promptAndAnswerGroup;
   this.arrayIndex = arrayIndex;
 
+  this.x = undefined;
+  this.y = undefined;
+
   this.boxImage = checkBoxImage;
   this.checkImage = checkForCheckBoxImage;
 
@@ -172,8 +209,6 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
 
   this.initializeIndividualPromptsAndAnswers = function()
   {
-
-
     for (let individualPromptAndAnswerIndex = 0; individualPromptAndAnswerIndex < this.promptAndAnswerGroup.arrayOfObjects.length; individualPromptAndAnswerIndex++)
     {
 
@@ -188,6 +223,8 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
   this.checked = false;
   this.handleClick = function()
   {
+    console.log('this: ' + this);
+    console.log('this.x: ' + this.x);
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < this.x + this.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
         {
@@ -200,18 +237,18 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
   {
     if (this.checked)
     {
-      this.checked === false;
-      for (let childIndex = 0; childIndex < parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes.length; childIndex++)
+      this.checked = false;
+      for (let childIndex = 0; childIndex < this.arrayOfIndividualPromptAndAnswerCheckBoxes.length; childIndex++)
       {
-        parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked = false;
+        this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked = false;
       }
     }
     else
     {
-      this.checked === true;
-      for (let childIndex = 0; childIndex < parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes.length; childIndex++)
+      this.checked = true;
+      for (let childIndex = 0; childIndex < this.arrayOfIndividualPromptAndAnswerCheckBoxes.length; childIndex++)
       {
-        parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked = true;
+        this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked = true;
       }
     }
   }
@@ -226,6 +263,9 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
 
   this.x = undefined;
   this.y = undefined;
+
+  this.textX = undefined;
+  this.textY = undefined;
 
   this.checked = false;
 
@@ -254,5 +294,6 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
     {
       this.checked = true;
     }
+    console.log('this.checked: ' + this.checked);
   }
 }

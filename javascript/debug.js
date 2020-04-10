@@ -4,9 +4,10 @@ function drawDebugStuff()
 {
 
   if (fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen ||
-      fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
+      fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame ||
+    fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.mandarinCustomizationScreen)
   {
-    
+
     gameCanvasContext.fillStyle = 'black';
     gameCanvasContext.fillText(inputManager.mouseCoordinates.x + "," + inputManager.mouseCoordinates.y,
                                 inputManager.mouseCoordinates.x,inputManager.mouseCoordinates.y);
