@@ -23,6 +23,8 @@ function laneGameClass() {
 		this.collidingObject = this.playerCharacter;
 	}
 
+	this.collisionsWithAnswersManager = new LaneCollisionsManager();
+
   this.pregameSpecialCode = function()
   {
     gameAudio = {};

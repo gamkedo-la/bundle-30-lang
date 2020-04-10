@@ -17,19 +17,12 @@ function CollisionsWithAnswersManager()
     this.insideBoxColliderForStringAnswer = function(
         collidingObject, targetPromptAndAnswerPairing, answerWidth)
     {
-        if (gameClassManager.currentGame.name === 'laneGame')
-        {
-            return (targetPromptAndAnswerPairing.yCoordinate + answerWidth/2 > collidingObject.y)
-        }
-        else
-        {
-            return (
-                collidingObject.x < targetPromptAndAnswerPairing.xCoordinate - 5 + answerWidth &&
-                collidingObject.x + collidingObject.width > targetPromptAndAnswerPairing.xCoordinate + 5  &&
-                collidingObject.y < targetPromptAndAnswerPairing.yCoordinate + 10 &&
-                collidingObject.y + collidingObject.height > targetPromptAndAnswerPairing.yCoordinate - 15
-            );
-        }
+        return (
+            collidingObject.x < targetPromptAndAnswerPairing.xCoordinate - 5 + answerWidth &&
+            collidingObject.x + collidingObject.width > targetPromptAndAnswerPairing.xCoordinate + 5  &&
+            collidingObject.y < targetPromptAndAnswerPairing.yCoordinate + 10 &&
+            collidingObject.y + collidingObject.height > targetPromptAndAnswerPairing.yCoordinate - 15
+        );
     }
 
     this.insideBoxColliderForImageAnswers = function(
