@@ -21,6 +21,7 @@ function LoadingAndSplashScreen()
     console.log('mandarinCustomizationScreen: ' + mandarinCustomizationScreen);
     mandarinCustomizationScreen.initializePromptAndAnswerGroupCheckBoxes();
     mandarinCustomizationScreen.initializeIndividualPromptsAndAnswerCheckBoxes();
+    mandarinCustomizationScreen.initializeArrayOfDivs();
   }
 
   this.promptPlayerForClickAfterLoading = function()

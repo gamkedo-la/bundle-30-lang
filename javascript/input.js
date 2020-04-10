@@ -38,6 +38,10 @@ function InputManager()
       languageSelectionScreen.handleLanguageCellClicks();
       break;
 
+      case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.mandarinCustomizationScreen:
+      mandarinCustomizationScreen.handleClicks();
+      break;
+
       case fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame:
       if (gameClassManager.currentGame.handleClick !== undefined)
       {

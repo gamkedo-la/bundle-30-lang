@@ -79,6 +79,12 @@ function LanguageSelectionScreen()
     genAudio.playTransitionMusic();
   }
 
+  this.goToLanguageCustomizationScreen = function()
+  {
+    fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.mandarinCustomizationScreen.associatedObject = mandarinCustomizationScreen;
+    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.mandarinCustomizationScreen);
+  }
+
   this.handlePlayButtonClick = function()
   {
     let width = gameCanvas.width/4;
@@ -91,7 +97,14 @@ function LanguageSelectionScreen()
         this.languageNum >= 0)
         {
           genAudio.playClick();
-          this.startGame();
+          if (isLanguageCustomizationActive)
+          {
+            this.goToLanguageCustomizationScreen();
+          }
+          else
+          {
+            this.startGame();
+          }
         }
   }
 
