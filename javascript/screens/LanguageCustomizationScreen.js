@@ -82,7 +82,7 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
         this.arrayOfDivs[divIndex].parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes[childBoxIndex].handleClick();
       }
     }
-    console.log('this.arrayOfDivs[0].parentPromptAndAnswerGroupCheckBox.checked: ' + this.arrayOfDivs[0].parentPromptAndAnswerGroupCheckBox.checked);
+    //console.log('this.arrayOfDivs[0].parentPromptAndAnswerGroupCheckBox.checked: ' + this.arrayOfDivs[0].parentPromptAndAnswerGroupCheckBox.checked);
   }
 }
 
@@ -238,9 +238,17 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
     if (this.checked)
     {
       this.checked = false;
-      for (let childIndex = 0; childIndex < this.arrayOfIndividualPromptAndAnswerCheckBoxes.length; childIndex++)
+      for (let childIndex = this.arrayOfIndividualPromptAndAnswerCheckBoxes.length - 1; childIndex > -1; childIndex--)
       {
-        this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked = false;
+        if (this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked)
+        {
+          this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked = false;
+          promptsAndAnswersManager.customizedLanguageArray.splice(childIndex,1);
+        }
+        else
+        {
+          continue;
+        }
       }
     }
     else
@@ -248,11 +256,19 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
       this.checked = true;
       for (let childIndex = 0; childIndex < this.arrayOfIndividualPromptAndAnswerCheckBoxes.length; childIndex++)
       {
-        this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked = true;
-      }
-    }
-  }
-}
+        if (!this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked)
+        {
+          this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked = true;
+          promptsAndAnswersManager.customizedLanguageArray.push(this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].promptAndAnswer);
+        }
+        else
+        {
+          continue;
+        }//end of else for individual prompt/answer check box true/false
+      }// end of for loop for adding checks to boxes and adding prompts/answers to custom array
+    }// end of else for checking group check box true/false
+  }// end of toggle child check boxes
+}// end of group check box class/function
 
 function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAnswer, arrayIndex)
 {
@@ -279,7 +295,6 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < this.x + this.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
         {
-          console.log('click detected');
           this.toggleCheck();
         }
   }
@@ -289,11 +304,47 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
     if (this.checked)
     {
       this.checked = false;
+      this.removePromptAndAnswerToCustomizedArray();
     }
     else
     {
       this.checked = true;
+      this.addPromptAndAnswerToCustomizedArray();
     }
-    console.log('this.checked: ' + this.checked);
+  }
+
+  this.addPromptAndAnswerToCustomizedArray = function()
+  {
+    if (promptsAndAnswersManager.customizedLanguageArray.length === 0)
+    {
+      promptsAndAnswersManager.customizedLanguageArray.push(this.promptAndAnswer);
+    }
+    else
+    {
+      for (let customArrayIndex = 0; customArrayIndex < promptsAndAnswersManager.customizedLanguageArray.length; customArrayIndex++)
+      {
+        if (promptsAndAnswersManager.customizedLanguageArray[customArrayIndex].name === this.promptAndAnswer.name)
+        {
+          return;
+        }
+        else
+        {
+          promptsAndAnswersManager.customizedLanguageArray.push(this.promptAndAnswer);
+          return;
+        }
+      }
+    }
+  }
+
+  this.removePromptAndAnswerToCustomizedArray = function()
+  {
+    for (let customArrayIndex = 0; customArrayIndex < promptsAndAnswersManager.customizedLanguageArray.length; customArrayIndex++)
+    {
+      if (promptsAndAnswersManager.customizedLanguageArray[customArrayIndex].name === this.promptAndAnswer.name)
+      {
+        promptsAndAnswersManager.customizedLanguageArray.splice(customArrayIndex,1);
+      }
+    }
+    console.log('promptsAndAnswersManager.customizedLanguageArray: ' + promptsAndAnswersManager.customizedLanguageArray);
   }
 }

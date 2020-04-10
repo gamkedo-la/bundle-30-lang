@@ -6,6 +6,8 @@ function PromptsAndAnswersManager()
   this.arrayOfLogicalMandarinPromptAnswerGroupings = [];
   this.arrayOfLogicalVietnamesePromptAnswerGroupings = [];
 
+  this.customizedLanguageArray = [];
+
   this.currentArrayOfLogicalPromptAnswerGroupings = undefined;
 
   this.arrayOfCVCPromptAnswerGroupings = [];
