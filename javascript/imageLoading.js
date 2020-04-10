@@ -156,6 +156,9 @@ let symbolPeriodImage = document.createElement("img");//.
 
 let placeholderPlayButtonImage = document.createElement("img");
 
+let checkBoxImage = document.createElement("img");
+let checkForCheckBoxImage = document.createElement("img");
+
 // bubble wrap game
 let bubbleWrapBG = document.createElement("img");
 let bubbleWrapSpritesheet = document.createElement("img");
@@ -411,6 +414,8 @@ function loadImages()
   //arrayOfImages.push({imageObjectBinding: balloonPopBG, theFile: 'images/Backgrounds/balloonPopBG.jpg'});
   arrayOfImages.push({imageObjectBinding: balloonPopSpritesheet, theFile: 'images/sprites/balloonPop/balloonPopSpritesheet.png'});
 
+  arrayOfImages.push({imageObjectBinding: checkBoxImage, theFile: 'images/checkBox.png'});
+  arrayOfImages.push({imageObjectBinding: checkForCheckBoxImage, theFile: 'images/checkForCheckBox.png'});
 
   // console.log(arrayOfImages);
 

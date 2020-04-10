@@ -17,7 +17,10 @@ function LoadingAndSplashScreen()
     promptersManager.instantiatePrompters();
     initializePromptAndAnswerObjects();
     populatePromptAndAnswerArrays();
-
+    mandarinCustomizationScreen = new LanguageCustomizationScreen('mandarin customization screen', promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
+    console.log('mandarinCustomizationScreen: ' + mandarinCustomizationScreen);
+    mandarinCustomizationScreen.initializePromptAndAnswerGroupCheckBoxes();
+    mandarinCustomizationScreen.initializeIndividualPromptsAndAnswerCheckBoxes();
   }
 
   this.promptPlayerForClickAfterLoading = function()

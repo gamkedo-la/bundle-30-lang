@@ -8,6 +8,7 @@ function FullGameStateMachineClass()
     titleScreen: {status:'title screen', associatedObject: titleScreen},
     modeSelectScreen: {status:'mode select screen', associatedObject: modeSelectScreen},
     languageSelectionScreen: {status: 'language select screen', associatedObject: languageSelectionScreen},
+    mandarinCustomizationScreen: {status: 'mandarin customization screen', associatedObject: mandarinCustomizationScreen},
     transitionToMiniGame: {status: 'transitioning to mini game', associatedObject: miniGameTransitioner},
     playingMiniGame: {status: 'playing mini game', associatedObject: gameClassManager.currentGame},
     pausedMiniGame: {status: 'mini game paused', associatedObject: gameClassManager.currentGame}

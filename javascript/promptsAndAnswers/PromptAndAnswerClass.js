@@ -244,5 +244,6 @@ function populatePromptAndAnswerArrays()
   //vietnamese
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalVietnamesePromptAnswerGroupings);
 
+  
   console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings);
 }
