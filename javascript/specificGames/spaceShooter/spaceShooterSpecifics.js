@@ -28,6 +28,8 @@ function spaceShooterGameClass() {
 	];
 	this.FRAME_RATE = 1000/30;
 
+	this.collisionsWithAnswersManager = new SpaceShooterCollisionsManager();
+
   this.pregameSpecialCode = function()
   {
     console.log("pregame special code for space shooter");

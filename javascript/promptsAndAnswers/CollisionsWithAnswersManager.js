@@ -199,15 +199,6 @@ function CollisionsWithAnswersManager()
         promptersManager.promptThePlayer();
         gameClassManager.currentGame.playerCharacter.speedX = 0;
         gameClassManager.currentGame.playerCharacter.speedY = 0;
-
-        if (gameClassManager.currentGame.name === 'spaceShooter')
-        {
-            gameClassManager.currentGame.arrayOfBullets = [];
-        }
-        else if (gameClassManager.currentGame.name == "MazeGame")
-        {
-            gameClassManager.currentGame.reset();
-        }
     }
 }
 CollisionsWithAnswersManager.prototype = new CollisionsWithAnswersManager();

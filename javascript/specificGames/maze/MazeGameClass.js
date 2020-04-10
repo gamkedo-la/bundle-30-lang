@@ -41,6 +41,8 @@ function MazeGameClass(){
 
     this.backgroundMusic = new MusicTrack('audio/backgroundTracks/mazeRaceMusic.mp3', 11.2);
 
+    this.collisionsWithAnswersManager = new MazeCollisionsManager();
+    
     this.superInitialize = function () {
         this.maze = new MazeClass();
         this.maze.initializeArrayOfCells();
