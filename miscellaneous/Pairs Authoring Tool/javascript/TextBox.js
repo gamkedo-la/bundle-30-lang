@@ -149,6 +149,6 @@ function TextBox(frame, font){
 
     this.textBoxGrew = function(deltaY){
         this.frame.y += deltaY;
-    }
+    };
 
 }
