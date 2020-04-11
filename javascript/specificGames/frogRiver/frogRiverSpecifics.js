@@ -22,6 +22,8 @@ function frogRiverGameClass()
   this.backButtonColor = 'yellow';
   this.backButtonTextColor = 'blueViolet';
 
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/Lillypad.mp3', 73.46);
+
   this.pregameSpecialCode = function()
   {
     this.lilyPadManager = new LilyPadManager();
