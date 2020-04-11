@@ -40,6 +40,18 @@ let mandarinPinkPromptAndAnswer = {};
 let mandarinGreenPromptAndAnswer = {};
 let mandarinColorsGrouping = {};
 
+let mandarin0PromptAndAnswer = {};
+let mandarin1PromptAndAnswer = {};
+let mandarin2PromptAndAnswer = {};
+let mandarin3PromptAndAnswer = {};
+let mandarin4PromptAndAnswer = {};
+let mandarin5PromptAndAnswer = {};
+let mandarin6PromptAndAnswer = {};
+let mandarin7PromptAndAnswer = {};
+let mandarin8PromptAndAnswer = {};
+let mandarin9PromptAndAnswer = {};
+let mandarinNumbersGrouping = {};
+
 
 function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, audioAssociation)
 {
@@ -132,6 +144,17 @@ function initializePromptAndAnswerObjects()
   mandarinGreenPromptAndAnswer = new PromptAndAnswerClass("mandarin green", '绿色', greenImage, promptAudio.mandarinGreen);
   mandarinBluePromptAndAnswer = new PromptAndAnswerClass("mandarin blue", '蓝色', blueImage, promptAudio.mandarinBlue);
 
+  mandarin0PromptAndAnswer = new PromptAndAnswerClass("mandarin 0", '零', number0, promptAudio.mandarin0);
+  mandarin1PromptAndAnswer = new PromptAndAnswerClass("mandarin 1", '一', number1, promptAudio.mandarin1);
+  mandarin2PromptAndAnswer = new PromptAndAnswerClass("mandarin 2", '二', number2, promptAudio.mandarin2);
+  mandarin3PromptAndAnswer = new PromptAndAnswerClass("mandarin 3", '三', number3, promptAudio.mandarin3);
+  mandarin4PromptAndAnswer = new PromptAndAnswerClass("mandarin 4", '四', number4, promptAudio.mandarin4);
+  mandarin5PromptAndAnswer = new PromptAndAnswerClass("mandarin 5", '五', number5, promptAudio.mandarin5);
+  mandarin6PromptAndAnswer = new PromptAndAnswerClass("mandarin 6", '六', number6, promptAudio.mandarin6);
+  mandarin7PromptAndAnswer = new PromptAndAnswerClass("mandarin 7", '七', number7, promptAudio.mandarin7);
+  mandarin8PromptAndAnswer = new PromptAndAnswerClass("mandarin 8", '八', number8, promptAudio.mandarin8);
+  //mandarin9PromptAndAnswer = new PromptAndAnswerClass("mandarin 9", '九', number9, promptAudio.mandarin9);
+
   //Vietnamese Section
 }
 
@@ -162,6 +185,7 @@ function populatePromptAndAnswerArrays()
   mandarinTodayVersusYesterdayPairGrouping = {name: 'mandarin today vs yesterday', arrayOfObjects:[]};
   mandarinYesterdayVersusTomorrowPairGrouping = {name: 'mandarin yesterday vs tomorrow', arrayOfObjects:[]};
   mandarinColorsGrouping = {name: 'mandarin colors', arrayOfObjects:[]};
+  mandarinNumbersGrouping = {name: 'mandarin numbers', arrayOfObjects:[]};
 
   //English
   womanVersusWomenPairGrouping.arrayOfObjects.push(womanPromptAndAnswer);
@@ -237,13 +261,25 @@ function populatePromptAndAnswerArrays()
   mandarinColorsGrouping.arrayOfObjects.push(mandarinPinkPromptAndAnswer);
   mandarinColorsGrouping.arrayOfObjects.push(mandarinGreenPromptAndAnswer);
   mandarinColorsGrouping.arrayOfObjects.push(mandarinBluePromptAndAnswer);
-  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinColorsGrouping);
+  //promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinColorsGrouping);
+
+  mandarinNumbersGrouping.arrayOfObjects.push(mandarin0PromptAndAnswer);
+  mandarinNumbersGrouping.arrayOfObjects.push(mandarin1PromptAndAnswer);
+  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin2PromptAndAnswer);
+  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin3PromptAndAnswer);
+  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin4PromptAndAnswer);
+  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin5PromptAndAnswer);
+  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin6PromptAndAnswer);
+  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin7PromptAndAnswer);
+  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin8PromptAndAnswer);
+  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin9PromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinNumbersGrouping);
 
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
 
   //vietnamese
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalVietnamesePromptAnswerGroupings);
 
-  
+
   console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings);
 }

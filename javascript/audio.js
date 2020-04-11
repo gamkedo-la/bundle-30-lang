@@ -327,6 +327,18 @@ promptAudio.mandarinBlue = new promptSound('audio/PromptsAndAnswers/Mandarin/man
 promptAudio.mandarinPurple = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinPurple.mp3');//紫色
 promptAudio.mandarinPink = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinPink.mp3');//粉
 
+promptAudio.mandarin0 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin0.mp3');
+promptAudio.mandarin1 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin1.mp3');
+promptAudio.mandarin2 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin2.mp3');
+promptAudio.mandarin3 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin3.mp3');
+promptAudio.mandarin4 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin4.mp3');
+promptAudio.mandarin5 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin5.mp3');
+promptAudio.mandarin6 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin6.mp3');
+promptAudio.mandarin7 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin7.mp3');
+promptAudio.mandarin8 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin8.mp3');
+//promptAudio.mandarin9 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin9.mp3');
+
+
 promptAudio.englishBee = new promptSound('audio/PromptsAndAnswers/bee.mp3');
 promptAudio.englishFlower = new promptSound('audio/PromptsAndAnswers/flower.mp3');
 
