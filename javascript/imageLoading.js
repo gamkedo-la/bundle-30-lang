@@ -105,6 +105,8 @@ let shootGalleryTargetImage = document.createElement('img');
 let spaceShooterBackgroundImage = document.createElement('img');
 let spaceShooterBackgroundImage2 = document.createElement('img');
 let spaceshipImage = document.createElement('img');
+let spaceRockImage1 = document.createElement('img');
+let spaceRockImage2 = document.createElement('img');
 
 //flower images
 let simpleFlower = document.createElement('img');
@@ -352,6 +354,8 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage2, theFile: 'images/Backgrounds/SpaceWithJupiter2.png'});
   arrayOfImages.push({imageObjectBinding: spaceshipImage, theFile: 'images/sprites/spaceShooter/spaceship.png'});
   arrayOfImages.push({imageObjectBinding: jupiterImage, theFile: 'images/sprites/spaceShooter/Jupiter.png'});
+  arrayOfImages.push({imageObjectBinding: spaceRockImage1, theFile: 'images/sprites/spaceShooter/spaceRock.png'});
+  arrayOfImages.push({imageObjectBinding: spaceRockImage2, theFile: 'images/sprites/spaceShooter/spaceRock2.png'});
 
 
 

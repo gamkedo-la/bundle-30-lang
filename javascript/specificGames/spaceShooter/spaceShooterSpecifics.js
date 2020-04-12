@@ -26,6 +26,20 @@ function spaceShooterGameClass() {
 	  {name: "Space", fontSize: 25, spacing: 12, x: 130, y: 270},
 	  {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}
 	];
+
+	this.imageAnswerHolderWidth = undefined;
+  this.imageAnswerHolderHeight = undefined;
+
+	this.audioImageAnswerHolderWidth = undefined;
+  this.audioImageAnswerHolderHeight = undefined;
+
+  this.correctTextAnswerHolderWidth = undefined;
+  this.incorrectTextAnswerHolderWidth = undefined;
+
+	this.spaceRockAnswerHolder1 = undefined;
+	this.spaceRockAnswerHolder2 = undefined;
+	this.arrayOfAnswerHolders = [];
+
 	this.FRAME_RATE = 1000/30;
 
 	this.collisionsWithAnswersManager = new SpaceShooterCollisionsManager();
@@ -45,6 +59,15 @@ function spaceShooterGameClass() {
 		this.jupiter1XCoordinate = gameCanvas.width*0.2;
 		this.jupiter2XCoordinate = gameCanvas.width*0.2 + gameCanvas.width;
 
+		this.imageAnswerHolderWidth = gameCanvas.width/4;
+		this.imageAnswerHolderHeight = gameCanvas.height/5;
+		this.audioImageAnswerHolderWidth = gameCanvas.width/5;
+    this.audioImageAnswerHolderHeight = gameCanvas.height/6;
+
+		this.spaceRockAnswerHolder1 = new SpaceRockAnswerHolder(spaceRockImage1);
+		this.spaceRockAnswerHolder2 = new SpaceRockAnswerHolder(spaceRockImage2);
+		this.arrayOfAnswerHolders.push(this.spaceRockAnswerHolder1);
+		this.arrayOfAnswerHolders.push(this.spaceRockAnswerHolder2);
 		// initializePromptAndAnswerObjects();
     // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
@@ -63,6 +86,12 @@ function spaceShooterGameClass() {
 		this.handleBulletsOffScreen();
 	};
 
+	this.assignAnswerHolder = function()
+  {
+      let randomNumber = getRandomIntInclusive(0, this.arrayOfAnswerHolders.length - 1);
+      return this.arrayOfAnswerHolders[randomNumber];
+  }
+	
 	this.moveBullets = function()
 	{
 		for (var bulletIndex = 0; bulletIndex < this.arrayOfBullets.length; bulletIndex++)
@@ -223,3 +252,8 @@ function spaceShooterGameClass() {
 };
 
 const spaceShooterGame = new spaceShooterGameClass();
+
+function SpaceRockAnswerHolder(image)
+{
+	this.image = image;
+}
