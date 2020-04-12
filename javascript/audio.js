@@ -336,7 +336,7 @@ promptAudio.mandarin5 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandar
 promptAudio.mandarin6 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin6.mp3');
 promptAudio.mandarin7 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin7.mp3');
 promptAudio.mandarin8 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin8.mp3');
-//promptAudio.mandarin9 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin9.mp3');
+promptAudio.mandarin9 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin9.mp3');
 
 
 promptAudio.englishBee = new promptSound('audio/PromptsAndAnswers/bee.mp3');

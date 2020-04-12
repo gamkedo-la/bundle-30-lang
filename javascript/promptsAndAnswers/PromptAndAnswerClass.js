@@ -153,7 +153,7 @@ function initializePromptAndAnswerObjects()
   mandarin6PromptAndAnswer = new PromptAndAnswerClass("mandarin 6", '六', number6, promptAudio.mandarin6);
   mandarin7PromptAndAnswer = new PromptAndAnswerClass("mandarin 7", '七', number7, promptAudio.mandarin7);
   mandarin8PromptAndAnswer = new PromptAndAnswerClass("mandarin 8", '八', number8, promptAudio.mandarin8);
-  //mandarin9PromptAndAnswer = new PromptAndAnswerClass("mandarin 9", '九', number9, promptAudio.mandarin9);
+  mandarin9PromptAndAnswer = new PromptAndAnswerClass("mandarin 9", '九', number9, promptAudio.mandarin9);
 
   //Vietnamese Section
 }
@@ -261,18 +261,18 @@ function populatePromptAndAnswerArrays()
   mandarinColorsGrouping.arrayOfObjects.push(mandarinPinkPromptAndAnswer);
   mandarinColorsGrouping.arrayOfObjects.push(mandarinGreenPromptAndAnswer);
   mandarinColorsGrouping.arrayOfObjects.push(mandarinBluePromptAndAnswer);
-  //promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinColorsGrouping);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinColorsGrouping);
 
   mandarinNumbersGrouping.arrayOfObjects.push(mandarin0PromptAndAnswer);
   mandarinNumbersGrouping.arrayOfObjects.push(mandarin1PromptAndAnswer);
-  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin2PromptAndAnswer);
-  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin3PromptAndAnswer);
-  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin4PromptAndAnswer);
-  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin5PromptAndAnswer);
-  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin6PromptAndAnswer);
-  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin7PromptAndAnswer);
-  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin8PromptAndAnswer);
-  // mandarinNumbersGrouping.arrayOfObjects.push(mandarin9PromptAndAnswer);
+  mandarinNumbersGrouping.arrayOfObjects.push(mandarin2PromptAndAnswer);
+  mandarinNumbersGrouping.arrayOfObjects.push(mandarin3PromptAndAnswer);
+  mandarinNumbersGrouping.arrayOfObjects.push(mandarin4PromptAndAnswer);
+  mandarinNumbersGrouping.arrayOfObjects.push(mandarin5PromptAndAnswer);
+  mandarinNumbersGrouping.arrayOfObjects.push(mandarin6PromptAndAnswer);
+  mandarinNumbersGrouping.arrayOfObjects.push(mandarin7PromptAndAnswer);
+  mandarinNumbersGrouping.arrayOfObjects.push(mandarin8PromptAndAnswer);
+  mandarinNumbersGrouping.arrayOfObjects.push(mandarin9PromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinNumbersGrouping);
 
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
