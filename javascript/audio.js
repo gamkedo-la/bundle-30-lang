@@ -20,10 +20,10 @@ function MusicManager() {
 	var fadeTrack = null;
 	var nextTrack = null;
 	var trackList = new Array();
-	this.playing = false;
-	this.onEndFunction = function() {return};
 	var currentTrackDuration = null;
 	var nextTrackDuration = null;
+	this.playing = false;
+	this.onEndFunction = function() {return};
 
 	this.update = function() {
 		if (this.playing) {
