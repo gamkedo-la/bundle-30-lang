@@ -93,6 +93,9 @@ let jumperBackground = document.createElement('img');
 //volcano
 let volcanoImage = document.createElement('img');
 let spaceBackgroundForVolcanoGame = document.createElement('img');
+let lavaBall1Image = document.createElement('img');
+let lavaBall2Image = document.createElement('img');
+let lavaBall3Image = document.createElement('img');
 
 //cVc shooter/shoot gallery game
 let shootGalleryImage = document.createElement('img');
@@ -336,6 +339,9 @@ function loadImages()
   //pass or block
   arrayOfImages.push({imageObjectBinding: volcanoImage, theFile: 'images/Backgrounds/Volcano.png'});
   arrayOfImages.push({imageObjectBinding: spaceBackgroundForVolcanoGame, theFile: 'images/Backgrounds/spaceBackgroundForVolcanoGame.png'});
+  arrayOfImages.push({imageObjectBinding: lavaBall1Image, theFile: 'images/sprites/passBlock/lavaBal.png'});
+  arrayOfImages.push({imageObjectBinding: lavaBall2Image, theFile: 'images/sprites/passBlock/lavaBall.png'});
+  arrayOfImages.push({imageObjectBinding: lavaBall3Image, theFile: 'images/sprites/passBlock/lavaBalll.png'});
 
   //cVc shooter/shoot gallery game
   arrayOfImages.push({imageObjectBinding: shootGalleryImage, theFile: 'images/Backgrounds/ShootGallery.png'});

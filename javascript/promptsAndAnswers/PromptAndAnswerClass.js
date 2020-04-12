@@ -63,6 +63,8 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
   this.audioAssociation = audioAssociation;
   this.audioAssociation.datatype = 'audio';
 
+  this.answerHolder = undefined;
+
   this.arrayOfPossiblePrompts = [this.textAssociation, this.imageAssociation, this.audioAssociation];
   this.arrayOfPossibleAnswers = [this.textAssociation, this.imageAssociation, this.audioAssociation];
 

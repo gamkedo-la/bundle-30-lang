@@ -41,6 +41,15 @@ function PromptsAndAnswersManager()
     // console.log('this.currentLogicalPromptAndAnswerGroup.arrayOfObjects: ' + this.currentLogicalPromptAndAnswerGroup.arrayOfObjects);
   }
 
+  this.assignAnswerHolderToAnswer = function(answer)
+  {
+    if (typeof gameClassManager.currentGame.assignAnswerHolder === 'undefined')
+    {
+      console.log('no answer holder assignment function for this game');
+      return;
+    }
+    answer.answerHolder = gameClassManager.currentGame.assignAnswerHolder();
+  }
 
   this.currentPrompt = {};
   this.pickARandomPromptFromTargetPromptAndAnswerPairing = function()
@@ -123,6 +132,14 @@ function PromptsAndAnswersManager()
     if (typeof this.currentCorrectAnswer === 'string')
     {
       this.currentAnswerDataType = 'string';
+      if (gameClassManager.currentGame.correctTextAnswerHolderWidth === undefined)
+      {
+        gameClassManager.currentGame.correctTextAnswerHolderWidth =
+        promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
+            this.textAnswerFontStyle
+        ) + 20;
+      }
+
     } else if (this.currentCorrectAnswer.nodeName === 'IMG') {
       this.currentAnswerDataType = 'IMG';
     } else if (this.currentCorrectAnswer.type === 'AUDIO')
@@ -213,6 +230,13 @@ function PromptsAndAnswersManager()
             {
               this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
+          }
+          if (gameClassManager.currentGame.incorrectTextAnswerHolderWidth === undefined)
+          {
+            gameClassManager.currentGame.incorrectTextAnswerHolderWidth =
+            promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
+                this.textAnswerFontStyle
+            ) + 20;
           }
         }
         else if (this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex].nodeName === 'IMG')
@@ -712,6 +736,8 @@ function PromptsAndAnswersManager()
       this.assignAnAnswerBasedOnPrompt();
       this.definecurrentAnswerDataType();
       this.defineIncorrectTargetPromptAndAnswerPairing();
+      this.assignAnswerHolderToAnswer(this.correctTargetPromptAndAnswerPairing);
+      this.assignAnswerHolderToAnswer(this.incorrectTargetPromptAndAnswerPairing);
       this.assignCurrentIncorrectAnswer();
       this.defineWidthAndHeightForTargetAnswers();
       this.defineXAndYCoordinatesForTargets();

@@ -19,6 +19,18 @@ function DrawAnswersManager()
         this.textAnswerFontStyle
       )
 
+      gameCanvasContext.drawImage(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 60,
+        gameClassManager.currentGame.correctTextAnswerHolderWidth,
+        gameClassManager.currentGame.correctTextAnswerHolderWidth);
+
+      gameCanvasContext.drawImage(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder.image,
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5,
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 60,
+        gameClassManager.currentGame.correctTextAnswerHolderWidth,
+        gameClassManager.currentGame.correctTextAnswerHolderWidth);
+
       //draw correct answer
       // gameCanvasContext.font = '30px Helvetica';
       gameCanvasContext.font = this.textAnswerFontStyle;
@@ -48,6 +60,18 @@ function DrawAnswersManager()
     {
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
+
+      gameCanvasContext.drawImage(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 20,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 20,
+        gameClassManager.currentGame.imageAnswerHolderWidth,
+        gameClassManager.currentGame.imageAnswerHolderHeight);
+
+      gameCanvasContext.drawImage(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder.image,
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 20,
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 20,
+        gameClassManager.currentGame.imageAnswerHolderWidth,
+        gameClassManager.currentGame.imageAnswerHolderHeight);
 
         dateAndTime.checkForNecessityOfUsingDatesForDrawAnswersManager();
 
@@ -115,6 +139,19 @@ function DrawAnswersManager()
     {
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
+
+      gameCanvasContext.drawImage(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 20,
+        promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 20,
+        gameClassManager.currentGame.audioImageAnswerHolderWidth,
+        gameClassManager.currentGame.audioImageAnswerHolderHeight);
+
+      gameCanvasContext.drawImage(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder.image,
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 20,
+        promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 20,
+        gameClassManager.currentGame.audioImageAnswerHolderWidth,
+        gameClassManager.currentGame.audioImageAnswerHolderHeight);
+
       this.audioImageWidth = gameClassManager.currentGame.audioImageAnswerWidth;
       this.audioImageHeight = gameClassManager.currentGame.audioImageAnswerHeight;
 
@@ -150,7 +187,7 @@ function DrawAnswersManager()
   this.audioImageWidth = undefined;
   this.audioImageHeight = undefined;
   this.textAnswerFontStyle = undefined;
-  
+
   this.initialize = function () {
     this.imageWidth  = gameClassManager.currentGame.imageAnswerWidth;
     this.imageHeight = gameClassManager.currentGame.imageAnswerHeight;

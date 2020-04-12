@@ -24,9 +24,18 @@ function PassOrBlockGameClass()
 
   this.imageAnswerWidth = undefined;
   this.imageAnswerHeight = undefined;
+  this.imageAnswerHolderWidth = undefined;
+  this.imageAnswerHolderHeight = undefined;
 
   this.audioImageAnswerWidth = undefined;
   this.audioImageAnswerHeight = undefined;
+  this.audioImageAnswerHolderWidth = undefined;
+  this.audioImageAnswerHolderHeight = undefined;
+
+  this.correctTextAnswerHolderWidth = undefined;
+  this.incorrectTextAnswerHolderWidth = undefined;
+
+  this.arrayOfAnswerHolders = [];
 
   this.LETTER_COLOR = 'cyan';
 
@@ -38,14 +47,32 @@ function PassOrBlockGameClass()
   this.superInitialize = this.initialize;
   this.initialize = function()
   {
-    this.imageAnswerWidth = gameCanvas.width/6;
-    this.imageAnswerHeight = gameCanvas.height/7;
+    this.imageAnswerWidth = gameCanvas.width/8;
+    this.imageAnswerHeight = gameCanvas.height/9;
+    this.imageAnswerHolderWidth = gameCanvas.width/4;
+    this.imageAnswerHolderHeight = gameCanvas.height/5;
 
     this.audioImageAnswerWidth = gameCanvas.width/6;
     this.audioImageAnswerHeight = gameCanvas.height/7;
+    this.audioImageAnswerHolderWidth = gameCanvas.width/5;
+    this.audioImageAnswerHolderHeight = gameCanvas.height/6;
+
+    this.lavaAnswerHolder1 = new LavaAnswerHolder(lavaBall1Image);
+    this.lavaAnswerHolder2 = new LavaAnswerHolder(lavaBall2Image);
+    this.lavaAnswerHolder3 = new LavaAnswerHolder(lavaBall3Image);
+    this.arrayOfAnswerHolders.push(this.lavaAnswerHolder1);
+    this.arrayOfAnswerHolders.push(this.lavaAnswerHolder2);
+    this.arrayOfAnswerHolders.push(this.lavaAnswerHolder3);
+
 
     this.background = new PassOrBlockBackground();
     this.superInitialize();
+  }
+
+  this.assignAnswerHolder = function()
+  {
+      let randomNumber = getRandomIntInclusive(0, this.arrayOfAnswerHolders.length - 1);
+      return this.arrayOfAnswerHolders[randomNumber];
   }
 
   this.draw = function()
@@ -86,3 +113,8 @@ function PassOrBlockGameClass()
 }
 
 const passOrBlockGame = new PassOrBlockGameClass();
+
+function LavaAnswerHolder(image)
+{
+  this.image = image;
+}
