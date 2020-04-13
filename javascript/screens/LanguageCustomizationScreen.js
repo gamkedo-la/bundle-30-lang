@@ -46,9 +46,11 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
     {
       let languageGroupDiv = new LanguageGroupDiv(this, this.arrayOfPromptAndAnswerGroupCheckBoxes[arrayOfGroupCheckBoxesIndex],
                                                   this.currentColumnIndex, arrayOfGroupCheckBoxesIndex);
+
       languageGroupDiv.defineXAndYCoordinates();
       languageGroupDiv.defineGroupCheckBoxXandY();
       languageGroupDiv.defineChildCheckBoxXandYs();
+      languageGroupDiv.checkIfDivOffScreenAndRedefineIfSo(languageGroupDiv);
       this.arrayOfDivs.push(languageGroupDiv);
     }
   }
@@ -99,26 +101,26 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
   this.parentPromptAndAnswerGroupCheckBox = parentPromptAndAnswerGroupCheckBox;
 
   this.parentCheckBoxHeight = gameCanvas.height/20;
-  this.childCheckBoxesCombinedHeight = this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes.length*gameCanvas.height/30;
-  this.height = this.parentCheckBoxHeight + this.childCheckBoxesCombinedHeight;
+  this.lastChildBoxIndex = this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes.length - 1;
+  this.lastChildBox = this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes[this.lastChildBoxIndex];
+  this.lastChildBoxBottomY = this.lastChildBox.y + this.lastChildBox.height;
 
   this.x = undefined;
   this.y = undefined;
 
   this.defineXAndYCoordinates = function()
   {
+
     if (!this.previousDiv)
     {
       this.y = 100;
     }
-    else
+    else if (this.columnIndex === this.previousDiv.columnIndex)
     {
-      this.y = this.previousDiv.y + this.previousDiv.height;
-      if (this.y + this.height > gameCanvas.height)
-      {
-        this.columnIndex++;
-        this.y = 100;
-      }
+        this.y = this.previousDiv.lastChildBox.y + this.previousDiv.lastChildBox.height + 15;
+    } else
+    {
+      this.y = 100;
     }
     this.x = 15 + this.columnIndex*parentScreenObject.columnWidth;
   }
@@ -145,6 +147,18 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
 
       childBox.textX = childBox.x + childBox.width + 5;
       childBox.textY = childBox.y + childBox.height/2 + 3;
+    }
+  }
+
+  this.checkIfDivOffScreenAndRedefineIfSo = function(languageGroupDiv)
+  {
+    if (this.lastChildBox.y + this.lastChildBox.height > gameCanvas.height)
+    {
+      this.columnIndex++;
+      this.y = 100;
+      languageGroupDiv.defineXAndYCoordinates();
+      languageGroupDiv.defineGroupCheckBoxXandY();
+      languageGroupDiv.defineChildCheckBoxXandYs();
     }
   }
 
