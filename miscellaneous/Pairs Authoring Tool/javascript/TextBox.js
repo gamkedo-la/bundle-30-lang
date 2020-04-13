@@ -1,5 +1,5 @@
 //TextBox
-//Class unfinished
+
 function TextBox(frame, font){
     this.type = ChildType.TextBox;
     this.frame = frame;
@@ -12,7 +12,7 @@ function TextBox(frame, font){
     this.frame.height = titleSize.height;
     let counts = 0;
     this.wordToLearn = null;
-    this.cursor = new TextCursor();//TODO: Make class
+    this.cursor = new TextCursor();
 
     this.colors = {
         normal: 'white',
