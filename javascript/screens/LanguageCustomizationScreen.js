@@ -1,4 +1,4 @@
-let isLanguageCustomizationActive = false;
+let isLanguageCustomizationActive = true;
 
 function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
 {
@@ -141,6 +141,7 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
 }
 
 let mandarinCustomizationScreen;
+let englishCustomizationScreen;
 
 function Page(pageIndex)
 {

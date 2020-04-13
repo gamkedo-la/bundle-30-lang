@@ -18,10 +18,15 @@ function LoadingAndSplashScreen()
     initializePromptAndAnswerObjects();
     populatePromptAndAnswerArrays();
     mandarinCustomizationScreen = new LanguageCustomizationScreen('mandarin customization screen', promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
-    console.log('mandarinCustomizationScreen: ' + mandarinCustomizationScreen);
+    //console.log('mandarinCustomizationScreen: ' + mandarinCustomizationScreen);
     mandarinCustomizationScreen.initializePromptAndAnswerGroupCheckBoxes();
     mandarinCustomizationScreen.initializeIndividualPromptsAndAnswerCheckBoxes();
     mandarinCustomizationScreen.initializeArrayOfDivs();
+    englishCustomizationScreen = new LanguageCustomizationScreen('mandarin customization screen', promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings);
+    //console.log('mandarinCustomizationScreen: ' + mandarinCustomizationScreen);
+    englishCustomizationScreen.initializePromptAndAnswerGroupCheckBoxes();
+    englishCustomizationScreen.initializeIndividualPromptsAndAnswerCheckBoxes();
+    englishCustomizationScreen.initializeArrayOfDivs();
   }
 
   this.promptPlayerForClickAfterLoading = function()

@@ -80,8 +80,16 @@ function LanguageSelectionScreen()
 
   this.goToLanguageCustomizationScreen = function()
   {
-    fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.mandarinCustomizationScreen.associatedObject = mandarinCustomizationScreen;
-    fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.mandarinCustomizationScreen);
+    if (this.languageNum === 0)
+    {
+      fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.englishCustomizationScreen.associatedObject = englishCustomizationScreen;
+      fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.englishCustomizationScreen);
+    }
+    else if (this.languageNum === 1)
+    {
+      fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.mandarinCustomizationScreen.associatedObject = mandarinCustomizationScreen;
+      fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.mandarinCustomizationScreen);
+    }
   }
 
   this.handlePlayButtonClick = function()
