@@ -75,11 +75,16 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
 
     this.drawDivs(this.currentPageIndex);
 
+    //previous/next page buttons
     gameCanvasContext.strokeStyle = 'black';
     gameCanvasContext.strokeRect(gameCanvas.width/2 - 90,2, 70,40);
     gameCanvasContext.strokeRect(gameCanvas.width/2,2, 70,40);
 
     customFontFillText([leftArrowImage, rightArrowImage], 70,90, gameCanvas.width/2 - 90,-10);
+
+    //play button
+    gameCanvasContext.strokeRect(gameCanvas.width-100,2, 98,40);
+    customFontFillText('Play', 35,15, gameCanvas.width-90,5);
     //customFontFillText([rightArrowImage], 80,20, gameCanvas.width/2 + 40,5);
   }
 
@@ -124,6 +129,12 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
             }
           }
 
+      if (inputManager.mouseCoordinates.x > gameCanvas.width-90 && inputManager.mouseCoordinates.x < gameCanvas.width &&
+          inputManager.mouseCoordinates.y > 5 && inputManager.mouseCoordinates.y < 45)
+          {
+            console.log('play button clicked');
+            languageSelectionScreen.startGame();
+          }
           console.log('this.currentPageIndex: ' + this.currentPageIndex);
     //console.log('this.arrayOfDivs[0].parentPromptAndAnswerGroupCheckBox.checked: ' + this.arrayOfDivs[0].parentPromptAndAnswerGroupCheckBox.checked);
   }
@@ -313,7 +324,7 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
     }
   }
 
-  this.checked = false;
+  this.checked = true;
   this.handleClick = function()
   {
     console.log('this: ' + this);
@@ -376,7 +387,7 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
   this.textX = undefined;
   this.textY = undefined;
 
-  this.checked = false;
+  this.checked = true;
 
   this.width = gameCanvas.width/25;
   this.height = gameCanvas.height/25;
