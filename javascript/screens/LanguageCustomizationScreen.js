@@ -64,6 +64,13 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
     customFontFillText(["What would you like to train", symbolQuestionMarkImage], 40,20, 20,35);
 
     this.drawDivs();
+
+    gameCanvasContext.strokeStyle = 'black';
+    gameCanvasContext.strokeRect(gameCanvas.width/2 - 90,2, 70,40);
+    gameCanvasContext.strokeRect(gameCanvas.width/2,2, 70,40);
+
+    customFontFillText([leftArrowImage, rightArrowImage], 70,90, gameCanvas.width/2 - 90,-10);
+    //customFontFillText([rightArrowImage], 80,20, gameCanvas.width/2 + 40,5);
   }
 
   this.drawDivs = function()
@@ -103,26 +110,36 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
   this.parentCheckBoxHeight = gameCanvas.height/20;
   this.lastChildBoxIndex = this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes.length - 1;
   this.lastChildBox = this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes[this.lastChildBoxIndex];
-  this.lastChildBoxBottomY = this.lastChildBox.y + this.lastChildBox.height;
+  this.lastChildBox.bottomY = this.lastChildBox.y + this.lastChildBox.height;
 
   this.x = undefined;
   this.y = undefined;
 
   this.defineXAndYCoordinates = function()
   {
+    if (this.previousDiv)
+    {
+      console.log('this.previousDiv.lastChildBox.y: ' + this.previousDiv.lastChildBox.y);
+      console.log('this.previousDiv.lastChildBox.height: ' + this.previousDiv.lastChildBox.height);
+      console.log('this.previousDiv.lastChildBox.bottomY: ' + this.previousDiv.lastChildBox.bottomY);
+    }
 
     if (!this.previousDiv)
     {
       this.y = 100;
+      console.log('no previous div');
     }
     else if (this.columnIndex === this.previousDiv.columnIndex)
     {
+      console.log('column index the same');
         this.y = this.previousDiv.lastChildBox.y + this.previousDiv.lastChildBox.height + 15;
     } else
     {
-      this.columnIndex = parentScreenObject.currentColumnIndex;
+      console.log('should be resetting y coordinate to 100');
       this.y = 100;
     }
+    this.columnIndex = parentScreenObject.currentColumnIndex;
+    console.log('this.columnIndex: ' + this.columnIndex);
     this.x = 15 + this.columnIndex*parentScreenObject.columnWidth;
   }
 
@@ -148,14 +165,17 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
 
       childBox.textX = childBox.x + childBox.width + 5;
       childBox.textY = childBox.y + childBox.height/2 + 3;
+
+      childBox.bottomY = childBox.y + childBox.height;
     }
   }
 
   this.checkIfDivOffScreenAndRedefineIfSo = function(languageGroupDiv)
   {
-    if (this.lastChildBox.y + this.lastChildBox.height > gameCanvas.height)
+    if (this.lastChildBox.bottomY > gameCanvas.height)
     {
       parentScreenObject.currentColumnIndex++;
+      languageGroupDiv.columnIndex++;
       this.y = 100;
       languageGroupDiv.defineXAndYCoordinates();
       languageGroupDiv.defineGroupCheckBoxXandY();
@@ -177,7 +197,7 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
     }
 
     gameCanvasContext.fillStyle = 'black';
-    gameCanvasContext.font = '15px Helvetica';
+    gameCanvasContext.font = '12px Helvetica';
 
     gameCanvasContext.fillText(this.parentPromptAndAnswerGroupCheckBox.name,
       this.parentPromptAndAnswerGroupCheckBox.textX,this.parentPromptAndAnswerGroupCheckBox.textY);
@@ -197,7 +217,7 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
       }
 
       gameCanvasContext.fillStyle = 'black';
-      gameCanvasContext.font = '15px Helvetica';
+      gameCanvasContext.font = '12px Helvetica';
       gameCanvasContext.fillText(childBox.name, childBox.textX,childBox.textY);
 
     }
@@ -219,6 +239,8 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
 
   this.width = gameCanvas.width/20;
   this.height = gameCanvas.height/20;
+
+  this.bottomY = undefined;
 
   this.arrayOfIndividualPromptAndAnswerCheckBoxes = [];
 
