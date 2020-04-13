@@ -251,7 +251,7 @@ function populatePromptAndAnswerArrays()
 
   mandarinYesterdayVersusTomorrowPairGrouping.arrayOfObjects.push(mandarinYesterdayPromptAndAnswer);
   mandarinYesterdayVersusTomorrowPairGrouping.arrayOfObjects.push(mandarinTomorrowPromptAndAnswer);
-  //promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinYesterdayVersusTomorrowPairGrouping);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinYesterdayVersusTomorrowPairGrouping);
 
   mandarinColorsGrouping.arrayOfObjects.push(mandarinBlackPromptAndAnswer);
   mandarinColorsGrouping.arrayOfObjects.push(mandarinWhitePromptAndAnswer);
@@ -275,7 +275,7 @@ function populatePromptAndAnswerArrays()
   mandarinNumbersGrouping.arrayOfObjects.push(mandarin7PromptAndAnswer);
   mandarinNumbersGrouping.arrayOfObjects.push(mandarin8PromptAndAnswer);
   mandarinNumbersGrouping.arrayOfObjects.push(mandarin9PromptAndAnswer);
-  //promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinNumbersGrouping);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinNumbersGrouping);
 
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
 

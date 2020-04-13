@@ -20,6 +20,10 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
   this.arrayOfPromptAndAnswerGroupCheckBoxes = [];
   this.arrayOfDivs = [];
 
+  this.arrayOfPages = [];
+  this.currentPageIndexForInitialization = 0;
+  this.currentPageIndex = 0;
+
   this.initializePromptAndAnswerGroupCheckBoxes = function()
   {
       for (let parentPromptAndAnswerArrayIndex = 0; parentPromptAndAnswerArrayIndex < this.parentLanguageObject.length; parentPromptAndAnswerArrayIndex++)
@@ -42,16 +46,22 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
 
   this.initializeArrayOfDivs = function()
   {
+    if (this.arrayOfPages.length === 0)
+    {
+      let page = new Page(this.currentPageIndexForInitialization)
+      this.arrayOfPages.push(page);
+    }
+
     for (let arrayOfGroupCheckBoxesIndex = 0; arrayOfGroupCheckBoxesIndex < this.arrayOfPromptAndAnswerGroupCheckBoxes.length; arrayOfGroupCheckBoxesIndex++)
     {
       let languageGroupDiv = new LanguageGroupDiv(this, this.arrayOfPromptAndAnswerGroupCheckBoxes[arrayOfGroupCheckBoxesIndex],
-                                                  this.currentColumnIndex, arrayOfGroupCheckBoxesIndex);
+                                                  this.currentColumnIndex, arrayOfGroupCheckBoxesIndex, this.currentPageIndexForInitialization);
 
       languageGroupDiv.defineXAndYCoordinates();
       languageGroupDiv.defineGroupCheckBoxXandY();
       languageGroupDiv.defineChildCheckBoxXandYs();
       languageGroupDiv.checkIfDivOffScreenAndRedefineIfSo(languageGroupDiv);
-      this.arrayOfDivs.push(languageGroupDiv);
+      this.arrayOfPages[this.currentPageIndexForInitialization].arrayOfDivs.push(languageGroupDiv);
     }
   }
 
@@ -63,7 +73,7 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
     //header
     customFontFillText(["What would you like to train", symbolQuestionMarkImage], 40,20, 20,35);
 
-    this.drawDivs();
+    this.drawDivs(this.currentPageIndex);
 
     gameCanvasContext.strokeStyle = 'black';
     gameCanvasContext.strokeRect(gameCanvas.width/2 - 90,2, 70,40);
@@ -73,29 +83,59 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
     //customFontFillText([rightArrowImage], 80,20, gameCanvas.width/2 + 40,5);
   }
 
-  this.drawDivs = function()
+  this.drawDivs = function(pageIndex)
   {
-    for (let divIndex = 0; divIndex < this.arrayOfDivs.length; divIndex++)
+    let page = this.arrayOfPages[pageIndex];
+    for (let divIndex = 0; divIndex < page.arrayOfDivs.length; divIndex++)
     {
-      this.arrayOfDivs[divIndex].draw();
+      page.arrayOfDivs[divIndex].draw();
     }
   }
 
   this.handleClicks = function()
   {
-    for (let divIndex = 0; divIndex < this.arrayOfDivs.length; divIndex++)
+    for (let divIndex = 0; divIndex < this.arrayOfPages[this.currentPageIndex].arrayOfDivs.length; divIndex++)
     {
-      this.arrayOfDivs[divIndex].parentPromptAndAnswerGroupCheckBox.handleClick();
-      for (let childBoxIndex = 0; childBoxIndex < this.arrayOfDivs[divIndex].parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes.length; childBoxIndex++)
+      this.arrayOfPages[this.currentPageIndex].arrayOfDivs[divIndex].parentPromptAndAnswerGroupCheckBox.handleClick();
+      for (let childBoxIndex = 0; childBoxIndex < this.arrayOfPages[this.currentPageIndex].arrayOfDivs[divIndex].parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes.length; childBoxIndex++)
       {
-        this.arrayOfDivs[divIndex].parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes[childBoxIndex].handleClick();
+        this.arrayOfPages[this.currentPageIndex].arrayOfDivs[divIndex].parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes[childBoxIndex].handleClick();
       }
     }
+
+    if (inputManager.mouseCoordinates.x > 230 && inputManager.mouseCoordinates.x < 300 &&
+        inputManager.mouseCoordinates.y > 0 && inputManager.mouseCoordinates.y < 40)
+        {
+          console.log('previous page click detected');
+          this.currentPageIndex -= 1;
+          if (this.currentPageIndex < 0)
+          {
+            this.currentPageIndex = 0;
+          }
+        }
+      if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 390 &&
+          inputManager.mouseCoordinates.y > 0 && inputManager.mouseCoordinates.y < 40)
+          {
+            console.log('next page click detected');
+            this.currentPageIndex += 1;
+            if (this.currentPageIndex === this.arrayOfPages.length)
+            {
+              this.currentPageIndex = this.arrayOfPages.length - 1;
+            }
+          }
+
+          console.log('this.currentPageIndex: ' + this.currentPageIndex);
     //console.log('this.arrayOfDivs[0].parentPromptAndAnswerGroupCheckBox.checked: ' + this.arrayOfDivs[0].parentPromptAndAnswerGroupCheckBox.checked);
   }
 }
 
 let mandarinCustomizationScreen;
+
+function Page(pageIndex)
+{
+  this.number = undefined;
+  this.arrayOfDivs = [];
+}
 
 function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox, currentColumnIndex, arrayOfDivsIndex)
 {
@@ -103,7 +143,9 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
   //this.currentRowIndex = currentRowIndex;
   this.arrayOfDivsIndex = arrayOfDivsIndex;
   this.previousDivIndex = this.arrayOfDivsIndex - 1;
-  this.previousDiv = parentScreenObject.arrayOfDivs[this.previousDivIndex];
+  this.previousDiv = parentScreenObject.arrayOfPages[parentScreenObject.currentPageIndexForInitialization].arrayOfDivs[this.previousDivIndex];
+
+  this.pageIndex = undefined;
 
   this.parentPromptAndAnswerGroupCheckBox = parentPromptAndAnswerGroupCheckBox;
 
@@ -180,6 +222,20 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
       languageGroupDiv.defineXAndYCoordinates();
       languageGroupDiv.defineGroupCheckBoxXandY();
       languageGroupDiv.defineChildCheckBoxXandYs();
+      if (parentScreenObject.currentColumnIndex > 2)
+      {
+        console.log('current column index > 2 detected');
+        parentScreenObject.currentColumnIndex = 0;
+        parentScreenObject.currentPageIndexForInitialization++;
+        let page = new Page(parentScreenObject.currentPageIndexForInitialization);
+        parentScreenObject.arrayOfPages.push(page);
+        languageGroupDiv.pageIndex = parentScreenObject.currentPageIndexForInitialization;
+        languageGroupDiv.columnIndex = 0;
+        this.y = 100;
+        languageGroupDiv.defineXAndYCoordinates();
+        languageGroupDiv.defineGroupCheckBoxXandY();
+        languageGroupDiv.defineChildCheckBoxXandYs();
+      }
     }
   }
 
