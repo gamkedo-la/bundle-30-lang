@@ -23,18 +23,18 @@ function DrawAnswersManager()
       {
         gameCanvasContext.drawImage(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
           promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5,
-          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 60,
-          gameClassManager.currentGame.correctTextAnswerHolderWidth,
-          gameClassManager.currentGame.correctTextAnswerHolderWidth);
+          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 50,
+          gameClassManager.currentGame.correctTextAnswerHolderWidth*1.7,
+          gameClassManager.currentGame.correctTextAnswerHolderWidth*1.7);
       }
 
       if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder)
       {
         gameCanvasContext.drawImage(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder.image,
           promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5,
-          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 60,
-          gameClassManager.currentGame.correctTextAnswerHolderWidth,
-          gameClassManager.currentGame.correctTextAnswerHolderWidth);
+          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 50,
+          gameClassManager.currentGame.incorrectTextAnswerHolderWidth*1.7,
+          gameClassManager.currentGame.incorrectTextAnswerHolderWidth*1.7);
       }
 
 
@@ -71,8 +71,8 @@ function DrawAnswersManager()
       if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder)
       {
         gameCanvasContext.drawImage(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
-          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 20,
-          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 20,
+          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 40,
+          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 40,
           gameClassManager.currentGame.imageAnswerHolderWidth,
           gameClassManager.currentGame.imageAnswerHolderHeight);
       }
@@ -80,8 +80,8 @@ function DrawAnswersManager()
       if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder)
       {
         gameCanvasContext.drawImage(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder.image,
-          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 20,
-          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 20,
+          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 40,
+          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 40,
           gameClassManager.currentGame.imageAnswerHolderWidth,
           gameClassManager.currentGame.imageAnswerHolderHeight);
       }
@@ -157,19 +157,19 @@ function DrawAnswersManager()
       if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder)
       {
         gameCanvasContext.drawImage(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
-          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 20,
+          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 15,
           promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 20,
-          gameClassManager.currentGame.audioImageAnswerHolderWidth,
-          gameClassManager.currentGame.audioImageAnswerHolderHeight);
+          gameClassManager.currentGame.audioImageAnswerHolderWidth*1.1,
+          gameClassManager.currentGame.audioImageAnswerHolderHeight*1.1);
       }
 
       if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder)
       {
         gameCanvasContext.drawImage(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder.image,
-          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 20,
+          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 15,
           promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 20,
-          gameClassManager.currentGame.audioImageAnswerHolderWidth,
-          gameClassManager.currentGame.audioImageAnswerHolderHeight);
+          gameClassManager.currentGame.audioImageAnswerHolderWidth*1.1,
+          gameClassManager.currentGame.audioImageAnswerHolderHeight*1.1);
       }
 
 
