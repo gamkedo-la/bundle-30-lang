@@ -108,18 +108,18 @@ function keyRelease(evt){
     HELD_KEYS.delete(evt.keyCode);
 }
 
-function calculateMousePos() {
+function calculateMousePos(evt) {
     const rect = canvas.getBoundingClientRect();
     const root = document.documentElement;
     const oldX = mouseX;
     const oldY = mouseY;
     mouseX = evt.clientX - rect.left;
     mouseY = evt.clientY - rect.top;
-    if(mouseButtonHeld) {
-	    dialogEditor.updateDrag(mouseX - oldX, mouseY - oldY);
+    /*if(mouseButtonHeld) {
+	    pairsEditor.updateDrag(mouseX - oldX, mouseY - oldY);
     } else {
-		dialogEditor.updateHover(mouseX, mouseY);
-    }
+		pairsEditor.updateHover(mouseX, mouseY);
+    }*/
 }
 
 function onMouseDown(evt) {
@@ -131,7 +131,7 @@ function onMouseDown(evt) {
 	
 	mouseButtonHeld = true;
 	
-	pairsEditor.setFocus(mouseX, mouseY);
+	//pairsEditor.setFocus(mouseX, mouseY);
 }
 
 function onMouseUp(evt) {

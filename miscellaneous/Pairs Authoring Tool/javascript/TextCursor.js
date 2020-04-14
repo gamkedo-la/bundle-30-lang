@@ -2,7 +2,7 @@
 function TextCursor(position, font, boxWidth){
     this.font = font;
     this.string = "";
-    this.text  [""];
+    this.text =  [""];
 
     this.textSize = sizeOfString(canvasContext, font, "W");
     //put frame class here if we decide it's needed

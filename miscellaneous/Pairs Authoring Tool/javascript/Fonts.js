@@ -1,4 +1,8 @@
 //Fonts
+let canvas;
+let canvasContext;
+let pairsEditor;
+
 const LabelFont = {
 	XSmall:'12px Tahoma',
 	Small:'16px Tahoma',
