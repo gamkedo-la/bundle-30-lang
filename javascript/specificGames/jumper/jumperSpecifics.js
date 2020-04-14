@@ -30,6 +30,8 @@ function jumperGameClass()
 
   this.FRAME_RATE = 1000/30;
 
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/200411.mp3', 71.11);
+
   this.superInitialize = this.initialize;
   this.initialize = function()
   {

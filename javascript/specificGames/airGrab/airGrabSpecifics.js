@@ -19,6 +19,8 @@ function AirGrabGameClass()
     this.collidingObject = this.playerCharacter;
   }
 
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/200412.mp3', 121.62);
+
   this.background = undefined;
 
   this.superInitialize = function()
