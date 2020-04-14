@@ -82,6 +82,9 @@ function snakeGameClass()
 
   this.handleLeftArrowDown = function()
   {
+    if (this.playerCharacter.orientation != 1){
+        this.playerCharacter.orientation = 1;
+    }
     this.playerCharacter.speedX = -20;
     this.playerCharacter.speedY = 0;
     gameAudio.playSlither();
@@ -91,11 +94,17 @@ function snakeGameClass()
   {
     this.playerCharacter.speedX = 0;
     this.playerCharacter.speedY = -20;
+    if (this.playerCharacter.orientation != 0){
+        this.playerCharacter.orientation = 0;
+    }
     gameAudio.playSlither();
   }
 
   this.handleRightArrowDown = function()
   {
+    if (this.playerCharacter.orientation != 3){
+        this.playerCharacter.orientation = 3;
+    }
     this.playerCharacter.speedX = 20;
     this.playerCharacter.speedY = 0;
     gameAudio.playSlither();
@@ -103,6 +112,9 @@ function snakeGameClass()
 
   this.handleDownArrowDown = function()
   {
+    if (this.playerCharacter.orientation != 2){
+        this.playerCharacter.orientation = 2;
+    }
     this.playerCharacter.speedX = 0;
     this.playerCharacter.speedY = 20;
     gameAudio.playSlither();

@@ -11,6 +11,8 @@ function SnakeClass()
 
     this.snakeHeadImage = snakeHeadImage;
 
+    this.orientation = 0;
+
     const MAX_TAIL_LENGTH = 5;
 
     this.color = 'lime';
@@ -48,13 +50,40 @@ function SnakeClass()
 
     this.draw = function()
     {
-      gameCanvasContext.fillStyle = this.color;
-      for(let snakeTailIndex = 0; snakeTailIndex < this.tail.pieces.length; snakeTailIndex++)
-      {
-        gameCanvasContext.fillRect(this.tail.pieces[snakeTailIndex].x,this.tail.pieces[snakeTailIndex].y,
-        this.width - 2,this.height - 2);
-      }
-    },
+      // gameCanvasContext.fillStyle = this.color;
+      // for(let snakeTailIndex = 0; snakeTailIndex < this.tail.pieces.length; snakeTailIndex++)
+      // {
+      //   gameCanvasContext.fillRect(this.tail.pieces[snakeTailIndex].x,this.tail.pieces[snakeTailIndex].y,
+      //   this.width - 2,this.height - 2);
+      // }
+
+        gameCanvasContext.save();
+        gameCanvasContext.translate(
+            this.x, this.y
+        )
+        switch(this.orientation){
+            case 0:
+                break;
+            case 1:
+                gameCanvasContext.rotate(-Math.PI / 2);
+                break;
+            case 2:
+                gameCanvasContext.rotate(Math.PI);
+                break;
+            case 3:
+                gameCanvasContext.rotate(Math.PI / 2);
+                break;
+        }
+
+        gameCanvasContext.drawImage(
+            this.snakeHeadImage,
+            - (this.width*2) / 2,
+            - (this.height*2) / 2,
+            this.width*2, this.height*2
+        )
+        gameCanvasContext.restore();
+    }
+
 
     this.move = function()
     {
