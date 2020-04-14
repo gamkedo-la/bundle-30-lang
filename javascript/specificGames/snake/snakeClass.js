@@ -7,7 +7,7 @@ function SnakeClass()
     this.speedX = 0;
     this.speedY = 0;
     this.width = 10;
-    this.height = 20;
+    this.height = 30;
 
     this.middleX = undefined;
     this.middleY = undefined;
