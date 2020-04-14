@@ -112,6 +112,7 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
         inputManager.mouseCoordinates.y > 0 && inputManager.mouseCoordinates.y < 40)
         {
           console.log('previous page click detected');
+          genAudio.playClick();
           this.currentPageIndex -= 1;
           if (this.currentPageIndex < 0)
           {
@@ -122,6 +123,7 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
           inputManager.mouseCoordinates.y > 0 && inputManager.mouseCoordinates.y < 40)
           {
             console.log('next page click detected');
+            genAudio.playClick();
             this.currentPageIndex += 1;
             if (this.currentPageIndex === this.arrayOfPages.length)
             {
@@ -133,6 +135,7 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
           inputManager.mouseCoordinates.y > 5 && inputManager.mouseCoordinates.y < 45)
           {
             console.log('play button clicked');
+            genAudio.playClick();
             languageSelectionScreen.startGame();
           }
           console.log('this.currentPageIndex: ' + this.currentPageIndex);
@@ -333,6 +336,7 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < this.x + this.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
         {
+          genAudio.playClick();
           console.log('click detected');
           this.toggleThisCheckAndChildrenChecks();
         }
@@ -400,6 +404,7 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < this.x + this.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
         {
+          genAudio.playClick();
           this.toggleCheck();
         }
   }
