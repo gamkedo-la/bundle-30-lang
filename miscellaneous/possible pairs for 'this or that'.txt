@@ -164,6 +164,8 @@ pill/pale/peel,
 170. cup/cop
 171. weather/water
 172. product/produce
+173. crowd/cloud
+174. cram/clam
 
 spelling - 
 1. was/saw

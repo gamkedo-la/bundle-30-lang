@@ -29,8 +29,6 @@ function SnakeClass()
 
     this.color = 'lime';
 
-
-
     this.initialize = function()
     {
       this.x = getRandomIntInclusive(0,gameCanvas.width);
@@ -172,6 +170,9 @@ function SnakeClass()
       //this.tail.update();
       this.wrapIfOffScreen();
     }
+}
 
-
+function AppleAnswerHolder(image)
+{
+  this.image = image;
 }

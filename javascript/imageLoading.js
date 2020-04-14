@@ -71,6 +71,7 @@ let snakeGrassBackground = document.createElement('img');
 let snakeHeadImage = document.createElement('img');
 let snakeMiddleImage = document.createElement('img');
 let snakeTailImage = document.createElement('img');
+let appleImage = document.createElement('img');
 
 //bird images
 let skyBackground = document.createElement('img');
@@ -321,6 +322,7 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: snakeHeadImage, theFile: 'images/sprites/Snake/topSnake.png'});
   arrayOfImages.push({imageObjectBinding: snakeMiddleImage, theFile: 'images/sprites/Snake/middleSnake.png'});
   arrayOfImages.push({imageObjectBinding: snakeTailImage, theFile: 'images/sprites/Snake/bottomSnake.png'});
+  arrayOfImages.push({imageObjectBinding: appleImage, theFile: 'images/sprites/Snake/apple.png'});
 
   //bird game
   arrayOfImages.push({imageObjectBinding: skyBackground, theFile: 'images/Backgrounds/Sky.png'});
