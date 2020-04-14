@@ -2,7 +2,25 @@
 function PairsEditor(){
 
     this.initialize = function(){
+        //TODO: For now just show text box
+        createPairsFrame();
+        createTextBox();
+    };
 
+    this.createPairsFrame = function(){
+        frame = new PairsFrame(100, 100, 200, 200);
+    }
+
+    this.createTextBox = function(){
+        textBox = new TextBox(frame, LabelFont.Small);
+    }
+
+    this.update = function(){
+        //Empty for now
+    };
+
+    this.draw = function(){
+        textBox.draw();
     };
     
 };
