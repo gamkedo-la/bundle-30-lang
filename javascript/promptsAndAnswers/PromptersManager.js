@@ -53,10 +53,12 @@ function PromptersManager()
 
     if (randomNumber < 0.5)
     {
+      promptsAndAnswersManager.currentCorrectAnswer.play();
+      promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = true;
       promptsAndAnswersManager.currentCorrectAnswer.sfx.onended = function()
       {
         promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = false;
-        promptsAndAnswersManager.currentIncorrectAnswer.sfx.play();
+        promptsAndAnswersManager.currentIncorrectAnswer.play();
         promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = true;
         promptsAndAnswersManager.currentIncorrectAnswer.sfx.onended = function()
         {
@@ -65,16 +67,17 @@ function PromptersManager()
           promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = false;
           promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = false;
           promptersManager.flashInterval.stop();
+          musicManager.endDuck();
         }//clear both onended functions to account for unintended play calls
       }
-      promptsAndAnswersManager.currentCorrectAnswer.sfx.play();
-      promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = true;
     } else
     {
+      promptsAndAnswersManager.currentIncorrectAnswer.play();
+      promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = true;
       promptsAndAnswersManager.currentIncorrectAnswer.sfx.onended = function()
       {
         promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = false;
-        promptsAndAnswersManager.currentCorrectAnswer.sfx.play();
+        promptsAndAnswersManager.currentCorrectAnswer.play();
         promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = true;
         promptsAndAnswersManager.currentCorrectAnswer.sfx.onended = function()
         {
@@ -83,10 +86,9 @@ function PromptersManager()
           promptsAndAnswersManager.currentCorrectAnswer.shouldBeFlashing = false;
           promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = false;
           promptersManager.flashInterval.stop();
+          musicManager.endDuck();
         }//clear both onended functions to account for unintended play calls
       }//end of incorrect answer audio being played first
-      promptsAndAnswersManager.currentIncorrectAnswer.sfx.play();
-      promptsAndAnswersManager.currentIncorrectAnswer.shouldBeFlashing = true;
     }//end of else for coin flip
   }
 

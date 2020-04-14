@@ -135,6 +135,16 @@ function MusicManager() {
 		currentTrack.volume = Math.pow(volume.music, 2);
 		nextTrack.volume = Math.pow(volume.music, 2);
 	}
+
+	this.startDuck = function() {
+		currentTrack.volume = Math.pow(volume.music*0.7, 2);
+		nextTrack.volume = Math.pow(volume.music*0.7, 2);
+	}
+
+	this.endDuck = function() {
+		currentTrack.volume = Math.pow(volume.music, 2);
+		nextTrack.volume = Math.pow(volume.music, 2);
+	}
 }
 
 function MusicTrack(source, duration) {
@@ -232,6 +242,10 @@ function promptSound(source) {
 		this.sfx.currentTime = 0;
 		this.sfx.volume = Math.pow(volume.prompt, 2);
 		this.sfx.play();
+		musicManager.startDuck();
+		this.sfx.onended = function() {
+			musicManager.endDuck();
+		}
 	}
 }
 
