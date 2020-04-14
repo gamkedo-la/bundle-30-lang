@@ -170,6 +170,7 @@ let bubbleWrapSpritesheet = document.createElement("img");
 //let balloonPopBG = document.createElement("img");
 let balloonPopSpritesheet = document.createElement("img");
 let pinataImage = document.createElement("img");
+let heartImage = document.createElement("img");
 
 //custom font image loading section, used loops for less typing... just to see if i could
 var arrayOfTextLetters = 'abcdefghijklmnopqrstuvwxyzñ';
@@ -387,6 +388,7 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: lilyImage4, theFile: "images/sprites/frogRiver/lilyImage4.png"});
 
 
+  arrayOfImages.push({imageObjectBinding: heartImage, theFile: 'images/sprites/transitions/heart.png'});
 
   //pinata game
   arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});
@@ -473,3 +475,4 @@ function countLoadedImageAndLaunchIfReady()
 
   arrayOfRunnerRunningImages.push(runnerRunning1Image,runnerRunning2Image,runnerRunning3Image);
 }
+

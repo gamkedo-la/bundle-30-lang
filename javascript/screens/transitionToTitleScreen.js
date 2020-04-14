@@ -15,6 +15,8 @@ function TransitionToTitleScreen()
     gameCanvasContext.fillStyle = 'orange';
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
 
+    fancyBG();
+
     customFontFillText(['Placeholder transition text'], 30, 15,
                         0,gameCanvas.height/2);
     customFontFillText(['to title screen'], 30, 15,

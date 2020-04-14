@@ -1,5 +1,38 @@
 const GAME_SPACE_SHOOTER = 7;
 
+var fancyticks = 0;
+var fancysprite = [];
+var fancycount = 32;
+var fancydecay = 0.01;
+var fancymaxspeed = -10;
+function fancyBG() {
+    var i = 0;
+
+    if (!fancysprite.length) {
+        for (i=0; i<fancycount; i++) {
+            fancysprite[i] = { x:0,y:0,a:1,s:1,a:0 };
+        }
+    }
+    
+    for (i=0; i<fancycount; i++) {
+        if (fancysprite[i].a<fancydecay) { // respawn
+            fancysprite[i].x = Math.random() * gameCanvas.width - 64;
+            fancysprite[i].y = gameCanvas.height + 64 + Math.random()*256;
+            fancysprite[i].a = 0.5 + Math.random()*0.5;
+            fancysprite[i].s = Math.random() * fancymaxspeed;
+        }
+
+        fancysprite[i].a -= fancydecay;
+        fancysprite[i].y += fancysprite[i].s;
+        
+        gameCanvasContext.globalAlpha = fancysprite[i].a;
+        gameCanvasContext.drawImage(heartImage,fancysprite[i].x,fancysprite[i].y);
+
+    }
+
+    gameCanvasContext.globalAlpha = 1;
+}
+
 function TitleScreenClass()
 {
   this.cellXTopLeftCoordinate = 0;
