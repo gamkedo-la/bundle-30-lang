@@ -82,8 +82,13 @@ function snakeGameClass()
 
   this.handleLeftArrowDown = function()
   {
-    if (this.playerCharacter.orientation != 1){
-        this.playerCharacter.orientation = 1;
+    if (this.playerCharacter.headOrientation != 1){
+        this.playerCharacter.headOrientation = 1;
+    }
+    if (!this.playerCharacter.middleX)
+    {
+      this.playerCharacter.middleX = this.playerCharacter.x;
+      this.playerCharacter.middleY = this.playerCharacter.y;
     }
     this.playerCharacter.speedX = -20;
     this.playerCharacter.speedY = 0;
@@ -92,18 +97,28 @@ function snakeGameClass()
 
   this.handleUpArrowDown = function()
   {
+    if (!this.playerCharacter.middleX)
+    {
+      this.playerCharacter.middleX = this.playerCharacter.x;
+      this.playerCharacter.middleY = this.playerCharacter.y;
+    }
     this.playerCharacter.speedX = 0;
     this.playerCharacter.speedY = -20;
-    if (this.playerCharacter.orientation != 0){
-        this.playerCharacter.orientation = 0;
+    if (this.playerCharacter.headOrientation != 0){
+        this.playerCharacter.headOrientation = 0;
     }
     gameAudio.playSlither();
   }
 
   this.handleRightArrowDown = function()
   {
-    if (this.playerCharacter.orientation != 3){
-        this.playerCharacter.orientation = 3;
+    if (!this.playerCharacter.middleX)
+    {
+      this.playerCharacter.middleX = this.playerCharacter.x;
+      this.playerCharacter.middleY = this.playerCharacter.y;
+    }
+    if (this.playerCharacter.headOrientation != 3){
+        this.playerCharacter.headOrientation = 3;
     }
     this.playerCharacter.speedX = 20;
     this.playerCharacter.speedY = 0;
@@ -112,8 +127,13 @@ function snakeGameClass()
 
   this.handleDownArrowDown = function()
   {
-    if (this.playerCharacter.orientation != 2){
-        this.playerCharacter.orientation = 2;
+    if (!this.playerCharacter.middleX)
+    {
+      this.playerCharacter.middleX = this.playerCharacter.x;
+      this.playerCharacter.middleY = this.playerCharacter.y;
+    }
+    if (this.playerCharacter.headOrientation != 2){
+        this.playerCharacter.headOrientation = 2;
     }
     this.playerCharacter.speedX = 0;
     this.playerCharacter.speedY = 20;
