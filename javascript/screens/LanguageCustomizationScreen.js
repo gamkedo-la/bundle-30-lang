@@ -111,7 +111,6 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
     if (inputManager.mouseCoordinates.x > 230 && inputManager.mouseCoordinates.x < 300 &&
         inputManager.mouseCoordinates.y > 0 && inputManager.mouseCoordinates.y < 40)
         {
-          console.log('previous page click detected');
           genAudio.playClick();
           this.currentPageIndex -= 1;
           if (this.currentPageIndex < 0)
@@ -122,7 +121,6 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
       if (inputManager.mouseCoordinates.x > 320 && inputManager.mouseCoordinates.x < 390 &&
           inputManager.mouseCoordinates.y > 0 && inputManager.mouseCoordinates.y < 40)
           {
-            console.log('next page click detected');
             genAudio.playClick();
             this.currentPageIndex += 1;
             if (this.currentPageIndex === this.arrayOfPages.length)
@@ -134,11 +132,9 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
       if (inputManager.mouseCoordinates.x > gameCanvas.width-90 && inputManager.mouseCoordinates.x < gameCanvas.width &&
           inputManager.mouseCoordinates.y > 5 && inputManager.mouseCoordinates.y < 45)
           {
-            console.log('play button clicked');
             genAudio.playClick();
             languageSelectionScreen.startGame();
           }
-          console.log('this.currentPageIndex: ' + this.currentPageIndex);
     //console.log('this.arrayOfDivs[0].parentPromptAndAnswerGroupCheckBox.checked: ' + this.arrayOfDivs[0].parentPromptAndAnswerGroupCheckBox.checked);
   }
 }
@@ -176,27 +172,21 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
   {
     if (this.previousDiv)
     {
-      console.log('this.previousDiv.lastChildBox.y: ' + this.previousDiv.lastChildBox.y);
-      console.log('this.previousDiv.lastChildBox.height: ' + this.previousDiv.lastChildBox.height);
-      console.log('this.previousDiv.lastChildBox.bottomY: ' + this.previousDiv.lastChildBox.bottomY);
+
     }
 
     if (!this.previousDiv)
     {
       this.y = 100;
-      console.log('no previous div');
     }
     else if (this.columnIndex === this.previousDiv.columnIndex)
     {
-      console.log('column index the same');
         this.y = this.previousDiv.lastChildBox.y + this.previousDiv.lastChildBox.height + 15;
     } else
     {
-      console.log('should be resetting y coordinate to 100');
       this.y = 100;
     }
     this.columnIndex = parentScreenObject.currentColumnIndex;
-    console.log('this.columnIndex: ' + this.columnIndex);
     this.x = 15 + this.columnIndex*parentScreenObject.columnWidth;
   }
 
@@ -211,10 +201,8 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
 
   this.defineChildCheckBoxXandYs = function()
   {
-    console.log('inside definition of child coordinates function');
     for (let childIndex = 0; childIndex < this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes.length; childIndex++)
     {
-      console.log('inside for look of child coordinates function');
       let childBox = this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex];
       let currentYOffSet = (childBox.height*1.1*(childIndex + 1)) + 17;
       childBox.x = this.x + 10;
@@ -239,7 +227,6 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
       languageGroupDiv.defineChildCheckBoxXandYs();
       if (parentScreenObject.currentColumnIndex > 2)
       {
-        console.log('current column index > 2 detected');
         parentScreenObject.currentColumnIndex = 0;
         parentScreenObject.currentPageIndexForInitialization++;
         let page = new Page(parentScreenObject.currentPageIndexForInitialization);
@@ -331,13 +318,10 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
   this.checked = true;
   this.handleClick = function()
   {
-    console.log('this: ' + this);
-    console.log('this.x: ' + this.x);
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < this.x + this.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
         {
           genAudio.playClick();
-          console.log('click detected');
           this.toggleThisCheckAndChildrenChecks();
         }
   }

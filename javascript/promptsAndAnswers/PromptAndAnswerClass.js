@@ -162,7 +162,6 @@ function initializePromptAndAnswerObjects()
 
 function populatePromptAndAnswerArrays()
 {
-  console.log('inside populatePromptAndAnswerArrays');
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings = [];
 
   promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings = [];
@@ -281,7 +280,4 @@ function populatePromptAndAnswerArrays()
 
   //vietnamese
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalVietnamesePromptAnswerGroupings);
-
-
-  console.log('promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings: ' + promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings);
 }

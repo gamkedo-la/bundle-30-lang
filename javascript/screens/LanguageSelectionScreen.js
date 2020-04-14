@@ -130,7 +130,6 @@ function LanguageSelectionScreen()
     if (mouseCol >= 0 && mouseCol < 3 && mouseRow >= 0 && mouseRow < 1)
     {
       this.languageNum = mouseCol + mouseRow *6;
-      console.log('this.languageNum: ' + this.languageNum);
       promptsAndAnswersManager.assignCurrentLanguageArray();
       genAudio.playClick();
     }

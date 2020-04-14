@@ -17,7 +17,6 @@ function PromptsAndAnswersManager()
   this.assignCurrentLanguageArray = function()
   {
     this.currentArrayOfLogicalPromptAnswerGroupings = this.arrayOfLanguagePromptAndAnswerGroupings[languageSelectionScreen.languageNum];
-    console.log('this.currentArrayOfLogicalPromptAnswerGroupings: ' + this.currentArrayOfLogicalPromptAnswerGroupings);
   }
 
   this.pickARandomLogicalPromptAnswerGroup = function()
@@ -45,7 +44,6 @@ function PromptsAndAnswersManager()
   {
     if (typeof gameClassManager.currentGame.assignAnswerHolder === 'undefined')
     {
-      console.log('no answer holder assignment function for this game');
       return;
     }
     answer.answerHolder = gameClassManager.currentGame.assignAnswerHolder();

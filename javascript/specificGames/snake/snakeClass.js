@@ -9,6 +9,8 @@ function SnakeClass()
     this.width = 20;
     this.height = 20;
 
+    this.snakeHeadImage = snakeHeadImage;
+
     const MAX_TAIL_LENGTH = 5;
 
     this.color = 'lime';
