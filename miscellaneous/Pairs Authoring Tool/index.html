@@ -1,21 +1,37 @@
-<html>
-<meta charset="UTF-8">
-
-  <link rel="stylesheet" type="text/css" href="css.css" media="screen" />
-
-  <script src = 'javascript/TextCursor.js'></script>
-  <script src = 'javascript/TextBox.js'></script>
-  <script src = 'javascript/Input.js'></script>
-  <script src = 'javascript/Main.js'></script>
-  <script src = 'javascript/PairsEditor.js'></script>
-  <script src = 'javascript/ImageLoading.js'></script>
-  <script src = 'javascript/Fonts.js'></script>
-  <script src = 'javascript/GraphicsCommon.js'></script>
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <style>
+      body {
+        background:'black';
+        margin:0;
+        padding:0;
+        overflow:hidden;
+      }
+      
+      #debugText {
+        float: right;
+          position: absolute;
+          left: 90px;
+          top: 0;
+      }
+    </style>
+  </head>
   <body>
-    <audio id = 'correctLetter'></audio>
-    <audio id = 'backgroundMusic'></audio>
-    <canvas id = 'gameCanvas' width='640' height='700'></canvas>
-    <canvas id = 'statsCanvas' width = '640' height = '700'></canvas>
+    <input id="input" style="position:absolute;" type="file" accept="text/plain">
+
+    <script src = 'javascript/TextCursor.js'></script>
+    <script src = 'javascript/TextBox.js'></script>
+    <script src = 'javascript/Input.js'></script>
+    
+    <script src = 'javascript/PairsEditor.js'></script>
+    <script src = 'javascript/ImageLoading.js'></script>
+    <script src = 'javascript/Fonts.js'></script>
+    <script src = 'javascript/GraphicsCommon.js'></script>
+    <script src = 'javascript/Main.js'></script>
+    
+
     </body>
 </html>
