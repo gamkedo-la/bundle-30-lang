@@ -32,12 +32,13 @@ function MusicManager() {
 			}
 		}
 
-		if (fadeTrack != null) {
+		if (fadeTrack != null && fadeTrack.volume >= 0.05) {
 			fadeTrack.volume -= 0.05;
-			if (fadeTrack.volume <= 0.2) {
-				fadeTrack.pause();
-				fadeTrack = null;
-			}
+			
+		}
+		if (fadeTrack != null && fadeTrack.volume <= 0.1) {
+			fadeTrack.pause();
+			fadeTrack = null;
 		}
 	}
 
