@@ -95,6 +95,7 @@ let laneCarImage = document.createElement('img');
 let roadDash1 = document.createElement('img');
 let roadDash2 = document.createElement('img');
 let roadDash3 = document.createElement('img');
+let gasCanImage = document.createElement('img');
 
 //jumper images
 let jumperBackground = document.createElement('img');
@@ -353,6 +354,7 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: roadDash1, theFile: 'images/Backgrounds/roadDash.png'});
   arrayOfImages.push({imageObjectBinding: roadDash2, theFile: 'images/Backgrounds/roadDash2.png'});
   arrayOfImages.push({imageObjectBinding: roadDash3, theFile: 'images/Backgrounds/roadDash3.png'});
+  arrayOfImages.push({imageObjectBinding: gasCanImage, theFile: 'images/sprites/Lane/gasCan.png'});
 
   //jumper game
   arrayOfImages.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/editedJumperBackground.png'});

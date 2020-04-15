@@ -14,6 +14,26 @@ function laneGameClass() {
 	this.textAnswerFontSize = 30;
 	this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
+	this.imageAnswerWidth = undefined;
+	this.imageAnswerHeight = undefined;
+	this.imageAnswerHolderWidth = undefined;
+	this.imageAnswerHolderHeight = undefined;
+
+	this.audioImageAnswerWidth = undefined;
+	this.audioImageAnswerHeight = undefined;
+	this.audioImageAnswerHolderWidth = undefined;
+	this.audioImageAnswerHolderHeight = undefined;
+
+	this.correctTextAnswerHolderWidth = undefined;
+	this.incorrectTextAnswerHolderWidth = undefined;
+
+	this.answerHolderImage = gasCanImage;
+	this.assignAnswerHolder = function()
+	{
+		let gasCanAnswerHolder = new GasCanAnswerHolder(this.answerHolderImage);
+		return gasCanAnswerHolder;
+	}
+
 	this.LETTER_COLOR = 'white';
 
 	this.playerCharacter = undefined;
@@ -33,13 +53,27 @@ function laneGameClass() {
     gameAudio.playLane = function() {
     	gameAudio.lane.play();
     }
-	
+
   };
 
 
   	this.superInitialize = function()
 	{
 
+		this.imageAnswerWidth = gameCanvas.width/8;
+		this.imageAnswerHeight = gameCanvas.height/9;
+		this.imageAnswerHolderWidth = gameCanvas.width/4;
+		this.imageAnswerHolderHeight = gameCanvas.height/5;
+
+		this.audioImageAnswerWidth = gameCanvas.width/6;
+		this.audioImageAnswerHeight = gameCanvas.height/7;
+		this.audioImageAnswerHolderWidth = gameCanvas.width/5;
+		this.audioImageAnswerHolderHeight = gameCanvas.height/6;
+
+		this.correctTextAnswerHolderWidth = undefined;
+		this.incorrectTextAnswerHolderWidth = undefined;
+
+		drawAnswersManager.initialize();
 		this.collidingObject = this.playerCharacter;
 	  this.background = new LaneBackgroundClass();
 	  this.background.initialize();

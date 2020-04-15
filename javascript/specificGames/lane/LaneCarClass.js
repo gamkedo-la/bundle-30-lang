@@ -13,3 +13,8 @@ function LaneCarClass()
     gameCanvasContext.drawImage(laneCarImage, this.x,this.y, this.width,this.height);
   }
 }
+
+function GasCanAnswerHolder(image)
+{
+  this.image = image;
+}
