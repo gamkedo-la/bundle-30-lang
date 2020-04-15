@@ -30,7 +30,7 @@ function update(){
 };
 
 function drawEverything(){
-    drawBackground();
+    //drawBackground();
     pairsEditor.update();
     pairsEditor.draw();
 };

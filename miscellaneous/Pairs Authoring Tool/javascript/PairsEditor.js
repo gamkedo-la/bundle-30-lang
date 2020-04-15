@@ -12,9 +12,11 @@ function PairsEditor(){
     }
 
     this.createTextBox = function(){
-        textBox = new TextBox(frame, LabelFont.Small);
+        textBox = new TextBox(frame, LabelFont.Large);
         textBox.inFocus = true;
-    }
+        textBox.cursor.color = 'orange';
+        console.log(textBox.cursor.textSize);
+    };
 
     this.update = function(){
         //Empty for now
