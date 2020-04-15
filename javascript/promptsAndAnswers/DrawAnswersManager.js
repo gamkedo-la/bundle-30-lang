@@ -22,19 +22,19 @@ function DrawAnswersManager()
       if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder)
       {
         gameCanvasContext.drawImage(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
-          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5,
-          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 50,
-          gameClassManager.currentGame.correctTextAnswerHolderWidth*1.7,
-          gameClassManager.currentGame.correctTextAnswerHolderWidth*1.7);
+          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - gameClassManager.currentGame.correctTextAnswerHolderWidth/4,
+          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - gameClassManager.currentGame.correctTextAnswerHolderWidth,
+          gameClassManager.currentGame.correctTextAnswerHolderWidth*1.25,
+          gameClassManager.currentGame.correctTextAnswerHolderWidth*1.25);
       }
 
       if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder)
       {
         gameCanvasContext.drawImage(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder.image,
-          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5,
-          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 50,
-          gameClassManager.currentGame.incorrectTextAnswerHolderWidth*1.7,
-          gameClassManager.currentGame.incorrectTextAnswerHolderWidth*1.7);
+          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - gameClassManager.currentGame.incorrectTextAnswerHolderWidth/4,
+          promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - gameClassManager.currentGame.incorrectTextAnswerHolderWidth,
+          gameClassManager.currentGame.incorrectTextAnswerHolderWidth*1.25,
+          gameClassManager.currentGame.incorrectTextAnswerHolderWidth*1.25);
       }
 
 

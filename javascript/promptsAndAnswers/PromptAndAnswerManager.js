@@ -130,13 +130,13 @@ function PromptsAndAnswersManager()
     if (typeof this.currentCorrectAnswer === 'string')
     {
       this.currentAnswerDataType = 'string';
-      if (gameClassManager.currentGame.correctTextAnswerHolderWidth === undefined)
-      {
-        gameClassManager.currentGame.correctTextAnswerHolderWidth =
-        promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
-            this.textAnswerFontStyle
-        ) + 20;
-      }
+        let correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
+            gameClassManager.currentGame.textAnswerFontStyle
+        );
+        console.log('should be setting correct text answer holder width');
+        //console.log('correctAnswerWidth: ' + correctAnswerWidth);
+        gameClassManager.currentGame.correctTextAnswerHolderWidth = correctAnswerWidth + 20;
+        //console.log('gameClassManager.currentGame.correctTextAnswerHolderWidth: ' + gameClassManager.currentGame.correctTextAnswerHolderWidth);
 
     } else if (this.currentCorrectAnswer.nodeName === 'IMG') {
       this.currentAnswerDataType = 'IMG';
@@ -198,10 +198,10 @@ function PromptsAndAnswersManager()
     }
     else if (this.currentAnswerDataType === 'string')
     {
-      this.correctTargetPromptAndAnswerPairing.width = this.getCorrectAnswerWidthFromFontStyle(drawAnswersManager.fontStyle);
-      this.incorrectTargetPromptAndAnswerPairing.width = this.getIncorrectAnswerWidthFromFontStyle(drawAnswersManager.fontStyle);
-      this.correctTargetPromptAndAnswerPairing.height = 20;//measureText does not provide height
-      this.incorrectTargetPromptAndAnswerPairing.height = 20;//measureText does not provide height
+      // this.correctTargetPromptAndAnswerPairing.width = this.getCorrectAnswerWidthFromFontStyle(drawAnswersManager.fontStyle);
+      // this.incorrectTargetPromptAndAnswerPairing.width = this.getIncorrectAnswerWidthFromFontStyle(drawAnswersManager.fontStyle);
+      // this.correctTargetPromptAndAnswerPairing.height = 20;//measureText does not provide height
+      // this.incorrectTargetPromptAndAnswerPairing.height = 20;//measureText does not provide height
     }
   }
 
@@ -229,13 +229,12 @@ function PromptsAndAnswersManager()
               this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
           }
-          if (gameClassManager.currentGame.incorrectTextAnswerHolderWidth === undefined)
-          {
+            console.log('should be setting incorrect text answer holder width');
             gameClassManager.currentGame.incorrectTextAnswerHolderWidth =
-            promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
-                this.textAnswerFontStyle
+            promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
+                gameClassManager.currentGame.textAnswerFontStyle
             ) + 20;
-          }
+
         }
         else if (this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex].nodeName === 'IMG')
         {
@@ -266,7 +265,7 @@ function PromptsAndAnswersManager()
   this.getTextWidthFromFontStyle = function(text, fontStyle){
     gameCanvasContext.save();
     gameCanvasContext.font = fontStyle;
-    var textWidth = gameCanvasContext.measureText(text).width
+    var textWidth = gameCanvasContext.measureText(text).width;
     gameCanvasContext.restore();
     return textWidth;
   }

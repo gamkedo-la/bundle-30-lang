@@ -5,7 +5,7 @@ const COLLISION_WITH_INCORRECT_ANSWER = 2
 function CollisionsWithAnswersManager()
 {
     this.initialize = function(game)
-    {   
+    {
         this.textAnswerFontSize  = game.textAnswerFontSize;
         this.textAnswerFontStyle = game.textAnswerFontStyle;
         this.imageAnswerWidth = game.imageAnswerWidth;
@@ -56,7 +56,7 @@ function CollisionsWithAnswersManager()
         // Collision with correct answer?
         if (this.insideBoxColliderForStringAnswer(
             collidingObject,
-            promptsAndAnswersManager.correctTargetPromptAndAnswerPairing, 
+            promptsAndAnswersManager.correctTargetPromptAndAnswerPairing,
             correctAnswerWidth
             )
         ){
@@ -66,7 +66,7 @@ function CollisionsWithAnswersManager()
         // Collision with incorrect answer?
         else if (this.insideBoxColliderForStringAnswer(
             collidingObject,
-            promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing, 
+            promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing,
             incorrectAnswerWidth
             )
         ){
@@ -77,7 +77,7 @@ function CollisionsWithAnswersManager()
     }
 
     this.handleCollisionsWithImageAnswers = function(collidingObject){
-        
+
         // Collision with correct answer?
         if (this.insideBoxColliderForImageAnswers(
             collidingObject,
@@ -102,9 +102,9 @@ function CollisionsWithAnswersManager()
 
         return NO_COLLISION;
     }
-    
+
     this.handleCollisionsWithAudioImageAnswers = function(collidingObject){
-        
+
         // Collision with correct answer?
         if (this.insideBoxColliderForImageAnswers(
             collidingObject,
@@ -168,7 +168,7 @@ function CollisionsWithAnswersManager()
     }
 
     this.processCollisionWithAnswer = function (){
-        if (nextGame === SINGLE_PLAYER_RANDOM || 
+        if (nextGame === SINGLE_PLAYER_RANDOM ||
             nextGame === TWO_PLAYER_RANDOM)
         {
             cycleCount++;
@@ -191,7 +191,6 @@ function CollisionsWithAnswersManager()
 
     this.resetAnswers = function()
     {
-        console.log('inside reset answers of collisionsWithAnswersManager');
         promptersManager.currentPrompter.currentWidth = 150;
         promptersManager.currentPrompter.currentHeight = 150;
         promptsAndAnswersManager.setOrResetPromptsAndAnswers();
