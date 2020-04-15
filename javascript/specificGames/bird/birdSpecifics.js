@@ -80,10 +80,17 @@ function birdGameClass() {
   {
     // initializePromptAndAnswerObjects();
     // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-    this.imageAnswerWidth = gameCanvas.width/4;
-		this.imageAnswerHeight = gameCanvas.height/5;
-		this.audioImageAnswerWidth = gameCanvas.width/5;
-    this.audioImageAnswerHeight = gameCanvas.height/6;
+    this.imageAnswerWidth = gameCanvas.width/7;
+		this.imageAnswerHeight = gameCanvas.height/9;
+		this.audioImageAnswerWidth = gameCanvas.width/6;
+    this.audioImageAnswerHeight = gameCanvas.height/7;
+
+    this.imageAnswerHolderWidth = gameCanvas.width/4;
+		this.imageAnswerHolderHeight = gameCanvas.height/5;
+		this.audioImageAnswerHolderWidth = gameCanvas.width/5;
+    this.audioImageAnswerHolderHeight = gameCanvas.height/6;
+
+    drawAnswersManager.initialize();
 
     cloudManager.initialize();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
