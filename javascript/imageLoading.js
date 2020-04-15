@@ -65,6 +65,7 @@ let runnerRunning1Image = document.createElement('img');
 let runnerRunning2Image = document.createElement('img');
 let runnerRunning3Image = document.createElement('img');
 let runnerJumpingImage = document.createElement("img");
+let coinImage = document.createElement("img");
 
 //snake images
 let snakeGrassBackground = document.createElement('img');
@@ -322,6 +323,7 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: runnerRunning2Image, theFile: 'images/sprites/runner/runnerRunning2.png'});
   arrayOfImages.push({imageObjectBinding: runnerRunning3Image, theFile: 'images/sprites/runner/runnerRunning3.png'});
   arrayOfImages.push({imageObjectBinding: runnerJumpingImage, theFile: 'images/sprites/runner/runnerJumping.png'});
+  arrayOfImages.push({imageObjectBinding: coinImage, theFile: 'images/sprites/runner/Coin.png'});
 
   //snake game
   arrayOfImages.push({imageObjectBinding: snakeGrassBackground, theFile: 'images/Backgrounds/Grass.png'});

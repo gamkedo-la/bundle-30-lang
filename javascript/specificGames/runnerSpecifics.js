@@ -27,6 +27,28 @@ function runnerGameClass() {
 	x: 225, y: 285
   }];
 
+  this.imageAnswerWidth = undefined;
+  this.imageAnswerHeight = undefined;
+  this.imageAnswerHolderWidth = undefined;
+  this.imageAnswerHolderHeight = undefined;
+
+  this.audioImageAnswerWidth = undefined;
+  this.audioImageAnswerHeight = undefined;
+  this.audioImageAnswerHolderWidth = undefined;
+  this.audioImageAnswerHolderHeight = undefined;
+
+  this.correctTextAnswerHolderWidth = undefined;
+  this.incorrectTextAnswerHolderWidth = undefined;
+
+  this.answerHolderImage = coinImage;
+
+  this.assignAnswerHolder = function()
+  {
+    let coinAnswerHolder = new CoinAnswerHolder(this.answerHolderImage);
+    return coinAnswerHolder;
+  }
+
+
   function cycleRunnerRunningImages()
   {
 	arrayOfRunnerRunningImagesIndex += runnerImagesIndexDirection;
@@ -54,10 +76,23 @@ function runnerGameClass() {
 
   this.superInitialize = this.initialize;
   this.initialize = function() {
+    this.imageAnswerWidth = gameCanvas.width/8;
+    this.imageAnswerHeight = gameCanvas.height/9;
+    this.imageAnswerHolderWidth = gameCanvas.width/4;
+    this.imageAnswerHolderHeight = gameCanvas.height/5;
+
+    this.audioImageAnswerWidth = gameCanvas.width/6;
+    this.audioImageAnswerHeight = gameCanvas.height/7;
+    this.audioImageAnswerHolderWidth = gameCanvas.width/5;
+    this.audioImageAnswerHolderHeight = gameCanvas.height/6;
+
+    this.correctTextAnswerHolderWidth = undefined;
+    this.incorrectTextAnswerHolderWidth = undefined;
+
 	runnerSpeedY = 0;
 	runnerFloorLevel = gameCanvas.height*0.75;
 	this.playerCharacter = {
-	  x: (gameCanvas.width - RUNNERWIDTH)/2,
+	  x: RUNNERWIDTH,
 	  y: runnerFloorLevel - RUNNERHEIGHT,
 	  width: RUNNERWIDTH,
 	  height: RUNNERHEIGHT
@@ -216,3 +251,8 @@ function runnerGameClass() {
 }
 
 const runnerGame = new runnerGameClass();
+
+function CoinAnswerHolder(image)
+{
+  this.image = image;
+}
