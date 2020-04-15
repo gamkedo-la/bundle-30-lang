@@ -29,8 +29,33 @@ function birdGameClass() {
   this.FRAME_RATE = 1000/30;
   this.letterSpawnInterval = 2000;
 
+  this.imageAnswerWidth = undefined;
+  this.imageAnswerHeight = undefined;
+  this.imageAnswerHolderWidth = undefined;
+  this.imageAnswerHolderHeight = undefined;
+
+  this.audioImageAnswerWidth = undefined;
+  this.audioImageAnswerHeight = undefined;
+  this.audioImageAnswerHolderWidth = undefined;
+  this.audioImageAnswerHolderHeight = undefined;
+
+  this.correctTextAnswerHolderWidth = undefined;
+  this.incorrectTextAnswerHolderWidth = undefined;
+
+  this.LETTER_COLOR = 'lightCoral';
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+
+  this.arrayOfAnswerHolders = [];
+  this.skyRingAnswerHolder1 = new SkyRingAnswerHolder(skyRingAnswerHolder1);
+  this.skyRingAnswerHolder2 = new SkyRingAnswerHolder(skyRingAnswerHolder2);
+  this.arrayOfAnswerHolders.push(this.skyRingAnswerHolder1);
+  this.arrayOfAnswerHolders.push(this.skyRingAnswerHolder2);
+  this.assignAnswerHolder = function()
+  {
+      let randomNumber = getRandomIntInclusive(0, this.arrayOfAnswerHolders.length - 1);
+      return this.arrayOfAnswerHolders[randomNumber];
+  }
 
   this.answersXSpeed = 4;
 
@@ -55,6 +80,11 @@ function birdGameClass() {
   {
     // initializePromptAndAnswerObjects();
     // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+    this.imageAnswerWidth = gameCanvas.width/4;
+		this.imageAnswerHeight = gameCanvas.height/5;
+		this.audioImageAnswerWidth = gameCanvas.width/5;
+    this.audioImageAnswerHeight = gameCanvas.height/6;
+
     cloudManager.initialize();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     this.assignLeftOrRightDirectionToAnswers();
@@ -174,3 +204,8 @@ function birdGameClass() {
 }
 
 const birdGame = new birdGameClass();
+
+function SkyRingAnswerHolder(image)
+{
+  this.image = image;
+}

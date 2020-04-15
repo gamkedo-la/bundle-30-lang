@@ -81,6 +81,8 @@ let cloud3Image = document.createElement('img');
 let cloud4Image = document.createElement('img');
 let birdOpenFacingLeftImage = document.createElement('img');
 let birdOpenFacingRightImage = document.createElement('img');
+let skyRingAnswerHolder1 = document.createElement('img');
+let skyRingAnswerHolder2 = document.createElement('img');
 
 let menu_borderImage = document.createElement('img');
 
@@ -335,6 +337,8 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: cloud4Image, theFile: 'images/Backgrounds/cloud4.png'});
   arrayOfImages.push({imageObjectBinding: birdOpenFacingLeftImage, theFile: 'images/sprites/Bird/birdOpenFacingLeft.png'});
   arrayOfImages.push({imageObjectBinding: birdOpenFacingRightImage, theFile: 'images/sprites/Bird/birdOpenFacingRight.png'});
+  arrayOfImages.push({imageObjectBinding: skyRingAnswerHolder1, theFile: 'images/sprites/Bird/skyRing.png'});
+  arrayOfImages.push({imageObjectBinding: skyRingAnswerHolder2, theFile: 'images/sprites/Bird/skyRing2.png'});
 
 
   // main menu bg
