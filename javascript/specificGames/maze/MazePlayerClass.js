@@ -22,14 +22,14 @@ function MazePlayer()
         this.x = undefined;
         this.y = undefined;
         this.currentCell = undefined;
-        
+
         this.isPlaced = false;
     }
 
 
     this.placeInMazeAndAvoidAnswersCells = function() {
         this.currentCell = mazeGame.maze.getRandomCell();
-        
+
         while (
             this.currentCell == mazeGame.deadEndCellForCorrectAnswer ||
             this.currentCell == mazeGame.deadEndCellForIncorrectAnswer )
@@ -67,7 +67,7 @@ function MazePlayer()
             }
 
             gameCanvasContext.drawImage(
-                mazeCharacter, 
+                mazeCharacter,
                 - this.drawWidth / 2,
                 - this.drawHeight / 2,
                 this.drawWidth, this.drawHeight
@@ -134,4 +134,9 @@ function MazePlayer()
         this.currentCell.isOccupiedByPlayer = true;
     }
 
+}
+
+function MoleFoodAnswerHolder(image)
+{
+  this.image = image;
 }

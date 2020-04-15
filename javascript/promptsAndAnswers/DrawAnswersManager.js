@@ -70,20 +70,42 @@ function DrawAnswersManager()
 
       if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder)
       {
-        gameCanvasContext.drawImage(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
-          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 40,
-          promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 40,
-          gameClassManager.currentGame.imageAnswerHolderWidth,
-          gameClassManager.currentGame.imageAnswerHolderHeight);
+        if (gameClassManager.currentGame.name === 'MazeGame')
+        {
+          gameCanvasContext.drawImage(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
+            promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
+            promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 5,
+            gameClassManager.currentGame.imageAnswerHolderWidth,
+            gameClassManager.currentGame.imageAnswerHolderHeight);
+        }
+        else
+        {
+          gameCanvasContext.drawImage(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
+            promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 40,
+            promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - 40,
+            gameClassManager.currentGame.imageAnswerHolderWidth,
+            gameClassManager.currentGame.imageAnswerHolderHeight);
+        }
       }
 
       if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder)
       {
+        if (gameClassManager.currentGame.name === 'MazeGame')
+        {
+          gameCanvasContext.drawImage(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder.image,
+            promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
+            promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 5,
+            gameClassManager.currentGame.imageAnswerHolderWidth,
+            gameClassManager.currentGame.imageAnswerHolderHeight);
+        }
+        else
+        {
         gameCanvasContext.drawImage(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder.image,
           promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 40,
           promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - 40,
           gameClassManager.currentGame.imageAnswerHolderWidth,
           gameClassManager.currentGame.imageAnswerHolderHeight);
+        }
       }
 
 

@@ -15,12 +15,27 @@ function MazeGameClass(){
     this.textAnswerFontSize = 20;
     this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
-    this.imageAnswerWidth = 75;
-    this.imageAnswerHeight = 75;
+    this.imageAnswerWidth = 55;
+    this.imageAnswerHeight = 55;
+    this.imageAnswerHolderWidth = 60;
+    this.imageAnswerHolderHeight = 60;
     this.audioImageAnswerWidth = 75;
     this.audioImageAnswerHeight = 75;
+    this.audioImageAnswerHolderWidth = 60;
+    this.audioImageAnswerHolderHeight = 60;
 
-    this.LETTER_COLOR = "gold";
+    this.correctTextAnswerHolderWidth = undefined;
+    this.incorrectTextAnswerHolderWidth = undefined;
+
+    this.answerHolderImage = moleFoodImage;
+
+    this.assignAnswerHolder = function()
+    {
+      let moleFoodAnswerHolder = new MoleFoodAnswerHolder(this.answerHolderImage);
+      return moleFoodAnswerHolder;
+    }
+
+    this.LETTER_COLOR = "black";
 
     this.playerCharacter = undefined;
     this.defineAndInitializePlayerCharacter = function()
@@ -42,7 +57,7 @@ function MazeGameClass(){
     this.backgroundMusic = new MusicTrack('audio/backgroundTracks/mazeRaceMusic.mp3', 11.2);
 
     this.collisionsWithAnswersManager = new MazeCollisionsManager();
-    
+
     this.superInitialize = function () {
         this.maze = new MazeClass();
         this.maze.initializeArrayOfCells();
@@ -98,7 +113,7 @@ function MazeGameClass(){
         if (this.areAnswersPlacedInDeadEndCells){
             drawAnswersManager.draw();
         }
-        
+
         this.playerCharacter.draw();
 
         promptersManager.drawPromptsWhenAppropriate();
@@ -125,8 +140,8 @@ function MazeGameClass(){
         gameCanvasContext.fillStyle = "red";
         gameCanvasContext.fillText(
             (
-                Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) + 
-                Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)* NUMBER_OF_COLUMNS 
+                Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) +
+                Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)* NUMBER_OF_COLUMNS
             ) + " : " +
             "( "  + Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) +
             " , " + Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT)+
@@ -195,9 +210,9 @@ function MazeGameClass(){
 
     this.handleSpaceBarDown = function () {
         if (debugOn){
-            var cellIdx = Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) + 
+            var cellIdx = Math.floor(inputManager.mouseCoordinates.x / CELL_WIDTH) +
                 Math.floor(inputManager.mouseCoordinates.y / CELL_HEIGHT) * NUMBER_OF_COLUMNS;
-            
+
             this.playerCharacter.currentCell = this.maze.arrayOfCells[cellIdx];
             this.playerCharacter.placeAtCenteOfCurrentCell();
         }
