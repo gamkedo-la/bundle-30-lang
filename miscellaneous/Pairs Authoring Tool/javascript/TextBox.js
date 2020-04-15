@@ -12,7 +12,7 @@ function TextBox(frame, font){
     this.frame.height = titleSize.height;
     let counts = 0;
     this.wordToLearn = null;
-    this.cursor = new TextCursor();
+    this.cursor = new TextCursor({x: this.frame.x, y: this.frame.y}, font, this.frame.width);
 
     this.colors = {
         normal: 'white',

@@ -99,7 +99,8 @@ function keyPress(evt){
 
     pairsEditor.keyboardEvent(evt.keyCode, HELD_KEYS);
 
-    HELD_KEYS.add(evt.keyCode);
+	HELD_KEYS.add(evt.keyCode);
+	
 }
 
 function keyRelease(evt){

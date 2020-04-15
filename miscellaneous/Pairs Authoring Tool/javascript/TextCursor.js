@@ -5,7 +5,8 @@ function TextCursor(position, font, boxWidth){
     this.text =  [""];
 
     this.textSize = sizeOfString(canvasContext, font, "W");
-    //put frame class here if we decide it's needed
+	this.frame = new PairsFrame(position.x, position.y, this.textSize.width, this.textSize.height);
+
     this.shouldDrawCursor = false;
     let cursorRow = 0;
     let cursorIndex = 0;
@@ -42,9 +43,9 @@ function TextCursor(position, font, boxWidth){
         let tempRow = 0;
         for(let i = 0; i < this.string.length; i++){
             this.text[tempRow] += this.string.charAt(i);
-            const newSize = sizeOfString(canvasContext, tihs.font, this.text[tempRow]);
+            const newSize = sizeOfString(canvasContext, this.font, this.text[tempRow]);
             if(newSize.width > boxWidth){
-                const lastIndex = this.text[tempRow]. lastIndex(" ") +1;
+                const lastIndex = this.text[tempRow].lastIndex(" ") +1;
                 this.text[tempRow + 1] = this.text[tempRow].substring(lastIndex, this.text[tempRow].length);
                 this.text[tempRow] = this.text[tempRow].substring(0, lastIndex);
                 

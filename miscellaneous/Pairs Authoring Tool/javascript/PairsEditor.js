@@ -13,15 +13,19 @@ function PairsEditor(){
 
     this.createTextBox = function(){
         textBox = new TextBox(frame, LabelFont.Small);
+        textBox.inFocus = true;
     }
 
     this.update = function(){
-        console.log("Pairs Editor Exists and is Updating");
         //Empty for now
     };
 
     this.draw = function(){
         textBox.draw();
+    };
+
+    this.keyboardEvent = function(newKey, oldKeys){
+        textBox.keyboardEvent(newKey, oldKeys);
     };
     
 };

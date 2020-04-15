@@ -11,11 +11,18 @@ window.onload = function(){
     window.focus();
     pairsEditor = new PairsEditor();
     pairsEditor.initialize();
+
+    loadGame();
     
 };
 
 function loadGame(){
-    editorUpdate = setInterval(update, 1000/30);
+    var framesPerSecond = 60;
+	setInterval(function() {
+	
+    update();
+		
+	}, 1000/framesPerSecond)
 }
 
 function update(){
@@ -23,7 +30,11 @@ function update(){
 };
 
 function drawEverything(){
-    console.log("drawing everything");
+    drawBackground();
     pairsEditor.update();
     pairsEditor.draw();
 };
+
+function drawBackground(){
+	fillRectangle(canvasContext, 0,0, canvas.width, 600, 4, 'red');
+}
