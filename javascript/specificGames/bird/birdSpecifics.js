@@ -48,7 +48,7 @@ function birdGameClass() {
       }
       gameAudio.flapIndex = gameAudio.flapIndex == 0 ? 1 : 0;
     }
-  
+
   };
 
   this.superInitialize = function()
@@ -69,11 +69,13 @@ function birdGameClass() {
   this.handleLeftArrowDown = function()
   {
     this.playerCharacter.xSpeed = LEFT_ARROW_DOWN_SPEED;
+    this.playerCharacter.currentImage = this.playerCharacter.openFacingLeftImage;
   };
 
   this.handleRightArrowDown = function()
   {
     this.playerCharacter.xSpeed = RIGHT_ARROW_DOWN_SPEED;
+    this.playerCharacter.currentImage = this.playerCharacter.openFacingRightImage;
   }
 
   this.handleLeftArrowUp = function()

@@ -79,6 +79,9 @@ let cloud1Image = document.createElement('img');
 let cloud2Image = document.createElement('img');
 let cloud3Image = document.createElement('img');
 let cloud4Image = document.createElement('img');
+let birdOpenFacingLeftImage = document.createElement('img');
+let birdOpenFacingRightImage = document.createElement('img');
+
 let menu_borderImage = document.createElement('img');
 
 //lane images
@@ -330,6 +333,9 @@ function loadImages()
   arrayOfImages.push({imageObjectBinding: cloud2Image, theFile: 'images/Backgrounds/cloud2.png'});
   arrayOfImages.push({imageObjectBinding: cloud3Image, theFile: 'images/Backgrounds/cloud3.png'});
   arrayOfImages.push({imageObjectBinding: cloud4Image, theFile: 'images/Backgrounds/cloud4.png'});
+  arrayOfImages.push({imageObjectBinding: birdOpenFacingLeftImage, theFile: 'images/sprites/Bird/birdOpenFacingLeft.png'});
+  arrayOfImages.push({imageObjectBinding: birdOpenFacingRightImage, theFile: 'images/sprites/Bird/birdOpenFacingRight.png'});
+
 
   // main menu bg
   arrayOfImages.push({imageObjectBinding: menu_borderImage, theFile: 'images/Backgrounds/menu_border.png'});
