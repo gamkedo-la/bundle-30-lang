@@ -14,12 +14,12 @@ function sizeOfString(context, font, str) {
 	let result = 0;
 	
 	context.save();
-	context.font = font;
+	context.font = LabelFont.Large;
 	result = context.measureText(str).width;
 	context.restore();
 	
-	const heightEnd = font.search('p');
-	const heightString = font.substring(0, heightEnd);
+	const heightEnd = LabelFont.Large.search('p');
+	const heightString = LabelFont.Large.substring(0, heightEnd);
 	
 	return {width:result, height:parseInt(heightString)};
 }

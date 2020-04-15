@@ -3,8 +3,8 @@ function PairsEditor(){
 
     this.initialize = function(){
         //TODO: For now just show text box
-        createPairsFrame();
-        createTextBox();
+        this.createPairsFrame();
+        this.createTextBox();
     };
 
     this.createPairsFrame = function(){
@@ -16,6 +16,7 @@ function PairsEditor(){
     }
 
     this.update = function(){
+        console.log("Pairs Editor Exists and is Updating");
         //Empty for now
     };
 

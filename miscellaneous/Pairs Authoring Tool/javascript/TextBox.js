@@ -1,10 +1,10 @@
 //TextBox
 
 function TextBox(frame, font){
-    this.type = ChildType.TextBox;
+   // this.type = ChildType.TextBox;
     this.frame = frame;
     this.inFocus = false;
-    let state = ChildState.normal;
+   // let state = ChildState.normal;
     let currentIndex = 0;
     const BORDER_THICKNESS = 2;
     const PADDING = 2;
