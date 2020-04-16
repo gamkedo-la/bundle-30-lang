@@ -45,7 +45,7 @@ function TextCursor(position, font, boxWidth){
             this.text[tempRow] += this.string.charAt(i);
             const newSize = sizeOfString(canvasContext, this.font, this.text[tempRow]);
             if(newSize.width > boxWidth){
-                const lastIndex = this.text[tempRow].lastIndex(" ") +1;
+                const lastIndex = this.text[tempRow].lastIndexOf(" ") +1;
                 this.text[tempRow + 1] = this.text[tempRow].substring(lastIndex, this.text[tempRow].length);
                 this.text[tempRow] = this.text[tempRow].substring(0, lastIndex);
                 
@@ -142,6 +142,7 @@ function TextCursor(position, font, boxWidth){
         const stringStartSubstring = this.string.substring(0, totalIndex);
         const stringEndSubstring = this.string.substring(totalIndex, this.string.length);
         this.string = stringStartSubstring + newChar + stringEndSubstring;
+        console.log(this.string);
     };
 
     this.removeCharacter = function(){
@@ -159,5 +160,5 @@ function TextCursor(position, font, boxWidth){
         const stringStartSubstring = this.string.substring(0, totalIndex);
         const stringEndSubstring = this.string.substring(totalIndex + 1, this.string.length);
         this.string = stringStartSubstring + stringEndSubstring;
-    }
+    };
 }
