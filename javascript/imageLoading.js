@@ -19,6 +19,29 @@ let howIsSheImage = document.createElement("img");
 let howIsHeImage = document.createElement("img");
 let howIsItDoingImage = document.createElement("img");
 
+//polite stuff
+let pleaseImage = document.createElement("img");
+let sorryImage = document.createElement("img");
+let excuseMeQuestionAskingContextImage = document.createElement("img");
+let waitAMomentImage = document.createElement("img");
+let thankYouImage = document.createElement("img");
+let anyTimeImage = document.createElement("img");
+let youreWelcomeImage = document.createElement("img");
+let excuseMePassingThroughContextImage = document.createElement("img");
+let iAppreciateThatImage = document.createElement("img");
+let youHaveWorkedHardImage = document.createElement("img");
+
+//polite stuff group 2
+let longTimeNoSeeImage = document.createElement("img");
+let illLetYouGoImage = document.createElement("img");
+let pleaseAdviseMeImage = document.createElement("img");
+let iRespectfullyWaitImage = document.createElement("img");
+let myHumbleOpinionImage = document.createElement("img");
+let thisMaySeemRudeImage = document.createElement("img");
+let itsOKImage = document.createElement("img");
+let itsMyDutyImage = document.createElement("img");
+let excuseMeForSayingThisImage = document.createElement("img");
+let excuseMyLowSkillImage = document.createElement("img");
 
 let mandarinBuyImage = document.createElement("img");//'buy' in English
 let mandarinSellImage = document.createElement("img");//'sell' in English
@@ -277,7 +300,30 @@ function loadImages()
 
   //end of cVc shooter
 
+  //polite phrases 1
+  arrayOfImages.push({imageObjectBinding: pleaseImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/please.png'});
+  arrayOfImages.push({imageObjectBinding: sorryImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/sorry.png'});
+  arrayOfImages.push({imageObjectBinding: excuseMeQuestionAskingContextImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMeQuestionAskingContext.png'});
+  arrayOfImages.push({imageObjectBinding: waitAMomentImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/oneMoment.png'});
+  arrayOfImages.push({imageObjectBinding: thankYouImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/thankYou.png'});
+  arrayOfImages.push({imageObjectBinding: anyTimeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/anyTime.png'});
+  arrayOfImages.push({imageObjectBinding: youreWelcomeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/youreWelcome.png'});
+  arrayOfImages.push({imageObjectBinding: excuseMePassingThroughContextImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMePassingThroughContext.png'});
+  arrayOfImages.push({imageObjectBinding: iAppreciateThatImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iAppreciateThat.png'});
+  arrayOfImages.push({imageObjectBinding: youHaveWorkedHardImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/youHaveWorkedHard.png'});
 
+  //polite stuff group 2
+  arrayOfImages.push({imageObjectBinding: longTimeNoSeeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/longTimeNoSee.png'});
+  arrayOfImages.push({imageObjectBinding: illLetYouGoImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/illLetYouGo.png'});
+  arrayOfImages.push({imageObjectBinding: pleaseAdviseMeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/pleaseAdviseMe.png'});
+  arrayOfImages.push({imageObjectBinding: iRespectfullyWaitImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iRespectfullyWait.png'});
+  arrayOfImages.push({imageObjectBinding: myHumbleOpinionImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/myHumbleOpinion.png'});
+  arrayOfImages.push({imageObjectBinding: excuseMeForSayingThisImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMeForSayingThis.png'});
+  arrayOfImages.push({imageObjectBinding: itsOKImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/itsOK.png'});
+  arrayOfImages.push({imageObjectBinding: itsMyDutyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/itsOK.png'});
+  arrayOfImages.push({imageObjectBinding: excuseMyLowSkillImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMyLowSkill.png'});
+
+  //common words
   arrayOfImages.push({imageObjectBinding: mandarinBuyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinBuy.png'});//'buy' in English
   arrayOfImages.push({imageObjectBinding: mandarinSellImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinSell.png'});//'sell' in English
 

@@ -34,7 +34,7 @@ function MusicManager() {
 
 		if (fadeTrack != null && fadeTrack.volume >= 0.05) {
 			fadeTrack.volume -= 0.05;
-			
+
 		}
 		if (fadeTrack != null && fadeTrack.volume <= 0.1) {
 			fadeTrack.pause();
@@ -305,6 +305,28 @@ promptAudio.mandarinHowIsHe = new promptSound('audio/PromptsAndAnswers/Mandarin/
 promptAudio.mandarinHowIsShe = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHowIsHe.mp3');
 promptAudio.mandarinHowIsItDoing = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHowIsItDoing.mp3');
 
+//polite mandarin phrases group 1
+promptAudio.mandarinPlease = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinPlease.mp3');
+promptAudio.mandarinSorry = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinSorry.mp3');
+promptAudio.mandarinExcuseMeQuestionAskingContext = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinExcuseMeQuestionContext.mp3');
+promptAudio.mandarinWaitAMoment = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinWaitAMoment.mp3');
+promptAudio.mandarinThankYou = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinThankYou.mp3');
+promptAudio.mandarinAnyTime = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinAnyTime.mp3');
+promptAudio.mandarinYoureWelcome = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinYoureWelcome.mp3');
+promptAudio.mandarinExcuseMePassingThroughContext = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinExcuseMePassingThroughContext.mp3');
+promptAudio.mandarinIAppreciateThat = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinIAppreciateThat.mp3');
+promptAudio.mandarinYouHaveWorkedHard = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinYouWorkedHard.mp3');
+
+//polite mandarin phrases group 2
+promptAudio.mandarinLongTimeNoSee = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinLongTimeNoSee.mp3');
+promptAudio.mandarinIllLetYouGo = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinIllLetYouGo.mp3');
+promptAudio.mandarinPleaseAdviseMe = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinPleaseAdvise.mp3');
+promptAudio.mandarinIRespectfullyWait = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinIRespectfullyWait.mp3');
+promptAudio.mandarinMyHumbleOpinion = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinInMyHumbleOpinion.mp3');
+promptAudio.mandarinExcuseMeForSayingThis = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinExcuseMeForSayingThis.mp3');
+promptAudio.mandarinItsOK = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinItsOK.mp3');
+//promptAudio.mandarinItsMyDuty = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinItsMyDuty.mp3');
+promptAudio.mandarinSorryForMyLowSkill = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinSorryForMyLowSkill.mp3');
 
 promptAudio.mandarinBuy = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinBuy.mp3');
 promptAudio.mandarinSell = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinSell.mp3');

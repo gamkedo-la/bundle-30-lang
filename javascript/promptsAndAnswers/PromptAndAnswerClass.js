@@ -52,6 +52,29 @@ let mandarin8PromptAndAnswer = {};
 let mandarin9PromptAndAnswer = {};
 let mandarinNumbersGrouping = {};
 
+let mandarinPleasePromptAndAnswer = {};
+let mandarinSorryPromptAndAnswer = {};
+let mandarinExcuseMeQuestionAskingContextPromptAndAnswer = {};
+let mandarinWaitAMomentPromptAnswer = {};
+let mandarinThankYouPromptAndAnswer = {};
+let mandarinAnyTimePromptAndAnswer = {};
+let mandarinYoureWelcomePromptAndAnswer = {};
+let mandarinExcuseMePassingThroughContextPromptAndAnswer = {};
+let mandarinIAppreciateThatPromptAndAnswer = {};
+let mandarinYouHaveWorkedHardPromptAndAnswer = {};
+
+//polite phrases 2
+let mandarinLongTimeNoSeePromptAndAnswer = {};
+let mandarinIllLetYouGoPromptAndAnswer = {};
+let mandarinPleaseAdviseMePromptAndAnswer = {};
+let mandarinIRespectfullyWaitPromptAndAnswer = {};
+let mandarinInMyHumbleOpinionPromptAndAnswer = {};
+let mandarinExcuseMeForSayingThisPromptAndAnswer = {};
+let mandarinItsOKPromptAndAnswer = {};
+let mandarinItsMyDutyPromptAndAnswer = {};
+let mandarinExcuseMyLowSkillPromptAndAnswer = {};
+
+
 
 function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, audioAssociation)
 {
@@ -157,6 +180,29 @@ function initializePromptAndAnswerObjects()
   mandarin8PromptAndAnswer = new PromptAndAnswerClass("mandarin 8", '八', number8, promptAudio.mandarin8);
   mandarin9PromptAndAnswer = new PromptAndAnswerClass("mandarin 9", '九', number9, promptAudio.mandarin9);
 
+  //polite phrases 1
+  mandarinPleasePromptAndAnswer = new PromptAndAnswerClass('mandarin please', '请', pleaseImage, promptAudio.mandarinPlease);
+  mandarinSorryPromptAndAnswer = new PromptAndAnswerClass('mandarin sorry', '抱歉', sorryImage, promptAudio.mandarinSorry);
+  mandarinExcuseMeQuestionAskingContextPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me question', '请问', excuseMeQuestionAskingContextImage, promptAudio.mandarinExcuseMeQuestionAskingContext);
+  mandarinWaitAMomentPromptAnswer = new PromptAndAnswerClass('mandarin wait a moment', '稍等', waitAMomentImage, promptAudio.mandarinWaitAMoment);
+  mandarinThankYouPromptAndAnswer = new PromptAndAnswerClass('mandarin thank you', '谢谢', thankYouImage, promptAudio.mandarinThankYou);
+  mandarinAnyTimePromptAndAnswer = new PromptAndAnswerClass('mandarin any time', '随时 ', anyTimeImage, promptAudio.mandarinAnyTime);
+  mandarinYoureWelcomePromptAndAnswer = new PromptAndAnswerClass('mandarin youre welcome', '别客气', youreWelcomeImage, promptAudio.mandarinYoureWelcome);
+  mandarinExcuseMePassingThroughContextPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me passing through', '借过', pleaseImage, promptAudio.mandarinPlease);
+  mandarinIAppreciateThatPromptAndAnswer = new PromptAndAnswerClass('mandarin I appreciate that', '我很感激', iAppreciateThat, promptAudio.mandarinIAppreciateThat);
+  mandarinYouHaveWorkedHardPromptAndAnswer = new PromptAndAnswerClass('mandarin you have worked hard', '您辛苦', youHaveWorkedHardImage, promptAudio.mandarinYouHaveWorkedHard);
+
+  //polite phrases 2
+  mandarinLongTimeNoSeePromptAndAnswer = new PromptAndAnswerClass('mandarin long time no see', '久违 ', longTimeNoSeeImage, promptAudio.mandarinLongTimeNoSee);
+  mandarinIllLetYouGoPromptAndAnswer = new PromptAndAnswerClass('mandarin Ill let you go', '您失陪', youHaveWorkedHardImage, promptAudio.mandarinYouHaveWorkedHard);
+  mandarinPleaseAdviseMePromptAndAnswer = new PromptAndAnswerClass('mandarin please advise me', '您指教', pleaseAdviseMeImage, promptAudio.mandarinPleaseAdviseMe);
+  mandarinIRespectfullyWaitPromptAndAnswer = new PromptAndAnswerClass('mandarin I respectfully wait', '我恭候', iRespectfullyWaitImage, promptAudio.mandarinIRespectfullyWait);
+  mandarinInMyHumbleOpinionPromptAndAnswer = new PromptAndAnswerClass('mandarin in my humble opinion', ' 依本人拙见', myHumbleOpinionImage, promptAudio.mandarinMyHumbleOpinion);
+  mandarinExcuseMeForSayingThisPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me for saying this', '冒昧 ', excuseMeForSayingThisImage, promptAudio.mandarinExcuseMeForSayingThis);
+  mandarinItsOKPromptAndAnswer = new PromptAndAnswerClass('mandarin its OK', '没关系', itsOKImage, promptAudio.mandarinItsOK);
+  mandarinItsMyDutyPromptAndAnswer = new PromptAndAnswerClass('mandarin its my duty', '我应该的 ', itsMyDutyImage, promptAudio.mandarinYouHaveWorkedHard);
+  mandarinExcuseMyLowSkillPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse my low skill', '献丑', excuseMyLowSkillImage, promptAudio.mandarinExcuseMyLowSkill);
+
   //Vietnamese Section
 }
 
@@ -187,6 +233,8 @@ function populatePromptAndAnswerArrays()
   mandarinYesterdayVersusTomorrowPairGrouping = {name: 'mandarin yesterday vs tomorrow', arrayOfObjects:[]};
   mandarinColorsGrouping = {name: 'mandarin colors', arrayOfObjects:[]};
   mandarinNumbersGrouping = {name: 'mandarin numbers', arrayOfObjects:[]};
+  mandarinPolitePhrasesGroup1 = {name: 'mandarin polite phrases group 1', arrayOfObjects:[]};
+  mandarinPolitePhrasesGroup2 = {name: 'mandarin polite phrases group 2', arrayOfObjects:[]};
 
   //English
   womanVersusWomenPairGrouping.arrayOfObjects.push(womanPromptAndAnswer);
@@ -275,6 +323,30 @@ function populatePromptAndAnswerArrays()
   mandarinNumbersGrouping.arrayOfObjects.push(mandarin8PromptAndAnswer);
   mandarinNumbersGrouping.arrayOfObjects.push(mandarin9PromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinNumbersGrouping);
+
+  mandarinPolitePhrasesGroup1.arrayOfObjects.push(mandarinPleasePromptAndAnswer);
+  mandarinPolitePhrasesGroup1.arrayOfObjects.push(mandarinSorryPromptAndAnswer);
+  mandarinPolitePhrasesGroup1.arrayOfObjects.push(mandarinExcuseMeQuestionAskingContextPromptAndAnswer);
+  mandarinPolitePhrasesGroup1.arrayOfObjects.push(mandarinWaitAMomentPromptAnswer);
+  mandarinPolitePhrasesGroup1.arrayOfObjects.push(mandarinThankYouPromptAndAnswer);
+  mandarinPolitePhrasesGroup1.arrayOfObjects.push(mandarinAnyTimePromptAndAnswer);
+  mandarinPolitePhrasesGroup1.arrayOfObjects.push(mandarinYoureWelcomePromptAndAnswer);
+  mandarinPolitePhrasesGroup1.arrayOfObjects.push(mandarinExcuseMePassingThroughContextPromptAndAnswer);
+  mandarinPolitePhrasesGroup1.arrayOfObjects.push(mandarinIAppreciateThatPromptAndAnswer);
+  mandarinPolitePhrasesGroup1.arrayOfObjects.push(mandarinYouHaveWorkedHardPromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinPolitePhrasesGroup1);
+
+  mandarinPolitePhrasesGroup2.arrayOfObjects.push(mandarinLongTimeNoSeePromptAndAnswer);
+  mandarinPolitePhrasesGroup2.arrayOfObjects.push(mandarinIllLetYouGoPromptAndAnswer);
+  mandarinPolitePhrasesGroup2.arrayOfObjects.push(mandarinPleaseAdviseMePromptAndAnswer);
+  mandarinPolitePhrasesGroup2.arrayOfObjects.push(mandarinIRespectfullyWaitPromptAndAnswer);
+  mandarinPolitePhrasesGroup2.arrayOfObjects.push(mandarinInMyHumbleOpinionPromptAndAnswer);
+  mandarinPolitePhrasesGroup2.arrayOfObjects.push(mandarinExcuseMeForSayingThisPromptAndAnswer);
+  mandarinPolitePhrasesGroup2.arrayOfObjects.push(mandarinItsOKPromptAndAnswer);
+  mandarinPolitePhrasesGroup2.arrayOfObjects.push(mandarinItsMyDutyPromptAndAnswer);
+  mandarinPolitePhrasesGroup2.arrayOfObjects.push(mandarinYouHaveWorkedHardPromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinPolitePhrasesGroup2);
+
 
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
 
