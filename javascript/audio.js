@@ -328,6 +328,18 @@ promptAudio.mandarinItsOK = new promptSound('audio/PromptsAndAnswers/Mandarin/ma
 promptAudio.mandarinItsMyDuty = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinItsMyDuty.mp3');
 promptAudio.mandarinSorryForMyLowSkill = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinSorryForMyLowSkill.mp3');
 
+//common words
+promptAudio.mandarinToBe = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinToBe.mp3');
+promptAudio.mandarinOf = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinOf.mp3');
+promptAudio.mandarinNot = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinNot.mp3');
+promptAudio.mandarinLe = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinLe.mp3');
+promptAudio.mandarinPerson = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinPerson.mp3');
+promptAudio.mandarinI = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinI.mp3');
+promptAudio.mandarinYou = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinYou.mp3');
+promptAudio.mandarinAt = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinAt.mp3');
+promptAudio.mandarinHave = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHave.mp3');
+promptAudio.mandarinIn = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinIn.mp3');
+
 promptAudio.mandarinBuy = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinBuy.mp3');
 promptAudio.mandarinSell = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinSell.mp3');
 

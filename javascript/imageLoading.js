@@ -42,6 +42,18 @@ let itsMyDutyImage = document.createElement("img");
 let excuseMeForSayingThisImage = document.createElement("img");
 let excuseMyLowSkillImage = document.createElement("img");
 
+//common words
+let toBeImage = document.createElement("img");
+let ofImage = document.createElement("img");
+let notImage = document.createElement("img");
+let leImage = document.createElement("img");
+let personImage = document.createElement("img");
+let mandarinMeMyIImage = document.createElement("img");
+let youImage = document.createElement("img");
+let atImage = document.createElement("img");
+let haveImage = document.createElement("img");
+let inImage = document.createElement("img");
+
 let mandarinBuyImage = document.createElement("img");//'buy' in English
 let mandarinSellImage = document.createElement("img");//'sell' in English
 
@@ -357,6 +369,14 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: beeImage, theFile: 'images/sprites/PromptsAndAnswers/bee.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: flowerImage, theFile: 'images/sprites/PromptsAndAnswers/flower.png', loaded: false});
 
+  arrayOfImagesToLoad.push({imageObjectBinding: toBeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/toBeImage.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: ofImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/ofImage.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: notImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/notImage.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: leImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/leImage.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: personImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/personImage.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: mandarinMeMyIImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinMeMyIImage.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: youImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/you.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: atImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/at.png', loaded: false});
 
   //runner game
   arrayOfImagesToLoad.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png', loaded: false});

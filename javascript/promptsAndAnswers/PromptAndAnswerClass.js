@@ -74,6 +74,16 @@ let mandarinItsOKPromptAndAnswer = {};
 let mandarinItsMyDutyPromptAndAnswer = {};
 let mandarinExcuseMyLowSkillPromptAndAnswer = {};
 
+//mandarin common words 1
+let mandarinToBePromptAndAnswer = {};
+let mandarinOfPromptAndAnswer = {};
+let mandarinNotPromptAndAnswer = {};
+let mandarinOccurPromptAndAnswer = {};
+let mandarinPersonPromptAndAnswer = {};
+let mandarinIPromptAndAnswer = {};
+let mandarinYouPromptAndAnswer = {};
+let mandarinHavePromptAndAnswer = {};
+let mandarinInPromptAndAnswer = {};
 
 
 function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, audioAssociation)
@@ -203,6 +213,18 @@ function initializePromptAndAnswerObjects()
   mandarinItsMyDutyPromptAndAnswer = new PromptAndAnswerClass('mandarin its my duty', '我应该的 ', itsMyDutyImage, promptAudio.mandarinItsMyDuty);
   mandarinExcuseMyLowSkillPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse my low skill', '献丑', excuseMyLowSkillImage, promptAudio.mandarinSorryForMyLowSkill);
 
+  //common words
+  mandarinToBePromptAndAnswer = new PromptAndAnswerClass('mandarin to be', '是 ', toBeImage, promptAudio.mandarinToBe);
+  mandarinOfPromptAndAnswer = new PromptAndAnswerClass('mandarin of', '的 ', ofImage, promptAudio.mandarinOf);
+  mandarinNotPromptAndAnswer = new PromptAndAnswerClass('mandarin not', '不 ', notImage, promptAudio.mandarinNot);
+  mandarinOccurPromptAndAnswer = new PromptAndAnswerClass('mandarin occur/le', '了 ', leImage, promptAudio.mandarinLe);
+  mandarinPersonPromptAndAnswer =  new PromptAndAnswerClass('mandarin person', '人	 ', personImage, promptAudio.mandarinPerson);
+  mandarinIPromptAndAnswer =  new PromptAndAnswerClass('mandarin I', '我	 ', mandarinMeMyIImage, promptAudio.mandarinI);
+  mandarinYouPromptAndAnswer =  new PromptAndAnswerClass('mandarin You', '你', youImage, promptAudio.mandarinYou);
+  mandarinAtPromptAndAnswer = new PromptAndAnswerClass('mandarin At', '在', atImage, promptAudio.mandarinAt);
+  mandarinHavePromptAndAnswer = new PromptAndAnswerClass('mandarin Have', '有', haveImage, promptAudio.mandarinHave);
+  mandarinInPromptAndAnswer = new PromptAndAnswerClass('mandarin In', '中', inImage, promptAudio.mandarinIn);
+
   //Vietnamese Section
 }
 
@@ -235,6 +257,7 @@ function populatePromptAndAnswerArrays()
   mandarinNumbersGrouping = {name: 'mandarin numbers', arrayOfObjects:[]};
   mandarinPolitePhrasesGroup1 = {name: 'mandarin polite phrases group 1', arrayOfObjects:[]};
   mandarinPolitePhrasesGroup2 = {name: 'mandarin polite phrases group 2', arrayOfObjects:[]};
+  mandarinCommonWordsGroup1 = {name: 'mandarin common words group 1', arrayOfObjects:[]};
 
   //English
   womanVersusWomenPairGrouping.arrayOfObjects.push(womanPromptAndAnswer);
@@ -347,6 +370,17 @@ function populatePromptAndAnswerArrays()
   mandarinPolitePhrasesGroup2.arrayOfObjects.push(mandarinYouHaveWorkedHardPromptAndAnswer);
   promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinPolitePhrasesGroup2);
 
+  mandarinCommonWordsGroup1.arrayOfObjects.push(mandarinToBePromptAndAnswer);
+  mandarinCommonWordsGroup1.arrayOfObjects.push(mandarinOfPromptAndAnswer);
+  mandarinCommonWordsGroup1.arrayOfObjects.push(mandarinNotPromptAndAnswer);
+  mandarinCommonWordsGroup1.arrayOfObjects.push(mandarinOccurPromptAndAnswer);
+  mandarinCommonWordsGroup1.arrayOfObjects.push(mandarinPersonPromptAndAnswer);
+  mandarinCommonWordsGroup1.arrayOfObjects.push(mandarinIPromptAndAnswer);
+  mandarinCommonWordsGroup1.arrayOfObjects.push(mandarinYouPromptAndAnswer);
+  mandarinCommonWordsGroup1.arrayOfObjects.push(mandarinAtPromptAndAnswer);
+  mandarinCommonWordsGroup1.arrayOfObjects.push(mandarinHavePromptAndAnswer);
+  mandarinCommonWordsGroup1.arrayOfObjects.push(mandarinInPromptAndAnswer);
+  promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings.push(mandarinCommonWordsGroup1);
 
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
 
