@@ -37,7 +37,6 @@ let illLetYouGoImage = document.createElement("img");
 let pleaseAdviseMeImage = document.createElement("img");
 let iRespectfullyWaitImage = document.createElement("img");
 let myHumbleOpinionImage = document.createElement("img");
-let thisMaySeemRudeImage = document.createElement("img");
 let itsOKImage = document.createElement("img");
 let itsMyDutyImage = document.createElement("img");
 let excuseMeForSayingThisImage = document.createElement("img");
@@ -240,292 +239,289 @@ symbolPeriodImage];
 })();
 
 var numberOfImagesToLoad = undefined;
-
+let arrayOfImagesToLoad = [];
 function loadImages()
 {
-  let arrayOfImages = [];
+
   for (let arrayOfTextLettersIndex = 0; arrayOfTextLettersIndex < arrayOfTextLetters.length; arrayOfTextLettersIndex++)
   {
     let smallLetterImageName = 'small' + arrayOfTextLetters[arrayOfTextLettersIndex];
-    arrayOfImages.push(
+    arrayOfImagesToLoad.push(
                     {
                     imageObjectBinding: window[smallLetterImageName],
                     theFile: 'images/Custom Font/pngs/small letters/small' + arrayOfTextLetters[arrayOfTextLettersIndex] + '.png'
                     });
 
     let bigLetterImageName = 'big' + arrayOfTextLetters[arrayOfTextLettersIndex];
-    arrayOfImages.push(
+    arrayOfImagesToLoad.push(
                     {
                     imageObjectBinding: window[bigLetterImageName],
                     theFile: 'images/Custom Font/pngs/big letters/big' + arrayOfTextLetters[arrayOfTextLettersIndex] + '.png'}
                     );
   }
 
-
   for (let arrayOfTextNumbersIndex = 0; arrayOfTextNumbersIndex < arrayOfTextNumbers.length; arrayOfTextNumbersIndex++)
   {
     let numberImageName = 'number' + arrayOfTextNumbers[arrayOfTextNumbersIndex];
-    arrayOfImages.push(
+    arrayOfImagesToLoad.push(
                     {
                     imageObjectBinding: window[numberImageName],
                     theFile: 'images/Custom Font/pngs/numbers/' + arrayOfTextNumbers[arrayOfTextNumbersIndex]  + '.png'
                     });
   }
-
   //somewhat standard image loading
 
   //prompt and answer
-  arrayOfImages.push({imageObjectBinding: womanImage, theFile: 'images/sprites/PromptsAndAnswers/woman.png'});
-  arrayOfImages.push({imageObjectBinding: womenImage, theFile: 'images/sprites/PromptsAndAnswers/women.png'});
-  arrayOfImages.push({imageObjectBinding: manImage, theFile: 'images/sprites/PromptsAndAnswers/man.png'});
-  arrayOfImages.push({imageObjectBinding: menImage, theFile: 'images/sprites/PromptsAndAnswers/men.png'});
-  arrayOfImages.push({imageObjectBinding: heImage, theFile: 'images/sprites/PromptsAndAnswers/man.png'});
-  arrayOfImages.push({imageObjectBinding: sheImage, theFile: 'images/sprites/PromptsAndAnswers/woman.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: womanImage, theFile: 'images/sprites/PromptsAndAnswers/woman.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: womenImage, theFile: 'images/sprites/PromptsAndAnswers/women.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: manImage, theFile: 'images/sprites/PromptsAndAnswers/man.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: menImage, theFile: 'images/sprites/PromptsAndAnswers/men.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: heImage, theFile: 'images/sprites/PromptsAndAnswers/man.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: sheImage, theFile: 'images/sprites/PromptsAndAnswers/woman.png', loaded: false});
 
 
   //cVc shooter section
 
   //English cVcs
-  arrayOfImages.push({imageObjectBinding: catImage, theFile: 'images/sprites/PromptsAndAnswers/cat.png'});
-  arrayOfImages.push({imageObjectBinding: cotImage, theFile: 'images/sprites/PromptsAndAnswers/cot.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: catImage, theFile: 'images/sprites/PromptsAndAnswers/cat.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: cotImage, theFile: 'images/sprites/PromptsAndAnswers/cot.png', loaded: false});
 
   //Mandarin cVcs
-  arrayOfImages.push({imageObjectBinding: howAreYouImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAreYou.png'});
-  arrayOfImages.push({imageObjectBinding: howAmIImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAmI.png'});
-  arrayOfImages.push({imageObjectBinding: howAreTheyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAreThey.png'});
-  arrayOfImages.push({imageObjectBinding: howAreWeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAreWe.png'});
-  arrayOfImages.push({imageObjectBinding: howIsHeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsHe.png'});
-  arrayOfImages.push({imageObjectBinding: howIsSheImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsShe.png'});
-  arrayOfImages.push({imageObjectBinding: howIsItDoingImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsItDoing.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: howAreYouImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAreYou.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: howAmIImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAmI.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: howAreTheyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAreThey.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: howAreWeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howAreWe.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: howIsHeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsHe.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: howIsSheImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsShe.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: howIsItDoingImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsItDoing.png', loaded: false});
 
   //end of cVc shooter
 
   //polite phrases 1
-  arrayOfImages.push({imageObjectBinding: pleaseImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/please.png'});
-  arrayOfImages.push({imageObjectBinding: sorryImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/sorry.png'});
-  arrayOfImages.push({imageObjectBinding: excuseMeQuestionAskingContextImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMeQuestionAskingContext.png'});
-  arrayOfImages.push({imageObjectBinding: waitAMomentImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/oneMoment.png'});
-  arrayOfImages.push({imageObjectBinding: thankYouImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/thankYou.png'});
-  arrayOfImages.push({imageObjectBinding: anyTimeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/anyTime.png'});
-  arrayOfImages.push({imageObjectBinding: youreWelcomeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/youreWelcome.png'});
-  arrayOfImages.push({imageObjectBinding: excuseMePassingThroughContextImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMePassingThroughContext.png'});
-  arrayOfImages.push({imageObjectBinding: iAppreciateThatImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iAppreciateThat.png'});
-  arrayOfImages.push({imageObjectBinding: youHaveWorkedHardImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/youHaveWorkedHard.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: pleaseImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/please.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: sorryImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/sorry.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: excuseMeQuestionAskingContextImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMeQuestionAskingContext.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: waitAMomentImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/oneMoment.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: thankYouImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/thankYou.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: anyTimeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/anyTime.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: youreWelcomeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/youreWelcome.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: excuseMePassingThroughContextImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMePassingThroughContext.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: iAppreciateThatImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iAppreciateThat.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: youHaveWorkedHardImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/youHaveWorkedHard.png', loaded: false});
 
   //polite stuff group 2
-  arrayOfImages.push({imageObjectBinding: longTimeNoSeeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/longTimeNoSee.png'});
-  arrayOfImages.push({imageObjectBinding: illLetYouGoImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/illLetYouGo.png'});
-  arrayOfImages.push({imageObjectBinding: pleaseAdviseMeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/pleaseAdviseMe.png'});
-  arrayOfImages.push({imageObjectBinding: iRespectfullyWaitImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iRespectfullyWait.png'});
-  arrayOfImages.push({imageObjectBinding: myHumbleOpinionImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/myHumbleOpinion.png'});
-  arrayOfImages.push({imageObjectBinding: excuseMeForSayingThisImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMeForSayingThis.png'});
-  arrayOfImages.push({imageObjectBinding: itsOKImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/itsOK.png'});
-  arrayOfImages.push({imageObjectBinding: itsMyDutyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/itsOK.png'});
-  arrayOfImages.push({imageObjectBinding: excuseMyLowSkillImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMyLowSkill.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: longTimeNoSeeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/longTimeNoSee.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: illLetYouGoImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/illLetYouGo.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: pleaseAdviseMeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/pleaseAdviseMe.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: iRespectfullyWaitImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iRespectfullyWait.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: myHumbleOpinionImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/myHumbleOpinion.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: excuseMeForSayingThisImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMeForSayingThis.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: itsOKImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/itsOK.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: itsMyDutyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/itsMyDuty.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: excuseMyLowSkillImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMyLowSkill.png', loaded: false});
 
   //common words
-  arrayOfImages.push({imageObjectBinding: mandarinBuyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinBuy.png'});//'buy' in English
-  arrayOfImages.push({imageObjectBinding: mandarinSellImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinSell.png'});//'sell' in English
+  arrayOfImagesToLoad.push({imageObjectBinding: mandarinBuyImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinBuy.png', loaded: false});//'buy' in English
+  arrayOfImagesToLoad.push({imageObjectBinding: mandarinSellImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinSell.png', loaded: false});//'sell' in English
 
-  arrayOfImages.push({imageObjectBinding: mandarinMomImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mom.png'});//'sell' in English
-  arrayOfImages.push({imageObjectBinding: mandarinHorseImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/horse.png'});//'sell' in English
+  arrayOfImagesToLoad.push({imageObjectBinding: mandarinMomImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mom.png', loaded: false});//'sell' in English
+  arrayOfImagesToLoad.push({imageObjectBinding: mandarinHorseImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/horse.png', loaded: false});//'sell' in English
 
-  arrayOfImages.push({imageObjectBinding: mandarinThisOneImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/thisOne.png'});//'sell' in English
-  arrayOfImages.push({imageObjectBinding: mandarinThatOneImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/thatOne.png'});//'sell' in English
-  arrayOfImages.push({imageObjectBinding: mandarinTheseOnesImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/theseOnes.png'});//'sell' in English
-  arrayOfImages.push({imageObjectBinding: mandarinThoseOnesImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/thoseOnes.png'});//'sell' in English
+  arrayOfImagesToLoad.push({imageObjectBinding: mandarinThisOneImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/thisOne.png', loaded: false});//'sell' in English
+  arrayOfImagesToLoad.push({imageObjectBinding: mandarinThatOneImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/thatOne.png', loaded: false});//'sell' in English
+  arrayOfImagesToLoad.push({imageObjectBinding: mandarinTheseOnesImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/theseOnes.png', loaded: false});//'sell' in English
+  arrayOfImagesToLoad.push({imageObjectBinding: mandarinThoseOnesImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/thoseOnes.png', loaded: false});//'sell' in English
 
-  arrayOfImages.push({imageObjectBinding: mandarinCouchImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/couch.png'});//'sell' in English
-  arrayOfImages.push({imageObjectBinding: mandarinTowerImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/tower.png'});//'sell' in English
+  arrayOfImagesToLoad.push({imageObjectBinding: mandarinCouchImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/couch.png', loaded: false});//'sell' in English
+  arrayOfImagesToLoad.push({imageObjectBinding: mandarinTowerImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/tower.png', loaded: false});//'sell' in English
 
-  arrayOfImages.push({imageObjectBinding: sleepImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/sleep.png'});
-  arrayOfImages.push({imageObjectBinding: dumplingsImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/dumplings.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: sleepImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/sleep.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: dumplingsImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/dumplings.png', loaded: false});
 
-  arrayOfImages.push({imageObjectBinding: hereImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/here.png'});
-  arrayOfImages.push({imageObjectBinding: thereImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/there.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: hereImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/here.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: thereImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/there.png', loaded: false});
 
-  arrayOfImages.push({imageObjectBinding: calendarImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/blankCalendarPage.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: calendarImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/blankCalendarPage.png', loaded: false});
 
-  arrayOfImages.push({imageObjectBinding: blackImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/black.png'});
-  arrayOfImages.push({imageObjectBinding: whiteImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/white.png'});
-  arrayOfImages.push({imageObjectBinding: grayImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/gray.png'});
-  arrayOfImages.push({imageObjectBinding: redImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/red.png'});
-  arrayOfImages.push({imageObjectBinding: brownImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/brown.png'});
-  arrayOfImages.push({imageObjectBinding: yellowImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/yellow.png'});
-  arrayOfImages.push({imageObjectBinding: greenImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/green.png'});
-  arrayOfImages.push({imageObjectBinding: blueImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/blue.png'});
-  arrayOfImages.push({imageObjectBinding: purpleImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/purple.png'});
-  arrayOfImages.push({imageObjectBinding: pinkImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/pink.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: blackImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/black.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: whiteImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/white.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: grayImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/gray.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: redImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/red.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: brownImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/brown.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: yellowImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/yellow.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: greenImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/green.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: blueImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/blue.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: purpleImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/purple.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: pinkImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/pink.png', loaded: false});
 
-  arrayOfImages.push({imageObjectBinding: beeImage, theFile: 'images/sprites/PromptsAndAnswers/bee.png'});
-  arrayOfImages.push({imageObjectBinding: flowerImage, theFile: 'images/sprites/PromptsAndAnswers/flower.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: beeImage, theFile: 'images/sprites/PromptsAndAnswers/bee.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flowerImage, theFile: 'images/sprites/PromptsAndAnswers/flower.png', loaded: false});
 
 
   //runner game
-  arrayOfImages.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png'});
-  arrayOfImages.push({imageObjectBinding: runnerCloud1, theFile: 'images/Backgrounds/runnerCloud1.png'});
-  arrayOfImages.push({imageObjectBinding: runnerGrassImage, theFile: 'images/Backgrounds/runnerGrass.png'});
-  arrayOfImages.push({imageObjectBinding: runnerMountain1Image, theFile: 'images/Backgrounds/runnerMountain1.png'});
-  arrayOfImages.push({imageObjectBinding: runnerRunning1Image, theFile: 'images/sprites/runner/runnerRunning1.png'});
-  arrayOfImages.push({imageObjectBinding: runnerRunning2Image, theFile: 'images/sprites/runner/runnerRunning2.png'});
-  arrayOfImages.push({imageObjectBinding: runnerRunning3Image, theFile: 'images/sprites/runner/runnerRunning3.png'});
-  arrayOfImages.push({imageObjectBinding: runnerJumpingImage, theFile: 'images/sprites/runner/runnerJumping.png'});
-  arrayOfImages.push({imageObjectBinding: coinImage, theFile: 'images/sprites/runner/Coin.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerCloud1, theFile: 'images/Backgrounds/runnerCloud1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerGrassImage, theFile: 'images/Backgrounds/runnerGrass.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerMountain1Image, theFile: 'images/Backgrounds/runnerMountain1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning1Image, theFile: 'images/sprites/runner/runnerRunning1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning2Image, theFile: 'images/sprites/runner/runnerRunning2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning3Image, theFile: 'images/sprites/runner/runnerRunning3.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerJumpingImage, theFile: 'images/sprites/runner/runnerJumping.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: coinImage, theFile: 'images/sprites/runner/Coin.png', loaded: false});
 
   //snake game
-  arrayOfImages.push({imageObjectBinding: snakeGrassBackground, theFile: 'images/Backgrounds/Grass.png'});
-  arrayOfImages.push({imageObjectBinding: snakeHeadImage, theFile: 'images/sprites/Snake/topSnake.png'});
-  arrayOfImages.push({imageObjectBinding: snakeMiddleImage, theFile: 'images/sprites/Snake/middleSnake.png'});
-  arrayOfImages.push({imageObjectBinding: snakeTailImage, theFile: 'images/sprites/Snake/bottomSnake.png'});
-  arrayOfImages.push({imageObjectBinding: appleImage, theFile: 'images/sprites/Snake/apple.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: snakeGrassBackground, theFile: 'images/Backgrounds/Grass.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: snakeHeadImage, theFile: 'images/sprites/Snake/topSnake.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: snakeMiddleImage, theFile: 'images/sprites/Snake/middleSnake.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: snakeTailImage, theFile: 'images/sprites/Snake/bottomSnake.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: appleImage, theFile: 'images/sprites/Snake/apple.png', loaded: false});
 
   //bird game
-  arrayOfImages.push({imageObjectBinding: skyBackground, theFile: 'images/Backgrounds/Sky.png'});
-  arrayOfImages.push({imageObjectBinding: cloud1Image, theFile: 'images/Backgrounds/cloud1.png'});
-  arrayOfImages.push({imageObjectBinding: cloud2Image, theFile: 'images/Backgrounds/cloud2.png'});
-  arrayOfImages.push({imageObjectBinding: cloud3Image, theFile: 'images/Backgrounds/cloud3.png'});
-  arrayOfImages.push({imageObjectBinding: cloud4Image, theFile: 'images/Backgrounds/cloud4.png'});
-  arrayOfImages.push({imageObjectBinding: birdOpenFacingLeftImage, theFile: 'images/sprites/Bird/birdOpenFacingLeft.png'});
-  arrayOfImages.push({imageObjectBinding: birdOpenFacingRightImage, theFile: 'images/sprites/Bird/birdOpenFacingRight.png'});
-  arrayOfImages.push({imageObjectBinding: skyRingAnswerHolder1, theFile: 'images/sprites/Bird/skyRing.png'});
-  arrayOfImages.push({imageObjectBinding: skyRingAnswerHolder2, theFile: 'images/sprites/Bird/skyRing2.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: skyBackground, theFile: 'images/Backgrounds/Sky.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: cloud1Image, theFile: 'images/Backgrounds/cloud1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: cloud2Image, theFile: 'images/Backgrounds/cloud2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: cloud3Image, theFile: 'images/Backgrounds/cloud3.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: cloud4Image, theFile: 'images/Backgrounds/cloud4.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: birdOpenFacingLeftImage, theFile: 'images/sprites/Bird/birdOpenFacingLeft.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: birdOpenFacingRightImage, theFile: 'images/sprites/Bird/birdOpenFacingRight.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: skyRingAnswerHolder1, theFile: 'images/sprites/Bird/skyRing.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: skyRingAnswerHolder2, theFile: 'images/sprites/Bird/skyRing2.png', loaded: false});
 
 
   // main menu bg
-  arrayOfImages.push({imageObjectBinding: menu_borderImage, theFile: 'images/Backgrounds/menu_border.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: menu_borderImage, theFile: 'images/Backgrounds/menu_border.png', loaded: false});
 
   //lane game
-  arrayOfImages.push({imageObjectBinding: laneGrassBackground1, theFile: 'images/Backgrounds/LaneGrass1.png'});
-  arrayOfImages.push({imageObjectBinding: laneGrassBackground2, theFile: 'images/Backgrounds/LaneGrass2.png'});
-  arrayOfImages.push({imageObjectBinding: laneRoad1, theFile: 'images/Backgrounds/road1.png'});
-  arrayOfImages.push({imageObjectBinding: laneRoad2, theFile: 'images/Backgrounds/road2.png'});
-  arrayOfImages.push({imageObjectBinding: laneCarImage, theFile: 'images/sprites/Lane/car.png'});
-  arrayOfImages.push({imageObjectBinding: roadDash1, theFile: 'images/Backgrounds/roadDash.png'});
-  arrayOfImages.push({imageObjectBinding: roadDash2, theFile: 'images/Backgrounds/roadDash2.png'});
-  arrayOfImages.push({imageObjectBinding: roadDash3, theFile: 'images/Backgrounds/roadDash3.png'});
-  arrayOfImages.push({imageObjectBinding: gasCanImage, theFile: 'images/sprites/Lane/gasCan.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: laneGrassBackground1, theFile: 'images/Backgrounds/LaneGrass1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: laneGrassBackground2, theFile: 'images/Backgrounds/LaneGrass2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: laneRoad1, theFile: 'images/Backgrounds/road1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: laneRoad2, theFile: 'images/Backgrounds/road2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: laneCarImage, theFile: 'images/sprites/Lane/car.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: roadDash1, theFile: 'images/Backgrounds/roadDash.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: roadDash2, theFile: 'images/Backgrounds/roadDash2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: roadDash3, theFile: 'images/Backgrounds/roadDash3.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: gasCanImage, theFile: 'images/sprites/Lane/gasCan.png', loaded: false});
 
   //jumper game
-  arrayOfImages.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/editedJumperBackground.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/editedJumperBackground.png', loaded: false});
 
   //pass or block
-  arrayOfImages.push({imageObjectBinding: volcanoImage, theFile: 'images/Backgrounds/Volcano.png'});
-  arrayOfImages.push({imageObjectBinding: spaceBackgroundForVolcanoGame, theFile: 'images/Backgrounds/spaceBackgroundForVolcanoGame.png'});
-  arrayOfImages.push({imageObjectBinding: lavaBall1Image, theFile: 'images/sprites/passBlock/lavaBal.png'});
-  arrayOfImages.push({imageObjectBinding: lavaBall2Image, theFile: 'images/sprites/passBlock/lavaBall.png'});
-  arrayOfImages.push({imageObjectBinding: lavaBall3Image, theFile: 'images/sprites/passBlock/lavaBalll.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: volcanoImage, theFile: 'images/Backgrounds/Volcano.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: spaceBackgroundForVolcanoGame, theFile: 'images/Backgrounds/spaceBackgroundForVolcanoGame.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall1Image, theFile: 'images/sprites/passBlock/lavaBal.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall2Image, theFile: 'images/sprites/passBlock/lavaBall.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall3Image, theFile: 'images/sprites/passBlock/lavaBalll.png', loaded: false});
 
   //cVc shooter/shoot gallery game
-  arrayOfImages.push({imageObjectBinding: shootGalleryImage, theFile: 'images/Backgrounds/ShootGallery.png'});
-  arrayOfImages.push({imageObjectBinding: shootGalleryTargetImage, theFile: 'images/Backgrounds/target.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: shootGalleryImage, theFile: 'images/Backgrounds/ShootGallery.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: shootGalleryTargetImage, theFile: 'images/Backgrounds/target.png', loaded: false});
 
   //space shooter game
-  arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/SpaceWithJupiter1.png'});
-  arrayOfImages.push({imageObjectBinding: spaceShooterBackgroundImage2, theFile: 'images/Backgrounds/SpaceWithJupiter2.png'});
-  arrayOfImages.push({imageObjectBinding: spaceshipImage, theFile: 'images/sprites/spaceShooter/spaceship.png'});
-  arrayOfImages.push({imageObjectBinding: jupiterImage, theFile: 'images/sprites/spaceShooter/Jupiter.png'});
-  arrayOfImages.push({imageObjectBinding: spaceRockImage1, theFile: 'images/sprites/spaceShooter/spaceRock.png'});
-  arrayOfImages.push({imageObjectBinding: spaceRockImage2, theFile: 'images/sprites/spaceShooter/spaceRock2.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/SpaceWithJupiter1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: spaceShooterBackgroundImage2, theFile: 'images/Backgrounds/SpaceWithJupiter2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: spaceshipImage, theFile: 'images/sprites/spaceShooter/spaceship.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: jupiterImage, theFile: 'images/sprites/spaceShooter/Jupiter.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: spaceRockImage1, theFile: 'images/sprites/spaceShooter/spaceRock.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: spaceRockImage2, theFile: 'images/sprites/spaceShooter/spaceRock2.png', loaded: false});
 
 
 
   //flower game
-  arrayOfImages.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png"});
-  arrayOfImages.push({imageObjectBinding: flowerBackground, theFile: "images/Backgrounds/Flower2.png"});
+  arrayOfImagesToLoad.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flowerBackground, theFile: "images/Backgrounds/Flower2.png", loaded: false});
 
 
   // maze game
-  arrayOfImages.push({imageObjectBinding: mazeFloor, theFile: "images/Backgrounds/mazefloor.png"});
-  arrayOfImages.push({imageObjectBinding: mazeTopWall, theFile: "images/Backgrounds/topWall.png"});
-  arrayOfImages.push({imageObjectBinding: mazeBottomWall, theFile: "images/Backgrounds/bottomWall.png"});
-  arrayOfImages.push({imageObjectBinding: mazeLeftWall, theFile: "images/Backgrounds/leftWall.png"});
-  arrayOfImages.push({imageObjectBinding: mazeRightWall, theFile: "images/Backgrounds/rightWall.png"});
-  arrayOfImages.push({imageObjectBinding: mazeCharacter, theFile: "images/sprites/Maze/mole.png"});
-  arrayOfImages.push({imageObjectBinding: moleFoodImage, theFile: "images/sprites/Maze/moleFood.png"});
+  arrayOfImagesToLoad.push({imageObjectBinding: mazeFloor, theFile: "images/Backgrounds/mazefloor.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: mazeTopWall, theFile: "images/Backgrounds/topWall.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: mazeBottomWall, theFile: "images/Backgrounds/bottomWall.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: mazeLeftWall, theFile: "images/Backgrounds/leftWall.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: mazeRightWall, theFile: "images/Backgrounds/rightWall.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: mazeCharacter, theFile: "images/sprites/Maze/mole.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: moleFoodImage, theFile: "images/sprites/Maze/moleFood.png", loaded: false});
 
 
   //air booth
-  arrayOfImages.push({imageObjectBinding: airBoothImage, theFile: "images/Backgrounds/airBooth.png"});
-  arrayOfImages.push({imageObjectBinding: armlessBodyImage, theFile: "images/sprites/air grab/armlessBody.png"});
-  arrayOfImages.push({imageObjectBinding: leftArmImage, theFile: "images/sprites/air grab/leftArm.png"});
-  arrayOfImages.push({imageObjectBinding: rightArmImage, theFile: "images/sprites/air grab/leftArm.png"});
+  arrayOfImagesToLoad.push({imageObjectBinding: airBoothImage, theFile: "images/Backgrounds/airBooth.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: armlessBodyImage, theFile: "images/sprites/air grab/armlessBody.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: leftArmImage, theFile: "images/sprites/air grab/leftArm.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: rightArmImage, theFile: "images/sprites/air grab/leftArm.png", loaded: false});
 
 
   //frog
-  arrayOfImages.push({imageObjectBinding: frogRiverBackgroundImage, theFile: "images/Backgrounds/river.png"});
-  arrayOfImages.push({imageObjectBinding: lilyImage1, theFile: "images/sprites/frogRiver/lilyImage1.png"});
-  arrayOfImages.push({imageObjectBinding: lilyImage2, theFile: "images/sprites/frogRiver/lilyImage2.png"});
-  arrayOfImages.push({imageObjectBinding: lilyImage3, theFile: "images/sprites/frogRiver/lilyImage3.png"});
-  arrayOfImages.push({imageObjectBinding: lilyImage4, theFile: "images/sprites/frogRiver/lilyImage4.png"});
+  arrayOfImagesToLoad.push({imageObjectBinding: frogRiverBackgroundImage, theFile: "images/Backgrounds/river.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lilyImage1, theFile: "images/sprites/frogRiver/lilyImage1.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lilyImage2, theFile: "images/sprites/frogRiver/lilyImage2.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lilyImage3, theFile: "images/sprites/frogRiver/lilyImage3.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lilyImage4, theFile: "images/sprites/frogRiver/lilyImage4.png", loaded: false});
 
-
-  arrayOfImages.push({imageObjectBinding: heartImage, theFile: 'images/sprites/transitions/heart.png'});
+  //heart particle for loading and transition screens
+  arrayOfImagesToLoad.push({imageObjectBinding: heartImage, theFile: 'images/sprites/transitions/heart.png', loaded: false});
 
   //pinata game
-  arrayOfImages.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png', loaded: false});
 
   //fishing game
-  arrayOfImages.push({imageObjectBinding: fishingGameWaterBackgroundImage, theFile: 'images/Backgrounds/underwater2.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameWaterBackgroundImage, theFile: 'images/Backgrounds/underwater2.png', loaded: false});
 
   //whackAnAnswer
-  arrayOfImages.push({imageObjectBinding: whackTableSurface, theFile: 'images/Backgrounds/WackTableSurface.png'});
-  arrayOfImages.push({imageObjectBinding: whackTableBeneathSurface, theFile: 'images/Backgrounds/WackTableBeneathSurface.png'});
-  arrayOfImages.push({imageObjectBinding: hammerImage, theFile: 'images/sprites/whackAnAnswer/whackHammer.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: whackTableSurface, theFile: 'images/Backgrounds/WackTableSurface.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: whackTableBeneathSurface, theFile: 'images/Backgrounds/WackTableBeneathSurface.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: hammerImage, theFile: 'images/sprites/whackAnAnswer/whackHammer.png', loaded: false});
 
   //symbols
-  arrayOfImages.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png' });
-  arrayOfImages.push({imageObjectBinding: rightArrowImage, theFile: 'images/Custom Font/pngs/symbols/rightArrow.png' });
-  arrayOfImages.push({imageObjectBinding: downArrowImage, theFile: 'images/Custom Font/pngs/symbols/downArrow.png' });
-  arrayOfImages.push({imageObjectBinding: leftArrowImage, theFile: 'images/Custom Font/pngs/symbols/leftArrow.png' });
+  arrayOfImagesToLoad.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png', loaded: false });
+  arrayOfImagesToLoad.push({imageObjectBinding: rightArrowImage, theFile: 'images/Custom Font/pngs/symbols/rightArrow.png', loaded: false });
+  arrayOfImagesToLoad.push({imageObjectBinding: downArrowImage, theFile: 'images/Custom Font/pngs/symbols/downArrow.png', loaded: false });
+  arrayOfImagesToLoad.push({imageObjectBinding: leftArrowImage, theFile: 'images/Custom Font/pngs/symbols/leftArrow.png', loaded: false });
 
-  arrayOfImages.push({imageObjectBinding: symbolTildeImage, theFile: 'images/Custom Font/pngs/symbols/symbol~.png'});
-  arrayOfImages.push({imageObjectBinding: symbolExclamationPointImage, theFile: 'images/Custom Font/pngs/symbols/symbol!.png'});
-  arrayOfImages.push({imageObjectBinding: symbolEmailAtImage, theFile: 'images/Custom Font/pngs/symbols/symbol@.png'});
-  arrayOfImages.push({imageObjectBinding: symbolDollarSignImage, theFile: 'images/Custom Font/pngs/symbols/symbol$.png'});
-  //arrayOfImages.push({imageObjectBinding: symbolPercentImage, theFile: 'images/Custom Font/pngs/symbols/symbol%.png'});
-  arrayOfImages.push({imageObjectBinding: symbolEqualsImage, theFile: 'images/Custom Font/pngs/symbols/symbol=.png'});
-  arrayOfImages.push({imageObjectBinding: symbolPeriodImage, theFile: 'images/Custom Font/pngs/symbols/symbol..png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: symbolTildeImage, theFile: 'images/Custom Font/pngs/symbols/symbol~.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: symbolExclamationPointImage, theFile: 'images/Custom Font/pngs/symbols/symbol!.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: symbolEmailAtImage, theFile: 'images/Custom Font/pngs/symbols/symbol@.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: symbolDollarSignImage, theFile: 'images/Custom Font/pngs/symbols/symbol$.png', loaded: false});
+  //arrayOfImagesToLoad.push({imageObjectBinding: symbolPercentImage, theFile: 'images/Custom Font/pngs/symbols/symbol%.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: symbolEqualsImage, theFile: 'images/Custom Font/pngs/symbols/symbol=.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: symbolPeriodImage, theFile: 'images/Custom Font/pngs/symbols/symbol..png', loaded: false});
 
-  arrayOfImages.push({imageObjectBinding: symbolHashImage, theFile: 'images/Custom Font/pngs/symbols/symbolHash.png'});
-  arrayOfImages.push({imageObjectBinding: symbolQuestionMarkImage, theFile: 'images/Custom Font/pngs/symbols/symbolQuestionMark.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: symbolHashImage, theFile: 'images/Custom Font/pngs/symbols/symbolHash.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: symbolQuestionMarkImage, theFile: 'images/Custom Font/pngs/symbols/symbolQuestionMark.png', loaded: false});
 
-  arrayOfImages.push({imageObjectBinding: placeholderPlayButtonImage, theFile: 'images/placeholderPlayButtonImage.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: placeholderPlayButtonImage, theFile: 'images/placeholderPlayButtonImage.png', loaded: false});
 
   // bubble wrap game
-  arrayOfImages.push({imageObjectBinding: bubbleWrapBG, theFile: 'images/Backgrounds/bubbleWrapBG.jpg'});
-  arrayOfImages.push({imageObjectBinding: bubbleWrapSpritesheet, theFile: 'images/sprites/bubbleWrap/bubbleWrapSpritesheet.png'});
-  //arrayOfImages.push({imageObjectBinding: balloonPopBG, theFile: 'images/Backgrounds/balloonPopBG.jpg'});
-  arrayOfImages.push({imageObjectBinding: balloonPopSpritesheet, theFile: 'images/sprites/balloonPop/balloonPopSpritesheet.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: bubbleWrapBG, theFile: 'images/Backgrounds/bubbleWrapBG.jpg', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: bubbleWrapSpritesheet, theFile: 'images/sprites/bubbleWrap/bubbleWrapSpritesheet.png', loaded: false});
+  //arrayOfImagesToLoad.push({imageObjectBinding: balloonPopBG, theFile: 'images/Backgrounds/balloonPopBG.jpg', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: balloonPopSpritesheet, theFile: 'images/sprites/balloonPop/balloonPopSpritesheet.png', loaded: false});
 
-  arrayOfImages.push({imageObjectBinding: checkBoxImage, theFile: 'images/checkBox.png'});
-  arrayOfImages.push({imageObjectBinding: checkForCheckBoxImage, theFile: 'images/checkForCheckBox.png'});
+  arrayOfImagesToLoad.push({imageObjectBinding: checkBoxImage, theFile: 'images/checkBox.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: checkForCheckBoxImage, theFile: 'images/checkForCheckBox.png', loaded: false});
 
-  // console.log(arrayOfImages);
+  numberOfImagesToLoad = arrayOfImagesToLoad.length;
 
-  numberOfImagesToLoad = arrayOfImages.length;
-
-  for (let imageToLoadIndex = 0; imageToLoadIndex < arrayOfImages.length; imageToLoadIndex++)
+  for (let imageToLoadIndex = 0; imageToLoadIndex < arrayOfImagesToLoad.length; imageToLoadIndex++)
   {
-
-	  beginLoadingImage(arrayOfImages[imageToLoadIndex].imageObjectBinding, encodeURI(arrayOfImages[imageToLoadIndex].theFile));
+	  beginLoadingImage(arrayOfImagesToLoad[imageToLoadIndex].imageObjectBinding,
+    encodeURI(arrayOfImagesToLoad[imageToLoadIndex].theFile),
+    imageToLoadIndex);
 	}
 
 }
 
-function beginLoadingImage(imageVariable, fileName) {
+function beginLoadingImage(imageVariable, fileName, imageToLoadIndex) {
   imageVariable.src = fileName;
-	imageVariable.onload = countLoadedImageAndLaunchIfReady;
+	imageVariable.onload = countLoadedImageAndLaunchIfReady(fileName, imageToLoadIndex);
 }
 
 var gameIsLoadingBoolean = true;
 
-function countLoadedImageAndLaunchIfReady()
+function countLoadedImageAndLaunchIfReady(fileName, imageToLoadIndex)
 {
-	numberOfImagesToLoad--;
-
+  arrayOfImagesToLoad[imageToLoadIndex].loaded = true;
+  numberOfImagesToLoad--;
   if (numberOfImagesToLoad === 0)
   {
-
+    console.log('numberOfImagesToLoad === 0 triggered');
     /*
     const FAST_DEBUG_MODE = true; // skip entire menu and immeditately play a game! use only for debugging!
     if (FAST_DEBUG_MODE) {
@@ -545,4 +541,16 @@ function countLoadedImageAndLaunchIfReady()
   }
 
   arrayOfRunnerRunningImages.push(runnerRunning1Image,runnerRunning2Image,runnerRunning3Image);
+}
+
+function checkForUnloadedImages()
+{
+  console.log('checkForUnloadedImages timedout');
+  for (let arrayOfImagesToLoadIndex = 0; arrayOfImagesToLoadIndex < arrayOfImagesToLoad.length; arrayOfImagesToLoadIndex++)
+  {
+    if (arrayOfImagesToLoad[arrayOfImagesToLoadIndex].loaded === false)
+    {
+      console.log(arrayOfImagesToLoad[arrayOfImagesToLoadIndex].theFile)
+    }
+  }
 }

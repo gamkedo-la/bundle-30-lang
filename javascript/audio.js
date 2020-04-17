@@ -325,7 +325,7 @@ promptAudio.mandarinIRespectfullyWait = new promptSound('audio/PromptsAndAnswers
 promptAudio.mandarinMyHumbleOpinion = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinInMyHumbleOpinion.mp3');
 promptAudio.mandarinExcuseMeForSayingThis = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinExcuseMeForSayingThis.mp3');
 promptAudio.mandarinItsOK = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinItsOK.mp3');
-//promptAudio.mandarinItsMyDuty = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinItsMyDuty.mp3');
+promptAudio.mandarinItsMyDuty = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinItsMyDuty.mp3');
 promptAudio.mandarinSorryForMyLowSkill = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinSorryForMyLowSkill.mp3');
 
 promptAudio.mandarinBuy = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinBuy.mp3');

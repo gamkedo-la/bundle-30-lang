@@ -188,20 +188,20 @@ function initializePromptAndAnswerObjects()
   mandarinThankYouPromptAndAnswer = new PromptAndAnswerClass('mandarin thank you', '谢谢', thankYouImage, promptAudio.mandarinThankYou);
   mandarinAnyTimePromptAndAnswer = new PromptAndAnswerClass('mandarin any time', '随时 ', anyTimeImage, promptAudio.mandarinAnyTime);
   mandarinYoureWelcomePromptAndAnswer = new PromptAndAnswerClass('mandarin youre welcome', '别客气', youreWelcomeImage, promptAudio.mandarinYoureWelcome);
-  mandarinExcuseMePassingThroughContextPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me passing through', '借过', pleaseImage, promptAudio.mandarinPlease);
-  mandarinIAppreciateThatPromptAndAnswer = new PromptAndAnswerClass('mandarin I appreciate that', '我很感激', iAppreciateThat, promptAudio.mandarinIAppreciateThat);
+  mandarinExcuseMePassingThroughContextPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me passing through', '借过', pleaseImage, promptAudio.mandarinExcuseMePassingThroughContext);
+  mandarinIAppreciateThatPromptAndAnswer = new PromptAndAnswerClass('mandarin I appreciate that', '我很感激', iAppreciateThatImage, promptAudio.mandarinIAppreciateThat);
   mandarinYouHaveWorkedHardPromptAndAnswer = new PromptAndAnswerClass('mandarin you have worked hard', '您辛苦', youHaveWorkedHardImage, promptAudio.mandarinYouHaveWorkedHard);
 
   //polite phrases 2
   mandarinLongTimeNoSeePromptAndAnswer = new PromptAndAnswerClass('mandarin long time no see', '久违 ', longTimeNoSeeImage, promptAudio.mandarinLongTimeNoSee);
-  mandarinIllLetYouGoPromptAndAnswer = new PromptAndAnswerClass('mandarin Ill let you go', '您失陪', youHaveWorkedHardImage, promptAudio.mandarinYouHaveWorkedHard);
+  mandarinIllLetYouGoPromptAndAnswer = new PromptAndAnswerClass('mandarin Ill let you go', '您失陪', illLetYouGoImage, promptAudio.mandarinIllLetYouGo);
   mandarinPleaseAdviseMePromptAndAnswer = new PromptAndAnswerClass('mandarin please advise me', '您指教', pleaseAdviseMeImage, promptAudio.mandarinPleaseAdviseMe);
   mandarinIRespectfullyWaitPromptAndAnswer = new PromptAndAnswerClass('mandarin I respectfully wait', '我恭候', iRespectfullyWaitImage, promptAudio.mandarinIRespectfullyWait);
   mandarinInMyHumbleOpinionPromptAndAnswer = new PromptAndAnswerClass('mandarin in my humble opinion', ' 依本人拙见', myHumbleOpinionImage, promptAudio.mandarinMyHumbleOpinion);
   mandarinExcuseMeForSayingThisPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me for saying this', '冒昧 ', excuseMeForSayingThisImage, promptAudio.mandarinExcuseMeForSayingThis);
   mandarinItsOKPromptAndAnswer = new PromptAndAnswerClass('mandarin its OK', '没关系', itsOKImage, promptAudio.mandarinItsOK);
-  mandarinItsMyDutyPromptAndAnswer = new PromptAndAnswerClass('mandarin its my duty', '我应该的 ', itsMyDutyImage, promptAudio.mandarinYouHaveWorkedHard);
-  mandarinExcuseMyLowSkillPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse my low skill', '献丑', excuseMyLowSkillImage, promptAudio.mandarinExcuseMyLowSkill);
+  mandarinItsMyDutyPromptAndAnswer = new PromptAndAnswerClass('mandarin its my duty', '我应该的 ', itsMyDutyImage, promptAudio.mandarinItsMyDuty);
+  mandarinExcuseMyLowSkillPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse my low skill', '献丑', excuseMyLowSkillImage, promptAudio.mandarinSorryForMyLowSkill);
 
   //Vietnamese Section
 }

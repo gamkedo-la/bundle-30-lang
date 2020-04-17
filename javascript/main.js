@@ -3,7 +3,7 @@ console.log('Bundle of 30 Language Games Starting...');
 
 window.onload = function()
 {
-  loadImages();
+
 
   gameCanvas = document.getElementById("gameCanvas");
   gameCanvas.style.display = "inline";
@@ -12,7 +12,7 @@ window.onload = function()
   statsCanvas = document.getElementById("statsCanvas");
   statsCanvas.style.display = 'inline';
   statsCanvasContext = statsCanvas.getContext('2d');
-
+  loadImages();
   loadingAndSplashScreen.drawPleaseWaitForLoadingMessage();
 
   document.addEventListener('keydown',inputManager.keyDown);
