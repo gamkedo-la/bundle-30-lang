@@ -198,7 +198,7 @@ function initializePromptAndAnswerObjects()
   mandarinThankYouPromptAndAnswer = new PromptAndAnswerClass('mandarin thank you', '谢谢', thankYouImage, promptAudio.mandarinThankYou);
   mandarinAnyTimePromptAndAnswer = new PromptAndAnswerClass('mandarin any time', '随时 ', anyTimeImage, promptAudio.mandarinAnyTime);
   mandarinYoureWelcomePromptAndAnswer = new PromptAndAnswerClass('mandarin youre welcome', '别客气', youreWelcomeImage, promptAudio.mandarinYoureWelcome);
-  mandarinExcuseMePassingThroughContextPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me passing through', '借过', pleaseImage, promptAudio.mandarinExcuseMePassingThroughContext);
+  mandarinExcuseMePassingThroughContextPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me passing through', '借过', excuseMePassingThroughContextImage, promptAudio.mandarinExcuseMePassingThroughContext);
   mandarinIAppreciateThatPromptAndAnswer = new PromptAndAnswerClass('mandarin I appreciate that', '我很感激', iAppreciateThatImage, promptAudio.mandarinIAppreciateThat);
   mandarinYouHaveWorkedHardPromptAndAnswer = new PromptAndAnswerClass('mandarin you have worked hard', '您辛苦', youHaveWorkedHardImage, promptAudio.mandarinYouHaveWorkedHard);
 

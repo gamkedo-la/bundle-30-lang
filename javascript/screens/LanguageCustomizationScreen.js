@@ -413,25 +413,8 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < this.x + this.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
     {
-      let individualBoxCheckedTally = 0;
-      for (let individualBoxIndex = 0; individualBoxIndex < parentGroup.arrayOfIndividualPromptAndAnswerCheckBoxes.length; individualBoxIndex++)
-      {
-        if (parentGroup.arrayOfIndividualPromptAndAnswerCheckBoxes[individualBoxIndex].checked)
-        {
-          individualBoxCheckedTally++;
-        }
-      }
-
-      if (individualBoxCheckedTally <= 2)
-      {
-        alert('Groups are designed to help practice common mistakes among tricky words, so you must leave at least 2 individual boxes selected in a group. You can also turn off or turn on the whole group.');
-        return;
-      }
-      else
-      {
         genAudio.playClick();
         this.toggleCheck();
-      }
     }
 
   }
@@ -464,7 +447,7 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
         }
         else
         {
-          promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects[individualPromptAnswersIndex].push(this.promptAndAnswer);
+          promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects.push(this.promptAndAnswer);
           return;
         }
       }
@@ -479,10 +462,29 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
     {
       for (let individualPromptAnswersIndex = 0; individualPromptAnswersIndex < promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects.length; individualPromptAnswersIndex++)
       {
-        if (promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects[individualPromptAnswersIndex].name === this.promptAndAnswer.name)
+
+        let individualBoxCheckedTally = 0;
+        for (let individualBoxIndex = 0; individualBoxIndex < parentGroup.arrayOfIndividualPromptAndAnswerCheckBoxes.length; individualBoxIndex++)
         {
-          promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects.splice(individualPromptAnswersIndex,1);
+          if (parentGroup.arrayOfIndividualPromptAndAnswerCheckBoxes[individualBoxIndex].checked)
+          {
+            individualBoxCheckedTally++;
+          }
         }
+
+        if (individualBoxCheckedTally <= 2)
+        {
+          alert('Groups are designed to help practice common mistakes among tricky words, so you must leave at least 2 individual boxes selected in a group. You can also turn off or turn on the whole group.');
+          return;
+        }
+        else
+        {
+          if (promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects[individualPromptAnswersIndex].name === this.promptAndAnswer.name)
+          {
+            promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects.splice(individualPromptAnswersIndex,1);
+          }
+        }
+
       }
     console.log('promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
     }

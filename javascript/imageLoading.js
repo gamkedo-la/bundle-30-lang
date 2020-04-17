@@ -315,7 +315,7 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: excuseMeQuestionAskingContextImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMeQuestionAskingContext.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: waitAMomentImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/oneMoment.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: thankYouImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/thankYou.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: anyTimeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/anyTime.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: anyTimeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/anyTime2.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: youreWelcomeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/youreWelcome.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: excuseMePassingThroughContextImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/excuseMePassingThroughContext.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: iAppreciateThatImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iAppreciateThat.png', loaded: false});
