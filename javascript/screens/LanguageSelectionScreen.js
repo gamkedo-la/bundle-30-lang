@@ -65,7 +65,7 @@ function LanguageSelectionScreen()
 
     gameCanvasContext.strokeStyle = 'black';
     gameCanvasContext.strokeRect(startingX,startingY, width,height);
-    customFontFillText('Play', 30, 15, startingX + width/4,startingY + height/4);
+    customFontFillText('Customize', 30, 15, startingX + width/4,startingY + height/4);
   }
 
   this.startGame = function()
@@ -84,11 +84,13 @@ function LanguageSelectionScreen()
     {
       fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.englishCustomizationScreen.associatedObject = englishCustomizationScreen;
       fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.englishCustomizationScreen);
+      promptsAndAnswersManager.assignCurrentLanguageArray();
     }
     else if (this.languageNum === 1)
     {
       fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.mandarinCustomizationScreen.associatedObject = mandarinCustomizationScreen;
       fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.mandarinCustomizationScreen);
+      promptsAndAnswersManager.assignCurrentLanguageArray();
     }
   }
 
@@ -130,7 +132,7 @@ function LanguageSelectionScreen()
     if (mouseCol >= 0 && mouseCol < 3 && mouseRow >= 0 && mouseRow < 1)
     {
       this.languageNum = mouseCol + mouseRow *6;
-      promptsAndAnswersManager.assignCurrentLanguageArray();
+      //promptsAndAnswersManager.assignCurrentLanguageArray();
       genAudio.playClick();
     }
   }

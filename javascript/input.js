@@ -175,6 +175,9 @@ function InputManager()
       {
         fullGameStateMachine.currentState = fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame;
       }
+
+      case 77://m
+      volume.music = 0;
     }
   }
 

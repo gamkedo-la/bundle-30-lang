@@ -62,6 +62,7 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
       languageGroupDiv.defineChildCheckBoxXandYs();
       languageGroupDiv.checkIfDivOffScreenAndRedefineIfSo(languageGroupDiv);
       this.arrayOfPages[this.currentPageIndexForInitialization].arrayOfDivs.push(languageGroupDiv);
+      this.arrayOfDivs.push(languageGroupDiv);
     }
   }
 
@@ -154,9 +155,9 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
   //this.currentRowIndex = currentRowIndex;
   this.arrayOfDivsIndex = arrayOfDivsIndex;
   this.previousDivIndex = this.arrayOfDivsIndex - 1;
-  this.previousDiv = parentScreenObject.arrayOfPages[parentScreenObject.currentPageIndexForInitialization].arrayOfDivs[this.previousDivIndex];
+  this.previousDiv = parentScreenObject.arrayOfDivs[this.previousDivIndex];
 
-  this.pageIndex = undefined;
+  this.pageIndex = parentScreenObject.currentPageIndexForInitialization;
 
   this.parentPromptAndAnswerGroupCheckBox = parentPromptAndAnswerGroupCheckBox;
 
@@ -217,8 +218,18 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
 
   this.checkIfDivOffScreenAndRedefineIfSo = function(languageGroupDiv)
   {
+    if (languageGroupDiv.pageIndex === 1)
+    {
+      console.log('checking for divs off screen on 2nd page of mandarin screen');
+      console.log('this.lastChildBox.bottomY: ' + this.lastChildBox.bottomY);
+    }
+
     if (this.lastChildBox.bottomY > gameCanvas.height)
     {
+      if (languageGroupDiv.pageIndex === 1)
+      {
+        console.log('triggered div off screen on 2nd page of mandarin screen');
+      }
       parentScreenObject.currentColumnIndex++;
       languageGroupDiv.columnIndex++;
       this.y = 100;
@@ -227,6 +238,7 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
       languageGroupDiv.defineChildCheckBoxXandYs();
       if (parentScreenObject.currentColumnIndex > 2)
       {
+        console.log('new page creation');
         parentScreenObject.currentColumnIndex = 0;
         parentScreenObject.currentPageIndexForInitialization++;
         let page = new Page(parentScreenObject.currentPageIndexForInitialization);
@@ -335,8 +347,19 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
       {
         if (this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked)
         {
+
           this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked = false;
-          promptsAndAnswersManager.customizedLanguageArray.splice(childIndex,1);
+          for (let currentGroupArrayIndex = 0; currentGroupArrayIndex < promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length; currentGroupArrayIndex++)
+          {
+
+            if (this.name === promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].name)
+            {
+
+              promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.splice(currentGroupArrayIndex,1);
+            }
+          }
+
+          console.log('currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
         }
         else
         {
@@ -352,7 +375,8 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
         if (!this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked)
         {
           this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked = true;
-          promptsAndAnswersManager.customizedLanguageArray.push(this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].promptAndAnswer);
+          promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.push(this.promptAndAnswerGroup);
+          console.log('currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
         }
         else
         {
@@ -361,6 +385,7 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
       }// end of for loop for adding checks to boxes and adding prompts/answers to custom array
     }// end of else for checking group check box true/false
   }// end of toggle child check boxes
+
 }// end of group check box class/function
 
 function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAnswer, arrayIndex)
@@ -387,10 +412,28 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
   {
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < this.x + this.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
+    {
+      let individualBoxCheckedTally = 0;
+      for (let individualBoxIndex = 0; individualBoxIndex < parentGroup.arrayOfIndividualPromptAndAnswerCheckBoxes.length; individualBoxIndex++)
+      {
+        if (parentGroup.arrayOfIndividualPromptAndAnswerCheckBoxes[individualBoxIndex].checked)
         {
-          genAudio.playClick();
-          this.toggleCheck();
+          individualBoxCheckedTally++;
         }
+      }
+
+      if (individualBoxCheckedTally <= 2)
+      {
+        alert('Groups are designed to help practice common mistakes among tricky words, so you must leave at least 2 individual boxes selected in a group. You can also turn off or turn on the whole group.');
+        return;
+      }
+      else
+      {
+        genAudio.playClick();
+        this.toggleCheck();
+      }
+    }
+
   }
 
   this.toggleCheck = function()
@@ -405,40 +448,43 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
       this.checked = true;
       this.addPromptAndAnswerToCustomizedArray();
     }
+    console.log('currentArrayOfLogicalPromptAnswerGroupings ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
+
   }
 
   this.addPromptAndAnswerToCustomizedArray = function()
   {
-    if (promptsAndAnswersManager.customizedLanguageArray.length === 0)
+    for (let currentGroupArrayIndex = 0; currentGroupArrayIndex < promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length; currentGroupArrayIndex++)
     {
-      promptsAndAnswersManager.customizedLanguageArray.push(this.promptAndAnswer);
-    }
-    else
-    {
-      for (let customArrayIndex = 0; customArrayIndex < promptsAndAnswersManager.customizedLanguageArray.length; customArrayIndex++)
+      for (let individualPromptAnswersIndex = 0; individualPromptAnswersIndex < promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects.length; individualPromptAnswersIndex++)
       {
-        if (promptsAndAnswersManager.customizedLanguageArray[customArrayIndex].name === this.promptAndAnswer.name)
+        if (promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects[individualPromptAnswersIndex].name === this.promptAndAnswer.name)
         {
           return;
         }
         else
         {
-          promptsAndAnswersManager.customizedLanguageArray.push(this.promptAndAnswer);
+          promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects[individualPromptAnswersIndex].push(this.promptAndAnswer);
           return;
         }
       }
+
     }
   }
 
+
   this.removePromptAndAnswerToCustomizedArray = function()
   {
-    for (let customArrayIndex = 0; customArrayIndex < promptsAndAnswersManager.customizedLanguageArray.length; customArrayIndex++)
+    for (let currentGroupArrayIndex = 0; currentGroupArrayIndex < promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length; currentGroupArrayIndex++)
     {
-      if (promptsAndAnswersManager.customizedLanguageArray[customArrayIndex].name === this.promptAndAnswer.name)
+      for (let individualPromptAnswersIndex = 0; individualPromptAnswersIndex < promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects.length; individualPromptAnswersIndex++)
       {
-        promptsAndAnswersManager.customizedLanguageArray.splice(customArrayIndex,1);
+        if (promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects[individualPromptAnswersIndex].name === this.promptAndAnswer.name)
+        {
+          promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[currentGroupArrayIndex].arrayOfObjects.splice(individualPromptAnswersIndex,1);
+        }
       }
+    console.log('promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
     }
-    console.log('promptsAndAnswersManager.customizedLanguageArray: ' + promptsAndAnswersManager.customizedLanguageArray);
   }
 }
