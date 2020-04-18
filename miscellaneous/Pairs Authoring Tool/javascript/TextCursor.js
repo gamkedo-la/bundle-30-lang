@@ -19,18 +19,32 @@ function TextCursor(position, font, boxWidth){
         this.frame += deltaY;
     };
 
-    this.draw = function(){
+    this.draw = function() {
         let currentYPos = this.frame.y + this.textSize.height - PADDING;
+        const substringToCursor = this.text[cursorRow].substring(0, cursorIndex);
+        const currentSize = sizeOfString(canvasContext, this.font, substringToCursor);
         for(let i = 0; i < this.text.length; i++){
-            colorText(canvasContext, this.text[i], this.frame.x, PADDING, currentYPos, this.color, font, 'left');
+            colorText(
+                canvasContext, 
+                this.text[i], 
+                this.frame.x, 
+                this.frame.y + ((i + 1) * currentSize.height) - (2*PADDING),
+                this.color, 
+                font, 
+                'left'
+            );
             currentYPos += this.textSize.height;
         }
-        const substringToCursor = this.text[cursorRow]. substring(0, cursorIndex);
-        const currentSize = sizeOfString(canvasContext, this.font, substringToCursor);
         if(this.shouldDrawCursor){
-            colorText(canvasContext, "|", this.frame.x + currentSize.width, 
-                                            this.frame.y + ((cursorRow +1 ) * currentSize.height) - (2*PADDING),
-                                            this.color, font, 'left');
+            colorText(
+                canvasContext, 
+                "|", 
+                this.frame.x + currentSize.width,
+                this.frame.y + ((cursorRow + 1) * currentSize.height) - (2*PADDING),
+                this.color, 
+                font, 
+                'left'
+            );
         }
     };
     this.setString = function(newString){
@@ -39,13 +53,13 @@ function TextCursor(position, font, boxWidth){
     };
 
     this.reallocateText = function() {
-        this.text[""];
+        this.text = [""];
         let tempRow = 0;
-        for(let i = 0; i < this.string.length; i++){
+        for(let i = 0; i < this.string.length; i++) {
             this.text[tempRow] += this.string.charAt(i);
             const newSize = sizeOfString(canvasContext, this.font, this.text[tempRow]);
             if(newSize.width > boxWidth){
-                const lastIndex = this.text[tempRow].lastIndexOf(" ") +1;
+                const lastIndex = this.text[tempRow].lastIndexOf(" ") + 1;
                 this.text[tempRow + 1] = this.text[tempRow].substring(lastIndex, this.text[tempRow].length);
                 this.text[tempRow] = this.text[tempRow].substring(0, lastIndex);
                 
@@ -65,7 +79,9 @@ function TextCursor(position, font, boxWidth){
         
         }else if(cursorIndex > this.text[cursorRow].length){
             if(cursorRow < this.text.length - 1){
+                console.log(`CursorIndex 1: ${cursorIndex}`);
                 cursorIndex -= this.text[cursorRow].length;
+                console.log(`CursorIndex 2: ${cursorIndex}`);
                 cursorRow++;
             }
         }
@@ -127,9 +143,9 @@ function TextCursor(position, font, boxWidth){
         this.reallocateText();
     };
 
-    this.insertCharacter = function(newChar){
+    this.insertCharacter = function(newChar) {
         const textStartSubstring = this.text[cursorRow].substring(0, cursorIndex);
-        const textEndSubstring = this.text[cursorRow].substring(cursorIndex, this.text[cursorRow].length);
+        const textEndSubstring = this.text[cursorRow].substring(cursorIndex);
         this.text[cursorRow] = textStartSubstring + newChar + textEndSubstring;
 
         let totalIndex = 0;
@@ -142,7 +158,6 @@ function TextCursor(position, font, boxWidth){
         const stringStartSubstring = this.string.substring(0, totalIndex);
         const stringEndSubstring = this.string.substring(totalIndex, this.string.length);
         this.string = stringStartSubstring + newChar + stringEndSubstring;
-        console.log(this.string);
     };
 
     this.removeCharacter = function(){
