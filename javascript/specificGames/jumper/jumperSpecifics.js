@@ -12,7 +12,7 @@ function jumperGameClass()
     this.playerCharacter = new JumperClass();
     this.collidingObject = this.playerCharacter;
   }
-  
+
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
@@ -55,11 +55,15 @@ function jumperGameClass()
   this.handleLeftArrowDown = function()
   {
     this.playerCharacter.xSpeed = this.playerCharacter.LEFT_ARROW_DOWN_SPEED;
+    this.playerCharacter.currentImage = this.playerCharacter.facingLeftImage;
+    this.playerCharacter.rotationAmount -= 0.2;
   }
 
   this.handleRightArrowDown = function()
   {
     this.playerCharacter.xSpeed = this.playerCharacter.RIGHT_ARROW_DOWN_SPEED;
+    this.playerCharacter.currentImage = this.playerCharacter.facingRightImage;
+    this.playerCharacter.rotationAmount += 0.2;
   }
 
   this.handleRightArrowUp = function()
@@ -93,9 +97,9 @@ function jumperGameClass()
   this.movePlayer = function()
   {
 	if (!inputManager.upArrowIsBeingHeld &&
-		this.playerCharacter.y !== 40 && this.playerCharacter.y !== 140 &&
-		this.playerCharacter.y !== 240 && this.playerCharacter.y !== 340 && this.playerCharacter.y !== 440 &&
-		this.playerCharacter.y !== 540 && this.playerCharacter.y !== 640) //if not jumping and not contacting a platform
+		this.playerCharacter.y !== 20 && this.playerCharacter.y !== 120 &&
+		this.playerCharacter.y !== 220 && this.playerCharacter.y !== 320 && this.playerCharacter.y !== 420 &&
+		this.playerCharacter.y !== 520 && this.playerCharacter.y !== 620) //if not jumping and not contacting a platform
     {
       this.playerCharacter.y += 5;//apply GRAVITY
     }
@@ -112,7 +116,7 @@ function jumperGameClass()
     this.playerCharacter.y += 100;
     if (this.playerCharacter.y > 700)//if the player goes below the screen
     {
-      this.playerCharacter.y = 30;//put them at the top platform
+      this.playerCharacter.y = 20;//put them at the top platform
     }
   }
 
