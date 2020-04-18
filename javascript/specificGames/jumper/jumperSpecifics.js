@@ -7,6 +7,7 @@ function jumperGameClass()
 {
   this.name = 'jumperGame';
   this.playerCharacter = undefined;
+  this.groundParticleManager = undefined;
   this.defineAndInitializePlayerCharacter = function()
   {
     this.playerCharacter = new JumperClass();
@@ -37,6 +38,7 @@ function jumperGameClass()
   {
     this.playerCharacter = new JumperClass();
     this.collidingObject = this.playerCharacter;
+    this.groundParticleManager = new GroundParticleManager();
     drawAnswersManager.draw();
 	//this.superInitialize();
   };
@@ -48,6 +50,9 @@ function jumperGameClass()
     {
       this.movePlayer();
       this.handlePlayerWrapping();
+      this.groundParticleManager.updateParticles();
+      this.groundParticleManager.moveParticles();
+
       this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
     }
   };
@@ -113,16 +118,19 @@ function jumperGameClass()
 
   this.handleDownArrowDown = function()
   {
+      this.groundParticleManager.createAGroupOfParticles();
     this.playerCharacter.y += 100;
     if (this.playerCharacter.y > 700)//if the player goes below the screen
     {
       this.playerCharacter.y = 20;//put them at the top platform
     }
+
   }
 
   this.draw = function()
   {
     this.drawBackground();
+    this.groundParticleManager.drawParticles();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
 		promptersManager.drawPromptsWhenAppropriate();
