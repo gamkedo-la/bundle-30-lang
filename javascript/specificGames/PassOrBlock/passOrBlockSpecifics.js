@@ -85,6 +85,7 @@ function PassOrBlockGameClass()
   {
     this.background.draw();
     this.playerCharacter.draw();
+    this.fireLavaParticleManager.drawParticles();
     drawAnswersManager.draw();
     promptersManager.drawPromptsWhenAppropriate();
   }
@@ -95,9 +96,11 @@ function PassOrBlockGameClass()
     fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
     {
       this.moveAnswers();
+      setInterval(this.fireLavaParticleManager.generateAParticle(),250);
       this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
       //this.playerCharacter.handleCollisionsWithAnswers();
       this.background.handleAnswersOffScreen();
+      this.fireLavaParticleManager.handleParticles();
     }
   }
 

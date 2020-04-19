@@ -20,7 +20,11 @@ function FireLavaParticle(x,y, xVelocity,yVelocity, image)
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    if (this.image !== undefined)
+    {
+      console.log('this.image:' + this.image);
+      gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    }
   }
 }
 
@@ -31,11 +35,13 @@ function FireLavaParticleManager()
   this.generateAParticle = function()
   {
     let targetAnswerToAssignAParticleTo = this.pickAnAnswer();
+    console.log('pickXCoordinate result: ' + this.pickAnXCoordinate(targetAnswerToAssignAParticleTo));
     let particle = new FireLavaParticle(
       this.pickAnXCoordinate(targetAnswerToAssignAParticleTo)
       ,this.pickAYCoordinate(targetAnswerToAssignAParticleTo),
       this.assignXVelocity(),this.assignYVelocity(this.answerDirection), this.pickAnImage());
-
+    console.log('particle.x: ' + particle.x);
+    console.log('particle.y: ' + particle.y);
     this.arrayOfParticles.push(particle);
   }
 
@@ -51,7 +57,10 @@ function FireLavaParticleManager()
   {
     for (let particleIndex = 0; particleIndex < this.arrayOfParticles.length; particleIndex++)
     {
-      this.arrayOfParticles[particleIndex].draw();
+      if (this.arrayOfParticles[particleIndex] !== undefined)
+      {
+        this.arrayOfParticles[particleIndex].draw();
+      }
     }
   }
 
@@ -68,10 +77,8 @@ function FireLavaParticleManager()
 
   this.handleParticles = function()
   {
-    this.generateAParticle();
     this.moveParticles();
     this.deleteOffScreenParticles();
-    this.drawParticles();
   }
 
   this.ySpeedReference = undefined;
@@ -92,14 +99,22 @@ function FireLavaParticleManager()
 
   this.pickAnImage = function()
   {
-    let randomImageIndex = getRandomIntInclusive(0, this.arrayOfParticleImages.length - 1);
-    let image = this.arrayOfParticles[randomImageIndex];
-    return image;
+    if (this.arrayOfParticleImages.length !== 0)
+    {
+      let randomImageIndex = getRandomIntInclusive(0, this.arrayOfParticleImages.length - 1);
+      console.log('randomImageIndex: ' + randomImageIndex);
+      let image = this.arrayOfParticleImages[randomImageIndex];
+      console.log('image: ' + image);
+      return image;
+    }
   }
 
   this.pickAnXCoordinate = function(answer)
   {
-    let randomX = getRandomArbitrary(answer.xCoordinate, answer.xCoordinate + gameClassManager.currentGame.currentAnswerHolderWidth)
+    console.log('answer.xCoordinate: ' + answer.xCoordinate);
+    console.log('gameClassManager.currentGame.currentAnswerHolderWidth: ' + gameClassManager.currentGame.currentAnswerHolderWidth);
+    let randomX = getRandomArbitrary(answer.xCoordinate, answer.xCoordinate + 50)
+    console.log('randomX: ' + randomX);
     return randomX;
   }
 
@@ -137,7 +152,7 @@ function FireLavaParticleManager()
     }
     else
     {
-      randomY = getRandomArbitrary(answer.yCoordinate + gameClassManager.currentGame.currentAnswerHolderHeight, answer.yCoordinate + gameClassManager.currentGame.currentAnswerHolderHeight + 20);
+      randomY = getRandomArbitrary(answer.yCoordinate + gameClassManager.currentGame.currentAnswerHolderHeight, answer.yCoordinate + 20);
     }
 
     return randomY;
