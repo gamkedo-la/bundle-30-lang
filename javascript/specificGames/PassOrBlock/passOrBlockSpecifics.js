@@ -41,6 +41,7 @@ function PassOrBlockGameClass()
   this.fireLavaParticleManager = undefined;
 
   this.arrayOfAnswerHolders = [];
+  this.arrayOfUpsideDownAnswerHolders = [];
 
   this.LETTER_COLOR = 'cyan';
 
@@ -68,6 +69,13 @@ function PassOrBlockGameClass()
     this.arrayOfAnswerHolders.push(this.lavaAnswerHolder1);
     this.arrayOfAnswerHolders.push(this.lavaAnswerHolder2);
     this.arrayOfAnswerHolders.push(this.lavaAnswerHolder3);
+
+    this.upsideDownAnswerHolder1 = new LavaAnswerHolder(lavaBall1UpsideDownImage);
+    this.upsideDownAnswerHolder2 = new LavaAnswerHolder(lavaBall2UpsideDownImage);
+    this.upsideDownAnswerHolder3 = new LavaAnswerHolder(lavaBall3UpsideDownImage);
+    this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder1);
+    this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder2);
+    this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder3);
 
     this.fireLavaParticleManager = new FireLavaParticleManager();
 

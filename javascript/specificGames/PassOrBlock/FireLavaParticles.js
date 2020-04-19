@@ -10,12 +10,15 @@ function FireLavaParticle(x,y, xVelocity,yVelocity, image)
   this.width = 7;
   this.height = 7;
 
+  this.alpha = 1;
+
   this.image = image;
 
   this.move = function()
   {
     this.x += this.xVelocity;
     this.y += this.yVelocity;
+    this.alpha -= 0.01;
   }
 
   this.draw = function()
@@ -23,7 +26,9 @@ function FireLavaParticle(x,y, xVelocity,yVelocity, image)
     if (this.image !== undefined)
     {
       console.log('this.image:' + this.image);
+      gameCanvasContext.globalAlpha = this.alpha;
       gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+      gameCanvasContext.globalAlpha = 1;
     }
   }
 }
@@ -68,9 +73,11 @@ function FireLavaParticleManager()
   {
     for (let particleIndex = 0; particleIndex < this.arrayOfParticles.length; particleIndex++)
     {
-      if (this.arrayOfParticles[particleIndex].y < 0 || this.arrayOfParticles[particleIndex].y > gameCanvas.height)
+      if (this.arrayOfParticles[particleIndex].y < 0 || this.arrayOfParticles[particleIndex].y > gameCanvas.height
+         || this.arrayOfParticles[particleIndex].alpha < 0.1)
       {
         this.arrayOfParticles.splice(particleIndex,1);
+        console.log('this.arrayOfParticles: ' + this.arrayOfParticles);
       }
     }
   }

@@ -137,10 +137,6 @@ let jumperBackground = document.createElement('img');
 let jumperPlayerFacingRightImage = document.createElement('img');
 let jumperPlayerFacingLeftImage = document.createElement('img');
 let jumperGroundParticleImage = document.createElement('img');
-let lavaParticle1Image = document.createElement('img');
-let lavaParticle2Image = document.createElement('img');
-let lavaParticle3Image = document.createElement('img');
-let lavaParticle4Image = document.createElement('img');
 
 //volcano
 let volcanoImage = document.createElement('img');
@@ -148,6 +144,13 @@ let spaceBackgroundForVolcanoGame = document.createElement('img');
 let lavaBall1Image = document.createElement('img');
 let lavaBall2Image = document.createElement('img');
 let lavaBall3Image = document.createElement('img');
+let lavaBall1UpsideDownImage = document.createElement('img');
+let lavaBall2UpsideDownImage = document.createElement('img');
+let lavaBall3UpsideDownImage = document.createElement('img');
+let lavaParticle1Image = document.createElement('img');
+let lavaParticle2Image = document.createElement('img');
+let lavaParticle3Image = document.createElement('img');
+let lavaParticle4Image = document.createElement('img');
 
 //cVc shooter/shoot gallery game
 let shootGalleryImage = document.createElement('img');
@@ -445,6 +448,9 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle2Image, theFile: 'images/sprites/passBlock/lavaParticle2.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle3Image, theFile: 'images/sprites/passBlock/lavaParticle3.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle4Image, theFile: 'images/sprites/passBlock/lavaParticle4.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall1UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBalUpsideDown.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall2UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBallUpsideDown.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall3UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBalllUpsideDown.png', loaded: false});
 
   //cVc shooter/shoot gallery game
   arrayOfImagesToLoad.push({imageObjectBinding: shootGalleryImage, theFile: 'images/Backgrounds/ShootGallery.png', loaded: false});

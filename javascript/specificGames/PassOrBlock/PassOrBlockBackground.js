@@ -62,6 +62,8 @@ function PassOrBlockBackground()
       gameClassManager.currentGame.collisionsWithAnswersManager.resetAnswers();
       gameClassManager.currentGame.correctAnswersYSpeed = 4;
       gameClassManager.currentGame.incorrectAnswersYSpeed = 4;
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder = gameClassManager.currentGame.assignAnswerHolder();
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder = gameClassManager.currentGame.assignAnswerHolder();
     }
   }
 }
