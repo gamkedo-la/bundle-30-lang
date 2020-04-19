@@ -35,6 +35,9 @@ function PassOrBlockGameClass()
   this.correctTextAnswerHolderWidth = undefined;
   this.incorrectTextAnswerHolderWidth = undefined;
 
+  this.currentAnswerHolderWidth = undefined;
+  this.currentAnswerHolderHeight = undefined;
+
   this.arrayOfAnswerHolders = [];
 
   this.LETTER_COLOR = 'cyan';

@@ -19,6 +19,13 @@ function DrawAnswersManager()
         this.textAnswerFontStyle
       )
 
+      if (gameClassManager.currentGame.currentAnswerHolderWidth !== undefined)
+      {
+        gameClassManager.currentGame.currentAnswerHolderWidth = gameClassManager.currentGame.correctTextAnswerHolderWidth*1.25;
+        gameClassManager.currentGame.currentAnswerHolderHeight = gameClassManager.currentGame.correctTextAnswerHolderWidth*1.25;
+
+      }
+
       if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder)
       {
         gameCanvasContext.drawImage(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
@@ -67,6 +74,12 @@ function DrawAnswersManager()
     {
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
+
+      if (gameClassManager.currentGame.currentAnswerHolderWidth !== undefined)
+      {
+        gameClassManager.currentGame.currentAnswerHolderWidth = gameClassManager.currentGame.imageAnswerHolderWidth;
+        gameClassManager.currentGame.currentAnswerHolderHeight = gameClassManager.currentGame.imageAnswerHolderHeight;
+      }
 
       if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder)
       {
@@ -175,6 +188,12 @@ function DrawAnswersManager()
     {
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
+
+      if (gameClassManager.currentGame.currentAnswerHolderWidth !== undefined)
+      {
+        gameClassManager.currentGame.currentAnswerHolderWidth = gameClassManager.currentGame.audioImageAnswerHolderWidth*1.1;
+        gameClassManager.currentGame.currentAnswerHolderHeight = gameClassManager.currentGame.audioImageAnswerHolderHeight*1.1;
+      }
 
       if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder)
       {
