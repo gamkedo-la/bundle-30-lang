@@ -137,6 +137,10 @@ let jumperBackground = document.createElement('img');
 let jumperPlayerFacingRightImage = document.createElement('img');
 let jumperPlayerFacingLeftImage = document.createElement('img');
 let jumperGroundParticleImage = document.createElement('img');
+let lavaParticle1Image = document.createElement('img');
+let lavaParticle2Image = document.createElement('img');
+let lavaParticle3Image = document.createElement('img');
+let lavaParticle4Image = document.createElement('img');
 
 //volcano
 let volcanoImage = document.createElement('img');
@@ -437,6 +441,10 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: lavaBall1Image, theFile: 'images/sprites/passBlock/lavaBal.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lavaBall2Image, theFile: 'images/sprites/passBlock/lavaBall.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lavaBall3Image, theFile: 'images/sprites/passBlock/lavaBalll.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle1Image, theFile: 'images/sprites/Jumper/lavaParticle1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle2Image, theFile: 'images/sprites/Jumper/lavaParticle2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle3Image, theFile: 'images/sprites/Jumper/lavaParticle3.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle4Image, theFile: 'images/sprites/Jumper/lavaParticle4.png', loaded: false});
 
   //cVc shooter/shoot gallery game
   arrayOfImagesToLoad.push({imageObjectBinding: shootGalleryImage, theFile: 'images/Backgrounds/ShootGallery.png', loaded: false});
