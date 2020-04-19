@@ -177,7 +177,13 @@ function InputManager()
       }
 
       case 77://m
-      volume.music = 0;
+      if (volume.music > 0)
+      {
+        volume.music = 0;
+      } else {
+        volume.music = 0.75;
+      }
+
     }
   }
 
