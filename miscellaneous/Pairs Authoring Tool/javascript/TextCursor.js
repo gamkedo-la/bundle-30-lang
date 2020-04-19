@@ -60,12 +60,26 @@ function TextCursor(position, font, boxWidth){
             const newSize = sizeOfString(canvasContext, this.font, this.text[tempRow]);
             if(newSize.width > boxWidth){
                 const lastIndex = this.text[tempRow].lastIndexOf(" ") + 1;
-                this.text[tempRow + 1] = this.text[tempRow].substring(lastIndex, this.text[tempRow].length);
-                this.text[tempRow] = this.text[tempRow].substring(0, lastIndex);
-                
+                if(lastIndex > 0) {
+                    this.text[tempRow + 1] = this.text[tempRow].substring(lastIndex);
+                    this.text[tempRow] = this.text[tempRow].substring(0, lastIndex);    
+                } else {
+                    let rowWidth = 0;
+                    let j = 0;
+                    for(; j < this.text[tempRow].length; j++) {
+                        rowWidth = sizeOfString(canvasContext, this.font, this.text[tempRow].substring(0, j + 1)).width;
+                        if(rowWidth >= boxWidth) {
+                            break;
+                        }
+                    }
+                    this.text[tempRow + 1] = this.text[tempRow].substring(j);
+                    this.text[tempRow] = this.text[tempRow].substring(0, j); 
+                }
+
                 tempRow++;
             }
         }
+
         if(tempRow != rowCount){
             const oldHeight = this.frame.height;
             this.frame.height = (tempRow +1) * this.textSize.height;
@@ -77,11 +91,9 @@ function TextCursor(position, font, boxWidth){
             cursorRow = rowCount;
             cursorIndex = this.text[cursorRow].length;
         
-        }else if(cursorIndex > this.text[cursorRow].length){
-            if(cursorRow < this.text.length - 1){
-                console.log(`CursorIndex 1: ${cursorIndex}`);
+        } else if(cursorIndex > this.text[cursorRow].length){
+            if(cursorRow < this.text.length - 1) {
                 cursorIndex -= this.text[cursorRow].length;
-                console.log(`CursorIndex 2: ${cursorIndex}`);
                 cursorRow++;
             }
         }
