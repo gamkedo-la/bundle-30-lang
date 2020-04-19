@@ -441,10 +441,10 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: lavaBall1Image, theFile: 'images/sprites/passBlock/lavaBal.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lavaBall2Image, theFile: 'images/sprites/passBlock/lavaBall.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lavaBall3Image, theFile: 'images/sprites/passBlock/lavaBalll.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle1Image, theFile: 'images/sprites/Jumper/lavaParticle1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle2Image, theFile: 'images/sprites/Jumper/lavaParticle2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle3Image, theFile: 'images/sprites/Jumper/lavaParticle3.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle4Image, theFile: 'images/sprites/Jumper/lavaParticle4.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle1Image, theFile: 'images/sprites/passBlock/lavaParticle1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle2Image, theFile: 'images/sprites/passBlock/lavaParticle2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle3Image, theFile: 'images/sprites/passBlock/lavaParticle3.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle4Image, theFile: 'images/sprites/passBlock/lavaParticle4.png', loaded: false});
 
   //cVc shooter/shoot gallery game
   arrayOfImagesToLoad.push({imageObjectBinding: shootGalleryImage, theFile: 'images/Backgrounds/ShootGallery.png', loaded: false});

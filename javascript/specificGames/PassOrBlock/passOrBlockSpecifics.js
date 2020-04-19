@@ -38,6 +38,8 @@ function PassOrBlockGameClass()
   this.currentAnswerHolderWidth = undefined;
   this.currentAnswerHolderHeight = undefined;
 
+  this.fireLavaParticleManager = undefined;
+
   this.arrayOfAnswerHolders = [];
 
   this.LETTER_COLOR = 'cyan';
@@ -67,6 +69,7 @@ function PassOrBlockGameClass()
     this.arrayOfAnswerHolders.push(this.lavaAnswerHolder2);
     this.arrayOfAnswerHolders.push(this.lavaAnswerHolder3);
 
+    this.fireLavaParticleManager = new FireLavaParticleManager();
 
     this.background = new PassOrBlockBackground();
     this.superInitialize();
