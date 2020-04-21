@@ -182,6 +182,10 @@ let airBoothImage = document.createElement('img');
 let armlessBodyImage = document.createElement('img');
 let rightArmImage = document.createElement('img');
 let leftArmImage = document.createElement('img');
+let bill1Image = document.createElement('img');
+let bill2Image = document.createElement('img');
+let bill3Image = document.createElement('img');
+let bill4Image = document.createElement('img');
 
 //Frog
 let frogRiverBackgroundImage = document.createElement('img');
@@ -483,9 +487,13 @@ function loadImages()
 
   //air booth
   arrayOfImagesToLoad.push({imageObjectBinding: airBoothImage, theFile: "images/Backgrounds/airBooth.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: armlessBodyImage, theFile: "images/sprites/air grab/armlessBody.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: leftArmImage, theFile: "images/sprites/air grab/leftArm.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: rightArmImage, theFile: "images/sprites/air grab/leftArm.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: armlessBodyImage, theFile: "images/sprites/air grab/AirGuy.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: leftArmImage, theFile: "images/sprites/air grab/leftArmm.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: rightArmImage, theFile: "images/sprites/air grab/rightArmm.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: bill1Image, theFile: "images/sprites/air grab/Bill.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: bill2Image, theFile: "images/sprites/air grab/Bill2.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: bill3Image, theFile: "images/sprites/air grab/Bill3.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: bill4Image, theFile: "images/sprites/air grab/Bill4.png", loaded: false});
 
 
   //frog

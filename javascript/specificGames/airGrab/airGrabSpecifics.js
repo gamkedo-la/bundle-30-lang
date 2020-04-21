@@ -38,6 +38,11 @@ function AirGrabGameClass()
   {
 
   }
+
+  this.handleClick = function()
+  {
+    this.playerCharacter.handleClick();
+  }
 }
 
 const airGrabGame = new AirGrabGameClass();
