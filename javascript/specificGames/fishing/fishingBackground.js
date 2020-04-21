@@ -1,4 +1,4 @@
-const WATER_HEIGHT = 200;
+const WATER_HEIGHT = 210;
 
 function FishingBackground()
 {

@@ -37,6 +37,19 @@ function fishingGameClass()
   {
     
   }
+
+  this.handleLeftArrowDown = function(){
+    if (this.playerCharacter.isInitialized){
+        this.playerCharacter.moveLeft();
+    }
+  }
+
+  this.handleRightArrowDown = function(){
+    if (this.playerCharacter.isInitialized){
+        this.playerCharacter.moveRight();
+    }
+  }
+
 }
 
 const fishingGame = new fishingGameClass();
