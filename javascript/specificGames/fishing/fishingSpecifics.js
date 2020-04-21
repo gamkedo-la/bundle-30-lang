@@ -35,7 +35,9 @@ function fishingGameClass()
 
   this.update = function()
   {
-    
+    if (this.playerCharacter.isInitialized){
+      this.playerCharacter.update();
+    }
   }
 
   this.handleLeftArrowDown = function(){
@@ -47,6 +49,12 @@ function fishingGameClass()
   this.handleRightArrowDown = function(){
     if (this.playerCharacter.isInitialized){
         this.playerCharacter.moveRight();
+    }
+  }
+
+  this.handleSpaceBarDown = function () {
+    if (this.playerCharacter.isInitialized){
+      this.playerCharacter.throwHook();
     }
   }
 

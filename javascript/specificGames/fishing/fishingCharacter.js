@@ -1,3 +1,5 @@
+const FISHING_ROD_LENGTH = 70;
+
 function FishingCharacter () {
     this.isInitialized = false;
 
@@ -9,10 +11,21 @@ function FishingCharacter () {
 
     this.speedX = 5;
 
+    this.fishingHook = undefined;
+
     this.initialize = function() {
         this.x = gameCanvas.width / 2;
         this.y = WATER_HEIGHT - 30;
         this.isInitialized = true;
+
+        this.fishingHook = new FishingHook();
+        this.fishingHook.x = this.x + this.width/2;
+        this.fishingHook.y = this.y + 5;
+    }
+
+    this.update = function () {
+        this.fishingHook.x = this.x + this.width/2;
+        this.fishingHook.update();
     }
 
     this.draw = function () {
@@ -29,6 +42,24 @@ function FishingCharacter () {
             WATER_HEIGHT - 15,
             150, 30
         )
+
+        gameCanvasContext.save();
+        gameCanvasContext.fillStyle = "black";
+        gameCanvasContext.lineWidth = 5;
+        gameCanvasContext.beginPath();
+        gameCanvasContext.moveTo(this.x + this.width/2, this.y + 5)
+        gameCanvasContext.lineTo(this.fishingHook.x, this.fishingHook.y)
+        gameCanvasContext.stroke();
+        gameCanvasContext.restore();
+
+        this.fishingHook.draw();
+    }
+
+    this.throwHook = function () {
+        if (!this.fishingHook.isThrown){
+            this.fishingHook.isThrown = true;
+            console.log("Throwing the hook!!")
+        }
     }
 
     this.moveLeft = function(){
