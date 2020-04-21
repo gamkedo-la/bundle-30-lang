@@ -6,6 +6,25 @@ function AirGrabGameClass()
 
   this.FRAME_RATE = 1000/30;
 
+  this.textAnswerFontSize = 30;
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
+
+  this.imageAnswerWidth = undefined;
+  this.imageAnswerHeight = undefined;
+  this.imageAnswerHolderWidth = undefined;
+  this.imageAnswerHolderHeight = undefined;
+
+  this.audioImageAnswerWidth = undefined;
+  this.audioImageAnswerHeight = undefined;
+  this.audioImageAnswerHolderWidth = undefined;
+  this.audioImageAnswerHolderHeight = undefined;
+
+  this.correctTextAnswerHolderWidth = undefined;
+  this.incorrectTextAnswerHolderWidth = undefined;
+
+  this.answerHolderImage = undefined;
+  this.arrayOfAnswerHolders = [bill1Image,bill2Image,bill3Image,bill4Image]
+
   this.titleScreenData = [
 	  {name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265},
 	  {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}
@@ -32,6 +51,8 @@ function AirGrabGameClass()
   {
     this.background.draw();
     this.playerCharacter.draw();
+    drawAnswersManager.draw();
+    promptersManager.drawPromptsWhenAppropriate();
   }
 
   this.update = function()

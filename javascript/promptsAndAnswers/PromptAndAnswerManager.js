@@ -341,6 +341,17 @@ function PromptsAndAnswersManager()
       this.incorrectTargetPromptAndAnswerPairing.xCoordinate = incorrectAnswerCoordinates.randomXCoordinate;
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = incorrectAnswerCoordinates.randomYCoordinate;
     }
+    else if (gameClassManager.currentGame.name === 'airGrabGame')
+    {
+      let correctAnswerCoordinates = {x:getRandomIntInclusive(70,550),y:getRandomIntInclusive(80,680)};
+      let incorrectAnswerCoordinates = {x:getRandomIntInclusive(70,550),y:getRandomIntInclusive(80,680)};
+
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = correctAnswerCoordinates.x;
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = correctAnswerCoordinates.y;
+
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = incorrectAnswerCoordinates.x;
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = incorrectAnswerCoordinates.x;
+    }
     else if (gameClassManager.currentGame.name === 'laneGame')
     {
       let randomNumber = Math.random();
