@@ -45,6 +45,8 @@ function laneGameClass() {
 
 	this.collisionsWithAnswersManager = new LaneCollisionsManager();
 
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/200419i.mp3', 12.7);
+
   this.pregameSpecialCode = function()
   {
     gameAudio = {};
@@ -79,6 +81,7 @@ function laneGameClass() {
 	  this.background.initialize();
 	  this.initializeLanePositions();
 	  promptsAndAnswersManager.defineXAndYCoordinatesForTargets();
+      musicManager.addTrack(new MusicTrack('audio/backgroundTracks/200419.mp3', 76.7));
 	};
 
 	this.update = function()

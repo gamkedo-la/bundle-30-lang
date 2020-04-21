@@ -44,6 +44,9 @@ function spaceShooterGameClass() {
 
 	this.collisionsWithAnswersManager = new SpaceShooterCollisionsManager();
 
+
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/200421.mp3', 90.6);
+
   this.pregameSpecialCode = function()
   {
     console.log("pregame special code for space shooter");

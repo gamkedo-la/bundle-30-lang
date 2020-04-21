@@ -83,7 +83,7 @@ function snakeGameClass()
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
 	  this.superInitialize();
-	musicManager.addTrack(new MusicTrack('audio/backgroundTracks/200417.mp3', 87.27));
+  	musicManager.addTrack(new MusicTrack('audio/backgroundTracks/200417.mp3', 87.27));
   };
 
   //update section
