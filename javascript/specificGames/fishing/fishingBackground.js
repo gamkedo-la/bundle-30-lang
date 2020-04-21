@@ -1,3 +1,5 @@
+const WATER_HEIGHT = 200;
+
 function FishingBackground()
 {
   this.waterImage = fishingGameWaterBackgroundImage;

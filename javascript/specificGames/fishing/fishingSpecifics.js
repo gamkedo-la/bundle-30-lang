@@ -21,9 +21,16 @@ function fishingGameClass()
     this.background = new FishingBackground();
   }
 
+  this.defineAndInitializePlayerCharacter = function()
+  { 
+    this.playerCharacter = new FishingCharacter();
+    this.playerCharacter.initialize();
+  }
+
   this.draw = function()
   {
     this.background.draw();
+    this.playerCharacter.draw();
   }
 
   this.update = function()

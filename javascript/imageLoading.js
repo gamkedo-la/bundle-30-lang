@@ -200,6 +200,8 @@ let whackTableBeneathSurface = document.createElement('img');
 let hammerImage = document.createElement('img');
 
 let fishingGameWaterBackgroundImage = document.createElement('img');
+let fishingGameCharacter = document.createElement('img');
+let fishingGameBoat = document.createElement('img');
 
 //special characters for custom font
 let upArrowImage = document.createElement("img");
@@ -511,6 +513,8 @@ function loadImages()
 
   //fishing game
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameWaterBackgroundImage, theFile: 'images/Backgrounds/underwater2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameCharacter, theFile: 'images/sprites/Fishing/person.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameBoat, theFile: 'images/sprites/Fishing/boat.png', loaded: false});
 
   //whackAnAnswer
   arrayOfImagesToLoad.push({imageObjectBinding: whackTableSurface, theFile: 'images/Backgrounds/WackTableSurface.png', loaded: false});
