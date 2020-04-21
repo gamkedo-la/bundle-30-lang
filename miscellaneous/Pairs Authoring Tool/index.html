@@ -9,7 +9,23 @@
   <canvas id="canvas" width="800" height = "600"></canvas>
 
     <!--<input id="input" style="position:absolute;" type="file" accept="text/plain"> -->
+    <p><input type = "file" accept = "image/*" name = "image" id = "imageFile" onchange = "loadFile(event)" style= "display: none;"></p>
+    <p><label for = "imageFile" style="cursor: pointer;">Upload Image</label></p>
+    <p><img id = "output" width = "600"></p>
 
+      <script>
+        //display image uploaded from PC
+      var loadFile = function(event){
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+      };            
+      </script>
+
+      <p><input type = "file" accept = "audio/*" name = "audio" id = "audioFile" style = "display: none;"></p>
+      <p><label for = "audioFile" style="cursor: pointer;">Upload Sound</label></p>
+      <p><audio controls>
+        <source src = "audioFile" type = "audio/*">
+      </audio></p>
     <script src = 'javascript/TextCursor.js'></script>
     <script src = 'javascript/TextBox.js'></script>
     <script src = 'javascript/Input.js'></script>
@@ -20,6 +36,7 @@
     <script src = 'javascript/GraphicsCommon.js'></script>
     <script src = 'javascript/Main.js'></script>
     
+
 
     </body>
 </html>
