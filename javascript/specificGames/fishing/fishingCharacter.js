@@ -24,25 +24,39 @@ function FishingCharacter () {
     }
 
     this.update = function () {
-        this.fishingHook.x = this.x + this.width/2;
+        if (!this.fishingHook.isThrown){
+            this.fishingHook.x = this.x + this.width/2;
+        }
         this.fishingHook.update();
     }
 
     this.draw = function () {
+
+        this.drawCharacter();
+        this.drawBoat();
+        this.drawFishingLine();
+        this.fishingHook.draw();
+    }
+
+    this.drawCharacter = function(){
         gameCanvasContext.drawImage(
             fishingGameCharacter, 
             this.x - this.width/2, 
             this.y - this.height/2,
             this.width, this.height
         )
+    }
 
+    this.drawBoat = function() {
         gameCanvasContext.drawImage(
             fishingGameBoat, 
             this.x - 100, 
             WATER_HEIGHT - 15,
             150, 30
         )
+    }
 
+    this.drawFishingLine = function() {
         gameCanvasContext.save();
         gameCanvasContext.fillStyle = "black";
         gameCanvasContext.lineWidth = 5;
@@ -51,30 +65,38 @@ function FishingCharacter () {
         gameCanvasContext.lineTo(this.fishingHook.x, this.fishingHook.y)
         gameCanvasContext.stroke();
         gameCanvasContext.restore();
-
-        this.fishingHook.draw();
     }
 
     this.throwHook = function () {
         if (!this.fishingHook.isThrown){
             this.fishingHook.isThrown = true;
-            console.log("Throwing the hook!!")
+            this.fishingHook.isFalling = true;
         }
     }
 
     this.moveLeft = function(){
-        this.x -= this.speedX;
+        if (!this.fishingHook.isThrown){
+            this.x -= this.speedX;
 
-        if (this.x  < this.width/2){
-            this.x += this.speedX;
+            if (this.x  < this.width/2){
+                this.x += this.speedX;
+            }
+        }
+        else {
+            this.fishingHook.moveLeft()
         }
     }
 
     this.moveRight = function(){
-        this.x += this.speedX;
+        if (!this.fishingHook.isThrown){
+            this.x += this.speedX;
 
-        if (this.x  > gameCanvas.width - this.width/2){
-            this.x -= this.speedX;
+            if (this.x  > gameCanvas.width - this.width/2){
+                this.x -= this.speedX;
+            }
+        }
+        else {
+            this.fishingHook.moveRight()
         }
     }
 

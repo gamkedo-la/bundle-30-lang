@@ -3,8 +3,10 @@ function FishingHook() {
     this.y = undefined;
 
     this.isThrown = false;
+    this.isFalling = false;
 
-    this.fallingSpeed = 2;
+    this.speedX = 5;
+    this.speedY = 0.5;
 
     this.draw = function () {
         gameCanvasContext.save();
@@ -18,11 +20,24 @@ function FishingHook() {
     }
 
     this.update = function () {
-        if (
-            this.isThrown &&
-            this.y < gameCanvas.height
-        ) {
-            this.y += this.fallingSpeed;
+        if (this.isFalling){
+            this.y += this.speedY;
+
+            if(this.y > gameCanvas.height){
+                this.isFalling = false;
+            }
+        }
+    }
+
+    this.moveLeft = function () {
+        if (this.isFalling){
+            this.x -= this.speedX;
+        }
+    }
+
+    this.moveRight = function () {
+        if (this.isFalling){
+            this.x += this.speedX;
         }
     }
 }
