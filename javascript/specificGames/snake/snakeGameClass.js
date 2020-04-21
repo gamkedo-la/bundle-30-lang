@@ -48,6 +48,8 @@ function snakeGameClass()
     return appleAnswerHolder;
   }
 
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/200417i.mp3', 6.7);
+
   this.pregameSpecialCode = function()
   {
     gameAudio = {};
@@ -60,7 +62,6 @@ function snakeGameClass()
   this.superInitialize = this.initialize;
   this.initialize = function()
   {
-
     this.imageAnswerWidth = gameCanvas.width/8;
     this.imageAnswerHeight = gameCanvas.height/9;
     this.imageAnswerHolderWidth = gameCanvas.width/4;
@@ -82,6 +83,7 @@ function snakeGameClass()
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
 	  this.superInitialize();
+	musicManager.addTrack(new MusicTrack('audio/backgroundTracks/200417.mp3', 87.27));
   };
 
   //update section
