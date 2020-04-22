@@ -220,15 +220,14 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
   {
     if (languageGroupDiv.pageIndex === 1)
     {
-      console.log('checking for divs off screen on 2nd page of mandarin screen');
-      console.log('this.lastChildBox.bottomY: ' + this.lastChildBox.bottomY);
+
     }
 
     if (this.lastChildBox.bottomY > gameCanvas.height)
     {
       if (languageGroupDiv.pageIndex === 1)
       {
-        console.log('triggered div off screen on 2nd page of mandarin screen');
+
       }
       parentScreenObject.currentColumnIndex++;
       languageGroupDiv.columnIndex++;
@@ -238,7 +237,7 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
       languageGroupDiv.defineChildCheckBoxXandYs();
       if (parentScreenObject.currentColumnIndex > 2)
       {
-        console.log('new page creation');
+        
         parentScreenObject.currentColumnIndex = 0;
         parentScreenObject.currentPageIndexForInitialization++;
         let page = new Page(parentScreenObject.currentPageIndexForInitialization);

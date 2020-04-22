@@ -107,7 +107,6 @@ function AirGrabGameClass()
 
 
     correctAnswer.radians += correctAnswer.circlePathVelocity;
-    console.log('correctAnswer.xSpeed: ' + correctAnswer.xSpeed);
     correctAnswer.xCoordinate = correctAnswer.xCoordinate + (Math.cos(correctAnswer.radians) * 10) + correctAnswer.xSpeed;
     correctAnswer.yCoordinate = correctAnswer.yCoordinate + (Math.sin(correctAnswer.radians) * 10) + correctAnswer.ySpeed;
 
@@ -132,26 +131,20 @@ function AirGrabGameClass()
 
     if (correctAnswer.xCoordinate + 50 > 500 || correctAnswer.xCoordinate  - 50 < 100)
     {
-      console.log('wall collision');
       correctAnswer.xSpeed *= -1;
     }
     if (correctAnswer.yCoordinate + 50 > 600 || correctAnswer.yCoordinate - 50 < 150)
     {
-      console.log('wall collision');
-
       correctAnswer.ySpeed *= -1;
     }
 
     if (incorrectAnswer.xCoordinate + 50 > 500 || incorrectAnswer.xCoordinate  - 50 < 100)
     {
-      console.log('wall collision');
 
       incorrectAnswer.xSpeed *= -1;
     }
     if (incorrectAnswer.yCoordinate + 50 > 600 || incorrectAnswer.yCoordinate - 50 < 150)
     {
-      console.log('wall collision');
-
       incorrectAnswer.ySpeed *= -1;
     }
   }
@@ -159,8 +152,6 @@ function AirGrabGameClass()
   this.initializeAnswerSettings = function()
   {
     promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xSpeed = getRandomArbitrary(-3,3);
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xSpeed: ' +
-                promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xSpeed);
     promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.ySpeed = getRandomArbitrary(-3,3);
     promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xSpeed = getRandomArbitrary(-3,3);
     promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.ySpeed = getRandomArbitrary(-3,3);

@@ -133,7 +133,7 @@ function PromptsAndAnswersManager()
         let correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
             gameClassManager.currentGame.textAnswerFontStyle
         );
-        console.log('should be setting correct text answer holder width');
+        
         //console.log('correctAnswerWidth: ' + correctAnswerWidth);
         gameClassManager.currentGame.correctTextAnswerHolderWidth = correctAnswerWidth + 20;
         //console.log('gameClassManager.currentGame.correctTextAnswerHolderWidth: ' + gameClassManager.currentGame.correctTextAnswerHolderWidth);
@@ -229,7 +229,7 @@ function PromptsAndAnswersManager()
               this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
             }
           }
-            console.log('should be setting incorrect text answer holder width');
+
             gameClassManager.currentGame.incorrectTextAnswerHolderWidth =
             promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
                 gameClassManager.currentGame.textAnswerFontStyle
@@ -765,7 +765,6 @@ function PromptsAndAnswersManager()
   this.recordWrongAnswer = function()
   {
     this.arrayOfWrongAnswers.push(this.currentLogicalPromptAndAnswerGroup.name);
-    console.log('this.arrayOfWrongAnswers: ' + this.arrayOfWrongAnswers);
 
     var tally = [];
     for (let wrongAnswerIndex = 0; wrongAnswerIndex < this.arrayOfWrongAnswers.length; wrongAnswerIndex++)

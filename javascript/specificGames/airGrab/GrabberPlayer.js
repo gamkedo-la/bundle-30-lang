@@ -120,8 +120,7 @@ function GrabberPlayer()
       incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
           gameClassManager.currentGame.textAnswerFontStyle
       );
-      console.log('correctAnswerWidth: ' + correctAnswerWidth);
-      console.log('incorrectAnswerWidth: ' + incorrectAnswerWidth);
+      
       correctAnswerHeight = 30;
       incorrectAnswerHeight = 30;
       correctAnswerY -= correctAnswerHeight;
@@ -161,7 +160,7 @@ function GrabberPlayer()
         }
 
       genAudio.clap.play();
-    
+
   }
 }
 
