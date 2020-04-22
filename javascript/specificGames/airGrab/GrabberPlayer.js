@@ -149,14 +149,19 @@ function GrabberPlayer()
           this.collisionsWithAnswersManager.processCollisionWithCorrectAnswer();
           this.collisionsWithAnswersManager.resetAnswers();
           gameClassManager.currentGame.initializeAnswerSettings();
+          genAudio.paperCrumple.play();
         }
-    if (mouseX >= incorrectAnswerX && mouseX <= incorrectAnswerX + incorrectAnswerWidth &&
+    else if (mouseX >= incorrectAnswerX && mouseX <= incorrectAnswerX + incorrectAnswerWidth &&
         mouseY >= incorrectAnswerY && mouseY <= incorrectAnswerY + incorrectAnswerHeight)
         {
           this.collisionsWithAnswersManager.processCollisionWithIncorrectAnswer();
           this.collisionsWithAnswersManager.resetAnswers();
           gameClassManager.currentGame.initializeAnswerSettings();
+          genAudio.paperCrumple.play();
         }
+
+      genAudio.clap.play();
+    
   }
 }
 
