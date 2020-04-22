@@ -1,5 +1,10 @@
-fishingGameClass.prototype = new GameClass();
+var fishSprites = [
+  fishingGameFish1, fishingGameFish2, fishingGameFish3
+]
 
+const NUM_FISHES = 4;
+
+fishingGameClass.prototype = new GameClass();
 function fishingGameClass()
 {
   this.name = 'fishingGame';
@@ -7,18 +12,27 @@ function fishingGameClass()
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = 'px Helvetica';
   this.titleScreenData = [{
-	name: "Fishing",
-	fontSize: 27,
-	spacing: 15,
-	 x: 520, y: 480
+    name: "Fishing",
+    fontSize: 27,
+    spacing: 15,
+    x: 520, y: 480
   }];
 
   this.background = undefined;
   this.playerCharacter = undefined;
 
+  this.fishes = [];
+
   this.superInitialize = function()
   {
     this.background = new FishingBackground();
+
+    for (var i = 0 ; i < NUM_FISHES ; ++i)
+    {
+      var fish = new Fish();
+      fish.initialize();
+      this.fishes.push(fish);
+    }
   }
 
   this.defineAndInitializePlayerCharacter = function()
@@ -31,12 +45,20 @@ function fishingGameClass()
   {
     this.background.draw();
     this.playerCharacter.draw();
+    
+    for(var i = 0 ; i < this.fishes.length ; i++){
+      this.fishes[i].draw();
+    }
   }
 
   this.update = function()
   {
     if (this.playerCharacter.isInitialized){
       this.playerCharacter.update();
+    }
+
+    for(var i = 0 ; i < this.fishes.length ; i++){
+      this.fishes[i].update();
     }
   }
 

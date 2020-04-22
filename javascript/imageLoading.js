@@ -204,6 +204,9 @@ let hammerImage = document.createElement('img');
 let fishingGameWaterBackgroundImage = document.createElement('img');
 let fishingGameCharacter = document.createElement('img');
 let fishingGameBoat = document.createElement('img');
+let fishingGameFish1 = document.createElement('img');
+let fishingGameFish2 = document.createElement('img');
+let fishingGameFish3 = document.createElement('img');
 
 //special characters for custom font
 let upArrowImage = document.createElement("img");
@@ -520,6 +523,9 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameWaterBackgroundImage, theFile: 'images/Backgrounds/underwater2.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameCharacter, theFile: 'images/sprites/Fishing/person.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameBoat, theFile: 'images/sprites/Fishing/boat.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish1, theFile: 'images/sprites/Fishing/fish.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish2, theFile: 'images/sprites/Fishing/fish2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish3, theFile: 'images/sprites/Fishing/fish3.png', loaded: false});
 
   //whackAnAnswer
   arrayOfImagesToLoad.push({imageObjectBinding: whackTableSurface, theFile: 'images/Backgrounds/WackTableSurface.png', loaded: false});
