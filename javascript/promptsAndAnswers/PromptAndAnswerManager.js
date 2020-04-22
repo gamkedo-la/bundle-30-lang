@@ -350,7 +350,7 @@ function PromptsAndAnswersManager()
       this.correctTargetPromptAndAnswerPairing.yCoordinate = correctAnswerCoordinates.y;
 
       this.incorrectTargetPromptAndAnswerPairing.xCoordinate = incorrectAnswerCoordinates.x;
-      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = incorrectAnswerCoordinates.x;
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = incorrectAnswerCoordinates.y;
     }
     else if (gameClassManager.currentGame.name === 'laneGame')
     {

@@ -23,7 +23,12 @@ function AirGrabGameClass()
   this.incorrectTextAnswerHolderWidth = undefined;
 
   this.answerHolderImage = undefined;
-  this.arrayOfAnswerHolders = [bill1Image,bill2Image,bill3Image,bill4Image]
+  this.arrayOfAnswerHolders = [];
+  this.assignAnswerHolder = function()
+  {
+      let randomNumber = getRandomIntInclusive(0, this.arrayOfAnswerHolders.length - 1);
+      return this.arrayOfAnswerHolders[randomNumber];
+  }
 
   this.titleScreenData = [
 	  {name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265},
@@ -44,6 +49,28 @@ function AirGrabGameClass()
 
   this.superInitialize = function()
   {
+    this.imageAnswerWidth = gameCanvas.width/8;
+    this.imageAnswerHeight = gameCanvas.height/9;
+    this.imageAnswerHolderWidth = gameCanvas.width/4;
+    this.imageAnswerHolderHeight = gameCanvas.height/5;
+
+    this.audioImageAnswerWidth = gameCanvas.width/6;
+    this.audioImageAnswerHeight = gameCanvas.height/7;
+    this.audioImageAnswerHolderWidth = gameCanvas.width/5;
+    this.audioImageAnswerHolderHeight = gameCanvas.height/6;
+
+    this.correctTextAnswerHolderWidth = undefined;
+    this.incorrectTextAnswerHolderWidth = undefined;
+
+    this.dollarBillAnswerHolder1 = new DollarBillAnswerHolder(bill1Image);
+    this.dollarBillAnswerHolder2 = new DollarBillAnswerHolder(bill2Image);
+    this.dollarBillAnswerHolder3 = new DollarBillAnswerHolder(bill3Image);
+    this.dollarBillAnswerHolder4 = new DollarBillAnswerHolder(bill4Image);
+    this.arrayOfAnswerHolders.push(this.dollarBillAnswerHolder1);
+    this.arrayOfAnswerHolders.push(this.dollarBillAnswerHolder2);
+    this.arrayOfAnswerHolders.push(this.dollarBillAnswerHolder3);
+    this.arrayOfAnswerHolders.push(this.dollarBillAnswerHolder4);
+
     this.background = new AirGrabBackground();
   }
 
@@ -67,3 +94,8 @@ function AirGrabGameClass()
 }
 
 const airGrabGame = new AirGrabGameClass();
+
+function DollarBillAnswerHolder(image)
+{
+  this.image = image;
+}
