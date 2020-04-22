@@ -114,6 +114,7 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
 
   this.oscillationVelocity = undefined;
   this.radians = 0;
+  this.circlePathVelocity = 0.25;
 
   this.width = undefined;
   this.height = undefined;

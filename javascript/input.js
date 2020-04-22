@@ -175,6 +175,7 @@ function InputManager()
       {
         fullGameStateMachine.currentState = fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame;
       }
+      break;
 
       case 77://m
       if (volume.music > 0)
@@ -183,7 +184,11 @@ function InputManager()
       } else {
         volume.music = 0.75;
       }
+      break;
 
+      case 82://r reset prompts and answers
+      promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+      break;
     }
   }
 

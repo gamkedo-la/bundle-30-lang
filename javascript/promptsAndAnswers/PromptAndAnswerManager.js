@@ -343,8 +343,8 @@ function PromptsAndAnswersManager()
     }
     else if (gameClassManager.currentGame.name === 'airGrabGame')
     {
-      let correctAnswerCoordinates = {x:getRandomIntInclusive(70,550),y:getRandomIntInclusive(80,680)};
-      let incorrectAnswerCoordinates = {x:getRandomIntInclusive(70,550),y:getRandomIntInclusive(80,680)};
+      let correctAnswerCoordinates = {x:getRandomIntInclusive(120,480),y:getRandomIntInclusive(120,520)};
+      let incorrectAnswerCoordinates = {x:getRandomIntInclusive(120,480),y:getRandomIntInclusive(120,520)};
 
       this.correctTargetPromptAndAnswerPairing.xCoordinate = correctAnswerCoordinates.x;
       this.correctTargetPromptAndAnswerPairing.yCoordinate = correctAnswerCoordinates.y;
@@ -751,6 +751,9 @@ function PromptsAndAnswersManager()
       this.defineXAndYCoordinatesForTargets();
       if (gameClassManager.currentGame.name === 'birdGame'){
         birdGame.assignLeftOrRightDirectionToAnswers();
+      } else if (gameClassManager.currentGame.name = 'airGrabGame')
+      {
+        gameClassManager.currentGame.initializeAnswerSettings();
       }
       promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
       this.reinsertAnswersIntoEditedArrayForNextShuffle();

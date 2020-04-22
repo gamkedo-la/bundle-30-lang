@@ -73,6 +73,7 @@ function AirGrabGameClass()
     this.arrayOfAnswerHolders.push(this.dollarBillAnswerHolder3);
     this.arrayOfAnswerHolders.push(this.dollarBillAnswerHolder4);
 
+    this.initializeAnswerSettings();
     drawAnswersManager.initialize();
     this.background = new AirGrabBackground();
     this.playerCharacter.collisionsWithAnswersManager.initialize(gameClassManager.currentGame);
@@ -88,12 +89,79 @@ function AirGrabGameClass()
 
   this.update = function()
   {
-
+    this.moveAnswers();
   }
 
   this.handleClick = function()
   {
     this.playerCharacter.handleClick();
+  }
+
+  this.moveAnswers = function()
+  {
+    let correctAnswer = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing;
+    let incorrectAnswer = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing;
+
+
+
+    correctAnswer.radians += correctAnswer.circlePathVelocity;
+    console.log('correctAnswer.xSpeed: ' + correctAnswer.xSpeed);
+    correctAnswer.xCoordinate = correctAnswer.xCoordinate + (Math.cos(correctAnswer.radians) * 10) + correctAnswer.xSpeed;
+    correctAnswer.yCoordinate = correctAnswer.yCoordinate + (Math.sin(correctAnswer.radians) * 10) + correctAnswer.ySpeed;
+
+    incorrectAnswer.radians += incorrectAnswer.circlePathVelocity;
+    incorrectAnswer.xCoordinate = incorrectAnswer.xCoordinate + (Math.cos(incorrectAnswer.radians) * 10) + incorrectAnswer.xSpeed;
+    incorrectAnswer.yCoordinate = incorrectAnswer.yCoordinate + (Math.sin(incorrectAnswer.radians) * 10) + incorrectAnswer.ySpeed;
+    this.checkAnswerWallCollisions();
+  }
+
+  this.updateAnswerPositions = function()
+  {
+    let correctAnswer = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing;
+    let incorrectAnswer = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing;
+    //move points over time
+
+  }
+
+  this.checkAnswerWallCollisions = function()
+  {
+    let correctAnswer = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing;
+    let incorrectAnswer = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing;
+
+    if (correctAnswer.xCoordinate + 50 > 500 || correctAnswer.xCoordinate  - 50 < 100)
+    {
+      console.log('wall collision');
+      correctAnswer.xSpeed *= -1;
+    }
+    if (correctAnswer.yCoordinate + 50 > 600 || correctAnswer.yCoordinate - 50 < 150)
+    {
+      console.log('wall collision');
+
+      correctAnswer.ySpeed *= -1;
+    }
+
+    if (incorrectAnswer.xCoordinate + 50 > 500 || incorrectAnswer.xCoordinate  - 50 < 100)
+    {
+      console.log('wall collision');
+
+      incorrectAnswer.xSpeed *= -1;
+    }
+    if (incorrectAnswer.yCoordinate + 50 > 600 || incorrectAnswer.yCoordinate - 50 < 150)
+    {
+      console.log('wall collision');
+
+      incorrectAnswer.ySpeed *= -1;
+    }
+  }
+
+  this.initializeAnswerSettings = function()
+  {
+    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xSpeed = getRandomArbitrary(-3,3);
+    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xSpeed: ' +
+                promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xSpeed);
+    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.ySpeed = getRandomArbitrary(-3,3);
+    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xSpeed = getRandomArbitrary(-3,3);
+    promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.ySpeed = getRandomArbitrary(-3,3);
   }
 }
 

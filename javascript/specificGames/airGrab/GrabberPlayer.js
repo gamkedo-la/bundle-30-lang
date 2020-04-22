@@ -147,14 +147,15 @@ function GrabberPlayer()
         mouseY >= correctAnswerY && mouseY <= correctAnswerY + correctAnswerHeight)
         {
           this.collisionsWithAnswersManager.processCollisionWithCorrectAnswer();
-          promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+          this.collisionsWithAnswersManager.resetAnswers();
+          gameClassManager.currentGame.initializeAnswerSettings();
         }
     if (mouseX >= incorrectAnswerX && mouseX <= incorrectAnswerX + incorrectAnswerWidth &&
         mouseY >= incorrectAnswerY && mouseY <= incorrectAnswerY + incorrectAnswerHeight)
         {
           this.collisionsWithAnswersManager.processCollisionWithIncorrectAnswer();
-          promptsAndAnswersManager.setOrResetPromptsAndAnswers();
-
+          this.collisionsWithAnswersManager.resetAnswers();
+          gameClassManager.currentGame.initializeAnswerSettings();
         }
   }
 }
