@@ -9,6 +9,8 @@ function AirGrabGameClass()
   this.textAnswerFontSize = 30;
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
+  this.LETTER_COLOR = 'black';
+
   this.imageAnswerWidth = undefined;
   this.imageAnswerHeight = undefined;
   this.imageAnswerHolderWidth = undefined;
@@ -71,6 +73,7 @@ function AirGrabGameClass()
     this.arrayOfAnswerHolders.push(this.dollarBillAnswerHolder3);
     this.arrayOfAnswerHolders.push(this.dollarBillAnswerHolder4);
 
+    drawAnswersManager.initialize();
     this.background = new AirGrabBackground();
   }
 

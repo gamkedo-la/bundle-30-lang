@@ -132,6 +132,7 @@ function CollisionsWithAnswersManager()
 
     this.handleCollisionsWithAnswers = function(collidingObject)
     {
+      console.log('handle collisions being called');
         // Verify if a collision with an answer happen
         if (promptsAndAnswersManager.currentAnswerDataType === 'string')
         {

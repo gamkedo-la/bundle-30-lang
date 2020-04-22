@@ -28,6 +28,8 @@ function GrabberPlayer()
 
   this.shoulderY = 545;
 
+  this.collisionsWithAnswersManager = new CollisionsWithAnswersManager();
+
   this.initialize = function()
   {
     this.leftArmX = gameCanvas.width/2 - this.bodyWidth/2;
@@ -92,6 +94,9 @@ function GrabberPlayer()
     this.leftArmY = this.shoulderY - this.leftArmHeight;
     this.rightArmY = this.shoulderY - this.rightArmHeight;
     setTimeout(resetArmSettings, 500);
+
+    this.collidingObject = inputManager.mouseCoordinates;
+    this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
   }
 }
 
