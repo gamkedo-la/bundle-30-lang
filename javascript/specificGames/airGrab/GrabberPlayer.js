@@ -30,6 +30,7 @@ function GrabberPlayer()
 
   this.collisionsWithAnswersManager = new CollisionsWithAnswersManager();
 
+
   this.initialize = function()
   {
     this.leftArmX = gameCanvas.width/2 - this.bodyWidth/2;
@@ -95,8 +96,66 @@ function GrabberPlayer()
     this.rightArmY = this.shoulderY - this.rightArmHeight;
     setTimeout(resetArmSettings, 500);
 
-    this.collidingObject = inputManager.mouseCoordinates;
-    this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
+    this.handleCollisionsWithAnswers(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing,
+                                     promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing);
+  }
+
+  this.handleCollisionsWithAnswers = function(correctAnswer,incorrectAnswer)
+  {
+    let mouseX = inputManager.mouseCoordinates.x;
+    let mouseY = inputManager.mouseCoordinates.y;
+    let correctAnswerX = correctAnswer.xCoordinate;
+    let correctAnswerY = correctAnswer.yCoordinate;
+    let incorrectAnswerX = incorrectAnswer.xCoordinate;
+    let incorrectAnswerY = incorrectAnswer.yCoordinate;
+    let correctAnswerWidth = undefined;
+    let incorrectAnswerWidth = undefined
+    let correctAnswerHeight = undefined;
+    let incorrectAnswerHeight = undefined;
+    if (promptsAndAnswersManager.currentAnswerDataType === 'string')
+    {
+      correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
+          gameClassManager.currentGame.textAnswerFontStyle
+      );
+      incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
+          gameClassManager.currentGame.textAnswerFontStyle
+      );
+      console.log('correctAnswerWidth: ' + correctAnswerWidth);
+      console.log('incorrectAnswerWidth: ' + incorrectAnswerWidth);
+      correctAnswerHeight = 30;
+      incorrectAnswerHeight = 30;
+      correctAnswerY -= correctAnswerHeight;
+      incorrectAnswerY -= correctAnswerHeight;
+    }
+    else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
+    {
+      correctAnswerWidth = gameClassManager.currentGame.imageAnswerWidth;
+      correctAnswerHeight = gameClassManager.currentGame.imageAnswerHeight;
+      incorrectAnswerWidth = gameClassManager.currentGame.imageAnswerWidth;
+      incorrectAnswerHeight = gameClassManager.currentGame.imageAnswerHeight;
+    }
+    else if (promptsAndAnswersManager.currentAnswerDataType === 'AUDIO')
+    {
+      correctAnswerWidth = gameClassManager.currentGame.audioImageAnswerWidth;
+      correctAnswerHeight = gameClassManager.currentGame.audioImageAnswerHeight;
+      incorrectAnswerWidth = gameClassManager.currentGame.audioImageAnswerWidth;
+      incorrectAnswerHeight = gameClassManager.currentGame.audioImageAnswerHeight;
+    }
+
+
+    if (mouseX >= correctAnswerX && mouseX <= correctAnswerX + correctAnswerWidth &&
+        mouseY >= correctAnswerY && mouseY <= correctAnswerY + correctAnswerHeight)
+        {
+          this.collisionsWithAnswersManager.processCollisionWithCorrectAnswer();
+          promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+        }
+    if (mouseX >= incorrectAnswerX && mouseX <= incorrectAnswerX + incorrectAnswerWidth &&
+        mouseY >= incorrectAnswerY && mouseY <= incorrectAnswerY + incorrectAnswerHeight)
+        {
+          this.collisionsWithAnswersManager.processCollisionWithIncorrectAnswer();
+          promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+
+        }
   }
 }
 

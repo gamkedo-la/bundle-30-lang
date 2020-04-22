@@ -75,6 +75,7 @@ function AirGrabGameClass()
 
     drawAnswersManager.initialize();
     this.background = new AirGrabBackground();
+    this.playerCharacter.collisionsWithAnswersManager.initialize(gameClassManager.currentGame);
   }
 
   this.draw = function()

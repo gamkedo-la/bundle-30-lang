@@ -133,6 +133,9 @@ function CollisionsWithAnswersManager()
     this.handleCollisionsWithAnswers = function(collidingObject)
     {
       console.log('handle collisions being called');
+      console.log('collidingObject.x: ' + collidingObject.x);
+      console.log('collidingObject.y: ' + collidingObject.y);
+
         // Verify if a collision with an answer happen
         if (promptsAndAnswersManager.currentAnswerDataType === 'string')
         {
@@ -147,6 +150,7 @@ function CollisionsWithAnswersManager()
             var collisionType = this.handleCollisionsWithAudioImageAnswers(collidingObject);
         }//end of else if for data type checks;
 
+        console.log('collisionType: ' + collisionType);
         // If a collision happens
         if (collisionType != NO_COLLISION)
         {
