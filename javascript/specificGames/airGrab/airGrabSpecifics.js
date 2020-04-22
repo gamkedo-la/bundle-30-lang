@@ -81,9 +81,11 @@ function AirGrabGameClass()
 
   this.draw = function()
   {
-    this.background.draw();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
+    this.background.draw();
+
+
     promptersManager.drawPromptsWhenAppropriate();
   }
 
