@@ -199,10 +199,10 @@ function CollisionsWithAnswersManager()
         // If a collision happens
         if (collisionType != NO_COLLISION)
         {
-          if (gameClassManager.currentGame.collisionVisualEffect)
-          {
-            gameClassManager.currentGame.collisionVisualEffect();
-          }
+          // if (gameClassManager.currentGame.collisionVisualEffect)
+          // {
+          //   gameClassManager.currentGame.collisionVisualEffect();
+          // }
           if (gameClassManager.currentGame.collisionAudioEffect)
           {
             gameClassManager.currentGame.collisionAudioEffect();

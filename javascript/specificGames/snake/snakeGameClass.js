@@ -89,6 +89,10 @@ function snakeGameClass()
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
 	  this.superInitialize();
   	musicManager.addTrack(new MusicTrack('audio/backgroundTracks/200417.mp3', 87.27));
+
+
+    setInterval(populateArrayOfBugs, 5000);
+    setInterval(assignAnAppleCoreToABug, 3000);
   };
 
   //update section
@@ -100,6 +104,28 @@ function snakeGameClass()
       this.playerCharacter.update();
       this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
     }
+
+    for (let i = 0; i < this.arrayOfBugs.length; i++)
+    {
+      this.arrayOfBugs[i].move();
+    }
+
+    for (let i = 0; i < this.arrayOfAppleCores.length; i++)
+    {
+      this.arrayOfAppleCores[i].update();
+      if (this.arrayOfAppleCores[i].totalDecay > 0.95)
+      {
+        for (let j = 0; j < this.arrayOfBugs.length; j++)
+          {
+            if (this.arrayOfBugs[j].targetAppleCore === this.arrayOfAppleCores[i])
+            {
+              this.arrayOfBugs[j].hasATargetAppleCore = false;
+              this.arrayOfBugs[j].hasCollidedWithTarget = false;
+            }
+          }
+        this.arrayOfAppleCores.splice(i,1);
+      }
+    }
   }
 
   //draw section
@@ -109,6 +135,10 @@ function snakeGameClass()
     for (let i = 0; i < this.arrayOfAppleCores.length; i++)
     {
       this.arrayOfAppleCores[i].draw();
+    }
+    for (let i = 0; i < this.arrayOfBugs.length; i++)
+    {
+      this.arrayOfBugs[i].draw();
     }
     this.playerCharacter.draw();
     drawAnswersManager.draw();
@@ -199,6 +229,9 @@ function snakeGameClass()
   {
     genAudio.appleEating.play();
   }
+
+  this.arrayOfBugs = [];
+
 }
 
 function AppleCore(x,y, width,height)
@@ -209,10 +242,155 @@ function AppleCore(x,y, width,height)
   this.width = width;
   this.height = height;
 
+  this.decayingRate = 0;
+  this.totalDecay = 0;
+
   this.draw = function()
   {
+    gameCanvasContext.globalAlpha -= this.totalDecay;
     gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    gameCanvasContext.globalAlpha = 1;
+  }
+
+  this.update = function()
+  {
+    this.totalDecay += this.decayingRate;
   }
 }
 
 const snakeGame = new snakeGameClass();
+
+function Bug()
+{
+  this.x = getRandomArbitrary(0,gameCanvas.width);
+  this.y = getRandomArbitrary(0,gameCanvas.height);
+  this.width = 4;
+  this.height = 4;
+
+  this.xVelocity = 4;
+  this.yVelocity = 4;
+
+  this.color = 'brown';
+
+  this.isEating = false;
+  this.hasATargetAppleCore = false;
+  this.targetAppleCore = undefined;
+
+  this.update = function()
+  {
+    if (!this.hasATargetAppleCore)
+    {
+      if (gameClassManager.currentGame.arrayOfAppleCores.length > 0)
+      {
+        this.targetAppleCore = getRandomIntInclusive(0,gameClassManager.currentGame.arrayOfAppleCores.length - 1);
+      }
+    }
+  }
+
+  this.draw = function()
+  {
+    gameCanvasContext.fillStyle = this.color;
+    gameCanvasContext.fillRect(this.x,this.y, this.width,this.height)
+  }
+
+  this.move = function()
+  {
+    if (!this.hasATargetAppleCore)
+    {
+      this.moveRandomly();
+    }
+    else
+    {
+      this.moveTowardsTargetAppleCore();
+    }
+  }
+
+  this.moveRandomly = function()
+  {
+    let twentyPercentChanceBasis = Math.random();
+    if (twentyPercentChanceBasis > 0 && twentyPercentChanceBasis < 0.2)
+    {
+      this.x += this.xVelocity;
+    }
+    else if (twentyPercentChanceBasis >= 0.2 && twentyPercentChanceBasis < 0.4)
+    {
+      this.y += this.yVelocity;
+    }
+    else if (twentyPercentChanceBasis > 0.4 && twentyPercentChanceBasis <= 0.6)
+    {
+      this.x -= this.xVelocity;
+    }
+    else if (twentyPercentChanceBasis > 0.6 && twentyPercentChanceBasis <= 0.8)
+    {
+      this.y -= this.yVelocity;
+    }
+    else if (twentyPercentChanceBasis > 0.8 && twentyPercentChanceBasis < 1)
+    {
+      return;
+    }
+  }
+
+  this.hasCollidedWithTarget = false;
+  this.moveTowardsTargetAppleCore = function()
+  {
+    if (this.y > this.targetAppleCore.y + this.targetAppleCore.height)
+    {
+      this.y -= this.yVelocity;
+    }
+    else if (this.y < this.targetAppleCore.y)
+    {
+      this.y += this.yVelocity;
+    }
+
+    if (this.x < this.targetAppleCore.x)
+    {
+      this.x += this.xVelocity;
+    }
+    else if (this.x > this.targetAppleCore.x + this.targetAppleCore.width)
+    {
+      this.x -= this.xVelocity;
+    }
+
+    if (this.x > this.targetAppleCore.x && this.x < this.targetAppleCore.x + this.targetAppleCore.width &&
+        this.y > this.targetAppleCore.y && this.y < this.targetAppleCore.y + this.targetAppleCore.height)
+        {
+          if (!this.hasCollidedWithTarget)
+          {
+            this.targetAppleCore.decayingRate += 0.01;
+            this.hasCollidedWithTarget = true;
+          }
+        }
+  }
+}
+
+function populateArrayOfBugs()
+{
+  let bug = new Bug();
+  gameClassManager.currentGame.arrayOfBugs.push(bug);
+}
+
+function assignAnAppleCoreToABug()
+{
+  let arrayOfBugs = gameClassManager.currentGame.arrayOfBugs;
+  let arrayOfAppleCores = gameClassManager.currentGame.arrayOfAppleCores;
+  for (let i = 0; i < arrayOfBugs.length; i++)
+  {
+    if (arrayOfBugs.length > 0)
+    {
+      if (!arrayOfBugs[i].hasATargetAppleCore)
+      {
+        if (arrayOfAppleCores.length < 1)
+        {
+          return;
+        }
+        else
+        {
+          let appleCoreIndex = getRandomIntInclusive(0,arrayOfAppleCores.length - 1);
+          arrayOfBugs[i].targetAppleCore = arrayOfAppleCores[appleCoreIndex];
+          arrayOfBugs[i].hasATargetAppleCore = true;
+          console.log('arrayOfBugs[i].targetAppleCore: ' + arrayOfBugs[i].targetAppleCore);
+        }//end of else case that actually assigns a target apple core
+      }//end of if statement that checks for existence of apple cores
+    }//end of if statement that checks for existence of bugs
+  }//end of for loop through array of bugs
+}//end of assign an apple core to a bug function
