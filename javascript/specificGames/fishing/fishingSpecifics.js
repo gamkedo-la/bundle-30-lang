@@ -8,6 +8,7 @@ fishingGameClass.prototype = new GameClass();
 function fishingGameClass()
 {
   this.name = 'fishingGame';
+
   this.playerCharacter = undefined;
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = 'px Helvetica';
@@ -45,14 +46,18 @@ function fishingGameClass()
   {
     this.background.draw();
     this.playerCharacter.draw();
-    
+
     for(var i = 0 ; i < this.fishes.length ; i++){
       this.fishes[i].draw();
     }
+
+    drawAnswersManager.draw();
+    promptersManager.drawPromptsWhenAppropriate();
   }
 
   this.update = function()
   {
+
     if (this.playerCharacter.isInitialized){
       this.playerCharacter.update();
     }
@@ -60,6 +65,10 @@ function fishingGameClass()
     for(var i = 0 ; i < this.fishes.length ; i++){
       this.fishes[i].update();
     }
+
+    this.collisionsWithAnswersManager.handleCollisionsWithAnswers(
+      this.playerCharacter.fishingHook
+    );
   }
 
   this.handleLeftArrowDown = function(){

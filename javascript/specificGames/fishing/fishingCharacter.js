@@ -58,7 +58,7 @@ function FishingCharacter () {
 
     this.drawFishingLine = function() {
         gameCanvasContext.save();
-        gameCanvasContext.fillStyle = "black";
+        gameCanvasContext.strokeStyle = "black";
         gameCanvasContext.lineWidth = 5;
         gameCanvasContext.beginPath();
         gameCanvasContext.moveTo(this.x + this.width/2, this.y + 5)

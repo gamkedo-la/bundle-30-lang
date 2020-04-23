@@ -495,10 +495,10 @@ function PromptsAndAnswersManager()
       }
     }
     else if(gameClassManager.currentGame.name === "MazeGame"){
-      this.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,gameCanvas.width - 1);
-      this.correctTargetPromptAndAnswerPairing.yCoordinate = getRandomIntInclusive(0,gameCanvas.height - 1);
-      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,gameCanvas.width - 1);
-      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomIntInclusive(0,gameCanvas.height - 1);
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,gameCanvas.width - 50);
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = getRandomIntInclusive(WATER_HEIGHT,gameCanvas.height - 50);
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomIntInclusive(0,gameCanvas.width - 50);
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomIntInclusive(WATER_HEIGHT,gameCanvas.height - 50);
     }
 	else if (gameClassManager.currentGame == runnerGame)
 	{
@@ -724,6 +724,13 @@ function PromptsAndAnswersManager()
       this.incorrectTargetPromptAndAnswerPairing.xCoordinate = this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerXStartingPosition;
       this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerYStartingPosition = gameClassManager.currentGame.background.grid[randomGridIndex2].y + incorrectAnswerYOffSet;
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerYStartingPosition;
+    }
+    else if (gameClassManager.currentGame.name === "fishingGame"){
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(0,gameCanvas.width - 1);
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(0,gameCanvas.height - 1);
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(0,gameCanvas.width - 1);
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(0,gameCanvas.height - 1);
+
     }
   }
 
