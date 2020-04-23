@@ -333,20 +333,20 @@ function Bug()
   this.hasCollidedWithTarget = false;
   this.moveTowardsTargetAppleCore = function()
   {
-    if (this.y > this.targetAppleCore.y + this.targetAppleCore.height)
+    if (this.y > this.targetAppleCore.y + this.targetAppleCore.height*0.8)
     {
       this.y -= this.yVelocity;
     }
-    else if (this.y < this.targetAppleCore.y)
+    else if (this.y < this.targetAppleCore.y + this.targetAppleCore.height*0.8)
     {
       this.y += this.yVelocity;
     }
 
-    if (this.x < this.targetAppleCore.x)
+    if (this.x < this.targetAppleCore.x + this.targetAppleCore.width/3)
     {
       this.x += this.xVelocity;
     }
-    else if (this.x > this.targetAppleCore.x + this.targetAppleCore.width)
+    else if (this.x > this.targetAppleCore.x + this.targetAppleCore.width/3)
     {
       this.x -= this.xVelocity;
     }
