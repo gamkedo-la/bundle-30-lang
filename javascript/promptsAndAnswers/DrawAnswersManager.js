@@ -42,12 +42,6 @@ function DrawAnswersManager()
         this.currentCorrectAnswerHolderY = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - gameClassManager.currentGame.currentCorrectAnswerHolderHeight*1.2;
         this.currentCorrectAnswerHolderWidth = gameClassManager.currentGame.correctTextAnswerHolderWidth*1.5;
         this.currentCorrectAnswerHolderHeight = gameClassManager.currentGame.currentCorrectAnswerHolderHeight*1.75;
-        console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image: ' +
-                    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image);
-        console.log('this.currentCorrectAnswerHolderX: ' + this.currentCorrectAnswerHolderX);
-        console.log('this.currentCorrectAnswerHolderY: ' + this.currentCorrectAnswerHolderY);
-        console.log('this.currentCorrectAnswerHolderWidth: ' + this.currentCorrectAnswerHolderWidth);
-        console.log('this.currentCorrectAnswerHolderHeight: ' + this.currentCorrectAnswerHolderHeight);
 
         gameCanvasContext.drawImage(
           promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
