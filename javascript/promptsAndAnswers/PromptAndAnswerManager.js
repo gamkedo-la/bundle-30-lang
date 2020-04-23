@@ -133,7 +133,7 @@ function PromptsAndAnswersManager()
         let correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
             gameClassManager.currentGame.textAnswerFontStyle
         );
-        
+
         //console.log('correctAnswerWidth: ' + correctAnswerWidth);
         gameClassManager.currentGame.correctTextAnswerHolderWidth = correctAnswerWidth + 20;
         //console.log('gameClassManager.currentGame.correctTextAnswerHolderWidth: ' + gameClassManager.currentGame.correctTextAnswerHolderWidth);
@@ -751,7 +751,7 @@ function PromptsAndAnswersManager()
       this.defineXAndYCoordinatesForTargets();
       if (gameClassManager.currentGame.name === 'birdGame'){
         birdGame.assignLeftOrRightDirectionToAnswers();
-      } else if (gameClassManager.currentGame.name = 'airGrabGame')
+      } else if (gameClassManager.currentGame.name === 'airGrabGame')
       {
         gameClassManager.currentGame.initializeAnswerSettings();
       }

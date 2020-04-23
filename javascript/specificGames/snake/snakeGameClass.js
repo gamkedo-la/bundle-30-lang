@@ -176,6 +176,27 @@ function snakeGameClass()
     this.playerCharacter.speedY = 20;
     gameAudio.playSlither();
   }
+
+  this.collisionVisualEffect = function()
+  {
+    //let appleCoreX = drawAnswersManager.
+  }
+
+  this.arrayOfAppleCores = [];
+}
+
+function AppleCore(x,y, width,height)
+{
+  this.image = appleCoreImage;
+  this.x = x;
+  this.y = y;
+  this.width = width;
+  this.height = height;
+
+  this.draw = function()
+  {
+    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+  }
 }
 
 const snakeGame = new snakeGameClass();

@@ -4,6 +4,8 @@ const COLLISION_WITH_INCORRECT_ANSWER = 2
 
 function CollisionsWithAnswersManager()
 {
+    this.currentCollidedAnswer = undefined;
+    
     this.initialize = function(game)
     {
         this.textAnswerFontSize  = game.textAnswerFontSize;
@@ -132,10 +134,6 @@ function CollisionsWithAnswersManager()
 
     this.handleCollisionsWithAnswers = function(collidingObject)
     {
-      console.log('handle collisions being called');
-      console.log('collidingObject.x: ' + collidingObject.x);
-      console.log('collidingObject.y: ' + collidingObject.y);
-
         // Verify if a collision with an answer happen
         if (promptsAndAnswersManager.currentAnswerDataType === 'string')
         {
@@ -150,10 +148,14 @@ function CollisionsWithAnswersManager()
             var collisionType = this.handleCollisionsWithAudioImageAnswers(collidingObject);
         }//end of else if for data type checks;
 
-        console.log('collisionType: ' + collisionType);
         // If a collision happens
         if (collisionType != NO_COLLISION)
         {
+          if (gameClassManager.currentGame.collisionVisualEffect)
+          {
+            gameClassManager.currentGame.collisionVisualEffect();
+          }
+
             this.processCollisionWithAnswer();
 
             if (collisionType == COLLISION_WITH_CORRECT_ANSWER){
@@ -162,6 +164,8 @@ function CollisionsWithAnswersManager()
             else if (collisionType == COLLISION_WITH_INCORRECT_ANSWER){
                 this.processCollisionWithIncorrectAnswer();
             }
+
+
         }
 
         if ( (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM) &&
