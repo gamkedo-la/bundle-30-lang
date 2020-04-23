@@ -5,7 +5,7 @@ const COLLISION_WITH_INCORRECT_ANSWER = 2
 function CollisionsWithAnswersManager()
 {
     this.currentCollidedAnswer = undefined;
-    
+
     this.initialize = function(game)
     {
         this.textAnswerFontSize  = game.textAnswerFontSize;
@@ -62,6 +62,14 @@ function CollisionsWithAnswersManager()
             correctAnswerWidth
             )
         ){
+            if (gameClassManager.currentGame.collisionVisualEffect)
+            {
+              gameClassManager.currentGame.collisionVisualEffect(
+                drawAnswersManager.currentCorrectAnswerHolderX,
+                drawAnswersManager.currentCorrectAnswerHolderY,
+                drawAnswersManager.currentCorrectAnswerHolderWidth,
+                drawAnswersManager.currentCorrectAnswerHolderHeight)
+            }
             return COLLISION_WITH_CORRECT_ANSWER;
         }
 
@@ -72,6 +80,14 @@ function CollisionsWithAnswersManager()
             incorrectAnswerWidth
             )
         ){
+          if (gameClassManager.currentGame.collisionVisualEffect)
+          {
+            gameClassManager.currentGame.collisionVisualEffect(
+              drawAnswersManager.currentIncorrectAnswerHolderX,
+              drawAnswersManager.currentIncorrectAnswerHolderY,
+              drawAnswersManager.currentIncorrectAnswerHolderWidth,
+              drawAnswersManager.currentIncorrectAnswerHolderHeight)
+          }
             return COLLISION_WITH_INCORRECT_ANSWER;
         }
 
@@ -88,6 +104,14 @@ function CollisionsWithAnswersManager()
             )
         )
         {
+          if (gameClassManager.currentGame.collisionVisualEffect)
+          {
+            gameClassManager.currentGame.collisionVisualEffect(
+              drawAnswersManager.currentCorrectAnswerHolderX,
+              drawAnswersManager.currentCorrectAnswerHolderY,
+              drawAnswersManager.currentCorrectAnswerHolderWidth,
+              drawAnswersManager.currentCorrectAnswerHolderHeight)
+          }
             return COLLISION_WITH_CORRECT_ANSWER;
         }
 
@@ -99,6 +123,14 @@ function CollisionsWithAnswersManager()
             )
         )
         {
+          if (gameClassManager.currentGame.collisionVisualEffect)
+          {
+            gameClassManager.currentGame.collisionVisualEffect(
+              drawAnswersManager.currentIncorrectAnswerHolderX,
+              drawAnswersManager.currentIncorrectAnswerHolderY,
+              drawAnswersManager.currentIncorrectAnswerHolderWidth,
+              drawAnswersManager.currentIncorrectAnswerHolderHeight)
+          }
             return COLLISION_WITH_INCORRECT_ANSWER;
         }
 
@@ -115,6 +147,14 @@ function CollisionsWithAnswersManager()
             )
         )
         {
+          if (gameClassManager.currentGame.collisionVisualEffect)
+          {
+            gameClassManager.currentGame.collisionVisualEffect(
+              drawAnswersManager.currentCorrectAnswerHolderX,
+              drawAnswersManager.currentCorrectAnswerHolderY,
+              drawAnswersManager.currentCorrectAnswerHolderWidth,
+              drawAnswersManager.currentCorrectAnswerHolderHeight)
+          }
             return COLLISION_WITH_CORRECT_ANSWER;
         }
 
@@ -126,7 +166,15 @@ function CollisionsWithAnswersManager()
             )
         )
         {
-            return COLLISION_WITH_INCORRECT_ANSWER;
+          if (gameClassManager.currentGame.collisionVisualEffect)
+          {
+            gameClassManager.currentGame.collisionVisualEffect(
+              drawAnswersManager.currentIncorrectAnswerHolderX,
+              drawAnswersManager.currentIncorrectAnswerHolderY,
+              drawAnswersManager.currentIncorrectAnswerHolderWidth,
+              drawAnswersManager.currentIncorrectAnswerHolderHeight)
+          }
+          return COLLISION_WITH_INCORRECT_ANSWER;
         }
 
         return NO_COLLISION;

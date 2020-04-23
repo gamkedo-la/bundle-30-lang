@@ -7,8 +7,13 @@ function DrawAnswersManager()
 
   this.currentCorrectAnswerHolderX = undefined;
   this.currentCorrectAnswerHolderY = undefined;
+  this.currentCorrectAnswerHolderWidth = undefined;
+  this.currentCorrectAnswerHolderHeight = undefined;
+
   this.currentIncorrectAnswerHolderX = undefined;
   this.currentIncorrectAnswerHolderY = undefined;
+  this.currentIncorrectAnswerHolderWidth = undefined;
+  this.currentIncorrectAnswerHolderHeight = undefined;
 
   this.draw = function()
   {
@@ -17,40 +22,46 @@ function DrawAnswersManager()
       gameCanvasContext.fillStyle = this.getTextLetterColor();
 
       var correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
-        this.textAnswerFontStyle
+        gameClassManager.currentGame.textAnswerFontStyle
       )
 
       var incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
-        this.textAnswerFontStyle
+        gameClassManager.currentGame.textAnswerFontStyle
       )
 
-      if (gameClassManager.currentGame.currentAnswerHolderWidth !== undefined)
-      {
-        gameClassManager.currentGame.currentAnswerHolderWidth = gameClassManager.currentGame.correctTextAnswerHolderWidth*1.25;
-        gameClassManager.currentGame.currentAnswerHolderHeight = gameClassManager.currentGame.correctTextAnswerHolderWidth*1.25;
-
-      }
-
+      // if (gameClassManager.currentGame.currentCorrectAnswerHolderWidth)
+      // {
+        gameClassManager.currentGame.currentCorrectAnswerHolderWidth = correctAnswerWidth;
+        gameClassManager.currentGame.currentCorrectAnswerHolderHeight = 30;
+        gameClassManager.currentGame.currentIncorrectAnswerHolderWidth = incorrectAnswerWidth;
+        gameClassManager.currentGame.currentIncorrectAnswerHolderHeight = 30;
+      // }
       if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder)
       {
         this.currentCorrectAnswerHolderX = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - gameClassManager.currentGame.correctTextAnswerHolderWidth/4;
-        this.currentCorrectAnswerHolderY = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - gameClassManager.currentGame.correctTextAnswerHolderWidth;
-        this.currentCorrectAnswerHolderWidth = gameClassManager.currentGame.correctTextAnswerHolderWidth*1.25;
-        this.currentCorrectAnswerHolderHeight = this.currentAnswerHolderWidth;
+        this.currentCorrectAnswerHolderY = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - gameClassManager.currentGame.currentCorrectAnswerHolderHeight*1.2;
+        this.currentCorrectAnswerHolderWidth = gameClassManager.currentGame.correctTextAnswerHolderWidth*1.5;
+        this.currentCorrectAnswerHolderHeight = gameClassManager.currentGame.currentCorrectAnswerHolderHeight*1.75;
+        console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image: ' +
+                    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image);
+        console.log('this.currentCorrectAnswerHolderX: ' + this.currentCorrectAnswerHolderX);
+        console.log('this.currentCorrectAnswerHolderY: ' + this.currentCorrectAnswerHolderY);
+        console.log('this.currentCorrectAnswerHolderWidth: ' + this.currentCorrectAnswerHolderWidth);
+        console.log('this.currentCorrectAnswerHolderHeight: ' + this.currentCorrectAnswerHolderHeight);
 
         gameCanvasContext.drawImage(
           promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
           this.currentCorrectAnswerHolderX,this.currentCorrectAnswerHolderY,
-          this.currentAnswerHolderWidth,this.currentCorrectAnswerHolderHeight
+          this.currentCorrectAnswerHolderWidth,this.currentCorrectAnswerHolderHeight
         );
       }
 
       if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder)
       {
-        this.currentIncorrectAnswerHolderX = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - gameClassManager.currentGame.correctTextAnswerHolderWidth/4;
-        this.currentIncorrectAnswerHolderY = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - gameClassManager.currentGame.correctTextAnswerHolderWidth;
-        this.currentIncorrectAnswerHolderWidth = gameClassManager.currentGame.correctTextAnswerHolderWidth*1.25;
-        this.currentIncorrectAnswerHolderHeight = this.currentAnswerHolderWidth;
+        this.currentIncorrectAnswerHolderX = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - gameClassManager.currentGame.incorrectTextAnswerHolderWidth/4;
+        this.currentIncorrectAnswerHolderY = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - gameClassManager.currentGame.currentIncorrectAnswerHolderHeight*1.2;
+        this.currentIncorrectAnswerHolderWidth = gameClassManager.currentGame.currentIncorrectAnswerHolderWidth*1.5;
+        this.currentIncorrectAnswerHolderHeight = gameClassManager.currentGame.currentIncorrectAnswerHolderHeight*1.75;
 
         gameCanvasContext.drawImage(
           promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
@@ -90,7 +101,7 @@ function DrawAnswersManager()
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
 
-      if (gameClassManager.currentGame.currentAnswerHolderWidth !== undefined)
+      if (gameClassManager.currentGame.currentCorrectAnswerHolderWidth !== undefined)
       {
         gameClassManager.currentGame.currentAnswerHolderWidth = gameClassManager.currentGame.imageAnswerHolderWidth;
         gameClassManager.currentGame.currentAnswerHolderHeight = gameClassManager.currentGame.imageAnswerHolderHeight;
@@ -224,7 +235,7 @@ function DrawAnswersManager()
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
 
-      if (gameClassManager.currentGame.currentAnswerHolderWidth !== undefined)
+      if (gameClassManager.currentGame.currentCorrectAnswerHolderWidth !== undefined)
       {
         gameClassManager.currentGame.currentAnswerHolderWidth = gameClassManager.currentGame.audioImageAnswerHolderWidth*1.1;
         gameClassManager.currentGame.currentAnswerHolderHeight = gameClassManager.currentGame.audioImageAnswerHolderHeight*1.1;

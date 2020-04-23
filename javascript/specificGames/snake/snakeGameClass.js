@@ -40,6 +40,11 @@ function snakeGameClass()
   this.correctTextAnswerHolderWidth = undefined;
   this.incorrectTextAnswerHolderWidth = undefined;
 
+  this.currentCorrectAnswerHolderWidth = undefined;
+  this.currentCorrectAnswerHolderHeight = undefined;
+  this.currentIncorrectAnswerHolderWidth = undefined;
+  this.currentIncorrectAnswerHolderHeight = undefined;
+
   this.answerHolderImage = appleImage;
 
   this.assignAnswerHolder = function()
@@ -101,6 +106,10 @@ function snakeGameClass()
   this.draw = function()
   {
     this.background.draw();    // this.background.draw();
+    for (let i = 0; i < this.arrayOfAppleCores.length; i++)
+    {
+      this.arrayOfAppleCores[i].draw();
+    }
     this.playerCharacter.draw();
     drawAnswersManager.draw();
     promptersManager.drawPromptsWhenAppropriate();
@@ -177,9 +186,11 @@ function snakeGameClass()
     gameAudio.playSlither();
   }
 
-  this.collisionVisualEffect = function()
+
+  this.collisionVisualEffect = function(answerHolderX,answerHolderY, answerHolderWidth,answerHolderHeight)
   {
-    //let appleCoreX = drawAnswersManager.
+    let appleCore = new AppleCore(answerHolderX,answerHolderY, answerHolderWidth,answerHolderHeight);
+    this.arrayOfAppleCores.push(appleCore);
   }
 
   this.arrayOfAppleCores = [];
