@@ -391,6 +391,8 @@ promptAudio.mandarin9 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandar
 genAudio.clap = new sfxMulti(['audio/clap1.mp3','audio/clap2.mp3','audio/clap3.mp3','audio/clap4.mp3']);
 genAudio.paperCrumple = new sfxMulti(['audio/paper1.mp3','audio/paper2.mp3','audio/paper3.mp3']);
 
+genAudio.appleEating = new sfxMulti(['audio/eatingApple1.mp3','audio/eatingApple2.mp3','audio/eatingApple3.mp3']);
+
 promptAudio.englishBee = new promptSound('audio/PromptsAndAnswers/bee.mp3');
 promptAudio.englishFlower = new promptSound('audio/PromptsAndAnswers/flower.mp3');
 

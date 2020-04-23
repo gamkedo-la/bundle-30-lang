@@ -194,6 +194,11 @@ function snakeGameClass()
   }
 
   this.arrayOfAppleCores = [];
+
+  this.collisionAudioEffect = function()
+  {
+    genAudio.appleEating.play();
+  }
 }
 
 function AppleCore(x,y, width,height)

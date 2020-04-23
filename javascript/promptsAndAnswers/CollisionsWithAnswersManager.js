@@ -203,6 +203,10 @@ function CollisionsWithAnswersManager()
           {
             gameClassManager.currentGame.collisionVisualEffect();
           }
+          if (gameClassManager.currentGame.collisionAudioEffect)
+          {
+            gameClassManager.currentGame.collisionAudioEffect();
+          }
 
             this.processCollisionWithAnswer();
 
