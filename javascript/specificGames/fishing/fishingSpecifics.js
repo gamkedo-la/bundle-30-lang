@@ -49,6 +49,9 @@ function fishingGameClass()
     for(var i = 0 ; i < this.fishes.length ; i++){
       this.fishes[i].draw();
     }
+
+    drawAnswersManager.draw();
+    promptersManager.drawPromptsWhenAppropriate();
   }
 
   this.update = function()
@@ -60,6 +63,10 @@ function fishingGameClass()
     for(var i = 0 ; i < this.fishes.length ; i++){
       this.fishes[i].update();
     }
+
+    this.collisionsWithAnswersManager.handleCollisionsWithAnswers(
+      this.playerCharacter.fishingHook
+    );
   }
 
   this.handleLeftArrowDown = function(){

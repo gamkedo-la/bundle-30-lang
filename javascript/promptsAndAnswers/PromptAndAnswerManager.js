@@ -725,6 +725,12 @@ function PromptsAndAnswersManager()
       this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerYStartingPosition = gameClassManager.currentGame.background.grid[randomGridIndex2].y + incorrectAnswerYOffSet;
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerYStartingPosition;
     }
+    else if(gameClassManager.currentGame.name === "fishingGame"){
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(0,gameCanvas.width - 1);
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(WATER_HEIGHT,gameCanvas.height - 1);
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(0,gameCanvas.width - 1);
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(WATER_HEIGHT,gameCanvas.height - 1);
+    }
   }
 
   this.setOrResetPromptsAndAnswers = function()

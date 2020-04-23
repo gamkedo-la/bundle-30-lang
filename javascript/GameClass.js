@@ -24,6 +24,7 @@ function GameClass()
     drawAnswersManager.initialize();
   };
 
+  this.FRAME_RATE = 30;
   this.gameFrameRate = undefined;//number
 
   this.imageAnswerWidth = 100;

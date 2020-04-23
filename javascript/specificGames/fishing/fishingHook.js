@@ -2,6 +2,9 @@ function FishingHook() {
     this.x = undefined;
     this.y = undefined;
 
+    this.width = 10;
+    this.height = 10;
+
     this.isThrown = false;
     this.isFalling = false;
 
