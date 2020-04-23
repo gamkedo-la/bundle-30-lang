@@ -59,7 +59,13 @@ function MusicManager() {
 				nextTrack = new Audio(trackList[1].src);
 				nextTrackDuration = trackList[1].dur;
 			} else {
-				nextTrack = new Audio(trackList[0].src);
+                if (!trackList || !trackList[0]) {
+                    console.log("Warning: music trackList is empty. Ignoring.");
+                    this.playing = false;
+                    nextTrack = null;
+                    return;
+                }
+                nextTrack = new Audio(trackList[0].src);
 				nextTrackDuration = trackList[0].dur;
 			}
 			nextTrack.volume = Math.pow(volume.music, 2);
@@ -133,18 +139,18 @@ function MusicManager() {
 	}
 
 	this.setVolume = function() {
-		currentTrack.volume = Math.pow(volume.music, 2);
-		nextTrack.volume = Math.pow(volume.music, 2);
+		if (currentTrack) currentTrack.volume = Math.pow(volume.music, 2);
+		if (nextTrack) nextTrack.volume = Math.pow(volume.music, 2);
 	}
 
 	this.startDuck = function() {
-		currentTrack.volume = Math.pow(volume.music*0.7, 2);
-		nextTrack.volume = Math.pow(volume.music*0.7, 2);
+		if (currentTrack) currentTrack.volume = Math.pow(volume.music*0.7, 2);
+		if (nextTrack) nextTrack.volume = Math.pow(volume.music*0.7, 2);
 	}
 
 	this.endDuck = function() {
-		currentTrack.volume = Math.pow(volume.music, 2);
-		nextTrack.volume = Math.pow(volume.music, 2);
+		if (currentTrack) currentTrack.volume = Math.pow(volume.music, 2);
+		if (nextTrack) nextTrack.volume = Math.pow(volume.music, 2);
 	}
 }
 
