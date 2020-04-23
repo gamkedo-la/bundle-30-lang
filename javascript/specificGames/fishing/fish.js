@@ -1,6 +1,6 @@
 const FISH_SIZE_FACTOR = 0.5;
-const FISH_MIN_SPEED = 0.25;
-const FISH_MAX_SPEED = 1.0;
+const FISH_MIN_SPEED = 0.5;
+const FISH_MAX_SPEED = 2.0;
 
 const MIN_DISTANCE_BETWEEN_FISHES = 50;
 

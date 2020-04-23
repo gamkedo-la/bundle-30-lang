@@ -24,7 +24,6 @@ function GameClass()
     drawAnswersManager.initialize();
   };
 
-  this.FRAME_RATE = 1000/30; // default frame rate
   this.gameFrameRate = undefined;//number
 
   this.imageAnswerWidth = 100;
