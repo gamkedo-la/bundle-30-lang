@@ -239,6 +239,7 @@ let bubbleWrapSpritesheet = document.createElement("img");
 let balloonPopSpritesheet = document.createElement("img");
 let pinataImage = document.createElement("img");
 let heartImage = document.createElement("img");
+let starImage = document.createElement("img");
 
 //custom font image loading section, used loops for less typing... just to see if i could
 var arrayOfTextLetters = 'abcdefghijklmnopqrstuvwxyzñ';
@@ -515,8 +516,9 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: lilyImage3, theFile: "images/sprites/frogRiver/lilyImage3.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lilyImage4, theFile: "images/sprites/frogRiver/lilyImage4.png", loaded: false});
 
-  //heart particle for loading and transition screens
+  //particles used by loading and transition screens
   arrayOfImagesToLoad.push({imageObjectBinding: heartImage, theFile: 'images/sprites/transitions/heart.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: starImage, theFile: 'images/sprites/transitions/star.png', loaded: false});
 
   //pinata game
   arrayOfImagesToLoad.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png', loaded: false});

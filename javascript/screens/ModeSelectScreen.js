@@ -107,6 +107,7 @@ function ModeSelectScreen()
   {
     gameCanvasContext.fillStyle = 'orange';
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+    fancyBG();
   }
 
   this.draw = function()
