@@ -16,6 +16,7 @@ function PassOrBlockGameClass()
     this.collidingObject = this.playerCharacter;
   }
   this.background = undefined;
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/PassBlockVolcano.mp3',66.5);
   this.backButtonColor = 'yellow';
   this.backButtonTextColor = 'blueViolet';
 

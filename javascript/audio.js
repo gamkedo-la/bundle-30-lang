@@ -275,6 +275,7 @@ genAudio.playTitleMusic = function() {
 	musicManager.moveToLastTrack();
 	musicManager.playNextTrack();
 }
+
 genAudio.click = new sfxMulti(["audio/UI_01.mp3", "audio/UI_02.mp3", "audio/UI_03.mp3", "audio/UI_04.mp3"]);
 genAudio.playClick = function() {
 	genAudio.click.play();
