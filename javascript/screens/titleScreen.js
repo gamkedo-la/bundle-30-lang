@@ -4,7 +4,8 @@ var fancyticks = 0;
 var fancysprite = [];
 var fancycount = 100;
 var fancydecay = 0.02;
-var fancymaxspeed = -10;
+var fancymaxspeed = -12;
+var fancysize = 128;
 function fancyBG(bottomImages=[heartImage],topImages=[starImage]) {
     var i = 0;
 
@@ -37,7 +38,11 @@ function fancyBG(bottomImages=[heartImage],topImages=[starImage]) {
         fancysprite[i].y += fancysprite[i].s;
         
         gameCanvasContext.globalAlpha = fancysprite[i].a;
-        gameCanvasContext.drawImage(fancysprite[i].i,fancysprite[i].x,fancysprite[i].y);
+        gameCanvasContext.drawImage(fancysprite[i].i,
+            fancysprite[i].x,fancysprite[i].y,
+            fancysize, // scaled down
+            // scale but respect aspect ratio
+            (fancysprite[i].i.height/fancysprite[i].i.width)*(fancysize));
 
     }
 

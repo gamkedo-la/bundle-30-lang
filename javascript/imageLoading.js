@@ -248,6 +248,9 @@ var arrayOfTextSymbols = [upArrowImage, rightArrowImage, downArrowImage, leftArr
 symbolEmailAtImage, symbolHashImage, symbolDollarSignImage, symbolPercentImage, symbolEqualsImage, symbolQuestionMarkImage,
 symbolPeriodImage];
 
+// image arrays for fancyBG trasition particle systems
+var titleFancySprites = [catImage,beeImage,flowerImage,runnerCloud1,coinImage,laneCarImage,spaceshipImage,moleFoodImage,bill1Image,pinataImage,symbolQuestionMarkImage,fishingGameFish1,lilyImage1,hammerImage];
+
 
 (function () {//cycle through letter and number names, create image elements for them
 
