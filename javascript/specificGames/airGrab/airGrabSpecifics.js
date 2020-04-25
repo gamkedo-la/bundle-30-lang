@@ -48,6 +48,13 @@ function AirGrabGameClass()
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/200412.mp3', 121.62);
 
   this.background = undefined;
+  
+  this.pregameSpecialCode = function()
+  {
+    gameAudio = {};
+    gameAudio.clap = new sfxMulti(['audio/clap1.mp3','audio/clap2.mp3','audio/clap3.mp3','audio/clap4.mp3']);
+    gameAudio.paperCrumple = new sfxMulti(['audio/paper1.mp3','audio/paper2.mp3','audio/paper3.mp3']);
+  };
 
   this.superInitialize = function()
   {

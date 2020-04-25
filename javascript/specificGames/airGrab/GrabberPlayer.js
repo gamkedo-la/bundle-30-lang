@@ -30,7 +30,6 @@ function GrabberPlayer()
 
   this.collisionsWithAnswersManager = new CollisionsWithAnswersManager();
 
-
   this.initialize = function()
   {
     this.leftArmX = gameCanvas.width/2 - this.bodyWidth/2;
@@ -148,7 +147,7 @@ function GrabberPlayer()
           this.collisionsWithAnswersManager.processCollisionWithCorrectAnswer();
           this.collisionsWithAnswersManager.resetAnswers();
           gameClassManager.currentGame.initializeAnswerSettings();
-          genAudio.paperCrumple.play();
+          gameAudio.paperCrumple.play();
         }
     else if (mouseX >= incorrectAnswerX && mouseX <= incorrectAnswerX + incorrectAnswerWidth &&
         mouseY >= incorrectAnswerY && mouseY <= incorrectAnswerY + incorrectAnswerHeight)
@@ -156,10 +155,10 @@ function GrabberPlayer()
           this.collisionsWithAnswersManager.processCollisionWithIncorrectAnswer();
           this.collisionsWithAnswersManager.resetAnswers();
           gameClassManager.currentGame.initializeAnswerSettings();
-          genAudio.paperCrumple.play();
+          gameAudio.paperCrumple.play();
         }
 
-      genAudio.clap.play();
+      gameAudio.clap.play();
 
   }
 }

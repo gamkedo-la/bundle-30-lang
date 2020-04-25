@@ -33,6 +33,12 @@ function jumperGameClass()
 
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/200411.mp3', 71.11);
 
+  this.pregameSpecialCode = function()
+  {
+    gameAudio = {};
+    gameAudio.digging = new sfxMulti(['audio/dig1.mp3','audio/dig2.mp3','audio/dig3.mp3','audio/dig4.mp3']);
+  };
+
   this.superInitialize = this.initialize;
   this.initialize = function()
   {
@@ -119,7 +125,7 @@ function jumperGameClass()
   this.handleDownArrowDown = function()
   {
       this.groundParticleManager.createAGroupOfParticles();
-      genAudio.digging.play();
+      gameAudio.digging.play();
     this.playerCharacter.y += 100;
     if (this.playerCharacter.y > 700)//if the player goes below the screen
     {

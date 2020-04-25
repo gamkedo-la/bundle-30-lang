@@ -62,6 +62,7 @@ function snakeGameClass()
 	  gameAudio.playSlither = function() {
 	    gameAudio.slither.play();
   	}
+    gameAudio.appleEating = new sfxMulti(['audio/eatingApple1.mp3','audio/eatingApple2.mp3','audio/eatingApple3.mp3']);
   };
 
   this.superInitialize = this.initialize;
@@ -227,7 +228,7 @@ function snakeGameClass()
 
   this.collisionAudioEffect = function()
   {
-    genAudio.appleEating.play();
+    gameAudio.appleEating.play();
   }
 
   this.arrayOfBugs = [];
