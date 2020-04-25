@@ -119,6 +119,7 @@ function jumperGameClass()
   this.handleDownArrowDown = function()
   {
       this.groundParticleManager.createAGroupOfParticles();
+      genAudio.digging.play();
     this.playerCharacter.y += 100;
     if (this.playerCharacter.y > 700)//if the player goes below the screen
     {
