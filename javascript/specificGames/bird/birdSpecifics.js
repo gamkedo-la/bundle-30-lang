@@ -26,6 +26,8 @@ function birdGameClass() {
   const LEFT_ARROW_UP_SPEED = -4;
   const RIGHT_ARROW_UP_SPEED = 4;
 
+  this.amountCorrect = 0;
+
   this.FRAME_RATE = 1000/30;
   this.letterSpawnInterval = 2000;
 
@@ -92,6 +94,7 @@ function birdGameClass() {
 
     drawAnswersManager.initialize();
 
+    this.plane = new Plane();
     cloudManager.initialize();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     this.assignLeftOrRightDirectionToAnswers();
@@ -133,6 +136,8 @@ function birdGameClass() {
       this.playerCharacter.move();
       this.playerCharacter.handleOffScreen();
       this.moveAnswers();
+      this.plane.move();
+      this.plane.handleOffScreen();
       this.handleAnswersOffScreen();
       this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
       cloudManager.update();
@@ -158,6 +163,7 @@ function birdGameClass() {
   {
     this.drawBackground();
     cloudManager.drawClouds();
+    this.plane.draw();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
     promptersManager.drawPromptsWhenAppropriate();

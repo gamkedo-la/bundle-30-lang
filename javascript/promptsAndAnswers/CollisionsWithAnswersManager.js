@@ -242,6 +242,14 @@ function CollisionsWithAnswersManager()
     this.processCollisionWithCorrectAnswer = function(){
         genAudio.playPositive();
         amountCorrect++;
+        if (gameClassManager.currentGame.name === 'birdGame')
+        {
+          if (gameClassManager.currentGame.amountCorrect <
+              gameClassManager.currentGame.plane.bannerMessageCharacters.length)
+              {
+                gameClassManager.currentGame.amountCorrect++;
+              }
+        }
     }
 
     this.processCollisionWithIncorrectAnswer = function(){
