@@ -47,6 +47,9 @@ function snakeGameClass()
 
   this.answerHolderImage = appleImage;
 
+  var populateBugsInterval;
+  var assignCoreInvterval;
+
   this.assignAnswerHolder = function()
   {
     let appleAnswerHolder = new AppleAnswerHolder(this.answerHolderImage);
@@ -63,6 +66,11 @@ function snakeGameClass()
 	    gameAudio.slither.play();
   	}
     gameAudio.appleEating = new sfxMulti(['audio/eatingApple1.mp3','audio/eatingApple2.mp3','audio/eatingApple3.mp3']);
+  };
+
+  this.postGameSpecialCode = function() {
+  	clearInterval(populateBugsInterval);
+  	clearInterval(assignCoreInvterval);
   };
 
   this.superInitialize = this.initialize;
@@ -92,8 +100,8 @@ function snakeGameClass()
   	musicManager.addTrack(new MusicTrack('audio/backgroundTracks/200417.mp3', 87.27));
 
 
-    setInterval(populateArrayOfBugs, 5000);
-    setInterval(assignAnAppleCoreToABug, 3000);
+    populateBugsInterval = setInterval(populateArrayOfBugs, 5000);
+    assignCoreInvterval = setInterval(assignAnAppleCoreToABug, 3000);
   };
 
   //update section
