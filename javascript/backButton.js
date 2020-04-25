@@ -44,6 +44,10 @@ function BackButton()
           playerShouldBePlayingPinata = false;
           arrayOfAnswers = [];
           promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+          if (gameClassManager.currentGame.postGameSpecialCode)
+          {
+            gameClassManager.currentGame.postGameSpecialCode();
+          }
           genAudio.playTitleMusic();
         }
   }
