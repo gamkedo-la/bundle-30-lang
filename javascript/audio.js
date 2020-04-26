@@ -242,7 +242,9 @@ Object.defineProperty(volume, 'prompt', {
 });
 
 function promptSound(source) {
+	promptAudio.loading++;
 	this.sfx = new Audio(source);
+	this.sfx.oncanplaythrough = function() {promptAudio.loading--; }
 	this.type = 'AUDIO';
 
 	this.play = function() {
@@ -258,6 +260,8 @@ function promptSound(source) {
 
 
 promptAudio = {};
+promptAudio.loading = 0;
+
 promptAudio.woman = new promptSound('audio/PromptsAndAnswers/woman.mp3');
 promptAudio.women = new promptSound('audio/PromptsAndAnswers/women.mp3');
 promptAudio.man = new promptSound('audio/PromptsAndAnswers/man.mp3');
