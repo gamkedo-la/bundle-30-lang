@@ -25,6 +25,7 @@ function Bullet(i)
         cVcShooterGame.playerShouldBeTargetingFirstLetter = false;
         cVcShooterGame.playerShouldBeTargetingSecondLetter = true;
         arrayOfBullets.splice(i,1);
+        gameAudio.targetHit.play();
         calculateAccuracy();
         return;
       }
@@ -36,6 +37,7 @@ function Bullet(i)
           cVcShooterGame.playerShouldBeTargetingSecondLetter = false;
           cVcShooterGame.playerShouldBeTargetingThirdLetter = true;
           arrayOfBullets.splice(i,1);
+          gameAudio.targetHit.play();
           calculateAccuracy();
           return;
       }
@@ -47,6 +49,7 @@ function Bullet(i)
           amountCorrect++;
           cVcShooterGame.playerShouldBeTargetingThirdLetter = false;
           arrayOfBullets = [];
+          gameAudio.targetHit.play();
           calculateAccuracy();
           cVcShooterGame.cVcManager.currentCVC = cVcShooterGame.cVcManager.chooseARandomCVC(cVcShooterGame.currentLanguageArray);
           cVcShooterGame.cVcManager.currentCVC.initialize();
@@ -88,6 +91,8 @@ function fireBullet()
 {
   let bullet = new Bullet();
   arrayOfBullets.push(bullet);
+  gameAudio.gunPop.play();
+  gameAudio.gunshotBass.play();
 }
 
 function moveBullets()

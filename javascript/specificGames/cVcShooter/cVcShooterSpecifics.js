@@ -18,6 +18,15 @@ function cVcShooterGameClass()
   this.playerShouldBeTargetingSecondLetter = false;
   this.playerShouldBeTargetingThirdLetter = false;
 
+  this.pregameSpecialCode = function()
+  {
+    gameAudio = {};
+    gameAudio.targetHit = new sfxMulti(["audio/cVcSFX/targetHit1.mp3", "audio/cVcSFX/targetHit2.mp3", "audio/cVcSFX/targetHit3.mp3", "audio/cVcSFX/targetHit4.mp3"]);
+
+    gameAudio.gunPop = new sfxMulti(['audio/cVcSFX/gunPop1.mp3','audio/cVcSFX/gunPop2.mp3','audio/cVcSFX/gunPop3.mp3','audio/cVcSFX/gunPop4.mp3']);
+    gameAudio.gunshotBass = new sfxMulti(['audio/cVcSFX/gunshotBass1.mp3','audio/cVcSFX/gunshotBass2.mp3','audio/cVcSFX/gunshotBass3.mp3','audio/cVcSFX/gunshotBass4.mp3']);
+  };
+
   this.initialize = function()
   {
     this.background = new cVcShooterBackground();
