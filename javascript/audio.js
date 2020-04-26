@@ -256,38 +256,6 @@ function promptSound(source) {
 	}
 }
 
-var genAudio = {};
-genAudio.transitionMusic1 = new MusicTrack("audio/levelTransitionSound.mp3", 5);
-genAudio.playTransitionMusic = function() {
-	musicManager.addTrack(randItem([genAudio.transitionMusic1]));
-	musicManager.moveToLastTrack();
-	musicManager.playNextTrack();
-	musicManager.addTrack(gameClassManager.currentGame.backgroundMusic);
-	musicManager.onEndFunction = function() {
-		fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
-		promptersManager.promptThePlayer();
-		gameCanvasContext.globalAlpha = 1;
-	}
-}
-genAudio.titleMusic = new MusicTrack('audio/backgroundTracks/titleScreenMusic.mp3', 6.21);
-genAudio.playTitleMusic = function() {
-	musicManager.addTrack(genAudio.titleMusic);
-	musicManager.moveToLastTrack();
-	musicManager.playNextTrack();
-}
-
-genAudio.click = new sfxMulti(["audio/UI_01.mp3", "audio/UI_02.mp3", "audio/UI_03.mp3", "audio/UI_04.mp3"]);
-genAudio.playClick = function() {
-	genAudio.click.play();
-}
-genAudio.positive = new sfxMulti(["audio/Positive_01.mp3", "audio/Positive_02.mp3", "audio/Positive_03.mp3", "audio/Positive_04.mp3"]);
-genAudio.playPositive = function() {
-	genAudio.positive.play();
-}
-genAudio.negative = new sfxMulti(["audio/Negative_01.mp3", "audio/Negative_02.mp3", "audio/Negative_03.mp3", "audio/Negative_04.mp3"]);
-genAudio.playNegative = function() {
-	genAudio.negative.play();
-}
 
 promptAudio = {};
 promptAudio.woman = new promptSound('audio/PromptsAndAnswers/woman.mp3');
@@ -399,6 +367,41 @@ promptAudio.englishFlower = new promptSound('audio/PromptsAndAnswers/flower.mp3'
 
 
 gameAudio = {};
+
+var genAudio = {};
+genAudio.transitionMusic1 = new MusicTrack("audio/levelTransitionSound.mp3", 5);
+genAudio.transitionMusic2 = new MusicTrack("audio/Transition2.mp3", 5.5);
+genAudio.transitionMusic3 = new MusicTrack("audio/Transition3.mp3", 4);
+genAudio.playTransitionMusic = function() {
+	musicManager.addTrack(randItem([genAudio.transitionMusic1,genAudio.transitionMusic2,genAudio.transitionMusic3]));
+	musicManager.moveToLastTrack();
+	musicManager.playNextTrack();
+	musicManager.addTrack(gameClassManager.currentGame.backgroundMusic);
+	musicManager.onEndFunction = function() {
+		fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
+		promptersManager.promptThePlayer();
+		gameCanvasContext.globalAlpha = 1;
+	}
+}
+genAudio.titleMusic = new MusicTrack('audio/backgroundTracks/titleScreenMusic.mp3', 6.21);
+genAudio.playTitleMusic = function() {
+	musicManager.addTrack(genAudio.titleMusic);
+	musicManager.moveToLastTrack();
+	musicManager.playNextTrack();
+}
+
+genAudio.click = new sfxMulti(["audio/UI_01.mp3", "audio/UI_02.mp3", "audio/UI_03.mp3", "audio/UI_04.mp3"]);
+genAudio.playClick = function() {
+	genAudio.click.play();
+}
+genAudio.positive = new sfxMulti(["audio/Positive_01.mp3", "audio/Positive_02.mp3", "audio/Positive_03.mp3", "audio/Positive_04.mp3"]);
+genAudio.playPositive = function() {
+	genAudio.positive.play();
+}
+genAudio.negative = new sfxMulti(["audio/Negative_01.mp3", "audio/Negative_02.mp3", "audio/Negative_03.mp3", "audio/Negative_04.mp3"]);
+genAudio.playNegative = function() {
+	genAudio.negative.play();
+}
 
 function randItem(array) {
 	return array[Math.floor(Math.random() * array.length)];
