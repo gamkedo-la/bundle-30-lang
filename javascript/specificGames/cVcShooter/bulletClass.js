@@ -5,12 +5,12 @@ function Bullet(i)
 
   this.move = function()
   {
-    this.yPosition -= 20;
+    this.yPosition -= 50;
   }
 
   this.draw = function()
   {
-    gameCanvasContext.fillRect(this.xPosition,this.yPosition, 10,20);
+    gameCanvasContext.drawImage(galleryBulletImage, this.xPosition,this.yPosition, 10,30);
   }
 
   this.handleLetterCollisions = function(i)
