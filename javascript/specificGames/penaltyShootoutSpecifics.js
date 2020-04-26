@@ -8,6 +8,15 @@ const penaltyGameState = {
   DecisionState: 1,
   PenaltyShootingState: 2,
 };
+const BALL_WIDTH = 100;
+const BALL_HEIGHT = 100;
+const GOAL_WIDTH = 600;
+const GOAL_HEIGHT = 300;
+
+const BALL_X = 295;
+const BALL_Y = 500;
+const GOAL_X = 15;
+const GOAL_Y = 0;
 
 penaltyGameClass.prototype = new GameClass();
 function penaltyGameClass(){
@@ -16,6 +25,8 @@ function penaltyGameClass(){
     this.selectedSide;
     this.correctSide;
     this.frameRate = 30;
+    this.ballWidth = BALL_WIDTH;
+    this.ballHeight = BALL_HEIGHT;
     this.sides = {
       left : {number : 1, isCorrect : false, drawX : 150, drawY : 300},
       middle : {number : 2, isCorrect : false, drawX : 350, drawY : 300},
@@ -91,6 +102,8 @@ function penaltyGameClass(){
 
     this.draw = function(){
         this.drawBackground();
+        this.drawBall();
+        this.drawGoal();
       if (this.currentState === penaltyGameState.DecisionState) {
         this.drawPlayer();
         this.drawLetters();
@@ -104,6 +117,14 @@ function penaltyGameClass(){
 
     this.drawBackground = function(){
       gameCanvasContext.drawImage(snakeGrassBackground, 0,0, gameCanvas.width,gameCanvas.height);
+    };
+
+    this.drawBall = function(){
+      gameCanvasContext.drawImage(penaltyBall1, BALL_X,BALL_Y,this.ballWidth, this.ballHeight);
+    };
+
+    this.drawGoal = function(){
+      gameCanvasContext.drawImage(penaltyGoal, GOAL_X,GOAL_Y, GOAL_WIDTH,GOAL_HEIGHT);
     };
 
     this.drawPlayer = function(){

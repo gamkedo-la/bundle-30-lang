@@ -212,6 +212,20 @@ let fishingGameFish1 = document.createElement('img');
 let fishingGameFish2 = document.createElement('img');
 let fishingGameFish3 = document.createElement('img');
 
+//PenaltyShootout images
+let penaltyBall1 = document.createElement('img');
+let penaltyBall2 = document.createElement('img');
+let penaltyBall3 = document.createElement('img');
+let penaltyBall4 = document.createElement('img');
+let penaltyBall5 = document.createElement('img');
+let penaltyBall6 = document.createElement('img');
+let penaltyBall7 = document.createElement('img');
+let penaltyBall8 = document.createElement('img');
+let penaltyBall9 = document.createElement('img');
+let penaltyBall10 = document.createElement('img');
+let penaltyBall11 = document.createElement('img');
+let penaltyGoal = document.createElement('img');
+
 //special characters for custom font
 let upArrowImage = document.createElement("img");
 let rightArrowImage = document.createElement("img");
@@ -539,6 +553,20 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish1, theFile: 'images/sprites/Fishing/fish.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish2, theFile: 'images/sprites/Fishing/fish2.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish3, theFile: 'images/sprites/Fishing/fish3.png', loaded: false});
+
+  //PenaltyShootout game
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall1, theFile: 'images/sprites/Penalty/ball/ball0000.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall2, theFile: 'images/sprites/Penalty/ball/ball0001.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall3, theFile: 'images/sprites/Penalty/ball/ball0002.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall4, theFile: 'images/sprites/Penalty/ball/ball0003.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall5, theFile: 'images/sprites/Penalty/ball/ball0004.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall6, theFile: 'images/sprites/Penalty/ball/ball0005.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall7, theFile: 'images/sprites/Penalty/ball/ball0006.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall8, theFile: 'images/sprites/Penalty/ball/ball0007.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall9, theFile: 'images/sprites/Penalty/ball/ball0008.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall10, theFile: 'images/sprites/Penalty/ball/ball0009.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall11, theFile: 'images/sprites/Penalty/ball/ball0010.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoal, theFile: 'images/sprites/Penalty/goal.png', loaded: false});
 
   //whackAnAnswer
   arrayOfImagesToLoad.push({imageObjectBinding: whackTableSurface, theFile: 'images/Backgrounds/WackTableSurface.png', loaded: false});
