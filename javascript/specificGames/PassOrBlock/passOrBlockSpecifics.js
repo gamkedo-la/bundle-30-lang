@@ -116,11 +116,21 @@ function PassOrBlockGameClass()
   this.handleLeftArrowDown = function()
   {
     this.playerCharacter.x -= 10;
+
+    for (let i = 0; i < this.playerCharacter.arrayOfGems.length; i++)
+    {
+      this.playerCharacter.arrayOfGems[i].x -= 10;
+    }
   }
 
   this.handleRightArrowDown = function()
   {
     this.playerCharacter.x += 10;
+    
+    for (let i = 0; i < this.playerCharacter.arrayOfGems.length; i++)
+    {
+      this.playerCharacter.arrayOfGems[i].x += 10;
+    }
   }
 
   this.moveAnswers = function()

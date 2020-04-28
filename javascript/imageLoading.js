@@ -153,6 +153,10 @@ let lavaParticle1Image = document.createElement('img');
 let lavaParticle2Image = document.createElement('img');
 let lavaParticle3Image = document.createElement('img');
 let lavaParticle4Image = document.createElement('img');
+let paddleRockImage = document.createElement('img');
+let gem1Image = document.createElement('img');
+let gem2Image = document.createElement('img');
+let gem3Image = document.createElement('img');
 
 //cVc shooter/shoot gallery game
 let shootGalleryImage = document.createElement('img');
@@ -486,6 +490,10 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: lavaBall1UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBalUpsideDown.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lavaBall2UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBallUpsideDown.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lavaBall3UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBalllUpsideDown.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: paddleRockImage, theFile: 'images/sprites/passBlock/volcanicRock.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: gem1Image, theFile: 'images/sprites/passBlock/Gem.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: gem2Image, theFile: 'images/sprites/passBlock/Gem2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: gem3Image, theFile: 'images/sprites/passBlock/Gem3.png', loaded: false});
 
   //cVc shooter/shoot gallery game
   arrayOfImagesToLoad.push({imageObjectBinding: shootGalleryImage, theFile: 'images/Backgrounds/ShootGallery.png', loaded: false});

@@ -25,7 +25,6 @@ function FireLavaParticle(x,y, xVelocity,yVelocity, image)
   {
     if (this.image !== undefined)
     {
-      console.log('this.image:' + this.image);
       gameCanvasContext.globalAlpha = this.alpha;
       gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
       gameCanvasContext.globalAlpha = 1;
@@ -40,13 +39,10 @@ function FireLavaParticleManager()
   this.generateAParticle = function()
   {
     let targetAnswerToAssignAParticleTo = this.pickAnAnswer();
-    console.log('pickXCoordinate result: ' + this.pickAnXCoordinate(targetAnswerToAssignAParticleTo));
     let particle = new FireLavaParticle(
       this.pickAnXCoordinate(targetAnswerToAssignAParticleTo)
       ,this.pickAYCoordinate(targetAnswerToAssignAParticleTo),
       this.assignXVelocity(),this.assignYVelocity(this.answerDirection), this.pickAnImage());
-    console.log('particle.x: ' + particle.x);
-    console.log('particle.y: ' + particle.y);
     this.arrayOfParticles.push(particle);
   }
 
@@ -77,7 +73,6 @@ function FireLavaParticleManager()
          || this.arrayOfParticles[particleIndex].alpha < 0.1)
       {
         this.arrayOfParticles.splice(particleIndex,1);
-        console.log('this.arrayOfParticles: ' + this.arrayOfParticles);
       }
     }
   }
@@ -109,19 +104,14 @@ function FireLavaParticleManager()
     if (this.arrayOfParticleImages.length !== 0)
     {
       let randomImageIndex = getRandomIntInclusive(0, this.arrayOfParticleImages.length - 1);
-      console.log('randomImageIndex: ' + randomImageIndex);
       let image = this.arrayOfParticleImages[randomImageIndex];
-      console.log('image: ' + image);
       return image;
     }
   }
 
   this.pickAnXCoordinate = function(answer)
   {
-    console.log('answer.xCoordinate: ' + answer.xCoordinate);
-    console.log('gameClassManager.currentGame.currentAnswerHolderWidth: ' + gameClassManager.currentGame.currentAnswerHolderWidth);
     let randomX = getRandomArbitrary(answer.xCoordinate, answer.xCoordinate + 50)
-    console.log('randomX: ' + randomX);
     return randomX;
   }
 
