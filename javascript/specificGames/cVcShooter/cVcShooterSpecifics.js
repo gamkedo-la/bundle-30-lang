@@ -18,6 +18,8 @@ function cVcShooterGameClass()
   this.playerShouldBeTargetingSecondLetter = false;
   this.playerShouldBeTargetingThirdLetter = false;
 
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/shootingGalleryMusic.mp3', 47.5);
+
   this.pregameSpecialCode = function()
   {
     gameAudio = {};
