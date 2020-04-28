@@ -5,8 +5,8 @@ function runnerGameClass() {
   const RUNNERSPEED = 10;
   const RUNNERWIDTH = 100;
   const RUNNERHEIGHT = 220;
-  const RUNNERGRAVITY = 0.1;
-  const RUNNERJUMPSPEED = 10;
+  const RUNNERGRAVITY = 0.44;
+  const RUNNERJUMPSPEED = 20;
   const RUNNERMAXJUMPHEIGHT = 75;
   const RUNNERFRAMERATE = 1000/30;
   const parallaxPos = [320,200,440, 0, 0];
