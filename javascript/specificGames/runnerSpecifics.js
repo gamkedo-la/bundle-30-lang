@@ -5,8 +5,8 @@ function runnerGameClass() {
   const RUNNERSPEED = 10;
   const RUNNERWIDTH = 100;
   const RUNNERHEIGHT = 220;
-  const RUNNERGRAVITY = 0.1;
-  const RUNNERJUMPSPEED = 10;
+  const RUNNERGRAVITY = 0.44;
+  const RUNNERJUMPSPEED = 20;
   const RUNNERMAXJUMPHEIGHT = 75;
   const RUNNERFRAMERATE = 1000/30;
   const parallaxPos = [320,200,440, 0, 0];
@@ -169,23 +169,24 @@ function runnerGameClass() {
 	promptersManager.drawPromptsWhenAppropriate();
   };
 
-  function runnerJump() {
+  this.handleUpArrowDown = function() {
 	if (runnerStatus == 'run') {
 	  runnerStatus = 'jump';
 	  runnerSpeedY = RUNNERJUMPSPEED;
 	}
-  }
+  };
 
-  function runnerSlide() {
+  this.handleDownArrowDown = function() {
 	if (runnerStatus == 'run') {
 	  runnerStatus = 'slide';
 	}
-  }
+  };
 
-  function runnerRun() {
-	runnerStatus = 'run';
-	runnerSpeedY = 0;
-  }
+  this.handleDownArrowUp = function() {
+	if (runnerStatus == 'slide') {
+	  runnerStatus = 'run';
+	}
+  };
 
   this.movePlayerCharacter = function() {
 	if (runnerStatus == 'jump') {
@@ -194,8 +195,8 @@ function runnerGameClass() {
 	  if (this.playerCharacter.y + RUNNERHEIGHT > runnerFloorLevel) {
 		this.playerCharacter.y = runnerFloorLevel - RUNNERHEIGHT;
 		runnerStatus = 'run';
-	  }
-	  if (this.playerCharacter.y < RUNNERMAXJUMPHEIGHT) {
+		runnerSpeedY = 0;
+	  } else if (this.playerCharacter.y < RUNNERMAXJUMPHEIGHT) {
 		this.playerCharacter.y = RUNNERMAXJUMPHEIGHT;
 	  }
 	}
@@ -244,10 +245,6 @@ function runnerGameClass() {
 	  }
 	};
   };
-
-  this.handleDownArrowDown = runnerSlide;
-  this.handleUpArrowDown = runnerJump;
-  this.handleDownArrowUp = runnerRun;
 }
 
 const runnerGame = new runnerGameClass();
