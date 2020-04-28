@@ -203,8 +203,8 @@ function runnerGameClass() {
   };
 
   function moveAnswers() {
-	promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate -= RUNNERSPEED/20;
-    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate -= RUNNERSPEED/20;
+	promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate -= RUNNERSPEED/4;
+    promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate -= RUNNERSPEED/4;
   }
 
   function drawParallax() {
