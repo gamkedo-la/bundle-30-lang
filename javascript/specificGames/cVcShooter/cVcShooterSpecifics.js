@@ -61,6 +61,13 @@ function cVcShooterGameClass()
   {
     this.background.draw();
     this.playerCharacter.draw();
+    if (this.playerCharacter.arrayOfGunSmokeParticles.length > 0)
+    {
+      for (let i = 0; i < this.playerCharacter.arrayOfGunSmokeParticles.length; i++)
+      {
+        this.playerCharacter.arrayOfGunSmokeParticles[i].draw();
+      }
+    }
     this.cVcManager.currentCVC.draw();
     drawBullets();
     promptersManager.drawPromptsWhenAppropriate();
@@ -75,6 +82,15 @@ function cVcShooterGameClass()
       for (let i = 0; i < arrayOfBullets.length; i++)
       {
         arrayOfBullets[i].handleLetterCollisions(i);
+      }
+
+      for (let i = 0; i < this.playerCharacter.arrayOfGunSmokeParticles.length; i++)
+      {
+        this.playerCharacter.arrayOfGunSmokeParticles[i].move();
+        if (this.playerCharacter.arrayOfGunSmokeParticles[i].alpha < 0.1)
+        {
+          gameClassManager.currentGame.playerCharacter.arrayOfGunSmokeParticles.splice(i,1);
+        }
       }
     }
   }
@@ -101,6 +117,7 @@ function cVcShooterGameClass()
   {
     fireBullet();
     this.playerCharacter.rotateGun();
+    this.playerCharacter.generateSmoke();
   }
 
 }

@@ -163,6 +163,7 @@ let shootGalleryImage = document.createElement('img');
 let shootGalleryTargetImage = document.createElement('img');
 let galleryGunImage = document.createElement('img');
 let galleryBulletImage = document.createElement('img');
+let gunSmokeParticleImage = document.createElement('img');
 
 //space shooter images
 let spaceShooterBackgroundImage = document.createElement('img');
@@ -500,6 +501,7 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: shootGalleryTargetImage, theFile: 'images/Backgrounds/target.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: galleryGunImage, theFile: 'images/sprites/cVc shooter/Gun.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: galleryBulletImage, theFile: 'images/sprites/cVc shooter/bullet.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: gunSmokeParticleImage, theFile: 'images/sprites/cVc shooter/smokeParticle.png', loaded: false});
 
   //space shooter game
   arrayOfImagesToLoad.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/SpaceWithJupiter1.png', loaded: false});

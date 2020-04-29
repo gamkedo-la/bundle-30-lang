@@ -6,23 +6,6 @@ function ShooterPlayer()
 
   this.draw = function()
   {
-    //document.body.style.cursor = 'none';
-    // if (this.mouseClicked === true)
-    // {
-    //   gameCanvasContext.save();
-    //   gameCanvasContext.translate(this.x + this.width,this.y);
-    //   gameCanvasContext.rotate(-25*Math.PI/180);
-    //   gameCanvasContext.translate(-(this.x + this.width),-(this.y));
-    //
-    //   gameCanvasContext.drawImage(this.image, this.x - 20,this.y - 215, this.width,this.height);
-    //   gameCanvasContext.restore();
-    // }
-    // else if (this.mouseClicked === false)
-    // {
-    //   gameCanvasContext.drawImage(this.image, this.x - 20,this.y - 215,
-    //                                           this.width,this.height);
-    // }
-
     if (this.gunRotated === true)
     {
       gameCanvasContext.save();
@@ -36,18 +19,7 @@ function ShooterPlayer()
     {
       gameCanvasContext.drawImage(galleryGunImage, this.position*(gameCanvas.width/3) - 3,gameCanvas.height - 150, 200,350);
     }
-    // gameCanvasContext.beginPath();
-    // gameCanvasContext.moveTo(this.position*200 + 10, gameCanvas.height - 10);
-    // gameCanvasContext.lineTo(this.position*200 + 100, gameCanvas.height - 150);
-    // gameCanvasContext.lineTo(this.position*200 + 190, gameCanvas.height - 10);
-    // gameCanvasContext.closePath();
-    //
-    // gameCanvasContext.lineWidth = 10;
-    // gameCanvasContext.strokeStyle = '#666666';
-    // gameCanvasContext.stroke();
-    //
-    // gameCanvasContext.fillStyle = "#FFCC00";
-    // gameCanvasContext.fill();
+
   }
 
   this.rotateGun = function()
@@ -56,9 +28,51 @@ function ShooterPlayer()
     setTimeout(unRotateGun, 200);
   }
 
+  this.arrayOfGunSmokeParticles = [];
+  this.generateSmoke = function()
+  {
+    let x = this.position*(gameCanvas.width/3) + 50;
+    let y = gameCanvas.height - 175;
+    let smoke = new GunSmokeParticle(x,y);
+    this.arrayOfGunSmokeParticles.push(smoke);
+  }
 }
 
 function unRotateGun()
 {
   gameClassManager.currentGame.playerCharacter.gunRotated = false;
+}
+
+function GunSmokeParticle(x,y)
+{
+
+  this.image = gunSmokeParticleImage;
+  this.x = x;
+  this.y = y;
+
+  this.alpha = 1;
+  this.alphaDecreaseRate = 0.99;
+  this.width = getRandomArbitrary(75,125);
+  this.height = getRandomArbitrary(100,150);
+  this.xVelocity = getRandomArbitrary(-1,1);
+  this.yVelocity = getRandomArbitrary(1,2);
+
+  this.draw = function()
+  {
+    gameCanvasContext.globalAlpha = this.alpha;
+    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    gameCanvasContext.globalAlpha = 1;
+  }
+
+  this.move = function()
+  {
+    this.x += this.xVelocity;
+    this.y -= this.yVelocity;
+
+    this.width -= 1;
+    this.height -= 1;
+
+    this.alpha *= this.alphaDecreaseRate;
+
+  }
 }
