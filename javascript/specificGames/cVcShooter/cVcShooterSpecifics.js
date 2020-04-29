@@ -100,7 +100,9 @@ function cVcShooterGameClass()
   this.handleSpaceBarDown = function()
   {
     fireBullet();
+    this.playerCharacter.rotateGun();
   }
+
 }
 
 const cVcShooterGame = new cVcShooterGameClass();
