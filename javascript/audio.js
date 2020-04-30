@@ -219,9 +219,11 @@ function sfxLooping(source, mixVolume = 1) {
 	sfx.loop = true;
 
 	this.play = function() {
-		sfx.currentTime = 0;
 		sfx.volume = Math.pow(volume.sfx * vol, 2);
-		sfx.play();
+		if (sfx.paused) {
+			sfx.currentTime = 0;
+			sfx.play();
+		}
 	}
 
 	this.stop = function() {

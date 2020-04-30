@@ -53,6 +53,10 @@ function spaceShooterGameClass() {
 	// playerShouldSeeTitleScreen = false;
   //   fullGameStateMachine.playingAGameState = true;
   //   levelIsTransitioning = true;
+
+    gameAudio = {};
+    gameAudio.shoot = new sfxMulti(["audio/SpaceShot01.mp3", "audio/SpaceShot02.mp3", "audio/SpaceShot03.mp3", "audio/SpaceShot04.mp3"]);
+    gameAudio.move = new sfxLooping("audio/SpaceMove.mp3");
   };
 
 	this.superInitialize = function()
@@ -186,41 +190,49 @@ function spaceShooterGameClass() {
 	this.handleLeftArrowDown = function()
 	{
 		inputManager.leftArrowIsBeingHeld = true;
+		gameAudio.move.play();
 	}
 
 	this.handleUpArrowDown = function()
 	{
 		inputManager.upArrowIsBeingHeld = true;
+		gameAudio.move.play();
 	}
 
 	this.handleRightArrowDown = function()
 	{
 		inputManager.rightArrowIsBeingHeld = true;
+		gameAudio.move.play();
 	}
 
 	this.handleDownArrowDown = function()
 	{
 		inputManager.downArrowIsBeingHeld = true;
+		gameAudio.move.play();
 	}
 
 	this.handleLeftArrowUp = function()
 	{
 		inputManager.leftArrowIsBeingHeld = false;
+		gameAudio.move.stop();
 	}
 
 	this.handleUpArrowUp = function()
 	{
 		inputManager.upArrowIsBeingHeld = false;
+		gameAudio.move.stop();
 	}
 
 	this.handleRightArrowUp = function()
 	{
 		inputManager.rightArrowIsBeingHeld = false;
+		gameAudio.move.stop();
 	}
 
 	this.handleDownArrowUp = function()
 	{
 		inputManager.downArrowIsBeingHeld = false;
+		gameAudio.move.stop();
 	}
 
 	this.handleSpaceBarDown = function()
@@ -229,6 +241,7 @@ function spaceShooterGameClass() {
 												 y:this.playerCharacter.y + this.playerCharacter.height/2 - 2,
 											 	 width: bulletDimensionX, height: bulletDimensionY});
 		console.log('this.arrayOfBullets:' + this.arrayOfBullets);
+		gameAudio.shoot.play();
 	}
 
 	this.handleBulletCollisionsWithAnswers = function()
