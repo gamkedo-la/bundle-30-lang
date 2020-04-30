@@ -250,6 +250,14 @@ function CollisionsWithAnswersManager()
                 gameClassManager.currentGame.amountCorrect++;
               }
         }
+        if (gameClassManager.currentGame.name === 'laneGame')
+        {
+          if (gameClassManager.currentGame.amountCorrect <
+              gameClassManager.currentGame.background.billboard.bannerMessageCharacters.length)
+              {
+                gameClassManager.currentGame.amountCorrect++;
+              }
+        }
     }
 
     this.processCollisionWithIncorrectAnswer = function(){

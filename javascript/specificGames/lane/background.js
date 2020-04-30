@@ -7,6 +7,8 @@ function LaneBackgroundClass()
   this.asphaltImage1 = undefined;
   this.asphaltImage2 = undefined;
 
+  this.billboard = undefined;
+
   this.initialize = function()
   {
     this.laneGrassImage1 = new LaneGrassImage(0, laneGrassBackground1);
@@ -14,6 +16,8 @@ function LaneBackgroundClass()
 
     this.asphaltImage1 = new AsphaltImage(0, laneRoad1);
     this.asphaltImage2 = new AsphaltImage(-gameCanvas.height, laneRoad2);
+
+    this.billboard = new Billboard();
   }
 
   let dashPictureNumber = 1;
@@ -43,8 +47,10 @@ function LaneBackgroundClass()
   this.draw = function()
 	{
 		this.drawLaneGrass();
+
 	  this.drawLaneRoadAsphalt();
 	  drawLaneYellowCenterDashes();
+    this.billboard.draw();
 	}
 
 	this.drawLaneGrass = function()
@@ -151,5 +157,45 @@ function AsphaltImage(drawingStartingY, image)
     {
       this.drawingStartingY = -gameCanvas.height;
     }
+  }
+}
+
+function Billboard()
+{
+  this.image = billboardImage;
+  this.width = gameCanvas.width/4;
+  this.height = gameCanvas.height/3;
+
+  this.x = 10;
+  this.y = 0;
+
+  this.yVelocity = 3;
+
+  this.move = function()
+  {
+    this.y += this.yVelocity;
+  }
+
+  this.handleOffScreen = function()
+  {
+    if (this.y > gameCanvas.height)
+    {
+      this.y = -this.height;
+    }
+  }
+
+  this.bannerMessageCharacters = ['G','o','o','d',' ','J','o','b','!'];
+
+  this.draw = function()
+  {
+    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+
+    let arrayOfCharacterTypes = [];
+    for (let bannerMessageIndex = 0; bannerMessageIndex < gameClassManager.currentGame.amountCorrect; bannerMessageIndex++)
+             {
+               arrayOfCharacterTypes.push(this.bannerMessageCharacters[bannerMessageIndex])
+             }
+             console.log()
+             customFontFillText(arrayOfCharacterTypes, 30, 15, this.x + 15,this.y + 60);
   }
 }

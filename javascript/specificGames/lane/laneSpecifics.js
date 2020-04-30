@@ -27,6 +27,8 @@ function laneGameClass() {
 	this.correctTextAnswerHolderWidth = undefined;
 	this.incorrectTextAnswerHolderWidth = undefined;
 
+	this.amountCorrect = 0;
+
 	this.answerHolderImage = gasCanImage;
 	this.assignAnswerHolder = function()
 	{
@@ -104,6 +106,8 @@ function laneGameClass() {
 			this.background.asphaltImage2.scrollDown();
 			this.background.asphaltImage1.handleScrollingOffScreen();
 			this.background.asphaltImage2.handleScrollingOffScreen();
+			this.background.billboard.move();
+			this.background.billboard.handleOffScreen();
 			this.moveAnswers();
 			this.handleAnswersOffScreen();
 			this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
