@@ -48,7 +48,7 @@ function snakeGameClass()
   this.answerHolderImage = appleImage;
 
   var populateBugsInterval;
-  var assignCoreInvterval;
+  var assignCoreInterval;
 
   this.assignAnswerHolder = function()
   {
@@ -70,7 +70,7 @@ function snakeGameClass()
 
   this.postGameSpecialCode = function() {
   	clearInterval(populateBugsInterval);
-  	clearInterval(assignCoreInvterval);
+  	clearInterval(assignCoreInterval);
   };
 
   this.superInitialize = this.initialize;
@@ -101,7 +101,7 @@ function snakeGameClass()
 
 
     populateBugsInterval = setInterval(populateArrayOfBugs, 5000);
-    assignCoreInvterval = setInterval(assignAnAppleCoreToABug, 3000);
+    assignCoreInterval = setInterval(assignAnAppleCoreToABug, 3000);
   };
 
   //update section

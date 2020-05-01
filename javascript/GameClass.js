@@ -48,6 +48,13 @@ function GameClassManager()
   this.currentGame = undefined;
   this.loadCurrentGame = function(gameToLoad)
   {
+
+    // If the game has some code to execute after it's done, execute it
+    // Check here to make sure it executes even when SINGLE_PLAYER_RANDOM changes the game
+    if (this.currentGame !== undefined && this.currentGame.postGameSpecialCode) {
+      this.currentGame.postGameSpecialCode();
+    }
+
     //console.log('inside loadCurrentGame()');
     this.currentGame = gameToLoad;
     if(typeof this.currentGame.pregameSpecialCode !== 'undefined') {

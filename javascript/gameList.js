@@ -37,11 +37,14 @@ function loadGameNum(gameListIndex)
 
 function loadRandomGame()
 {
-  do
-  {
+  // Choose a random game from the gameList that is not null
+  do {
     gameListIndex = Math.floor(Math.random()*30);
   } while (gameList[gameListIndex] == null)
+
+  // Prepare game to paly
   gameClassManager.loadCurrentGame(gameList[gameListIndex]);
+  // Initialize the game
   gameClassManager.initializeCurrentGame();
 }
 
