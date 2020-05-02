@@ -70,6 +70,7 @@ function CollisionsWithAnswersManager()
                 drawAnswersManager.currentCorrectAnswerHolderWidth,
                 drawAnswersManager.currentCorrectAnswerHolderHeight)
             }
+            this.currentCollidedAnswer = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing;
             return COLLISION_WITH_CORRECT_ANSWER;
         }
 
@@ -88,6 +89,8 @@ function CollisionsWithAnswersManager()
               drawAnswersManager.currentIncorrectAnswerHolderWidth,
               drawAnswersManager.currentIncorrectAnswerHolderHeight)
           }
+          this.currentCollidedAnswer = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing;
+
             return COLLISION_WITH_INCORRECT_ANSWER;
         }
 
@@ -112,6 +115,8 @@ function CollisionsWithAnswersManager()
               drawAnswersManager.currentCorrectAnswerHolderWidth,
               drawAnswersManager.currentCorrectAnswerHolderHeight)
           }
+          this.currentCollidedAnswer = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing;
+
             return COLLISION_WITH_CORRECT_ANSWER;
         }
 
@@ -131,6 +136,8 @@ function CollisionsWithAnswersManager()
               drawAnswersManager.currentIncorrectAnswerHolderWidth,
               drawAnswersManager.currentIncorrectAnswerHolderHeight)
           }
+          this.currentCollidedAnswer = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing;
+
             return COLLISION_WITH_INCORRECT_ANSWER;
         }
 
@@ -155,6 +162,8 @@ function CollisionsWithAnswersManager()
               drawAnswersManager.currentCorrectAnswerHolderWidth,
               drawAnswersManager.currentCorrectAnswerHolderHeight)
           }
+          this.currentCollidedAnswer = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing;
+
             return COLLISION_WITH_CORRECT_ANSWER;
         }
 
@@ -174,6 +183,8 @@ function CollisionsWithAnswersManager()
               drawAnswersManager.currentIncorrectAnswerHolderWidth,
               drawAnswersManager.currentIncorrectAnswerHolderHeight)
           }
+          this.currentCollidedAnswer = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing;
+
           return COLLISION_WITH_INCORRECT_ANSWER;
         }
 
@@ -199,6 +210,10 @@ function CollisionsWithAnswersManager()
         // If a collision happens
         if (collisionType != NO_COLLISION)
         {
+          if (gameClassManager.currentGame.name === 'spaceShooter')
+          {
+            gameClassManager.currentGame.spaceRockParticleManager.createAGroupOfParticles();
+          }
           // if (gameClassManager.currentGame.collisionVisualEffect)
           // {
           //   gameClassManager.currentGame.collisionVisualEffect();
