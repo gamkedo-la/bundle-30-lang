@@ -17,6 +17,9 @@ function Fish() {
     this.sprite = undefined;
     this.orientation = undefined;
 
+    this.hasCorrectAnswer = false;
+    this.hasIncorrectAnswer = false;
+
     this.initialize = function () {
         this.orientation = getRandomElementFromArray([-1, 1]);
 
@@ -35,15 +38,73 @@ function Fish() {
         }
 
         this.speedX = getRandomArbitrary(FISH_MIN_SPEED, FISH_MAX_SPEED);
+        
+        this.hasCorrectAnswer = false;
+        this.hasIncorrectAnswer = false;
     }
 
     this.update = function () {
         this.x += this.orientation * this.speedX;
+        this.handleCollisionWithCanvasBorder();
+        this.setAnswerPositionIfHasAnswer();        
+    }
+
+    this.handleCollisionWithCanvasBorder = function() {
         if (this.x > gameCanvas.width - this.width / 2){
             this.orientation = -1;
         }
         else if (this.x < this.width / 2){
             this.orientation = 1;
+        }
+    }
+
+    this.setAnswerPositionIfHasAnswer = function (){
+        if (this.hasCorrectAnswer || this.hasIncorrectAnswer){
+            var centeredPosition = this.centerAnswersCoordinate();
+
+            if (this.hasCorrectAnswer){
+                promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate = centeredPosition.x;
+                promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate = centeredPosition.y;
+            }
+            else if (this.hasIncorrectAnswer){
+                promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate = centeredPosition.x;
+                promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate = centeredPosition.y;
+            }
+        }
+    }
+
+    this.centerAnswersCoordinate = function() {
+        var centeredX = this.x;
+        var centeredY = this.y;
+
+        if (promptsAndAnswersManager.currentAnswerDataType === 'string'){
+            var answerWidth;
+            if (this.hasCorrectAnswer){
+                answerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
+                    gameClassManager.currentGame.textAnswerFontStyle
+                )
+            }
+            else if (this.hasIncorrectAnswer){
+                answerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
+                    gameClassManager.currentGame.textAnswerFontStyle
+                )
+            }
+
+            centeredX -= answerWidth / 2;
+            centeredY += gameClassManager.currentGame.textAnswerFontSize / 4;
+        }
+        else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG'){
+            centeredX -= gameClassManager.currentGame.imageAnswerWidth / 2;
+            centeredY -= gameClassManager.currentGame.imageAnswerHeight / 2;
+        }
+        else if (promptsAndAnswersManager.currentAnswerDataType === 'AUDIO'){
+            centeredX -= gameClassManager.currentGame.audioImageAnswerWidth / 2;
+            centeredY -= gameClassManager.currentGame.audioImageAnswerHeight / 2;
+        }
+
+        return {
+            x: centeredX,
+            y: centeredY
         }
     }
 

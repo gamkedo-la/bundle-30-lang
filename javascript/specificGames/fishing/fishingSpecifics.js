@@ -9,8 +9,10 @@ function fishingGameClass()
 {
   this.name = 'fishingGame';
   this.playerCharacter = undefined;
-  this.textAnswerFontSize = '30';
+  this.textAnswerFontSize = '15';
   this.textAnswerFontStyle = 'px Helvetica';
+  this.LETTER_COLOR = "black";
+
   this.titleScreenData = [{
     name: "Fishing",
     fontSize: 27,
@@ -23,16 +25,34 @@ function fishingGameClass()
 
   this.fishes = [];
 
+  this.collisionsWithAnswersManager = new FishingCollisionManager();
+
   this.superInitialize = function()
   {
     this.background = new FishingBackground();
+    this.initializeFishes();
+  }
 
+  this.initializeFishes = function() {
+    this.fishes = [];
     for (var i = 0 ; i < NUM_FISHES ; ++i)
     {
-      var fish = new Fish();
-      fish.initialize();
-      this.fishes.push(fish);
+      var oneFish = new Fish();
+      oneFish.initialize();
+      this.fishes.push(oneFish);
     }
+    this.selectFishesForAnswers();
+  }
+
+  this.selectFishesForAnswers = function() {
+    var correctFishIdx = getRandomIntInclusive(0, this.fishes.length-1);
+    var incorrectFishIdx = getRandomIntInclusive(0, this.fishes.length-1);
+    while (incorrectFishIdx == correctFishIdx){
+      incorrectFishIdx = getRandomIntInclusive(0, this.fishes.length-1);
+    }
+
+    this.fishes[correctFishIdx].hasCorrectAnswer = true;
+    this.fishes[incorrectFishIdx].hasIncorrectAnswer = true;
   }
 
   this.defineAndInitializePlayerCharacter = function()
@@ -67,6 +87,19 @@ function fishingGameClass()
     this.collisionsWithAnswersManager.handleCollisionsWithAnswers(
       this.playerCharacter.fishingHook
     );
+  }
+
+  this.reset = function() {
+    this.playerCharacter.resetHook();
+    this.playerCharacter.speedX = 5;
+  }
+
+  this.resetFishes = function() {
+    for (var i = 0 ; i < NUM_FISHES ; ++i)
+    {
+      this.fishes.pop();
+    }
+    this.initializeFishes();
   }
 
   this.handleLeftArrowDown = function(){

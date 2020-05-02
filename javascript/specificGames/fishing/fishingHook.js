@@ -9,7 +9,7 @@ function FishingHook() {
     this.isFalling = false;
 
     this.speedX = 5;
-    this.speedY = 0.5;
+    this.speedY = 2;
 
     this.draw = function () {
         gameCanvasContext.save();
