@@ -5,6 +5,8 @@ const COLLISION_WITH_INCORRECT_ANSWER = 2
 function CollisionsWithAnswersManager()
 {
     this.currentCollidedAnswer = undefined;
+    this.currentCollidingObjectX = undefined;
+    this.currentCollidingObjectY = undefined;
 
     this.initialize = function(game)
     {
@@ -71,6 +73,8 @@ function CollisionsWithAnswersManager()
                 drawAnswersManager.currentCorrectAnswerHolderHeight)
             }
             this.currentCollidedAnswer = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing;
+            this.currentCollidingObjectX = collidingObject.x;
+            this.currentCollidingObjectY = collidingObject.y;
             return COLLISION_WITH_CORRECT_ANSWER;
         }
 
@@ -90,7 +94,8 @@ function CollisionsWithAnswersManager()
               drawAnswersManager.currentIncorrectAnswerHolderHeight)
           }
           this.currentCollidedAnswer = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing;
-
+          this.currentCollidingObjectX = collidingObject.x;
+          this.currentCollidingObjectY = collidingObject.y;
             return COLLISION_WITH_INCORRECT_ANSWER;
         }
 
@@ -116,7 +121,8 @@ function CollisionsWithAnswersManager()
               drawAnswersManager.currentCorrectAnswerHolderHeight)
           }
           this.currentCollidedAnswer = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing;
-
+          this.currentCollidingObjectX = collidingObject.x;
+          this.currentCollidingObjectY = collidingObject.y;
             return COLLISION_WITH_CORRECT_ANSWER;
         }
 
@@ -137,7 +143,8 @@ function CollisionsWithAnswersManager()
               drawAnswersManager.currentIncorrectAnswerHolderHeight)
           }
           this.currentCollidedAnswer = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing;
-
+          this.currentCollidingObjectX = collidingObject.x;
+          this.currentCollidingObjectY = collidingObject.y;
             return COLLISION_WITH_INCORRECT_ANSWER;
         }
 
@@ -163,7 +170,8 @@ function CollisionsWithAnswersManager()
               drawAnswersManager.currentCorrectAnswerHolderHeight)
           }
           this.currentCollidedAnswer = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing;
-
+          this.currentCollidingObjectX = collidingObject.x;
+          this.currentCollidingObjectY = collidingObject.y;
             return COLLISION_WITH_CORRECT_ANSWER;
         }
 
@@ -184,7 +192,8 @@ function CollisionsWithAnswersManager()
               drawAnswersManager.currentIncorrectAnswerHolderHeight)
           }
           this.currentCollidedAnswer = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing;
-
+          this.currentCollidingObjectX = collidingObject.x;
+          this.currentCollidingObjectY = collidingObject.y;
           return COLLISION_WITH_INCORRECT_ANSWER;
         }
 
@@ -213,6 +222,7 @@ function CollisionsWithAnswersManager()
           if (gameClassManager.currentGame.name === 'spaceShooter')
           {
             gameClassManager.currentGame.spaceRockParticleManager.createAGroupOfParticles();
+            gameClassManager.currentGame.rocketExplosionsManager.createAnExplosion();
           }
           // if (gameClassManager.currentGame.collisionVisualEffect)
           // {

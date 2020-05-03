@@ -10,8 +10,8 @@ function spaceShooterGameClass() {
 	this.name = 'spaceShooter';
 	//shots section
 	this.arrayOfBullets = [];
-	var bulletDimensionX = 25;
-	var bulletDimensionY = 15;
+	this.bulletDimensionX = undefined;
+	this.bulletDimensionY = undefined;;
 	var bulletSpeed = 25;
 	this.playerCharacter = undefined;
 	this.defineAndInitializePlayerCharacter = function()
@@ -45,6 +45,7 @@ function spaceShooterGameClass() {
 	this.spaceRockParticleManager = undefined;
 
 	this.collisionsWithAnswersManager = new SpaceShooterCollisionsManager();
+	this.rocketExplosionsManager = undefined;
 
 
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/200421.mp3', 90.6);
@@ -63,6 +64,9 @@ function spaceShooterGameClass() {
 
 	this.superInitialize = function()
 	{
+		this.bulletDimensionX = 25;
+		this.bulletDimensionY = 15;
+
 		this.backgroundPic1XCoordinate = 0;
 		this.backgroundPic2XCoordinate = gameCanvas.width;
 		this.jupiter1XCoordinate = gameCanvas.width*0.2;
@@ -74,6 +78,7 @@ function spaceShooterGameClass() {
     this.audioImageAnswerHolderHeight = gameCanvas.height/6;
 
 		this.spaceRockParticleManager = new SpaceRockParticleManager();
+		this.rocketExplosionsManager = new RocketExplosionsManager();
 
 		this.spaceRockAnswerHolder1 = new SpaceRockAnswerHolder(spaceRockImage1);
 		this.spaceRockAnswerHolder2 = new SpaceRockAnswerHolder(spaceRockImage2);
@@ -98,6 +103,9 @@ function spaceShooterGameClass() {
 
 		this.spaceRockParticleManager.updateParticles();
 		this.spaceRockParticleManager.moveParticles();
+
+		this.rocketExplosionsManager.updateExplosions();
+		this.rocketExplosionsManager.handleFadedExplosions();
 	};
 
 	this.assignAnswerHolder = function()
@@ -124,6 +132,7 @@ function spaceShooterGameClass() {
     promptersManager.drawPromptsWhenAppropriate();
 
 		this.spaceRockParticleManager.drawParticles();
+		this.rocketExplosionsManager.drawExplosions();
 	};
 
 	this.answersXSpeed = -3;
@@ -162,9 +171,9 @@ function spaceShooterGameClass() {
 		for (var bulletIndex = 0; bulletIndex < this.arrayOfBullets.length; bulletIndex++)
 		{
 			// gameCanvasContext.fillRect(this.arrayOfBullets[bulletIndex].x,this.arrayOfBullets[bulletIndex].y,
-			// 						   bulletDimensionX,bulletDimensionY);
+			// 						   this.bulletDimensionX,this.bulletDimensionY);
 			gameCanvasContext.drawImage(bulletImage, this.arrayOfBullets[bulletIndex].x,this.arrayOfBullets[bulletIndex].y,
-									   bulletDimensionX,bulletDimensionY);
+									   this.bulletDimensionX,this.bulletDimensionY);
 		}
 	}
 
@@ -250,8 +259,8 @@ function spaceShooterGameClass() {
 	this.handleSpaceBarDown = function()
 	{
 		this.arrayOfBullets.push({x:this.playerCharacter.x + this.playerCharacter.width,
-												 y:this.playerCharacter.y + this.playerCharacter.height/2 - bulletDimensionY/2,
-											 	 width: bulletDimensionX, height: bulletDimensionY});
+												 y:this.playerCharacter.y + this.playerCharacter.height/2 - this.bulletDimensionY/2,
+											 	 width: this.bulletDimensionX, height: this.bulletDimensionY});
 		console.log('this.arrayOfBullets:' + this.arrayOfBullets);
 		gameAudio.shoot.play();
 	}
@@ -263,7 +272,7 @@ function spaceShooterGameClass() {
 			for (let bulletIndex = 0; bulletIndex < this.arrayOfBullets.length; bulletIndex++)
 			{
 				this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.arrayOfBullets[bulletIndex]);
-				
+
 			}
 		}
 	}

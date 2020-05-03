@@ -172,7 +172,7 @@ let spaceShooterBackgroundImage2 = document.createElement('img');
 let spaceshipImage = document.createElement('img');
 let spaceRockImage1 = document.createElement('img');
 let spaceRockImage2 = document.createElement('img');
-let laserImage = document.createElement('img');
+let rocketExplosionImage = document.createElement('img');
 let rocketImage = document.createElement('img');
 
 //flower images
@@ -514,7 +514,7 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: jupiterImage, theFile: 'images/sprites/spaceShooter/Jupiter.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: spaceRockImage1, theFile: 'images/sprites/spaceShooter/spaceRock.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: spaceRockImage2, theFile: 'images/sprites/spaceShooter/spaceRock2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: laserImage, theFile: 'images/sprites/spaceShooter/spaceRock2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: rocketExplosionImage, theFile: 'images/sprites/spaceShooter/rocketExplosion.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: rocketImage, theFile: 'images/sprites/spaceShooter/rocket.png', loaded: false});
 
 
