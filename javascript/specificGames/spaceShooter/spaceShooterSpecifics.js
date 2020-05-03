@@ -43,6 +43,7 @@ function spaceShooterGameClass() {
 	this.FRAME_RATE = 1000/30;
 
 	this.spaceRockParticleManager = undefined;
+	this.shipSmokeManager = undefined;
 
 	this.collisionsWithAnswersManager = new SpaceShooterCollisionsManager();
 	this.rocketExplosionsManager = undefined;
@@ -79,6 +80,8 @@ function spaceShooterGameClass() {
 
 		this.spaceRockParticleManager = new SpaceRockParticleManager();
 		this.rocketExplosionsManager = new RocketExplosionsManager();
+		this.shipSmokeManager = new ShipSmokeManager();
+		setInterval(this.shipSmokeManager.generateSmoke,250);
 
 		this.spaceRockAnswerHolder1 = new SpaceRockAnswerHolder(spaceRockImage1);
 		this.spaceRockAnswerHolder2 = new SpaceRockAnswerHolder(spaceRockImage2);
@@ -106,6 +109,9 @@ function spaceShooterGameClass() {
 
 		this.rocketExplosionsManager.updateExplosions();
 		this.rocketExplosionsManager.handleFadedExplosions();
+
+		this.shipSmokeManager.updateSmoke();
+		// this.shipSmokeManager.deleteFadedSmoke();
 	};
 
 	this.assignAnswerHolder = function()
@@ -128,11 +134,14 @@ function spaceShooterGameClass() {
 		this.playerCharacter.draw();
 		this.drawBullets();
 
+		this.rocketExplosionsManager.drawExplosions();
+		this.shipSmokeManager.drawSmoke();
+
 		drawAnswersManager.draw();
     promptersManager.drawPromptsWhenAppropriate();
 
 		this.spaceRockParticleManager.drawParticles();
-		this.rocketExplosionsManager.drawExplosions();
+
 	};
 
 	this.answersXSpeed = -3;
