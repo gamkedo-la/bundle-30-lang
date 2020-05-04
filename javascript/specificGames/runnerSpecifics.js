@@ -71,10 +71,7 @@ function runnerGameClass() {
       arrayOfRunnerRunningImagesIndex--;
     }
 
-    console.log('arrayOfRunnerRunningImagesIndex: ' + arrayOfRunnerRunningImagesIndex);
   	this.currentRunnerRunningImage = arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex];
-    console.log('arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex]: ' + arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex]);
-    console.log('this.currentRunnerRunningImage: ' + this.currentRunnerRunningImage);
   }
 
   // this.postLoadInit = function() {
@@ -186,7 +183,6 @@ function runnerGameClass() {
 	  gameCanvasContext.drawImage(runnerJumpingImage, x,y, width,height);
 	}else {
 	  // gameCanvasContext.fillRect(x, y, width, height);
-    console.log('this.currentRunnerRunningImage: ' + this.currentRunnerRunningImage);
 	  gameCanvasContext.drawImage(arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex], x,y, width,height);
 	}
 	drawAnswersManager.draw();
