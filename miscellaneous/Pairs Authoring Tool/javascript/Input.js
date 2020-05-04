@@ -132,6 +132,9 @@ function onMouseDown(evt) {
 	
 	mouseButtonHeld = true;
 	
+	if(mouseX > 300 && mouseX < 380 && mouseY > 500 && mouseY < 530){
+        downloadString("//this is a download test;", "text/javascript", "myFilename.js");
+    }
 	//pairsEditor.setFocus(mouseX, mouseY);
 }
 
