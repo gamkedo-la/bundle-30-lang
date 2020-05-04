@@ -24,6 +24,7 @@ function PairsEditor(){
 
     this.draw = function(){
         textBox.draw();
+        
     };
 
     this.keyboardEvent = function(newKey, oldKeys){
