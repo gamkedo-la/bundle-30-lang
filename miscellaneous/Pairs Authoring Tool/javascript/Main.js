@@ -33,8 +33,16 @@ function drawEverything(){
     //drawBackground();
     pairsEditor.update();
     pairsEditor.draw();
+    drawDownloadButton();
 };
 
 function drawBackground(){
 	fillRectangle(canvasContext, 0,0, canvas.width, 600, 4, 'red');
 }
+
+function drawDownloadButton(){
+    strokeRectangle(canvasContext, 300, 500, 80, 30, "blue", 5);
+    colorText(canvasContext, "Download", 305, 520, "purple", LabelFont.Small, 'left');
+}
+
+	

@@ -132,6 +132,12 @@ function onMouseDown(evt) {
 	
 	mouseButtonHeld = true;
 	
+	if(mouseX > 300 && mouseX < 380 && mouseY > 500 && mouseY < 530){
+		downloadString("//this is a download test;\n" 
+		+ "//We can place instructions for users here:\n"
+		+ "//Output the code needed to make all of the group functions work\n"
+		+" //and tell the user where to place them\n", "text/javascript", "GroupPlacementInstructions.js");
+    }
 	//pairsEditor.setFocus(mouseX, mouseY);
 }
 
