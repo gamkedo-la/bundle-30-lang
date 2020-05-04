@@ -12,8 +12,8 @@ function runnerGameClass() {
   const parallaxPos = [320,200,440, 0, 0];
   let runnerStatus = 'run'; // 'run', 'jump', 'slide', or 'stumble'
   let arrayOfRunnerRunningImagesIndex = 0;
-  let runnerImagesIndexDirection = 1;
-  let currentRunnerRunningImage;
+
+  this.currentRunnerRunningImage;
   let runnerSpeedY = 0;
   let runnerFloorLevel = 0;
 
@@ -48,29 +48,33 @@ function runnerGameClass() {
     return coinAnswerHolder;
   }
 
-  this.basketForward = true;
+  this.basketIsMovingForward = true;
   function cycleRunnerRunningImages()
   {
 
-  	if (this.basketForward)
-  	{
-  	  arrayOfRunnerRunningImagesIndex++;
-  	} else
-    {
-      arrayOfRunnerRunningImagesIndex--
-    }
-
-  	currentRunnerRunningImage = arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex];
-
     if (arrayOfRunnerRunningImagesIndex === arrayOfRunnerRunningImages.length - 1)
     {
-      this.basketForward = false;
+      this.basketIsMovingForward = false;
     }
     if (arrayOfRunnerRunningImagesIndex === 0)
     {
-      this.basketForward = true;
+      this.basketIsMovingForward = true;
     }
-    
+
+  	if (this.basketIsMovingForward === true)
+  	{
+
+  	  arrayOfRunnerRunningImagesIndex++;
+  	}
+    else if (!this.basketIsMovingForward)
+    {
+      arrayOfRunnerRunningImagesIndex--;
+    }
+
+    console.log('arrayOfRunnerRunningImagesIndex: ' + arrayOfRunnerRunningImagesIndex);
+  	this.currentRunnerRunningImage = arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex];
+    console.log('arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex]: ' + arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex]);
+    console.log('this.currentRunnerRunningImage: ' + this.currentRunnerRunningImage);
   }
 
   // this.postLoadInit = function() {
@@ -100,6 +104,13 @@ function runnerGameClass() {
 
     this.correctTextAnswerHolderWidth = undefined;
     this.incorrectTextAnswerHolderWidth = undefined;
+
+    arrayOfRunnerRunningImages.push(runnerRunning1Image);
+    arrayOfRunnerRunningImages.push(runnerRunning2Image);
+    arrayOfRunnerRunningImages.push(runnerRunning3Image);
+    arrayOfRunnerRunningImages.push(runnerRunning4Image);
+    arrayOfRunnerRunningImages.push(runnerRunning5Image);
+    this.currentRunnerRunningImage = arrayOfRunnerRunningImages[0];
 
 	runnerSpeedY = 0;
 	runnerFloorLevel = gameCanvas.height*0.75;
@@ -175,7 +186,8 @@ function runnerGameClass() {
 	  gameCanvasContext.drawImage(runnerJumpingImage, x,y, width,height);
 	}else {
 	  // gameCanvasContext.fillRect(x, y, width, height);
-	  gameCanvasContext.drawImage(currentRunnerRunningImage, x,y, width,height);
+    console.log('this.currentRunnerRunningImage: ' + this.currentRunnerRunningImage);
+	  gameCanvasContext.drawImage(arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex], x,y, width,height);
 	}
 	drawAnswersManager.draw();
 	promptersManager.drawPromptsWhenAppropriate();

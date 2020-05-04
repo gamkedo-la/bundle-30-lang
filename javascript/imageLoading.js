@@ -668,7 +668,6 @@ function countLoadedImageAndLaunchIfReady(fileName, imageToLoadIndex)
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.clickToLaunch);
   }
 
-  arrayOfRunnerRunningImages.push(runnerRunning1Image,runnerRunning2Image,runnerRunning3Image,runnerRunning4Image,runnerRunning5Image);
 }
 
 function checkForUnloadedImages()
