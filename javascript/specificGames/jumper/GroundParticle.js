@@ -35,7 +35,6 @@ function GroundParticleManager()
   this.arrayOfGroupsOfParticles = [];
   this.createAGroupOfParticles = function()
   {
-    console.log('inside create a group of particles');
     let groupOfParticles = [];
     let randomAmountOfParticles = getRandomIntInclusive(15, 30);
     for (let particleIndex = 0; particleIndex < randomAmountOfParticles; particleIndex++)
@@ -61,7 +60,6 @@ function GroundParticleManager()
     }
     else
     {
-      console.log('inside update particles');
       for (let groupsOfParticlesIndex = 0; groupsOfParticlesIndex < this.arrayOfGroupsOfParticles.length; groupsOfParticlesIndex++)
       {
         for (let individualParticlesIndex = 0; individualParticlesIndex < this.arrayOfGroupsOfParticles[groupsOfParticlesIndex].length; individualParticlesIndex++)
@@ -85,7 +83,6 @@ function GroundParticleManager()
     }
     else
     {
-      console.log('inside move particles');
       for (let groupsOfParticlesIndex = 0; groupsOfParticlesIndex < this.arrayOfGroupsOfParticles.length; groupsOfParticlesIndex++)
       {
         for (let individualParticlesIndex = 0; individualParticlesIndex < this.arrayOfGroupsOfParticles[groupsOfParticlesIndex].length; individualParticlesIndex++)
@@ -104,7 +101,6 @@ function GroundParticleManager()
     }
     else
     {
-      console.log('inside draw particles');
       for (let groupsOfParticlesIndex = 0; groupsOfParticlesIndex < this.arrayOfGroupsOfParticles.length; groupsOfParticlesIndex++)
       {
         for (let individualParticlesIndex = 0; individualParticlesIndex < this.arrayOfGroupsOfParticles[groupsOfParticlesIndex].length; individualParticlesIndex++)
