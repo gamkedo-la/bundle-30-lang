@@ -140,6 +140,7 @@ let jumperBackground = document.createElement('img');
 let jumperPlayerFacingRightImage = document.createElement('img');
 let jumperPlayerFacingLeftImage = document.createElement('img');
 let jumperGroundParticleImage = document.createElement('img');
+let treasureChestAnswerHolderImage = document.createElement('img');
 
 //volcano
 let volcanoImage = document.createElement('img');
@@ -481,6 +482,8 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: jumperPlayerFacingRightImage, theFile: 'images/sprites/Jumper/JumperFacingRight.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: jumperPlayerFacingLeftImage, theFile: 'images/sprites/Jumper/JumperFacingLeft.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: jumperGroundParticleImage, theFile: 'images/sprites/Jumper/jumperGroundParticle.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: treasureChestAnswerHolderImage, theFile: 'images/sprites/Jumper/treasureChest.png', loaded: false});
+
 
   //pass or block
   arrayOfImagesToLoad.push({imageObjectBinding: volcanoImage, theFile: 'images/Backgrounds/Volcano.png', loaded: false});

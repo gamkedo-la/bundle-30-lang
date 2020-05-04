@@ -14,6 +14,17 @@ function jumperGameClass()
     this.collidingObject = this.playerCharacter;
   }
 
+  this.imageAnswerHolderWidth = undefined;
+  this.imageAnswerHolderHeight = undefined;
+
+  this.audioImageAnswerHolderWidth = undefined;
+  this.audioImageAnswerHolderHeight = undefined;
+
+  this.correctTextAnswerHolderWidth = undefined;
+  this.incorrectTextAnswerHolderWidth = undefined;
+
+  this.treasureChestAnswerHolder = undefined;
+
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
@@ -46,8 +57,22 @@ function jumperGameClass()
     this.collidingObject = this.playerCharacter;
     this.groundParticleManager = new GroundParticleManager();
     drawAnswersManager.draw();
+
+    this.imageAnswerHolderWidth = gameCanvas.width/4;
+		this.imageAnswerHolderHeight = gameCanvas.height/5;
+		this.audioImageAnswerHolderWidth = gameCanvas.width/5;
+    this.audioImageAnswerHolderHeight = gameCanvas.height/6;
+
+    this.assignAnswerHolder();
 	//this.superInitialize();
   };
+
+  this.assignAnswerHolder = function()
+  {
+    console.log('called assign answer holder');
+    this.treasureChestAnswerHolder = new TreasureChestAnswerHolder(treasureChestAnswerHolderImage);
+    return this.treasureChestAnswerHolder;
+  }
 
   this.update = function()
   {
@@ -162,3 +187,8 @@ function jumperGameClass()
 }
 
 const jumperGame = new jumperGameClass();
+
+function TreasureChestAnswerHolder(image)
+{
+	this.image = image;
+}
