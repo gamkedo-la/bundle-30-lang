@@ -48,17 +48,29 @@ function runnerGameClass() {
     return coinAnswerHolder;
   }
 
-
+  this.basketForward = true;
   function cycleRunnerRunningImages()
   {
-	arrayOfRunnerRunningImagesIndex += runnerImagesIndexDirection;
-	if (arrayOfRunnerRunningImagesIndex === 2)
-	{
-	  runnerImagesIndexDirection = -1;
-	} else if (arrayOfRunnerRunningImagesIndex === 0){
-	  runnerImagesIndexDirection = 1;
-	}
-	currentRunnerRunningImage = arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex];
+
+  	if (this.basketForward)
+  	{
+  	  arrayOfRunnerRunningImagesIndex++;
+  	} else
+    {
+      arrayOfRunnerRunningImagesIndex--
+    }
+
+  	currentRunnerRunningImage = arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex];
+
+    if (arrayOfRunnerRunningImagesIndex === arrayOfRunnerRunningImages.length - 1)
+    {
+      this.basketForward = false;
+    }
+    if (arrayOfRunnerRunningImagesIndex === 0)
+    {
+      this.basketForward = true;
+    }
+    
   }
 
   // this.postLoadInit = function() {

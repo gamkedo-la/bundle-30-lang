@@ -98,6 +98,8 @@ let runnerMountain1Image = document.createElement("img");
 let runnerRunning1Image = document.createElement('img');
 let runnerRunning2Image = document.createElement('img');
 let runnerRunning3Image = document.createElement('img');
+let runnerRunning4Image = document.createElement("img");
+let runnerRunning5Image = document.createElement("img");
 let runnerJumpingImage = document.createElement("img");
 let coinImage = document.createElement("img");
 
@@ -435,9 +437,12 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: runnerCloud1, theFile: 'images/Backgrounds/runnerCloud1.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: runnerGrassImage, theFile: 'images/Backgrounds/runnerGrass.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: runnerMountain1Image, theFile: 'images/Backgrounds/runnerMountain1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning1Image, theFile: 'images/sprites/runner/runnerRunning1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning2Image, theFile: 'images/sprites/runner/runnerRunning2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning3Image, theFile: 'images/sprites/runner/runnerRunning3.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning1Image, theFile: 'images/sprites/runner/1edited.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning2Image, theFile: 'images/sprites/runner/2edited.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning3Image, theFile: 'images/sprites/runner/3edited.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning4Image, theFile: 'images/sprites/runner/4edited.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning5Image, theFile: 'images/sprites/runner/5edited.png', loaded: false});
+
   arrayOfImagesToLoad.push({imageObjectBinding: runnerJumpingImage, theFile: 'images/sprites/runner/runnerJumping.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: coinImage, theFile: 'images/sprites/runner/Coin.png', loaded: false});
 
@@ -663,7 +668,7 @@ function countLoadedImageAndLaunchIfReady(fileName, imageToLoadIndex)
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.clickToLaunch);
   }
 
-  arrayOfRunnerRunningImages.push(runnerRunning1Image,runnerRunning2Image,runnerRunning3Image);
+  arrayOfRunnerRunningImages.push(runnerRunning1Image,runnerRunning2Image,runnerRunning3Image,runnerRunning4Image,runnerRunning5Image);
 }
 
 function checkForUnloadedImages()
