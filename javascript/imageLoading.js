@@ -24,6 +24,7 @@ let imAlsoVeryGoodImage = document.createElement("img");
 let veryNiceToMeetYouImage = document.createElement("img");
 let whereAreYouFromImage = document.createElement("img");
 let imFromAmericaImage = document.createElement("img");
+let whatDoYouLikeToDoImage = document.createElement("img");
 
 //polite stuff
 let pleaseImage = document.createElement("img");
@@ -372,6 +373,7 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: veryNiceToMeetYouImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/niceToMeetYou.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: whereAreYouFromImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/whereAreYouFrom.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: imFromAmericaImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iAmFromAmerica.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: whatDoYouLikeToDoImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/whatDoYouLikeToDo.png', loaded: false});
 
   //end of cVc shooter
 
