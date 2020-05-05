@@ -289,6 +289,9 @@ promptAudio.mandarinImVeryGood = new promptSound('audio/PromptsAndAnswers/Mandar
 promptAudio.mandarinNotBad = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinNotBad.mp3');
 promptAudio.mandarinImAlsoVeryGood = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinImAlsoVeryGood.mp3');
 promptAudio.mandarinVeryNiceToMeetYou = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinVeryNiceToMeetYou.mp3');
+promptAudio.mandarinWhereAreYouFrom = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinWhereAreYouFrom.mp3');
+promptAudio.mandarinImFromAmerica = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinImFromAmerica.mp3');
+
 
 //polite mandarin phrases group 1
 promptAudio.mandarinPlease = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinPlease.mp3');
