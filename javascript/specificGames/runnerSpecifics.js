@@ -118,7 +118,7 @@ function runnerGameClass() {
 	  height: RUNNERHEIGHT
 	};
 	this.collidingObject = this.playerCharacter;
-	setInterval(cycleRunnerRunningImages, 200);
+	setInterval(cycleRunnerRunningImages, 100);
 	initializePromptAndAnswerObjects();
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();

@@ -18,6 +18,10 @@ let howAreWeImage = document.createElement("img");
 let howIsSheImage = document.createElement("img");
 let howIsHeImage = document.createElement("img");
 let howIsItDoingImage = document.createElement("img");
+let imVeryGoodImage = document.createElement("img");
+let notBadImage = document.createElement("img");
+let imAlsoVeryGoodImage = document.createElement("img");
+let veryNiceToMeetYouImage = document.createElement("img");
 
 //polite stuff
 let pleaseImage = document.createElement("img");
@@ -360,6 +364,10 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: howIsHeImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsHe.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: howIsSheImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsShe.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: howIsItDoingImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howIsItDoing.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: imVeryGoodImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/imVeryGood.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: notBadImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/notBad.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: imAlsoVeryGoodImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/imAlsoVeryGood.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: veryNiceToMeetYouImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/niceToMeetYou.png', loaded: false});
 
   //end of cVc shooter
 

@@ -10,6 +10,11 @@ function CVCManager()
   this.CVCMandarinHowIsHe = new cVc('他','怎么','样', howIsHeImage, promptAudio.mandarinHowIsHe);
   this.CVCMandarinHowIsShe = new cVc('她','怎么','样', howIsHeImage, promptAudio.mandarinHowIsShe);
   this.CVCMandarinHowIsItDoing = new cVc('它','怎么','样', howIsItDoingImage, promptAudio.mandarinHowIsHe);
+  this.CVCMandarinImVeryGood = new cVc('我','很','好', imVeryGoodImage, promptAudio.mandarinImVeryGood);
+  this.CVCMandarinNotBad = new cVc('还','不','错', notBadImage, promptAudio.mandarinNotBad);
+  this.CVCMandarinImAlsoVeryGood = new cVc('我','也','很好', imAlsoVeryGoodImage, promptAudio.mandarinImAlsoVeryGood);
+  this.CVCMandarinVeryNiceToMeetYou = new cVc('很','高兴','认识你', veryNiceToMeetYouImage, promptAudio.mandarinVeryNiceToMeetYou);
+
 
   this.arrayOfEnglishCVCs = [];
   this.arrayOfMandarinCVCs = [];
@@ -26,6 +31,10 @@ function CVCManager()
     this.arrayOfMandarinCVCs.push(this.CVCMandarinHowIsHe);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinHowIsShe);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinHowIsItDoing);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinImVeryGood);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinNotBad);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinImAlsoVeryGood);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinVeryNiceToMeetYou);
 
     console.log('this.arrayOfEnglishCVCs: ' + this.arrayOfEnglishCVCs);
   }
