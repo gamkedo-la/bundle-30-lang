@@ -10,7 +10,7 @@ function fishingGameClass()
   this.name = 'fishingGame';
   this.playerCharacter = undefined;
   this.textAnswerFontSize = '15';
-  this.textAnswerFontStyle = 'px Helvetica';
+  this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
   this.LETTER_COLOR = "black";
 
   this.titleScreenData = [{
@@ -92,6 +92,7 @@ function fishingGameClass()
   this.reset = function() {
     this.playerCharacter.resetHook();
     this.playerCharacter.speedX = 5;
+    this.resetFishes();
   }
 
   this.resetFishes = function() {
