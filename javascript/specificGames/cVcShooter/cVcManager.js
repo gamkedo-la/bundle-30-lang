@@ -16,6 +16,7 @@ function CVCManager()
   this.CVCMandarinVeryNiceToMeetYou = new cVc('很','高兴','认识你', veryNiceToMeetYouImage, promptAudio.mandarinVeryNiceToMeetYou);
   this.CVCMandarinWhereAreYouFrom = new cVc('你是','哪里','人', whereAreYouFromImage, promptAudio.mandarinWhereAreYouFrom);
   this.CVCMandarinImFromAmerica = new cVc('我','来自','美国', imFromAmericaImage, promptAudio.mandarinImFromAmerica);
+  this.CVCMandarinWhatDoYouLikeToDo = new cVc('你喜欢','做','什么', whatDoYouLikeToDoImage, promptAudio.mandarinWhatDoYouLikeToDo);
 
 
   this.arrayOfEnglishCVCs = [];
@@ -39,6 +40,7 @@ function CVCManager()
     this.arrayOfMandarinCVCs.push(this.CVCMandarinVeryNiceToMeetYou);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinWhereAreYouFrom);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinImFromAmerica);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinWhatDoYouLikeToDo);
 
 
 
