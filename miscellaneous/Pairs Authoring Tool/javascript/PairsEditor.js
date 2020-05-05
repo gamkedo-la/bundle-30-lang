@@ -12,10 +12,10 @@ function PairsEditor(){
     }
 
     this.createTextBox = function(){
-        textBox = new TextBox(frame, LabelFont.Large);
-        textBox.inFocus = true;
-        textBox.cursor.color = 'orange';
-        console.log(textBox.cursor.textSize);
+        this.textBox = new TextBox(frame, LabelFont.Large);
+        this.textBox.inFocus = true;
+        this.textBox.cursor.color = 'orange';
+        
     };
 
     this.update = function(){
@@ -23,12 +23,14 @@ function PairsEditor(){
     };
 
     this.draw = function(){
-        textBox.draw();
+        this.textBox.draw();
+        //console.log(textBox.cursor.string);
         
     };
 
     this.keyboardEvent = function(newKey, oldKeys){
-        textBox.keyboardEvent(newKey, oldKeys);
+        this.textBox.keyboardEvent(newKey, oldKeys);
+        console.log(this.textBox.cursor.string);
     };
     
 };

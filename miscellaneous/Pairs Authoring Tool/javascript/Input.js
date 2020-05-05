@@ -136,7 +136,12 @@ function onMouseDown(evt) {
 		downloadString("//this is a download test;\n" 
 		+ "//We can place instructions for users here:\n"
 		+ "//Output the code needed to make all of the group functions work\n"
-		+" //and tell the user where to place them\n", "text/javascript", "GroupPlacementInstructions.js");
+		+ " //and tell the user where to place them\n"
+		+ "//Place under language section within initializePromptAndAnswerObjects() function\n"
+		+ pairsEditor.textBox.cursor.string + "PromptAndAnswer = new PromptAndAnswerClass("+"'" + pairsEditor.textBox.cursor.string + "'," 
+		+ "'" + pairsEditor.textBox.cursor.string + "'," 
+		+ " " + pairsEditor.textBox.cursor.string +"Image," 
+		+ "promptAudio." + pairsEditor.textBox.cursor.string + ");", "text/javascript", "GroupPlacementInstructions.js");
     }
 	//pairsEditor.setFocus(mouseX, mouseY);
 }
