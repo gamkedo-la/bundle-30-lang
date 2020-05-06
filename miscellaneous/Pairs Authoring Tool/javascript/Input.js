@@ -136,9 +136,29 @@ function onMouseDown(evt) {
 		downloadString("//this is a download test;\n" 
 		+ "//We can place instructions for users here:\n"
 		+ "//Output the code needed to make all of the group functions work\n"
-		+" //and tell the user where to place them\n", "text/javascript", "GroupPlacementInstructions.js");
+		+ " //and tell the user where to place them\n"
+		//PromptAndAnswer Class
+		+ "//Place under language section within initializePromptAndAnswerObjects() function\n"
+		+ pairsEditor.textBox.cursor.string + "PromptAndAnswer = new PromptAndAnswerClass("+"'" + pairsEditor.textBox.cursor.string + "'," 
+		+ "'" + pairsEditor.textBox.cursor.string + "'," 
+		+ " " + pairsEditor.textBox.cursor.string +"Image," 
+		+ "promptAudio." + pairsEditor.textBox.cursor.string + ");\n\n"
+		//Image Loading
+		+ "//image file name, (transfer from image upload).  Place within imageLoading.js\n"
+		+ "let " + pairsEditor.textBox.cursor.string + "Image" +" = document.createElement("+"img"+"); " + "\n\n"
+		+"arrayOfImagesToLoad.push({imageObjectBinding: " + pairsEditor.textBox.cursor.string + "Image, theFile: 'images/sprites/PromptsAndAnswers/" 
+		+ pairsEditor.textBox.cursor.string + ".png', loaded: false});\n\n"
+		//audio
+		+ "//audio file name, (transfer from Sound Upload). Place within audio.js\n"
+		+ "promptAudio." + pairsEditor.textBox.cursor.string + " = new promptSound('audio/PromptsAndAnswers/" + pairsEditor.textBox.cursor.string + ".mp3');\n\n"
+		, "text/javascript", "GroupPlacementInstructions.js");
     }
 	//pairsEditor.setFocus(mouseX, mouseY);
+	//promptAudio.woman = new promptSound('audio/PromptsAndAnswers/woman.mp3');
+
+
+
+
 }
 
 function onMouseUp(evt) {
