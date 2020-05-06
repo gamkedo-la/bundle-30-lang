@@ -137,24 +137,40 @@ function onMouseDown(evt) {
 		+ "//We can place instructions for users here:\n"
 		+ "//Output the code needed to make all of the group functions work\n"
 		+ " //and tell the user where to place them\n"
-		//PromptAndAnswer Class
+		//PromptAndAnswer Class		
+		//TODO:populate group array. Loop through every word in the group and push the promptAndAnswer Class into array. 
+		//example: mandarinColorsGrouping.arrayOfObjects.push(mandarinBlackPromptAndAnswer);
+
 		+ "//Place under language section within initializePromptAndAnswerObjects() function\n"
 		+ pairsEditor.textBox.cursor.string + "PromptAndAnswer = new PromptAndAnswerClass("+"'" + pairsEditor.textBox.cursor.string + "'," 
 		+ "'" + pairsEditor.textBox.cursor.string + "'," 
 		+ " " + pairsEditor.textBox.cursor.string +"Image," 
 		+ "promptAudio." + pairsEditor.textBox.cursor.string + ");\n\n"
+		//Create Group Array
+		//TODO: Replace "english" with the language of choice
+		+ "//Place the following in PromptAndAnswerClass.js within the populatePromptAndAnswerArrays() function under the chosen language.\n"
+		+"english" + pairsEditor.textBox.cursor.string + "Grouping = {name: 'english " + pairsEditor.textBox.cursor.string + "', arrayOfObjects:[]}; \n"
+		//Populate Group Array
+		+"english" + pairsEditor.textBox.cursor.string + "Grouping.arrayOfObjects.push(" + pairsEditor.textBox.cursor.string + "PromptAndAnswer);\n"
+		//Push Group Aray into the array of logical prompt answer groupings for the chosen language (ex: arrayOfLogicalEnglishPromptAndAnswerGroupings)
+		+ "promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings.push(" + "english" + pairsEditor.textBox.cursor.string + "Grouping);\n"
+
 		//Image Loading
+		//TODO: Place image file name from file upload here automatically. 
+		//TODO: Tell user where to place image within the repo.
 		+ "//image file name, (transfer from image upload).  Place within imageLoading.js\n"
 		+ "let " + pairsEditor.textBox.cursor.string + "Image" +" = document.createElement("+"img"+"); " + "\n\n"
 		+"arrayOfImagesToLoad.push({imageObjectBinding: " + pairsEditor.textBox.cursor.string + "Image, theFile: 'images/sprites/PromptsAndAnswers/" 
 		+ pairsEditor.textBox.cursor.string + ".png', loaded: false});\n\n"
+		
 		//audio
+		//TODO: Place audio file name from file upload here automatically.
+		//TODO: Tell user where to place audio file within the repo.
 		+ "//audio file name, (transfer from Sound Upload). Place within audio.js\n"
 		+ "promptAudio." + pairsEditor.textBox.cursor.string + " = new promptSound('audio/PromptsAndAnswers/" + pairsEditor.textBox.cursor.string + ".mp3');\n\n"
 		, "text/javascript", "GroupPlacementInstructions.js");
     }
-	//pairsEditor.setFocus(mouseX, mouseY);
-	//promptAudio.woman = new promptSound('audio/PromptsAndAnswers/woman.mp3');
+
 
 
 
