@@ -17,6 +17,12 @@ function CVCManager()
   this.CVCMandarinWhereAreYouFrom = new cVc('你是','哪里','人', whereAreYouFromImage, promptAudio.mandarinWhereAreYouFrom);
   this.CVCMandarinImFromAmerica = new cVc('我','来自','美国', imFromAmericaImage, promptAudio.mandarinImFromAmerica);
   this.CVCMandarinWhatDoYouLikeToDo = new cVc('你喜欢','做','什么', whatDoYouLikeToDoImage, promptAudio.mandarinWhatDoYouLikeToDo);
+  this.CVCMandarinWhatPartOfChina = new cVc('你来自','中国','哪里', whatPartOfChinaImage, promptAudio.mandarinWhatPartOfChina);
+  this.CVCMandarinWhereDoYouLive = new cVc('你','住在','哪里', whereDoYouLiveImage, promptAudio.mandarinWhereDoYouLive);
+  this.CVCMandarinILiveInVietnam = new cVc('我','住在','越南', iLiveInVietnamImage, promptAudio.mandarinILiveInVietnam);
+  this.CVCMandarinMeToo = new cVc('我','也','是', meTooImage, promptAudio.mandarinMeToo);
+  this.CVCMandarinILikeProgramming = new cVc('我','喜欢','编程', iLikeProgrammingImage, promptAudio.mandarinILikeProgramming);
+  this.CVCMandarinIAlsoLikeFitness = new cVc('我也','喜欢','健身', iAlsoLikeFitnessImage, promptAudio.mandarinIAlsoLikeFitness);
 
 
   this.arrayOfEnglishCVCs = [];
@@ -27,13 +33,13 @@ function CVCManager()
     this.arrayOfEnglishCVCs.push(this.CVCcat);
     this.arrayOfEnglishCVCs.push(this.CVCcot);
 
-    this.arrayOfMandarinCVCs.push(this.CVCMandarinHowAreYou);
-    this.arrayOfMandarinCVCs.push(this.CVCMandarinHowAmI);
-    this.arrayOfMandarinCVCs.push(this.CVCMandarinHowAreThey);
-    this.arrayOfMandarinCVCs.push(this.CVCMandarinHowAreWe);
-    this.arrayOfMandarinCVCs.push(this.CVCMandarinHowIsHe);
-    this.arrayOfMandarinCVCs.push(this.CVCMandarinHowIsShe);
-    this.arrayOfMandarinCVCs.push(this.CVCMandarinHowIsItDoing);
+    // this.arrayOfMandarinCVCs.push(this.CVCMandarinHowAreYou);
+    // this.arrayOfMandarinCVCs.push(this.CVCMandarinHowAmI);
+    // this.arrayOfMandarinCVCs.push(this.CVCMandarinHowAreThey);
+    // this.arrayOfMandarinCVCs.push(this.CVCMandarinHowAreWe);
+    // this.arrayOfMandarinCVCs.push(this.CVCMandarinHowIsHe);
+    // this.arrayOfMandarinCVCs.push(this.CVCMandarinHowIsShe);
+    // this.arrayOfMandarinCVCs.push(this.CVCMandarinHowIsItDoing);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinImVeryGood);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinNotBad);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinImAlsoVeryGood);
@@ -41,6 +47,12 @@ function CVCManager()
     this.arrayOfMandarinCVCs.push(this.CVCMandarinWhereAreYouFrom);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinImFromAmerica);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinWhatDoYouLikeToDo);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinWhatPartOfChina);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinWhereDoYouLive);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinILiveInVietnam);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinMeToo);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinILikeProgramming);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinIAlsoLikeFitness);
 
 
 

@@ -25,6 +25,12 @@ let veryNiceToMeetYouImage = document.createElement("img");
 let whereAreYouFromImage = document.createElement("img");
 let imFromAmericaImage = document.createElement("img");
 let whatDoYouLikeToDoImage = document.createElement("img");
+let whatPartOfChinaImage = document.createElement("img");
+let whereDoYouLiveImage = document.createElement("img");
+let iLiveInVietnamImage = document.createElement("img");
+let meTooImage = document.createElement("img");
+let iLikeProgrammingImage = document.createElement("img");
+let iAlsoLikeFitnessImage = document.createElement("img");
 
 //polite stuff
 let pleaseImage = document.createElement("img");
@@ -374,6 +380,12 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: whereAreYouFromImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/whereAreYouFrom.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: imFromAmericaImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iAmFromAmerica.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: whatDoYouLikeToDoImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/whatDoYouLikeToDo.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: whatPartOfChinaImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/whatPartOfChina.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: whereDoYouLiveImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/whereDoYouLive.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: iLiveInVietnamImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iLiveInVietnam.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: meTooImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/meToo.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: iLikeProgrammingImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iLikeProgramming.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: iAlsoLikeFitnessImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iAlsoLikeFitness.png', loaded: false});
 
   //end of cVc shooter
 

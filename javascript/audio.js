@@ -292,6 +292,12 @@ promptAudio.mandarinVeryNiceToMeetYou = new promptSound('audio/PromptsAndAnswers
 promptAudio.mandarinWhereAreYouFrom = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinWhereAreYouFrom.mp3');
 promptAudio.mandarinImFromAmerica = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinImFromAmerica.mp3');
 promptAudio.mandarinWhatDoYouLikeToDo = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinWhatDoYouLikeToDo.mp3');
+promptAudio.mandarinWhatPartOfChina = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinWhatPartOfChina.mp3');
+promptAudio.mandarinWhereDoYouLive = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinWhereDoYouLive.mp3');
+promptAudio.mandarinILiveInVietnam = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinILiveInVietnam.mp3');
+promptAudio.mandarinMeToo = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinMeToo.mp3');
+promptAudio.mandarinILikeProgramming = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinILikeProgramming.mp3');
+promptAudio.mandarinIAlsoLikeFitness = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinIAlsoLikeFitness.mp3');
 
 
 //polite mandarin phrases group 1
