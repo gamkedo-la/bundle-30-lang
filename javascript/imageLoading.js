@@ -31,6 +31,15 @@ let iLiveInVietnamImage = document.createElement("img");
 let meTooImage = document.createElement("img");
 let iLikeProgrammingImage = document.createElement("img");
 let iAlsoLikeFitnessImage = document.createElement("img");
+let whatIsYourJobImage =  document.createElement("img");
+let iAmATeacherImage =  document.createElement("img");
+let anythingElseImage =  document.createElement("img");
+let iLikeWatchingMoviesImage =  document.createElement("img");
+let iLikeRockClimbingImage =  document.createElement("img");
+let whatIsYourNameImage =  document.createElement("img");
+let myNameIsStevenImage = document.createElement("img");
+let howOldAreYouImage = document.createElement("img");
+let iAm37YearsOldImage = document.createElement("img");
 
 //polite stuff
 let pleaseImage = document.createElement("img");
@@ -386,6 +395,16 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: meTooImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/meToo.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: iLikeProgrammingImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iLikeProgramming.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: iAlsoLikeFitnessImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iAlsoLikeFitness.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: whatIsYourJobImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/whatIsYourJob.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: iAmATeacherImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iAmATeacher.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: anythingElseImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/somethingElse.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: iLikeWatchingMoviesImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iLikeWatchingMovies.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: iLikeRockClimbingImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iLikeRockClimbing.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: whatIsYourNameImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/whatIsYourName.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: myNameIsStevenImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/myNameIsKiiiiiid.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: myNameIsStevenImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/myNameIsSteven.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: howOldAreYouImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/howOldAreYou.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: iAm37YearsOldImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/iAm37.png', loaded: false});
 
   //end of cVc shooter
 

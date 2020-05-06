@@ -23,6 +23,15 @@ function CVCManager()
   this.CVCMandarinMeToo = new cVc('我','也','是', meTooImage, promptAudio.mandarinMeToo);
   this.CVCMandarinILikeProgramming = new cVc('我','喜欢','编程', iLikeProgrammingImage, promptAudio.mandarinILikeProgramming);
   this.CVCMandarinIAlsoLikeFitness = new cVc('我也','喜欢','健身', iAlsoLikeFitnessImage, promptAudio.mandarinIAlsoLikeFitness);
+  this.CVCMandarinWhatIsYourJob = new cVc('你的','工作','是什么', whatIsYourJobImage, promptAudio.mandarinWhatIsYourJob);
+  this.CVCMandarinIAmATeacher = new cVc('我','是','老师', iAmATeacherImage, promptAudio.mandarinIAmATeacher);
+  this.CVCMandarinAnythingElse = new cVc('还','有','吗', anythingElseImage, promptAudio.mandarinAnythingElse);
+  this.CVCMandarinILikeWatchingMovies = new cVc('我','喜欢','看电影', iLikeWatchingMoviesImage, promptAudio.mandarinILikeWatchingMovies);
+  this.CVCMandarinILikeRockClimbing = new cVc('我','喜欢','攀岩', iLikeRockClimbingImage, promptAudio.mandarinILikeRockClimbing);
+  this.CVCMandarinWhatIsYourName = new cVc('你叫','什么','名字', whatIsYourNameImage, promptAudio.mandarinWhatIsYourName);
+  this.CVCMandarinMyNameIsSteven = new cVc('我叫','史','蒂文', myNameIsStevenImage, promptAudio.mandarinMyNameIsSteven);
+  this.CVCMandarinHowOldAreYou = new cVc('你','几','岁', howOldAreYouImage, promptAudio.mandarinHowOldAreYou);
+  this.CVCMandarinIAm37YearsOld = new cVc('我今年','三十七','岁', iAm37YearsOldImage, promptAudio.mandarinIAm37YearsOld);
 
 
   this.arrayOfEnglishCVCs = [];
@@ -53,6 +62,15 @@ function CVCManager()
     this.arrayOfMandarinCVCs.push(this.CVCMandarinMeToo);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinILikeProgramming);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinIAlsoLikeFitness);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinIAmATeacher);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinAnythingElse);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinILikeWatchingMovies);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinILikeRockClimbing);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinWhatIsYourName);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinMyNameIsSteven);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinHowOldAreYou);
+    this.arrayOfMandarinCVCs.push(this.CVCMandarinIAm37YearsOld);
+
 
 
 

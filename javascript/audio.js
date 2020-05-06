@@ -298,6 +298,15 @@ promptAudio.mandarinILiveInVietnam = new promptSound('audio/PromptsAndAnswers/Ma
 promptAudio.mandarinMeToo = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinMeToo.mp3');
 promptAudio.mandarinILikeProgramming = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinILikeProgramming.mp3');
 promptAudio.mandarinIAlsoLikeFitness = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinIAlsoLikeFitness.mp3');
+promptAudio.mandarinWhatIsYourJob = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinWhatIsYourJob.mp3');
+promptAudio.mandarinIAmATeacher = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinIAmATeacher.mp3');
+promptAudio.mandarinAnythingElse = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinAnythingElse.mp3');
+promptAudio.mandarinILikeWatchingMovies = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinILikeWatchingMovies.mp3');
+promptAudio.mandarinILikeRockClimbing = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinILikeRockClimbing.mp3');
+promptAudio.mandarinWhatIsYourName = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinWhatIsYourName.mp3');
+promptAudio.mandarinMyNameIsSteven = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinMyNameIsSteven.mp3');
+promptAudio.mandarinHowOldAreYou = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHowOldAreYou.mp3');
+promptAudio.mandarinIAm37YearsOld = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinIAm37YearsOld.mp3');
 
 
 //polite mandarin phrases group 1
