@@ -54,6 +54,10 @@ function cVcShooterGameClass()
     {
       this.currentLanguageArray = this.cVcManager.arrayOfMandarinCVCs;
     }
+    else if (languageSelectionScreen.languageNum === 2)
+    {
+      this.currentLanguageArray = this.cVcManager.arrayOfCentralVietnameseCVCs;
+    }
     console.log('this.currentLanguageArray: ' + this.currentLanguageArray);
   }
 

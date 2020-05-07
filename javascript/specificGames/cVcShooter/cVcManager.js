@@ -37,7 +37,7 @@ function CVCManager()
 
   //central vietnamese Section
   this.CVCCentralVietnameseHelloMan = new cVc('xin', 'chào', 'anh', helloManImage, promptAudio.centralVietnameseHelloMan);
-  this.CVCCentralVietnameseHelloMan = new cVc('xin', 'chào', 'em', helloWomanImage, promptAudio.centralVietnameseHelloWoman);
+  this.CVCCentralVietnameseHelloWoman = new cVc('xin', 'chào', 'em', helloWomanImage, promptAudio.centralVietnameseHelloWoman);
 
 
 
