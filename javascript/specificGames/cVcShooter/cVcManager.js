@@ -38,6 +38,15 @@ function CVCManager()
   //central vietnamese Section
   this.CVCCentralVietnameseHelloMan = new cVc('xin', 'chào', 'anh', helloManImage, promptAudio.centralVietnameseHelloMan);
   this.CVCCentralVietnameseHelloWoman = new cVc('xin', 'chào', 'em', helloWomanImage, promptAudio.centralVietnameseHelloWoman);
+  this.CVCCentralVietnameseWhatsYourNameGeneral = new cVc('bạn', 'tên', 'là gì', whatIsYourNameImage, promptAudio.centralVietnameseWhatsYourNameGeneral);
+  this.CVCCentralVietnameseWhatsYourNameBrother = new cVc('anh', 'tên', 'là gì', whatIsYourNameImage, promptAudio.centralVietnameseWhatsYourNameBrother);
+  this.CVCCentralVietnameseWhatsYourNameBaby = new cVc('em', 'tên', 'là gì', whatIsYourNameImage, promptAudio.centralVietnameseWhatsYourNameBaby);
+  this.CVCCentralVietnameseMyNameIsSteven = new cVc('tôi', 'tên', 'là Steven', myNameIsStevenImage, promptAudio.centralVietnameseMyNameIsSteven);
+  this.CVCCentralVietnameseWhereAreYouFrom = new cVc('anh là','người nước','nào', whereAreYouFromImage, promptAudio.centralVietnameseWhereAreYouFrom);
+  this.CVCCentralVietnameseIAmFromAmerica = new cVc('tôi là','người', 'Mỹ', imFromAmericaImage, promptAudio.centralVietnameseIAmFromAmerica);
+  this.CVCCentralVietnameseVeryNiceToMeetYou = new cVc('rất vui', 'được', 'bạn', veryNiceToMeetYouImage, promptAudio.centralVietnameseVeryNiceToMeetYou);
+  this.CVCCentralVietnameseWhatDoYouLikeToEat = new cVc('Bạn', 'thích ăn', 'gì', whatDoYouLikeToEatImage, promptAudio.centralVietnameseWhatDoYouLikeToEat);
+  this.CVCCentralVietnameseILikeToEatVegetarian = new cVc('tôi', 'thích ăn', 'chay', iLikeToEatVegetarianImage, promptAudio.centralVietnameseILikeToEatVegetarian);
 
 
 
@@ -86,8 +95,13 @@ function CVCManager()
     //central vietnamese
     this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseHelloWoman);
     this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseHelloMan);
-
-
+    this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseWhatsYourNameGeneral);
+    this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseWhatsYourNameBrother);
+    this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseWhatsYourNameBaby);
+    this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseMyNameIsSteven);
+    this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseWhereAreYouFrom);
+    this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseIAmFromAmerica);
+    this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseVeryNiceToMeetYou);
 
 
     console.log('this.arrayOfEnglishCVCs: ' + this.arrayOfEnglishCVCs);

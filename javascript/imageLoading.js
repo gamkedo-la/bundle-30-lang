@@ -110,6 +110,10 @@ let pinkImage = document.createElement("img");
 //central vietnamese
 let helloManImage = document.createElement("img");
 let helloWomanImage = document.createElement("img");
+let whatsYourNameBrotherImage = document.createElement("img");
+let whatsYourNameBabyImage = document.createElement("img");
+let whatDoYouLikeToEatImage = document.createElement("img");
+let iLikeToEatVegetarianImage  = document.createElement("img");
 
 let calendarImage = document.createElement("img");
 
@@ -485,6 +489,10 @@ function loadImages()
   //central vietnamese section
   arrayOfImagesToLoad.push({imageObjectBinding: helloManImage, theFile: 'images/sprites/PromptsAndAnswers/CentralVietnamese/helloMan.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: helloWomanImage, theFile: 'images/sprites/PromptsAndAnswers/CentralVietnamese/helloWoman.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: whatsYourNameBrotherImage, theFile: 'images/sprites/PromptsAndAnswers/CentralVietnamese/whatIsYourNameBrother.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: whatsYourNameBabyImage, theFile: 'images/sprites/PromptsAndAnswers/CentralVietnamese/whatIsYourNameBaby.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: whatDoYouLikeToEatImage, theFile: 'images/sprites/PromptsAndAnswers/CentralVietnamese/whatDoYouLikeToEat.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: iLikeToEatVegetarianImage, theFile: 'images/sprites/PromptsAndAnswers/CentralVietnamese/iLikeToEatVegetarian.png', loaded: false});
 
 
   //runner game

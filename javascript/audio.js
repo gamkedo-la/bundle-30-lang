@@ -394,6 +394,15 @@ promptAudio.mandarin9 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandar
 //central vietnamese
 promptAudio.centralVietnameseHelloMan = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseHelloMan.mp3');
 promptAudio.centralVietnameseHelloWoman = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseHelloWoman.mp3');
+promptAudio.centralVietnameseWhatsYourNameGeneral = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseWhatsYourNameGeneral.mp3');
+promptAudio.centralVietnameseWhatsYourNameBrother = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseWhatsYourNameBrother.mp3');
+promptAudio.centralVietnameseWhatsYourNameBaby = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseWhatsYourNameBaby.mp3');
+promptAudio.centralVietnameseMyNameIsSteven = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseMyNameIsSteven.mp3');
+promptAudio.centralVietnameseWhereAreYouFrom = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseWhereAreYouFrom.mp3');
+promptAudio.centralVietnameseIAmFromAmerica = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseIAmFromAmerica.mp3');
+promptAudio.centralVietnameseVeryNiceToMeetYou = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseVeryNiceToMeetYou.mp3');
+promptAudio.centralVietnameseWhatDoYouLikeToEat = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseWhatDoYouLikeToEat.mp3');
+promptAudio.centralVietnameseILikeToEatVegetarian = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseILikeToEatVegetarian.mp3');
 
 
 promptAudio.englishBee = new promptSound('audio/PromptsAndAnswers/bee.mp3');
