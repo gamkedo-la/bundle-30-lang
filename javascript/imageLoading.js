@@ -107,6 +107,10 @@ let blueImage = document.createElement("img");
 let purpleImage = document.createElement("img");
 let pinkImage = document.createElement("img");
 
+//central vietnamese
+let helloManImage = document.createElement("img");
+let helloWomanImage = document.createElement("img");
+
 let calendarImage = document.createElement("img");
 
 let beeImage = document.createElement("img");
@@ -476,6 +480,11 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: mandarinMeMyIImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/mandarinMeMyIImage.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: youImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/you.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: atImage, theFile: 'images/sprites/PromptsAndAnswers/Mandarin/at.png', loaded: false});
+
+  //central vietnamese section
+  arrayOfImagesToLoad.push({imageObjectBinding: helloManImage, theFile: 'images/sprites/PromptsAndAnswers/CentralVietnamese/helloMan.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: helloWomanImage, theFile: 'images/sprites/PromptsAndAnswers/CentralVietnamese/helloWoman.png', loaded: false});
+
 
   //runner game
   arrayOfImagesToLoad.push({imageObjectBinding: runnerSunAndSkyBackgroundImage, theFile: 'images/Backgrounds/runnerSunAndSky.png', loaded: false});

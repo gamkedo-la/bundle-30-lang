@@ -1,8 +1,10 @@
 function CVCManager()
 {
+  //english section
   this.CVCcat = new cVc('c','a','t', catImage, promptAudio.blendedCat);
   this.CVCcot = new cVc('c','o','t', cotImage, promptAudio.blendedCot);
 
+  //mandarin section
   this.CVCMandarinHowAreYou = new cVc('你','好','吗', howAreYouImage, promptAudio.mandarinHowAreYou);
   this.CVCMandarinHowAmI = new cVc('我','怎么','样', howAmIImage, promptAudio.mandarinHowAmI);
   this.CVCMandarinHowAreThey = new cVc('他们','怎么','样', howAreTheyImage, promptAudio.mandarinHowAreThey);
@@ -33,14 +35,24 @@ function CVCManager()
   this.CVCMandarinHowOldAreYou = new cVc('你','几','岁', howOldAreYouImage, promptAudio.mandarinHowOldAreYou);
   this.CVCMandarinIAm37YearsOld = new cVc('我今年','三十七','岁', iAm37YearsOldImage, promptAudio.mandarinIAm37YearsOld);
 
+  //central vietnamese Section
+  this.CVCCentralVietnameseHelloMan = new cVc('xin', 'chào', 'anh', helloManImage, promptAudio.centralVietnameseHelloMan);
+  this.CVCCentralVietnameseHelloMan = new cVc('xin', 'chào', 'em', helloWomanImage, promptAudio.centralVietnameseHelloWoman);
+
+
 
   this.arrayOfEnglishCVCs = [];
   this.arrayOfMandarinCVCs = [];
+  this.arrayOfCentralVietnameseCVCs = [];
 
   this.initializeArraysOfCVCs = function()
   {
+    //english
     this.arrayOfEnglishCVCs.push(this.CVCcat);
     this.arrayOfEnglishCVCs.push(this.CVCcot);
+
+
+    //mandarin
 
     // this.arrayOfMandarinCVCs.push(this.CVCMandarinHowAreYou);
     // this.arrayOfMandarinCVCs.push(this.CVCMandarinHowAmI);
@@ -70,6 +82,10 @@ function CVCManager()
     this.arrayOfMandarinCVCs.push(this.CVCMandarinMyNameIsSteven);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinHowOldAreYou);
     this.arrayOfMandarinCVCs.push(this.CVCMandarinIAm37YearsOld);
+
+    //central vietnamese
+    this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseHelloWoman);
+    this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseHelloMan);
 
 
 

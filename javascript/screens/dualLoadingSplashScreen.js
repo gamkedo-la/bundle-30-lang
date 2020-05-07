@@ -22,7 +22,12 @@ function LoadingAndSplashScreen()
     mandarinCustomizationScreen.initializePromptAndAnswerGroupCheckBoxes();
     mandarinCustomizationScreen.initializeIndividualPromptsAndAnswerCheckBoxes();
     mandarinCustomizationScreen.initializeArrayOfDivs();
-    englishCustomizationScreen = new LanguageCustomizationScreen('mandarin customization screen', promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings);
+    englishCustomizationScreen = new LanguageCustomizationScreen('english customization screen', promptsAndAnswersManager.arrayOfLogicalEnglishPromptAnswerGroupings);
+    //console.log('mandarinCustomizationScreen: ' + mandarinCustomizationScreen);
+    englishCustomizationScreen.initializePromptAndAnswerGroupCheckBoxes();
+    englishCustomizationScreen.initializeIndividualPromptsAndAnswerCheckBoxes();
+    englishCustomizationScreen.initializeArrayOfDivs();
+    centralVietnameseCustomizationScreen = new LanguageCustomizationScreen('central vietnamese customization screen', promptsAndAnswersManager.arrayOfLogicalVietnamesePromptAnswerGroupings);
     //console.log('mandarinCustomizationScreen: ' + mandarinCustomizationScreen);
     englishCustomizationScreen.initializePromptAndAnswerGroupCheckBoxes();
     englishCustomizationScreen.initializeIndividualPromptsAndAnswerCheckBoxes();

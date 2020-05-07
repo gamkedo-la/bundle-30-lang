@@ -93,6 +93,11 @@ function LanguageSelectionScreen()
       fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.mandarinCustomizationScreen);
       promptsAndAnswersManager.assignCurrentLanguageArray();
     }
+    else if (this.languageNum === 2)
+    {
+      promptsAndAnswersManager.assignCurrentLanguageArray();
+      this.startGame();
+    }
   }
 
   this.handlePlayButtonClick = function()
