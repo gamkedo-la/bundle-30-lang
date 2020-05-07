@@ -150,6 +150,7 @@ let skyRingAnswerHolder2 = document.createElement('img');
 let planeImage = document.createElement('img');
 
 let menu_borderImage = document.createElement('img');
+let scoreboard_overlayImage = document.createElement('img');
 
 //lane images
 let laneGrassBackground1 = document.createElement('img');
@@ -520,9 +521,9 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: skyRingAnswerHolder2, theFile: 'images/sprites/Bird/skyRing2.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: planeImage, theFile: 'images/sprites/Bird/plane.png', loaded: false});
 
-
   // main menu bg
   arrayOfImagesToLoad.push({imageObjectBinding: menu_borderImage, theFile: 'images/Backgrounds/menu_border.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: scoreboard_overlayImage, theFile: 'images/Backgrounds/scoreboard_overlay.png', loaded: false});
 
   //lane game
   arrayOfImagesToLoad.push({imageObjectBinding: laneGrassBackground1, theFile: 'images/Backgrounds/LaneGrass1.png', loaded: false});
