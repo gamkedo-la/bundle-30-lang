@@ -14,9 +14,9 @@ function fancyBG(bottomImages=[heartImage],topImages=[starImage]) {
             fancysprite[i] = { x:0,y:-9999999,a:0.5+Math.random()*0.5,s:1,a:0,i:bottomImages[0] };
         }
     }
-    
+
     for (i=0; i<fancycount; i++) {
-        if (fancysprite[i].a<fancydecay) { 
+        if (fancysprite[i].a<fancydecay) {
             // respawn
             fancysprite[i].x = Math.random() * gameCanvas.width - 64;
             fancysprite[i].a = 0.5+Math.random()*0.5;
@@ -26,7 +26,7 @@ function fancyBG(bottomImages=[heartImage],topImages=[starImage]) {
                 fancysprite[i].s = Math.random() * fancymaxspeed;
                 fancysprite[i].i = bottomImages[Math.floor(Math.random() * bottomImages.length)];
 
-            } else { 
+            } else {
                 // top down
                 fancysprite[i].y = -256-Math.random()*256;
                 fancysprite[i].s = Math.random() * fancymaxspeed * -1;
@@ -36,7 +36,7 @@ function fancyBG(bottomImages=[heartImage],topImages=[starImage]) {
 
         fancysprite[i].a -= fancydecay;
         fancysprite[i].y += fancysprite[i].s;
-        
+
         gameCanvasContext.globalAlpha = fancysprite[i].a;
         gameCanvasContext.drawImage(fancysprite[i].i,
             fancysprite[i].x,fancysprite[i].y,
@@ -92,7 +92,7 @@ function TitleScreenClass()
     [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
     // [{name: "Penalty", fontSize: 17, spacing: 12, x: 325, y: 375},{name: "Shootout", fontSize: 17, spacing: 12, x: 324, y: 405}],//16 // TODO: game is not implemented yet. Will remove comments when it is implemented.
     //[{name: "Balloon", fontSize: 17, spacing: 12, x: 425, y: 375},{name: "Pop", fontSize: 17, spacing: 12, x: 450, y: 405}],
-    [{name: "Daytime", fontSize: 24, spacing: 12, x: 525, y: 380}],
+    // [{name: "Daytime", fontSize: 24, spacing: 12, x: 525, y: 380}],
     [{name: "Dodgeball", fontSize: 20, spacing: 10, x: 22, y: 480}],
     [{name: "Unscrambler", fontSize: 19, spacing: 9, x: 122, y: 480}],
     [{name: "Nighttime", fontSize: 20, spacing: 10, x: 222, y: 480}],

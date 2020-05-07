@@ -386,5 +386,6 @@ function populatePromptAndAnswerArrays()
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalMandarinPromptAnswerGroupings);
 
   //vietnamese
+  // centralVietnameseCasualConversationPatternsGroup1.arrayOfObjects.push(centralVietnameseWhatsYourNameQandA);
   promptsAndAnswersManager.arrayOfLanguagePromptAndAnswerGroupings.push(promptsAndAnswersManager.arrayOfLogicalVietnamesePromptAnswerGroupings);
 }

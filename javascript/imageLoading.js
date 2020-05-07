@@ -214,6 +214,13 @@ let simpleFlower = document.createElement('img');
 let flowerBackground = document.createElement('img');
 let jupiterImage = document.createElement('img');
 
+//birthday party images
+let russianDollImage1 = document.createElement('img');
+let daytimeImage = document.createElement('img');
+let russianDollImage4 = document.createElement('img');
+let speechBubbleFromLeftImage = document.createElement('img');
+let speechBubbleFromRightImage = document.createElement('img');
+
 // maze images
 let mazeFloor = document.createElement('img');
 let mazeTopWall = document.createElement('img');
@@ -594,6 +601,12 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: flowerBackground, theFile: "images/Backgrounds/Flower2.png", loaded: false});
 
+  //birthday party
+  arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage1, theFile: "images/sprites/dodgeBall/Player1.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: daytimeImage, theFile: "images/Backgrounds/daytimeBackground.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage4, theFile: "images/sprites/dodgeBall/Player4.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImage, theFile: "images/sprites/dayTime/speechBubbleFromLeft.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromRightImage, theFile: "images/sprites/dayTime/speechBubbleFromRight.png", loaded: false});
 
   // maze game
   arrayOfImagesToLoad.push({imageObjectBinding: mazeFloor, theFile: "images/Backgrounds/mazefloor.png", loaded: false});
