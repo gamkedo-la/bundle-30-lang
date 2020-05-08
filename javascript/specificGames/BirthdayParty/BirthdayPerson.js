@@ -17,6 +17,11 @@ function BirthdayPerson(image, x)
 function BirthdayPersonSpeechBubble(image, x,y, width,height)
 {
   this.image = image;
+  this.arrowImage = helloWorldArrowImage;
+  this.arrowImageWidth = 50;
+  this.arrowImageHeight = 100;
+
+  this.isBeingHeard = false;
 
   this.x = x;
   this.y = y;
@@ -30,5 +35,14 @@ function BirthdayPersonSpeechBubble(image, x,y, width,height)
   this.draw = function()
   {
     gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    if (this.isBeingHeard === true)
+    {
+      console.log('is being heard is being recognized');
+      let arrowImageStartingX = this.x + this.width/2 - this.arrowImageWidth/2;
+      let arrowImageStartingY = this.y - this.arrowImageHeight;
+      // let arrowImageStartingX = gameCanvas.width/2;
+      // let arrowImageStartingY = gameCanvas.height/2;
+      gameCanvasContext.drawImage(this.arrowImage, arrowImageStartingX,arrowImageStartingY, this.arrowImageWidth,this.arrowImageHeight);
+    }
   }
 }

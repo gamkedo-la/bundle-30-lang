@@ -220,6 +220,7 @@ let daytimeImage = document.createElement('img');
 let russianDollImage4 = document.createElement('img');
 let speechBubbleFromLeftImage = document.createElement('img');
 let speechBubbleFromRightImage = document.createElement('img');
+let helloWorldArrowImage = document.createElement('img');
 
 // maze images
 let mazeFloor = document.createElement('img');
@@ -607,6 +608,7 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage4, theFile: "images/sprites/dodgeBall/Player4.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImage, theFile: "images/sprites/dayTime/speechBubbleFromLeft.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromRightImage, theFile: "images/sprites/dayTime/speechBubbleFromRight.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: helloWorldArrowImage, theFile: "images/sprites/dayTime/arrow.png", loaded: false});
 
   // maze game
   arrayOfImagesToLoad.push({imageObjectBinding: mazeFloor, theFile: "images/Backgrounds/mazefloor.png", loaded: false});

@@ -14,7 +14,7 @@ function birthdayPartyGameClass()
     this.playerCharacterSpeechBubble1 = new BirthdayPersonSpeechBubble(speechBubbleFromLeftImage, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
     this.playerCharacterSpeechBubble2 = new BirthdayPersonSpeechBubble(speechBubbleFromLeftImage, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
     this.partyGuestSpeechBubble = new BirthdayPersonSpeechBubble(speechBubbleFromRightImage, gameCanvas.width*0.5,gameCanvas.height*0.2, gameCanvas.width/3,gameCanvas.width/3);
-	}
+  }
 
   this.conversationPatternManager = undefined;
 
@@ -37,33 +37,41 @@ function birthdayPartyGameClass()
   this.correctTextAnswerHolderWidth = undefined;
   this.incorrectTextAnswerHolderWidth = undefined;
 
-  this.superInitialize = function()
+
+  this.initialize = function()
 	{
     this.defineAndInitializePlayerCharacter();
     this.conversationPatternManager = new ConversationPatternManager();
     this.conversationPatternManager.initializeArraysOfConvoPatterns();
     this.currentLanguageArray = this.setCurrentLanguageArray();
-    this.conversationPatternManager.chooseCorrectConversationPattern();
+    console.log('this.currentLanguageArray: ' + this.currentLanguageArray);
+    console.log('this.currentLanguageArray[0]: ' + this.currentLanguageArray[0]);
+    this.conversationPatternManager.chooseCorrectConversationPattern(this.currentLanguageArray);
+    this.conversationPatternManager.chooseIncorrectAnswerAudio(this.currentLanguageArray);
+    this.conversationPatternManager.assignAudioClipsToSpeechBubbles();
+    this.conversationAudioManager = new ConversationAudioManager();
+    this.conversationAudioManager.getAudioClips();
+    // this.conversationAudioManager.playAudioClipsInSuccession();
   }
 
-  this.currentLanguageArray = undefined;
   this.setCurrentLanguageArray = function()
   {
+    let currentLanguageArray = undefined;
     if (languageSelectionScreen.languageNum === 0)
     {
       // this.currentLanguageArray = this.conversationPatternManager.arrayOfEnglishConvoPatterns; **doesn't exist yet, use vietnamese
-      this.currentLanguageArray = this.conversationPatternManager.arrayOfCentralVietnameseConvoPatterns;
+      currentLanguageArray = this.conversationPatternManager.arrayOfCentralVietnameseConvoPatterns;
     }
     else if (languageSelectionScreen.languageNum === 1)
     {
       // this.currentLanguageArray = this.conversationPatternManager.arrayOfMandarinConvoPatterns; **doesn't exist yet, use vietnamese
-      this.currentLanguageArray = this.conversationPatternManager.arrayOfCentralVietnameseConvoPatterns;
+      currentLanguageArray = this.conversationPatternManager.arrayOfCentralVietnameseConvoPatterns;
     }
     else if (languageSelectionScreen.languageNum === 2)
     {
-      this.currentLanguageArray = this.conversationPatternManager.arrayOfCentralVietnameseConvoPatterns;
+      currentLanguageArray = this.conversationPatternManager.arrayOfCentralVietnameseConvoPatterns;
     }
-    console.log('this.currentLanguageArray: ' + this.currentLanguageArray);
+    return currentLanguageArray;
   }
 
   this.draw = function()

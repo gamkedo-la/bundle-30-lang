@@ -1,7 +1,7 @@
 function ConversationPatternManager()
 {
-  this.centralVietnameseWhatIsYourNameConvoPattern = new ConversationPattern(promptAudio.centralVietnameseWhatsYourNameGeneral,promptAudio.centralVietnameseMyNameIsSteven);
-  this.centralVietnameseWhereAreYouFromConvoPattern = new ConversationPattern(promptAudio.centralVietnameseWhereAreYouFrom,promptAudio.centralVietnameseIAmFromAmerica);
+  this.centralVietnameseWhatIsYourNameConvoPattern = new ConversationPattern('whats your name convo',promptAudio.centralVietnameseWhatsYourNameGeneral,promptAudio.centralVietnameseMyNameIsSteven);
+  this.centralVietnameseWhereAreYouFromConvoPattern = new ConversationPattern('where are you from convo',promptAudio.centralVietnameseWhereAreYouFrom,promptAudio.centralVietnameseIAmFromAmerica);
 
   this.arrayOfCentralVietnameseConvoPatterns = [];
 
@@ -12,13 +12,54 @@ function ConversationPatternManager()
 
   }
 
-  this.chooseCorrectConversationPattern = function()
+  this.currentCorrectConversationPattern = undefined;
+  this.chooseCorrectConversationPattern = function(currentLanguageArray)
   {
-    let currentLanguageArray = gameClassManager.currentGame.currentLanguageArray;
-    console.log('currentLanguageArray: ' + currentLanguageArray);
     let randomArrayOfConvoPatternsIndex = getRandomIntInclusive(0,currentLanguageArray.length - 1);
-    return currentLanguageArray[randomArrayOfConvoPatternsIndex];
+    this.currentCorrectConversationPattern = currentLanguageArray[randomArrayOfConvoPatternsIndex];
+    console.log('this.currentCorrectConversationPattern.name: ' + this.currentCorrectConversationPattern.name);
   }
 
-  this.currentCorrectConversationPattern = undefined;
+  this.incorrectConversationPattern = undefined;
+  this.incorrectAnswerAudio = undefined;
+  this.chooseIncorrectAnswerAudio = function(currentLanguageArray)
+  {
+    let randomArrayOfConvoPatternsIndex = getRandomIntInclusive(0,currentLanguageArray.length - 1);
+    this.incorrectConversationPattern = currentLanguageArray[randomArrayOfConvoPatternsIndex];
+
+    while (this.incorrectConversationPattern === this.currentCorrectConversationPattern)
+    {
+      randomArrayOfConvoPatternsIndex = getRandomIntInclusive(0,currentLanguageArray.length - 1);
+      this.incorrectConversationPattern = currentLanguageArray[randomArrayOfConvoPatternsIndex];
+    }
+    console.log('this.incorrectConversationPattern.name: ' + this.incorrectConversationPattern.name);
+
+    this.incorrectAnswerAudio = this.incorrectConversationPattern.answerAudio;
+    console.log('this.incorrectAnswerAudio: ' + this.incorrectAnswerAudio);
+  }
+
+  this.assignAudioClipsToSpeechBubbles = function()
+  {
+    let partyGuestSpeechBubble = gameClassManager.currentGame.partyGuestSpeechBubble;
+    partyGuestSpeechBubble.message = this.currentCorrectConversationPattern.promptAudio;
+
+    let playerCharacterSpeechBubble1 = gameClassManager.currentGame.playerCharacterSpeechBubble1;
+    let playerCharacterSpeechBubble2 = gameClassManager.currentGame.playerCharacterSpeechBubble2;
+
+    let fiftyFiftyChance = Math.random();
+    if (fiftyFiftyChance < 0.5)
+    {
+      playerCharacterSpeechBubble1.message = this.currentCorrectConversationPattern.answerAudio;
+
+      playerCharacterSpeechBubble2.message = this.incorrectConversationPattern.answerAudio;
+    }
+    else
+    {
+      playerCharacterSpeechBubble2.message = this.currentCorrectConversationPattern.answerAudio;
+
+      playerCharacterSpeechBubble1.message = this.incorrectConversationPattern.answerAudio;
+
+    }
+  }
+
 }

@@ -1,14 +1,29 @@
-function ConversationPattern(audioAssociation1,audioAssociation2)
+function ConversationPattern(name,promptAudio,answerAudio)
 {
+
+  this.name = name;
   this.image = placeholderPlayButtonImage;
 
+  this.promptAudioX = undefined;
+  this.promptAudioY = undefined;
 
-  this.audioAssociation1 = audioAssociation1;
+  this.answerAudioX = undefined;
+  this.answerAudioY = undefined;
 
-  this.audioAssociation2 = audioAssociation2;
+  this.promptAudio = promptAudio;
 
-  this.draw = function(targetSpeechBubbleX,targetSpeechBubbleY)
+  this.answerAudio = answerAudio;
+
+  this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, targetSpeechBubbleX,targetSpeechBubbleY, 100,100);
+    if (this.promptAudioX !== undefined)
+    {
+      gameCanvasContext.drawImage(this.image, this.promptAudioX,this.promptAudioY, 100,100);
+    }
+
+    if (this.answerAudioX !== undefined)
+    {
+      gameCanvasContext.drawImage(this.image, this.answerAudioX,this.answerAudioY, 100,100);
+    }
   }
 }
