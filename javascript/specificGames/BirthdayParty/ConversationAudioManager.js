@@ -15,7 +15,7 @@ function ConversationAudioManager()
   this.promptBubble = undefined;
   this.firstAnswerBubble = undefined;
   this.secondAnswerBubble = undefined;
-  this.playAudioClipsInSuccession = function()
+  this.assignOrderOfAudioAnswers = function()
   {
     console.log('play audio clips function being called');
     this.promptBubble = gameClassManager.currentGame.partyGuestSpeechBubble;
@@ -35,13 +35,11 @@ function ConversationAudioManager()
 
     console.log('first answer bubble.message: ' + this.firstAnswerBubble.message);
     console.log('second answer bubble.message: ' + this.secondAnswerBubble.message);
-
-    this.promptBubble.isBeingHeard = true;
-    this.promptBubble.message.play();
   }
 
   this.assignOnendedFunctions = function()
   {
+    console.log('inside assignOnendedFunctions of conversationAudioManager');
     let scopingProblemThis = gameClassManager.currentGame.conversationAudioManager;
     scopingProblemThis.promptBubble.message.sfx.onended = function()
     {
