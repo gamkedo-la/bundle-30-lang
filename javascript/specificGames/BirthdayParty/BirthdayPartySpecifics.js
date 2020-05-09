@@ -11,9 +11,9 @@ function birthdayPartyGameClass()
     this.partyGuest = new BirthdayPerson(russianDollImage4, gameCanvas.width*0.8);
 		// this.playerCharacter.initialize();
 
-    this.playerCharacterSpeechBubbleA = new BirthdayPersonSpeechBubble(speechBubbleFromLeftImageA, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
-    this.playerCharacterSpeechBubbleB = new BirthdayPersonSpeechBubble(speechBubbleFromLeftImageB, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
-    this.partyGuestSpeechBubble = new BirthdayPersonSpeechBubble(speechBubbleFromRightImage, gameCanvas.width*0.5,gameCanvas.height*0.2, gameCanvas.width/3,gameCanvas.width/3);
+    this.playerCharacterSpeechBubbleA = new BirthdayPersonSpeechBubble(speechBubbleFromLeftImageA,speechBubbleFromLeftImageAHighlighted, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
+    this.playerCharacterSpeechBubbleB = new BirthdayPersonSpeechBubble(speechBubbleFromLeftImageB,speechBubbleFromLeftImageBHighlighted, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
+    this.partyGuestSpeechBubble = new BirthdayPersonSpeechBubble(speechBubbleFromRightImage,speechBubbleFromRightImage, gameCanvas.width*0.5,gameCanvas.height*0.2, gameCanvas.width/3,gameCanvas.width/3);
   }
 
   this.conversationPatternManager = undefined;
@@ -47,7 +47,7 @@ function birthdayPartyGameClass()
     console.log('this.currentLanguageArray: ' + this.currentLanguageArray);
     console.log('this.currentLanguageArray[0]: ' + this.currentLanguageArray[0]);
     this.conversationPatternManager.chooseCorrectConversationPattern(this.currentLanguageArray);
-    this.conversationPatternManager.chooseIncorrectAnswerAudio(this.currentLanguageArray);
+    this.conversationPatternManager.chooseIncorrectConversationPattern(this.currentLanguageArray);
     this.conversationPatternManager.assignAudioClipsToSpeechBubbles();
     this.conversationAudioManager = new ConversationAudioManager();
     this.conversationAudioManager.getAudioClips();
@@ -82,6 +82,20 @@ function birthdayPartyGameClass()
     this.playerCharacterSpeechBubbleA.draw();
     this.playerCharacterSpeechBubbleB.draw();
     this.partyGuestSpeechBubble.draw();
+  }
+
+  this.update = function()
+  {
+    this.playerCharacterSpeechBubbleA.returnMouseOverStatus();
+    this.playerCharacterSpeechBubbleB.returnMouseOverStatus();
+    this.partyGuestSpeechBubble.returnMouseOverStatus();
+  }
+
+  this.handleClick = function()
+  {
+    this.playerCharacterSpeechBubbleA.handleClick();
+    this.playerCharacterSpeechBubbleB.handleClick();
+    this.partyGuestSpeechBubble.handleClick();
   }
 }
 

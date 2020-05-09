@@ -9,7 +9,6 @@ function ConversationPatternManager()
   {
     this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseWhatIsYourNameConvoPattern);
     this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseWhereAreYouFromConvoPattern);
-
   }
 
   this.currentCorrectConversationPattern = undefined;
@@ -21,8 +20,7 @@ function ConversationPatternManager()
   }
 
   this.incorrectConversationPattern = undefined;
-  this.incorrectAnswerAudio = undefined;
-  this.chooseIncorrectAnswerAudio = function(currentLanguageArray)
+  this.chooseIncorrectConversationPattern = function(currentLanguageArray)
   {
     let randomArrayOfConvoPatternsIndex = getRandomIntInclusive(0,currentLanguageArray.length - 1);
     this.incorrectConversationPattern = currentLanguageArray[randomArrayOfConvoPatternsIndex];
@@ -33,9 +31,6 @@ function ConversationPatternManager()
       this.incorrectConversationPattern = currentLanguageArray[randomArrayOfConvoPatternsIndex];
     }
     console.log('this.incorrectConversationPattern.name: ' + this.incorrectConversationPattern.name);
-
-    this.incorrectAnswerAudio = this.incorrectConversationPattern.answerAudio;
-    console.log('this.incorrectAnswerAudio: ' + this.incorrectAnswerAudio);
   }
 
   this.assignAudioClipsToSpeechBubbles = function()

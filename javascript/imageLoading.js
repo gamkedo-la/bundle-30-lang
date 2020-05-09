@@ -219,6 +219,8 @@ let russianDollImage1 = document.createElement('img');
 let daytimeImage = document.createElement('img');
 let russianDollImage4 = document.createElement('img');
 let speechBubbleFromLeftImageA = document.createElement('img');
+let speechBubbleFromLeftImageAHighlighted = document.createElement('img');
+let speechBubbleFromLeftImageBHighlighted = document.createElement('img');
 let speechBubbleFromLeftImageB = document.createElement('img');
 let speechBubbleFromRightImage = document.createElement('img');
 let helloWorldArrowImage = document.createElement('img');
@@ -608,7 +610,9 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: daytimeImage, theFile: "images/Backgrounds/daytimeBackground.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage4, theFile: "images/sprites/dodgeBall/Player4.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageA, theFile: "images/sprites/dayTime/speechBubbleFromLeftA.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageAHighlighted, theFile: "images/sprites/dayTime/speechBubbleFromLeftAHighlighted.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageB, theFile: "images/sprites/dayTime/speechBubbleFromLeftB.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageBHighlighted, theFile: "images/sprites/dayTime/speechBubbleFromLeftBHighlighted.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromRightImage, theFile: "images/sprites/dayTime/speechBubbleFromRight.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: helloWorldArrowImage, theFile: "images/sprites/dayTime/arrow.png", loaded: false});
 

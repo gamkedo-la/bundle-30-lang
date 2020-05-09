@@ -2,14 +2,14 @@ function ConversationAudioManager()
 {
   this.promptAudio = undefined;
   this.correctAnswerAudio = undefined;
-  this.incorrectAnswerAudio = undefined;
+
 
   this.getAudioClips = function()
   {
     let conversationPatternManager = gameClassManager.currentGame.conversationPatternManager;
     this.promptAudio = conversationPatternManager.currentCorrectConversationPattern.promptAudio;
     this.correctAnswerAudio = conversationPatternManager.currentCorrectConversationPattern.answerAudio;
-    this.incorrectAnswerAudio = conversationPatternManager.incorrectAnswerAudio;
+    this.incorrectAnswerAudio = conversationPatternManager.incorrectConversationPattern.answerAudio;
   }
 
   this.promptBubble = undefined;
