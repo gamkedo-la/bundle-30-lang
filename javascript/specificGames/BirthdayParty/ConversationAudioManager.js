@@ -25,13 +25,13 @@ function ConversationAudioManager()
     let fiftyFiftyChance = Math.random();
     if (fiftyFiftyChance < 0.5)
     {
-      scopingProblemThis.firstAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble1;
-      scopingProblemThis.secondAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble2;
+      scopingProblemThis.firstAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleA;
+      scopingProblemThis.secondAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleB;
     }
     else
     {
-      scopingProblemThis.firstAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble2;
-      scopingProblemThis.secondAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble1;
+      scopingProblemThis.firstAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleB;
+      scopingProblemThis.secondAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleA;
     }
 
     console.log('first answer bubble.message: ' + scopingProblemThis.firstAnswerBubble.message);

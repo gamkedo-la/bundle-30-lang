@@ -43,21 +43,21 @@ function ConversationPatternManager()
     let partyGuestSpeechBubble = gameClassManager.currentGame.partyGuestSpeechBubble;
     partyGuestSpeechBubble.message = this.currentCorrectConversationPattern.promptAudio;
 
-    let playerCharacterSpeechBubble1 = gameClassManager.currentGame.playerCharacterSpeechBubble1;
-    let playerCharacterSpeechBubble2 = gameClassManager.currentGame.playerCharacterSpeechBubble2;
+    let playerCharacterSpeechBubbleA = gameClassManager.currentGame.playerCharacterSpeechBubbleA;
+    let playerCharacterSpeechBubbleB = gameClassManager.currentGame.playerCharacterSpeechBubbleB;
 
     let fiftyFiftyChance = Math.random();
     if (fiftyFiftyChance < 0.5)
     {
-      playerCharacterSpeechBubble1.message = this.currentCorrectConversationPattern.answerAudio;
+      playerCharacterSpeechBubbleA.message = this.currentCorrectConversationPattern.answerAudio;
 
-      playerCharacterSpeechBubble2.message = this.incorrectConversationPattern.answerAudio;
+      playerCharacterSpeechBubbleB.message = this.incorrectConversationPattern.answerAudio;
     }
     else
     {
-      playerCharacterSpeechBubble2.message = this.currentCorrectConversationPattern.answerAudio;
+      playerCharacterSpeechBubbleB.message = this.currentCorrectConversationPattern.answerAudio;
 
-      playerCharacterSpeechBubble1.message = this.incorrectConversationPattern.answerAudio;
+      playerCharacterSpeechBubbleA.message = this.incorrectConversationPattern.answerAudio;
 
     }
   }

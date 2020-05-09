@@ -11,8 +11,8 @@ function birthdayPartyGameClass()
     this.partyGuest = new BirthdayPerson(russianDollImage4, gameCanvas.width*0.8);
 		// this.playerCharacter.initialize();
 
-    this.playerCharacterSpeechBubble1 = new BirthdayPersonSpeechBubble(speechBubbleFromLeftImage, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
-    this.playerCharacterSpeechBubble2 = new BirthdayPersonSpeechBubble(speechBubbleFromLeftImage, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
+    this.playerCharacterSpeechBubbleA = new BirthdayPersonSpeechBubble(speechBubbleFromLeftImageA, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
+    this.playerCharacterSpeechBubbleB = new BirthdayPersonSpeechBubble(speechBubbleFromLeftImageB, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
     this.partyGuestSpeechBubble = new BirthdayPersonSpeechBubble(speechBubbleFromRightImage, gameCanvas.width*0.5,gameCanvas.height*0.2, gameCanvas.width/3,gameCanvas.width/3);
   }
 
@@ -79,8 +79,8 @@ function birthdayPartyGameClass()
     this.background.draw();
     this.playerCharacter.draw();
     this.partyGuest.draw();
-    this.playerCharacterSpeechBubble1.draw();
-    this.playerCharacterSpeechBubble2.draw();
+    this.playerCharacterSpeechBubbleA.draw();
+    this.playerCharacterSpeechBubbleB.draw();
     this.partyGuestSpeechBubble.draw();
   }
 }
