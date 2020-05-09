@@ -253,13 +253,13 @@ function promptSound(source) {
 		this.sfx.currentTime = 0;
 		this.sfx.volume = Math.pow(volume.prompt, 2);
 		this.sfx.play();
-		musicManager.startDuck();
-		this.sfx.onended = function() {
-			musicManager.endDuck();
-			if (gameClassManager.currentGame.name === 'birthday party game')
+
+		if (gameClassManager.currentGame.name !== 'birthday party game')
+		{
+			musicManager.startDuck();
+			this.sfx.onended = function()
 			{
-				console.log('onended function of promptSound in audio.js being called');
-				//gameClassManager.currentGame.conversationAudioManager.assignOnendedFunctions();
+				musicManager.endDuck();
 			}
 		}
 	}
@@ -433,6 +433,7 @@ genAudio.playTransitionMusic = function() {
 			console.log('inside if check of onended function of music manager');
 
 			gameClassManager.currentGame.conversationAudioManager.assignOrderOfAudioAnswers();
+			musicManager.startDuck();
 			gameClassManager.currentGame.conversationAudioManager.assignOnendedFunctions();
 
 	    gameClassManager.currentGame.conversationAudioManager.promptBubble.message.play();

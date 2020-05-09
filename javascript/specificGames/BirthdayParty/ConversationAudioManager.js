@@ -17,24 +17,25 @@ function ConversationAudioManager()
   this.secondAnswerBubble = undefined;
   this.assignOrderOfAudioAnswers = function()
   {
-    console.log('play audio clips function being called');
-    this.promptBubble = gameClassManager.currentGame.partyGuestSpeechBubble;
+    let scopingProblemThis = gameClassManager.currentGame.conversationAudioManager;
+    console.log('assign order of audio answers');
+    scopingProblemThis.promptBubble = gameClassManager.currentGame.partyGuestSpeechBubble;
 
 
     let fiftyFiftyChance = Math.random();
     if (fiftyFiftyChance < 0.5)
     {
-      this.firstAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble1;
-      this.secondAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble2;
+      scopingProblemThis.firstAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble1;
+      scopingProblemThis.secondAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble2;
     }
     else
     {
-      this.firstAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble2;
-      this.secondAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble1;
+      scopingProblemThis.firstAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble2;
+      scopingProblemThis.secondAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubble1;
     }
 
-    console.log('first answer bubble.message: ' + this.firstAnswerBubble.message);
-    console.log('second answer bubble.message: ' + this.secondAnswerBubble.message);
+    console.log('first answer bubble.message: ' + scopingProblemThis.firstAnswerBubble.message);
+    console.log('second answer bubble.message: ' + scopingProblemThis.secondAnswerBubble.message);
   }
 
   this.assignOnendedFunctions = function()
@@ -61,6 +62,7 @@ function ConversationAudioManager()
     {
       console.log('inside onended of second answer');
       scopingProblemThis.secondAnswerBubble.isBeingHeard = false;
+      musicManager.endDuck();
     }
   }
 }
