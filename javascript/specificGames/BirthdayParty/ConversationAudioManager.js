@@ -42,26 +42,27 @@ function ConversationAudioManager()
 
   this.assignOnendedFunctions = function()
   {
-    this.promptBubble.message.sfx.onended = function()
+    let scopingProblemThis = gameClassManager.currentGame.conversationAudioManager;
+    scopingProblemThis.promptBubble.message.sfx.onended = function()
     {
       console.log('inside onended of prompt');
-      this.firstAnswerBubble.message.play();
-      this.promptBubble.isBeingHeard = false;
-      this.firstAnswerBubble.isBeingHeard = true;
+      scopingProblemThis.firstAnswerBubble.message.play();
+      scopingProblemThis.promptBubble.isBeingHeard = false;
+      scopingProblemThis.firstAnswerBubble.isBeingHeard = true;
     }
 
-    this.firstAnswerBubble.message.sfx.onended = function()
+    scopingProblemThis.firstAnswerBubble.message.sfx.onended = function()
     {
       console.log('inside onended of first answer');
-      this.secondAnswerBubble.message.play();
-      this.firstAnswerBubble.isBeingHeard = false;
-      this.secondAnswerBubble.isBeingHeard = true;
+      scopingProblemThis.secondAnswerBubble.message.play();
+      scopingProblemThis.firstAnswerBubble.isBeingHeard = false;
+      scopingProblemThis.secondAnswerBubble.isBeingHeard = true;
     }
 
-    this.secondAnswerBubble.message.sfx.onended = function()
+    scopingProblemThis.secondAnswerBubble.message.sfx.onended = function()
     {
       console.log('inside onended of second answer');
-      this.secondAnswerBubble.isBeingHeard = false;
+      scopingProblemThis.secondAnswerBubble.isBeingHeard = false;
     }
   }
 }

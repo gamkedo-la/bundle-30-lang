@@ -259,7 +259,7 @@ function promptSound(source) {
 			if (gameClassManager.currentGame.name === 'birthday party game')
 			{
 				console.log('onended function of promptSound in audio.js being called');
-				gameClassManager.currentGame.conversationAudioManager.assignOnendedFunctions();
+				// gameClassManager.currentGame.conversationAudioManager.assignOnendedFunctions();
 			}
 		}
 	}
@@ -431,7 +431,9 @@ genAudio.playTransitionMusic = function() {
 		if (gameClassManager.currentGame.name === 'birthday party game')
 		{
 			console.log('inside if check of onended function of music manager');
+
 			gameClassManager.currentGame.conversationAudioManager.playAudioClipsInSuccession();
+			gameClassManager.currentGame.conversationAudioManager.assignOnendedFunctions();
 		}
 		gameCanvasContext.globalAlpha = 1;
 	}
