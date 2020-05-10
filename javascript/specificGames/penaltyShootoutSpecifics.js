@@ -1,5 +1,5 @@
 //penaltySpecifics
-//2 stated game. 3 letters come to the screen; one on the left, one on the middle, one on the right. Player has to make the correct choice about where to shoot the ball. If player does get it correctly, she wins one po.nt
+//2 stated game. 2 letters come to the screen; one on the left, one on the right. Player has to make the correct choice about where to shoot the ball. If player does get it correctly, she wins one point
 
 const penaltyBackButtonRectangleColor = 'yellow';
 const penaltyBackButtonTextColor = 'red';
@@ -24,13 +24,16 @@ function penaltyGameClass(){
     this.currentState = penaltyGameState.DecisionState;
     this.selectedSide;
     this.correctSide;
+    this.totalFrameCountToChangeState = 100;
+    this.currentFrame = 0;
     this.frameRate = 30;
     this.ballWidth = BALL_WIDTH;
     this.ballHeight = BALL_HEIGHT;
+    this.ballX = BALL_X;
+    this.ballY = BALL_Y;
     this.sides = {
-      left : {number : 1, isCorrect : false, drawX : 150, drawY : 300},
-      middle : {number : 2, isCorrect : false, drawX : 350, drawY : 300},
-      right : {number : 3, isCorrect : false, drawX : 550, drawY : 300}
+      left : {number : 1, isCorrect : false, drawX : 50, drawY : 125},
+      right : {number : 2, isCorrect : false, drawX : 500, drawY : 125}
     };
     this.titleScreenData = [{
     name: "Penalty",
@@ -53,6 +56,7 @@ function penaltyGameClass(){
           console.log("leftarrowpressed");
           this.selectedSide = this.sides.left;
           this.changeState();
+          this.currentFrame = 0;
         }
     };
 
@@ -61,22 +65,7 @@ function penaltyGameClass(){
         console.log("rightArrowPressed");
         this.selectedSide = this.sides.right;
         this.changeState();
-      }
-    };
-
-    this.handleUpArrowDown = function(){
-      if (this.currentState === penaltyGameState.DecisionState) {
-        console.log("upArrowPressed");
-        this.selectedSide = this.sides.middle;
-        this.changeState();
-      }
-    };
-
-    this.handleDownArrowDown = function(){
-      if (this.currentState === penaltyGameState.DecisionState) {
-        console.log("downArrowPressed");
-        this.selectedSide = this.sides.middle;
-        this.changeState();
+        this.currentFrame = 0;
       }
     };
 
@@ -90,13 +79,23 @@ function penaltyGameClass(){
 
     this.update = function(){
         this.draw();
-        this.movePlayer();
+        this.moveGoalKeeper();
+        if (this.currentState === penaltyGameState.PenaltyShootingState){
+          this.handleFrameCountToChangeState();
+        }
         //collisionsWithAnswersManager.handleCollisionsWithAnswers();
     };
 
-    this.movePlayer = function(){
-      if (this.currentState === penaltyGameState.DecisionState){
-
+    this.handleFrameCountToChangeState = function(){
+      this.currentFrame ++;
+      if (this.currentFrame >= this.totalFrameCountToChangeState) {
+        this.changeState();
+        promptersManager.promptThePlayer();
+      }
+    }
+    this.moveGoalKeeper = function(){
+      if (this.currentState === penaltyGameState.PenaltyShootingState){
+        // TODO: Make goalkeeper move to wrong side.
       }
     };
 
@@ -105,7 +104,7 @@ function penaltyGameClass(){
         this.drawBall();
         this.drawGoal();
       if (this.currentState === penaltyGameState.DecisionState) {
-        this.drawPlayer();
+        this.drawGoalKeeper();
         this.drawLetters();
         drawAnswersManager.draw();
         promptersManager.drawPromptsWhenAppropriate();
@@ -116,18 +115,18 @@ function penaltyGameClass(){
     };
 
     this.drawBackground = function(){
-      gameCanvasContext.drawImage(snakeGrassBackground, 0,0, gameCanvas.width,gameCanvas.height);
+      gameCanvasContext.drawImage(snakeGrassBackground, 0, 0, gameCanvas.width, gameCanvas.height);
     };
 
     this.drawBall = function(){
-      gameCanvasContext.drawImage(penaltyBall1, BALL_X,BALL_Y,this.ballWidth, this.ballHeight);
+      gameCanvasContext.drawImage(penaltyBall1, this.ballX, this.ballY, this.ballWidth, this.ballHeight);
     };
 
     this.drawGoal = function(){
       gameCanvasContext.drawImage(penaltyGoal, GOAL_X,GOAL_Y, GOAL_WIDTH,GOAL_HEIGHT);
     };
 
-    this.drawPlayer = function(){
+    this.drawGoalKeeper = function(){
     };
 
 
@@ -150,16 +149,22 @@ function penaltyGameClass(){
       switch (this.currentState) {
         case penaltyGameState.DecisionState:
           if (this.correctSide === this.selectedSide.number) {
+            genAudio.playPositive();
+            amountCorrect++;
+            this.collisionsWithAnswersManager.processCollisionWithAnswer();
             console.log("Right Choice");
           }
           else {
+            genAudio.playNegative();
+            amountIncorrect++;
+            this.collisionsWithAnswersManager.processCollisionWithAnswer();
             console.log("Wrong Choice");
           }
           this.selectedSide == null;
           this.ResetStrikerAndGoalKeeper();
           this.currentState = penaltyGameState.PenaltyShootingState;
           this.setCorrectSide();
-          setTimeout(stateChanger, 2000, this);
+          //penaltyGame.changeState();
           break;
         case penaltyGameState.PenaltyShootingState:
           this.ResetSelectionScreen();
@@ -172,7 +177,7 @@ function penaltyGameClass(){
     };
 
     this.setCorrectSide = function(){
-      this.correctSide = Math.floor(Math.random() * 3) + 1;
+      this.correctSide = Math.floor(Math.random() * 2) + 1;
     };
 
     this.ResetStrikerAndGoalKeeper = function(){

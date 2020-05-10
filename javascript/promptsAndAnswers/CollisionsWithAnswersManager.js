@@ -298,8 +298,10 @@ function CollisionsWithAnswersManager()
         promptsAndAnswersManager.setOrResetPromptsAndAnswers();
         promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
         promptersManager.promptThePlayer();
-        gameClassManager.currentGame.playerCharacter.speedX = 0;
-        gameClassManager.currentGame.playerCharacter.speedY = 0;
+        if (gameClassManager.currentGame.playerCharacter != null) {
+          gameClassManager.currentGame.playerCharacter.speedX = 0;
+          gameClassManager.currentGame.playerCharacter.speedY = 0;
+        }
     }
 }
 CollisionsWithAnswersManager.prototype = new CollisionsWithAnswersManager();
