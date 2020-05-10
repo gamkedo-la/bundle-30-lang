@@ -1,14 +1,18 @@
 function ConversationPatternManager()
 {
+  //central vietnamese
   this.centralVietnameseWhatIsYourNameConvoPattern = new ConversationPattern('whats your name convo',promptAudio.centralVietnameseWhatsYourNameGeneral,promptAudio.centralVietnameseMyNameIsSteven);
   this.centralVietnameseWhereAreYouFromConvoPattern = new ConversationPattern('where are you from convo',promptAudio.centralVietnameseWhereAreYouFrom,promptAudio.centralVietnameseIAmFromAmerica);
+  this.centralVietnameseWhatDoYouLikeToEatConvoPattern = new ConversationPattern('what do you like to eat convo',promptAudio.centralVietnameseWhatDoYouLikeToEat,promptAudio.centralVietnameseILikeToEatVegetarian);
 
   this.arrayOfCentralVietnameseConvoPatterns = [];
 
   this.initializeArraysOfConvoPatterns = function()
   {
+    //central vietnamese
     this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseWhatIsYourNameConvoPattern);
     this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseWhereAreYouFromConvoPattern);
+    this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseWhatDoYouLikeToEatConvoPattern);
   }
 
   this.currentCorrectConversationPattern = undefined;
