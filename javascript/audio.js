@@ -396,6 +396,10 @@ promptAudio.mandarin7 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandar
 promptAudio.mandarin8 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin8.mp3');
 promptAudio.mandarin9 = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarin9.mp3');
 
+promptAudio.mandarinHello = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinHello.mp3');
+promptAudio.mandarinImGoodAndYou = new promptSound('audio/PromptsAndAnswers/Mandarin/mandarinImGoodAndYou.mp3');
+
+
 //central vietnamese
 promptAudio.centralVietnameseHelloMan = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseHelloMan.mp3');
 promptAudio.centralVietnameseHelloWoman = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseHelloWoman.mp3');

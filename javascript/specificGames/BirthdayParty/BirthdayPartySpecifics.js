@@ -65,7 +65,7 @@ function birthdayPartyGameClass()
     else if (languageSelectionScreen.languageNum === 1)
     {
       // this.currentLanguageArray = this.conversationPatternManager.arrayOfMandarinConvoPatterns; **doesn't exist yet, use vietnamese
-      currentLanguageArray = this.conversationPatternManager.arrayOfCentralVietnameseConvoPatterns;
+      currentLanguageArray = this.conversationPatternManager.arrayOfMandarinConvoPatterns;
     }
     else if (languageSelectionScreen.languageNum === 2)
     {

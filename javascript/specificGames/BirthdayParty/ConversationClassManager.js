@@ -8,9 +8,22 @@ function ConversationPatternManager()
   this.centralVietnameseHowAreYouGoodAndYouConvoPattern = new ConversationPattern('how are you good and you convo pattern',promptAudio.centralVietnameseHowAreYouGeneral,promptAudio.centralVietnameseGoodAndYouGeneral);
   this.centralVietnameseExcuseMePoliteHelloConvoPattern = new ConversationPattern('excuse me polite hello convo pattern',promptAudio.centralVietnameseExcuseMe,promptAudio.centralVietnamesePoliteHello);
 
-
   this.arrayOfCentralVietnameseConvoPatterns = [];
 
+  //mandarin
+  this.mandarinHelloConversationPattern = new ConversationPattern('hello conversation pattern', promptAudio.mandarinHello,promptAudio.mandarinHello);
+  this.mandarinHowAreYouConversationPattern = new ConversationPattern('how are you conversation pattern', promptAudio.mandarinHowAreYou,promptAudio.mandarinImGoodAndYou);
+  this.mandarinWhereAreYouFromConversationPattern = new ConversationPattern('where are you from conversation pattern', promptAudio.mandarinWhereAreYouFrom,promptAudio.mandarinImFromAmerica);
+  this.mandarinWhatDoYouLikeToDoConversationPattern = new ConversationPattern('what do you like to do conversation pattern', promptAudio.mandarinWhatDoYouLikeToDo,promptAudio.mandarinILikeProgramming);
+  this.mandarinWhereDoYouLiveConversationPattern = new ConversationPattern('where do you live conversation pattern', promptAudio.mandarinWhereDoYouLive,promptAudio.mandarinILiveInVietnam);
+  this.mandarinWhatIsYourJobConversationPattern = new ConversationPattern('what is your job conversation pattern', promptAudio.mandarinWhatIsYourJob,promptAudio.mandarinIAmATeacher);
+  this.mandarinAnythingElseConversationPattern = new ConversationPattern('anything else conversation pattern', promptAudio.mandarinAnythingElse,promptAudio.mandarinIAlsoLikeFitness);
+  this.mandarinWhatIsYourNameConversationPattern = new ConversationPattern('what is your name conversation pattern', promptAudio.mandarinWhatIsYourName,promptAudio.mandarinMyNameIsSteven);
+  this.mandarinHowOldAreYouConversationPattern = new ConversationPattern('how old are you conversation pattern', promptAudio.mandarinHowOldAreYou,promptAudio.mandarinIAm37YearsOld);
+  this.mandarinWhereAreYouConversationPattern = new ConversationPattern('how old are you conversation pattern', promptAudio.mandarinHowOldAreYou,promptAudio.mandarinIAm37YearsOld);
+
+  this.arrayOfMandarinConvoPatterns = [];
+  
   this.initializeArraysOfConvoPatterns = function()
   {
     //central vietnamese
@@ -21,6 +34,16 @@ function ConversationPatternManager()
     this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseHowAreYouGoodAndYouConvoPattern);
     this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseExcuseMePoliteHelloConvoPattern);
 
+    //mandarin
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinHelloConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinHowAreYouConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinWhereAreYouFromConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinWhatDoYouLikeToDoConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinWhereDoYouLiveConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinWhatIsYourJobConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinAnythingElseConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinWhatIsYourNameConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinHowOldAreYouConversationPattern);
   }
 
   this.currentCorrectConversationPattern = undefined;
