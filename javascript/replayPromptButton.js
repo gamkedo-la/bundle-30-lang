@@ -32,10 +32,17 @@ function ReplayPromptButton()
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < gameCanvas.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < gameCanvas.height)
         {
-
-          promptersManager.currentPrompter.currentWidth = 150;
-          promptersManager.currentPrompter.currentHeight = 150;
-          promptersManager.promptThePlayer();
+          if (gameClassManager.currentGame.name === 'birthday party game')
+          {
+            gameClassManager.currentGame.conversationAudioManager.promptAudio.play();
+            gameClassManager.currentGame.partyGuestSpeechBubble.isBeingHeard = true;
+          }
+          else
+          {
+            promptersManager.currentPrompter.currentWidth = 150;
+            promptersManager.currentPrompter.currentHeight = 150;
+            promptersManager.promptThePlayer();
+          }
         }
   }
 }

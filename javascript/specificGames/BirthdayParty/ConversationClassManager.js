@@ -4,6 +4,10 @@ function ConversationPatternManager()
   this.centralVietnameseWhatIsYourNameConvoPattern = new ConversationPattern('whats your name convo',promptAudio.centralVietnameseWhatsYourNameGeneral,promptAudio.centralVietnameseMyNameIsSteven);
   this.centralVietnameseWhereAreYouFromConvoPattern = new ConversationPattern('where are you from convo',promptAudio.centralVietnameseWhereAreYouFrom,promptAudio.centralVietnameseIAmFromAmerica);
   this.centralVietnameseWhatDoYouLikeToEatConvoPattern = new ConversationPattern('what do you like to eat convo',promptAudio.centralVietnameseWhatDoYouLikeToEat,promptAudio.centralVietnameseILikeToEatVegetarian);
+  this.centralVietnameseGoodbyeVeryNiceToMeetYouConvoPattern = new ConversationPattern('goodbye very nice to meet you pattern',promptAudio.centralVietnameseGoodBye,promptAudio.centralVietnameseVeryNiceToMeetYou);
+  this.centralVietnameseHowAreYouGoodAndYouConvoPattern = new ConversationPattern('how are you good and you convo pattern',promptAudio.centralVietnameseHowAreYouGeneral,promptAudio.centralVietnameseGoodAndYouGeneral);
+  this.centralVietnameseExcuseMePoliteHelloConvoPattern = new ConversationPattern('excuse me polite hello convo pattern',promptAudio.centralVietnameseExcuseMe,promptAudio.centralVietnamesePoliteHello);
+
 
   this.arrayOfCentralVietnameseConvoPatterns = [];
 
@@ -13,6 +17,10 @@ function ConversationPatternManager()
     this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseWhatIsYourNameConvoPattern);
     this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseWhereAreYouFromConvoPattern);
     this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseWhatDoYouLikeToEatConvoPattern);
+    this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseGoodbyeVeryNiceToMeetYouConvoPattern);
+    this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseHowAreYouGoodAndYouConvoPattern);
+    this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseExcuseMePoliteHelloConvoPattern);
+
   }
 
   this.currentCorrectConversationPattern = undefined;
