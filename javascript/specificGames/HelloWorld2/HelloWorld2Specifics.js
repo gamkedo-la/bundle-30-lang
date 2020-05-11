@@ -53,6 +53,7 @@ function helloWorld2GameClass()
     this.questionClassManager.assignAudioClipsToSpeechBubbles();
 
     this.questionAudioManager.getAudioClips();
+
     // this.conversationAudioManager.playAudioClipsInSuccession();
   }
 
@@ -85,7 +86,7 @@ function helloWorld2GameClass()
     this.NPC.draw();
     this.playerCharacterSpeechBubbleA.draw();
     this.playerCharacterSpeechBubbleB.draw();
-    if (this.imagePrompter.shouldBeDrawingAPrompt)
+    if (this.imagePrompter.shouldBeDrawingAPrompt === true)
     {
       this.imagePrompter.drawThePrompt();
     }
@@ -95,6 +96,10 @@ function helloWorld2GameClass()
   {
     this.playerCharacterSpeechBubbleA.returnMouseOverStatus();
     this.playerCharacterSpeechBubbleB.returnMouseOverStatus();
+    if (this.imagePrompter.shouldBeDrawingAPrompt === true)
+    {
+      this.imagePrompter.updatePromptImage();
+    }
   }
 
   this.handleClick = function()

@@ -59,18 +59,23 @@ function HelloWorld2ImagePrompter()
   this.togglePromptingBoolean = function()
   {
     console.log('image prompter toggled');
-    if (this.shouldBeDrawingAPrompt)
+    if (gameClassManager.currentGame.imagePrompter.shouldBeDrawingAPrompt === true)
     {
-      this.shouldBeDrawingAPrompt = false;
-      this.currentWidth = 150;
-      this.currentHeight = 150;
+      console.log('if check for drawing prompt is true');
+      gameClassManager.currentGame.imagePrompter.shouldBeDrawingAPrompt = false;
+      gameClassManager.currentGame.imagePrompter.currentWidth = 150;
+      gameClassManager.currentGame.imagePrompter.currentHeight = 150;
       gameClassManager.currentGame.questionAudioManager.firstQuestionBubble.message.sfx.play();
 			gameClassManager.currentGame.questionAudioManager.firstQuestionBubble.isBeingHeard = true;
-    } else {
-      promptersManager.shouldBeDrawingAPrompt = true;
-      this.currentHeight = 150;
-      this.currentHeight = 150;
     }
+    else if (gameClassManager.currentGame.imagePrompter.shouldBeDrawingAPrompt === false)
+    {
+      console.log('if check for drawing prompt is false');
+      gameClassManager.currentGame.imagePrompter.shouldBeDrawingAPrompt = true;
+      gameClassManager.currentGame.imagePrompter.currentHeight = 150;
+      gameClassManager.currentGame.imagePrompter.currentHeight = 150;
+    }
+    console.log('this.shouldBeDrawingAPrompt: ' + gameClassManager.currentGame.imagePrompter.shouldBeDrawingAPrompt);
   }
 
   this.promptThePlayer = function()
