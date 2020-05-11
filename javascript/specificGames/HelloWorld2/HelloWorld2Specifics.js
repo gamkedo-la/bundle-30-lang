@@ -69,7 +69,7 @@ function helloWorld2GameClass()
     else if (languageSelectionScreen.languageNum === 1)
     {
       // this.currentLanguageArray = this.conversationPatternManager.arrayOfMandarinConvoPatterns; **doesn't exist yet, use vietnamese
-      currentLanguageArray = this.questionClassManager.arrayOfCentralVietnameseQuestions;
+      currentLanguageArray = this.questionClassManager.arrayOfMandarinQuestions;
     }
     else if (languageSelectionScreen.languageNum === 2)
     {
