@@ -35,7 +35,7 @@ function ReplayPromptButton()
           if (gameClassManager.currentGame.name === 'hello world game')
           {
             gameClassManager.currentGame.conversationAudioManager.promptAudio.play();
-            gameClassManager.currentGame.partyGuestSpeechBubble.isBeingHeard = true;
+            gameClassManager.currentGame.NPCSpeechBubble.isBeingHeard = true;
           }
           else
           {

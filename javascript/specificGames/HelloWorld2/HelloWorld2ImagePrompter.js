@@ -1,6 +1,6 @@
-function ImagePrompter()
+function HelloWorld2ImagePrompter()
 {
-  this.name = 'image prompter';
+  this.name = 'hello world 2 image prompter';
   this.image = undefined;
   this.loadCurrentImage = function(imageToLoad)
   {
@@ -19,13 +19,14 @@ function ImagePrompter()
 
   this.drawThePrompt = function()
   {
+    console.log('inside draw the prompt function');
     if (this.image !== undefined)
     {
       gameCanvasContext.fillStyle = this.backgroundColor;
       gameCanvasContext.fillRect(gameCanvas.width/2 - this.currentWidth/2,gameCanvas.height/2 - this.currentHeight/2,
                                  this.currentWidth,this.currentHeight);
 
-     customFontFillText(["What do you see", symbolQuestionMarkImage],
+     customFontFillText(["Ask this question", symbolQuestionMarkImage],
                          this.currentWidth*0.15 /*font size*/,this.currentWidth*0.055 /*spacing*/,
                          gameCanvas.width/2 - this.currentWidth/2  + this.currentWidth*0.0175,//xCoordinate
                          gameCanvas.height/2 - this.currentHeight/2);//yCoordinate
@@ -54,17 +55,17 @@ function ImagePrompter()
     }
   }
 
+  this.shouldBeDrawingAPrompt = false;
   this.togglePromptingBoolean = function()
   {
-    if (promptersManager.shouldBeDrawingAPrompt)
+    console.log('image prompter toggled');
+    if (this.shouldBeDrawingAPrompt)
     {
-      promptersManager.shouldBeDrawingAPrompt = false;
+      this.shouldBeDrawingAPrompt = false;
       this.currentWidth = 150;
       this.currentHeight = 150;
-      if (promptsAndAnswersManager.currentAnswerDataType === "AUDIO")
-      {
-        promptersManager.promptAudioAnswersWhenAppropriate();
-      }
+      gameClassManager.currentGame.questionAudioManager.firstQuestionBubble.message.sfx.play();
+			gameClassManager.currentGame.questionAudioManager.firstQuestionBubble.isBeingHeard = true;
     } else {
       promptersManager.shouldBeDrawingAPrompt = true;
       this.currentHeight = 150;
@@ -78,5 +79,3 @@ function ImagePrompter()
     setTimeout(this.togglePromptingBoolean,2000);
   }
 }
-
-let imagePrompter;

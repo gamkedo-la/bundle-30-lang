@@ -1,7 +1,7 @@
-helloWorldGameClass.prototype = new GameClass();
-function helloWorldGameClass()
+helloWorld2GameClass.prototype = new GameClass();
+function helloWorld2GameClass()
 {
-  this.name = 'hello world game';
+  this.name = 'hello world 2 game';
 
   this.playerCharacter = undefined;
   this.NPC = undefined;
@@ -13,21 +13,19 @@ function helloWorldGameClass()
 
     this.playerCharacterSpeechBubbleA = new CharacterSpeechBubble(speechBubbleFromLeftImageA,speechBubbleFromLeftImageAHighlighted, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
     this.playerCharacterSpeechBubbleB = new CharacterSpeechBubble(speechBubbleFromLeftImageB,speechBubbleFromLeftImageBHighlighted, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
-    this.NPCSpeechBubble = new CharacterSpeechBubble(speechBubbleFromRightImage,speechBubbleFromRightImage, gameCanvas.width*0.5,gameCanvas.height*0.2, gameCanvas.width/3,gameCanvas.width/3);
   }
 
-  this.FRAME_RATE = 1000/30;
-
-  this.conversationPatternManager = undefined;
-  this.conversationAudioManager = undefined;
+  this.questionClassManager = undefined;
+  this.questionAudioManager = undefined;
+  this.imagePrompter = undefined;
 
   this.background = new HelloWorldBackground();
 
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 	this.titleScreenData = [
-	  {name: "Hello", fontSize: 25, spacing: 12, x: 530, y: 365},
-	  {name: "World", fontSize: 17, spacing: 10, x: 530, y: 400}
+	  {name: "Hello", fontSize: 25, spacing: 12, x: 530, y: 565},
+	  {name: "World 2", fontSize: 17, spacing: 10, x: 530, y: 600}
 	];
 
 	this.imageAnswerHolderWidth = undefined;
@@ -43,17 +41,18 @@ function helloWorldGameClass()
   this.initialize = function()
 	{
     this.defineAndInitializePlayerCharacter();
-    this.conversationPatternManager = new ConversationPatternManager();
-    this.conversationAudioManager = new ConversationAudioManager();
-    this.conversationPatternManager.initializeArraysOfConvoPatterns();
+    this.questionClassManager = new QuestionClassManager();
+    this.questionAudioManager = new QuestionAudioManager();
+    this.imagePrompter = new HelloWorld2ImagePrompter();
+    this.questionClassManager.populateArraysOfConvoPatterns();
     this.currentLanguageArray = this.setCurrentLanguageArray();
     console.log('this.currentLanguageArray: ' + this.currentLanguageArray);
     console.log('this.currentLanguageArray[0]: ' + this.currentLanguageArray[0]);
-    this.conversationPatternManager.chooseCorrectConversationPattern(this.currentLanguageArray);
-    this.conversationPatternManager.chooseIncorrectConversationPattern(this.currentLanguageArray);
-    this.conversationPatternManager.assignAudioClipsToSpeechBubbles();
+    this.questionClassManager.chooseCorrectQuestion(this.currentLanguageArray);
+    this.questionClassManager.chooseIncorrectQuestion(this.currentLanguageArray);
+    this.questionClassManager.assignAudioClipsToSpeechBubbles();
 
-    this.conversationAudioManager.getAudioClips();
+    this.questionAudioManager.getAudioClips();
     // this.conversationAudioManager.playAudioClipsInSuccession();
   }
 
@@ -63,16 +62,18 @@ function helloWorldGameClass()
     if (languageSelectionScreen.languageNum === 0)
     {
       // this.currentLanguageArray = this.conversationPatternManager.arrayOfEnglishConvoPatterns; **doesn't exist yet, use vietnamese
-      currentLanguageArray = this.conversationPatternManager.arrayOfCentralVietnameseConvoPatterns;
+      currentLanguageArray = this.questionClassManager.arrayOfCentralVietnameseQuestions;
     }
     else if (languageSelectionScreen.languageNum === 1)
     {
       // this.currentLanguageArray = this.conversationPatternManager.arrayOfMandarinConvoPatterns; **doesn't exist yet, use vietnamese
-      currentLanguageArray = this.conversationPatternManager.arrayOfMandarinConvoPatterns;
+      currentLanguageArray = this.questionClassManager.arrayOfCentralVietnameseQuestions;
     }
     else if (languageSelectionScreen.languageNum === 2)
     {
-      currentLanguageArray = this.conversationPatternManager.arrayOfCentralVietnameseConvoPatterns;
+      currentLanguageArray = this.questionClassManager.arrayOfCentralVietnameseQuestions;
+      console.log('this.questionClassManager: ' + this.questionClassManager);
+      console.log('currentLanguageArray: ' + currentLanguageArray);
     }
     return currentLanguageArray;
   }
@@ -84,27 +85,28 @@ function helloWorldGameClass()
     this.NPC.draw();
     this.playerCharacterSpeechBubbleA.draw();
     this.playerCharacterSpeechBubbleB.draw();
-    this.NPCSpeechBubble.draw();
+    if (this.imagePrompter.shouldBeDrawingAPrompt)
+    {
+      this.imagePrompter.drawThePrompt();
+    }
   }
 
   this.update = function()
   {
     this.playerCharacterSpeechBubbleA.returnMouseOverStatus();
     this.playerCharacterSpeechBubbleB.returnMouseOverStatus();
-    this.NPCSpeechBubble.returnMouseOverStatus();
   }
 
   this.handleClick = function()
   {
     this.playerCharacterSpeechBubbleA.handleClick();
     this.playerCharacterSpeechBubbleB.handleClick();
-    this.NPCSpeechBubble.handleClick();
   }
 }
 
-const helloWorldGame = new helloWorldGameClass();
+const helloWorld2Game = new helloWorld2GameClass();
 
-function HelloWorldBackground()
+function HelloWorld2Background()
 {
   this.image = daytimeImage;
 

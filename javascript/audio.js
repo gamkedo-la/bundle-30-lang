@@ -446,6 +446,15 @@ genAudio.playTransitionMusic = function() {
 	    gameClassManager.currentGame.conversationAudioManager.promptBubble.message.play();
 			gameClassManager.currentGame.conversationAudioManager.promptBubble.isBeingHeard = true;
 		}
+		else if
+		(gameClassManager.currentGame.name === 'hello world 2 game')
+		{
+			gameClassManager.currentGame.questionAudioManager.assignOrderOfAudioQuestions();
+			musicManager.startDuck();
+			gameClassManager.currentGame.questionAudioManager.assignOnendedFunctions();
+
+	    gameClassManager.currentGame.imagePrompter.promptThePlayer();
+		}
 		gameCanvasContext.globalAlpha = 1;
 	}
 }

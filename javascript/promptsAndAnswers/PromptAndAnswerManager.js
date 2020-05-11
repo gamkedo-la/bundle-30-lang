@@ -424,7 +424,7 @@ function PromptsAndAnswersManager()
         randomPlatformIndex = (getRandomIntInclusive(1,7)*100) + currentOffset;
         this.incorrectTargetPromptAndAnswerPairing.yCoordinate = randomPlatformIndex;
       }
-      
+
 
     }
     else if (gameClassManager.currentGame.name === 'frogRiverGame')
@@ -729,7 +729,7 @@ function PromptsAndAnswersManager()
 
   this.setOrResetPromptsAndAnswers = function()
   {
-    if (gameClassManager.currentGame === cVcShooterGame)
+    if (gameClassManager.currentGame === cVcShooterGame || gameClassManager.currentGame.name === 'hello world 2 game')
     {
       return;
     }
