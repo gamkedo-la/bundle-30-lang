@@ -18,8 +18,8 @@ function ConversationAudioManager()
   this.assignOrderOfAudioAnswers = function()
   {
     let scopingProblemThis = gameClassManager.currentGame.conversationAudioManager;
-    console.log('assign order of audio answers');
-    scopingProblemThis.promptBubble = gameClassManager.currentGame.partyGuestSpeechBubble;
+
+    scopingProblemThis.promptBubble = gameClassManager.currentGame.NPCSpeechBubble;
 
 
     let fiftyFiftyChance = Math.random();
@@ -33,18 +33,13 @@ function ConversationAudioManager()
       scopingProblemThis.firstAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleB;
       scopingProblemThis.secondAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleA;
     }
-
-    console.log('first answer bubble.message: ' + scopingProblemThis.firstAnswerBubble.message);
-    console.log('second answer bubble.message: ' + scopingProblemThis.secondAnswerBubble.message);
   }
 
   this.assignOnendedFunctions = function()
   {
-    console.log('inside assignOnendedFunctions of conversationAudioManager');
     let scopingProblemThis = gameClassManager.currentGame.conversationAudioManager;
     scopingProblemThis.promptBubble.message.sfx.onended = function()
     {
-      console.log('inside onended of prompt');
       scopingProblemThis.firstAnswerBubble.message.play();
       scopingProblemThis.promptBubble.isBeingHeard = false;
       scopingProblemThis.firstAnswerBubble.isBeingHeard = true;
@@ -52,7 +47,6 @@ function ConversationAudioManager()
 
     scopingProblemThis.firstAnswerBubble.message.sfx.onended = function()
     {
-      console.log('inside onended of first answer');
       scopingProblemThis.secondAnswerBubble.message.play();
       scopingProblemThis.firstAnswerBubble.isBeingHeard = false;
       scopingProblemThis.secondAnswerBubble.isBeingHeard = true;
@@ -60,7 +54,6 @@ function ConversationAudioManager()
 
     scopingProblemThis.secondAnswerBubble.message.sfx.onended = function()
     {
-      console.log('inside onended of second answer');
       scopingProblemThis.secondAnswerBubble.isBeingHeard = false;
       musicManager.endDuck();
     }

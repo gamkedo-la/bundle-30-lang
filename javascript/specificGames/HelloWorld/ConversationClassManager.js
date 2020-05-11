@@ -23,7 +23,6 @@ function ConversationPatternManager()
   this.mandarinWhereAreYouConversationPattern = new ConversationPattern('how old are you conversation pattern', promptAudio.mandarinHowOldAreYou,promptAudio.mandarinIAm37YearsOld);
 
   this.arrayOfMandarinConvoPatterns = [];
-  
   this.initializeArraysOfConvoPatterns = function()
   {
     //central vietnamese
@@ -70,8 +69,8 @@ function ConversationPatternManager()
 
   this.assignAudioClipsToSpeechBubbles = function()
   {
-    let partyGuestSpeechBubble = gameClassManager.currentGame.partyGuestSpeechBubble;
-    partyGuestSpeechBubble.message = this.currentCorrectConversationPattern.promptAudio;
+    let npcGuestSpeechBubble = gameClassManager.currentGame.NPCSpeechBubble;
+    npcGuestSpeechBubble.message = this.currentCorrectConversationPattern.promptAudio;
 
     let playerCharacterSpeechBubbleA = gameClassManager.currentGame.playerCharacterSpeechBubbleA;
     let playerCharacterSpeechBubbleB = gameClassManager.currentGame.playerCharacterSpeechBubbleB;

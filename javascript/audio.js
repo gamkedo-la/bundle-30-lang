@@ -254,7 +254,7 @@ function promptSound(source) {
 		this.sfx.volume = Math.pow(volume.prompt, 2);
 		this.sfx.play();
 
-		if (gameClassManager.currentGame.name !== 'birthday party game')
+		if (gameClassManager.currentGame.name !== 'hello world game')
 		{
 			musicManager.startDuck();
 			this.sfx.onended = function()
@@ -437,10 +437,8 @@ genAudio.playTransitionMusic = function() {
 	musicManager.onEndFunction = function() {
 		fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
 		promptersManager.promptThePlayer();
-		if (gameClassManager.currentGame.name === 'birthday party game')
+		if (gameClassManager.currentGame.name === 'hello world game')
 		{
-			console.log('inside if check of onended function of music manager');
-
 			gameClassManager.currentGame.conversationAudioManager.assignOrderOfAudioAnswers();
 			musicManager.startDuck();
 			gameClassManager.currentGame.conversationAudioManager.assignOnendedFunctions();

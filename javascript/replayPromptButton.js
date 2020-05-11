@@ -32,7 +32,7 @@ function ReplayPromptButton()
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < gameCanvas.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < gameCanvas.height)
         {
-          if (gameClassManager.currentGame.name === 'birthday party game')
+          if (gameClassManager.currentGame.name === 'hello world game')
           {
             gameClassManager.currentGame.conversationAudioManager.promptAudio.play();
             gameClassManager.currentGame.partyGuestSpeechBubble.isBeingHeard = true;

@@ -1,4 +1,4 @@
-function BirthdayPerson(image, x)
+function HelloWorldCharacter(image, x)
 {
   this.image = image;
 
@@ -14,7 +14,7 @@ function BirthdayPerson(image, x)
   }
 }
 
-function BirthdayPersonSpeechBubble(image,highlightedImage, x,y, width,height)
+function CharacterSpeechBubble(image,highlightedImage, x,y, width,height)
 {
   this.image = image;
   this.highlightedImage = highlightedImage;
