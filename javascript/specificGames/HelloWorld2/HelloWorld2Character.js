@@ -92,9 +92,10 @@ function CharacterSpeechBubble(image,highlightedImage, x,y, width,height)
       gameClassManager.currentGame.questionClassManager.chooseCorrectQuestion(gameClassManager.currentGame.currentLanguageArray);
       gameClassManager.currentGame.questionClassManager.chooseIncorrectQuestion(gameClassManager.currentGame.currentLanguageArray);
       gameClassManager.currentGame.questionClassManager.assignAudioClipsToSpeechBubbles();
-      gameClassManager.currentGame.questionClassManager.getAudioClips();
-      gameClassManager.currentGame.questionClassManager.assignOrderOfAudioQuestions();
-      gameClassManager.currentGame.questionClassManager.assignOnendedFunctions();
+      gameClassManager.currentGame.questionAudioManager.getAudioClips();
+      gameClassManager.currentGame.questionAudioManager.assignOrderOfAudioQuestions();
+      gameClassManager.currentGame.questionAudioManager.assignOnendedFunctions();
+      gameClassManager.currentGame.imagePrompter.promptThePlayer();
     }
   }
 }

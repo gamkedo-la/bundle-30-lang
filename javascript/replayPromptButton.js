@@ -37,6 +37,12 @@ function ReplayPromptButton()
             gameClassManager.currentGame.conversationAudioManager.promptAudio.play();
             gameClassManager.currentGame.NPCSpeechBubble.isBeingHeard = true;
           }
+          else if (gameClassManager.currentGame.name === 'hello world 2 game')
+          {
+            gameClassManager.currentGame.imagePrompter.currentWidth = 150;
+            gameClassManager.currentGame.imagePrompter.currentHeight = 150;
+            gameClassManager.currentGame.imagePrompter.promptThePlayer();
+          }
           else
           {
             promptersManager.currentPrompter.currentWidth = 150;

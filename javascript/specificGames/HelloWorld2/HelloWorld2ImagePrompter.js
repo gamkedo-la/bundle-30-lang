@@ -67,6 +67,7 @@ function HelloWorld2ImagePrompter()
       gameClassManager.currentGame.imagePrompter.currentHeight = 150;
       gameClassManager.currentGame.questionAudioManager.firstQuestionBubble.message.sfx.play();
 			gameClassManager.currentGame.questionAudioManager.firstQuestionBubble.isBeingHeard = true;
+      gameClassManager.currentGame.questionAudioManager.secondQuestionBubble.isBeingHeard = false;
     }
     else if (gameClassManager.currentGame.imagePrompter.shouldBeDrawingAPrompt === false)
     {

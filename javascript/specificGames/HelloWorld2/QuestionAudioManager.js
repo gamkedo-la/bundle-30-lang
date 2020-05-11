@@ -41,7 +41,9 @@ function QuestionAudioManager()
 
     scopingProblemThis.secondQuestionBubble.message.sfx.onended = function()
     {
+      console.log('second question bubble audio onended triggering');
       scopingProblemThis.secondQuestionBubble.isBeingHeard = false;
+      scopingProblemThis.firstQuestionBubble.isBeingHeard = false;
     }
 
   }
