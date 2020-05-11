@@ -51,7 +51,8 @@ function helloWorld2GameClass()
     this.questionClassManager.chooseCorrectQuestion(this.currentLanguageArray);
     this.questionClassManager.chooseIncorrectQuestion(this.currentLanguageArray);
     this.questionClassManager.assignAudioClipsToSpeechBubbles();
-
+    this.questionAudioManager.assignOrderOfAudioQuestions();
+    this.questionAudioManager.assignOnendedFunctions();
     this.questionAudioManager.getAudioClips();
 
     // this.conversationAudioManager.playAudioClipsInSuccession();

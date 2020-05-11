@@ -254,7 +254,7 @@ function promptSound(source) {
 		this.sfx.volume = Math.pow(volume.prompt, 2);
 		this.sfx.play();
 
-		if (gameClassManager.currentGame.name !== ('hello world game' || 'hello world 2 game') )
+		if (gameClassManager.currentGame.name !== 'hello world game' && gameClassManager.currentGame.name !== 'hello world 2 game')
 		{
 			musicManager.startDuck();
 			this.sfx.onended = function()
