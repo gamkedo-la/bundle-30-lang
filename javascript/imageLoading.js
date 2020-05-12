@@ -214,7 +214,7 @@ let simpleFlower = document.createElement('img');
 let flowerBackground = document.createElement('img');
 let jupiterImage = document.createElement('img');
 
-//birthday party images
+//hello world images
 let russianDollImage1 = document.createElement('img');
 let daytimeImage = document.createElement('img');
 let russianDollImage4 = document.createElement('img');
@@ -224,6 +224,13 @@ let speechBubbleFromLeftImageBHighlighted = document.createElement('img');
 let speechBubbleFromLeftImageB = document.createElement('img');
 let speechBubbleFromRightImage = document.createElement('img');
 let helloWorldArrowImage = document.createElement('img');
+
+//dodgeball images
+let dodgeBallBackgroundImage = document.createElement('img');
+let russianDollImage2 = document.createElement('img');
+let russianDollImage3 = document.createElement('img');
+let russianDollImage5 = document.createElement('img');
+let dodgeballImage = document.createElement('img');
 
 // maze images
 let mazeFloor = document.createElement('img');
@@ -605,7 +612,7 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: flowerBackground, theFile: "images/Backgrounds/Flower2.png", loaded: false});
 
-  //birthday party
+  //hello world images
   arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage1, theFile: "images/sprites/dodgeBall/Player1.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: daytimeImage, theFile: "images/Backgrounds/daytimeBackground.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage4, theFile: "images/sprites/dodgeBall/Player4.png", loaded: false});
@@ -615,6 +622,14 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageBHighlighted, theFile: "images/sprites/dayTime/speechBubbleFromLeftBHighlighted.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromRightImage, theFile: "images/sprites/dayTime/speechBubbleFromRight.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: helloWorldArrowImage, theFile: "images/sprites/dayTime/arrow.png", loaded: false});
+
+  //dodgeball images
+  arrayOfImagesToLoad.push({imageObjectBinding: dodgeBallBackgroundImage, theFile: "images/Backgrounds/dodgeball.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage2, theFile: "images/sprites/dodgeBall/Player2.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage3, theFile: "images/sprites/dodgeBall/Player3.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage5, theFile: "images/sprites/dodgeBall/Player5.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: dodgeballImage, theFile: "images/sprites/dodgeBall/dodgeBall.png", loaded: false});
+
 
   // maze game
   arrayOfImagesToLoad.push({imageObjectBinding: mazeFloor, theFile: "images/Backgrounds/mazefloor.png", loaded: false});

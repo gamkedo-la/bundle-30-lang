@@ -1,7 +1,7 @@
 var gameList = [snakeGame,birdGame,laneGame,jumperGame,null,passOrBlockGame,
                 cVcShooterGame,spaceShooterGame,runnerGame,pinataGame,airGrabGame,frogRiverGame,
                 mazeGame,null,flowerGame,penaltyGame,balloonPopGame,helloWorldGame,
-                null,null,null,null,null,fishingGame,
+                dodgeballGame,null,null,null,null,fishingGame,
                 null,bubbleWrapGame,whackAnAnswerGame,null,null,helloWorld2Game];
 
 var currentlyLoadedGame = -1;
