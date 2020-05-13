@@ -52,7 +52,10 @@ function dodgeballGameClass()
   this.initialize = function()
   {
     this.defineAndInitializePlayerCharacter();
-    this.dodgeball1.toggleIsBeingThrown();
+    //this.arrayOfDodgeballs[0].toggleIsBeingThrown();
+    console.log('this.arrayOfDodgeballs[0]: ' + this.arrayOfDodgeballs[0]);
+    throwTheBallAfterTimeout(this.arrayOfDodgeballs[0]);
+
   }
 
   this.draw = function()
@@ -73,6 +76,7 @@ function dodgeballGameClass()
   {
     this.playerCharacter.move();
     this.dodgeball1.move();
+    this.playerCharacter.updateCenterCoordinates();
   }
 
   this.handleLeftArrowDown = function()

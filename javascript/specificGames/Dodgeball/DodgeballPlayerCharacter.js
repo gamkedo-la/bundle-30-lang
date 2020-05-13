@@ -8,6 +8,15 @@ function DodgeballPlayerCharacter()
   this.x = gameCanvas.width/2 - this.width/2;
   this.y = gameCanvas.height/2 - this.height/2;
 
+  this.centerX = this.x + this.width/2;
+  this.centerY = this.x + this.height/2;
+
+  this.updateCenterCoordinates = function()
+  {
+    this.centerX = this.x + this.width/2;
+    this.centerY = this.x + this.height/2;
+  }
+
   this.draw = function()
   {
     gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);

@@ -1,5 +1,6 @@
 function ActualDodgeball(startingX,startingY)
 {
+
   this.image = dodgeballImage;
 
   this.x = startingX;
@@ -18,22 +19,23 @@ function ActualDodgeball(startingX,startingY)
   this.deltaXFromPlayer = undefined;
   this.deltaYFromPlayer = undefined;
   this.angleFromPlayer = undefined;
+  this.angleFromPlayerInRadians = undefined;
   this.calculateVelocitiesBetweenBallAndPlayer = function()
   {
-    this.deltaXFromPlayer = this.x - gameClassManager.currentGame.playerCharacter.x;
-    console.log('player character x: ' + gameClassManager.currentGame.playerCharacter.x);
-    console.log('dodgeball x: ' + this.x);
-    this.deltaYFromPlayer = this.y - gameClassManager.currentGame.playerCharacter.y;
-    this.angleFromPlayer = Math.atan2(this.deltaXFromPlayer, this.deltaYFromPlayer);
-
-    this.velocityX = 4 * Math.cos(this.angleFromPlayer);
-    this.velocityY = 4 * Math.sin(this.angleFromPlayer);
+    this.deltaXFromPlayer =  this.x - gameClassManager.currentGame.playerCharacter.centerX;
+    this.deltaYFromPlayer =  this.y - gameClassManager.currentGame.playerCharacter.centerY;
+    this.angleFromPlayer = Math.atan2(this.deltaYFromPlayer,this.deltaXFromPlayer);
+    this.angleFromPlayerInRadians = this.angleFromPlayer * 180/Math.PI;
+    this.velocityX = 4 * Math.cos(this.angleFromPlayerInRadians);
+    this.velocityY = 4 * Math.sin(this.angleFromPlayerInRadians);
+    console.log('this.velocityX: ' + this.velocityX);
+    console.log('this.velocityY: ' + this.velocityY);
   }
 
   this.isBeingThrown = false;
   this.move = function()
   {
-    if (this.isBeingThrown)
+    if (this.isBeingThrown === true)
     {
       this.x += this.velocityX;
       this.y += this.velocityY;
@@ -46,23 +48,52 @@ function ActualDodgeball(startingX,startingY)
     this.currentTimeoutLength = getRandomArbitrary(0,2000);
   }
 
-  this.toggleIsBeingThrown = function()
-  {
-    console.log('toggleIsBeingThrown timeout is triggering');
-    if (!this.isBeingThrown)
-    {
-      this.calculateVelocitiesBetweenBallAndPlayer();
-      this.isBeingThrown = true;
-    }
-    else
-    {
-      this.isBeingThrown = false;
-    }
-  }
 
   this.throwTheBallAfterTimeout = function()
   {
-    this.setRandomTimeoutLength();
-    setTimeout(this.toggleIsBeingThrown,5000);
+    // this.setRandomTimeoutLength();
+    setTimeout(this.toggleIsBeingThrown,10000);
+  }
+
+  this.toggleIsBeingThrown = function()
+  {
+    console.log('toggleIsBeingThrown triggered');
+    if (this.isBeingThrown === false)
+    {
+      console.log('check if isBeingThrown === false entered');
+      this.calculateVelocitiesBetweenBallAndPlayer();
+      this.isBeingThrown = true;
+    }
+    else if (this.isBeingThrown === true)
+    {
+      console.log('else case of isBeingThrown entered');
+
+      this.isBeingThrown = false;
+    }
+  }
+}
+
+
+
+function throwTheBallAfterTimeout(dodgeball)
+{
+  // this.setRandomTimeoutLength();
+  console.log('dodgeball: ' + dodgeball);
+  setTimeout(toggleIsBeingThrown,10000,dodgeball);
+}
+
+function toggleIsBeingThrown(dodgeball)
+{
+  if (dodgeball.isBeingThrown === false)
+  {
+    console.log('check if isBeingThrown === false entered');
+    dodgeball.calculateVelocitiesBetweenBallAndPlayer();
+    dodgeball.isBeingThrown = true;
+  }
+  else if (dodgeball.isBeingThrown === true)
+  {
+    console.log('else case of isBeingThrown entered');
+
+    dodgeball.isBeingThrown = false;
   }
 }
