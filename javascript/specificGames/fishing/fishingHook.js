@@ -7,6 +7,7 @@ function FishingHook() {
 
     this.isThrown = false;
     this.isFalling = false;
+    this.isEatenByFish = false;
 
     this.speedX = 5;
     this.speedY = 2;
@@ -22,6 +23,12 @@ function FishingHook() {
         gameCanvasContext.restore();
     }
 
+    this.reset = function () {
+        this.isThrown = false;
+        this.isFalling = false;
+        this.isEatenByFish = false;
+    }
+
     this.update = function () {
         if (this.isFalling){
             this.y += this.speedY;
@@ -33,13 +40,13 @@ function FishingHook() {
     }
 
     this.moveLeft = function () {
-        if (this.isFalling){
+        if (this.isFalling && !this.isEatenByFish){
             this.x -= this.speedX;
         }
     }
 
     this.moveRight = function () {
-        if (this.isFalling){
+        if (this.isFalling && !this.isEatenByFish){
             this.x += this.speedX;
         }
     }
