@@ -22,10 +22,15 @@ function ActualDodgeball(startingX,startingY)
   this.angleFromPlayerInRadians = undefined;
   this.calculateVelocitiesBetweenBallAndPlayer = function()
   {
+    console.log('this.x: ' + this.x);
+    console.log('this.y: ' + this.y);
+    console.log('gameClassManager.currentGame.playerCharacter.centerX: ' + gameClassManager.currentGame.playerCharacter.centerX);
+    console.log('gameClassManager.currentGame.playerCharacter.centerY: ' + gameClassManager.currentGame.playerCharacter.centerY);
     this.deltaXFromPlayer =  this.x - gameClassManager.currentGame.playerCharacter.centerX;
     this.deltaYFromPlayer =  this.y - gameClassManager.currentGame.playerCharacter.centerY;
-    this.angleFromPlayer = Math.atan2(this.deltaYFromPlayer,this.deltaXFromPlayer);
-    this.angleFromPlayerInRadians = this.angleFromPlayer * 180/Math.PI;
+    this.angleFromPlayerInRadians = Math.atan2(this.deltaYFromPlayer,this.deltaXFromPlayer);
+    console.log('this.angleFromPlayer: ' + this.angleFromPlayer);
+    // this.angleFromPlayerInRadians = this.angleFromPlayer * Math.PI/180;
     this.velocityX = 4 * Math.cos(this.angleFromPlayerInRadians);
     this.velocityY = 4 * Math.sin(this.angleFromPlayerInRadians);
     console.log('this.velocityX: ' + this.velocityX);
@@ -52,7 +57,7 @@ function ActualDodgeball(startingX,startingY)
   this.throwTheBallAfterTimeout = function()
   {
     // this.setRandomTimeoutLength();
-    setTimeout(this.toggleIsBeingThrown,10000);
+    setTimeout(this.toggleIsBeingThrown,5000);
   }
 
   this.toggleIsBeingThrown = function()
@@ -79,7 +84,7 @@ function throwTheBallAfterTimeout(dodgeball)
 {
   // this.setRandomTimeoutLength();
   console.log('dodgeball: ' + dodgeball);
-  setTimeout(toggleIsBeingThrown,10000,dodgeball);
+  setTimeout(toggleIsBeingThrown,/*Math.random()*2000*/10000,dodgeball);
 }
 
 function toggleIsBeingThrown(dodgeball)
