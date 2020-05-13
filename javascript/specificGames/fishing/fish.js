@@ -4,7 +4,7 @@ const FISH_MAX_SPEED = 2.0;
 
 const MIN_DISTANCE_BETWEEN_FISHES = 50;
 
-const SPEED_WHEN_CAUGHT = 0.03;
+const PROJECTION_TO_BUCKET_SPEED = 0.03;
 
 
 function Fish() {
@@ -71,58 +71,89 @@ function Fish() {
     this.update = function () {
         if (!this.isInBucket)
         {
-            if (!this.hasEatenHook){
-                this.x += this.orientation * this.speedX;
-            }
-            else{
-                // this.x -= this.orientation * 1.0;
-                // this.y += 0.5 + 2*Math.sin(this.oscillation);
-                // this.oscillation += this.oscillationSpeed;
-                // if (this.oscillation >= Math.PI * 2){
-                //     this.oscillation = 0.0;
-                // }
-
-                if (debugOn && !this.drawTrajectoryToBucket){
-                    this.drawTrajectoryToBucket = true;
-                }
-
-                if (this.bucketX == undefined && 
-                    this.bucketY == undefined &&
-                    this.caughtLocationY == undefined &&
-                    this.caughtLocationY == undefined
-                )
-                {
-                    this.bucketX = gameClassManager.currentGame.playerCharacter.fishingBucket.x;
-                    this.bucketY = gameClassManager.currentGame.playerCharacter.fishingBucket.y;
-                    this.caughtLocationX = this.x;
-                    this.caughtLocationY = this.y
-                }
-
-                if (this.bezierParameter < 1 + SPEED_WHEN_CAUGHT){
-                    //  (1-t)^3*P0 + 3(1-t)^2*t*P1 + 3(1-t)*t^2*P2 + t^3*P3 
-                    this.x  =     (1 - this.bezierParameter)**3 * this.caughtLocationX;
-                    this.x += 3 * (1 - this.bezierParameter)**2 * this.bezierParameter * this.caughtLocationX;
-                    this.x += 3 * (1 - this.bezierParameter)    * this.bezierParameter**2 * this.bucketX;
-                    this.x += this.bezierParameter**3 * this.bucketX;
-
-                    this.y  =     (1 - this.bezierParameter)**3 * this.caughtLocationY;
-                    this.y += 3 * (1 - this.bezierParameter)**2 * this.bezierParameter * (-WATER_HEIGHT);
-                    this.y += 3 * (1 - this.bezierParameter)    * this.bezierParameter**2 * 0;
-                    this.y += this.bezierParameter**3 * this.bucketY;
-
-                    this.bezierParameter += SPEED_WHEN_CAUGHT;
-                }
-                else{
-                    this.isInBucket = true;
-                    gameClassManager.currentGame.playerCharacter.resetHook();
-                }
-                // this.fishingHook.x = this.x;
-                // this.fishingHook.y = this.y;
-            }
+            this.updatePosition();
             this.handleCollisionWithCanvasBorder();
             this.setAnswerPositionIfHasAnswer(); 
             this.handleCollisionWithFishingHook();
         } 
+    }
+
+    this.updatePosition = function() {
+        if (!this.hasEatenHook){
+            this.x += this.orientation * this.speedX;
+        }
+        else{
+            this.updatePositionWhenHasEatenHook();
+        }
+    }
+
+    this.updatePositionWhenHasEatenHook = function() {
+        // this.x -= this.orientation * 1.0;
+        // this.y += 0.5 + 2*Math.sin(this.oscillation);
+        // this.oscillation += this.oscillationSpeed;
+        // if (this.oscillation >= Math.PI * 2){
+        //     this.oscillation = 0.0;
+        // }
+        
+        // this.fishingHook.x = this.x;
+        // this.fishingHook.y = this.y;
+
+        if (debugOn && !this.drawTrajectoryToBucket){
+            this.drawTrajectoryToBucket = true;
+        }
+        this.setCaughtAndBucketLocationsIfUndefined();
+        this.projectToBucket();
+    }
+
+    this.projectToBucket = function () {
+        if (this.bezierParameter < 1 + PROJECTION_TO_BUCKET_SPEED){
+            this.updatePositionOnProjectionTrajectory();
+        }
+        else{
+            this.isInBucket = true;
+            gameClassManager.currentGame.playerCharacter.resetHook();
+        }
+    }
+
+    this.updatePositionOnProjectionTrajectory = function(){
+        this.x = this.getCoordinateOnBezierCurve(
+            this.caughtLocationX, this.caughtLocationX, this.bucketX, this.bucketX
+        )
+
+        this.y = this.getCoordinateOnBezierCurve(
+            this.caughtLocationY, -WATER_HEIGHT, 0, this.bucketY
+        )
+
+        this.bezierParameter += PROJECTION_TO_BUCKET_SPEED;
+    }
+
+    this.getCoordinateOnBezierCurve = function(
+        originCoordinate,   // P0
+        control1Coordinate, // P1
+        control2Coordinate, // P2
+        targetCoordinate    // P3
+    ){
+        //  (1-t)^3*P0 + 3(1-t)^2*t*P1 + 3(1-t)*t^2*P2 + t^3*P3 
+        var bezierCoordinate  =     (1 - this.bezierParameter)**3 * originCoordinate;
+        bezierCoordinate     += 3 * (1 - this.bezierParameter)**2 * this.bezierParameter * control1Coordinate;
+        bezierCoordinate     += 3 * (1 - this.bezierParameter)    * this.bezierParameter**2 * control2Coordinate;
+        bezierCoordinate     += this.bezierParameter**3 * targetCoordinate;
+
+        return bezierCoordinate;
+    }
+
+    this.setCaughtAndBucketLocationsIfUndefined = function() {
+        if (this.bucketX == undefined && 
+            this.bucketY == undefined &&
+            this.caughtLocationY == undefined &&
+            this.caughtLocationY == undefined
+        )
+        {
+            this.bucketX = gameClassManager.currentGame.playerCharacter.fishingBucket.x;
+            this.bucketY = gameClassManager.currentGame.playerCharacter.fishingBucket.y;
+            this.caughtLocationX = this.x;
+            this.caughtLocationY = this.y
+        }
     }
 
     this.handleCollisionWithFishingHook = function() {
@@ -214,21 +245,26 @@ function Fish() {
             );
             gameCanvasContext.restore();
 
-            if (debugOn && this.drawTrajectoryToBucket)
-            {
-                gameCanvasContext.save();
-                gameCanvasContext.strokeStyle = "red";
-                gameCanvasContext.lineWidth = 2;
-                gameCanvasContext.beginPath();
-                gameCanvasContext.moveTo(this.x, this.y);
-                gameCanvasContext.bezierCurveTo(
-                    this.x, -WATER_HEIGHT, 
-                    this.bucketX, 0,
-                    this.bucketX, this.bucketY
-                );
-                gameCanvasContext.stroke();
-                gameCanvasContext.restore();
-            }
+            this.drawProjectionTrajectoryIfDebugMode();
+        }
+    }
+
+    this.drawProjectionTrajectoryIfDebugMode = function()
+    {
+        if (debugOn && this.drawTrajectoryToBucket)
+        {
+            gameCanvasContext.save();
+            gameCanvasContext.strokeStyle = "red";
+            gameCanvasContext.lineWidth = 2;
+            gameCanvasContext.beginPath();
+            gameCanvasContext.moveTo(this.caughtLocationX, this.caughtLocationY);
+            gameCanvasContext.bezierCurveTo(
+                this.caughtLocationX, -WATER_HEIGHT, 
+                this.bucketX, 0,
+                this.bucketX, this.bucketY
+            );
+            gameCanvasContext.stroke();
+            gameCanvasContext.restore();
         }
     }
 
