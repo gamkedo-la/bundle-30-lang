@@ -455,6 +455,10 @@ genAudio.playTransitionMusic = function() {
 
 	    gameClassManager.currentGame.imagePrompter.promptThePlayer();
 		}
+		else if (gameClassManager.currentGame.name === 'dodge ball game')
+		{
+			gameClassManager.currentGame.throwTheBallsAfterTimeouts();
+		}
 		gameCanvasContext.globalAlpha = 1;
 	}
 }

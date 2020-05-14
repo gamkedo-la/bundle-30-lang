@@ -32,10 +32,10 @@ function dodgeballGameClass()
     this.arrayOfNPCs.push(this.NPC3);
     this.arrayOfNPCs.push(this.NPC4);
 
-    this.dodgeball1 = new ActualDodgeball(this.NPC1.x + this.NPC1.width/2,this.NPC1.y + this.NPC1.height/2);
-    this.dodgeball2 = new ActualDodgeball(this.NPC2.x + this.NPC2.width/2,this.NPC2.y + this.NPC2.height/2);
-    this.dodgeball3 = new ActualDodgeball(this.NPC3.x,this.NPC3.y + this.NPC3.height/2);
-    this.dodgeball4 = new ActualDodgeball(this.NPC4.x + this.NPC4.width/2,this.NPC4.y + this.NPC4.height/4);
+    this.dodgeball1 = new ActualDodgeball('1', this.NPC1.x + this.NPC1.width/2,this.NPC1.y + this.NPC1.height/2);
+    this.dodgeball2 = new ActualDodgeball('2', this.NPC2.x + this.NPC2.width/2,this.NPC2.y + this.NPC2.height/2);
+    this.dodgeball3 = new ActualDodgeball('3', this.NPC3.x,this.NPC3.y + this.NPC3.height/2);
+    this.dodgeball4 = new ActualDodgeball('4', this.NPC4.x + this.NPC4.width/2,this.NPC4.y + this.NPC4.height/4);
     this.arrayOfDodgeballs.push(this.dodgeball1);
     this.arrayOfDodgeballs.push(this.dodgeball2);
     this.arrayOfDodgeballs.push(this.dodgeball3);
@@ -52,10 +52,6 @@ function dodgeballGameClass()
   this.initialize = function()
   {
     this.defineAndInitializePlayerCharacter();
-    //this.arrayOfDodgeballs[0].toggleIsBeingThrown();
-    console.log('this.arrayOfDodgeballs[0]: ' + this.arrayOfDodgeballs[0]);
-    throwTheBallAfterTimeout(this.arrayOfDodgeballs[0]);
-
   }
 
   this.draw = function()
@@ -72,10 +68,23 @@ function dodgeballGameClass()
     }
   }
 
+  this.throwTheBallsAfterTimeouts = function()
+  {
+    throwTheBallAfterTimeout(this.arrayOfDodgeballs[0]);
+    throwTheBallAfterTimeout(this.arrayOfDodgeballs[1]);
+    throwTheBallAfterTimeout(this.arrayOfDodgeballs[2]);
+    throwTheBallAfterTimeout(this.arrayOfDodgeballs[3]);
+  }
+
   this.update = function()
   {
     this.playerCharacter.move();
-    this.dodgeball1.move();
+    for (let i = 0; i < this.arrayOfDodgeballs.length; i++)
+    {
+      this.arrayOfDodgeballs[i].move();
+      this.arrayOfDodgeballs[i].detectCollisionWithPlayer();
+      this.arrayOfDodgeballs[i].detectOffScreen();
+    }
     this.playerCharacter.updateCenterCoordinates();
   }
 

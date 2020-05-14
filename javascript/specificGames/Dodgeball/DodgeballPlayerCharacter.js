@@ -14,7 +14,7 @@ function DodgeballPlayerCharacter()
   this.updateCenterCoordinates = function()
   {
     this.centerX = this.x + this.width/2;
-    this.centerY = this.x + this.height/2;
+    this.centerY = this.y + this.height/2;
   }
 
   this.draw = function()
