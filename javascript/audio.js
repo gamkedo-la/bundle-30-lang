@@ -418,6 +418,13 @@ promptAudio.centralVietnameseGoodAndYouGeneral = new promptSound('audio/PromptsA
 promptAudio.centralVietnameseExcuseMe = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnameseExcuseMe.mp3');
 promptAudio.centralVietnamesePoliteHello = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/centralVietnamesePoliteHello.mp3');
 
+promptAudio.centralVietnameseStraightToneA = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseStraightToneA.mp3');
+promptAudio.centralVietnameseFallingToneA = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseFallingToneA.mp3');
+promptAudio.centralVietnameseRisingToneA = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseRisingToneA.mp3');
+promptAudio.centralVietnameseRisingStutterToneA = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseRisingStutterToneA.mp3');
+promptAudio.centralVietnameseLowStaccatoToneA = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseLowStaccatoToneA.mp3');
+promptAudio.centralVietnameseRisingHatAU = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseRisingHatAU.mp3');
+
 
 promptAudio.englishBee = new promptSound('audio/PromptsAndAnswers/bee.mp3');
 promptAudio.englishFlower = new promptSound('audio/PromptsAndAnswers/flower.mp3');
@@ -458,6 +465,7 @@ genAudio.playTransitionMusic = function() {
 		else if (gameClassManager.currentGame.name === 'dodge ball game')
 		{
 			gameClassManager.currentGame.throwTheBallsAfterTimeouts();
+			gameClassManager.currentGame.phonicClassManager.currentCorrectPhonic.promptAudio.sfx.play();
 		}
 		gameCanvasContext.globalAlpha = 1;
 	}

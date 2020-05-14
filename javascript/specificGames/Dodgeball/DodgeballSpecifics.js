@@ -17,6 +17,8 @@ function dodgeballGameClass()
   this.dodgeball4 = undefined;
   this.arrayOfDodgeballs = [];
 
+  this.phonicClassManager = undefined;
+
   this.background = new DodgeballBackground();
 
   this.defineAndInitializePlayerCharacter = function()
@@ -49,9 +51,16 @@ function dodgeballGameClass()
 	  {name: "Dodgeball", fontSize: 25, spacing: 12, x: 22, y: 480}
 	];
 
+
   this.initialize = function()
   {
     this.defineAndInitializePlayerCharacter();
+    this.phonicClassManager = new PhonicClassManager();
+    this.phonicClassManager.initializeArraysOfPhonics();
+    this.phonicClassManager.setCurrentLanguageArray(languageSelectionScreen.languageNum);
+    this.phonicClassManager.populateTemporaryArrayOfPhonics();
+    this.phonicClassManager.chooseCorrectPhonic();
+    this.phonicClassManager.assignPhonicsToDodgeballs();
   }
 
   this.draw = function()
@@ -70,6 +79,7 @@ function dodgeballGameClass()
 
   this.throwTheBallsAfterTimeouts = function()
   {
+    console.log('throw the balls after timeout... from parent game, is being called');
     throwTheBallAfterTimeout(this.arrayOfDodgeballs[0]);
     throwTheBallAfterTimeout(this.arrayOfDodgeballs[1]);
     throwTheBallAfterTimeout(this.arrayOfDodgeballs[2]);

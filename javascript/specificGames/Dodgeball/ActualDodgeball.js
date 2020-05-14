@@ -6,6 +6,9 @@ function ActualDodgeball(number, startingX,startingY)
   this.x = startingX;
   this.y = startingY;
 
+  this.startingX = startingX;
+  this.startingY = startingY;
+
   this.width = gameCanvas.width/18;
   this.height = gameCanvas.height/18;
 
@@ -14,6 +17,8 @@ function ActualDodgeball(number, startingX,startingY)
   this.draw = function()
   {
     gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    gameCanvasContext.fillStyle = 'white';
+    gameCanvasContext.fillText(this.phonicClass.textAssociation, this.x + this.width/3,this.y + this.height*0.75);
   }
 
   this.velocityX = undefined;
@@ -79,9 +84,33 @@ function ActualDodgeball(number, startingX,startingY)
           this.y = startingY;
           this.isBeingThrown = false;
           console.log('ball ' + this.number + ' collided with the player and should be reset');
+
+          if (this.phonicClass.isTheCorrectChoice === true)
+          {
+            genAudio.playPositive();
+            amountCorrect++;
+          }
+          else if (this.phonicClass.isTheCorrectChoice === false)
+          {
+            genAudio.playNegative();
+            amountIncorrect++;
+          }
+
+          gameClassManager.currentGame.phonicClassManager.setOrResetPhonicsOnDodgeballsAndPlayPromptAudio();
+          for (let i = 0; i < gameClassManager.currentGame.arrayOfDodgeballs.length; i++)
+          {
+            gameClassManager.currentGame.arrayOfDodgeballs[i].x = gameClassManager.currentGame.arrayOfDodgeballs[i].startingX;
+            gameClassManager.currentGame.arrayOfDodgeballs[i].y = gameClassManager.currentGame.arrayOfDodgeballs[i].startingY;
+            gameClassManager.currentGame.arrayOfDodgeballs[i].isBeingThrown = false;
+            gameClassManager.currentGame.throwTheBallsAfterTimeouts();
+          }
+
+
         }
+
    }
 
+   this.wentOffScreenThisPromptingRound = false;
    this.detectOffScreen = function()
    {
      if (this.x > gameCanvas.width || this.x + this.width < 0 || this.y > gameCanvas.height || this.y - this.height < 0)
@@ -89,7 +118,30 @@ function ActualDodgeball(number, startingX,startingY)
        this.x = startingX;
        this.y = startingY;
        this.isBeingThrown = false;
+       this.wentOffScreenThisPromptingRound = true;
        console.log('ball ' + this.number + ' was off screen and should be reset');
+     }
+
+     let numberOfBallsThatWentOffScreen;
+     for (let i = 0; i < gameClassManager.currentGame.arrayOfDodgeballs.length; i++)
+     {
+       if (gameClassManager.currentGame.arrayOfDodgeballs[i].wentOffScreenThisPromptingRound === true)
+       {
+         numberOfBallsThatWentOffScreen++;
+       }
+     }
+     if (numberOfBallsThatWentOffScreen === 4)
+     {
+       gameClassManager.currentGame.phonicClassManager.setOrResetPhonicsOnDodgeballsAndPlayPromptAudio();
+       gameClassManager.currentGame.arrayOfDodgeballs[i].x = gameClassManager.currentGame.arrayOfDodgeballs[i].startingX;
+       gameClassManager.currentGame.arrayOfDodgeballs[i].y = gameClassManager.currentGame.arrayOfDodgeballs[i].startingY;
+       gameClassManager.currentGame.arrayOfDodgeballs[i].isBeingThrown = false;
+       genAudio.playNegative();
+       gameClassManager.currentGame.throwTheBallsAfterTimeouts();
+       for (let i = 0; i < gameClassManager.currentGame.arrayOfDodgeballs.length; i++)
+       {
+         gameClassManager.currentGame.arrayOfDodgeballs[i].wentOffScreenThisPromptingRound = false;
+       }
      }
    }
 }
@@ -98,6 +150,7 @@ function ActualDodgeball(number, startingX,startingY)
 
 function throwTheBallAfterTimeout(dodgeball)
 {
+  console.log('throw the ball after timeout is being called');
   setTimeout(toggleIsBeingThrown,Math.random()*3000,dodgeball);
 }
 
@@ -105,11 +158,8 @@ function toggleIsBeingThrown(dodgeball)
 {
   if (dodgeball.isBeingThrown === false)
   {
+    console.log('inside toggle ball is being thrown');
     dodgeball.calculateVelocitiesBetweenBallAndPlayer();
     dodgeball.isBeingThrown = true;
-  }
-  else if (dodgeball.isBeingThrown === true)
-  {
-    dodgeball.isBeingThrown = false;
   }
 }
