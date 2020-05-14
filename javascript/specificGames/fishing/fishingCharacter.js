@@ -13,6 +13,10 @@ function FishingCharacter () {
 
     this.fishingHook = undefined;
 
+    this.fishingBucket = undefined;
+
+    this.caughtFish = false;
+
     this.initialize = function() {
         this.x = gameCanvas.width / 2;
         this.y = WATER_HEIGHT - 30;
@@ -21,17 +25,22 @@ function FishingCharacter () {
         this.fishingHook = new FishingHook();
         this.fishingHook.x = this.x + this.width/2;
         this.fishingHook.y = this.y + 5;
+
+        this.fishingBucket = new FishingBucket();
+        this.fishingBucket.initialize(this.x - this.width/2);
+
+        this.caughtFish = false
     }
 
     this.resetHook = function() {
         this.fishingHook.y = this.y + 5;
-        this.fishingHook.isThrown = false;
-        this.fishingHook.isFalling = false;
+        this.fishingHook.reset();
     }
 
     this.update = function () {
         if (!this.fishingHook.isThrown){
             this.fishingHook.x = this.x + this.width/2;
+            this.fishingBucket.updateXPosition(this.x - this.width/2);
         }
         this.fishingHook.update();
     }
@@ -39,6 +48,7 @@ function FishingCharacter () {
     this.draw = function () {
 
         this.drawCharacter();
+        this.fishingBucket.draw();
         this.drawBoat();
         this.drawFishingLine();
         this.fishingHook.draw();
@@ -65,7 +75,7 @@ function FishingCharacter () {
     this.drawFishingLine = function() {
         gameCanvasContext.save();
         gameCanvasContext.strokeStyle = "black";
-        gameCanvasContext.lineWidth = 5;
+        gameCanvasContext.lineWidth = 2;
         gameCanvasContext.beginPath();
         gameCanvasContext.moveTo(this.x + this.width/2, this.y + 5)
         gameCanvasContext.lineTo(this.fishingHook.x, this.fishingHook.y)
@@ -105,6 +115,4 @@ function FishingCharacter () {
             this.fishingHook.moveRight()
         }
     }
-
-    
 }

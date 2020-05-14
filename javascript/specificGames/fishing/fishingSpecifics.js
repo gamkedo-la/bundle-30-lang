@@ -39,6 +39,7 @@ function fishingGameClass()
     {
       var oneFish = new Fish();
       oneFish.initialize();
+      oneFish.fishingHook = this.playerCharacter.fishingHook;
       this.fishes.push(oneFish);
     }
     this.selectFishesForAnswers();
@@ -85,7 +86,7 @@ function fishingGameClass()
     }
 
     this.collisionsWithAnswersManager.handleCollisionsWithAnswers(
-      this.playerCharacter.fishingHook
+      this.playerCharacter.fishingBucket
     );
   }
 
