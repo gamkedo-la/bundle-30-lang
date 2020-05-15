@@ -7,7 +7,7 @@ function TransitionToTitleScreen()
     setTimeout(function()
     {
       fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.titleScreen)
-    }, 2000);
+    }, TITLESCREEN_TRANSITION_TIME);
   };
 
   this.draw = function()
