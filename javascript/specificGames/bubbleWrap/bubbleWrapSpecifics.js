@@ -13,6 +13,7 @@ bubbleWrapGame.titleTXT1 = "Bubble Wrap";
 bubbleWrapGame.titleTXT2 = "Pop the bubbles";
 bubbleWrapGame.titleTXT3 = "as fast as you can";
 bubbleWrapGame.introComplete = true; // no swinging pinata
+bubbleWrapGame.noIntro = true;
 bubbleWrapGame.spritesheet = bubbleWrapSpritesheet; 
 bubbleWrapGame.shrinking = false;
 bubbleWrapGame.smashSound = null;//window.audioManager?audioManager.balloonPopSound:document.getElementById('smashSound');

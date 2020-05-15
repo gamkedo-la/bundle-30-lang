@@ -310,13 +310,13 @@ let checkBoxImage = document.createElement("img");
 let checkForCheckBoxImage = document.createElement("img");
 
 // bubble wrap game
-let bubbleWrapBG = document.createElement("img");
-let bubbleWrapSpritesheet = document.createElement("img");
-//let balloonPopBG = document.createElement("img");
-let balloonPopSpritesheet = document.createElement("img");
-let pinataImage = document.createElement("img");
-let heartImage = document.createElement("img");
-let starImage = document.createElement("img");
+var bubbleWrapBG = document.createElement("img");
+var bubbleWrapSpritesheet = document.createElement("img");
+var balloonPopSpritesheet = document.createElement("img");
+var pinataImage = document.createElement("img");
+var heartImage = document.createElement("img");
+var starImage = document.createElement("img");
+//var balloonPopBG = document.createElement("img");
 
 //custom font image loading section, used loops for less typing... just to see if i could
 var arrayOfTextLetters = 'abcdefghijklmnopqrstuvwxyzñ';

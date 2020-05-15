@@ -32,12 +32,12 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.smashSound = null;
     this.successSound = null;
     this.failSound = null;
+    this.introComplete = false; // if false, show a pinata
 
     //////////////////////////////////////////////////////
     // private vars used internally
     //////////////////////////////////////////////////////
     var me = this; // because events keep this straight
-    var introComplete = false; // if false, show a pinata
     // list of all known candies
     var objects = [];
     // list of rgba colours
@@ -94,6 +94,11 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         console.log(this.name+" postLoadInit...");
     }
 
+    this.postGameSpecialCode = function() {
+        console.log(this.name+" postGameSpecialCode...");
+        // FIXME: remove mousedown event listener
+    }
+
     // FIXME the "this" is invalid here, its a transitioner, not the game itself LOL
     this.drawTransitionText = function () {
         customFontFillText([me.titleTXT1, symbolExclamationPointImage], 80, 42, 100, 50);
@@ -122,13 +127,14 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
             this.gameSpecificInits();            
         }
 
-        //document.addEventListener('click', pinataClick, false);
         document.addEventListener('mousedown', pinataClick, false);
 
     }
 
     // called by the game state machine
     this.update = function() {
+
+        //console.log("popping game update()");
 
         if (!this.physicsEnabled) return;
         
@@ -198,7 +204,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
             } // i
             
             // animate them falling and bouncing
-            if (introComplete || this.noIntro) { // not waiting for smash?
+            if (this.introComplete || this.noIntro) { // not waiting for smash?
 
                 // Update scene
                 nextOne.V = add(nextOne.V, scale(nextOne.A, this.gravity)); // A=gravity
@@ -220,6 +226,8 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
   }
     // called by the game state machine
   this.draw = function() {
+
+        //console.log("popping game draw()");
 
         // clear the screen
         ctx.fillStyle = "rgba(150,220,255,1)";
@@ -293,7 +301,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
 
 
-            if (introComplete) {
+            if (this.introComplete) {
                 if (window.customFontFillText) {
                     customFontFillText(['Click the letter ' + targetLetter], 32, 24, 80, 32);
                 } else { // debug only
@@ -389,9 +397,9 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
 
     function pinataClick(e) { // NOTE: the "this" is *not* the game
 
-        // console.log("game click");
+        console.log("pinataClick");
 
-        if (!window.playerShouldBePlayingPinata) return; // dont do anything if another game is running
+        //if (!window.playerShouldBePlayingPinata) return; // dont do anything if another game is running
 
         let correct = false;
 
@@ -405,9 +413,9 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         }
 
         // first click open the pinata!
-        if (!introComplete && !me.noIntro) {
+        if (!this.introComplete && !me.noIntro) {
             console.log("Pinata just got smashed!")
-            introComplete = true;
+            this.introComplete = true;
             boom(e.pageX, e.pageY, true);
             if (window.audioManager) {
                 audioManager.pinataHitSound.play();
@@ -436,13 +444,14 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 }
                 else {
                     console.log("You clicked the wrong answer: " + checkme.Z + " not " + targetLetter);
+                    correct = false;
                     //depreciated playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
                 }
 
                 if (me.alwaysPopLetters) {
                     // destroy the clicked bubble (only)
                     objects.splice(i, 1);
-                    correct = true; // always!
+                    //correct = true; // always!?
                 }
             }
         }
