@@ -63,7 +63,7 @@ function Fish() {
         this.hasIncorrectAnswer = false;
 
         this.oscillation = 0.0;
-        this.oscillationSpeed = Math.PI / gameClassManager.currentGame.FRAME_RATE;
+        this.oscillationSpeed = 5 * Math.PI / gameClassManager.currentGame.FRAME_RATE;
 
         this.bezierParameter = 0.0;
     }
@@ -88,21 +88,27 @@ function Fish() {
     }
 
     this.updatePositionWhenHasEatenHook = function() {
-        // this.x -= this.orientation * 1.0;
-        // this.y += 0.5 + 2*Math.sin(this.oscillation);
-        // this.oscillation += this.oscillationSpeed;
-        // if (this.oscillation >= Math.PI * 2){
-        //     this.oscillation = 0.0;
-        // }
         
-        // this.fishingHook.x = this.x;
-        // this.fishingHook.y = this.y;
+        if (this.fishingHook.isPulledBack){
+            this.setCaughtAndBucketLocationsIfUndefined();
+            this.projectToBucket();
 
-        if (debugOn && !this.drawTrajectoryToBucket){
-            this.drawTrajectoryToBucket = true;
+            if (debugOn && !this.drawTrajectoryToBucket){
+                this.drawTrajectoryToBucket = true;
+            }
+    
         }
-        this.setCaughtAndBucketLocationsIfUndefined();
-        this.projectToBucket();
+        else {
+            this.x -= this.orientation * 1.0;
+            this.y += 0.5 + 2*Math.sin(this.oscillation);
+            this.oscillation += this.oscillationSpeed;
+            if (this.oscillation >= Math.PI * 2){
+                this.oscillation = 0.0;
+            }
+            
+            this.fishingHook.x = this.x;
+            this.fishingHook.y = this.y;
+        }
     }
 
     this.projectToBucket = function () {

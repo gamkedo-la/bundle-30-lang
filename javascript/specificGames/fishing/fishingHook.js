@@ -8,6 +8,7 @@ function FishingHook() {
     this.isThrown = false;
     this.isFalling = false;
     this.isEatenByFish = false;
+    this.isPulledBack = false;
 
     this.speedX = 5;
     this.speedY = 2;
@@ -27,6 +28,7 @@ function FishingHook() {
         this.isThrown = false;
         this.isFalling = false;
         this.isEatenByFish = false;
+        this.isPulledBack = false;
     }
 
     this.update = function () {

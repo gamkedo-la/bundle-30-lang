@@ -88,6 +88,9 @@ function FishingCharacter () {
             this.fishingHook.isThrown = true;
             this.fishingHook.isFalling = true;
         }
+        else if (this.fishingHook.isEatenByFish){
+            this.fishingHook.isPulledBack = true;
+        }
     }
 
     this.moveLeft = function(){
