@@ -41,7 +41,7 @@ function BackButton()
           promptersManager.currentPrompter.currentWidth = 150;
           promptersManager.currentPrompter.currentHeight = 150;
           //gameClassManager.currentGame = undefined;
-          playerShouldBePlayingPinata = false;
+          //playerShouldBePlayingPinata = false;
           arrayOfAnswers = [];
           promptsAndAnswersManager.setOrResetPromptsAndAnswers();
           if (gameClassManager.currentGame.postGameSpecialCode)

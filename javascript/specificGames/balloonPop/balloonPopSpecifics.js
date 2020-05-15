@@ -14,6 +14,7 @@ balloonPopGame.titleTXT1 = "Balloon Pop";
 balloonPopGame.titleTXT2 = "Pop the balloons";
 balloonPopGame.titleTXT3 = "before they fly away";
 balloonPopGame.introComplete = true; // no swinging pinata
+balloonPopGame.noIntro = true;
 balloonPopGame.spritesheet = balloonPopSpritesheet; 
 balloonPopGame.spawnRandomly = true;
 balloonPopGame.spawnChance = 0.05;
