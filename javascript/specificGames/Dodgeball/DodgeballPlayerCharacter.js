@@ -34,7 +34,7 @@ function DodgeballPlayerCharacter()
     gameCanvasContext.restore();
   }
 
-  this.velocity = 6;
+  this.velocity = 7;
 
   this.weebleWobbleRate = 2.5;
   this.updateAngle = function()

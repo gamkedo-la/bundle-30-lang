@@ -35,8 +35,8 @@ function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscil
     this.deltaXFromPlayer =  gameClassManager.currentGame.playerCharacter.centerX - this.x;
     this.deltaYFromPlayer =  gameClassManager.currentGame.playerCharacter.centerY - this.y;
     this.angleFromPlayerInRadians = Math.atan2(this.deltaYFromPlayer,this.deltaXFromPlayer);
-    this.velocityX = 3 * Math.cos(this.angleFromPlayerInRadians);
-    this.velocityY = 3 * Math.sin(this.angleFromPlayerInRadians);
+    this.velocityX = 5 * Math.cos(this.angleFromPlayerInRadians);
+    this.velocityY = 5 * Math.sin(this.angleFromPlayerInRadians);
   }
 
   this.isBeingThrown = false;
@@ -51,15 +51,30 @@ function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscil
     }
     else if (this.isBeingThrown === false)
     {
-      if (this.oscillationVelocityX !== undefined)
+      let npc1 = gameClassManager.currentGame.arrayOfNPCs[0];
+      let npc2 = gameClassManager.currentGame.arrayOfNPCs[1];
+      let npc3 = gameClassManager.currentGame.arrayOfNPCs[2];
+      let npc4 = gameClassManager.currentGame.arrayOfNPCs[3];
+
+      if (this.number === '1')
       {
-        this.circleAngleInRadians += this.oscillationVelocityX;
-        this.x = startingX + Math.cos(this.circleAngleInRadians)*200;
+        this.x = npc1.x + npc1.width/2;
+        this.y = npc1.y + npc1.height/2;
       }
-      if (this.oscillationVelocityY !== undefined)
+      else if (this.number === '2')
       {
-        this.circleAngleInRadians += this.oscillationVelocityY;
-        this.y = startingY + Math.sin(this.circleAngleInRadians)*200;
+        this.x = npc2.x + npc2.width/2;
+        this.y = npc2.y + npc2.height/2;
+      }
+      else if (this.number === '3')
+      {
+        this.x = npc3.x + npc3.width/2;
+        this.y = npc3.y + npc3.height/2;
+      }
+      else if (this.number === '4')
+      {
+        this.x = npc4.x + npc4.width/2;
+        this.y = npc4.y + npc4.height/4;
       }
     }
   }
@@ -98,32 +113,6 @@ function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscil
     if (this.x < playerCharacter.x + playerCharacter.width && this.x + this.width > playerCharacter.x &&
         this.y < playerCharacter.y + playerCharacter.height && this.y + this.height > playerCharacter.y)
         {
-          let npc1 = gameClassManager.currentGame.arrayOfNPCs[0];
-          let npc2 = gameClassManager.currentGame.arrayOfNPCs[1];
-          let npc3 = gameClassManager.currentGame.arrayOfNPCs[2];
-          let npc4 = gameClassManager.currentGame.arrayOfNPCs[3];
-
-          if (this.number === '1')
-          {
-            this.x = npc1.x + npc1.width/2;
-            this.y = npc1.y + npc1.height/2;
-          }
-          else if (this.number === '2')
-          {
-            this.x = npc2.x + npc2.width/2;
-            this.y = npc2.y + npc2.height/2;
-          }
-          else if (this.number === '3')
-          {
-            this.x = npc3.x + npc3.width/2;
-            this.y = npc3.y + npc3.height/2;
-          }
-          else if (this.number === '4')
-          {
-            this.x = npc4.x + npc4.width/2;
-            this.y = npc4.y + npc4.height/4;
-          }
-
           this.isBeingThrown = false;
           console.log('ball ' + this.number + ' collided with the player and should be reset');
 
@@ -155,7 +144,7 @@ function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscil
    this.wentOffScreenThisPromptingRound = false;
    this.detectOffScreen = function()
    {
-     if (this.x > gameCanvas.width || this.x + this.width < 0 || this.y > gameCanvas.height || this.y - this.height < 0)
+     if (this.x > gameCanvas.width || this.x + this.width < 0 || this.y > gameCanvas.height || this.y - this.height < -5)
      {
        this.x = startingX;
        this.y = startingY;
