@@ -1,4 +1,4 @@
-function ActualDodgeball(number, startingX,startingY)
+function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscillationVelocityY)
 {
   this.number = number;
   this.image = dodgeballImage;
@@ -8,6 +8,9 @@ function ActualDodgeball(number, startingX,startingY)
 
   this.startingX = startingX;
   this.startingY = startingY;
+
+  this.oscillationVelocityX = oscillationVelocityX;
+  this.oscillationVelocityY = oscillationVelocityY;
 
   this.width = gameCanvas.width/18;
   this.height = gameCanvas.height/18;
@@ -37,12 +40,27 @@ function ActualDodgeball(number, startingX,startingY)
   }
 
   this.isBeingThrown = false;
+  this.circlePathRadius = 250;
+  this.circleAngleInRadians = 0;
   this.move = function()
   {
     if (this.isBeingThrown === true)
     {
       this.x += this.velocityX;
       this.y += this.velocityY;
+    }
+    else if (this.isBeingThrown === false)
+    {
+      if (this.oscillationVelocityX !== undefined)
+      {
+        this.circleAngleInRadians += this.oscillationVelocityX;
+        this.x = startingX + Math.cos(this.circleAngleInRadians)*200;
+      }
+      if (this.oscillationVelocityY !== undefined)
+      {
+        this.circleAngleInRadians += this.oscillationVelocityY;
+        this.y = startingY + Math.sin(this.circleAngleInRadians)*200;
+      }
     }
   }
 
@@ -80,8 +98,32 @@ function ActualDodgeball(number, startingX,startingY)
     if (this.x < playerCharacter.x + playerCharacter.width && this.x + this.width > playerCharacter.x &&
         this.y < playerCharacter.y + playerCharacter.height && this.y + this.height > playerCharacter.y)
         {
-          this.x = startingX;
-          this.y = startingY;
+          let npc1 = gameClassManager.currentGame.arrayOfNPCs[0];
+          let npc2 = gameClassManager.currentGame.arrayOfNPCs[1];
+          let npc3 = gameClassManager.currentGame.arrayOfNPCs[2];
+          let npc4 = gameClassManager.currentGame.arrayOfNPCs[3];
+
+          if (this.number === '1')
+          {
+            this.x = npc1.x + npc1.width/2;
+            this.y = npc1.y + npc1.height/2;
+          }
+          else if (this.number === '2')
+          {
+            this.x = npc2.x + npc2.width/2;
+            this.y = npc2.y + npc2.height/2;
+          }
+          else if (this.number === '3')
+          {
+            this.x = npc3.x + npc3.width/2;
+            this.y = npc3.y + npc3.height/2;
+          }
+          else if (this.number === '4')
+          {
+            this.x = npc4.x + npc4.width/2;
+            this.y = npc4.y + npc4.height/4;
+          }
+
           this.isBeingThrown = false;
           console.log('ball ' + this.number + ' collided with the player and should be reset');
 

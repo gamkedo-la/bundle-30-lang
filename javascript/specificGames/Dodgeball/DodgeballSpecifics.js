@@ -25,19 +25,24 @@ function dodgeballGameClass()
   {
     this.playerCharacter = new DodgeballPlayerCharacter();
 
-    this.NPC1 = new DodgeballNPC(russianDollImage2, 0,gameCanvas.height/2 - gameCanvas.height/20);//left side of screen
-    this.NPC2 = new DodgeballNPC(russianDollImage3, gameCanvas.width/2 - gameCanvas.width/24,0);//top center
-    this.NPC3 = new DodgeballNPC(russianDollImage4, gameCanvas.width - gameCanvas.width/12,gameCanvas.height/2 - gameCanvas.height/20);//right side
-    this.NPC4 = new DodgeballNPC(russianDollImage5, gameCanvas.width/2 - gameCanvas.width/24,gameCanvas.height - gameCanvas.height/10);//bottom center
+    let oscillationVelocityYForBallAndCharacter1 = getRandomArbitrary(-0.05,0.05);
+    let oscillationVelocityXForBallAndCharacter2 = getRandomArbitrary(-0.05,0.05);
+    let oscillationVelocityYForBallAndCharacter3 = getRandomArbitrary(-0.05,0.05);
+    let oscillationVelocityXForBallAndCharacter4 = getRandomArbitrary(-0.05,0.05);
+
+    this.NPC1 = new DodgeballNPC(russianDollImage2, 0,gameCanvas.height/2 - gameCanvas.height/20, undefined,oscillationVelocityYForBallAndCharacter1);//left side of screen
+    this.NPC2 = new DodgeballNPC(russianDollImage3, gameCanvas.width/2 - gameCanvas.width/24,0,  oscillationVelocityXForBallAndCharacter2,undefined);//top center
+    this.NPC3 = new DodgeballNPC(russianDollImage4, gameCanvas.width - gameCanvas.width/12,gameCanvas.height/2 - gameCanvas.height/20, undefined,oscillationVelocityYForBallAndCharacter3);//right side
+    this.NPC4 = new DodgeballNPC(russianDollImage5, gameCanvas.width/2 - gameCanvas.width/24,gameCanvas.height - gameCanvas.height/10,  oscillationVelocityXForBallAndCharacter4,undefined);//bottom center
     this.arrayOfNPCs.push(this.NPC1);
     this.arrayOfNPCs.push(this.NPC2);
     this.arrayOfNPCs.push(this.NPC3);
     this.arrayOfNPCs.push(this.NPC4);
 
-    this.dodgeball1 = new ActualDodgeball('1', this.NPC1.x + this.NPC1.width/2,this.NPC1.y + this.NPC1.height/2);
-    this.dodgeball2 = new ActualDodgeball('2', this.NPC2.x + this.NPC2.width/2,this.NPC2.y + this.NPC2.height/2);
-    this.dodgeball3 = new ActualDodgeball('3', this.NPC3.x,this.NPC3.y + this.NPC3.height/2);
-    this.dodgeball4 = new ActualDodgeball('4', this.NPC4.x + this.NPC4.width/2,this.NPC4.y + this.NPC4.height/4);
+    this.dodgeball1 = new ActualDodgeball('1', this.NPC1.x + this.NPC1.width/2,this.NPC1.y + this.NPC1.height/2, undefined,oscillationVelocityYForBallAndCharacter1);
+    this.dodgeball2 = new ActualDodgeball('2', this.NPC2.x + this.NPC2.width/2,this.NPC2.y + this.NPC2.height/2, oscillationVelocityXForBallAndCharacter2,undefined);
+    this.dodgeball3 = new ActualDodgeball('3', this.NPC3.x,this.NPC3.y + this.NPC3.height/2, undefined,oscillationVelocityYForBallAndCharacter3);
+    this.dodgeball4 = new ActualDodgeball('4', this.NPC4.x + this.NPC4.width/2,this.NPC4.y + this.NPC4.height/4, oscillationVelocityXForBallAndCharacter4,undefined);
     this.arrayOfDodgeballs.push(this.dodgeball1);
     this.arrayOfDodgeballs.push(this.dodgeball2);
     this.arrayOfDodgeballs.push(this.dodgeball3);
@@ -95,7 +100,7 @@ function dodgeballGameClass()
     this.playerCharacter.updateAngle();
     this.playerCharacter.updatePivotsForWeebleWobble();
     this.playerCharacter.move();
-    
+
     for (let i = 0; i < this.arrayOfDodgeballs.length; i++)
     {
       this.arrayOfDodgeballs[i].move();
@@ -108,7 +113,11 @@ function dodgeballGameClass()
     for (let i = 0; i < this.arrayOfNPCs.length; i++)
     {
       this.arrayOfNPCs[i].updateAngle();
+      this.arrayOfNPCs[i].updateCenterCoordinates();
+      this.arrayOfNPCs[i].move();
+      this.arrayOfNPCs[i].updatePivots();
     }
+
   }
 
   this.handleLeftArrowDown = function()
