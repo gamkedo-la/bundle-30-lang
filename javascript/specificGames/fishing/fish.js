@@ -6,10 +6,15 @@ const MIN_DISTANCE_BETWEEN_FISHES = 50;
 
 const PROJECTION_TO_BUCKET_SPEED = 0.03;
 
+const FISH_HEAD_X = 40;
 
 function Fish() {
     this.x = undefined;
     this.y = undefined;
+
+    this.headX = undefined;
+    
+    this.headWidth = undefined;
 
     this.speedX = undefined;
     this.speedY = 0.5;
@@ -46,6 +51,9 @@ function Fish() {
         this.sprite = getRandomElementFromArray(fishSprites);
         this.width  = FISH_SIZE_FACTOR * this.sprite.width;
         this.height = FISH_SIZE_FACTOR * this.sprite.height;
+
+        this.headWidth = this.width * 0.3;
+        this.headXOffset = (this.width - this.headWidth) / 2;
 
         this.x = getRandomArbitrary(
             this.width/2, gameCanvas.width - this.width/2
@@ -85,6 +93,8 @@ function Fish() {
         else{
             this.updatePositionWhenHasEatenHook();
         }
+
+        this.headX = this.x + this.orientation * this.headXOffset;
     }
 
     this.updatePositionWhenHasEatenHook = function() {
@@ -106,7 +116,7 @@ function Fish() {
                 this.oscillation = 0.0;
             }
             
-            this.fishingHook.x = this.x;
+            this.fishingHook.x = this.headX;
             this.fishingHook.y = this.y;
         }
     }
@@ -250,8 +260,39 @@ function Fish() {
                 this.height
             );
             gameCanvasContext.restore();
-
+            
+            this.drawBoundingBoxesIfDebugMode();
             this.drawProjectionTrajectoryIfDebugMode();
+        }
+    }
+
+    this.drawBoundingBoxesIfDebugMode = function() {
+        if (debugOn){
+            
+            gameCanvasContext.save();
+            gameCanvasContext.translate(this.x, this.y);
+            gameCanvasContext.scale(this.orientation, 1);
+            gameCanvasContext.strokeStyle = "purple";
+            gameCanvasContext.lineWidth = 3;
+            gameCanvasContext.strokeRect(
+                -this.width/2, 
+                -this.height/2,
+                this.width, 
+                this.height
+            );
+            gameCanvasContext.restore();
+
+            gameCanvasContext.save();
+            gameCanvasContext.translate(this.headX, this.y);
+            gameCanvasContext.lineWidth = 2;
+            gameCanvasContext.strokeStyle = "red";
+            gameCanvasContext.strokeRect(
+                -this.headWidth/2,
+                -this.height/2, 
+                this.headWidth,
+                this.height
+            );
+            gameCanvasContext.restore();
         }
     }
 
