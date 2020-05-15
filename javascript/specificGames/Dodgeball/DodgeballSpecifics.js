@@ -66,7 +66,10 @@ function dodgeballGameClass()
   this.draw = function()
   {
     this.background.draw();
+
+
     this.playerCharacter.draw();
+
     for (let i = 0; i < this.arrayOfNPCs.length; i++)
     {
       this.arrayOfNPCs[i].draw();
@@ -88,14 +91,24 @@ function dodgeballGameClass()
 
   this.update = function()
   {
+
+    this.playerCharacter.updateAngle();
+    this.playerCharacter.updatePivotsForWeebleWobble();
     this.playerCharacter.move();
+    
     for (let i = 0; i < this.arrayOfDodgeballs.length; i++)
     {
       this.arrayOfDodgeballs[i].move();
       this.arrayOfDodgeballs[i].detectCollisionWithPlayer();
       this.arrayOfDodgeballs[i].detectOffScreen();
     }
+
     this.playerCharacter.updateCenterCoordinates();
+
+    for (let i = 0; i < this.arrayOfNPCs.length; i++)
+    {
+      this.arrayOfNPCs[i].updateAngle();
+    }
   }
 
   this.handleLeftArrowDown = function()

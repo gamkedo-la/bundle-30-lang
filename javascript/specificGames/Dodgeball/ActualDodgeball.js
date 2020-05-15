@@ -32,8 +32,8 @@ function ActualDodgeball(number, startingX,startingY)
     this.deltaXFromPlayer =  gameClassManager.currentGame.playerCharacter.centerX - this.x;
     this.deltaYFromPlayer =  gameClassManager.currentGame.playerCharacter.centerY - this.y;
     this.angleFromPlayerInRadians = Math.atan2(this.deltaYFromPlayer,this.deltaXFromPlayer);
-    this.velocityX = 4 * Math.cos(this.angleFromPlayerInRadians);
-    this.velocityY = 4 * Math.sin(this.angleFromPlayerInRadians);
+    this.velocityX = 3 * Math.cos(this.angleFromPlayerInRadians);
+    this.velocityY = 3 * Math.sin(this.angleFromPlayerInRadians);
   }
 
   this.isBeingThrown = false;
