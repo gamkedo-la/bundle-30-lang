@@ -2,7 +2,7 @@ dodgeballGameClass.prototype = new GameClass();
 function dodgeballGameClass()
 {
   this.name = 'dodge ball game';
-
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/dodgeballWeebleWobble(3).mp3', 21.2);
   this.playerCharacter = undefined;
 
   this.NPC1 = undefined;
