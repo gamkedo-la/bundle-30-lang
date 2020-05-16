@@ -33,16 +33,19 @@ function FishingCharacter () {
     }
 
     this.resetHook = function() {
+        this.fishingHook.x = this.x + this.width/2;;
         this.fishingHook.y = this.y + 5;
         this.fishingHook.reset();
     }
 
     this.update = function () {
-        if (!this.fishingHook.isThrown){
-            this.fishingHook.x = this.x + this.width/2;
-            this.fishingBucket.updateXPosition(this.x - this.width/2);
+        if (this.isInitialized){
+            if (!this.fishingHook.isThrown){
+                this.fishingHook.x = this.x + this.width/2;
+                this.fishingBucket.updateXPosition(this.x - this.width/2);
+            }
+            this.fishingHook.update();
         }
-        this.fishingHook.update();
     }
 
     this.draw = function () {
