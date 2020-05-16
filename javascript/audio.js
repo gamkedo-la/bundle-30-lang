@@ -59,13 +59,13 @@ function MusicManager() {
 				nextTrack = new Audio(trackList[1].src);
 				nextTrackDuration = trackList[1].dur;
 			} else {
-                if (!trackList || !trackList[0]) {
-                    console.log("Warning: music trackList is empty. Ignoring.");
-                    this.playing = false;
-                    nextTrack = null;
-                    return;
-                }
-                nextTrack = new Audio(trackList[0].src);
+				if (!trackList || !trackList[0]) {
+					console.log("Warning: music trackList is empty. Ignoring.");
+					this.playing = false;
+					nextTrack = null;
+					return;
+				}
+				nextTrack = new Audio(trackList[0].src);
 				nextTrackDuration = trackList[0].dur;
 			}
 			nextTrack.volume = Math.pow(volume.music, 2);
@@ -441,12 +441,22 @@ genAudio.playTransitionMusic = function() {
 	musicManager.moveToLastTrack();
 	musicManager.playNextTrack();
 	musicManager.addTrack(gameClassManager.currentGame.backgroundMusic);
+	if (SKIP_TRANSITIONS) {
+		console.log("Skipping transition music");
+		fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
+		promptersManager.promptThePlayer();
+		if (gameClassManager.currentGame.startGameSpecialCode) {
+			gameClassManager.currentGame.startGameSpecialCode();
+		}
+		gameCanvasContext.globalAlpha = 1;
+		return;
+	}
 	musicManager.onEndFunction = function() {
 		fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
 		promptersManager.promptThePlayer();
 		if (gameClassManager.currentGame.startGameSpecialCode) {
-          gameClassManager.currentGame.startGameSpecialCode();
-        }
+			gameClassManager.currentGame.startGameSpecialCode();
+		}
 		gameCanvasContext.globalAlpha = 1;
 	}
 }
