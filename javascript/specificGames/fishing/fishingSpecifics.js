@@ -13,7 +13,7 @@ function fishingGameClass()
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
   this.LETTER_COLOR = "black";
 
-  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/fishingVillageMusic.mp3', 24.7);
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/fishingVillageMusic(3).mp3', 24);
   this.titleScreenData = [{
     name: "Fishing",
     fontSize: 27,
