@@ -40,6 +40,16 @@ function helloWorldGameClass()
   this.incorrectTextAnswerHolderWidth = undefined;
 
 
+  this.startGameSpecialCode = function() 
+  {
+    gameClassManager.currentGame.conversationAudioManager.assignOrderOfAudioAnswers();
+    musicManager.startDuck();
+    gameClassManager.currentGame.conversationAudioManager.assignOnendedFunctions();
+
+    gameClassManager.currentGame.conversationAudioManager.promptBubble.message.play();
+    gameClassManager.currentGame.conversationAudioManager.promptBubble.isBeingHeard = true;
+  }
+
   this.initialize = function()
 	{
     this.defineAndInitializePlayerCharacter();

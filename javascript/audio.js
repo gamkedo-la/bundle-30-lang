@@ -444,29 +444,9 @@ genAudio.playTransitionMusic = function() {
 	musicManager.onEndFunction = function() {
 		fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
 		promptersManager.promptThePlayer();
-		if (gameClassManager.currentGame.name === 'hello world game')
-		{
-			gameClassManager.currentGame.conversationAudioManager.assignOrderOfAudioAnswers();
-			musicManager.startDuck();
-			gameClassManager.currentGame.conversationAudioManager.assignOnendedFunctions();
-
-	    gameClassManager.currentGame.conversationAudioManager.promptBubble.message.play();
-			gameClassManager.currentGame.conversationAudioManager.promptBubble.isBeingHeard = true;
-		}
-		else if
-		(gameClassManager.currentGame.name === 'hello world 2 game')
-		{
-			gameClassManager.currentGame.questionAudioManager.assignOrderOfAudioQuestions();
-			musicManager.startDuck();
-			gameClassManager.currentGame.questionAudioManager.assignOnendedFunctions();
-
-	    gameClassManager.currentGame.imagePrompter.promptThePlayer();
-		}
-		else if (gameClassManager.currentGame.name === 'dodge ball game')
-		{
-			gameClassManager.currentGame.throwTheBallsAfterTimeouts();
-			gameClassManager.currentGame.phonicClassManager.currentCorrectPhonic.promptAudio.sfx.play();
-		}
+		if (gameClassManager.currentGame.startGameSpecialCode) {
+          gameClassManager.currentGame.startGameSpecialCode();
+        }
 		gameCanvasContext.globalAlpha = 1;
 	}
 }

@@ -60,7 +60,13 @@ function laneGameClass() {
 
   };
 
-  this.postGameSpecialCode = function() {
+  this.startGameSpecialCode = function() 
+  {
+	  gameAudio.car.play();
+  }
+
+  this.postGameSpecialCode = function() 
+  {
   	gameAudio.car.stop();
   }
 
@@ -87,7 +93,6 @@ function laneGameClass() {
 	  this.background.initialize();
 	  this.initializeLanePositions();
 	  promptsAndAnswersManager.defineXAndYCoordinatesForTargets();
-	  gameAudio.car.play();
       musicManager.addTrack(new MusicTrack('audio/backgroundTracks/200419.mp3', 76.7));
 	};
 

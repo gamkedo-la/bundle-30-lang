@@ -37,6 +37,15 @@ function helloWorld2GameClass()
   this.correctTextAnswerHolderWidth = undefined;
   this.incorrectTextAnswerHolderWidth = undefined;
 
+  this.startGameSpecialCode = function() 
+  {
+      gameClassManager.currentGame.questionAudioManager.assignOrderOfAudioQuestions();
+      musicManager.startDuck();
+      gameClassManager.currentGame.questionAudioManager.assignOnendedFunctions();
+
+      gameClassManager.currentGame.imagePrompter.promptThePlayer();
+  }
+
 
   this.initialize = function()
 	{

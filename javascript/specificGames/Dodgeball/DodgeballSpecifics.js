@@ -21,6 +21,13 @@ function dodgeballGameClass()
 
   this.background = new DodgeballBackground();
 
+  this.startGameSpecialCode = function()
+  {
+    gameClassManager.currentGame.throwTheBallsAfterTimeouts();
+    gameClassManager.currentGame.phonicClassManager.currentCorrectPhonic.promptAudio.sfx.play();
+
+  }
+
   this.defineAndInitializePlayerCharacter = function()
   {
     this.playerCharacter = new DodgeballPlayerCharacter();
