@@ -13,6 +13,7 @@ function fishingGameClass()
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
   this.LETTER_COLOR = "black";
 
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/fishingVillageMusic.mp3', 24.7);
   this.titleScreenData = [{
     name: "Fishing",
     fontSize: 27,
@@ -57,7 +58,7 @@ function fishingGameClass()
   }
 
   this.defineAndInitializePlayerCharacter = function()
-  { 
+  {
     this.playerCharacter = new FishingCharacter();
     this.playerCharacter.initialize();
   }
@@ -66,7 +67,7 @@ function fishingGameClass()
   {
     this.background.draw();
     this.playerCharacter.draw();
-    
+
     for(var i = 0 ; i < this.fishes.length ; i++){
       this.fishes[i].draw();
     }
