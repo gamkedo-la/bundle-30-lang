@@ -78,14 +78,8 @@ function fishingGameClass()
 
   this.update = function()
   {
-    if (this.playerCharacter.isInitialized){
-      this.playerCharacter.update();
-    }
-
-    for(var i = 0 ; i < this.fishes.length ; i++){
-      this.fishes[i].update();
-    }
-
+    this.updateAllFishes();
+    this.playerCharacter.update();
     this.collisionsWithAnswersManager.handleCollisionsWithAnswers(
       this.playerCharacter.fishingBucket
     );
@@ -95,6 +89,12 @@ function fishingGameClass()
     this.playerCharacter.resetHook();
     this.playerCharacter.speedX = 5;
     this.resetFishes();
+  }
+
+  this.updateAllFishes = function(){
+    for(var i = 0 ; i < this.fishes.length ; i++){
+      this.fishes[i].update();
+    }
   }
 
   this.resetFishes = function() {

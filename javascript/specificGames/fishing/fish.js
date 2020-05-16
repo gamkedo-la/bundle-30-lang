@@ -101,23 +101,19 @@ function Fish() {
         
         if (this.fishingHook.isPulledBack){
             this.setCaughtAndBucketLocationsIfUndefined();
-            this.projectToBucket();
-
-            if (debugOn && !this.drawTrajectoryToBucket){
-                this.drawTrajectoryToBucket = true;
-            }
-    
+            this.projectToBucket(); 
         }
         else {
-            this.x -= this.orientation * 1.0;
-            this.y += 0.5 + 2*Math.sin(this.oscillation);
-            this.oscillation += this.oscillationSpeed;
-            if (this.oscillation >= Math.PI * 2){
-                this.oscillation = 0.0;
-            }
-            
-            this.fishingHook.x = this.headX;
-            this.fishingHook.y = this.y;
+            this.oscillateTryingToEscape();
+        }
+    }
+
+    this.oscillateTryingToEscape = function() {
+        this.x -= this.orientation * 1.0;
+        this.y += 0.5 + 2*Math.sin(this.oscillation);
+        this.oscillation += this.oscillationSpeed;
+        if (this.oscillation >= Math.PI * 2){
+            this.oscillation = 0.0;
         }
     }
 
@@ -170,6 +166,10 @@ function Fish() {
             this.caughtLocationX = this.x;
             this.caughtLocationY = this.y
         }
+
+        if (debugOn && !this.drawTrajectoryToBucket){
+            this.drawTrajectoryToBucket = true;
+        }
     }
 
     this.handleCollisionWithFishingHook = function() {
@@ -183,6 +183,7 @@ function Fish() {
         {
             this.fishingHook.isEatenByFish = true;
             this.fishingHook.isFalling = false;
+            this.fishingHook.fishCaught = this;
             this.hasEatenHook = true;
         }
     }
