@@ -111,13 +111,17 @@ function LanguageSelectionScreen()
         inputManager.mouseCoordinates.y > startingY && inputManager.mouseCoordinates.y < startingY + height &&
         this.languageNum >= 0)
         {
+
           genAudio.playClick();
+
           if (isLanguageCustomizationActive)
           {
+
             this.goToLanguageCustomizationScreen();
           }
           else
           {
+
             this.startGame();
           }
         }

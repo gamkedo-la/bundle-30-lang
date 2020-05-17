@@ -25,7 +25,6 @@ function dodgeballGameClass()
   {
     gameClassManager.currentGame.throwTheBallsAfterTimeouts();
     gameClassManager.currentGame.phonicClassManager.currentCorrectPhonic.promptAudio.sfx.play();
-
   }
 
   this.defineAndInitializePlayerCharacter = function()
