@@ -13,6 +13,7 @@ function birdGameClass() {
     this.playerCharacter.initialize();
     this.collidingObject = this.playerCharacter;
   }
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/birdSong.mp3',53);
   this.collidingObject = undefined;
   this.titleScreenData = [{
 	name: "Bird",
