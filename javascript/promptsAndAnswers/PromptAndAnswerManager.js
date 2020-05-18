@@ -729,7 +729,8 @@ function PromptsAndAnswersManager()
 
   this.setOrResetPromptsAndAnswers = function()
   {
-    if (gameClassManager.currentGame === cVcShooterGame || gameClassManager.currentGame.name === 'hello world 2 game')
+    if (gameClassManager.currentGame === cVcShooterGame || gameClassManager.currentGame.name === 'hello world 2 game' ||
+        gameClassManager.currentGame.name === 'hello world game' || gameClassManager.currentGame.name === 'dodge ball game')
     {
       return;
     }
