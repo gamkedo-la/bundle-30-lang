@@ -40,7 +40,7 @@ function helloWorldGameClass()
   this.incorrectTextAnswerHolderWidth = undefined;
 
 
-  this.startGameSpecialCode = function() 
+  this.startGameSpecialCode = function()
   {
     gameClassManager.currentGame.conversationAudioManager.assignOrderOfAudioAnswers();
     musicManager.startDuck();
@@ -83,6 +83,7 @@ function helloWorldGameClass()
     else if (languageSelectionScreen.languageNum === 2)
     {
       currentLanguageArray = this.conversationPatternManager.arrayOfCentralVietnameseConvoPatterns;
+      console.log('currentLanguageArray: ' + currentLanguageArray);
     }
     return currentLanguageArray;
   }
