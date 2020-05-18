@@ -65,21 +65,21 @@ function QuestionClassManager()
 
   this.assignAudioClipsToSpeechBubbles = function()
   {
-    let playerCharacterSpeechBubbleA = gameClassManager.currentGame.playerCharacterSpeechBubbleA;
-    let playerCharacterSpeechBubbleB = gameClassManager.currentGame.playerCharacterSpeechBubbleB;
+    let playerCharacterSpeechBubbleHW2A = gameClassManager.currentGame.playerCharacterSpeechBubbleHW2A;
+    let playerCharacterSpeechBubbleHW2B = gameClassManager.currentGame.playerCharacterSpeechBubbleHW2B;
 
     let fiftyFiftyChance = Math.random();
     if (fiftyFiftyChance < 0.5)
     {
-      playerCharacterSpeechBubbleA.message = this.currentCorrectQuestion.questionAudio;
+      playerCharacterSpeechBubbleHW2A.message = this.currentCorrectQuestion.questionAudio;
 
-      playerCharacterSpeechBubbleB.message = this.incorrectQuestion.questionAudio;
+      playerCharacterSpeechBubbleHW2B.message = this.incorrectQuestion.questionAudio;
     }
     else
     {
-      playerCharacterSpeechBubbleB.message = this.currentCorrectQuestion.questionAudio;
+      playerCharacterSpeechBubbleHW2B.message = this.currentCorrectQuestion.questionAudio;
 
-      playerCharacterSpeechBubbleA.message = this.incorrectQuestion.questionAudio;
+      playerCharacterSpeechBubbleHW2A.message = this.incorrectQuestion.questionAudio;
 
     }
   }

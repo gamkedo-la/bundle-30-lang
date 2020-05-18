@@ -11,8 +11,8 @@ function helloWorld2GameClass()
     this.NPC = new HelloWorldCharacter(russianDollImage4, gameCanvas.width*0.8);
 		// this.playerCharacter.initialize();
 
-    this.playerCharacterSpeechBubbleA = new CharacterSpeechBubble(speechBubbleFromLeftImageA,speechBubbleFromLeftImageAHighlighted, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
-    this.playerCharacterSpeechBubbleB = new CharacterSpeechBubble(speechBubbleFromLeftImageB,speechBubbleFromLeftImageBHighlighted, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
+    this.playerCharacterSpeechBubbleHW2A = new CharacterSpeechBubbleHW2(speechBubbleFromLeftImageA,speechBubbleFromLeftImageAHighlighted, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
+    this.playerCharacterSpeechBubbleHW2B = new CharacterSpeechBubbleHW2(speechBubbleFromLeftImageB,speechBubbleFromLeftImageBHighlighted, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
   }
 
   this.questionClassManager = undefined;
@@ -37,7 +37,7 @@ function helloWorld2GameClass()
   this.correctTextAnswerHolderWidth = undefined;
   this.incorrectTextAnswerHolderWidth = undefined;
 
-  this.startGameSpecialCode = function() 
+  this.startGameSpecialCode = function()
   {
       gameClassManager.currentGame.questionAudioManager.assignOrderOfAudioQuestions();
       musicManager.startDuck();
@@ -94,8 +94,8 @@ function helloWorld2GameClass()
     this.background.draw();
     this.playerCharacter.draw();
     this.NPC.draw();
-    this.playerCharacterSpeechBubbleA.draw();
-    this.playerCharacterSpeechBubbleB.draw();
+    this.playerCharacterSpeechBubbleHW2A.draw();
+    this.playerCharacterSpeechBubbleHW2B.draw();
     if (this.imagePrompter.shouldBeDrawingAPrompt === true)
     {
       this.imagePrompter.drawThePrompt();
@@ -104,8 +104,8 @@ function helloWorld2GameClass()
 
   this.update = function()
   {
-    this.playerCharacterSpeechBubbleA.returnMouseOverStatus();
-    this.playerCharacterSpeechBubbleB.returnMouseOverStatus();
+    this.playerCharacterSpeechBubbleHW2A.returnMouseOverStatus();
+    this.playerCharacterSpeechBubbleHW2B.returnMouseOverStatus();
     if (this.imagePrompter.shouldBeDrawingAPrompt === true)
     {
       this.imagePrompter.updatePromptImage();
@@ -114,8 +114,8 @@ function helloWorld2GameClass()
 
   this.handleClick = function()
   {
-    this.playerCharacterSpeechBubbleA.handleClick();
-    this.playerCharacterSpeechBubbleB.handleClick();
+    this.playerCharacterSpeechBubbleHW2A.handleClick();
+    this.playerCharacterSpeechBubbleHW2B.handleClick();
   }
 }
 

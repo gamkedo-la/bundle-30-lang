@@ -14,7 +14,7 @@ function HelloWorldCharacter(image, x)
   }
 }
 
-function CharacterSpeechBubble(image,highlightedImage, x,y, width,height)
+function CharacterSpeechBubbleHW2(image,highlightedImage, x,y, width,height)
 {
   this.image = image;
   this.highlightedImage = highlightedImage;

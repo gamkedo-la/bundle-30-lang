@@ -72,21 +72,21 @@ function ConversationPatternManager()
     let npcGuestSpeechBubble = gameClassManager.currentGame.NPCSpeechBubble;
     npcGuestSpeechBubble.message = this.currentCorrectConversationPattern.promptAudio;
 
-    let playerCharacterSpeechBubbleA = gameClassManager.currentGame.playerCharacterSpeechBubbleA;
-    let playerCharacterSpeechBubbleB = gameClassManager.currentGame.playerCharacterSpeechBubbleB;
+    let playerCharacterSpeechBubbleHW1A = gameClassManager.currentGame.playerCharacterSpeechBubbleHW1A;
+    let playerCharacterSpeechBubbleHW1B = gameClassManager.currentGame.playerCharacterSpeechBubbleHW1B;
 
     let fiftyFiftyChance = Math.random();
     if (fiftyFiftyChance < 0.5)
     {
-      playerCharacterSpeechBubbleA.message = this.currentCorrectConversationPattern.answerAudio;
+      playerCharacterSpeechBubbleHW1A.message = this.currentCorrectConversationPattern.answerAudio;
 
-      playerCharacterSpeechBubbleB.message = this.incorrectConversationPattern.answerAudio;
+      playerCharacterSpeechBubbleHW1B.message = this.incorrectConversationPattern.answerAudio;
     }
     else
     {
-      playerCharacterSpeechBubbleB.message = this.currentCorrectConversationPattern.answerAudio;
+      playerCharacterSpeechBubbleHW1B.message = this.currentCorrectConversationPattern.answerAudio;
 
-      playerCharacterSpeechBubbleA.message = this.incorrectConversationPattern.answerAudio;
+      playerCharacterSpeechBubbleHW1A.message = this.incorrectConversationPattern.answerAudio;
 
     }
   }

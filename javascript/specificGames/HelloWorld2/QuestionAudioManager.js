@@ -19,13 +19,13 @@ function QuestionAudioManager()
     let fiftyFiftyChance = Math.random();
     if (fiftyFiftyChance < 0.5)
     {
-      scopingProblemThis.firstQuestionBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleA;
-      scopingProblemThis.secondQuestionBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleB;
+      scopingProblemThis.firstQuestionBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleHW2A;
+      scopingProblemThis.secondQuestionBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleHW2B;
     }
     else
     {
-      scopingProblemThis.firstQuestionBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleB;
-      scopingProblemThis.secondQuestionBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleA;
+      scopingProblemThis.firstQuestionBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleHW2B;
+      scopingProblemThis.secondQuestionBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleHW2A;
     }
   }
 

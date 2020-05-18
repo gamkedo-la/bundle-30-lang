@@ -12,9 +12,9 @@ function HelloWorldCharacter(image, x)
   {
     gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
-}
+}CharacterSpeechBubbleHW1
 
-function CharacterSpeechBubble(image,highlightedImage, x,y, width,height)
+function CharacterSpeechBubbleHW1(image,highlightedImage, x,y, width,height)
 {
   this.image = image;
   this.highlightedImage = highlightedImage;

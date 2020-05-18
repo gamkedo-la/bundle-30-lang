@@ -11,9 +11,9 @@ function helloWorldGameClass()
     this.NPC = new HelloWorldCharacter(russianDollImage4, gameCanvas.width*0.8);
 		// this.playerCharacter.initialize();
 
-    this.playerCharacterSpeechBubbleA = new CharacterSpeechBubble(speechBubbleFromLeftImageA,speechBubbleFromLeftImageAHighlighted, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
-    this.playerCharacterSpeechBubbleB = new CharacterSpeechBubble(speechBubbleFromLeftImageB,speechBubbleFromLeftImageBHighlighted, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
-    this.NPCSpeechBubble = new CharacterSpeechBubble(speechBubbleFromRightImage,speechBubbleFromRightImage, gameCanvas.width*0.5,gameCanvas.height*0.2, gameCanvas.width/3,gameCanvas.width/3);
+    this.playerCharacterSpeechBubbleHW1A = new CharacterSpeechBubbleHW1(speechBubbleFromLeftImageA,speechBubbleFromLeftImageAHighlighted, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
+    this.playerCharacterSpeechBubbleHW1B = new CharacterSpeechBubbleHW1(speechBubbleFromLeftImageB,speechBubbleFromLeftImageBHighlighted, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
+    this.NPCSpeechBubble = new CharacterSpeechBubbleHW1(speechBubbleFromRightImage,speechBubbleFromRightImage, gameCanvas.width*0.5,gameCanvas.height*0.2, gameCanvas.width/3,gameCanvas.width/3);
   }
 
   this.FRAME_RATE = 1000/30;
@@ -93,22 +93,22 @@ function helloWorldGameClass()
     this.background.draw();
     this.playerCharacter.draw();
     this.NPC.draw();
-    this.playerCharacterSpeechBubbleA.draw();
-    this.playerCharacterSpeechBubbleB.draw();
+    this.playerCharacterSpeechBubbleHW1A.draw();
+    this.playerCharacterSpeechBubbleHW1B.draw();
     this.NPCSpeechBubble.draw();
   }
 
   this.update = function()
   {
-    this.playerCharacterSpeechBubbleA.returnMouseOverStatus();
-    this.playerCharacterSpeechBubbleB.returnMouseOverStatus();
+    this.playerCharacterSpeechBubbleHW1A.returnMouseOverStatus();
+    this.playerCharacterSpeechBubbleHW1B.returnMouseOverStatus();
     this.NPCSpeechBubble.returnMouseOverStatus();
   }
 
   this.handleClick = function()
   {
-    this.playerCharacterSpeechBubbleA.handleClick();
-    this.playerCharacterSpeechBubbleB.handleClick();
+    this.playerCharacterSpeechBubbleHW1A.handleClick();
+    this.playerCharacterSpeechBubbleHW1B.handleClick();
     this.NPCSpeechBubble.handleClick();
   }
 }
