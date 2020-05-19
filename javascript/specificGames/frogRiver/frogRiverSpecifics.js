@@ -29,6 +29,7 @@ function frogRiverGameClass()
     this.lilyPadManager = new LilyPadManager();
     this.lilyPadManager.initializeLilyPads();
     gameAudio.frogJump = new sfxOneShot('audio/V/frogJump.mp3');
+    gameAudio.riverComplete = new sfxOneShot('audio/V/riverComplete.mp3');
   }
 
   this.superInitialize = function()
@@ -75,6 +76,11 @@ function frogRiverGameClass()
 
   this.handleUpArrowDown = function()
   {
+    if (this.answerCount === -1)
+    {
+      gameAudio.riverComplete.play();
+    }
+    console.log('this.answerCount: ' + this.answerCount);
     if (frogRiverGame.answerCount !== -1)
     {
       this.playerCharacter.checkForLilyLanding();
