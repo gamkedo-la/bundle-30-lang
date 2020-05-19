@@ -48,6 +48,7 @@ function jumperGameClass()
   {
     gameAudio = {};
     gameAudio.digging = new sfxMulti(['audio/dig1.mp3','audio/dig2.mp3','audio/dig3.mp3','audio/dig4.mp3']);
+    gameAudio.quickPlatformDropSound = new sfxOneShot('audio/V/playerJump.mp3');
   };
 
   this.superInitialize = this.initialize;
@@ -151,6 +152,7 @@ function jumperGameClass()
   {
       this.groundParticleManager.createAGroupOfParticles();
       gameAudio.digging.play();
+      gameAudio.quickPlatformDropSound.play();
     this.playerCharacter.y += 100;
     if (this.playerCharacter.y > 700)//if the player goes below the screen
     {
