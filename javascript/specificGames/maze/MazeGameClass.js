@@ -67,6 +67,8 @@ function MazeGameClass(){
         this.deadEndCellForCorrectAnswer = undefined
         this.deadEndCellForIncorrectAnswer = undefined
         this.areAnswersPlacedInDeadEndCells = false;
+
+        gameAudio.moleNav = new sfxOverlap('audio/V/moleNav.mp3');
     }
 
     this.update = function (){
@@ -221,24 +223,28 @@ function MazeGameClass(){
     this.handleUpArrowDown = function(){
         if (this.playerCharacter.isPlaced){
             this.playerCharacter.moveUp();
+            gameAudio.moleNav.play();
         }
     }
 
     this.handleDownArrowDown = function(){
         if (this.playerCharacter.isPlaced){
             this.playerCharacter.moveDown();
+            gameAudio.moleNav.play();
         }
     }
 
     this.handleLeftArrowDown = function(){
         if (this.playerCharacter.isPlaced){
             this.playerCharacter.moveLeft();
+            gameAudio.moleNav.play();
         }
     }
 
     this.handleRightArrowDown = function(){
         if (this.playerCharacter.isPlaced){
             this.playerCharacter.moveRight();
+            gameAudio.moleNav.play();
         }
     }
 }
