@@ -6,7 +6,7 @@ function frogRiverGameClass()
   this.playerCharacter = undefined;
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
-  
+
   this.titleScreenData = [{name: "Frog",fontSize: 27,spacing: 15,x: 530, y: 265},
                           {name: "River",fontSize: 27,spacing: 15,x: 525, y: 305}];
 
@@ -28,11 +28,11 @@ function frogRiverGameClass()
   {
     this.lilyPadManager = new LilyPadManager();
     this.lilyPadManager.initializeLilyPads();
+    gameAudio.frogJump = new sfxOneShot('audio/V/frogJump.mp3');
   }
 
   this.superInitialize = function()
   {
-    console.log('inside superInitialize of frogRiverGame');
     this.background = new FrogRiverBackground();
     // initializePromptAndAnswerObjects();
     // promptsAndAnswersManager.setOrResetPromptsAndAnswers();

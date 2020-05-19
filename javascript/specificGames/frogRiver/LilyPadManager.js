@@ -39,7 +39,6 @@ function LilyPadManager()
       this.arrayOfLilyPads.push(lilyPad1);
       this.arrayOfLilyPads.push(lilyPad2);
     }
-    console.log(this.arrayOfLilyPads);
   }
 
   this.drawLilyPads = function()

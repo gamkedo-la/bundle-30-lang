@@ -62,7 +62,6 @@ function flowerGameClass(){
       // initializePromptAndAnswerObjects();
       // promptsAndAnswersManager.setOrResetPromptsAndAnswers();
       promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
-      console.log(this.playerCharacter);
 	  this.superInitialize();
     };
 

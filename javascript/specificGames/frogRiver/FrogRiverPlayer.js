@@ -23,18 +23,13 @@ function FrogRiverPlayer()
   this.checkForLilyLanding = function()
   {
     let answerCount = frogRiverGame.answerCount;
-    console.log('answerCount: ' + answerCount);
     let additive = frogRiverGame.additiveToAnswers;
-    console.log('additive: ' + additive);
     let leftLilyIndex = answerCount + additive;
-    console.log('leftLilyIndex: ' + leftLilyIndex);
 
 
     for (let i = leftLilyIndex; i < leftLilyIndex + 2; i++)
     {
 
-        console.log('i: ' + i);
-        console.log(frogRiverGame.lilyPadManager.arrayOfLilyPads[i]);
         let lilyToCheck = frogRiverGame.lilyPadManager.arrayOfLilyPads[i];
         let lilyLeftBoundary = lilyToCheck.xCoordinate;
         let lilyRightBoundary = lilyLeftBoundary + lilyToCheck.width;
@@ -43,7 +38,6 @@ function FrogRiverPlayer()
         if (frogCenterPoint > lilyLeftBoundary && frogCenterPoint < lilyRightBoundary)
             {
               this.y = lilyToCheck.yCoordinate + 10;
-              console.log('this.y: ' + this.y);
               this.currentLilyPad = lilyToCheck;
               if (answerCount === -1)
               {
@@ -58,6 +52,7 @@ function FrogRiverPlayer()
               {
                 amountIncorrect++;
               }
+              gameAudio.frogJump.play();
               frogRiverGame.answerCount--;
               frogRiverGame.additiveToAnswers--;
               frogRiverGame.collisionsWithAnswersManager.resetAnswers();

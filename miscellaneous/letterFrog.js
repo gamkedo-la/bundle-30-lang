@@ -126,16 +126,15 @@ function FrogClass()
 
   this.checkForLilyLanding = function()
   {
-    console.log(this.centerX);
     for (let arrayOfLilyPadsIndex = 0; arrayOfLilyPadsIndex < arrayOfLilyPads.length; arrayOfLilyPadsIndex++)
     {
-      console.log(arrayOfLilyPads[arrayOfLilyPadsIndex]);
       if (this.centerX > arrayOfLilyPads[arrayOfLilyPadsIndex].xCoordinate &&
           this.centerX < arrayOfLilyPads[arrayOfLilyPadsIndex].xCoordinate + 50 &&
           this.yCoordinate - 50 === arrayOfLilyPads[arrayOfLilyPadsIndex].yCoordinate &&
           arrayOfLilyPads[arrayOfLilyPadsIndex].letter === currentCorrectLetter)
           {
-            console.log('lily landing detected');
+            console.log('inside check for lily landing success, should have heard frog jump audio');
+            gameAudio.frogJump.play();
             this.yCoordinate -= 50;
             this.currentLilyPad = arrayOfLilyPads[arrayOfLilyPadsIndex];
             setOrResetCorrectLetterAudio();
@@ -260,7 +259,6 @@ function initializeOrResetLilyPads()
     arrayOfLilyPads.push(lilyPad1);
     arrayOfLilyPads.push(lilyPad2);
   }
-  console.log(arrayOfLilyPads);
 }
 
 function drawLilyPads()
