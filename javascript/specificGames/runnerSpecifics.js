@@ -89,6 +89,9 @@ function runnerGameClass() {
 
   this.superInitialize = this.initialize;
   this.initialize = function() {
+    gameAudio.jumpSound = new sfxOneShot('audio/V/playerJump.mp3');
+    gameAudio.runningSteps = new sfxLooping('audio/V/runningSteps.mp3');
+    gameAudio.runningSteps.play();
     this.imageAnswerWidth = gameCanvas.width/8;
     this.imageAnswerHeight = gameCanvas.height/9;
     this.imageAnswerHolderWidth = gameCanvas.width/4;
@@ -193,6 +196,8 @@ function runnerGameClass() {
 	if (runnerStatus == 'run') {
 	  runnerStatus = 'jump';
 	  runnerSpeedY = RUNNERJUMPSPEED;
+    gameAudio.jumpSound.play();
+    gameAudio.runningSteps.stop();
 	}
   };
 
@@ -214,6 +219,7 @@ function runnerGameClass() {
 	  runnerSpeedY -= RUNNERGRAVITY;
 	  if (this.playerCharacter.y + RUNNERHEIGHT > runnerFloorLevel) {
 		this.playerCharacter.y = runnerFloorLevel - RUNNERHEIGHT;
+    gameAudio.runningSteps.play();
 		runnerStatus = 'run';
 		runnerSpeedY = 0;
 	  } else if (this.playerCharacter.y < RUNNERMAXJUMPHEIGHT) {
