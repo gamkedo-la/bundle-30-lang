@@ -59,8 +59,8 @@ function FishingCharacter () {
 
     this.drawCharacter = function(){
         gameCanvasContext.drawImage(
-            fishingGameCharacter, 
-            this.x - this.width/2, 
+            fishingGameCharacter,
+            this.x - this.width/2,
             this.y - this.height/2,
             this.width, this.height
         )
@@ -68,8 +68,8 @@ function FishingCharacter () {
 
     this.drawBoat = function() {
         gameCanvasContext.drawImage(
-            fishingGameBoat, 
-            this.x - 100, 
+            fishingGameBoat,
+            this.x - 100,
             WATER_HEIGHT - 15,
             150, 30
         )
@@ -83,7 +83,7 @@ function FishingCharacter () {
             gameCanvasContext.beginPath();
             gameCanvasContext.moveTo(this.x + this.width/2, this.y + 5)
             gameCanvasContext.bezierCurveTo(
-                this.x + this.width/2, WATER_HEIGHT, 
+                this.x + this.width/2, WATER_HEIGHT,
                 this.fishingHook.x, WATER_HEIGHT,
                 this.fishingHook.x, this.fishingHook.y
             );
@@ -96,9 +96,11 @@ function FishingCharacter () {
         if (!this.fishingHook.isThrown){
             this.fishingHook.isThrown = true;
             this.fishingHook.isFalling = true;
+            gameAudio.rodCasting.play();
         }
         else if (this.fishingHook.isEatenByFish){
             this.fishingHook.isPulledBack = true;
+            gameAudio.rodCasting.play();
         }
     }
 

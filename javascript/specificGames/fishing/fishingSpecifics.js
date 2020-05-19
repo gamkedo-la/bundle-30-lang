@@ -32,6 +32,7 @@ function fishingGameClass()
   {
     this.background = new FishingBackground();
     this.initializeFishes();
+    gameAudio.rodCasting = new sfxOneShot('audio/V/rodCasting.mp3');
   }
 
   this.initializeFishes = function() {
