@@ -66,12 +66,20 @@ function flowerGameClass(){
 	  this.superInitialize();
     };
 
+    this.startGameSpecialCode = function()
+    {
+      gameAudio.flowerPotLeft = new sfxOneShot('audio/V/flowerPotL.mp3');
+      gameAudio.flowerPotRight = new sfxOneShot('audio/V/flowerPotR.mp3');
+    }
+
     this.handleLeftArrowDown = function(){
         this.playerCharacter.xSpeed = this.playerCharacter.LEFT_ARROW_SPEED;
+        gameAudio.flowerPotLeft.play();
     };
 
     this.handleRightArrowDown = function(){
         this.playerCharacter.xSpeed = this.playerCharacter.RIGHT_ARROW_SPEED;
+        gameAudio.flowerPotRight.play();
     };
 
     this.update = function()
