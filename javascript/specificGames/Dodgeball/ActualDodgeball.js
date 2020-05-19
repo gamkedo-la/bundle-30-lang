@@ -92,21 +92,6 @@ function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscil
     setTimeout(this.toggleIsBeingThrown,5000);
   }
 
-  this.toggleIsBeingThrown = function()
-  {
-
-    if (this.isBeingThrown === false)
-    {
-      console.log('ball ' + this.number + ' is being thrown');
-      this.calculateVelocitiesBetweenBallAndPlayer();
-      this.isBeingThrown = true;
-    }
-    else if (this.isBeingThrown === true)
-    {
-      this.isBeingThrown = false;
-    }
-  }
-
   this.detectCollisionWithPlayer = function()
   {
     let playerCharacter = gameClassManager.currentGame.playerCharacter;
@@ -114,7 +99,6 @@ function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscil
         this.y < playerCharacter.y + playerCharacter.height && this.y + this.height > playerCharacter.y)
         {
           this.isBeingThrown = false;
-          console.log('ball ' + this.number + ' collided with the player and should be reset');
 
           if (this.phonicClass.isTheCorrectChoice === true)
           {
@@ -127,6 +111,7 @@ function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscil
             amountIncorrect++;
           }
 
+          gameAudio.dodgeballCollision.play();
           gameClassManager.currentGame.phonicClassManager.setOrResetPhonicsOnDodgeballsAndPlayPromptAudio();
           for (let i = 0; i < gameClassManager.currentGame.arrayOfDodgeballs.length; i++)
           {
@@ -150,7 +135,6 @@ function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscil
        this.y = startingY;
        this.isBeingThrown = false;
        this.wentOffScreenThisPromptingRound = true;
-       console.log('ball ' + this.number + ' was off screen and should be reset');
      }
 
      let numberOfBallsThatWentOffScreen;
@@ -181,7 +165,6 @@ function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscil
 
 function throwTheBallAfterTimeout(dodgeball)
 {
-  console.log('throw the ball after timeout is being called');
   setTimeout(toggleIsBeingThrown,Math.random()*3000,dodgeball);
 }
 
@@ -189,8 +172,8 @@ function toggleIsBeingThrown(dodgeball)
 {
   if (dodgeball.isBeingThrown === false)
   {
-    console.log('inside toggle ball is being thrown');
     dodgeball.calculateVelocitiesBetweenBallAndPlayer();
     dodgeball.isBeingThrown = true;
+    gameAudio.dodgeballCollision.play();
   }
 }

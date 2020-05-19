@@ -73,24 +73,18 @@ function PhonicClassManager()
     this.temporaryArrayOfPhonics.push(phonicToMoveAndReturn4[0]);
     this.examplePhonic4 = phonicToMoveAndReturn4;
 
-    console.log('this.temporaryArrayOfPhonics: ' + this.temporaryArrayOfPhonics);
     this.currentLanguageArray.push(phonicToMoveAndReturn1[0]);
     this.currentLanguageArray.push(phonicToMoveAndReturn2[0]);
     this.currentLanguageArray.push(phonicToMoveAndReturn3[0]);
     this.currentLanguageArray.push(phonicToMoveAndReturn4[0]);
-    console.log('this.currentLanguageArray: ' + this.currentLanguageArray);
   }
 
   this.currentCorrectPhonic = undefined;
   this.chooseCorrectPhonic = function()
   {
     let randomArrayOfPhonicsIndex = getRandomIntInclusive(0,this.temporaryArrayOfPhonics.length - 1);
-    console.log('randomArrayOfPhonicsIndex: ' + randomArrayOfPhonicsIndex);
-    console.log('this.temporaryArrayOfPhonics: ' + this.temporaryArrayOfPhonics);
-    console.log('this.temporaryArrayOfPhonics[randomArrayOfPhonicsIndex].name: ' + this.temporaryArrayOfPhonics[randomArrayOfPhonicsIndex].name);
     this.temporaryArrayOfPhonics[randomArrayOfPhonicsIndex].isTheCorrectChoice = true;
     this.currentCorrectPhonic = this.temporaryArrayOfPhonics[randomArrayOfPhonicsIndex];
-    console.log('this.temporaryArrayOfPhonics[randomArrayOfPhonicsIndex].isTheCorrectChoice: ' + this.temporaryArrayOfPhonics[randomArrayOfPhonicsIndex].isTheCorrectChoice);
   }
 
   this.assignPhonicsToDodgeballs = function()
@@ -111,7 +105,6 @@ function PhonicClassManager()
     let phonic4ArrayResultFromSplice = this.temporaryArrayOfPhonics.splice(randomArrayOfPhonicsIndex,1);
     gameClassManager.currentGame.arrayOfDodgeballs[3].phonicClass = phonic4ArrayResultFromSplice[0];
 
-    console.log('gameClassManager.currentGame.arrayOfDodgeballs: ' + gameClassManager.currentGame.arrayOfDodgeballs);
   }
 
   this.setOrResetPhonicsOnDodgeballsAndPlayPromptAudio = function()

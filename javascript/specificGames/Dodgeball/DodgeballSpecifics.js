@@ -25,6 +25,7 @@ function dodgeballGameClass()
   {
     gameClassManager.currentGame.throwTheBallsAfterTimeouts();
     gameClassManager.currentGame.phonicClassManager.currentCorrectPhonic.promptAudio.sfx.play();
+    gameAudio.dodgeballCollision = new sfxOneShot('audio/V/dodgeBall.mp3');
   }
 
   this.defineAndInitializePlayerCharacter = function()
@@ -93,7 +94,6 @@ function dodgeballGameClass()
 
   this.throwTheBallsAfterTimeouts = function()
   {
-    console.log('throw the balls after timeout... from parent game, is being called');
     throwTheBallAfterTimeout(this.arrayOfDodgeballs[0]);
     throwTheBallAfterTimeout(this.arrayOfDodgeballs[1]);
     throwTheBallAfterTimeout(this.arrayOfDodgeballs[2]);
