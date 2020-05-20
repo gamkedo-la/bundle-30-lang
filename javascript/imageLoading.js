@@ -273,6 +273,9 @@ let fishingGameFish1 = document.createElement('img');
 let fishingGameFish2 = document.createElement('img');
 let fishingGameFish3 = document.createElement('img');
 
+//flying bee
+let flyingBeeBackgroundImage = document.createElement('img');
+let flyingBeePlayerCharacterImage = document.createElement('img');
 //egg catch
 let eggCatchBackgroundImage = document.createElement('img');
 let eggImage1 = document.createElement('img');
@@ -684,6 +687,9 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish1, theFile: 'images/sprites/Fishing/fish.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish2, theFile: 'images/sprites/Fishing/fish2.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish3, theFile: 'images/sprites/Fishing/fish3.png', loaded: false});
+
+  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeBackgroundImage, theFile: 'images/Backgrounds/flyingBee.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeePlayerCharacterImage, theFile: 'images/sprites/Flower/Simple Bee.png', loaded: false});
 
   //egg catch game
   arrayOfImagesToLoad.push({imageObjectBinding: eggCatchBackgroundImage, theFile: 'images/Backgrounds/Barn.png', loaded: false});
