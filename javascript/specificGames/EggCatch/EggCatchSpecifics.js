@@ -56,17 +56,18 @@ function eggCatchGameClass()
 
   }
 
+  this.collidingObject = undefined;
   this.superInitialize = function()
   {
-    this.imageAnswerWidth = gameCanvas.width/7;
-		this.imageAnswerHeight = gameCanvas.height/9;
-		this.audioImageAnswerWidth = gameCanvas.width/6;
-    this.audioImageAnswerHeight = gameCanvas.height/7;
+    this.imageAnswerWidth = gameCanvas.width*0.1;
+		this.imageAnswerHeight = gameCanvas.height*0.1;
+		this.audioImageAnswerWidth = gameCanvas.width*0.1;
+    this.audioImageAnswerHeight = gameCanvas.height*0.1;
 
-    this.imageAnswerHolderWidth = gameCanvas.width/4;
-		this.imageAnswerHolderHeight = gameCanvas.height/5;
-		this.audioImageAnswerHolderWidth = gameCanvas.width/5;
-    this.audioImageAnswerHolderHeight = gameCanvas.height/6;
+    this.imageAnswerHolderWidth = gameCanvas.width*0.15;
+		this.imageAnswerHolderHeight = gameCanvas.height*0.15;
+		this.audioImageAnswerHolderWidth = gameCanvas.width*0.15;
+    this.audioImageAnswerHolderHeight = gameCanvas.height*0.15;
     drawAnswersManager.initialize();
 
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
@@ -74,17 +75,19 @@ function eggCatchGameClass()
     this.playerCharacter = new BasketPlayerCharacter();
     this.chicken1 = new Chicken(gameCanvas.width*0.25,gameCanvas.height*0.22);
     this.chicken2 = new Chicken(gameCanvas.width*0.6,gameCanvas.height*0.22);
+    this.collidingObject = this.playerCharacter;
   }
 
   this.handleLeftArrowDown = function()
   {
-    this.playerCharacter.x -= 3;
+    this.playerCharacter.x -= 5;
   }
 
   this.handleRightArrowDown = function()
   {
-    this.playerCharacter.x  += 3;
+    this.playerCharacter.x  += 5;
   }
+
 
   this.update = function()
   {
@@ -93,8 +96,8 @@ function eggCatchGameClass()
     {
 
       this.moveAnswers();
-      this.handleAnswersOffScreen();
-
+      // this.handleAnswersOffScreen();
+      this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
     }
    }
 
@@ -110,14 +113,17 @@ function eggCatchGameClass()
 
    this.moveAnswers = function()
    {
-     promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate += 3;
-     promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate += 3;
+     promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate += 3;
+     promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate += 3;
+
    }
 
    this.handleAnswersOffScreen = function()
    {
 
    }
+
+
 }
 
 const eggCatchGame = new eggCatchGameClass();

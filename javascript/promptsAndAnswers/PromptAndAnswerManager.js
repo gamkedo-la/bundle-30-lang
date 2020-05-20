@@ -502,6 +502,27 @@ function PromptsAndAnswersManager()
 	  this.incorrectTargetPromptAndAnswerPairing.xCoordinate = pairingsCoords.incorrect.x;
 	  this.incorrectTargetPromptAndAnswerPairing.yCoordinate = pairingsCoords.incorrect.y;
 	}
+  else if (gameClassManager.currentGame.name === 'egg catch game')
+  {
+    let fiftyFiftyResult = Math.random();
+    let chicken1 = gameClassManager.currentGame.chicken1;
+    let chicken2 = gameClassManager.currentGame.chicken2;
+
+    if (fiftyFiftyResult < 0.5)
+    {
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = chicken1.eggStartingX;
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = chicken1.eggStartingY;
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = chicken2.eggStartingX;
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = chicken2.eggStartingY;
+    }
+    else if (fiftyFiftyResult >= 0.5)
+    {
+      this.correctTargetPromptAndAnswerPairing.xCoordinate = chicken2.eggStartingX;
+      this.correctTargetPromptAndAnswerPairing.yCoordinate = chicken2.eggStartingY;
+      this.incorrectTargetPromptAndAnswerPairing.xCoordinate = chicken1.eggStartingX;
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate = chicken1.eggStartingY;
+    }
+  }
     else if (gameClassManager.currentGame.name === 'whack an answer game')
     {
       let randomGridIndex1 = getRandomIntInclusive(0,8);
