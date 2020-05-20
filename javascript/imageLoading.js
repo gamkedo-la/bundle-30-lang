@@ -265,12 +265,20 @@ let whackTableSurface = document.createElement('img');
 let whackTableBeneathSurface = document.createElement('img');
 let hammerImage = document.createElement('img');
 
+//fishing
 let fishingGameWaterBackgroundImage = document.createElement('img');
 let fishingGameCharacter = document.createElement('img');
 let fishingGameBoat = document.createElement('img');
 let fishingGameFish1 = document.createElement('img');
 let fishingGameFish2 = document.createElement('img');
 let fishingGameFish3 = document.createElement('img');
+
+//egg catch
+let eggCatchBackgroundImage = document.createElement('img');
+let eggImage1 = document.createElement('img');
+let eggImage2 = document.createElement('img');
+let basketImage = document.createElement('img');
+let chickenImage = document.createElement('img');
 
 //PenaltyShootout images
 let penaltyBall1 = document.createElement('img');
@@ -676,6 +684,13 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish1, theFile: 'images/sprites/Fishing/fish.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish2, theFile: 'images/sprites/Fishing/fish2.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish3, theFile: 'images/sprites/Fishing/fish3.png', loaded: false});
+
+  //egg catch game
+  arrayOfImagesToLoad.push({imageObjectBinding: eggCatchBackgroundImage, theFile: 'images/Backgrounds/Barn.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: eggImage1, theFile: 'images/sprites/eggCatch/egg.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: eggImage2, theFile: 'images/sprites/eggCatch/egg2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: basketImage, theFile: 'images/sprites/eggCatch/Basket.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: chickenImage, theFile: 'images/sprites/eggCatch/chicken.png', loaded: false});
 
   //PenaltyShootout game
   arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall1, theFile: 'images/sprites/Penalty/ball/ball0000.png', loaded: false});
