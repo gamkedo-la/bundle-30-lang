@@ -230,7 +230,7 @@ function CollisionsWithAnswersManager()
           // }
           if (gameClassManager.currentGame.collisionAudioEffect)
           {
-            gameClassManager.currentGame.collisionAudioEffect();
+            gameClassManager.currentGame.collisionAudioEffect(collisionType);
           }
 
             this.processCollisionWithAnswer();

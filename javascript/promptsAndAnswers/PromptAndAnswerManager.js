@@ -740,6 +740,59 @@ function PromptsAndAnswersManager()
       this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerYStartingPosition = gameClassManager.currentGame.background.grid[randomGridIndex2].y + incorrectAnswerYOffSet;
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerYStartingPosition;
     }
+    else if (gameClassManager.currentGame.name === "flying bee game")
+    {
+      let leftBoundaryX = 150;
+      let leftBoundaryY = 550;
+      let rightBoundaryX = 475;
+      let rightBoundaryTopY = 50;
+      let rightBoundaryBottomY = 435;
+      let fiftyFiftyResult = Math.random();
+
+      if (gameClassManager.currentGame.answersOnLeftSide === true)
+      {
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(0,leftBoundaryX);
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(0,leftBoundaryY);
+
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(0,leftBoundaryX);
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(0,leftBoundaryY);
+        while(
+          this.checkIfObjectsAreTooCloseToEachOther
+                (
+                  this.correctTargetPromptAndAnswerPairing.xCoordinate,this.correctTargetPromptAndAnswerPairing.yCoordinate,
+                  this.incorrectTargetPromptAndAnswerPairing.xCoordinate,this.incorrectTargetPromptAndAnswerPairing.yCoordinate,
+                  100
+                )
+              )
+            {
+              this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(0,leftBoundaryX);
+              this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(0,leftBoundaryY);
+            }
+      }
+      else if (gameClassManager.currentGame.answersOnRightSide === true)
+      {
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(rightBoundaryX,gameCanvas.width - 50);
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(rightBoundaryTopY,rightBoundaryBottomY);
+
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(rightBoundaryX,gameCanvas.width - 50);
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(rightBoundaryTopY,rightBoundaryBottomY);
+        while
+        (
+          this.checkIfObjectsAreTooCloseToEachOther
+                (
+                  this.correctTargetPromptAndAnswerPairing.xCoordinate,this.correctTargetPromptAndAnswerPairing.yCoordinate,
+                  this.incorrectTargetPromptAndAnswerPairing.xCoordinate,this.incorrectTargetPromptAndAnswerPairing.yCoordinate,
+                  100
+                )
+        )
+            {
+              this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(rightBoundaryX,gameCanvas.width - 50);
+              this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(rightBoundaryTopY,rightBoundaryBottomY);
+            }
+      }
+
+      gameClassManager.currentGame.toggleAnswerPlacements();
+    }
     else if(gameClassManager.currentGame.name === "fishingGame"){
       this.correctTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(0,gameCanvas.width - 1);
       this.correctTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(WATER_HEIGHT,gameCanvas.height - 1);

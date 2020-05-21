@@ -51,9 +51,32 @@ function eggCatchGameClass()
 
   this.answersXSpeed = 4;
 
+  this.arrayOfCluckSounds = ['audio/V/chickenCluck1.mp3','audio/V/chickenCluck2.mp3','audio/V/chickenCluck3.mp3'];
   this.pregameSpecialCode = function()
   {
+    gameAudio.chickenCluck1 = new sfxOneShot('audio/V/chickenCluck1.mp3');
+    gameAudio.chickenCluck2 = new sfxOneShot('audio/V/chickenCluck2.mp3');
+    gameAudio.chickenCluck3 = new sfxOneShot('audio/V/chickenCluck3.mp3');
 
+    gameAudio.eggBreaking1 = new sfxOneShot('audio/V/eggBreaking.mp3');
+    gameAudio.eggBreaking2 = new sfxOneShot('audio/V/eggBreaking2.mp3');
+  }
+
+  this.playChickenClucks = function()
+  {
+    let cluckInterval1 = getRandomArbitrary(2000,5000);
+    let cluckInterval2 = getRandomArbitrary(2000,5000);
+    let cluckInterval3 = getRandomArbitrary(2000,5000);
+
+    setInterval(function(){
+      gameAudio.chickenCluck1.play();
+    },cluckInterval1);
+    setInterval(function(){
+      gameAudio.chickenCluck2.play();
+    },cluckInterval2);
+    setInterval(function(){
+      gameAudio.chickenCluck3.play();
+    },cluckInterval3);
   }
 
   this.collidingObject = undefined;
@@ -76,6 +99,7 @@ function eggCatchGameClass()
     this.chicken1 = new Chicken(gameCanvas.width*0.25,gameCanvas.height*0.22);
     this.chicken2 = new Chicken(gameCanvas.width*0.6,gameCanvas.height*0.22);
     this.collidingObject = this.playerCharacter;
+    this.playChickenClucks();
   }
 
   this.handleLeftArrowDown = function()
@@ -96,9 +120,24 @@ function eggCatchGameClass()
     {
 
       this.moveAnswers();
-      // this.handleAnswersOffScreen();
+      this.handleAnswersOffScreen();
       this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
     }
+   }
+
+   this.collisionAudioEffect = function(collisionType)
+   {
+     if (collisionType === COLLISION_WITH_INCORRECT_ANSWER)
+     {
+       let fiftyFiftyResult = Math.random();
+       if (fiftyFiftyResult < 0.5)
+       {
+         gameAudio.eggBreaking1.play();
+       }
+       else {
+         gameAudio.eggBreaking2.play();
+       }
+     }
    }
 
    this.draw = function()
@@ -115,12 +154,23 @@ function eggCatchGameClass()
    {
      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate += 3;
      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate += 3;
-
    }
 
    this.handleAnswersOffScreen = function()
    {
-
+     if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate > gameCanvas.height - 50)
+     {
+       this.collisionsWithAnswersManager.processCollisionWithIncorrectAnswer();
+       promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+       let fiftyFiftyResult = Math.random();
+       if (fiftyFiftyResult < 0.5)
+       {
+         gameAudio.eggBreaking1.play();
+       }
+       else {
+         gameAudio.eggBreaking2.play();
+       }
+     }
    }
 
 

@@ -275,7 +275,15 @@ let fishingGameFish3 = document.createElement('img');
 
 //flying bee
 let flyingBeeBackgroundImage = document.createElement('img');
-let flyingBeePlayerCharacterImage = document.createElement('img');
+let flyingBeeFacingLeftImage = document.createElement('img');
+let flyingBeeFacingLeftUpImage = document.createElement('img');
+let flyingBeeFacingLeftDownImage = document.createElement('img');
+let flyingBeeFacingRightImage = document.createElement('img');
+let flyingBeeFacingRightUpImage = document.createElement('img');
+let flyingBeeFacingRightDownImage = document.createElement('img');
+let flyingBeeFacingDownImage = document.createElement('img');
+let flyingBeeFacingUpImage = document.createElement('img');
+
 //egg catch
 let eggCatchBackgroundImage = document.createElement('img');
 let eggImage1 = document.createElement('img');
@@ -680,6 +688,17 @@ function loadImages()
   //pinata game
   arrayOfImagesToLoad.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png', loaded: false});
 
+  //flying bee
+  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeBackgroundImage, theFile: 'images/Backgrounds/flyingBee.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingLeftImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Left.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingLeftUpImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing UpLeft.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingLeftDownImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing DownLeft.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingRightImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Right.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingRightUpImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing UpRight.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingRightDownImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing DownRight.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingUpImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Up.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingDownImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Down.png', loaded: false});
+
   //fishing game
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameWaterBackgroundImage, theFile: 'images/Backgrounds/underwater2.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameCharacter, theFile: 'images/sprites/Fishing/person.png', loaded: false});
@@ -687,9 +706,6 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish1, theFile: 'images/sprites/Fishing/fish.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish2, theFile: 'images/sprites/Fishing/fish2.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish3, theFile: 'images/sprites/Fishing/fish3.png', loaded: false});
-
-  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeBackgroundImage, theFile: 'images/Backgrounds/flyingBee.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeePlayerCharacterImage, theFile: 'images/sprites/Flower/Simple Bee.png', loaded: false});
 
   //egg catch game
   arrayOfImagesToLoad.push({imageObjectBinding: eggCatchBackgroundImage, theFile: 'images/Backgrounds/Barn.png', loaded: false});

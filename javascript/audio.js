@@ -203,13 +203,13 @@ function sfxOverlap(source, mixVolume = 1) {
 }
 
 function sfxOneShot(source, mixVolume = 1) {
-	var sfx = new Audio(source);
+	this.sfx = new Audio(source);
 	var vol = mixVolume;
 
 	this.play = function() {
-		sfx.currentTime = 0;
-		sfx.volume = Math.pow(volume.sfx * vol, 2);
-		sfx.play();
+		this.sfx.currentTime = 0;
+		this.sfx.volume = Math.pow(volume.sfx * vol, 2);
+		this.sfx.play();
 	}
 }
 

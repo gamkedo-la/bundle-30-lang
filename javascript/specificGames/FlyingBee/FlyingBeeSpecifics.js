@@ -4,6 +4,22 @@ function flyingBeeGameClass()
   this.name = 'flying bee game';
   this.playerCharacter = undefined;
 
+  this.answersOnRightSide = true;
+  this.answersOnLeftSide = false;
+  this.toggleAnswerPlacements = function()
+  {
+    if (this.answersOnRightSide === true)
+    {
+      this.answersOnRightSide = false;
+      this.answersOnLeftSide = true;
+    }
+    else if (this.answersOnLeftSide === true)
+    {
+      this.answersOnLeftSide = false;
+      this.answersOnRightSide = true;
+    }
+  }
+
   this.background = new FlyingBeeBackground();
 
   this.defineAndInitializePlayerCharacter = function()
@@ -49,11 +65,13 @@ function flyingBeeGameClass()
 
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     this.collidingObject = this.playerCharacter;
+
+    gameAudio.beeBuzz = new sfxLooping('audio/V/beeBuzz.mp3');
+    gameAudio.beeBuzz.play();
   }
 
   this.handleLeftArrowDown = function()
 	{
-    console.log('left arrow being pressed');
 		inputManager.leftArrowIsBeingHeld = true;
 	}
 
