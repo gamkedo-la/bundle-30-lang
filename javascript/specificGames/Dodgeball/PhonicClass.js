@@ -16,7 +16,19 @@ function PhonicClassManager()
   this.centralVietnameseRisingStutterToneA = new PhonicClass('central vietnamese ã', promptAudio.centralVietnameseRisingStutterToneA,'ã');
   this.centralVietnameseLowStaccatoToneA = new PhonicClass('central vietnamese ạ', promptAudio.centralVietnameseLowStaccatoToneA,'ạ');
   this.centralVietnameseRisingHatAU = new PhonicClass('central vietnamese â', promptAudio.centralVietnameseRisingHatAU,'â');
+  this.centralVietnameseStraightI = new PhonicClass('central vietnamese i', promptAudio.centralVietnameseStraightI, 'i');
+  this.centralVietnameseHatE = new PhonicClass('central vietnamese hat e', promptAudio.centralVietnameseHatE, 'ê');
+  this.centralVietnameseE = new PhonicClass('central vietnamese e', promptAudio.centralVietnameseE, 'e');
+  this.centralVietnameseFallingI = new PhonicClass('central vietnamese falling i', promptAudio.centralVietnameseFallingI, 'ì');
+  this.centralVietnameseU = new PhonicClass('central vietnamese u', promptAudio.centralVietnameseU, 'u');
+  this.centralVietnameseHatO = new PhonicClass('central vietnamese ô', promptAudio.centralVietnameseHatO, 'ô');
+  this.centralVietnameseO = new PhonicClass('central vietnamese ô', promptAudio.centralVietnameseO, 'o');
+  this.centralVietnameseQuestionU = new PhonicClass('central vietnamese ư', promptAudio.centralVietnameseQuestionU, 'ư');
+  this.centralVietnameseQuestionO = new PhonicClass('central vietnamese ơ', promptAudio.centralVietnameseQuestionO, 'ơ');
 
+  this.centralVietnameseB = new PhonicClass('central vietnamese b', promptAudio.centralVietnameseB, 'b');
+  this.centralVietnameseC = new PhonicClass('central vietnamese c', promptAudio.centralVietnameseC, 'c');
+  this.centralVietnameseD = new PhonicClass('central vietnamese d', promptAudio.centralVietnameseD, 'd');
 
   this.arrayOfEnglishPhonics = [];
   this.arrayOfPinyinPhonics = [];
@@ -30,6 +42,21 @@ function PhonicClassManager()
     this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseRisingStutterToneA);
     this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseLowStaccatoToneA);
     this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseRisingHatAU);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseStraightI);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseHatE);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseE);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseFallingI);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseU);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseHatO);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseO);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseQuestionU);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseQuestionO);
+
+    //consonants
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseB);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseC);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseD);
+
   }
 
   this.currentLanguageArray = [];

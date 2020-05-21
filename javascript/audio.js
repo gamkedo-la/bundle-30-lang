@@ -424,7 +424,20 @@ promptAudio.centralVietnameseRisingToneA = new promptSound('audio/PromptsAndAnsw
 promptAudio.centralVietnameseRisingStutterToneA = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseRisingStutterToneA.mp3');
 promptAudio.centralVietnameseLowStaccatoToneA = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseLowStaccatoToneA.mp3');
 promptAudio.centralVietnameseRisingHatAU = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseRisingHatAU.mp3');
+ promptAudio.centralVietnameseStraightI = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseI.mp3');
+promptAudio.centralVietnameseHatE = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseHatE.mp3');
+promptAudio.centralVietnameseE = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseE.mp3');
+promptAudio.centralVietnameseFallingI = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseFallingI.mp3');
+promptAudio.centralVietnameseU = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseU.mp3');
+promptAudio.centralVietnameseHatO = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseHatO.mp3');
+promptAudio.centralVietnameseO = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseO.mp3');
+promptAudio.centralVietnameseQuestionU = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseQuestionU.mp3');
+promptAudio.centralVietnameseQuestionO = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseQuestionO.mp3');
 
+//consonants
+promptAudio.centralVietnameseB = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseB.mp3');
+promptAudio.centralVietnameseC = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseC.mp3');
+promptAudio.centralVietnameseD = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseD.mp3');
 
 promptAudio.englishBee = new promptSound('audio/PromptsAndAnswers/bee.mp3');
 promptAudio.englishFlower = new promptSound('audio/PromptsAndAnswers/flower.mp3');
