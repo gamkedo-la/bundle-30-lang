@@ -73,6 +73,8 @@ function dodgeballGameClass()
     this.phonicClassManager.populateTemporaryArrayOfPhonics();
     this.phonicClassManager.chooseCorrectPhonic();
     this.phonicClassManager.assignPhonicsToDodgeballs();
+    this.jumpDistanceX = gameCanvas.width*0.2;
+    this.jumpDistanceY = gameCanvas.height*0.3;
   }
 
   this.draw = function()
@@ -165,6 +167,55 @@ function dodgeballGameClass()
 	{
 		inputManager.downArrowIsBeingHeld = false;
 	}
+
+  this.jumpDistanceX = undefined;
+  this.jumpDistanceY = undefined;
+  this.handleSpaceBarDown = function()//jump/teleport
+  {
+    if (inputManager.leftArrowIsBeingHeld && !inputManager.upArrowIsBeingHeld &&
+        !inputManager.downArrowIsBeingHeld)//walking left
+        {
+          this.playerCharacter.x -= this.jumpDistanceX;
+        }
+    else if (inputManager.rightArrowIsBeingHeld && !inputManager.upArrowIsBeingHeld &&
+        !inputManager.downArrowIsBeingHeld)//walking right
+        {
+          this.playerCharacter.x += this.jumpDistanceX;
+        }
+    else if (inputManager.upArrowIsBeingHeld && !inputManager.rightArrowIsBeingHeld &&
+            !inputManager.leftArrowIsBeingHeld)//walking up
+        {
+          this.playerCharacter.y -= this.jumpDistanceY;
+        }
+    else if (inputManager.downArrowIsBeingHeld && !inputManager.rightArrowIsBeingHeld &&
+            !inputManager.leftArrowIsBeingHeld)//walking down
+        {
+          this.playerCharacter.y += this.jumpDistanceY;
+        }
+    else if (inputManager.downArrowIsBeingHeld && inputManager.rightArrowIsBeingHeld)//walking down/right
+        {
+          this.playerCharacter.x += this.jumpDistanceX;
+          this.playerCharacter.y += this.jumpDistanceY;
+        }
+    else if (inputManager.downArrowIsBeingHeld && inputManager.leftArrowIsBeingHeld)//walking down/left
+        {
+          this.playerCharacter.x -= this.jumpDistanceX;
+          this.playerCharacter.y += this.jumpDistanceY;
+        }
+    else if (inputManager.upArrowIsBeingHeld && inputManager.rightArrowIsBeingHeld)//walking up/right
+        {
+          this.playerCharacter.x += this.jumpDistanceX;
+          this.playerCharacter.y -= this.jumpDistanceY;
+        }
+    else if (inputManager.upArrowIsBeingHeld && inputManager.leftArrowIsBeingHeld)//walking up/left
+        {
+          this.playerCharacter.x -= this.jumpDistanceX;
+          this.playerCharacter.y -= this.jumpDistanceY;
+        }
+    else {
+      return;
+    }
+  }
 }
 
 const dodgeballGame = new dodgeballGameClass();
