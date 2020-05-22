@@ -23,6 +23,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.spriteH = 256;
     this.spriteW = 256;
     this.shrinking = true;
+    this.skipCustomizationScreens = true;
     
     // for balloons etc constant new ones appear
     this.spawnRadius = 50; // size when randomly spawning

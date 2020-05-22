@@ -44,7 +44,7 @@ function MiniGameTransitioner()
     //text
     this.drawTransitionText();
 
-    if (SKIP_TRANSITIONS) { // FIXME - does not stop the delay
+    if (SKIP_TRANSITIONS) {
         console.log("Skipping transition!");
         transitionIsFadingIn = false;
         transitionIsFadingOut = false;
