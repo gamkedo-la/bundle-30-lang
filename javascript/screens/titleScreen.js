@@ -197,7 +197,25 @@ function TitleScreenClass()
         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 650)
         {
           genAudio.playClick();
-          fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.modeSelectScreen);
+          if (gameClassManager.currentGame.skipCustomizationScreens) {
+
+            console.log("skipping customization screens for this game");
+            // the bubble popping games are only A-Z seeking games
+            // and do not use the prompts and answers databases
+
+            // same as LanguageSelectScreen.startGame() function
+            gameClassManager.initializeCurrentGame();
+            //promptsAndAnswersManager.setOrResetPromptsAndAnswers();
+            miniGameTransitioner.initialize();
+            fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
+            genAudio.playTransitionMusic();
+
+          } else {
+
+            // start all other games the normal way: with mode select GUIs first
+            fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.modeSelectScreen);
+
+          }
         }
   }
 
