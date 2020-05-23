@@ -460,6 +460,14 @@ promptAudio.centralVietnameseFallingHatA = new promptSound('audio/PromptsAndAnsw
 promptAudio.centralVietnameseYoYoHatA = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseYoYoHatA.mp3');
 promptAudio.centralVietnameseStutterHatA = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseStutterHatA.mp3');
 promptAudio.centralVietnameseStaccatoHatA = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseStaccatoHatA.mp3');
+promptAudio.centralVietnameseFallingHatE = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseFallingHatE.mp3');
+promptAudio.centralVietnameseYoYoHatE = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseYoYoHatE.mp3');
+promptAudio.centralVietnameseStutterHatE = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseStutterHatE.mp3');
+promptAudio.centralVietnameseStaccatoHatE = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseStaccatoHatE.mp3');
+promptAudio.centralVietnameseRisingHatO = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseRisingHatO.mp3');
+promptAudio.centralVietnameseFallingHatO = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseFallingHatO.mp3');
+promptAudio.centralVietnameseYoYoHatO = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseYoYoHatO.mp3');
+promptAudio.centralVietnameseStutterHatO = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseStutterHatO.mp3');
 
 //consonants
 promptAudio.centralVietnameseB = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseB.mp3');

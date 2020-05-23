@@ -52,6 +52,14 @@ function PhonicClassManager()
   this.centralVietnameseYoYoHatA = new PhonicClass('central vietnamese ẩ', promptAudio.centralVietnameseYoYoHatA, 'ẩ');
   this.centralVietnameseStutterHatA = new PhonicClass('central vietnamese ẫ', promptAudio.centralVietnameseStutterHatA, 'ẫ');
   this.centralVietnameseStaccatoHatA = new PhonicClass('central vietnamese ậ', promptAudio.centralVietnameseStaccatoHatA, 'ậ');
+  this.centralVietnameseFallingHatE = new PhonicClass('central vietnamese ề', promptAudio.centralVietnameseFallingHatE, 'ề');
+  this.centralVietnameseYoYoHatE = new PhonicClass('central vietnamese ể', promptAudio.centralVietnameseYoYoHatE, 'ể');
+  this.centralVietnameseStutterHatE = new PhonicClass('central vietnamese ễ', promptAudio.centralVietnameseStutterHatE, 'ễ');
+  this.centralVietnameseStaccatoHatE = new PhonicClass('central vietnamese ệ', promptAudio.centralVietnameseStaccatoHatE, 'ệ');
+  this.centralVietnameseRisingHatO = new PhonicClass('central vietnamese ố', promptAudio.centralVietnameseRisingHatO, 'ố');
+  this.centralVietnameseFallingHatO = new PhonicClass('central vietnamese ồ', promptAudio.centralVietnameseFallingHatO, 'ồ');
+  this.centralVietnameseYoYoHatO = new PhonicClass('central vietnamese ổ', promptAudio.centralVietnameseYoYoHatO, 'ổ');
+  this.centralVietnameseStutterHatO = new PhonicClass('central vietnamese ỗ', promptAudio.centralVietnameseStutterHatO, 'ỗ');
 
   //consonants
   this.centralVietnameseB = new PhonicClass('central vietnamese b', promptAudio.centralVietnameseB, 'b');
@@ -121,6 +129,14 @@ function PhonicClassManager()
     this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseYoYoHatA);
     this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseStutterHatA);
     this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseStaccatoHatA);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseFallingHatE);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseYoYoHatE);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseStutterHatE);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseStaccatoHatE);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseRisingHatO);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseFallingHatO);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseYoYoHatO);
+    this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseStutterHatO);
 
     //consonants
     this.arrayOfCentralVietnamesePhonics.push(this.centralVietnameseB);
