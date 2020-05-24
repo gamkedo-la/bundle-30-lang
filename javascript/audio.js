@@ -490,6 +490,61 @@ promptAudio.centralVietnameseT = new promptSound('audio/PromptsAndAnswers/Centra
 promptAudio.centralVietnameseV = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseV.mp3');
 promptAudio.centralVietnameseX = new promptSound('audio/PromptsAndAnswers/CentralVietnamese/phonics/centralVietnameseX.mp3');
 
+promptAudio.pinyinA = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinA.mp3');
+promptAudio.pinyinO = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinO.mp3');
+promptAudio.pinyinE = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinE.mp3');
+promptAudio.pinyinI = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinI.mp3');
+promptAudio.pinyinU = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinU.mp3');
+promptAudio.pinyinEr = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinEr.mp3');
+promptAudio.pinyinB = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinB.mp3');
+promptAudio.pinyinP = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinP.mp3');
+promptAudio.pinyinM = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinM.mp3');
+promptAudio.pinyinF = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinF.mp3');
+promptAudio.pinyinD = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinD.mp3');
+promptAudio.pinyinT = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinT.mp3');
+promptAudio.pinyinL = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinL.mp3');
+promptAudio.pinyinC = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinC.mp3');
+promptAudio.pinyinS = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinS.mp3');
+promptAudio.pinyinH = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinH.mp3');
+promptAudio.pinyinK = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinK.mp3');
+promptAudio.pinyinG = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinG.mp3');
+promptAudio.pinyinG = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinG.mp3');
+promptAudio.pinyinSi = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinSi.mp3');
+promptAudio.pinyinZi = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinZi.mp3');
+promptAudio.pinyinSh = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinSh.mp3');
+promptAudio.pinyinCh = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinCh.mp3');
+promptAudio.pinyinZh = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinZh.mp3');
+promptAudio.pinyinR = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinR.mp3');
+promptAudio.pinyinShi = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinShi.mp3');
+promptAudio.pinyinChi = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinChi.mp3');
+promptAudio.pinyinZhi = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinZhi.mp3');
+promptAudio.pinyinRi = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinRi.mp3');
+promptAudio.pinyinX = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinX.mp3');
+promptAudio.pinyinQ = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinQ.mp3');
+promptAudio.pinyinJ = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinJ.mp3');
+promptAudio.pinyinAo = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinAo.mp3');
+promptAudio.pinyinAi = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinAi.mp3');
+promptAudio.pinyinEi = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinEi.mp3');
+promptAudio.pinyinUo = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinUo.mp3');
+promptAudio.pinyinUa = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinUa.mp3');
+promptAudio.pinyinIa = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinIa.mp3');
+promptAudio.pinyinUe = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinUe.mp3');
+promptAudio.pinyinIao = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinIao.mp3');
+promptAudio.pinyinIou = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinIou.mp3');
+promptAudio.pinyinUai = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinUai.mp3');
+promptAudio.pinyinUei = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinUei.mp3');
+
+
+promptAudio.pinyinWa = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinWa.mp3');
+promptAudio.pinyinYa = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinYa.mp3');
+promptAudio.pinyinWo = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinWo.mp3');
+promptAudio.pinyinYe = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinYe.mp3');
+promptAudio.pinyinYi = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinYi.mp3');
+promptAudio.pinyinWu = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinWu.mp3');
+promptAudio.pinyinYu = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinYu.mp3');
+promptAudio.pinyinYue = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonics/pinyinYue.mp3');
+
+
 promptAudio.englishBee = new promptSound('audio/PromptsAndAnswers/bee.mp3');
 promptAudio.englishFlower = new promptSound('audio/PromptsAndAnswers/flower.mp3');
 
