@@ -7,6 +7,7 @@ function nighttimeGameClass()
   this.ghost2 = undefined;
 
   this.background = new nighttimeBackground();
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/nightenedForeigner.mp3', 16);
 
   this.defineAndInitializePlayerCharacter = function()
   {
