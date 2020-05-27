@@ -7,7 +7,7 @@ function nighttimeGameClass()
   this.ghost2 = undefined;
 
   this.background = new nighttimeBackground();
-  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/nightenedForeigner.mp3', 16);
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/nightenedForeigner.mp3', 15.75);
 
   this.defineAndInitializePlayerCharacter = function()
   {
@@ -59,6 +59,8 @@ function nighttimeGameClass()
 
     promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
     this.collidingObject = this.playerCharacter.laserShot;
+    gameAudio.laserShoot = new sfxOneShot('audio/V/laser.mp3');
+
   }
 
   this.handleLeftArrowDown = function()
@@ -81,6 +83,8 @@ function nighttimeGameClass()
   this.handleSpaceBarDown = function()
   {
     this.playerCharacter.initializeLaserShot();
+    gameAudio.laserShoot.play();
+
   }
 
   this.update = function()
