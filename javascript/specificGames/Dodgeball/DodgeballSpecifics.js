@@ -25,7 +25,9 @@ function dodgeballGameClass()
   {
     gameClassManager.currentGame.throwTheBallsAfterTimeouts();
     gameClassManager.currentGame.phonicClassManager.currentCorrectPhonic.promptAudio.sfx.play();
-    gameAudio.dodgeballCollision = new sfxOneShot('audio/V/dodgeBall.mp3');
+    gameAudio.dodgeballHit = new sfxOneShot('audio/V/ballHit2.mp3', 0.75);
+    gameAudio.dodgeballCatch = new sfxOneShot('audio/V/ballCatch2.mp3', 0.75);
+    gameAudio.dodgeballThrow = new sfxOneShot('audio/V/ballMiss.mp3', 0.75);
   }
 
   this.defineAndInitializePlayerCharacter = function()

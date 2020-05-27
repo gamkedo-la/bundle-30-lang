@@ -103,15 +103,17 @@ function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscil
           if (this.phonicClass.isTheCorrectChoice === true)
           {
             genAudio.playPositive();
+            gameAudio.dodgeballCatch.play();
             amountCorrect++;
           }
           else if (this.phonicClass.isTheCorrectChoice === false)
           {
             genAudio.playNegative();
+            gameAudio.dodgeballHit.play();
             amountIncorrect++;
           }
 
-          gameAudio.dodgeballCollision.play();
+
           gameClassManager.currentGame.phonicClassManager.setOrResetPhonicsOnDodgeballsAndPlayPromptAudio();
           for (let i = 0; i < gameClassManager.currentGame.arrayOfDodgeballs.length; i++)
           {
@@ -174,6 +176,6 @@ function toggleIsBeingThrown(dodgeball)
   {
     dodgeball.calculateVelocitiesBetweenBallAndPlayer();
     dodgeball.isBeingThrown = true;
-    gameAudio.dodgeballCollision.play();
+    // gameAudio.dodgeballThrow.play();
   }
 }
