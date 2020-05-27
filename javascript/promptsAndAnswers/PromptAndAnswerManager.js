@@ -502,6 +502,34 @@ function PromptsAndAnswersManager()
 	  this.incorrectTargetPromptAndAnswerPairing.xCoordinate = pairingsCoords.incorrect.x;
 	  this.incorrectTargetPromptAndAnswerPairing.yCoordinate = pairingsCoords.incorrect.y;
 	}
+  else if (gameClassManager.currentGame === nighttimeGame)
+  {
+    let fiftyFiftyResult = Math.random();
+    let ghost1 = gameClassManager.currentGame.ghost1;
+    let ghost2 = gameClassManager.currentGame.ghost2;
+    {
+      if (fiftyFiftyResult <= 0.5)
+      {
+        ghost1.isCorrectAnswer = true;
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = ghost1.answerX;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = ghost1.answerY;
+
+        ghost2.isCorrectAnswer = false;
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = ghost2.answerX;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = ghost2.answerY;
+      }
+      else if (fiftyFiftyResult > 0.5)
+      {
+        ghost2.isCorrectAnswer = true;
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = ghost2.answerX;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = ghost2.answerY;
+
+        ghost1.isCorrectAnswer = false;
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = ghost1.answerX;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = ghost1.answerY;
+      }
+    }
+  }
   else if (gameClassManager.currentGame.name === 'egg catch game')
   {
     let fiftyFiftyResult = Math.random();

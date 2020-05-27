@@ -224,6 +224,10 @@ function CollisionsWithAnswersManager()
             gameClassManager.currentGame.spaceRockParticleManager.createAGroupOfParticles();
             gameClassManager.currentGame.rocketExplosionsManager.createAnExplosion();
           }
+          if (gameClassManager.currentGame.name === 'nighttime game')
+          {
+            gameClassManager.currentGame.playerCharacter.laserShot.x = undefined;
+          }
           // if (gameClassManager.currentGame.collisionVisualEffect)
           // {
           //   gameClassManager.currentGame.collisionVisualEffect();

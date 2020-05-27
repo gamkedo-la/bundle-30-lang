@@ -232,6 +232,11 @@ let russianDollImage3 = document.createElement('img');
 let russianDollImage5 = document.createElement('img');
 let dodgeballImage = document.createElement('img');
 
+//nighttime
+let nighttimeBackgroundImage = document.createElement('img');
+let ghostImage1 = document.createElement('img');
+let ghostImage2 = document.createElement('img');
+
 // maze images
 let mazeFloor = document.createElement('img');
 let mazeTopWall = document.createElement('img');
@@ -649,6 +654,10 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage5, theFile: "images/sprites/dodgeBall/Player5.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: dodgeballImage, theFile: "images/sprites/dodgeBall/dodgeBall.png", loaded: false});
 
+  //nighttime
+  arrayOfImagesToLoad.push({imageObjectBinding: nighttimeBackgroundImage, theFile: "images/Backgrounds/nighttimeBackground.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: ghostImage1, theFile: "images/sprites/nightTime/Ghost.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: ghostImage2, theFile: "images/sprites/nightTime/ghost2.png", loaded: false});
 
   // maze game
   arrayOfImagesToLoad.push({imageObjectBinding: mazeFloor, theFile: "images/Backgrounds/mazefloor.png", loaded: false});
