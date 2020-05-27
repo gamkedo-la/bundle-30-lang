@@ -23,11 +23,13 @@ function NighttimePlayerCharacter()
 
   this.initializeLaserShot = function()
   {
+    this.laserShot.height = this.ghostGunY;
+    this.laserShot.y = 0;
     this.laserShot.x = this.ghostGunX + this.ghostGunWidth*0.33;
     let laserShot = this.laserShot;
     setTimeout(function(){
       laserShot.x = undefined;
-    },500,laserShot)
+    },250,laserShot)
   }
 
   this.draw = function()

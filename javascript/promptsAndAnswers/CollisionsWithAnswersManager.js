@@ -226,7 +226,20 @@ function CollisionsWithAnswersManager()
           }
           if (gameClassManager.currentGame.name === 'nighttime game')
           {
-            gameClassManager.currentGame.playerCharacter.laserShot.x = undefined;
+            if (collisionType === COLLISION_WITH_INCORRECT_ANSWER)
+            {
+              gameClassManager.currentGame.playerCharacter.laserShot.y =
+              promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + 75;
+              gameClassManager.currentGame.playerCharacter.laserShot.height = gameCanvas.height -
+              gameClassManager.currentGame.playerCharacter.laserShot.y - (gameCanvas.height - gameClassManager.currentGame.playerCharacter.ghostGunY);
+            }
+            else if (collisionType === COLLISION_WITH_CORRECT_ANSWER)
+            {
+              gameClassManager.currentGame.playerCharacter.laserShot.y =
+              promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + 75;
+              gameClassManager.currentGame.playerCharacter.laserShot.height = gameCanvas.height -
+              gameClassManager.currentGame.playerCharacter.laserShot.y - (gameCanvas.height - gameClassManager.currentGame.playerCharacter.ghostGunY);
+            }
           }
           // if (gameClassManager.currentGame.collisionVisualEffect)
           // {

@@ -4,7 +4,7 @@ function Ghost(image, initialDirectionNumber, oscillationVelocityY)
   this.width = gameCanvas.width*0.1;
   this.height = gameCanvas.height*0.15;
   this.x = getRandomArbitrary(0,gameCanvas.width - this.width);
-  this.y = getRandomArbitrary(0,gameCanvas.height*0.3);
+  this.y = getRandomArbitrary(this.height*2,gameCanvas.height*0.3);
 
   this.answerStringWidth = 10;
   this.answerStringHeight = 100;
