@@ -21,6 +21,8 @@ function PromptsAndAnswersManager()
 
   this.pickARandomLogicalPromptAnswerGroup = function()
   {
+    if (!window.promptsAndAnswersManager) return; // can be undefined here!
+    
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
     // console.log('*****');
@@ -52,7 +54,8 @@ function PromptsAndAnswersManager()
   this.currentPrompt = {};
   this.pickARandomPromptFromTargetPromptAndAnswerPairing = function()
   {
-    if(typeof this.correctTargetPromptAndAnswerPairing === 'undefined') {
+    if(typeof this.correctTargetPromptAndAnswerPairing === 'undefined' || 
+        typeof this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts === 'undefined') {
         console.log("correctTargetPromptAndAnswerPairing not set up yet");
         return;
       }
@@ -96,7 +99,9 @@ function PromptsAndAnswersManager()
   this.removedPromptMatchToReinsertLater = undefined;
   this.assignAnAnswerBasedOnPrompt = function()
   {
-    if (typeof this.correctTargetPromptAndAnswerPairing === 'undefined') {
+    if (typeof this.correctTargetPromptAndAnswerPairing === 'undefined' ||
+        typeof this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers === 'undefined'
+    ) {
         console.log("correctTargetPromptAndAnswerPairing not set up.");
         return;
     }
@@ -174,6 +179,8 @@ function PromptsAndAnswersManager()
 
   this.reinsertAnswersIntoEditedArrayForNextShuffle = function()
   {
+    if (!this.correctTargetPromptAndAnswerPairing || !this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers) return; // can be undefined here!
+
     this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers.push(this.removedPromptMatchToReinsertLater[0]);
     // console.log('this.removedPromptMatchToReinsertLater: ' + this.removedPromptMatchToReinsertLater[0].name);
     this.currentLogicalPromptAndAnswerGroup.arrayOfObjects.push(this.removedCorrectAnswerToReinsertLater[0]);
@@ -209,7 +216,9 @@ function PromptsAndAnswersManager()
   this.assignCurrentIncorrectAnswer = function()
   {
     //console.log('inside assignCurrentIncorrectAnswer()');
-    if (typeof this.incorrectTargetPromptAndAnswerPairing === 'undefined') {
+    if (typeof this.incorrectTargetPromptAndAnswerPairing === 'undefined' ||
+        typeof this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers === 'undefined'
+    ) {
         console.log("this.incorrectTargetPromptAndAnswerPairing not set up");
         return;
     }

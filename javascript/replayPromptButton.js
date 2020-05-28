@@ -45,9 +45,11 @@ function ReplayPromptButton()
           }
           else
           {
-            promptersManager.currentPrompter.currentWidth = 150;
-            promptersManager.currentPrompter.currentHeight = 150;
-            promptersManager.promptThePlayer();
+            if (window.promptersManager && promptersManager.currentPrompter) { // can be undefined here
+                promptersManager.currentPrompter.currentWidth = 150;
+                promptersManager.currentPrompter.currentHeight = 150;
+                promptersManager.promptThePlayer();
+            }
           }
         }
   }

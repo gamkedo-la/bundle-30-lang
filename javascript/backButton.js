@@ -38,8 +38,12 @@ function BackButton()
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
           transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
           genAudio.playClick();
-          promptersManager.currentPrompter.currentWidth = 150;
-          promptersManager.currentPrompter.currentHeight = 150;
+          
+          if (window.promptersManager && promptersManager.currentPrompter) { // can be undefined here
+            promptersManager.currentPrompter.currentWidth = 150;
+            promptersManager.currentPrompter.currentHeight = 150;
+          }
+          
           //gameClassManager.currentGame = undefined;
           //playerShouldBePlayingPinata = false;
           arrayOfAnswers = [];
