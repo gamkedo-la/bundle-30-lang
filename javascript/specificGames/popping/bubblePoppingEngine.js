@@ -118,6 +118,21 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
         document.addEventListener('mousedown', pinataClick, false);
     }
 
+    this.maybePromptUser = function() {
+        const promptDelay = 2; // seconds
+        var now = performance.now();
+        // first time?
+        if (!this.nextPromptTime) this.nextPromptTime = now + promptDelay;
+        // each subsequent time
+        if (now>this.nextPromptTime) {
+            console.log("playing voice prompt: " + targetLetter)
+            var snd = promptAudio[targetLetter.toLowerCase()];
+            if (snd) snd.play();
+            this.nextPromptTime = now + promptDelay;
+        }
+    }
+    
+    
     // called by the game state machine
     this.update = function () {
         //console.log("popping game update()");
@@ -129,6 +144,9 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
                 this.newcircle(Math.random() * gameCanvas.width, gameCanvas.height + 100, this.spawnRadius, 1);
             }
         }
+
+        this.maybePromptUser(); // voiceovers
+
         // iterate through all objects twice
         for (i = objects.length; i--;) {
             for (j = objects.length; j-- > i;) {

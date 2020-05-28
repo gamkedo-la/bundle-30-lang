@@ -548,6 +548,35 @@ promptAudio.pinyinYue = new promptSound('audio/PromptsAndAnswers/Mandarin/Phonic
 promptAudio.englishBee = new promptSound('audio/PromptsAndAnswers/bee.mp3');
 promptAudio.englishFlower = new promptSound('audio/PromptsAndAnswers/flower.mp3');
 
+// A-Z in English
+promptAudio.a = new promptSound('audio/letters/a.mp3');
+promptAudio.c = new promptSound('audio/letters/b.mp3');
+promptAudio.d = new promptSound('audio/letters/c.mp3');
+promptAudio.e = new promptSound('audio/letters/d.mp3');
+promptAudio.f = new promptSound('audio/letters/e.mp3');
+promptAudio.g = new promptSound('audio/letters/f.mp3');
+promptAudio.h = new promptSound('audio/letters/g.mp3');
+promptAudio.i = new promptSound('audio/letters/h.mp3');
+promptAudio.j = new promptSound('audio/letters/i.mp3');
+promptAudio.k = new promptSound('audio/letters/j.mp3');
+promptAudio.l = new promptSound('audio/letters/k.mp3');
+promptAudio.m = new promptSound('audio/letters/l.mp3');
+promptAudio.n = new promptSound('audio/letters/m.mp3');
+promptAudio.o = new promptSound('audio/letters/n.mp3');
+promptAudio.p = new promptSound('audio/letters/o.mp3');
+promptAudio.q = new promptSound('audio/letters/p.mp3');
+promptAudio.r = new promptSound('audio/letters/q.mp3');
+promptAudio.q = new promptSound('audio/letters/r.mp3');
+promptAudio.s = new promptSound('audio/letters/s.mp3');
+promptAudio.t = new promptSound('audio/letters/t.mp3');
+promptAudio.u = new promptSound('audio/letters/u.mp3');
+promptAudio.v = new promptSound('audio/letters/v.mp3');
+promptAudio.w = new promptSound('audio/letters/w.mp3');
+promptAudio.x = new promptSound('audio/letters/x.mp3');
+promptAudio.y = new promptSound('audio/letters/y.mp3');
+promptAudio.z = new promptSound('audio/letters/z.mp3');
+
+
 
 gameAudio = {};
 
