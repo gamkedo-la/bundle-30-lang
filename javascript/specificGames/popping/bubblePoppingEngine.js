@@ -119,13 +119,16 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     }
 
     this.maybePromptUser = function() {
-        const promptDelay = 2; // seconds
+        
+        if (!this.introComplete) return;
+        
+        const promptDelay = 2000; // ms
         var now = performance.now();
         // first time?
         if (!this.nextPromptTime) this.nextPromptTime = now + promptDelay;
         // each subsequent time
         if (now>this.nextPromptTime) {
-            console.log("playing voice prompt: " + targetLetter)
+            console.log("playing A-Z voice prompt: " + targetLetter)
             var snd = promptAudio[targetLetter.toLowerCase()];
             if (snd) snd.play();
             this.nextPromptTime = now + promptDelay;
