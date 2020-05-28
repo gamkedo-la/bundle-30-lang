@@ -8,8 +8,7 @@
 
 
 // an abstract mini engine used by multiple games
-function bubblePoppingEngine(myName='POP!',usePhysics=false) {
-
+function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     //////////////////////////////////////////////////////
     // game specifics
     //////////////////////////////////////////////////////
@@ -24,17 +23,13 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     this.spriteW = 256;
     this.shrinking = true;
     this.skipCustomizationScreens = true;
-    
-    // for balloons etc constant new ones appear
     this.spawnRadius = 50; // size when randomly spawning
     this.spawnRandomly = false;
     this.spawnChance = 0.05;
-
     this.smashSound = null;
     this.successSound = null;
     this.failSound = null;
     this.introComplete = false; // if false, show a pinata
-
     //////////////////////////////////////////////////////
     // private vars used internally
     //////////////////////////////////////////////////////
@@ -68,7 +63,6 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     // which one we want to click
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var targetLetter = alphabet[rndInt(0, alphabet.length - 1)];
-
     // TODO refactor these private vars
     var canv;// canvas
     var nextOne;// c1
@@ -76,7 +70,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     var otherOne;// c2
     var direction;// vFrom1to2
     var correction;// correctionAmount
-    var i,j,k;// loop vars
+    var i, j, k;// loop vars
     var radius1;// r1
     var radius2;// r2
     var relVel;// relativeVelocity
@@ -90,16 +84,13 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     //////////////////////////////////////////////////////
     // public functions called by the game state machine
     //////////////////////////////////////////////////////
-
-    this.postLoadInit = function() {
-        console.log(this.name+" postLoadInit...");
+    this.postLoadInit = function () {
+        console.log(this.name + " postLoadInit...");
     }
-
-    this.postGameSpecialCode = function() {
-        console.log(this.name+" postGameSpecialCode...");
+    this.postGameSpecialCode = function () {
+        console.log(this.name + " postGameSpecialCode...");
         // FIXME: remove mousedown event listener
     }
-
     // FIXME the "this" is invalid here, its a transitioner, not the game itself LOL
     this.drawTransitionText = function () {
         customFontFillText([me.titleTXT1, symbolExclamationPointImage], 80, 42, 100, 50);
@@ -107,47 +98,37 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         customFontFillText([me.titleTXT3, symbolExclamationPointImage], 32, 24, 80, 290);
     }
 
-    this.initialize = function() {
+    this.initialize = function () {
         console.log(this.name + " popping game initializing...");
         generateRainbowColours();
-
         ctx = gameCanvasContext;
         canv = gameCanvas;
-        
         //if (window.currentBackgroundMusic) { // exists?
         //    currentBackgroundMusic.pause();
         //    currentBackgroundMusic = pinataBackgroundMusic;
         //}
-
         if (!this.gameSpecificInits) {
             // Init scene ground floor - defaults
             Circle(Vec2(320, 5700), 5000, 0); // floor!
             Circle(Vec2(2840, 5000), 5000, 0); // r wall
             Circle(Vec2(-2200, 5000), 5000, 0); // l wall
         } else {
-            this.gameSpecificInits();            
+            this.gameSpecificInits();
         }
-
         document.addEventListener('mousedown', pinataClick, false);
-
     }
 
     // called by the game state machine
-    this.update = function() {
-
+    this.update = function () {
         //console.log("popping game update()");
-
         if (!this.physicsEnabled) return;
-        
         if (window.levelIsTransitioning) return; // update should never be called in this case, but just in case
-
         if (this.spawnRandomly) {
-            if (Math.random()<this.spawnChance) {
+            if (Math.random() < this.spawnChance) {
                 //console.log("Randomly spawning a new popable!");
-                this.newcircle(Math.random()*gameCanvas.width, gameCanvas.height+100, this.spawnRadius, 1);
+                this.newcircle(Math.random() * gameCanvas.width, gameCanvas.height + 100, this.spawnRadius, 1);
             }
         }
-
         // iterate through all objects twice
         for (i = objects.length; i--;) {
             for (j = objects.length; j-- > i;) {
@@ -155,7 +136,6 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 nextOne = objects[i];
                 otherOne = objects[j];
                 //if((b.M && b.C.y < 400) || (d.M && d.C.y < 400)){ // perf
-
                 // Test collision
                 direction = sub(otherOne.C, nextOne.C);
                 if (length(direction) < nextOne.R + otherOne.R) { // close enough?
@@ -163,7 +143,6 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                         N = normalize(direction), // normal
                         S = add(otherOne.C, scale(normalize(scale(direction, -1)), otherOne.R)), // start
                         E = add(S, scale(N, D)) // end
-
                     // Resolve collision
                     if (nextOne.M || otherOne.M) {
                         //  correct positions
@@ -203,37 +182,30 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 } // close enough
                 // }
             } // i
-            
+
             // animate them falling and bouncing
             if (this.introComplete || this.noIntro) { // not waiting for smash?
-
                 // Update scene
                 nextOne.V = add(nextOne.V, scale(nextOne.A, this.gravity)); // A=gravity
                 nextOne.C = add(nextOne.C, scale(nextOne.V, .01));
                 nextOne.D += nextOne.E * .01;
                 nextOne.B += nextOne.M ? nextOne.D * .01 : .001;
-
                 // shrink!
                 if (this.shrinking && nextOne.M && nextOne.R > CANDY_MIN_SIZE) nextOne.R += CANDY_SHRINK;
-
                 if (nextOne.Z == CONFETTI_ID) {
                     nextOne.R *= CONFETTI_SHRINKSPEED;
                 }
-
             } else { // if we have not yet Smashed:
-
+                // leave animation on pause for now
             }
+        }
     }
-  }
     // called by the game state machine
-  this.draw = function() {
-
+    this.draw = function () {
         //console.log("popping game draw()");
-
         // clear the screen
         ctx.fillStyle = "rgba(150,220,255,1)";
         ctx.fillRect(0, 0, canv.width, canv.height);
-
         // do we have a custom background?
         if (this.drawBG) {
             this.drawBG();
@@ -245,62 +217,52 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 ctx.fill();
             }
         }
-
+        // draw all bubbles
         for (i = objects.length; i--;) {
             nextOne = objects[i];
-
-                // Draw
-                ctx.save();
-                
-                ctx.beginPath();
-                ctx.translate(nextOne.C.x, nextOne.C.y);
-                ctx.rotate(nextOne.B);
-
-                if (!this.spritesheet) {
-                    ctx.arc(0, 0, nextOne.R, 0, 7);
+            // Draw
+            ctx.save();
+            ctx.beginPath();
+            ctx.translate(nextOne.C.x, nextOne.C.y);
+            ctx.rotate(nextOne.B);
+            if (!this.spritesheet) {
+                ctx.arc(0, 0, nextOne.R, 0, 7);
+            } else {
+                // really big: balloons assumed: FIXME
+                ctx.drawImage(this.spritesheet, 0, 0, this.spriteW, this.spriteH, -nextOne.R, -nextOne.R, nextOne.R * 2, nextOne.R * 2);
+            }
+            //c.lineWidth = 3;
+            ctx.font = nextOne.R * 1.9 + "px a";
+            ctx.textAlign = "center";
+            if (objects[i].M) { // does it have mass? then draw a candy
+                if (nextOne.Z == targetLetter) {
+                    // debug mode: easy to find flashing balls
+                    ctx.fillStyle = "rgba(" + rndInt(100, 255) + "," + rndInt(100, 255) + "," + rndInt(100, 255) + ",1)";
                 } else {
-                    // really big: balloons assumed: FIXME
-                    ctx.drawImage(this.spritesheet,0,0,this.spriteW,this.spriteH,-nextOne.R,-nextOne.R,nextOne.R*2,nextOne.R*2);
+                    ctx.fillStyle = objects[i].color; // selet ball colour
                 }
-                
-                //c.lineWidth = 3;
-                ctx.font = nextOne.R * 1.9 + "px a";
-                ctx.textAlign = "center";
-
-                if (objects[i].M) { // does it have mass? then draw a candy
-
-                    if (nextOne.Z == targetLetter) {
-                        // debug mode: easy to find flashing balls
-                        ctx.fillStyle = "rgba(" + rndInt(100, 255) + "," + rndInt(100, 255) + "," + rndInt(100, 255) + ",1)";
-                    } else {
-                        ctx.fillStyle = objects[i].color; // selet ball colour
-                    }
-
-                    if (!this.spritesheet) ctx.fill(); // the circle
-
-                    if (nextOne.Z == CONFETTI_ID) {
-                        // draw the letter using html
-                        // emoji! works on most modern devices but not all
-                        //c.fillStyle = "white"; // txt color
-                        ctx.fillText(String.fromCodePoint(0x1F600 + (i % 69/*56*/)), nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
-                    } else {
-                        // draw the letter using bitmap font
-                        if (window.customFontFillText) {
-                            customFontFillText([nextOne.Z], nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
-                        } else { // debug only
-                            ctx.fillStyle = 'black';
-                            ctx.fillText(nextOne.Z,0,nextOne.R*0.666);
-                        }
+                if (!this.spritesheet) ctx.fill(); // the circle
+                if (nextOne.Z == CONFETTI_ID) {
+                    // draw the letter using html
+                    // emoji! works on most modern devices but not all
+                    //c.fillStyle = "white"; // txt color
+                    ctx.fillText(String.fromCodePoint(0x1F600 + (i % 69/*56*/)), nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
+                } else {
+                    // draw the letter using bitmap font
+                    if (window.customFontFillText) {
+                        customFontFillText([nextOne.Z], nextOne.R * 1.5, 0, 0 - nextOne.R * 0.75, 0 - nextOne.R * 0.75);
+                    } else { // debug only
+                        ctx.fillStyle = 'black';
+                        ctx.fillText(nextOne.Z, 0, nextOne.R * 0.666);
                     }
                 }
-                else { // no mass? must be the ground
-                    ctx.fillStyle = "rgba(80,60,40,1)";
-                    ctx.fill(); // the ground
-                }
-                ctx.restore();
-                // ^---- end draw
-
-
+            }
+            else { // no mass? must be the ground
+                ctx.fillStyle = "rgba(80,60,40,1)";
+                ctx.fill(); // the ground
+            }
+            ctx.restore();
+            // ^---- end draw
 
             if (this.introComplete) {
                 if (window.customFontFillText) {
@@ -308,22 +270,22 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 } else { // debug only
                     ctx.fillStyle = 'white';
                     ctx.font = "32px Arial";
-                    ctx.fillText('Click the letter ' + targetLetter,200,32);
+                    ctx.fillText('Click the letter ' + targetLetter, 200, 32);
                 }
             } else {
                 if (window.pinataImage) {
                     // let's draw an actual pinata here
-                    var wobblex = 180+Math.cos(performance.now()/1000)*60;
-                    var wobbley = 100-Math.cos(performance.now()/500)*15;
+                    var wobblex = 180 + Math.cos(performance.now() / 1000) * 60;
+                    var wobbley = 100 - Math.cos(performance.now() / 500) * 15;
                     // first the string
                     ctx.beginPath();
-                    ctx.moveTo(320,0);
-                    ctx.lineTo(wobblex+120,wobbley+108);
+                    ctx.moveTo(320, 0);
+                    ctx.lineTo(wobblex + 120, wobbley + 108);
                     ctx.strokeStyle = "rgba(80,80,80,1)";
                     ctx.lineWidth = 4;
                     ctx.stroke();
                     // now the pinata itself
-                    ctx.drawImage(pinataImage,wobblex,wobbley);
+                    ctx.drawImage(pinataImage, wobblex, wobbley);
                     // and the instructions
                 }
                 if (window.customFontFillText) customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
@@ -335,13 +297,9 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     //////////////////////////////////////////////////////
     // private functions used internally
     //////////////////////////////////////////////////////
-
     function boom(x, y, wasCorrect) {
-
         if (wasCorrect && !me.alwaysPopLetters) {
-
             //pinataSmashed = false; // reset!!!!!!!! fixme: or do we like spam
-
             /*
             // destroy the world!
             objects = [];
@@ -350,19 +308,15 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
             Circle(Vec2(2840, 5000), 5000, 0); // r wall
             Circle(Vec2(-2200, 5000), 5000, 0); // l wall
             */
-
             // select a new letter
             targetLetter = alphabet[rndInt(0, alphabet.length - 1)];
-            
             // ensure the target one is there at least one matching letter, quite high up
             Circle(Vec2(x + Math.random() * 300 - 250, y + Math.random() * -100 - 75), 40, 5 / 40, targetLetter);
-
             // create many little candies
             for (i = CANDY_COUNT; i--;) {
                 Circle(Vec2(x + Math.random() * 100 - 50, y + Math.random() * -100)); // a bit higher please
             }
         }
-
         if (!me.noConfetti) {
             // reuse old confetti
             let found = 0;
@@ -378,7 +332,6 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                     objects[i].V.y = Math.random() * 2000 - 1000;
                 }
             }
-
             // spawn some particles of confetti if we need them
             if (!found) { // first time init
                 for (i = CONFETTI_COUNT; i--;) {
@@ -396,14 +349,13 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         }
     }
 
-    function pinataClick(e) { // NOTE: the "this" is *not* the game
-
-        console.log("pinataClick");
-
+    // NOTE: DO NOT USE "THIS." HERE!
+    // IT DOES *NOT* REFER TO THE GAME HERE
+    // "me" is the game's "this"
+    function pinataClick(e) {
+        //console.log("pinataClick");
         //if (!window.playerShouldBePlayingPinata) return; // dont do anything if another game is running
-
         let correct = false;
-
         if (levelIsTransitioning) {
             // stop the slow fade in early
             levelIsTransitioning = false;
@@ -412,23 +364,18 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
             gameCanvasContext.globalAlpha = 1;
             return; // dont register this click in game yet
         }
-
         // first click open the pinata!
-        if (!this.introComplete && !me.noIntro) {
+        if (!me.introComplete && !me.noIntro) {
             console.log("Pinata just got smashed!")
-            this.introComplete = true;
+            me.introComplete = true;
             boom(e.pageX, e.pageY, true);
             if (window.audioManager) {
                 audioManager.pinataHitSound.play();
+            } else {
+                if (me.smashSound) me.smashSound.play();
             }
-
-            if (me.smashSound) {
-                me.smashSound.play();
-            }
-
             return;
         }
-
         // detect WHICH circle we clicked!
         var clickXY = Vec2(e.pageX, e.pageY);
         for (let i = objects.length; i--;) {
@@ -456,53 +403,45 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
                 }
             }
         }
-
         if (correct) {
             amountCorrect++;
-
             if (window.audioManager) {
                 audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
-                (audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
+                    (audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);
                 audioManager.pinataEatSound.play();
+            } else {
+                if (me.successSound) me.successSound.play();
             }
-
-            if (me.successSound) me.successSound.play();
-
             boom(e.pageX, e.pageY, true)
         } else {
-
             amountIncorrect++;
-
             if (window.audioManager) {
                 audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
-                (audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
+                    (audioManager.multisoundPlayer.arrayOfGeneralNegativeFeedbackSounds);
+            } else {
+                if (me.failSound) me.failSound.play();
             }
-            
-            if (me.failSound) me.failSound.play();
-            
             boom(e.pageX, e.pageY, false)
-
         }
     }
 
     // rainbow generator
     // does not draw it! fills an array with colours
-    function generateRainbowColours()
-    {
-      var size = 16;
-      rainbow = new Array(size);
-      for (var i = 0; i < size; i++) {
-          var red = sin_to_hex(i, 0 * Math.PI * 2 / 3); // 0   deg
-          var blue = sin_to_hex(i, 1 * Math.PI * 2 / 3); // 120 deg
-          var green = sin_to_hex(i, 2 * Math.PI * 2 / 3); // 240 deg
-          rainbow[i] = "#" + red + green + blue;
-      }
-      function sin_to_hex(i, phase) {
-          var sin = Math.sin(Math.PI / size * 2 * i + phase);
-          var int = Math.floor(sin * 127) + 128;
-          var hex = int.toString(16);
-          return hex.length === 1 ? "0" + hex : hex;
-      }
+    function generateRainbowColours() {
+        var size = 16;
+        rainbow = new Array(size);
+        for (var i = 0; i < size; i++) {
+            var red = sin_to_hex(i, 0 * Math.PI * 2 / 3); // 0   deg
+            var blue = sin_to_hex(i, 1 * Math.PI * 2 / 3); // 120 deg
+            var green = sin_to_hex(i, 2 * Math.PI * 2 / 3); // 240 deg
+            rainbow[i] = "#" + red + green + blue;
+        }
+        function sin_to_hex(i, phase) {
+            var sin = Math.sin(Math.PI / size * 2 * i + phase);
+            var int = Math.floor(sin * 127) + 128;
+            var hex = int.toString(16);
+            return hex.length === 1 ? "0" + hex : hex;
+        }
     }
 
     // vars:
@@ -523,8 +462,7 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
     // u: tangent
     // x: jT
     // b.bgColor="#333";
-
-    // a class constructor
+    // a class constructor:
     function Circle(C, R = Math.random() * CANDY_START_RADIUS + CANDY_MIN_SIZE, M = CANDY_MASS, forcedString) {
         var newCircle = {
             C, // center
@@ -547,10 +485,8 @@ function bubblePoppingEngine(myName='POP!',usePhysics=false) {
         objects.push(newCircle);
         return newCircle;
     }
-
-    this.newcircle = function(x,y,r,m) { // so other games can call this
-        return new Circle(Vec2(x,y),r,m);
+    this.newcircle = function (x, y, r, m) { // so other games can call this
+        return new Circle(Vec2(x, y), r, m);
     }
-
 }
 
