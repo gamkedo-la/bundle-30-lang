@@ -175,6 +175,13 @@ let jumperPlayerFacingLeftImage = document.createElement('img');
 let jumperGroundParticleImage = document.createElement('img');
 let treasureChestAnswerHolderImage = document.createElement('img');
 
+//finder images
+let finderBackgroundImage = document.createElement('img');
+let upperAndMiddleRoomsImage = document.createElement('img');
+let bottomRoomImage = document.createElement('img');
+let doorImage = document.createElement('img');
+let trophyImage = document.createElement('img');
+
 //volcano
 let volcanoImage = document.createElement('img');
 let spaceBackgroundForVolcanoGame = document.createElement('img');
@@ -594,6 +601,12 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: jumperGroundParticleImage, theFile: 'images/sprites/Jumper/jumperGroundParticle.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: treasureChestAnswerHolderImage, theFile: 'images/sprites/Jumper/treasureChest.png', loaded: false});
 
+  //finder game
+  arrayOfImagesToLoad.push({imageObjectBinding: finderBackgroundImage, theFile: 'images/Backgrounds/FinderBG.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: upperAndMiddleRoomsImage, theFile: 'images/sprites/Finder/upperAndMiddleRooms.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: bottomRoomImage, theFile: 'images/sprites/Finder/bottomRoom.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: doorImage, theFile: 'images/sprites/Finder/door.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: trophyImage, theFile: 'images/sprites/Rewards/Trophy.png', loaded: false});
 
   //pass or block
   arrayOfImagesToLoad.push({imageObjectBinding: volcanoImage, theFile: 'images/Backgrounds/Volcano.png', loaded: false});

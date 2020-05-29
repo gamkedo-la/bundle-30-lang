@@ -21,8 +21,8 @@ function PromptsAndAnswersManager()
 
   this.pickARandomLogicalPromptAnswerGroup = function()
   {
-    if (!window.promptsAndAnswersManager) return; // can be undefined here!
-    
+    // if (!window.promptsAndAnswersManager) return; // can be undefined here!
+
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
     // console.log('*****');
@@ -54,7 +54,7 @@ function PromptsAndAnswersManager()
   this.currentPrompt = {};
   this.pickARandomPromptFromTargetPromptAndAnswerPairing = function()
   {
-    if(typeof this.correctTargetPromptAndAnswerPairing === 'undefined' || 
+    if(typeof this.correctTargetPromptAndAnswerPairing === 'undefined' ||
         typeof this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts === 'undefined') {
         console.log("correctTargetPromptAndAnswerPairing not set up yet");
         return;
@@ -435,6 +435,26 @@ function PromptsAndAnswersManager()
       }
 
 
+    }
+    else if (gameClassManager.currentGame.name === 'finder game')
+    {
+      let fiftyFiftyResult = Math.random();
+      if (fiftyFiftyResult <= 0.5)
+      {
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = 0;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = 50;
+
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = 0;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = gameCanvas.height/2 + 50;
+      }
+      else if (fiftyFiftyResult > 0.5)
+      {
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = 0;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = 50;
+
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = 0;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = gameCanvas.height/2 + 50;
+      }
     }
     else if (gameClassManager.currentGame.name === 'frogRiverGame')
     {

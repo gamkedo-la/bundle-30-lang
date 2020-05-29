@@ -1,4 +1,4 @@
-var gameList = [snakeGame,birdGame,laneGame,jumperGame,null,passOrBlockGame,
+var gameList = [snakeGame,birdGame,laneGame,jumperGame,finderGame,passOrBlockGame,
                 cVcShooterGame,spaceShooterGame,runnerGame,pinataGame,airGrabGame,frogRiverGame,
                 mazeGame,null,flowerGame,penaltyGame,balloonPopGame,helloWorldGame,
                 dodgeballGame,null,nighttimeGame,null,flyingBeeGame,fishingGame,

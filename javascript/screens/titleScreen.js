@@ -86,7 +86,7 @@ function TitleScreenClass()
   /* NOTE: this is a list of game names for unimplemented games, when implementing a game,
 	 move the corresponding data to its titleScreenData attribute */
   const GAME_NAMES = [
-    [{name: "Finder", fontSize: 27, spacing: 15, x: 420, y: 185}],//5
+    // [{name: "Finder", fontSize: 27, spacing: 15, x: 420, y: 185}],//5
     //[{name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265}, {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}],//11
     //[{name: "Frogger", fontSize: 27, spacing: 13, x: 520, y: 285}],//12
     [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
