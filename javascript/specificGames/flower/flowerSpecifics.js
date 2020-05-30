@@ -26,6 +26,7 @@ function flowerGameClass(){
       this.playerCharacter = new FlowerClass();
       this.collidingObject = this.playerCharacter;
     }
+    this.backgroundMusic = new MusicTrack('audio/backgroundTracks/flowerSong(2).mp3', 18);
     this.background = undefined;
     const SEED_ONE_STARTING_X = 100;
     const SEED_ONE_STARTING_Y = 10;
