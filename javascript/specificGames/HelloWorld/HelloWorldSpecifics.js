@@ -2,6 +2,7 @@ helloWorldGameClass.prototype = new GameClass();
 function helloWorldGameClass()
 {
   this.name = 'hello world game';
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/helloWorldSong.mp3', 16);
 
   this.playerCharacter = undefined;
   this.NPC = undefined;
