@@ -42,4 +42,23 @@ function FinderPlayerCharacter()
       this.y += 5;
     }
   }
+
+  this.handleTrophyCollision = function()
+  {
+    let trophy = gameClassManager.currentGame.trophy;
+    let bottomRoom = gameClassManager.currentGame.bottomRoom;
+    let middleRoom = gameClassManager.currentGame.middleRoom;
+    let topRoom = gameClassManager.currentGame.topRoom;
+
+    if (this.x + this.width > trophy.x && this.x < trophy.x + trophy.width &&
+        this.y + this.height > trophy.y && this.y < trophy.y + trophy.height)
+        {
+          this.x = this.startingX;
+          this.y = this.startingY;
+          this.numberOfKeys = 0;
+          bottomRoom.hasADoor = true;
+          middleRoom.hasADoor = true;
+          topRoom.hasADoor = true;
+        }
+  }
 }

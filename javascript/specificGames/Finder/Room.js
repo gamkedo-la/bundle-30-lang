@@ -8,6 +8,20 @@ function Room(image,y)
 
   this.x = gameCanvas.width - this.width;
 
+  this.leftWallX = this.x;
+  this.leftWallTopY = this.y;
+  this.leftWallBottomY = this.y + this.height;
+  this.wallWidth = 10;
+  this.bottomWallLeftX = this.x;
+  this.bottomWallRightX = this.x + this.width;
+  this.bottomWallY = this.y + this.height;
+  this.rightWallX = this.x + this.width;
+  this.rightWallTopY = this.y;
+  this.rightWallBottomY = this.y + this.height;
+  this.doorLeftX = this.x + 10;
+  this.doorRightX = this.x + this.width - 10;
+  this.doorY = this.y;
+
   this.hasADoor = true;
   this.draw = function()
   {
@@ -21,34 +35,88 @@ function Room(image,y)
   this.handlePlayerCollision = function()
   {
     let playerCharacter = gameClassManager.currentGame.playerCharacter;
-    if (playerCharacter.y + playerCharacter.height > this.y && playerCharacter.y < this.y + 10 &&
-        playerCharacter.x > this.x && playerCharacter.x + playerCharacter.width < this.x + this.width &&
-        playerCharacter.numberOfKeys > 0)
+
+    if (playerCharacter.previousX < this.leftWallX &&
+        playerCharacter.y + playerCharacter.height > this.leftWallTopY &&
+        playerCharacter.y < this.leftWallBottomY)
+    {
+      if (playerCharacter.x + playerCharacter.width > this.leftWallX)
+      {
+        console.log('left wall collision');
+        playerCharacter.x = playerCharacter.previousX;
+      }
+    }
+
+    if (playerCharacter.previousX > this.leftWallX + 10 &&
+        playerCharacter.y + playerCharacter.height > this.leftWallTopY &&
+        playerCharacter.y < this.leftWallBottomY)
+    {
+      if (playerCharacter.x <= this.leftWallX + 10)
+      {
+        playerCharacter.x = playerCharacter.previousX;
+      }
+    }
+
+    if (playerCharacter.previousX < this.rightWallX &&
+        playerCharacter.y + playerCharacter.height > this.rightWallTopY &&
+        playerCharacter.y < this.rightWallBottomY)
+    {
+      if (playerCharacter.x + playerCharacter.width > this.rightWallX)
+      {
+        playerCharacter.x = playerCharacter.previousX;
+      }
+    }
+
+    if (playerCharacter.previousY > 557 &&
+        playerCharacter.x + playerCharacter.width > this.bottomWallLeftX &&
+        playerCharacter.x < this.bottomWallRightX)
+    {
+      if (playerCharacter.y <= 557)
+      {
+        playerCharacter.y = playerCharacter.previousY;
+      }
+    }
+
+    if (playerCharacter.previousY < 547 &&
+        playerCharacter.x + playerCharacter.width > this.bottomWallLeftX &&
+        playerCharacter.x < this.bottomWallRightX)
+    {
+      if (playerCharacter.y >= 547)
+      {
+        playerCharacter.y = playerCharacter.previousY;
+      }
+    }
+
+    if (playerCharacter.previousY + playerCharacter.height < this.doorY &&
+        playerCharacter.x + playerCharacter.width > this.doorLeftX &&
+        playerCharacter.x < this.doorRightX)
+    {
+
+      if (playerCharacter.y + playerCharacter.height >= this.doorY)
+      {
+        console.log('door collision detected');
+        if (!this.hasADoor)
         {
-          this.hasADoor = false;
-          playerCharacter.numberOfKeys--;
+          console.log('no door here');
+          return;
         }
-        else if (playerCharacter.y + playerCharacter.height > this.y && playerCharacter.y < this.y + 10 &&
-            playerCharacter.x > this.x && playerCharacter.x + playerCharacter.width < this.x + this.width &&
-            playerCharacter.numberOfKeys <= 0)
-            {
-              playerCharacter.x = playerCharacter.previousX;
-              playerCharacter.y = playerCharacter.previousY;
-            }
-        else if (playerCharacter.previousX < this.x &&
-          (playerCharacter.y + playerCharacter.height > gameCanvas.height*0.2 || playerCharacter.y < gameCanvas.height*0.2 + gameCanvas.height*0.2 + gameCanvas.height*0.2) )
+        else if (this.hasADoor)
         {
-          if (playerCharacter.x + playerCharacter.width > this.x)
+          console.log('there is a door');
+          if (playerCharacter.numberOfKeys < 1)
           {
-            playerCharacter.x = playerCharacter.previousX;
+            console.log('no key, should not enter room');
+            playerCharacter.y = playerCharacter.previousY;
+          }
+          else if (playerCharacter.numberOfKeys > 0)
+          {
+            console.log('player has a key, should make the door disappear and room enterable');
+            this.hasADoor = false;
+            playerCharacter.numberOfKeys -= 1;
+            console.log('playerCharacter.numberOfKeys: ' + playerCharacter.numberOfKeys);
           }
         }
-      else if (playerCharacter.previousY > this.y + this.height)
-      {
-        if (playerCharacter.y < this.y + this.height)
-        {
-          playerCharacter.y = playerCharacter.previousY;
-        }
       }
+    }
   }
 }

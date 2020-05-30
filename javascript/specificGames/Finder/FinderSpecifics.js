@@ -37,6 +37,8 @@ function finderGameClass()
   this.topRoom = undefined;
   this.middleRoom = undefined;
   this.bottomRoom = undefined;
+
+  this.trophy = undefined;
   this.initialize = function()
   {
     this.defineAndInitializePlayerCharacter();
@@ -59,6 +61,7 @@ function finderGameClass()
     this.topRoom = new Room(upperAndMiddleRoomsImage, gameCanvas.height*0.2);
     this.middleRoom = new Room(upperAndMiddleRoomsImage, gameCanvas.height*0.2 + gameCanvas.height*0.2);
     this.bottomRoom = new Room(bottomRoomImage, gameCanvas.height*0.2 + gameCanvas.height*0.2 + gameCanvas.height*0.2);
+    this.trophy = {image:trophyImage,x:this.bottomRoom.x + 20,y:this.bottomRoom.y + 20,width:this.bottomRoom.width*0.6,height:this.bottomRoom.height*0.6};
   }
 
   this.handleLeftArrowDown = function()
@@ -103,6 +106,7 @@ function finderGameClass()
       this.topRoom.handlePlayerCollision();
       this.middleRoom.handlePlayerCollision();
       this.bottomRoom.handlePlayerCollision();
+      this.playerCharacter.handleTrophyCollision();
     }
     this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
   }
@@ -114,9 +118,12 @@ function finderGameClass()
     this.topRoom.draw();
     this.middleRoom.draw();
     this.bottomRoom.draw();
-
+    gameCanvasContext.drawImage(this.trophy.image, this.trophy.x,this.trophy.y, this.trophy.width,this.trophy.height);
     drawAnswersManager.draw();
     promptersManager.drawPromptsWhenAppropriate();
+    gameCanvasContext.fillStyle = 'white';
+    gameCanvasContext.font = "30px Helvetica";
+    gameCanvasContext.fillText('You have ' + this.playerCharacter.numberOfKeys + ' keys', gameCanvas.width/2 - 100,gameCanvas.height*0.1);
   }
 }
 

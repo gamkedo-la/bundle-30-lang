@@ -226,9 +226,13 @@ function CollisionsWithAnswersManager()
           }
           if (gameClassManager.currentGame.name === 'finder game')
           {
-            gameClassManager.currentGame.playerCharacter.x = gameClassManager.currentGame.playerCharacter.startingX;
-            gameClassManager.currentGame.playerCharacter.y = gameClassManager.currentGame.playerCharacter.startingY;
-            gameClassManager.currentGame.playerCharacter.numberOfKeys++;
+            if (collisionType === COLLISION_WITH_CORRECT_ANSWER)
+            {
+              gameClassManager.currentGame.playerCharacter.x = gameClassManager.currentGame.playerCharacter.startingX;
+              gameClassManager.currentGame.playerCharacter.y = gameClassManager.currentGame.playerCharacter.startingY;
+              gameClassManager.currentGame.playerCharacter.numberOfKeys++;
+              console.log('gameClassManager.currentGame.playerCharacter.numberOfKeys++: ' + gameClassManager.currentGame.playerCharacter.numberOfKeys++);
+            }
           }
           if (gameClassManager.currentGame.name === 'nighttime game')
           {
