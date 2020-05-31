@@ -1,13 +1,13 @@
 feedGameClass.prototype = new GameClass();
 function feedGameClass()
 {
-  this.name = "Feed Who";
+  this.name = "feedGame";
   this.FRAME_RATE = 1000/30;
 
   this.background = undefined;
   this.titleScreenData = [
-	{name: "Feed", fontSize: 22, spacing: 12, x: 542, y: 167},
-	{name: "Who", fontSize: 22, spacing: 12, x: 535, y: 207}
+	{name: "Feed", fontSize: 19, spacing: 9, x: 122, y: 480},
+	{name: "Who", fontSize: 19, spacing: 9, x: 122, y: 490}
   ];
   this.playerCharacter = undefined;
   this.defineAndInitializePlayerCharacter = function()
