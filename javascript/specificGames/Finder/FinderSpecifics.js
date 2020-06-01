@@ -4,7 +4,7 @@ function finderGameClass()
   this.name = 'finder game';
   this.playerCharacter = undefined;
 
-  this.backgroundMusic = undefined;
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/finderSong.mp3', 9.6);;
 
   this.defineAndInitializePlayerCharacter = function()
   {
