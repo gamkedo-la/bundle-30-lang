@@ -9,6 +9,7 @@ function eggCatchGameClass()
 
   }
 
+  this.backgroundMusic = this.backgroundMusic = new MusicTrack('audio/backgroundTracks/eggCatchSong.mp3', 17.4);
   this.FRAME_RATE = 1000/30;
   this.background = new EggCatchBackground();
 
