@@ -7,11 +7,11 @@ function handleMouseCLick(evt){
 }
 
 window.onload = function() {
-  // var framesPersecond = 60;
-  //  setInterval(function(){
-  //     moveEverything();
-  //     drawEverything();
-  // },1000/framesPersecond);
+   var framesPersecond = 60;
+  setInterval(function(){
+     moveEverything();
+       drawEverything();
+   },1000/framesPersecond);
 
   gameCanvas.addEventListener('mousedown' , handleMouseCLick);
 

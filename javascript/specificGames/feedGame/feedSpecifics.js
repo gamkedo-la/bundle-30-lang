@@ -6,8 +6,8 @@ function feedGameClass()
 
   this.background = undefined;
   this.titleScreenData = [
-	{name: "Feed", fontSize: 19, spacing: 9, x: 122, y: 480},
-	{name: "Who", fontSize: 19, spacing: 9, x: 122, y: 490}
+	{name: "Feed", fontSize: 28, spacing: 11, x: 125, y: 478},
+	{name: "Who", fontSize: 28, spacing: 12, x: 125, y: 500}
   ];
   this.playerCharacter = undefined;
   this.defineAndInitializePlayerCharacter = function()
@@ -105,9 +105,9 @@ function feedGameClass()
     fullGameStateMachine.currentState === fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame)
     {
       this.moveAnswers();
-      setInterval(this.fireLavaParticleManager.generateAParticle(),250);
+      //setInterval(this.fireLavaParticleManager.generateAParticle(),250);
       this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
-      //this.playerCharacter.handleCollisionsWithAnswers();
+      this.playerCharacter.handleCollisionsWithAnswers();
       this.background.handleAnswersOffScreen();
       this.fireLavaParticleManager.handleParticles();
     }
