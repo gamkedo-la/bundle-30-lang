@@ -64,16 +64,16 @@ function feedGameClass()
     this.audioImageAnswerHolderWidth = gameCanvas.width/5;
     this.audioImageAnswerHolderHeight = gameCanvas.height/6;
 
-    this.lavaAnswerHolder1 = new LavaAnswerHolder(lavaBall1Image);
-    this.lavaAnswerHolder2 = new LavaAnswerHolder(lavaBall2Image);
-    this.lavaAnswerHolder3 = new LavaAnswerHolder(lavaBall3Image);
-    this.arrayOfAnswerHolders.push(this.lavaAnswerHolder1);
-    this.arrayOfAnswerHolders.push(this.lavaAnswerHolder2);
-    this.arrayOfAnswerHolders.push(this.lavaAnswerHolder3);
+    this.foodAnswerHolder1 = new FooDAnswerHolder(lavaBall1Image);
+    this.foodAnswerHolder2 = new FoodAnswerHolder(lavaBall2Image);
+    this.foodAnswerHolder3 = new FoodAnswerHolder(lavaBall3Image);
+    this.arrayOfAnswerHolders.push(this.foodAnswerHolder1);
+    this.arrayOfAnswerHolders.push(this.foodAnswerHolder2);
+    this.arrayOfAnswerHolders.push(this.foodAnswerHolder3);
 
-    this.upsideDownAnswerHolder1 = new LavaAnswerHolder(lavaBall1UpsideDownImage);
-    this.upsideDownAnswerHolder2 = new LavaAnswerHolder(lavaBall2UpsideDownImage);
-    this.upsideDownAnswerHolder3 = new LavaAnswerHolder(lavaBall3UpsideDownImage);
+    this.upsideDownAnswerHolder1 = new FoodAnswerHolder(lavaBall1UpsideDownImage);
+    this.upsideDownAnswerHolder2 = new FoodAnswerHolder(lavaBall2UpsideDownImage);
+    this.upsideDownAnswerHolder3 = new FoodAnswerHolder(lavaBall3UpsideDownImage);
     this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder1);
     this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder2);
     this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder3);
@@ -142,7 +142,17 @@ function feedGameClass()
 
 const feedGame = new feedGameClass();
 
-function LavaAnswerHolder(image)
+
+function feedBackground()
+{
+  this.image = feedBackgroundImage;
+  this.draw = function()
+  {
+    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+  }
+}
+
+function foodAnswerHolder(image)
 {
   this.image = image;
 }

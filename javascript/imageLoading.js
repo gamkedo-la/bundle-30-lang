@@ -303,6 +303,9 @@ let eggImage2 = document.createElement('img');
 let basketImage = document.createElement('img');
 let chickenImage = document.createElement('img');
 
+//feed who
+let feedBackgroundImage = document.createElement('img');
+
 //PenaltyShootout images
 let penaltyBall1 = document.createElement('img');
 let penaltyBall2 = document.createElement('img');
@@ -644,6 +647,8 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: rocketImage, theFile: 'images/sprites/spaceShooter/rocket.png', loaded: false});
 
 
+  //PenaltyShootout game
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall1, theFile: 'images/Backgrounds/feed.jpg', loaded: false});
 
   //flower game
   arrayOfImagesToLoad.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png", loaded: false});
