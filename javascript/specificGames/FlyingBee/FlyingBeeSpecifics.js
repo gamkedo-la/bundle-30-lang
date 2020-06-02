@@ -21,6 +21,7 @@ function flyingBeeGameClass()
   }
 
   this.background = new FlyingBeeBackground();
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/flyingBeeSong.mp3', 14.1);
 
   this.defineAndInitializePlayerCharacter = function()
   {
