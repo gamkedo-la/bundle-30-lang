@@ -64,7 +64,7 @@ function feedGameClass()
     this.audioImageAnswerHolderWidth = gameCanvas.width/5;
     this.audioImageAnswerHolderHeight = gameCanvas.height/6;
 
-    this.foodAnswerHolder1 = new FooDAnswerHolder(lavaBall1Image);
+    this.foodAnswerHolder1 = new FoodAnswerHolder(lavaBall1Image);
     this.foodAnswerHolder2 = new FoodAnswerHolder(lavaBall2Image);
     this.foodAnswerHolder3 = new FoodAnswerHolder(lavaBall3Image);
     this.arrayOfAnswerHolders.push(this.foodAnswerHolder1);
@@ -152,7 +152,7 @@ function feedBackground()
   }
 }
 
-function foodAnswerHolder(image)
+function FoodAnswerHolder(image)
 {
   this.image = image;
 }
