@@ -647,8 +647,8 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: rocketImage, theFile: 'images/sprites/spaceShooter/rocket.png', loaded: false});
 
 
-  //PenaltyShootout game
-  arrayOfImagesToLoad.push({imageObjectBinding: feedBackground, theFile: 'images/Backgrounds/feed.jpg', loaded: false});
+  //feedGame
+  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/Backgrounds/feed.png', loaded: false});
 
   //flower game
   arrayOfImagesToLoad.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png", loaded: false});
