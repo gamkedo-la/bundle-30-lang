@@ -49,8 +49,8 @@ function feedGameClass()
   this.correctAnswersYSpeed = 4;
   this.incorrectAnswersYSpeed = 4;
 
-  this.collisionsWithAnswersManager = new feedCollisionsManager();
-
+  //this.collisionsWithAnswersManager = new feedCollisionsManager();
+  
   this.superInitialize = this.initialize;
   this.initialize = function()
   {
@@ -81,6 +81,8 @@ function feedGameClass()
   
 
     this.background = new feedBackground();
+    this.playerCharacter = new feedPlayerCharacter();
+    this.collisionsWithAnswersManager = new feedCollisionsManager();
     this.superInitialize();
   }
 
@@ -94,7 +96,6 @@ function feedGameClass()
   {
     this.background.draw();
     this.playerCharacter.draw();
-    this.fireLavaParticleManager.drawParticles();
     drawAnswersManager.draw();
     promptersManager.drawPromptsWhenAppropriate();
   }
@@ -107,9 +108,7 @@ function feedGameClass()
       this.moveAnswers();
       //setInterval(this.fireLavaParticleManager.generateAParticle(),250);
       this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.playerCharacter);
-      this.playerCharacter.handleCollisionsWithAnswers();
       this.background.handleAnswersOffScreen();
-      this.fireLavaParticleManager.handleParticles();
     }
   }
 
@@ -156,3 +155,17 @@ function FoodAnswerHolder(image)
 {
   this.image = image;
 }
+
+function feedPlayerCharacter()
+  {
+    this.width = gameCanvas.width*0.2;
+    this.height = gameCanvas.height*0.1;
+    this.x = gameCanvas.width/2 - this.width/2;
+    this.y = gameCanvas.height*0.8;
+    this.image = basketImage;
+  
+    this.draw = function()
+    {
+      gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    }
+  }
