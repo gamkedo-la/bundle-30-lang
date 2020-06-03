@@ -277,6 +277,9 @@ let whackTableSurface = document.createElement('img');
 let whackTableBeneathSurface = document.createElement('img');
 let hammerImage = document.createElement('img');
 
+//spelling bees
+let spellingBeesBackgroundImage = document.createElement('img');
+
 //fishing
 let fishingGameWaterBackgroundImage = document.createElement('img');
 let fishingGameCharacter = document.createElement('img');
@@ -759,6 +762,9 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: whackTableSurface, theFile: 'images/Backgrounds/WackTableSurface.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: whackTableBeneathSurface, theFile: 'images/Backgrounds/WackTableBeneathSurface.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: hammerImage, theFile: 'images/sprites/whackAnAnswer/whackHammer.png', loaded: false});
+
+  //spelling bees
+  arrayOfImagesToLoad.push({imageObjectBinding: spellingBeesBackgroundImage, theFile: 'images/Backgrounds/spellingBee.png', loaded: false});
 
   //symbols
   arrayOfImagesToLoad.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png', loaded: false });
