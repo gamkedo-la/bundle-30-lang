@@ -141,16 +141,6 @@ function feedGameClass()
 
 const feedGame = new feedGameClass();
 
-
-function feedBackground()
-{
-  this.image = feedBackgroundImage;
-  this.draw = function()
-  {
-    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
-  }
-}
-
 function FoodAnswerHolder(image)
 {
   this.image = image;

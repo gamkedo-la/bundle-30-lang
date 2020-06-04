@@ -1,12 +1,10 @@
 function feedBackground()
 {
 
-  this.volcanoImage = volcanoImage;
-  this.spaceBackgrondImage = spaceBackgroundForVolcanoGame;
+  this.feedBackgroundImage = feedBackgroundImage;
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.spaceBackgrondImage, 0,0, gameCanvas.width,gameCanvas.height);
-    gameCanvasContext.drawImage(this.volcanoImage, 0,gameCanvas.height*0.7, gameCanvas.width,gameCanvas.height*0.3);
+    gameCanvasContext.drawImage(this.feedBackgroundImage, 0,0, gameCanvas.width,gameCanvas.height);
   }
 
   this.handleAnswersOffScreen = function()
