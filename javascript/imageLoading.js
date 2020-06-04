@@ -306,6 +306,8 @@ let eggImage2 = document.createElement('img');
 let basketImage = document.createElement('img');
 let chickenImage = document.createElement('img');
 
+let beeWithoutStripesImage = document.createElement('img');
+
 //feed who
 let feedBackgroundImage = document.createElement('img');
 
@@ -765,6 +767,7 @@ function loadImages()
 
   //spelling bees
   arrayOfImagesToLoad.push({imageObjectBinding: spellingBeesBackgroundImage, theFile: 'images/Backgrounds/spellingBee.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: beeWithoutStripesImage, theFile: 'images/sprites/SpellingBees/Simple Bee Without Stripes.png', loaded: false});
 
   //symbols
   arrayOfImagesToLoad.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png', loaded: false });

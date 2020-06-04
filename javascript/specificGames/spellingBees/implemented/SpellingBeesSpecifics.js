@@ -5,6 +5,7 @@ function spellingBeesGameClass()
   this.playerCharacter = undefined;
 
   this.background = undefined;
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/flyingBeeSong.mp3', 14.1);
 
   this.beesManager = undefined;
 
@@ -14,6 +15,14 @@ function spellingBeesGameClass()
   {
     this.playerCharacter = new BeeCatcher();
     this.background = new SpellingBeesBackground();
+    this.background.initializeBoxes();
+
+    this.wordsManager = new WordsManager();
+    this.wordsManager.initialize();
+    this.wordsManager.defineCurrentAnswer();
+
+    this.beesManager = new BeesManager();
+    this.beesManager.initialize();
   }
 
   this.LETTER_COLOR = 'black';
@@ -28,12 +37,16 @@ function spellingBeesGameClass()
   this.update = function()
   {
     this.playerCharacter.move();
+    this.beesManager.updateBees();
+    this.playerCharacter.checkForBeeCollisions();
   }
 
   this.draw = function()
   {
     this.background.draw();
+    this.background.drawBoxes();
     this.playerCharacter.draw();
+    this.beesManager.drawBees();
   }
 
   this.handleLeftArrowDown = function()
@@ -84,6 +97,54 @@ function SpellingBeesBackground()
   this.draw = function()
   {
     gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+  }
+
+  this.playingFieldLeftXBoundary = 75;
+  this.playingFieldRightXBoundary = 570;
+  this.playingFieldTopYBoundary = 75;
+  this.playingFieldBottomYBoundary = 625;
+
+  this.arrayOfBoxes = [];
+
+  this.initializeBoxes = function()
+  {
+    this.box1 = new Box(100);
+    this.box2 = new Box(250);
+    this.box3 = new Box(400);
+
+    this.arrayOfBoxes.push(this.box1);
+    this.arrayOfBoxes.push(this.box2);
+    this.arrayOfBoxes.push(this.box3);
+  }
+
+  this.currentBoxToBeFilledIndex = 0;
+  this.drawBoxes = function()
+  {
+    for (let i = 0; i < this.arrayOfBoxes.length; i++)
+    {
+      this.arrayOfBoxes[i].draw();
+    }
+  }
+}
+
+function Box(x)
+{
+  this.x = x;
+  this.y = 5;
+
+  this.width = 150;
+  this.height = 65;
+
+  this.letter = undefined;
+
+  this.draw = function()
+  {
+    gameCanvasContext.save();
+    gameCanvasContext.strokeStyle = 'brown';
+    gameCanvasContext.lineWidth = 7;
+    gameCanvasContext.strokeRect(this.x,this.y, this.width,this.height);
+    gameCanvasContext.stroke();
+    gameCanvasContext.restore();
   }
 }
 
