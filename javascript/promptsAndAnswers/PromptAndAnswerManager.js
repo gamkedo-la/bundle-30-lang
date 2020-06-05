@@ -559,6 +559,34 @@ function PromptsAndAnswersManager()
       }
     }
   }
+  else if (gameClassManager.currentGame.name === 'frog crate game')
+  {
+    let fiftyFiftyResult = Math.random();
+    let fly1 = gameClassManager.currentGame.fly1;
+    let fly2 = gameClassManager.currentGame.fly2;
+    {
+      if (fiftyFiftyResult <= 0.5)
+      {
+        fly1.isCorrectAnswer = true;
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = fly1.answerX;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = fly1.answerY;
+
+        fly2.isCorrectAnswer = false;
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = fly2.answerX;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = fly2.answerY;
+      }
+      else if (fiftyFiftyResult > 0.5)
+      {
+        fly2.isCorrectAnswer = true;
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = fly2.answerX;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = fly2.answerY;
+
+        fly1.isCorrectAnswer = false;
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = fly1.answerX;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = fly1.answerY;
+      }
+    }
+  }
   else if (gameClassManager.currentGame.name === 'egg catch game')
   {
     let fiftyFiftyResult = Math.random();

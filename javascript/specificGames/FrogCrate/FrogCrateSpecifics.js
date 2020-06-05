@@ -6,13 +6,21 @@ function frogCrateGameClass()
   this.defineAndInitializePlayerCharacter = function()
   {
     this.playerCharacter = new FrogCratePlayer();
+    this.playerCharacter.tongue = new Tongue();
+    this.collidingObject = this.playerCharacter.tongue;
+
+    let fly1OscillationVelocity = getRandomArbitrary(-0.035,0.035);
+    let fly2OscillationVelocity = getRandomArbitrary(-0.035,0.035);
+
+    this.fly1 = new Fly(flyImage1, 1,fly1OscillationVelocity);
+    this.fly2 = new Fly(flyImage1, -1, fly2OscillationVelocity);
   }
 
   this.textAnswerFontSize = '15';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
   this.LETTER_COLOR = "black";
 
-  this.backgroundMusic = undefined;
+  this.backgroundMusic = new MusicTrack('audio/backgroundTracks/200410.mp3', 73.46);
 
   this.titleScreenData =
   [
@@ -22,24 +30,64 @@ function frogCrateGameClass()
 
   this.background = new FrogCrateBackground();
 
+  this.fly1 = undefined;
+  this.fly2 = undefined;
+
   this.intialize = function()
   {
     this.defineAndInitializePlayerCharacter();
+
+    this.imageAnswerWidth = gameCanvas.width*0.1;
+		this.imageAnswerHeight = gameCanvas.height*0.1;
+		this.audioImageAnswerWidth = gameCanvas.width*0.1;
+    this.audioImageAnswerHeight = gameCanvas.height*0.1;
+
+    this.imageAnswerHolderWidth = gameCanvas.width*0.15;
+		this.imageAnswerHolderHeight = gameCanvas.height*0.15;
+		this.audioImageAnswerHolderWidth = gameCanvas.width*0.15;
+    this.audioImageAnswerHolderHeight = gameCanvas.height*0.15;
+
 
   }
 
   this.update = function()
   {
-    this.playerCharacter.move();
-    this.playerCharacter.stretchTongue();
-    this.playerCharacter.returnTongue();
-    this.playerCharacter.updateTongueLength();
+    if (!promptersManager.shouldBeDrawingAPrompt &&
+        fullGameStateMachine.currentState !== fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.pausedMiniGame)
+        {
+          this.playerCharacter.move();
+          this.playerCharacter.stretchTongue();
+          this.playerCharacter.returnTongue();
+          this.playerCharacter.updateTongueLength();
+
+          this.moveFlys();
+          this.handleFliesAtEdgesOfScreen();
+          this.collisionsWithAnswersManager.handleCollisionsWithAnswers(this.collidingObject);
+        }
+  }
+
+  this.moveFlys = function()
+  {
+    this.fly1.move();
+    this.fly2.move();
+  }
+
+  this.handleFliesAtEdgesOfScreen = function()
+  {
+    this.fly1.handleEndOfScreenDirectionChanges();
+    this.fly2.handleEndOfScreenDirectionChanges();
   }
 
   this.draw = function()
   {
     this.background.draw();
     this.playerCharacter.draw();
+
+    this.fly1.draw();
+    this.fly2.draw();
+
+    drawAnswersManager.draw();
+    promptersManager.drawPromptsWhenAppropriate();
   }
 
   this.handleRightArrowDown = function()
@@ -63,6 +111,11 @@ function frogCrateGameClass()
   this.handleSpaceBarDown = function()
   {
     console.log('space bar pressed');
+    if (this.playerCharacter.tongueShouldBeStretchingOut === true || this.playerCharacter.tongueShouldBeReturningToMouth === true)
+    {
+      return;
+    }
+
     this.playerCharacter.tongueShouldBeStretchingOut = true;
   }
 }

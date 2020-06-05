@@ -251,6 +251,16 @@ function CollisionsWithAnswersManager()
               gameClassManager.currentGame.playerCharacter.laserShot.y - (gameCanvas.height - gameClassManager.currentGame.playerCharacter.ghostGunY);
             }
           }
+          if (gameClassManager.currentGame.name === 'frog crate game')
+          {
+            let tongue = gameClassManager.currentGame.playerCharacter.tongue;
+            let playerCharacter = gameClassManager.currentGame.playerCharacter;
+
+            tongue.y = playerCharacter.y - 10;
+            tongue.height = playerCharacter.y - tongue.y + 10;
+            playerCharacter.tongueShouldBeStretchingOut = false;
+            playerCharacter.tongueShouldBeReturningToMouth = false;
+          }
           // if (gameClassManager.currentGame.collisionVisualEffect)
           // {
           //   gameClassManager.currentGame.collisionVisualEffect();

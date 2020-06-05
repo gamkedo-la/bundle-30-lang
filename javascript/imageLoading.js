@@ -248,6 +248,7 @@ let ghostImage2 = document.createElement('img');
 let frogInBowlImage = document.createElement('img');
 let bathStoneImage = document.createElement('img');
 let frogTongueImage = document.createElement('img');
+let flyImage1 = document.createElement('img');
 
 // maze images
 let mazeFloor = document.createElement('img');
@@ -691,6 +692,7 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: frogInBowlImage, theFile: "images/sprites/frogCrate/FrogInBowl.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: bathStoneImage, theFile: "images/sprites/frogCrate/bathStone.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: frogTongueImage, theFile: "images/sprites/frogCrate/frogTongue.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: flyImage1, theFile: "images/sprites/frogCrate/cartoonFly.png", loaded: false});
 
   // maze game
   arrayOfImagesToLoad.push({imageObjectBinding: mazeFloor, theFile: "images/Backgrounds/mazefloor.png", loaded: false});
