@@ -1,7 +1,7 @@
 var gameList = [snakeGame,birdGame,laneGame,jumperGame,finderGame,passOrBlockGame,
                 cVcShooterGame,spaceShooterGame,runnerGame,pinataGame,airGrabGame,frogRiverGame,
                 mazeGame,null,flowerGame,penaltyGame,balloonPopGame,helloWorldGame,
-                dodgeballGame,feedGame,nighttimeGame,null,flyingBeeGame,fishingGame,
+                dodgeballGame,feedGame,nighttimeGame,frogCrateGame,flyingBeeGame,fishingGame,
                 eggCatchGame,bubbleWrapGame,whackAnAnswerGame,null,spellingBeesGame,helloWorld2Game];
 
 var currentlyLoadedGame = -1;

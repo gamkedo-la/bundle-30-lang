@@ -244,6 +244,9 @@ let nighttimeBackgroundImage = document.createElement('img');
 let ghostImage1 = document.createElement('img');
 let ghostImage2 = document.createElement('img');
 
+//frog crate
+let frogInBowlImage = document.createElement('img');
+
 // maze images
 let mazeFloor = document.createElement('img');
 let mazeTopWall = document.createElement('img');
@@ -681,6 +684,9 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: nighttimeBackgroundImage, theFile: "images/Backgrounds/nighttimeBackground.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: ghostImage1, theFile: "images/sprites/nightTime/Ghost.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: ghostImage2, theFile: "images/sprites/nightTime/ghost2.png", loaded: false});
+
+  //frog crate
+  arrayOfImagesToLoad.push({imageObjectBinding: frogInBowlImage, theFile: "images/sprites/frogCrate/FrogInBowl.png", loaded: false});
 
   // maze game
   arrayOfImagesToLoad.push({imageObjectBinding: mazeFloor, theFile: "images/Backgrounds/mazefloor.png", loaded: false});
