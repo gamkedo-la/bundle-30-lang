@@ -5,16 +5,19 @@ function feedGameClass()
   this.FRAME_RATE = 1000/30;
 
   this.background = undefined;
-  this.titleScreenData = [
-	{name: "Feed", fontSize: 28, spacing: 11, x: 125, y: 478},
-	{name: "Who", fontSize: 28, spacing: 12, x: 125, y: 500}
+  this.titleScreenData =
+  [
+  	{name: "Feed", fontSize: 28, spacing: 11, x: 125, y: 478},
+  	{name: "Who", fontSize: 28, spacing: 12, x: 125, y: 500}
   ];
+
   this.playerCharacter = undefined;
   this.defineAndInitializePlayerCharacter = function()
   {
     this.playerCharacter = new Paddle();
     this.collidingObject = this.playerCharacter;
   }
+
   this.background = undefined;
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/PassBlockVolcano.mp3',66.5);
   this.backButtonColor = 'yellow';
@@ -50,7 +53,7 @@ function feedGameClass()
   this.incorrectAnswersYSpeed = 4;
 
   //this.collisionsWithAnswersManager = new feedCollisionsManager();
-  
+
   this.superInitialize = this.initialize;
   this.initialize = function()
   {
@@ -70,15 +73,6 @@ function feedGameClass()
     this.arrayOfAnswerHolders.push(this.foodAnswerHolder1);
     this.arrayOfAnswerHolders.push(this.foodAnswerHolder2);
     this.arrayOfAnswerHolders.push(this.foodAnswerHolder3);
-
-    this.upsideDownAnswerHolder1 = new FoodAnswerHolder(lavaBall1UpsideDownImage);
-    this.upsideDownAnswerHolder2 = new FoodAnswerHolder(lavaBall2UpsideDownImage);
-    this.upsideDownAnswerHolder3 = new FoodAnswerHolder(lavaBall3UpsideDownImage);
-    this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder1);
-    this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder2);
-    this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder3);
-
-  
 
     this.background = new feedBackground();
     this.playerCharacter = new feedPlayerCharacter();
@@ -125,7 +119,7 @@ function feedGameClass()
   this.handleRightArrowDown = function()
   {
     this.playerCharacter.x += 10;
-    
+
     for (let i = 0; i < this.playerCharacter.arrayOfGems.length; i++)
     {
       this.playerCharacter.arrayOfGems[i].x += 10;
@@ -153,7 +147,7 @@ function feedPlayerCharacter()
     this.x = gameCanvas.width/2 - this.width/2;
     this.y = gameCanvas.height*0.8;
     this.image = basketImage;
-  
+
     this.draw = function()
     {
       gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
