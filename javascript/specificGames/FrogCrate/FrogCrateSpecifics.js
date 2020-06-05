@@ -25,12 +25,15 @@ function frogCrateGameClass()
   this.intialize = function()
   {
     this.defineAndInitializePlayerCharacter();
-    
+
   }
 
   this.update = function()
   {
     this.playerCharacter.move();
+    this.playerCharacter.stretchTongue();
+    this.playerCharacter.returnTongue();
+    this.playerCharacter.updateTongueLength();
   }
 
   this.draw = function()
@@ -56,15 +59,25 @@ function frogCrateGameClass()
   {
     inputManager.leftArrowIsBeingHeld = false;
   }
+
+  this.handleSpaceBarDown = function()
+  {
+    console.log('space bar pressed');
+    this.playerCharacter.tongueShouldBeStretchingOut = true;
+  }
 }
 
 const frogCrateGame = new frogCrateGameClass();
 
 function FrogCrateBackground()
 {
-  this.image = flowerBackground;
+  this.waterImage = frogRiverBackgroundImage;
+  this.skyImage = skyBackground;
+  this.bathStoneImage = bathStoneImage;
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    gameCanvasContext.drawImage(this.skyImage, 0,0, gameCanvas.width,gameCanvas.height*0.3);
+    gameCanvasContext.drawImage(this.waterImage, 0,gameCanvas.height*0.3, gameCanvas.width,gameCanvas.height*0.7);
+    gameCanvasContext.drawImage(this.bathStoneImage, 0,gameCanvas.height*0.9, gameCanvas.width,gameCanvas.height*0.15);
   }
 }
