@@ -259,6 +259,11 @@ let mazeRightWall = document.createElement('img');
 let mazeCharacter = document.createElement('img');
 let moleFoodImage = document.createElement('img');
 
+//memory
+let simon1Image = document.createElement('img');
+let simon2Image = document.createElement('img');
+let simon3Image = document.createElement('img');
+
 //air grab
 let airBoothImage = document.createElement('img');
 let plasticImage = document.createElement('img');
@@ -668,10 +673,10 @@ function loadImages()
 
   //feedGame
   arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/Backgrounds/feed.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/feedGame/cake1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/feedGame/cake2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/feedGame/cake3.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/feedGame/cake4.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/sprites/feedGame/cake1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/sprites/feedGame/cake2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/sprites/feedGame/cake3.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/sprites/feedGame/cake4.png', loaded: false});
   //flower game
   arrayOfImagesToLoad.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: flowerBackground, theFile: "images/Backgrounds/Flower2.png", loaded: false});
@@ -714,6 +719,10 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: mazeCharacter, theFile: "images/sprites/Maze/mole.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: moleFoodImage, theFile: "images/sprites/Maze/moleFood.png", loaded: false});
 
+  //memory game
+  arrayOfImagesToLoad.push({imageObjectBinding: simon1Image, theFile: "images/sprites/Memory/Simon.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: simon2Image, theFile: "images/sprites/Memory/Simon2.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: simon3Image, theFile: "images/sprites/Memory/Simon3.png", loaded: false});
 
   //air booth
   arrayOfImagesToLoad.push({imageObjectBinding: airBoothImage, theFile: "images/Backgrounds/airBooth.png", loaded: false});

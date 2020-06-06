@@ -14,7 +14,10 @@ function GameClass()
     //console.log('inside initialization of GameClass');
     if (gameClassManager.currentGame.playerCharacter === undefined)
     {
-      gameClassManager.currentGame.defineAndInitializePlayerCharacter();
+      if (gameClassManager.currentGame !== memoryGame)
+      {
+        gameClassManager.currentGame.defineAndInitializePlayerCharacter();
+      }
     }
     if (gameClassManager.currentGame.pregameSpecialCode !== undefined)
     {

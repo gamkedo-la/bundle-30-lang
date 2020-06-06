@@ -89,7 +89,7 @@ function TitleScreenClass()
     // [{name: "Finder", fontSize: 27, spacing: 15, x: 420, y: 185}],//5
     //[{name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265}, {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}],//11
     //[{name: "Frogger", fontSize: 27, spacing: 13, x: 520, y: 285}],//12
-    [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
+    // [{name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}],//14
     // [{name: "Penalty", fontSize: 17, spacing: 12, x: 325, y: 375},{name: "Shootout", fontSize: 17, spacing: 12, x: 324, y: 405}],//16 // TODO: game is not implemented yet. Will remove comments when it is implemented.
     //[{name: "Balloon", fontSize: 17, spacing: 12, x: 425, y: 375},{name: "Pop", fontSize: 17, spacing: 12, x: 450, y: 405}],
     // [{name: "Daytime", fontSize: 24, spacing: 12, x: 525, y: 380}],
@@ -102,7 +102,7 @@ function TitleScreenClass()
     // [{name: "Egg", fontSize: 25, spacing: 12, x: 45, y: 565},{name: "Catch", fontSize: 25, spacing: 10, x: 37, y: 605}],
     // [{name: "Whack", fontSize: 25, spacing: 12, x: 235, y: 550},{name: "a", fontSize: 25, spacing: 10, x: 260, y: 580},{name: "Letter", fontSize: 25, spacing: 10, x: 235, y: 615}],
     // [{name: "Vacuum", fontSize: 25, spacing: 12, x: 327, y: 580}],
-    [{name: 'Spelling', fontSize: 25, spacing: 12, x:418, y: 560},{name: 'Bees', fontSize: 25, spacing: 12, x:436, y: 598}]
+    // [{name: 'Spelling', fontSize: 25, spacing: 12, x:418, y: 560},{name: 'Bees', fontSize: 25, spacing: 12, x:436, y: 598}]
     ];
 
   this.drawGameNames = function()
