@@ -286,6 +286,10 @@ let hammerImage = document.createElement('img');
 //spelling bees
 let spellingBeesBackgroundImage = document.createElement('img');
 
+//vacuum
+let vacuumBackgroundImage = document.createElement('img');
+let vacuumImage = document.createElement('img');
+
 //fishing
 let fishingGameWaterBackgroundImage = document.createElement('img');
 let fishingGameCharacter = document.createElement('img');
@@ -780,6 +784,10 @@ function loadImages()
   //spelling bees
   arrayOfImagesToLoad.push({imageObjectBinding: spellingBeesBackgroundImage, theFile: 'images/Backgrounds/spellingBee.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: beeWithoutStripesImage, theFile: 'images/sprites/SpellingBees/Simple Bee Without Stripes.png', loaded: false});
+
+  //vacuum
+  arrayOfImagesToLoad.push({imageObjectBinding: vacuumBackgroundImage, theFile: 'images/Backgrounds/vacuumBackground.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: vacuumImage, theFile: 'images/sprites/Vacuum/vacuum.png', loaded: false});
 
   //symbols
   arrayOfImagesToLoad.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png', loaded: false });

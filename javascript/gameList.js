@@ -2,7 +2,7 @@ var gameList = [snakeGame,birdGame,laneGame,jumperGame,finderGame,passOrBlockGam
                 cVcShooterGame,spaceShooterGame,runnerGame,pinataGame,airGrabGame,frogRiverGame,
                 mazeGame,null,flowerGame,penaltyGame,balloonPopGame,helloWorldGame,
                 dodgeballGame,feedGame,nighttimeGame,frogCrateGame,flyingBeeGame,fishingGame,
-                eggCatchGame,bubbleWrapGame,whackAnAnswerGame,null,spellingBeesGame,helloWorld2Game];
+                eggCatchGame,bubbleWrapGame,whackAnAnswerGame,vacuumGame,spellingBeesGame,helloWorld2Game];
 
 var currentlyLoadedGame = -1;
 var SINGLE_PLAYER_ENDLESS = 0;
