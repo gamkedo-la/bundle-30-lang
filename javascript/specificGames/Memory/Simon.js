@@ -12,14 +12,31 @@ function Simon()
   this.leftPhonic = undefined;
   this.rightPhonic = undefined;
 
+  this.leftPhonicX = this.x + this.width*0.15;
+  this.leftPhonicY = this.y + this.height/2 - 50;
+  this.rightPhonicX = this.x + this.width - this.width*0.3;
+  this.rightPhonicY = this.y + this.height/2 - 50;
+
   this.pickARandomImage = getRandomIntInclusive(0,this.arrayOfImages.length - 1);
+
+  this.grabLeftAndRightPhonics = function()
+  {
+    let randomPhonicIndex1 = getRandomIntInclusive(0,gameClassManager.currentGame.phonicClassManager.temporaryArrayOfPhonics.length);
+    let randomPhonicIndex2 = getRandomIntInclusive(0,gameClassManager.currentGame.phonicClassManager.temporaryArrayOfPhonics.length);
+    while (randomPhonicIndex1 === randomPhonicIndex2)
+    {
+      randomPhonicIndex2 = getRandomIntInclusive(0,gameClassManager.currentGame.phonicClassManager.temporaryArrayOfPhonics.length);
+    }
+    this.leftPhonic = gameClassManager.currentGame.phonicClassManager.temporaryArrayOfPhonics[randomPhonicIndex1];
+    this.rightPhonic = gameClassManager.currentGame.phonicClassManager.temporaryArrayOfPhonics[randomPhonicIndex2];
+  }
 
   this.draw = function()
   {
     gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     gameCanvasContext.fillStyle = 'white';
-    gameCanvasContext.font = '30px Helvetica';
-    // gameCanvasContext.fillText(this.leftPhonic.textAssociation, this.leftPhonicX,this.leftPhonicY);
-    // gameCanvasContext.fillText(this.rightPhonic.textAssociation, this.rightPhonicX,this.rightPhonicY);
+    gameCanvasContext.font = '100px Helvetica';
+    gameCanvasContext.fillText(this.leftPhonic.textAssociation, this.leftPhonicX,this.leftPhonicY);
+    gameCanvasContext.fillText(this.rightPhonic.textAssociation, this.rightPhonicX,this.rightPhonicY);
   }
 }

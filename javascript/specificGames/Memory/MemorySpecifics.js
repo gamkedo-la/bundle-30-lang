@@ -15,10 +15,16 @@ function memoryGameClass()
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
   this.simon = undefined;
+  this.phonicClassManager = undefined;
 
   this.initialize = function()
   {
     this.simon = new Simon();
+    this.phonicClassManager = new PhonicClassManager();
+    this.phonicClassManager.initializeArraysOfPhonics();
+    this.phonicClassManager.setCurrentLanguageArray(languageSelectionScreen.languageNum);
+    this.phonicClassManager.populateTemporaryArrayOfPhonics();
+    this.simon.grabLeftAndRightPhonics();
   }
 
   this.draw = function()
