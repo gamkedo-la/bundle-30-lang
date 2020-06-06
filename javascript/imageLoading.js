@@ -261,8 +261,8 @@ let moleFoodImage = document.createElement('img');
 
 //memory
 let simon1Image = document.createElement('img');
-let simon2Image = document.createElement('img');
-let simon3Image = document.createElement('img');
+let simonLeftHighlightImage = document.createElement('img');
+let simonRightHighlightImage = document.createElement('img');
 
 //air grab
 let airBoothImage = document.createElement('img');
@@ -721,8 +721,8 @@ function loadImages()
 
   //memory game
   arrayOfImagesToLoad.push({imageObjectBinding: simon1Image, theFile: "images/sprites/Memory/Simon.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: simon2Image, theFile: "images/sprites/Memory/Simon2.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: simon3Image, theFile: "images/sprites/Memory/Simon3.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: simonLeftHighlightImage, theFile: "images/sprites/Memory/simonLeftHighlight.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: simonRightHighlightImage, theFile: "images/sprites/Memory/simonRightHighlight.png", loaded: false});
 
   //air booth
   arrayOfImagesToLoad.push({imageObjectBinding: airBoothImage, theFile: "images/Backgrounds/airBooth.png", loaded: false});

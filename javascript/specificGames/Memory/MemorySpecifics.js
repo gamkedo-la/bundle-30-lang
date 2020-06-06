@@ -24,7 +24,15 @@ function memoryGameClass()
     this.phonicClassManager.initializeArraysOfPhonics();
     this.phonicClassManager.setCurrentLanguageArray(languageSelectionScreen.languageNum);
     this.phonicClassManager.populateTemporaryArrayOfPhonics();
+
     this.simon.grabLeftAndRightPhonics();
+    this.simon.assignOnendedFunctionsOfPhonics();
+    this.simon.chooseCorrectPhonicAndAddToArray();
+  }
+
+  this.startGameSpecialCode = function()
+  {
+    this.simon.playPatternOfPhonics();
   }
 
   this.draw = function()
@@ -37,6 +45,11 @@ function memoryGameClass()
   {
     gameCanvasContext.fillStyle = 'black';
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
+  }
+
+  this.handleClick = function()
+  {
+    this.simon.handleClick();
   }
 }
 
