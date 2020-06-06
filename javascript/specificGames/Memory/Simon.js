@@ -6,8 +6,8 @@ function Simon()
   this.width = gameCanvas.width*0.75;
   this.height = gameCanvas.height*0.75;
 
-  this.x = gameCanvas.width*0.25;
-  this.y = gameCanvas.height*0.25;
+  this.x = gameCanvas.width/2 - this.width/2;
+  this.y = gameCanvas.height/2 - this.height/2;
 
   this.leftPhonic = undefined;
   this.rightPhonic = undefined;
