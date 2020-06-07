@@ -108,6 +108,7 @@ function Simon()
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < this.x + this.width/2 &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
         {//left button clicked
+          gameAudio.buttonPress.play();
           console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
           if (this.leftPhonic === this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
           {
@@ -133,6 +134,7 @@ function Simon()
     else if (inputManager.mouseCoordinates.x > this.x + this.width/2 && inputManager.mouseCoordinates.x < this.x + this.width &&
              inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
         {//right button clicked
+          gameAudio.buttonPress.play();
           console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
           if (this.rightPhonic === this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
           {

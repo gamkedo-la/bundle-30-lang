@@ -25,6 +25,7 @@ function memoryGameClass()
     this.phonicClassManager.initializeArraysOfPhonics();
     this.phonicClassManager.setCurrentLanguageArray(languageSelectionScreen.languageNum);
     this.phonicClassManager.populateTemporaryArrayOfPhonics();
+    gameAudio.buttonPress = new sfxOneShot('audio/V/button_press.mp3');
   }
 
   this.startGameSpecialCode = function()
