@@ -40,7 +40,7 @@ function feedGameClass()
   this.playerCharacter = undefined;
   this.defineAndInitializePlayerCharacter = function()
   {
-    this.playerCharacter = new GrabberPlayer();
+    this.playerCharacter = new FeedGrabberPlayer();
     this.playerCharacter.initialize();
     this.collidingObject = this.playerCharacter;
   }
@@ -105,7 +105,7 @@ function feedGameClass()
 
   this.handleClick = function()
   {
-    this.playerCharacter.handleClick();
+    //this.playerCharacter.handleClick();
   }
 
   this.moveAnswers = function()

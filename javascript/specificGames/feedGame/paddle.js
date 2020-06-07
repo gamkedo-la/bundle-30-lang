@@ -1,4 +1,4 @@
-function Paddle()
+function FeedPaddle()
 {
   var ballX = 75, ballY = 75;
   var ballSpeedX = 3, ballSpeedY = 4;

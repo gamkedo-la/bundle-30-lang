@@ -1,4 +1,4 @@
-function GrabberPlayer()
+function FeedGrabberPlayer()
 {
 
   this.armlessBodyImage = armlessBodyImage;
