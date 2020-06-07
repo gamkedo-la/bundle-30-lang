@@ -33,8 +33,8 @@ function feedGameClass()
   }
 
   this.titleScreenData = [
-	  {name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265},
-	  {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}
+	  {name: "Feed", fontSize: 27, spacing: 15, x: 122, y: 480},
+	  {name: "Who", fontSize: 27, spacing: 15, x: 126, y: 495}
 	];
 
   this.playerCharacter = undefined;
@@ -71,19 +71,21 @@ function feedGameClass()
     this.correctTextAnswerHolderWidth = undefined;
     this.incorrectTextAnswerHolderWidth = undefined;
 
-    this.feedAnswerHolder1 = new FeedAnswerHolder(bill1Image);
-    this.feedAnswerHolder2 = new FeedBillAnswerHolder(bill2Image);
-    this.feedAnswerHolder3 = new FeedBillAnswerHolder(bill3Image);
-    this.feedAnswerHolder4 = new FeedBillAnswerHolder(bill4Image);
-    this.arrayOfAnswerHolders.push(this.feedAnswerHolder1);
-    this.arrayOfAnswerHolders.push(this.feedAnswerHolder2);
-    this.arrayOfAnswerHolders.push(this.feedAnswerHolder3);
-    this.arrayOfAnswerHolders.push(this.feedAnswerHolder4);
+    this.foodAnswerHolder1 = new FoodAnswerHolder(bill1Image);
+    this.foodAnswerHolder2 = new FoodAnswerHolder(bill2Image);
+    this.foodAnswerHolder3 = new FoodAnswerHolder(bill3Image);
+    this.foodAnswerHolder4 = new FoodAnswerHolder(bill4Image);
+    this.arrayOfAnswerHolders.push(this.foodAnswerHolder1);
+    this.arrayOfAnswerHolders.push(this.foodAnswerHolder2);
+    this.arrayOfAnswerHolders.push(this.foodAnswerHolder3);
+    this.arrayOfAnswerHolders.push(this.foodAnswerHolder4);
 
     this.initializeAnswerSettings();
     drawAnswersManager.initialize();
     this.background = new feedBackground();
-    this.playerCharacter.collisionsWithAnswersManager.initialize(gameClassManager.currentGame);
+    this.playerCharacter = new feedPlayerCharacter();
+    this.collisionsWithAnswersManager = new feedCollisionsManager();
+    //this.playerCharacter.collisionsWithAnswersManager.initialize(gameClassManager.currentGame);
   }
 
   this.draw = function()
@@ -167,7 +169,21 @@ function feedGameClass()
 
 const feedGame = new feedGameClass();
 
-function FeedAnswerHolder(image)
+function FoodAnswerHolder(image)
 {
   this.image = image;
 }
+
+function feedPlayerCharacter()
+  {
+    this.width = gameCanvas.width*0.2;
+    this.height = gameCanvas.height*0.1;
+    this.x = gameCanvas.width/2 - this.width/2;
+    this.y = gameCanvas.height*0.8;
+    this.image = armlessBodyImage;
+  
+    this.draw = function()
+    {
+      gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    }
+  }
