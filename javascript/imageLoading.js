@@ -329,6 +329,8 @@ let cake1 = document.createElement('img');
 let cake2 = document.createElement('img');
 let cake3 = document.createElement('img');
 let cake4 = document.createElement('img');
+let leftPac = document.createElement('img');
+let rightPac = document.createElement('img');
 
 //PenaltyShootout images
 let penaltyBall1 = document.createElement('img');
@@ -673,10 +675,12 @@ function loadImages()
 
   //feedGame
   arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/Backgrounds/feed.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/sprites/feedGame/cake1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/sprites/feedGame/cake2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/sprites/feedGame/cake3.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/sprites/feedGame/cake4.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: cake1, theFile: 'images/sprites/feedGame/cake1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding:cake2, theFile: 'images/sprites/feedGame/cake2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: cake3, theFile: 'images/sprites/feedGame/cake3.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: rightPac, theFile: 'images/sprites/feedGame/rightP.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: leftPac, theFile: 'images/sprites/feedGame/leftP.png', loaded: false});
+
   //flower game
   arrayOfImagesToLoad.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: flowerBackground, theFile: "images/Backgrounds/Flower2.png", loaded: false});

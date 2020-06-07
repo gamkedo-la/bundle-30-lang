@@ -18,20 +18,6 @@ function Paddle()
   var paddle3Score = 0, paddle4Score = 0;
   var showingWinScreen = false;
 
-  function ballReset()
-  {
-    if (paddle1Score >= WINNING_SCORE || paddle2Score >= WINNING_SCORE)
-    {
-      showingWinScreen = true;
-    }
-
-    // reverse ball heading, so whoever lost a point "serves"
-    ballSpeedY = -ballSpeedY;
-
-    //center ball on screen
-    ballX = canvas.width/2;
-    ballY = canvas.height/2;
-  }
 
   function moveComputerPaddle3()
   {
@@ -130,37 +116,7 @@ function Paddle()
     }
   }
 
-  if (ballY < 0)
-  {// if ball has moved beyond the top edge
-    if (ballX > paddle1X && ballX < paddle1X+PADDLE_WIDTH)
-    {
-      ballSpeedY *= -1;
-
-      var deltaX = ballX - (paddle1X+PADDLE_HEIGHT/2);
-      ballSpeedX = deltaX * 0.25;
-    }
-    else
-    {
-      paddle1Score++;
-      ballReset();
-    }
-  }
-
-  if (ballY > canvas.height)
-  {// if ball has moved beyond the bottom edge
-    if (ballX > paddle2X && ballX < paddle2X+PADDLE_WIDTH)
-    {
-      ballSpeedY *= -1;
-
-      var deltaX = ballX - (paddle2X+PADDLE_HEIGHT/2);
-      ballSpeedX = deltaX * 0.25;
-    }
-    else
-    {
-      paddle2Score++;
-      ballReset();
-    }
-  }
+ 
 
 
     // if (paddle2Y < 0) {paddle2Y = 0};
@@ -168,9 +124,6 @@ function Paddle()
 
     // if (paddle1Y < 0) {paddle1Y = 0};
     // if (paddle1Y + PADDLE_HEIGHT > gameCanvas.height) {paddle1Y = gameCanvas.width - PADDLE_HEIGHT/2};
-
-    // if (paddle1X < 0) {paddle1X = 0};
-    // if (paddle1X + PADDLE_WIDTH > gameCanvas.width) {paddle1X = gameCanvas.width - PADDLE_WIDTH};
 
     ballX += ballSpeedX; // move the ball based on its current horizontal speed
     ballY += ballSpeedY;// same as above, but for vertical
@@ -216,30 +169,11 @@ function Paddle()
   {
     colorRect(0, 0, canvas.width, canvas.height, '#203030');
 
-    if (showingWinScreen)
-    {
-      if (paddle1Score >= WINNING_SCORE)
-      {
-        colorText('player1 wins', canvas.width/2 , canvas.height/2,'white');
-      }
-      else if (paddle2Score >= WINNING_SCORE)
-      {
-        colorText('CPU wins', canvas.width/2 , canvas.height/2,'white');
-      }
-      colorText("click anywhere to beging a new match", canvas.width/2, canvas.height/2+20, 'white');
-     }
-     else
-     {
-      drawNet();
-
       colorRect(0, paddle1Y, PADDLE_THICKNESS , PADDLE_HEIGHT, 'white');//P1
       colorRect(canvas.width - PADDLE_THICKNESS , paddle2Y, PADDLE_THICKNESS , PADDLE_HEIGHT, 'white');//P2
       colorRect(paddle1X, 0, PADDLE_WIDTH , PADDLE_THICKNESS, 'red');//P3
       colorRect(paddle2X, canvas.height - PADDLE_THICKNESS, PADDLE_WIDTH , PADDLE_THICKNESS, 'red');//P4
-
-      colorCircle(ballX, ballY, 10, 'white');
      }
       colorText(paddle2Score, 100, 100, 'white');
       colorText(paddle1Score, canvas.width-100, canvas.height-100, 'white');
-  }
 }
