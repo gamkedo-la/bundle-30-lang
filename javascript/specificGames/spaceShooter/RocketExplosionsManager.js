@@ -56,6 +56,7 @@ function RocketExplosionsManager()
     let explosion = new RocketExplosion(x,y);
     this.arrayOfExplosions.push(explosion);
     gameAudio.laserShoot.play();
+    gameAudio.rockExplosion.play();
   }
 
   this.drawExplosions = function()
