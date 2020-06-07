@@ -582,7 +582,7 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning4Image, theFile: 'images/sprites/runner/4edited.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: runnerRunning5Image, theFile: 'images/sprites/runner/5edited.png', loaded: false});
 
-  arrayOfImagesToLoad.push({imageObjectBinding: runnerJumpingImage, theFile: 'images/sprites/runner/runnerJumping.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: runnerJumpingImage, theFile: 'images/sprites/runner/1jump.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: coinImage, theFile: 'images/sprites/runner/Coin.png', loaded: false});
 
   //snake game
