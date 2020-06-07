@@ -35,46 +35,6 @@ function Simon()
     this.rightPhonic = gameClassManager.currentGame.phonicClassManager.temporaryArrayOfPhonics[randomPhonicIndex2];
   }
 
-  this.currentPhonicToPlayIndex = 0;
-  this.assignOnendedFunctionsOfPhonics = function()
-  {
-    memoryGame.simon.leftPhonic.promptAudio.sfx.onended = function()
-    {
-      memoryGame.simon.leftPhonicIsBeingHeard = false;
-      memoryGame.simon.currentPhonicToPlayIndex++;
-      if (this.currentPhonicToPlayIndex < memoryGame.simon.currentPatternOfCorrectPhonics.length)
-      {
-        memoryGame.simon.currentPatternOfCorrectPhonics[this.currentPhonicToPlayIndex].promptAudio.sfx.play();
-      }
-      else if (memoryGame.simon.currentPhonicToPlayIndex >= memoryGame.simon.currentPatternOfCorrectPhonics.length)
-      {
-        memoryGame.simon.currentPhonicToPlayIndex = 0;
-      }
-    }
-
-    memoryGame.simon.rightPhonic.promptAudio.sfx.onended = function()
-    {
-      memoryGame.simon.rightPhonicIsBeingHeard = false;
-      memoryGame.simon.currentPhonicToPlayIndex++;
-      if (memoryGame.simon.currentPhonicToPlayIndex < memoryGame.simon.currentPatternOfCorrectPhonics.length)
-      {
-        memoryGame.simon.currentPatternOfCorrectPhonics[memoryGame.simon.currentPhonicToPlayIndex].promptAudio.sfx.play();
-        if (memoryGame.simon.currentPatternOfCorrectPhonics[0] === memoryGame.simon.leftPhonic)
-        {
-          memoryGame.simon.leftPhonicIsBeingHeard = true;
-        }
-        else if (memoryGame.simon.currentPatternOfCorrectPhonics[0] === memoryGame.simon.rightPhonic)
-        {
-          memoryGame.simon.rightPhonicIsBeingHeard = true;
-        }
-      }
-      else if (memoryGame.simon.currentPhonicToPlayIndex >= memoryGame.simon.currentPatternOfCorrectPhonics.length)
-      {
-        memoryGame.simon.currentPhonicToPlayIndex = 0;
-      }
-    }
-  }
-
   this.chooseCorrectPhonicAndAddToArray = function()
   {
     let fiftyFiftyResult = Math.random();
@@ -91,17 +51,36 @@ function Simon()
   }
 
   this.currentPatternOfCorrectPhonics = [];
-
+  this.currentPhonicToPlayIndex = 0;
   this.playPatternOfPhonics = function()
   {
-    this.currentPatternOfCorrectPhonics[0].promptAudio.sfx.play();
-    if (this.currentPatternOfCorrectPhonics[0] === this.leftPhonic)
+    let currentPhonic = this.currentPatternOfCorrectPhonics[this.currentPhonicToPlayIndex];
+    if (this.currentPhonicToPlayIndex < this.currentPatternOfCorrectPhonics.length)
     {
-      this.leftPhonicIsBeingHeard = true;
+      this.currentPhonicToPlayIndex++;
+      currentPhonic.promptAudio.sfx.play();
+      if (currentPhonic === this.leftPhonic)
+      {
+        this.leftPhonicIsBeingHeard = true;
+        currentPhonic.promptAudio.sfx.onended = function()
+        {
+          memoryGame.simon.leftPhonicIsBeingHeard = false;
+          memoryGame.simon.playPatternOfPhonics();
+        }
+      }
+      else if (currentPhonic === this.rightPhonic)
+      {
+        this.rightPhonicIsBeingHeard = true;
+        currentPhonic.promptAudio.sfx.onended = function()
+        {
+          memoryGame.simon.rightPhonicIsBeingHeard = false;
+          memoryGame.simon.playPatternOfPhonics();
+        }
+      }
     }
-    else if (this.currentPatternOfCorrectPhonics[0] === this.rightPhonic)
+    else if (this.currentPhonicToPlayIndex >= this.currentPatternOfCorrectPhonics.length)
     {
-      this.rightPhonicIsBeingHeard = true;
+      this.currentPhonicToPlayIndex = 0;
     }
   }
 
@@ -129,46 +108,53 @@ function Simon()
     if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < this.x + this.width/2 &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
         {//left button clicked
+          console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
           if (this.leftPhonic === this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
           {
             genAudio.positive.play();
-            if (this.phonicToCheckIndex < this.currentPatternOfCorrectPhonics.length)
-            {
-              this.phonicToCheckIndex++;
-            }
+            this.phonicToCheckIndex++;
             if (this.phonicToCheckIndex >= this.currentPatternOfCorrectPhonics.length)
             {
              this.chooseCorrectPhonicAndAddToArray();
              this.playPatternOfPhonics();
+             this.phonicToCheckIndex = 0;
             }
           }
           else if (this.leftPhonic !== this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
           {
             genAudio.negative.play();
+            this.phonicToCheckIndex = 0;
+            this.currentPatternOfCorrectPhonics = [];
+            this.chooseCorrectPhonicAndAddToArray();
             this.playPatternOfPhonics();
           }
+          console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
         }
     else if (inputManager.mouseCoordinates.x > this.x + this.width/2 && inputManager.mouseCoordinates.x < this.x + this.width &&
              inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
         {//right button clicked
+          console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
           if (this.rightPhonic === this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
           {
             genAudio.positive.play();
-            if (this.phonicToCheckIndex < this.currentPatternOfCorrectPhonics.length)
-            {
-              this.phonicToCheckIndex++;
-            }
+            this.phonicToCheckIndex++;
+
             if (this.phonicToCheckIndex >= this.currentPatternOfCorrectPhonics.length)
             {
               this.chooseCorrectPhonicAndAddToArray();
+              this.phonicToCheckIndex = 0;
               this.playPatternOfPhonics();
             }
           }
           else if (this.rightPhonic !== this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
           {
             genAudio.negative.play();
+            this.phonicToCheckIndex = 0;
+            this.currentPatternOfCorrectPhonics = [];
+            this.chooseCorrectPhonicAndAddToArray();
             this.playPatternOfPhonics();
           }
+          console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
         }
   }
 }

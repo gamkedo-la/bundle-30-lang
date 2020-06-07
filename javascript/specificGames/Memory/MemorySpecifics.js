@@ -20,19 +20,20 @@ function memoryGameClass()
   this.initialize = function()
   {
     this.simon = new Simon();
+    this.simon.currentPhonicToPlayIndex = 0;
     this.phonicClassManager = new PhonicClassManager();
     this.phonicClassManager.initializeArraysOfPhonics();
     this.phonicClassManager.setCurrentLanguageArray(languageSelectionScreen.languageNum);
     this.phonicClassManager.populateTemporaryArrayOfPhonics();
-
-    this.simon.grabLeftAndRightPhonics();
-    this.simon.assignOnendedFunctionsOfPhonics();
-    this.simon.chooseCorrectPhonicAndAddToArray();
   }
 
   this.startGameSpecialCode = function()
   {
+    this.simon.grabLeftAndRightPhonics();
+    this.simon.chooseCorrectPhonicAndAddToArray();
     this.simon.playPatternOfPhonics();
+    console.log('memoryGame.simon.currentPatternOfCorrectPhonics: ' + memoryGame.simon.currentPatternOfCorrectPhonics);
+
   }
 
   this.draw = function()
