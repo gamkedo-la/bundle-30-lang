@@ -378,7 +378,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     // IT DOES *NOT* REFER TO THE GAME HERE
     // "me" is the game's "this"
     function pinataClick(e) {
-        if (!this.gameIsActive) return;
+        if (!me.gameIsActive) return;
         console.log("pinataClick");
         //if (!window.playerShouldBePlayingPinata) return; // dont do anything if another game is running
         let correct = false;
