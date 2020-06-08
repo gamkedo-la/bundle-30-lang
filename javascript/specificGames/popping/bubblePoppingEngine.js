@@ -403,7 +403,8 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
         for (let i = objects.length; i--;) {
             let checkme = objects[i];
             let dist = sub(clickXY, checkme.C);
-            if (length(dist) < checkme.R + 2) { // the +2 is a little extra leeway =)
+            // ignores GIANT bubbles (like the floors)
+            if ((length(dist) < checkme.R + 2) && (checkme.R < 200)) { // the +2 is a little extra leeway =)
                 //console.log("You clicked letter " + checkme.Z + ' at a distance of ' + length(dist) + ' which is less than ' + checkme.R);
                 // FIXME - handle >1 positive on same frame etc
                 // did we succeed?
@@ -413,7 +414,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
                     //depreciated playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
                     correct = true;
                 }
-                else {
+                else { 
                     console.log("You clicked the wrong answer: " + checkme.Z + " not " + targetLetter);
                     correct = false;
                     //depreciated playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
