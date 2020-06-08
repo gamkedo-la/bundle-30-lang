@@ -60,6 +60,13 @@ function GameClassManager()
 
     //console.log('inside loadCurrentGame()');
     this.currentGame = gameToLoad;
+
+    // this is undefined when the user clicks empty space in the menu screen
+    if(typeof this.currentGame === "undefined") {
+        console.log("Ignoring a click on the background of the menu.");
+        return;
+    }
+
     if(typeof this.currentGame.pregameSpecialCode !== 'undefined') {
       this.currentGame.pregameSpecialCode();
       //this.initializeCurrentGame();

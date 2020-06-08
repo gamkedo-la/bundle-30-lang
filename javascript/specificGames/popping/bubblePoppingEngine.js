@@ -12,6 +12,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     //////////////////////////////////////////////////////
     // game specifics
     //////////////////////////////////////////////////////
+    this.gameIsActive = false;
     this.name = myName;
     this.physicsEnabled = usePhysics;
     this.titleTXT1 = "Piñata Pop";
@@ -84,12 +85,14 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     //////////////////////////////////////////////////////
     // public functions called by the game state machine
     //////////////////////////////////////////////////////
-    this.postLoadInit = function () {
+    this.postLoadInit = function () { // NEVER GETS FIRED? FIXME
         console.log(this.name + " postLoadInit...");
+        this.gameIsActive = true;
     }
     this.postGameSpecialCode = function () {
         console.log(this.name + " postGameSpecialCode...");
-        // FIXME: remove mousedown event listener
+        // remove mousedown event listener
+        this.gameIsActive = false;
     }
     // FIXME the "this" is invalid here, its a transitioner, not the game itself LOL
     this.drawTransitionText = function () {
@@ -100,6 +103,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
 
     this.initialize = function () {
         console.log(this.name + " popping game initializing...");
+        this.gameIsActive = true; // hmmmmmmmmmmm
         generateRainbowColours();
         ctx = gameCanvasContext;
         canv = gameCanvas;
@@ -374,7 +378,8 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     // IT DOES *NOT* REFER TO THE GAME HERE
     // "me" is the game's "this"
     function pinataClick(e) {
-        //console.log("pinataClick");
+        if (!this.gameIsActive) return;
+        console.log("pinataClick");
         //if (!window.playerShouldBePlayingPinata) return; // dont do anything if another game is running
         let correct = false;
         if (levelIsTransitioning) {

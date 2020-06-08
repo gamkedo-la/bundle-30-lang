@@ -192,6 +192,13 @@ function TitleScreenClass()
     //console.log('gameList[this.gameNum].name: ' + gameList[this.gameNum].name);
     gameClassManager.loadCurrentGame(gameList[this.gameNum]);
     //console.log('gameClassManager.currentGame.name: ' + gameClassManager.currentGame.name);
+
+    // FIXME why is this undefined sometimes?
+    if (typeof gameClassManager.currentGame == "undefined") {
+        console.log("currentGame is null - ignoring click. this.gameNum="+this.gameNum);
+        return;
+    }
+
     // any game
     if (inputManager.mouseCoordinates.x > 20 && inputManager.mouseCoordinates.x < 620 &&
         inputManager.mouseCoordinates.y > 150 && inputManager.mouseCoordinates.y < 650)
