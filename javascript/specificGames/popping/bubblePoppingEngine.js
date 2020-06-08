@@ -399,6 +399,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
         }
         // detect WHICH circle we clicked!
         var clickXY = Vec2(e.pageX, e.pageY);
+        var clickedABubble = false;
         for (let i = objects.length; i--;) {
             let checkme = objects[i];
             let dist = sub(clickXY, checkme.C);
@@ -406,6 +407,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
                 //console.log("You clicked letter " + checkme.Z + ' at a distance of ' + length(dist) + ' which is less than ' + checkme.R);
                 // FIXME - handle >1 positive on same frame etc
                 // did we succeed?
+                clickedABubble = true;
                 if (checkme.Z == targetLetter) {
                     console.log("You clicked the right letter: " + checkme.Z);
                     //depreciated playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
@@ -434,7 +436,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
                 if (me.successSound) me.successSound.play();
             }
             boom(e.pageX, e.pageY, true)
-        } else {
+        } else if (clickedABubble) { // don't count clicks on empty space as incorrect, since it might be a gui button etc
             amountIncorrect++;
             if (window.audioManager) {
                 audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
