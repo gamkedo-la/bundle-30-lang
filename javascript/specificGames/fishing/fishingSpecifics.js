@@ -124,6 +124,14 @@ function fishingGameClass()
     }
   }
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Catch The Fishes', symbolExclamationPointImage], 60,30, 100,50);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' move right'], 30,15, 350,350);
+    customFontFillText(['Space bar', ' ', symbolEqualsImage, ' throw ', symbolCommaImage, ' lift line'], 30,15,80,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' move left'], 30,15, 50,350);
+  }
+
 }
 
 const fishingGame = new fishingGameClass();

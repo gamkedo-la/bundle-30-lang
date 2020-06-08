@@ -363,6 +363,7 @@ let symbolPercentImage = document.createElement("img");//%
 let symbolEqualsImage = document.createElement("img");//=
 let symbolQuestionMarkImage = document.createElement("img");//?
 let symbolPeriodImage = document.createElement("img");//.
+let symbolCommaImage = document.createElement("img");//,
 
 let placeholderPlayButtonImage = document.createElement("img");
 
@@ -383,7 +384,7 @@ var arrayOfTextLetters = 'abcdefghijklmnopqrstuvwxyzñ';
 var arrayOfTextNumbers = '0123456789';
 var arrayOfTextSymbols = [upArrowImage, rightArrowImage, downArrowImage, leftArrowImage, symbolTildeImage, symbolExclamationPointImage,
 symbolEmailAtImage, symbolHashImage, symbolDollarSignImage, symbolPercentImage, symbolEqualsImage, symbolQuestionMarkImage,
-symbolPeriodImage];
+symbolPeriodImage, symbolCommaImage];
 
 // image arrays for fancyBG trasition particle systems
 var titleFancySprites = [catImage,beeImage,flowerImage,runnerCloud1,coinImage,laneCarImage,spaceshipImage,moleFoodImage,bill1Image,pinataImage,symbolQuestionMarkImage,fishingGameFish1,lilyImage1,hammerImage];
@@ -822,6 +823,7 @@ function loadImages()
   //arrayOfImagesToLoad.push({imageObjectBinding: symbolPercentImage, theFile: 'images/Custom Font/pngs/symbols/symbol%.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: symbolEqualsImage, theFile: 'images/Custom Font/pngs/symbols/symbol=.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: symbolPeriodImage, theFile: 'images/Custom Font/pngs/symbols/symbol..png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: symbolCommaImage, theFile: 'images/Custom Font/pngs/symbols/symbol,.png', loaded: false});
 
   arrayOfImagesToLoad.push({imageObjectBinding: symbolHashImage, theFile: 'images/Custom Font/pngs/symbols/symbolHash.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: symbolQuestionMarkImage, theFile: 'images/Custom Font/pngs/symbols/symbolQuestionMark.png', loaded: false});
