@@ -71,10 +71,10 @@ function feedGameClass()
     this.correctTextAnswerHolderWidth = undefined;
     this.incorrectTextAnswerHolderWidth = undefined;
 
-    this.foodAnswerHolder1 = new FoodAnswerHolder(bill1Image);
-    this.foodAnswerHolder2 = new FoodAnswerHolder(bill2Image);
-    this.foodAnswerHolder3 = new FoodAnswerHolder(bill3Image);
-    this.foodAnswerHolder4 = new FoodAnswerHolder(bill4Image);
+    this.foodAnswerHolder1 = new FoodAnswerHolder(cake1);
+    this.foodAnswerHolder2 = new FoodAnswerHolder(cake2);
+    this.foodAnswerHolder3 = new FoodAnswerHolder(cake3);
+    this.foodAnswerHolder4 = new FoodAnswerHolder(cake4);
     this.arrayOfAnswerHolders.push(this.foodAnswerHolder1);
     this.arrayOfAnswerHolders.push(this.foodAnswerHolder2);
     this.arrayOfAnswerHolders.push(this.foodAnswerHolder3);
@@ -90,9 +90,9 @@ function feedGameClass()
 
   this.draw = function()
   {
+    this.background.draw();
     this.playerCharacter.draw();
     drawAnswersManager.draw();
-    this.background.draw();
 
 
     promptersManager.drawPromptsWhenAppropriate();
