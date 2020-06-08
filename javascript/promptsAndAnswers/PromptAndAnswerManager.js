@@ -23,6 +23,11 @@ function PromptsAndAnswersManager()
   {
     // if (!window.promptsAndAnswersManager) return; // can be undefined here!
 
+    if(typeof window.promptsAndAnswersManager === 'undefined') {
+        console.log("PromptsAndAnswersManager not set up yet -- how do we fill this in with functional (even placeholder) data when this happens?");
+        return;
+    }
+
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
     // console.log('*****');
