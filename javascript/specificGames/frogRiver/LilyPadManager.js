@@ -22,7 +22,7 @@ function LilyPadManager()
       {
         lilyPad2.xCoordinate = Math.floor(Math.random()*640);
       }
-      while (lilyPad2.xCoordinate > lilyPad1.xCoordinate && lilyPad2.xCoordinate < lilyPad1.xCoordinate + 150)
+      while (Math.abs(lilyPad2.xCoordinate - lilyPad1.xCoordinate) < 150)
 
       randomNumber = getRandomIntInclusive(0,this.arrayOfLilyPadImages.length - 1);
       lilyPad2.image = this.arrayOfLilyPadImages[randomNumber];
