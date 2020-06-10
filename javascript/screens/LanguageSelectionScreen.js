@@ -71,12 +71,13 @@ function LanguageSelectionScreen()
 
   this.startGame = function()
   {
+    genAudio.playTransitionMusic();
     gameClassManager.initializeCurrentGame();
     promptsAndAnswersManager.setOrResetPromptsAndAnswers();
     // if (gameClassManager.currentGame) console.log("gameClassManager.currentGame: " + gameClassManager.currentGame.name);
     miniGameTransitioner.initialize();
     fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToMiniGame);
-    genAudio.playTransitionMusic();
+
   }
 
   this.goToLanguageCustomizationScreen = function()
