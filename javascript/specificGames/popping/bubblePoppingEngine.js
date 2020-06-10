@@ -441,7 +441,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
             } else {
                 if (me.successSound) me.successSound.play();
             }
-            boom(e.pageX, e.pageY, true)
+            boom(e.pageX, e.pageY, true);
         } else if (clickedABubble) { // don't count clicks on empty space as incorrect, since it might be a gui button etc
             amountIncorrect++;
             if (window.audioManager) {
@@ -450,7 +450,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
             } else {
                 if (me.failSound) me.failSound.play();
             }
-            boom(e.pageX, e.pageY, false)
+            boom(e.pageX, e.pageY, false);
         }
     }
 

@@ -21,12 +21,6 @@ function PromptsAndAnswersManager()
 
   this.pickARandomLogicalPromptAnswerGroup = function()
   {
-    // if (!window.promptsAndAnswersManager) return; // can be undefined here!
-
-    // if(typeof window.promptsAndAnswersManager === 'undefined') {
-    //     console.log("PromptsAndAnswersManager not set up yet -- how do we fill this in with functional (even placeholder) data when this happens?");
-    //     return;
-    // }
 
     let randomIndexForArrayOfGroups = getRandomIntInclusive(0,promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.length - 1);
     this.currentLogicalPromptAndAnswerGroup = promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings[randomIndexForArrayOfGroups];
@@ -912,7 +906,10 @@ function PromptsAndAnswersManager()
   this.setOrResetPromptsAndAnswers = function()
   {
     if (gameClassManager.currentGame === cVcShooterGame || gameClassManager.currentGame.name === 'hello world 2 game' ||
-        gameClassManager.currentGame.name === 'hello world game' || gameClassManager.currentGame.name === 'dodge ball game')
+        gameClassManager.currentGame.name === 'hello world game' || gameClassManager.currentGame.name === 'dodge ball game' ||
+        gameClassManager.currentGame.name === 'pinataGame' ||
+        gameClassManager.currentGame.name === 'bubbleWrap' ||
+        gameClassManager.currentGame.name === 'balloonPop')
     {
       return;
     }
