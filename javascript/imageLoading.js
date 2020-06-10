@@ -245,6 +245,7 @@ let ghostImage1 = document.createElement('img');
 let ghostImage2 = document.createElement('img');
 
 //frog crate
+let frogCrateBackground = document.createElement('img');
 let frogInBowlImage = document.createElement('img');
 let bathStoneImage = document.createElement('img');
 let frogTongueImage = document.createElement('img');
@@ -278,6 +279,7 @@ let bill4Image = document.createElement('img');
 
 //Frog
 let frogRiverBackgroundImage = document.createElement('img');
+let frogRiverCharacter = document.createElement('img');
 let lilyImage1 = document.createElement('img');
 let lilyImage2 = document.createElement('img');
 let lilyImage3 = document.createElement('img');
@@ -710,6 +712,7 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: ghostImage2, theFile: "images/sprites/nightTime/ghost2.png", loaded: false});
 
   //frog crate
+  arrayOfImagesToLoad.push({imageObjectBinding: frogCrateBackground, theFile: "images/Backgrounds/Lake.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: frogInBowlImage, theFile: "images/sprites/frogCrate/FrogInBowl.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: bathStoneImage, theFile: "images/sprites/frogCrate/bathStone.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: frogTongueImage, theFile: "images/sprites/frogCrate/frogTongue.png", loaded: false});
@@ -744,7 +747,8 @@ function loadImages()
 
 
   //frog
-  arrayOfImagesToLoad.push({imageObjectBinding: frogRiverBackgroundImage, theFile: "images/Backgrounds/Lake.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: frogRiverBackgroundImage, theFile: "images/Backgrounds/river.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: frogRiverCharacter, theFile: "images/sprites/frogRiver/Frog.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lilyImage1, theFile: "images/sprites/frogRiver/lilyImage1.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lilyImage2, theFile: "images/sprites/frogRiver/lilyImage2.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lilyImage3, theFile: "images/sprites/frogRiver/lilyImage3.png", loaded: false});

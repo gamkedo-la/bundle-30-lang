@@ -13,11 +13,11 @@ function FrogRiverPlayer()
   }
 
   this.color = 'DarkGreen';
+  this.sprite = frogRiverCharacter;
 
   this.draw = function()
   {
-    gameCanvasContext.fillStyle = this.color;
-    gameCanvasContext.fillRect(this.x,this.y, this.width,this.height);
+    gameCanvasContext.drawImage(this.sprite, this.x, this.y, this.width, this.height);
   }
 
   this.checkForLilyLanding = function()

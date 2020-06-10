@@ -25,7 +25,7 @@ function LilyPadClass()
     this.xCoordinate += this.speed*this.direction;
     if (this.answer !== undefined)
     {
-      this.answer.xCoordinate += this.speed*this.direction;
+      this.answer.xCoordinate = this.xCoordinate; //+= this.speed*this.direction;
     }
   }
 
