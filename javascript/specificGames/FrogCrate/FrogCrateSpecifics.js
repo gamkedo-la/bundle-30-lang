@@ -16,6 +16,14 @@ function frogCrateGameClass()
     this.fly2 = new Fly(flyImage1, -1, fly2OscillationVelocity);
   }
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Catch the answers!', symbolExclamationPointImage], 60,30, 50,50);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Move right'], 30,15, 350,350);
+    customFontFillText(['Space bar', ' ', symbolEqualsImage, ' Shoot'], 30,15, 175,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 30,15, 50,350);
+  }
+
   this.textAnswerFontSize = '15';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
   this.LETTER_COLOR = "black";

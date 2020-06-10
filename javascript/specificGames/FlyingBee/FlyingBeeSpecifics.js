@@ -20,6 +20,15 @@ function flyingBeeGameClass()
     }
   }
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Fly to the answers', symbolExclamationPointImage], 60,30, 100,50);
+    customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' Fly up'], 30,15, 210,200);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Fly right'], 30,15, 350,350);
+    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' Fly down'], 30,15, 200,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Fly left'], 30,15, 50,350);
+  }
+
   this.background = new FlyingBeeBackground();
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/flyingBeeSong.mp3', 14.1);
 

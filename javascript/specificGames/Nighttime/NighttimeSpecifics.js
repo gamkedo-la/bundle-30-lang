@@ -9,6 +9,14 @@ function nighttimeGameClass()
   this.background = new nighttimeBackground();
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/nightenedForeigner.mp3', 15.85);
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Shoot the answers!', symbolExclamationPointImage], 60,30, 50,50);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Move right'], 30,15, 350,350);
+    customFontFillText(['Space bar', ' ', symbolEqualsImage, ' Shoot'], 30,15, 175,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 30,15, 50,350);
+  }
+  
   this.defineAndInitializePlayerCharacter = function()
   {
     this.playerCharacter = new NighttimePlayerCharacter();
