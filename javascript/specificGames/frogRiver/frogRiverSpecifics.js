@@ -10,6 +10,15 @@ function frogRiverGameClass()
   this.titleScreenData = [{name: "Frog",fontSize: 27,spacing: 15,x: 530, y: 265},
                           {name: "River",fontSize: 27,spacing: 15,x: 525, y: 305}];
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Jump on the Answer', symbolExclamationPointImage], 60,30, 100,50);
+    customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' Jump Up'], 30,15, 210,200);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Slither right'], 30,15, 350,350);
+    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' Slither down'], 30,15, 200,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Slither left'], 30,15, 50,350);
+  }
+
   this.FRAME_RATE = 1000/30;
 
   this.playerCharacter = undefined;
