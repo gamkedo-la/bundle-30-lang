@@ -125,12 +125,14 @@ const frogCrateGame = new frogCrateGameClass();
 function FrogCrateBackground()
 {
   this.waterImage = frogRiverBackgroundImage;
+  this.grassImage = snakeGrassBackground;
   this.skyImage = skyBackground;
   this.bathStoneImage = bathStoneImage;
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.skyImage, 0,0, gameCanvas.width,gameCanvas.height*0.3);
-    gameCanvasContext.drawImage(this.waterImage, 0,gameCanvas.height*0.3, gameCanvas.width,gameCanvas.height*0.7);
+    gameCanvasContext.drawImage(this.skyImage, 0,0, gameCanvas.width,gameCanvas.height);
+    gameCanvasContext.drawImage(this.grassImage, 0,gameCanvas.height*0.35, gameCanvas.width,gameCanvas.height*0.75);
+    gameCanvasContext.drawImage(this.waterImage, 0,gameCanvas.height*0.4, gameCanvas.width,gameCanvas.height*0.5);
     gameCanvasContext.drawImage(this.bathStoneImage, 0,gameCanvas.height*0.9, gameCanvas.width,gameCanvas.height*0.15);
   }
 }

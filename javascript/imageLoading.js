@@ -744,7 +744,7 @@ function loadImages()
 
 
   //frog
-  arrayOfImagesToLoad.push({imageObjectBinding: frogRiverBackgroundImage, theFile: "images/Backgrounds/river.png", loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: frogRiverBackgroundImage, theFile: "images/Backgrounds/Lake.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lilyImage1, theFile: "images/sprites/frogRiver/lilyImage1.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lilyImage2, theFile: "images/sprites/frogRiver/lilyImage2.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: lilyImage3, theFile: "images/sprites/frogRiver/lilyImage3.png", loaded: false});
