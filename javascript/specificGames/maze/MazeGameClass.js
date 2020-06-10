@@ -1,6 +1,15 @@
 function MazeGameClass(){
     GameClass.call(this);
 
+    this.drawTransitionText = function()
+    {
+      customFontFillText(['Eat the answers', symbolExclamationPointImage], 60,30, 100,50);
+      customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' Move up'], 30,15, 210,200);
+      customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Move right'], 30,15, 350,350);
+      customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' Move down'], 30,15, 200,500);
+      customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 30,15, 50,350);
+    }
+
     this.name = "MazeGame";
     this.FRAME_RATE = 1000/30;
 
