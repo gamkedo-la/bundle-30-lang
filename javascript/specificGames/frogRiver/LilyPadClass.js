@@ -25,9 +25,24 @@ function LilyPadClass()
     this.xCoordinate += this.speed*this.direction;
     if (this.answer !== undefined)
     {
-      this.answer.xCoordinate = this.xCoordinate; //+= this.speed*this.direction;
+      this.centerAnswersXCoordinate();
     }
   }
+
+  this.centerAnswersXCoordinate = function() {
+    this.answer.xCoordinate = this.xCoordinate + this.width / 2;
+
+    if (promptsAndAnswersManager.currentAnswerDataType === 'string'){
+      var answerWidth = gameCanvasContext.measureText(this.answer.textAssociation).width;
+      this.answer.xCoordinate -= answerWidth / 2;
+    }
+    else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG'){
+      this.answer.xCoordinate -= gameClassManager.currentGame.imageAnswerWidth / 2;
+    }
+    else if (promptsAndAnswersManager.currentAnswerDataType === 'AUDIO'){
+      this.answer.xCoordinate -= gameClassManager.currentGame.audioImageAnswerWidth / 2;
+    }
+}
 
   this.handleOffScreen = function()
   {

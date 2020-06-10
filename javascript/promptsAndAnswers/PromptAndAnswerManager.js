@@ -487,6 +487,24 @@ function PromptsAndAnswersManager()
         this.correctTargetPromptAndAnswerPairing.xCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive].xCoordinate;
         this.correctTargetPromptAndAnswerPairing.yCoordinate = frogRiverGame.lilyPadManager.arrayOfLilyPads[answerCount + additive].yCoordinate;
       }
+
+      // Center the y coordinate
+      var lilyPadHeight = frogRiverGame.lilyPadManager.arrayOfLilyPads[0].height;
+      var yCoordinateOffset = lilyPadHeight / 2;
+
+      if (this.currentAnswerDataType === 'string'){
+        yCoordinateOffset += frogRiverGame.textAnswerFontSize / 4;
+      }
+      else if (this.currentAnswerDataType === 'IMG'){
+        yCoordinateOffset -= frogRiverGame.imageAnswerHeight / 2;
+      }
+      else if (this.currentAnswerDataType === 'AUDIO'){
+        yCoordinateOffset -= frogRiverGame.audioImageAnswerWidth / 2;
+      }
+      
+      this.incorrectTargetPromptAndAnswerPairing.yCoordinate += yCoordinateOffset;
+      this.correctTargetPromptAndAnswerPairing.yCoordinate += yCoordinateOffset;
+
     }
     else if (gameClassManager.currentGame.name === 'Pass or Block Game')
     {
