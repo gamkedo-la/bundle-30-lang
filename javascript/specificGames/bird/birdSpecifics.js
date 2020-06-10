@@ -27,6 +27,15 @@ function birdGameClass() {
   const LEFT_ARROW_UP_SPEED = -4;
   const RIGHT_ARROW_UP_SPEED = 4;
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Fly to the answers!', symbolExclamationPointImage], 60,30, 75,50);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Fly right'], 30,15, 350,350);
+    customFontFillText(['Space bar', ' ', symbolEqualsImage, ' Fly up'], 30,15, 175,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Fly left'], 30,15, 50,350);
+  }
+
+
   this.amountCorrect = 0;
 
   this.FRAME_RATE = 1000/30;

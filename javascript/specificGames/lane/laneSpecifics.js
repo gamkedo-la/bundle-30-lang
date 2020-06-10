@@ -14,6 +14,13 @@ function laneGameClass() {
 	this.textAnswerFontSize = 30;
 	this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
+	this.drawTransitionText = function()
+  {
+    customFontFillText(['Drive to the answers!', symbolExclamationPointImage], 55,30, 0,50);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Lane Change right'], 40,15, gameCanvas.width*0.225,250);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Lane Change left'], 40,15, gameCanvas.width*0.225,450);
+  }
+
 	this.imageAnswerWidth = undefined;
 	this.imageAnswerHeight = undefined;
 	this.imageAnswerHolderWidth = undefined;
@@ -60,12 +67,12 @@ function laneGameClass() {
 
   };
 
-  this.startGameSpecialCode = function() 
+  this.startGameSpecialCode = function()
   {
 	  gameAudio.car.play();
   }
 
-  this.postGameSpecialCode = function() 
+  this.postGameSpecialCode = function()
   {
   	gameAudio.car.stop();
   }

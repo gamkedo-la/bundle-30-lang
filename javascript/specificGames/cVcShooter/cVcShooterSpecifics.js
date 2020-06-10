@@ -7,6 +7,15 @@ function cVcShooterGameClass()
 	{name: "cVc", fontSize: 22, spacing: 12, x: 47, y: 270},
 	{name: "Shooter", fontSize: 22, spacing: 12, x: 26, y: 300}
   ];
+
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Shoot the answers!', symbolExclamationPointImage], 60,30, 50,50);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Move right'], 30,15, 350,350);
+    customFontFillText(['Space bar', ' ', symbolEqualsImage, ' Shoot'], 30,15, 175,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 30,15, 50,350);
+  }
+
   this.playerCharacter = undefined;
   this.cVcManager = undefined;
   this.background = undefined;

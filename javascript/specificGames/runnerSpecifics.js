@@ -17,6 +17,13 @@ function runnerGameClass() {
   let runnerSpeedY = 0;
   let runnerFloorLevel = 0;
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Run and Jump to '], 35,30, 100,50);
+    customFontFillText(['Collect Coins!', symbolExclamationPointImage], 35,30, gameCanvas.width/2 - 200,100);
+    customFontFillText(['Space Bar ', symbolEqualsImage, ' Jump up'], 30,15, 210,gameCanvas.height/2);
+  }
+
   this.name = 'runnerGame';
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';

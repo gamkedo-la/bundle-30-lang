@@ -28,8 +28,17 @@ function jumperGameClass()
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Dig to the answers', symbolExclamationPointImage], 55,30, 25,50);
+    customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' Float up'], 30,15, 210,200);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Roll right'], 30,15, 350,350);
+    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' Dig down'], 30,15, 200,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Roll left'], 30,15, 50,350);
+  }
+
   this.titleScreenData = [{
-	name: "Jumper",
+	name: "Digger",
 	fontSize: 27,
 	spacing: 15,
 	x: 322, y: 185

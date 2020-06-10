@@ -157,10 +157,10 @@ function snakeGameClass()
   this.drawTransitionText = function()
   {
     customFontFillText(['Eat the answers', symbolExclamationPointImage], 60,30, 100,50);
-    customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' move up'], 30,15, 210,200);
-    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' move right'], 30,15, 350,350);
-    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' move down'], 30,15, 200,500);
-    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' move left'], 30,15, 50,350);
+    customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' Slither up'], 30,15, 210,200);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Slither right'], 30,15, 350,350);
+    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' Slither down'], 30,15, 200,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Slither left'], 30,15, 50,350);
   }
 
   this.LETTER_COLOR = 'cyan';

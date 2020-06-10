@@ -27,6 +27,16 @@ function spaceShooterGameClass() {
 	  {name: "Shooter", fontSize: 17, spacing: 10, x: 129, y: 305}
 	];
 
+	this.drawTransitionText = function()
+  {
+    customFontFillText(['Shoot the answers', symbolExclamationPointImage], 60,30, 50,50);
+    customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' Fly up'], 30,15, 210,200);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Fly right'], 30,15, 350,350);
+    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' Fly down'], 30,15, 200,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Fly left'], 30,15, 50,350);
+		customFontFillText(['Space Bar ',  symbolEqualsImage, ' Shoot'], 30,15, 175,650);
+  }
+
 	this.imageAnswerHolderWidth = undefined;
   this.imageAnswerHolderHeight = undefined;
 

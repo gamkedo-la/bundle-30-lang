@@ -6,6 +6,15 @@ function finderGameClass()
 
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/finderSong.mp3', 9.6);
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Unlock the treasure box!', symbolExclamationPointImage], 55,30, 25,50);
+    customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' Walk up'], 30,15, 210,200);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Walk right'], 30,15, 350,350);
+    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' Walk down'], 30,15, 200,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Walk left'], 30,15, 50,350);
+  }
+
   this.defineAndInitializePlayerCharacter = function()
   {
     this.playerCharacter = new FinderPlayerCharacter();

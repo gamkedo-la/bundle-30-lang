@@ -5,10 +5,19 @@ function PassOrBlockGameClass()
   this.FRAME_RATE = 1000/30;
 
   this.background = undefined;
-  this.titleScreenData = [
-	{name: "Pass", fontSize: 22, spacing: 12, x: 542, y: 167},
-	{name: "Block", fontSize: 22, spacing: 12, x: 535, y: 207}
+  this.titleScreenData =
+  [
+	   {name: "Volcano", fontSize: 18, spacing: 13, x: 525, y: 185}
   ];
+
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Touch the answers to '], 35,30, 10,50);
+    customFontFillText(['collect crystals!', symbolExclamationPointImage], 35,30, gameCanvas.width*0.05,100);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Move right'], 40,15, gameCanvas.width*0.225,250);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 40,15, gameCanvas.width*0.225,450);
+  }
+
   this.playerCharacter = undefined;
   this.defineAndInitializePlayerCharacter = function()
   {
@@ -126,7 +135,7 @@ function PassOrBlockGameClass()
   this.handleRightArrowDown = function()
   {
     this.playerCharacter.x += 10;
-    
+
     for (let i = 0; i < this.playerCharacter.arrayOfGems.length; i++)
     {
       this.playerCharacter.arrayOfGems[i].x += 10;
