@@ -323,7 +323,19 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     // private functions used internally
     //////////////////////////////////////////////////////
     function boom(x, y, wasCorrect) {
-        if (wasCorrect && !me.alwaysPopLetters) {
+
+        var resetAnyways = false;
+        if (wasCorrect && me.alwaysPopLetters) { // bubble wrap etc
+            if (objects.length) {
+                targetLetter = objects[Math.floor(Math.random() * objects.length)].Z;
+                console.log("new target letter without erasing board: " + targetLetter);
+            } else {
+                console.log("entire board cleared!!!");
+                //resetAnyways = true; // force full new choices? NO - this is done elsewhere
+            }
+        }
+      
+        if (wasCorrect && (!me.alwaysPopLetters || resetAnyways)) {
             //pinataSmashed = false; // reset!!!!!!!! fixme: or do we like spam
             /*
             // destroy the world!
@@ -452,6 +464,20 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
             }
             boom(e.pageX, e.pageY, false);
         }
+
+        // make sure there are choices left!
+        if (objects.length<1) {
+
+            console.log("all bubbles popped!");
+            if (me.gameSpecificInits) { 
+                me.gameSpecificInits();
+                return; // maybe we have a custom init func
+            }
+            else if (me.name=='bubbleWrap') {
+                bubbleWrapGame.gameSpecificInits(); //???
+            }
+        }
+
     }
 
     // rainbow generator

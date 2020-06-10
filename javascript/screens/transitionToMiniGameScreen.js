@@ -2,7 +2,7 @@
 var TRANSITION_SPEED_MULTIPLIER = 1;
 var TITLESCREEN_TRANSITION_TIME = 2000;
 
-const SKIP_TRANSITIONS = false; // instant, good for debugging
+const SKIP_TRANSITIONS = true; // instant, good for debugging
 
 if (SKIP_TRANSITIONS) {
     TRANSITION_SPEED_MULTIPLIER = 10;
