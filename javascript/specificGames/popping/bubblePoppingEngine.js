@@ -143,6 +143,8 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     // called by the game state machine
     this.update = function () {
         //console.log("popping game update()");
+        this.maybePromptUser(); // voiceovers
+
         if (!this.physicsEnabled) return;
         if (window.levelIsTransitioning) return; // update should never be called in this case, but just in case
         if (this.spawnRandomly) {
@@ -151,8 +153,6 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
                 this.newcircle(Math.random() * gameCanvas.width, gameCanvas.height + 100, this.spawnRadius, 1);
             }
         }
-
-        this.maybePromptUser(); // voiceovers
 
         // iterate through all objects twice
         for (i = objects.length; i--;) {
