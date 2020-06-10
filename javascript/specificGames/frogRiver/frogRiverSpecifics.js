@@ -7,6 +7,15 @@ function frogRiverGameClass()
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
+  this.imageAnswerWidth = 70;
+  this.imageAnswerHeight = 70;
+  // this.imageAnswerHolderWidth = 60;
+  // this.imageAnswerHolderHeight = 60;
+  this.audioImageAnswerWidth = 70;
+  this.audioImageAnswerHeight = 70;
+  // this.audioImageAnswerHolderWidth = 60;
+  // this.audioImageAnswerHolderHeight = 60;
+
   this.titleScreenData = [{name: "Frog",fontSize: 27,spacing: 15,x: 530, y: 265},
                           {name: "River",fontSize: 27,spacing: 15,x: 525, y: 305}];
 

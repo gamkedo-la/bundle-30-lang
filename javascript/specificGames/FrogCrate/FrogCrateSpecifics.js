@@ -124,7 +124,7 @@ const frogCrateGame = new frogCrateGameClass();
 
 function FrogCrateBackground()
 {
-  this.waterImage = frogRiverBackgroundImage;
+  this.waterImage = frogCrateBackground;
   this.grassImage = snakeGrassBackground;
   this.skyImage = skyBackground;
   this.bathStoneImage = bathStoneImage;
