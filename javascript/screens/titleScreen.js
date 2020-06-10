@@ -57,7 +57,7 @@ function TitleScreenClass()
   this.drawHeader = function()
   {
     customFontFillText(['Bundle of 30 Language Games'], 40, 20, 50,25);
-    customFontFillText(['Choose A Game ', symbolExclamationPointImage], 25, 20, 175,100);
+    customFontFillText(['Choose A Game ', symbolExclamationPointImage], 50, 20, 175,100);
   }
 
   this.drawCellsAndCheckForHighlighting = function()

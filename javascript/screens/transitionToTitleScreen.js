@@ -12,16 +12,18 @@ function TransitionToTitleScreen()
 
   this.draw = function()
   {
+
     gameCanvasContext.fillStyle = 'orange';
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
 
     fancyBG();
 
-    customFontFillText(['Placeholder transition text'], 30, 15,
-                        0,gameCanvas.height/2);
-    customFontFillText(['to title screen'], 30, 15,
-                        0,gameCanvas.height/2 + 35);
+    customFontFillText(['Welcome to '], gameCanvas.width*0.08, gameCanvas.width*0.075,
+                        gameCanvas.width/2 - gameCanvas.width*0.4,gameCanvas.height/2 - 100);
+    customFontFillText(['Bundle of 30 Language Games!'], gameCanvas.width*0.075, gameCanvas.width*0.035,
+                        gameCanvas.width*0.01,gameCanvas.height/2 + 50);
   }
+
 
 }
 
