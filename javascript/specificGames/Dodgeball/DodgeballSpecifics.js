@@ -5,6 +5,17 @@ function dodgeballGameClass()
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/dodgeballWeebleWobble(3).mp3', 21.2);
   this.playerCharacter = undefined;
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Catch the '], 25,30, gameCanvas.width/2 - 150,30);
+    customFontFillText(['correct answer!', symbolExclamationPointImage], 25,30, gameCanvas.width/2 - 250,60);
+    customFontFillText(['Avoid the wrong ones!', symbolExclamationPointImage], 25,30, 0,90);
+    customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' Move up'], 30,15, 210,200);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Move right'], 30,15, 350,350);
+    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' Move down'], 30,15, 200,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 30,15, 50,350);
+  }
+
   this.NPC1 = undefined;
   this.NPC2 = undefined;
   this.NPC3 = undefined;

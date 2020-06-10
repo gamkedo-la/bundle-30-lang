@@ -17,6 +17,14 @@ function flowerGameClass(){
 	  spacing: 15,
 	  x: 222, y: 385
 	}];
+
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Catch the answers!', symbolExclamationPointImage], 55,30, 25,50);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Move right'], 40,15, gameCanvas.width*0.225,250);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 40,15, gameCanvas.width*0.225,450);
+  };
+
     this.textAnswerFontSize = 30;
     this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 

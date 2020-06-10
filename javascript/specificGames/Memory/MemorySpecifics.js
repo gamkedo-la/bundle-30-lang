@@ -10,6 +10,13 @@ function memoryGameClass()
     {name: "Memory", fontSize: 27, spacing: 15, x: 122, y: 385}
   ];
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Tap the Phonics '], 35,30, 100,50);
+    customFontFillText(['in order!', symbolExclamationPointImage], 35,30, gameCanvas.width/2 - 150,100);
+    customFontFillText(['Mouse Click ', symbolEqualsImage, ' Choose Phonic'], 30,15, 110,gameCanvas.height/2);
+  }
+
   this.LETTER_COLOR = 'lightCoral';
   this.textAnswerFontSize = '30';
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';

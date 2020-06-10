@@ -17,6 +17,13 @@ function helloWorldGameClass()
     this.NPCSpeechBubble = new CharacterSpeechBubbleHW1(speechBubbleFromRightImage,speechBubbleFromRightImage, gameCanvas.width*0.5,gameCanvas.height*0.2, gameCanvas.width/3,gameCanvas.width/3);
   }
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Click the correct '], 35,30, 100,50);
+    customFontFillText(['reply!', symbolExclamationPointImage], 35,30, gameCanvas.width/2 - 150,100);
+    customFontFillText(['Mouse Click ', symbolEqualsImage, ' Choose Reply'], 30,15, 110,gameCanvas.height/2);
+  }
+
   this.FRAME_RATE = 1000/30;
 
   this.conversationPatternManager = undefined;
