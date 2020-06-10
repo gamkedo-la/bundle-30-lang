@@ -11,6 +11,13 @@ function AirGrabGameClass()
 
   this.LETTER_COLOR = 'black';
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Grab the Money!', symbolExclamationPointImage], 55,30, 75,50);
+    customFontFillText(['Move the Mouse', ' ', symbolEqualsImage, ' Move the arms'], 40,15, gameCanvas.width*0.125,250);
+    customFontFillText(['Mouse Click', ' ', symbolEqualsImage, ' Reach and Grab'], 40,15, gameCanvas.width*0.125,450);
+  }
+
   this.imageAnswerWidth = undefined;
   this.imageAnswerHeight = undefined;
   this.imageAnswerHolderWidth = undefined;
@@ -33,8 +40,8 @@ function AirGrabGameClass()
   }
 
   this.titleScreenData = [
-	  {name: "Air", fontSize: 27, spacing: 15, x: 445, y: 265},
-	  {name: "Grab", fontSize: 27, spacing: 15, x: 437, y: 300}
+	  {name: "Money", fontSize: 27, spacing: 15, x: 428, y: 265},
+	  {name: "Grab", fontSize: 27, spacing: 15, x: 432, y: 300}
 	];
 
   this.playerCharacter = undefined;
@@ -48,7 +55,7 @@ function AirGrabGameClass()
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/200412.mp3', 121.62);
 
   this.background = undefined;
-  
+
   this.pregameSpecialCode = function()
   {
     gameAudio = {};
