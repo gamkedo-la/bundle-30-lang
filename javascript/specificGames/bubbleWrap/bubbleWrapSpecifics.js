@@ -26,10 +26,10 @@ bubbleWrapGame.gameSpecificInits = function() {
     var r = 30;
     var margin = -8;
     var spacing = (r*2)+margin;
-    var rows = Math.floor(gameCanvas.height / spacing);
-    var cols = Math.floor(gameCanvas.width / spacing);//-1;
+    var rows = Math.floor(gameCanvas.height / spacing) - 4; // less to allow for top+bottom header
+    var cols = Math.floor(gameCanvas.width / spacing);
     var offsetx=8;
-    var offsety=12;
+    var offsety=12 + spacing + spacing; // we add spacing for header
     for (var col=0; col<cols; col++) {
         for (var row=0; row<rows; row++) {
             this.newcircle(margin+r+col*spacing+offsetx, margin+r+row*spacing+offsety, r, 10); // given some mass
