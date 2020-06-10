@@ -36,28 +36,30 @@ function FrogRiverPlayer()
         let frogCenterPoint = this.centerX;
 
         if (frogCenterPoint > lilyLeftBoundary && frogCenterPoint < lilyRightBoundary)
-            {
-              this.y = lilyToCheck.yCoordinate + 10;
-              this.currentLilyPad = lilyToCheck;
-              if (answerCount === -1)
-              {
-                frogRiverGame.playerCharacter.currentLilyPad = undefined;
-              }
+        {
+          this.y = lilyToCheck.yCoordinate + 10;
+          
+          this.currentLilyPad = lilyToCheck;
+          this.resetAnswersInOccupiedLilyLine();
 
-              if (lilyToCheck.answer === promptsAndAnswersManager.correctTargetPromptAndAnswerPairing)
-              {
-                amountCorrect++;
-              }
-              else
-              {
-                amountIncorrect++;
-              }
-              gameAudio.frogJump.play();
-              frogRiverGame.answerCount--;
-              frogRiverGame.additiveToAnswers--;
-              frogRiverGame.collisionsWithAnswersManager.resetAnswers();
+          if (answerCount === -1)
+          {
+            frogRiverGame.playerCharacter.currentLilyPad = undefined;
+          }
 
-            }
+          if (lilyToCheck.answer === promptsAndAnswersManager.correctTargetPromptAndAnswerPairing)
+          {
+            amountCorrect++;
+          }
+          else
+          {
+            amountIncorrect++;
+          }
+          gameAudio.frogJump.play();
+          frogRiverGame.answerCount--;
+          frogRiverGame.additiveToAnswers--;
+          frogRiverGame.collisionsWithAnswersManager.resetAnswers();
+        }
       }
 
     }
@@ -87,4 +89,9 @@ function FrogRiverPlayer()
     }
   }
 
+
+  this.resetAnswersInOccupiedLilyLine = function() {
+    this.currentLilyPad.answer = undefined;
+    this.currentLilyPad.lilyNeighbourOnSameLine.answer = undefined;
+  }
 }

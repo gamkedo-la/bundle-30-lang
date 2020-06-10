@@ -36,6 +36,10 @@ function LilyPadManager()
         lilyPad1.direction = -1;//move to the left
         lilyPad2.direction = -1;//move to the left
       }
+
+      lilyPad1.lilyNeighbourOnSameLine = lilyPad2;
+      lilyPad2.lilyNeighbourOnSameLine = lilyPad1;
+
       this.arrayOfLilyPads.push(lilyPad1);
       this.arrayOfLilyPads.push(lilyPad2);
     }

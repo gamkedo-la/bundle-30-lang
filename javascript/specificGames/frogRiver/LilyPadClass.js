@@ -15,6 +15,8 @@ function LilyPadClass()
 
   this.direction = undefined;
 
+  this.lilyNeighbourOnSameLine = undefined;
+
   this.draw = function()
   {
     gameCanvasContext.drawImage(this.image, this.xCoordinate,this.yCoordinate, this.width,this.height);
@@ -52,7 +54,7 @@ function LilyPadClass()
         this.xCoordinate = -50;
         if (this.answer !== undefined)
         {
-          this.answer.xCoordinate = -50;
+          this.centerAnswersXCoordinate();
         }
       }
     }
@@ -62,7 +64,7 @@ function LilyPadClass()
       this.xCoordinate = 690;
       if (this.answer !== undefined)
       {
-        this.answer.xCoordinate = 690;
+        this.centerAnswersXCoordinate();
       }
     }
   }
