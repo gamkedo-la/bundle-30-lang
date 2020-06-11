@@ -42,12 +42,13 @@ function FrogRiverPlayer()
 
           if (lilyToCheck.answer === promptsAndAnswersManager.correctTargetPromptAndAnswerPairing)
           {
-            amountCorrect++;
+            frogRiverGame.collisionsWithAnswersManager.processCollisionWithCorrectAnswer();// amountCorrect++;
           }
           else
           {
-            amountIncorrect++;
+            frogRiverGame.collisionsWithAnswersManager.processCollisionWithIncorrectAnswer();
           }
+          calculateAccuracy();
 
           gameAudio.frogJump.play();
 
