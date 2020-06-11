@@ -12,6 +12,15 @@ function vacuumGameClass()
     this.playerCharacter = new Vacuum();
   }
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Suck up the answers', symbolExclamationPointImage], 60,30, 25,50);
+    customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' Move up'], 30,15, 210,200);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Move right'], 30,15, 350,350);
+    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' Move down'], 30,15, 200,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 30,15, 50,350);
+  }
+
   this.phonicClassManager = undefined;
 
   this.startGameSpecialCode = function()
