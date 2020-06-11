@@ -1,3 +1,5 @@
+// NOTE: THIS IS NOT USED BY THE MAIN GAME!
+// THIS SCRIPT IS ONLY USED BY THE MEGA SPRITESHEET PROCESS STEP, ImageStitch.html
 var fileList = ["images\\check.png",
 "images\\checkBox.png",
 "images\\checkForCheckBox.png",
@@ -416,4 +418,19 @@ var fileList = ["images\\check.png",
 "images\\sprites\\whackAnAnswer\\wackPlacer.png",
 "images\\sprites\\whackAnAnswer\\wackPlacer2.png",
 "images\\sprites\\whackAnAnswer\\wackPlacer3.png",
-"images\\sprites\\whackAnAnswer\\whackHammer.png"];
+"images\\sprites\\whackAnAnswer\\whackHammer.png",
+"images\\sprites\\Penalty\\goalkeeper\\1.png",
+"images\\sprites\\Penalty\\goalkeeper\\1rotated.png",
+"images\\sprites\\Penalty\\goalkeeper\\2.png",
+"images\\sprites\\Penalty\\goalkeeper\\3.png",
+"images\\sprites\\Penalty\\goalkeeper\\4.png",
+"images\\sprites\\Penalty\\goalkeeper\\5.png",
+"images\\sprites\\Penalty\\goalkeeper\\6.png",
+"images\\sprites\\Penalty\\goalkeeper\\7.png",
+"images\\sprites\\Penalty\\goalkeeper\\8.png",
+"images\\sprites\\Penalty\\goalkeeper\\9.png",
+"images\\sprites\\Penalty\\goalkeeper\\10.png",
+"images\\sprites\\Penalty\\goalkeeper\\11.png",
+"images\\sprites\\Penalty\\goalkeeper\\12.png",
+"images\\sprites\\Penalty\\goalkeeper\\13.png",
+"images\\sprites\\Penalty\\goalkeeper\\14.png"];
