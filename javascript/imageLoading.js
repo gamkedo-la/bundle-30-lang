@@ -348,6 +348,21 @@ let penaltyBall9 = document.createElement('img');
 let penaltyBall10 = document.createElement('img');
 let penaltyBall11 = document.createElement('img');
 let penaltyGoal = document.createElement('img');
+let penaltyGoalkeeper1 = document.createElement('img');
+let penaltyGoalkeeper2 = document.createElement('img');
+let penaltyGoalkeeper3 = document.createElement('img');
+let penaltyGoalkeeper4 = document.createElement('img');
+let penaltyGoalkeeper5 = document.createElement('img');
+let penaltyGoalkeeper6 = document.createElement('img');
+let penaltyGoalkeeper7 = document.createElement('img');
+let penaltyGoalkeeper8 = document.createElement('img');
+let penaltyGoalkeeper9 = document.createElement('img');
+let penaltyGoalkeeper10 = document.createElement('img');
+let penaltyGoalkeeper11 = document.createElement('img');
+let penaltyGoalkeeper12 = document.createElement('img');
+let penaltyGoalkeeper13 = document.createElement('img');
+let penaltyGoalkeeper14 = document.createElement('img');
+let penaltyGoalkeeperRotated1 = document.createElement('img');
 
 //special characters for custom font
 let upArrowImage = document.createElement("img");
@@ -807,6 +822,22 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall10, theFile: 'images/sprites/Penalty/ball/ball0009.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall11, theFile: 'images/sprites/Penalty/ball/ball0010.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoal, theFile: 'images/sprites/Penalty/goal.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper1, theFile: 'images/sprites/Penalty/goalkeeper/1.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper2, theFile: 'images/sprites/Penalty/goalkeeper/2.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper3, theFile: 'images/sprites/Penalty/goalkeeper/3.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper4, theFile: 'images/sprites/Penalty/goalkeeper/4.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper5, theFile: 'images/sprites/Penalty/goalkeeper/5.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper6, theFile: 'images/sprites/Penalty/goalkeeper/6.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper7, theFile: 'images/sprites/Penalty/goalkeeper/7.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper8, theFile: 'images/sprites/Penalty/goalkeeper/8.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper9, theFile: 'images/sprites/Penalty/goalkeeper/9.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper10, theFile: 'images/sprites/Penalty/goalkeeper/10.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper11, theFile: 'images/sprites/Penalty/goalkeeper/11.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper12, theFile: 'images/sprites/Penalty/goalkeeper/12.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper13, theFile: 'images/sprites/Penalty/goalkeeper/13.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper14, theFile: 'images/sprites/Penalty/goalkeeper/14.png', loaded: false});
+  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeperRotated1, theFile: 'images/sprites/Penalty/goalkeeper/1rotated.png', loaded: false});
+
 
   //whackAnAnswer
   arrayOfImagesToLoad.push({imageObjectBinding: whackTableSurface, theFile: 'images/Backgrounds/WackTableSurface.png', loaded: false});
