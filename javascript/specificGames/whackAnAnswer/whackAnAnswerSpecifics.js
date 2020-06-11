@@ -25,6 +25,13 @@ function whackAnAnswerGameClass()
       {name: "Answer",fontSize: 25, spacing: 10, x: 235, y: 615}
      ];
 
+     this.drawTransitionText = function()
+     {
+       customFontFillText(['Whack the Answer!', symbolExclamationPointImage], 55,30, 75,50);
+       customFontFillText(['Move the Mouse', ' ', symbolEqualsImage, ' Move the hammer'], 40,15, gameCanvas.width*0.125,250);
+       customFontFillText(['Mouse Click', ' ', symbolEqualsImage, ' Whack!'], 40,15, gameCanvas.width*0.125,450);
+     }
+
      this.initialize = function()
      {
        //document.body.style.cursor = 'none';
