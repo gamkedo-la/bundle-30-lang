@@ -1,11 +1,16 @@
-function drawFromSheet(imgName, atX,atY, desiredWidth,desiredHeight)
+function drawFromSheet(imgName, atX,atY,
+                        desiredWidth,desiredHeight) // optional arguments (note: if either, expects both)
 {
   var scale = 1/0.3;
   var imgNum = sheetLookup[imgName];
-  var unScaledWidth = spritesheetData[imgNum].w*scale;
-  var unScaledHeight = spritesheetData[imgNum].h*scale;
-  var widthToDraw = desiredWidth/unScaledWidth;
-  var heightToDraw = desiredHeight/unScaledHeight;
+  var widthToDraw, heightToDraw;
+  if(typeof desiredWidth !== 'undefined') { // custom size specified?
+    widthToDraw = desiredWidth;
+    heightToDraw = desiredHeight;
+  } else {
+    widthToDraw = spritesheetData[imgNum].w*scale;
+    heightToDraw = spritesheetData[imgNum].h*scale;
+  }
 
   gameCanvasContext.drawImage(megaSheet,spritesheetData[imgNum].x,spritesheetData[imgNum].y,
                               spritesheetData[imgNum].w,spritesheetData[imgNum].h,
