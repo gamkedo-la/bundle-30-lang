@@ -48,7 +48,8 @@ function fancyBG(bottomImages=[heartImage],topImages=[starImage]) {
 
     gameCanvasContext.globalAlpha = 1;
 }
-
+// to quickly debug different ones by updating this from console
+var testDrawString = "images\\check.png"; // find in ImageList.JS
 function TitleScreenClass()
 {
   this.cellXTopLeftCoordinate = 0;
@@ -58,7 +59,7 @@ function TitleScreenClass()
   {
     customFontFillText(['Bundle of 30 Language Games'], 40, 20, 50,25);
     customFontFillText(['Choose A Game ', symbolExclamationPointImage], 50, 20, 175,100);
-    drawFromSheet("images\\Custom Font\\pngs\\small letters\\smallb.png",
+    drawFromSheet(testDrawString,
             inputManager.mouseCoordinates.x,inputManager.mouseCoordinates.y,50,50);
   }
 

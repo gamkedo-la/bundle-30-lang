@@ -1,5 +1,7 @@
-var picsToLoad = 0;
+// NOTE: THIS IS NOT USED BY THE MAIN GAME!
+// THIS SCRIPT IS ONLY USED BY THE MEGA SPRITESHEET PROCESS STEP :)
 
+var picsToLoad = 0;
 var img = [];
 
 var canvas, canvasContext;
@@ -41,9 +43,10 @@ function loadingDoneSoStartGame() {
       canvasContext.drawImage(img[i],
         0,0,img[i].width,img[i].height,
         drawX,drawY,scaledW,scaledH);
-        drawX+=scaledW;
 
         imgFacts.push({fileName:fileList[i],fileIdx:i,x:drawX,y:drawY,w:scaledW,h:scaledH})
+
+        drawX+=scaledW;
         if (scaledH > rowH)
         {
           rowH = scaledH;
