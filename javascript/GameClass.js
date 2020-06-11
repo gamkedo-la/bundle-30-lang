@@ -42,6 +42,8 @@ function GameClass()
 
   this.collisionsWithAnswersManager = undefined;
 
+  this.backButtonColor = "yellow";
+
   this.update = function(){};
   this.draw = function(){};
 }
