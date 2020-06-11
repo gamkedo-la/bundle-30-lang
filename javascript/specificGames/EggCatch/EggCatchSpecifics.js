@@ -9,6 +9,13 @@ function eggCatchGameClass()
 
   }
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Catch the answers!', symbolExclamationPointImage], 55,30, 35,50);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Move right'], 40,15, gameCanvas.width*0.25,250);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 40,15, gameCanvas.width*0.25,450);
+  }
+
   this.backgroundMusic = this.backgroundMusic = new MusicTrack('audio/backgroundTracks/eggCatchSong.mp3', 17.4);
   this.FRAME_RATE = 1000/30;
   this.background = new EggCatchBackground();
