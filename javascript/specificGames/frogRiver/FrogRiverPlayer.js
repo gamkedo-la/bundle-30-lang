@@ -26,7 +26,6 @@ function FrogRiverPlayer()
     let additive = frogRiverGame.additiveToAnswers;
     let leftLilyIndex = answerCount + additive;
 
-
     for (let i = leftLilyIndex; i < leftLilyIndex + 2; i++)
     {
 
@@ -58,7 +57,11 @@ function FrogRiverPlayer()
           gameAudio.frogJump.play();
           frogRiverGame.answerCount--;
           frogRiverGame.additiveToAnswers--;
-          frogRiverGame.collisionsWithAnswersManager.resetAnswers();
+
+          if (frogRiverGame.answerCount > -1)
+          {
+            frogRiverGame.collisionsWithAnswersManager.resetAnswers();
+          }
         }
       }
 
@@ -88,7 +91,6 @@ function FrogRiverPlayer()
       this.x = 690;
     }
   }
-
 
   this.resetAnswersInOccupiedLilyLine = function() {
     this.currentLilyPad.answer = undefined;
