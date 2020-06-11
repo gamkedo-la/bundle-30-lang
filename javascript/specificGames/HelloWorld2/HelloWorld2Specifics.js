@@ -16,6 +16,13 @@ function helloWorld2GameClass()
     this.playerCharacterSpeechBubbleHW2B = new CharacterSpeechBubbleHW2(speechBubbleFromLeftImageB,speechBubbleFromLeftImageBHighlighted, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
   }
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Click the correct '], 35,30, 100,50);
+    customFontFillText(['question!', symbolExclamationPointImage], 35,30, gameCanvas.width/2 - 150,100);
+    customFontFillText(['Mouse Click ', symbolEqualsImage, ' Choose Question'], 30,15, 110,gameCanvas.height/2);
+  }
+
   this.questionClassManager = undefined;
   this.questionAudioManager = undefined;
   this.imagePrompter = undefined;
