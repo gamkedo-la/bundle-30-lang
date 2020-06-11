@@ -270,16 +270,14 @@ function CollisionsWithAnswersManager()
             gameClassManager.currentGame.collisionAudioEffect(collisionType);
           }
 
-            this.processCollisionWithAnswer();
+          if (collisionType == COLLISION_WITH_CORRECT_ANSWER){
+              this.processCollisionWithCorrectAnswer();
+          }
+          else if (collisionType == COLLISION_WITH_INCORRECT_ANSWER){
+              this.processCollisionWithIncorrectAnswer();
+          }
 
-            if (collisionType == COLLISION_WITH_CORRECT_ANSWER){
-                this.processCollisionWithCorrectAnswer();
-            }
-            else if (collisionType == COLLISION_WITH_INCORRECT_ANSWER){
-                this.processCollisionWithIncorrectAnswer();
-            }
-
-
+          this.processCollisionWithAnswer();
         }
 
         if ( (nextGame === SINGLE_PLAYER_RANDOM || nextGame === TWO_PLAYER_RANDOM) &&
