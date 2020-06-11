@@ -69,7 +69,8 @@ function Hammer()
       promptsAndAnswersManager.setOrResetPromptsAndAnswers();
       promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
       promptersManager.promptThePlayer();
-      correctAnswer++;
+      amountCorrect++;
+      calculateAccuracy();
     }
     else if (mouseGridIndex === promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.whackAnAnswerGridIndex)
     {
@@ -79,7 +80,8 @@ function Hammer()
       promptsAndAnswersManager.setOrResetPromptsAndAnswers();
       promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
       promptersManager.promptThePlayer();
-      incorrectAnswer++;
+      amountIncorrect++;
+      calculateAccuracy();
     }
   }
 
