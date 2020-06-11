@@ -7,6 +7,15 @@ function spellingBeesGameClass()
   this.background = undefined;
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/flyingBeeSong.mp3', 14.1);
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Spell the Words!', symbolExclamationPointImage], 60,30, 75,50);
+    customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' Move up'], 30,15, 210,200);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Move right'], 30,15, 350,350);
+    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' Move down'], 30,15, 200,500);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 30,15, 50,350);
+  }
+
   this.beesManager = undefined;
 
   this.wordsManager = undefined;
