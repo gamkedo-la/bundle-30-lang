@@ -58,7 +58,8 @@ function TitleScreenClass()
   {
     customFontFillText(['Bundle of 30 Language Games'], 40, 20, 50,25);
     customFontFillText(['Choose A Game ', symbolExclamationPointImage], 50, 20, 175,100);
-    drawFromSheet("images\\Custom Font\\pngs\\small letters\\smallm.png", inputManager.mouseCoordinates.x,inputManager.mouseCoordinates.y);
+    drawFromSheet("images\\Custom Font\\pngs\\small letters\\smallb.png",
+            inputManager.mouseCoordinates.x,inputManager.mouseCoordinates.y,50,50);
   }
 
   this.drawCellsAndCheckForHighlighting = function()
