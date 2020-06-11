@@ -124,4 +124,5 @@ function PromptersManager()
 
 }//end of prompters manager
 
-let promptersManager = new PromptersManager();
+// let promptersManager = new PromptersManager();
+var promptersManager = new PromptersManager();

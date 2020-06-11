@@ -29,7 +29,7 @@ function ReplayPromptButton()
 
   this.handleClick = function()
   {
-    if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < gameCanvas.width &&
+    if (inputManager.mouseCoordinates.x > this.x && inputManager.mouseCoordinates.x < this.width &&
         inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < gameCanvas.height)
         {
           if (gameClassManager.currentGame.name === 'hello world game')
