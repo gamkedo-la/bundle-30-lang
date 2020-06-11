@@ -1,3 +1,13 @@
+function drawFromSheet(imgName, atX,atY)
+{
+  var scale = 1/0.3;
+  var imgNum = sheetLookup[imgName];
+  gameCanvasContext.drawImage(megaSheet,spritesheetData[imgNum].x,spritesheetData[imgNum].y,
+                              spritesheetData[imgNum].w,spritesheetData[imgNum].h,
+                              atX,atY,
+                              spritesheetData[imgNum].w*scale,spritesheetData[imgNum].h*scale);
+}
+
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);

@@ -14,6 +14,8 @@ window.onload = function() {
   loadImages();
 }
 
+var imgFacts = [];
+
 function loadingDoneSoStartGame() {
   var dimW = img[0].width;
   var dimH = img[0].height;
@@ -32,18 +34,24 @@ function loadingDoneSoStartGame() {
         drawY += rowH;
         rowH = 0;
       }
+
+      var scaledW = Math.floor(img[i].width*scaleAll);
+      var scaledH = Math.floor(img[i].height*scaleAll);
+
       canvasContext.drawImage(img[i],
         0,0,img[i].width,img[i].height,
-        drawX,drawY,img[i].width*scaleAll,img[i].height*scaleAll);
-        drawX+=img[i].width*scaleAll;
+        drawX,drawY,scaledW,scaledH);
+        drawX+=scaledW;
 
-        if (img[i].height*scaleAll > rowH)
+        imgFacts.push({fileName:fileList[i],fileIdx:i,x:drawX,y:drawY,w:scaledW,h:scaledH})
+        if (scaledH > rowH)
         {
-          rowH = img[i].height*scaleAll;
+          rowH = scaledH;
         }
 
 
   }
+  document.getElementById("jsonOutput").innerHTML = JSON.stringify(imgFacts);
   console.log(drawY + rowH);
 }
 

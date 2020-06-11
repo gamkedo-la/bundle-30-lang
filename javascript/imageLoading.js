@@ -1,5 +1,6 @@
 //standard image declaration section
 
+let megaSheet = document.createElement("img");
 //Prompt and Answer Class Section
 let womanImage = document.createElement("img");
 let womenImage = document.createElement("img");
@@ -449,6 +450,12 @@ function loadImages()
   }
   //somewhat standard image loading
 
+  arrayOfImagesToLoad.push({imageObjectBinding: megaSheet, theFile: 'megaSheet.png', loaded: false});
+  sheetLookup = [];
+  for (var i = 0; i < spritesheetData.length; i++)
+  {
+    sheetLookup[spritesheetData[i].fileName] = spritesheetData[i].fileIdx;
+  }
   //prompt and answer
   arrayOfImagesToLoad.push({imageObjectBinding: womanImage, theFile: 'images/sprites/PromptsAndAnswers/woman.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: womenImage, theFile: 'images/sprites/PromptsAndAnswers/women.png', loaded: false});
