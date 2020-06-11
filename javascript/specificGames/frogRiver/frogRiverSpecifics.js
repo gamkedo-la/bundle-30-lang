@@ -21,11 +21,10 @@ function frogRiverGameClass()
 
   this.drawTransitionText = function()
   {
-    customFontFillText(['Jump on the Answer', symbolExclamationPointImage], 60,30, 100,50);
+    customFontFillText(['Jump on the Answer', symbolExclamationPointImage], 60,30, 50,50);
     customFontFillText([upArrowImage, ' ', symbolEqualsImage, ' Jump Up'], 30,15, 210,200);
-    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Slither right'], 30,15, 350,350);
-    customFontFillText([downArrowImage, ' ', symbolEqualsImage, ' Slither down'], 30,15, 200,500);
-    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Slither left'], 30,15, 50,350);
+    customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Move right'], 30,15, 350,350);
+    customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 30,15, 50,350);
   }
 
   this.FRAME_RATE = 1000/30;
