@@ -39,12 +39,6 @@ function FrogRiverPlayer()
           this.y = lilyToCheck.yCoordinate + 10;
           
           this.currentLilyPad = lilyToCheck;
-          this.resetAnswersInOccupiedLilyLine();
-
-          if (answerCount === -1)
-          {
-            frogRiverGame.playerCharacter.currentLilyPad = undefined;
-          }
 
           if (lilyToCheck.answer === promptsAndAnswersManager.correctTargetPromptAndAnswerPairing)
           {
@@ -54,7 +48,11 @@ function FrogRiverPlayer()
           {
             amountIncorrect++;
           }
+
           gameAudio.frogJump.play();
+
+          this.resetAnswersInOccupiedLilyLine();
+
           frogRiverGame.answerCount--;
           frogRiverGame.additiveToAnswers--;
 

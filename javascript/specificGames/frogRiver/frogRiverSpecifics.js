@@ -101,11 +101,9 @@ function frogRiverGameClass()
     {
       gameAudio.riverComplete.play();
     }
-    console.log('this.answerCount: ' + this.answerCount);
 
     if (this.answerCount === -1)
     {
-      console.log("reset");
       this.playerCharacter.y = 600;
       this.playerCharacter.currentLilyPad = undefined;
       this.answerCount = 4;
