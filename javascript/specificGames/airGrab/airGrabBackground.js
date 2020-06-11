@@ -6,8 +6,10 @@ function AirGrabBackground()
   this.draw = function()
   {
     gameCanvasContext.globalAlpha = 0.3;
-    gameCanvasContext.drawImage(this.plasticLayerImage, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet("images\\Backgrounds\\airBoothPlasticLayer.png", 0,0);
+    //gameCanvasContext.drawImage(this.plasticLayerImage, 0,0, gameCanvas.width,gameCanvas.height);
     gameCanvasContext.globalAlpha = 1;
-    gameCanvasContext.drawImage(this.topLayerImage, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet("images\\Backgrounds\\airBoothTopLayer.png", 0,0);
+    //gameCanvasContext.drawImage(this.topLayerImage, 0,0, gameCanvas.width,gameCanvas.height);
   }
 }

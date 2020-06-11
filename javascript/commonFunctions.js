@@ -1,11 +1,16 @@
-function drawFromSheet(imgName, atX,atY)
+function drawFromSheet(imgName, atX,atY, desiredWidth,desiredHeight)
 {
   var scale = 1/0.3;
   var imgNum = sheetLookup[imgName];
+  var unScaledWidth = spritesheetData[imgNum].w*scale;
+  var unScaledHeight = spritesheetData[imgNum].h*scale;
+  var widthToDraw = desiredWidth/unScaledWidth;
+  var heightToDraw = desiredHeight/unScaledHeight;
+
   gameCanvasContext.drawImage(megaSheet,spritesheetData[imgNum].x,spritesheetData[imgNum].y,
                               spritesheetData[imgNum].w,spritesheetData[imgNum].h,
                               atX,atY,
-                              spritesheetData[imgNum].w*scale,spritesheetData[imgNum].h*scale);
+                              widthToDraw,heightToDraw);
 }
 
 function getRandomIntInclusive(min, max) {
