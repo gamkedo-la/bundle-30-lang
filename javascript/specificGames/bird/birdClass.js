@@ -1,8 +1,8 @@
 function BirdClass()
 {
   this.name = 'bird player';
-  this.openFacingLeftImage = birdOpenFacingLeftImage;
-  this.openFacingRightImage = birdOpenFacingRightImage;
+  this.openFacingLeftImage = 'images\\sprites\\Bird\\birdOpenFacingLeft.png';
+  this.openFacingRightImage = 'images\\sprites\\Bird\\birdOpenFacingRight.png';
   this.currentImage = this.openFacingRightImage;
   this.x = undefined;
   this.y = undefined;
@@ -16,7 +16,8 @@ function BirdClass()
   {
 	  // gameCanvasContext.fillStyle = 'lightCoral';
     // gameCanvasContext.fillRect(this.x, this.y, this.width,this.height);
-    gameCanvasContext.drawImage(this.currentImage, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.currentImage, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.currentImage, this.x,this.y, this.width,this.height);
   };
 
   this.initialize = function()

@@ -609,18 +609,6 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: appleImage, theFile: 'images/sprites/Snake/apple.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: appleCoreImage, theFile: 'images/sprites/Snake/appleCore.png', loaded: false});
 
-  //bird game
-  arrayOfImagesToLoad.push({imageObjectBinding: skyBackground, theFile: 'images/Backgrounds/Sky.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: cloud1Image, theFile: 'images/Backgrounds/cloud1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: cloud2Image, theFile: 'images/Backgrounds/cloud2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: cloud3Image, theFile: 'images/Backgrounds/cloud3.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: cloud4Image, theFile: 'images/Backgrounds/cloud4.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: birdOpenFacingLeftImage, theFile: 'images/sprites/Bird/birdOpenFacingLeft.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: birdOpenFacingRightImage, theFile: 'images/sprites/Bird/birdOpenFacingRight.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: skyRingAnswerHolder1, theFile: 'images/sprites/Bird/skyRing.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: skyRingAnswerHolder2, theFile: 'images/sprites/Bird/skyRing2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: planeImage, theFile: 'images/sprites/Bird/plane.png', loaded: false});
-
   // main menu bg
   arrayOfImagesToLoad.push({imageObjectBinding: menu_borderImage, theFile: 'images/Backgrounds/menu_border.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: scoreboard_overlayImage, theFile: 'images/Backgrounds/scoreboard_overlay.png', loaded: false});

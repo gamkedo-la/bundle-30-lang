@@ -59,8 +59,8 @@ function birdGameClass() {
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
   this.arrayOfAnswerHolders = [];
-  this.skyRingAnswerHolder1 = new SkyRingAnswerHolder(skyRingAnswerHolder1);
-  this.skyRingAnswerHolder2 = new SkyRingAnswerHolder(skyRingAnswerHolder2);
+  this.skyRingAnswerHolder1 = new SkyRingAnswerHolder('images\\sprites\\Bird\\skyRing.png');
+  this.skyRingAnswerHolder2 = new SkyRingAnswerHolder('images\\sprites\\Bird\\skyRing2.png');
   this.arrayOfAnswerHolders.push(this.skyRingAnswerHolder1);
   this.arrayOfAnswerHolders.push(this.skyRingAnswerHolder2);
   this.assignAnswerHolder = function()
@@ -185,8 +185,10 @@ function birdGameClass() {
     let startingYOnCanvas = 0;
     let endingXOnCanvas = gameCanvas.width;
     let endingYOnCanvas = gameCanvas.height;
-  	gameCanvasContext.drawImage(skyBackground, startingXOnCanvas,startingYOnCanvas,
+    drawFromSheet('images\\Backgrounds\\runnerSunAndSky.png', startingXOnCanvas,startingYOnCanvas,
                                                endingXOnCanvas, endingYOnCanvas);
+  	// gameCanvasContext.drawImage(skyBackground, startingXOnCanvas,startingYOnCanvas,
+    //                                            endingXOnCanvas, endingYOnCanvas);
   };
 
   this.handleSpaceBarDown = function()

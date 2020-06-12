@@ -64,7 +64,7 @@ function LoadingAndSplashScreen()
   {
     gameCanvasContext.fillStyle = 'orange';
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
-    fancyBG(titleFancySprites,titleFancySprites);
+    // fancyBG(titleFancySprites,titleFancySprites);
   }
 
   this.drawPleaseWaitForLoadingMessage = function()

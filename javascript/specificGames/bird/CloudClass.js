@@ -10,7 +10,8 @@ function Cloud(randomCloudImage)
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
 
   this.xSpeed = (getRandomIntInclusive(10,14))/10;
@@ -47,10 +48,10 @@ function CloudManager()
 
   this.initializeArrayOfCloudImages = function()
   {
-    this.arrayOfCloudImages.push(cloud1Image);
-    this.arrayOfCloudImages.push(cloud2Image);
-    this.arrayOfCloudImages.push(cloud3Image);
-    this.arrayOfCloudImages.push(cloud4Image);
+    this.arrayOfCloudImages.push('images\\Backgrounds\\cloud1.png');
+    this.arrayOfCloudImages.push('images\\Backgrounds\\cloud2.png');
+    this.arrayOfCloudImages.push('images\\Backgrounds\\cloud3.png');
+    this.arrayOfCloudImages.push('images\\Backgrounds\\cloud4.png');
   }
 
   this.arrayOfClouds = [];

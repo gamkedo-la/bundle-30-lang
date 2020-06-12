@@ -1,6 +1,6 @@
 function Plane()
 {
-  this.image = planeImage;
+  this.image = 'images\\sprites\\Bird\\plane.png';
   this.width = gameCanvas.width/2;
   this.height = gameCanvas.height/10;
   this.x = getRandomArbitrary(0,gameCanvas.width - this.width);
@@ -13,7 +13,8 @@ function Plane()
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
 
     let arrayOfCharacterTypes = [];
     for (let bannerMessageIndex = 0; bannerMessageIndex < gameClassManager.currentGame.amountCorrect; bannerMessageIndex++)
