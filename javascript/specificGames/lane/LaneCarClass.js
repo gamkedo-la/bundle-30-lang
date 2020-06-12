@@ -1,7 +1,7 @@
 function LaneCarClass()
 {
   this.name = 'lane car';
-  this.image = laneCarImage;
+  this.image = 'images\\sprites\\Lane\\car.png';
   this.x = gameCanvas.width/3.25;
   this.y = gameCanvas.height - gameCanvas.height/4;
 
@@ -10,7 +10,8 @@ function LaneCarClass()
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(laneCarImage, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
 }
 

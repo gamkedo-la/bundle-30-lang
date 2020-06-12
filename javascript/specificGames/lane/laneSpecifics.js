@@ -36,7 +36,7 @@ function laneGameClass() {
 
 	this.amountCorrect = 0;
 
-	this.answerHolderImage = gasCanImage;
+	this.answerHolderImage = 'images\\sprites\\Lane\\gasCan.png';
 	this.assignAnswerHolder = function()
 	{
 		let gasCanAnswerHolder = new GasCanAnswerHolder(this.answerHolderImage);

@@ -11,28 +11,28 @@ function LaneBackgroundClass()
 
   this.initialize = function()
   {
-    this.laneGrassImage1 = new LaneGrassImage(0, laneGrassBackground1);
-    this.laneGrassImage2 = new LaneGrassImage(-gameCanvas.height, laneGrassBackground2);
+    this.laneGrassImage1 = new LaneGrassImage(0, 'images\\Backgrounds\\LaneGrass1.png');
+    this.laneGrassImage2 = new LaneGrassImage(-gameCanvas.height, 'images\\Backgrounds\\LaneGrass2.png');
 
-    this.asphaltImage1 = new AsphaltImage(0, laneRoad1);
-    this.asphaltImage2 = new AsphaltImage(-gameCanvas.height, laneRoad2);
+    this.asphaltImage1 = new AsphaltImage(0, 'images\\Backgrounds\\road1.png');
+    this.asphaltImage2 = new AsphaltImage(-gameCanvas.height, 'images\\Backgrounds\\road2.png');
 
     this.billboard = new Billboard();
   }
 
   let dashPictureNumber = 1;
-  let currentDashPicture = roadDash1;
+  let currentDashPicture = 'images\\Backgrounds\\roadDash.png';
 
   function chooseDashPicture()
   {
     if (dashPictureNumber === 1)
     {
-      currentDashPicture = roadDash1;
+      currentDashPicture = 'images\\Backgrounds\\roadDash.png';
       dashPictureNumber = 2;
     }
     else if (dashPictureNumber === 2)
     {
-      currentDashPicture = roadDash3;
+      currentDashPicture = 'images\\Backgrounds\\roadDash3.png';
       dashPictureNumber = 1;
     }
     return currentDashPicture;
@@ -69,8 +69,10 @@ function LaneBackgroundClass()
 	{
 		for (let dashIndex = 0; dashIndex < arrayOfYellowCenterDashes.length; dashIndex++)
 		{
-      gameCanvasContext.drawImage(arrayOfYellowCenterDashes[dashIndex].image, arrayOfYellowCenterDashes[dashIndex].x,
-                                  arrayOfYellowCenterDashes[dashIndex].y, dashWidth,dashHeight);
+      drawFromSheet(arrayOfYellowCenterDashes[dashIndex].image, arrayOfYellowCenterDashes[dashIndex].x,
+                                  arrayOfYellowCenterDashes[dashIndex].y, dashWidth,dashHeight)
+      // gameCanvasContext.drawImage(arrayOfYellowCenterDashes[dashIndex].image, arrayOfYellowCenterDashes[dashIndex].x,
+      //                             arrayOfYellowCenterDashes[dashIndex].y, dashWidth,dashHeight);
 		}
 	}
 
@@ -115,7 +117,8 @@ function LaneGrassImage(drawingStartingY,image)
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(image, this.drawingStartingX,this.drawingStartingY, this.width,this.height);
+    drawFromSheet(image, this.drawingStartingX,this.drawingStartingY, this.width,this.height);
+    //gameCanvasContext.drawImage(image, this.drawingStartingX,this.drawingStartingY, this.width,this.height);
   }
 
   this.scrollDown = function()
@@ -143,7 +146,8 @@ function AsphaltImage(drawingStartingY, image)
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(image, this.drawingStartingX,this.drawingStartingY, this.width,this.height);
+    drawFromSheet(image, this.drawingStartingX,this.drawingStartingY, this.width,this.height);
+    //gameCanvasContext.drawImage(image, this.drawingStartingX,this.drawingStartingY, this.width,this.height);
   }
 
   this.scrollDown = function()
@@ -162,7 +166,7 @@ function AsphaltImage(drawingStartingY, image)
 
 function Billboard()
 {
-  this.image = billboardImage;
+  this.image = 'images\\sprites\\Lane\\billboard.png';
   this.width = gameCanvas.width/4;
   this.height = gameCanvas.height/3;
 
@@ -188,7 +192,8 @@ function Billboard()
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
 
     let arrayOfCharacterTypes = [];
     for (let bannerMessageIndex = 0; bannerMessageIndex < gameClassManager.currentGame.amountCorrect; bannerMessageIndex++)
