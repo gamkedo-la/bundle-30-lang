@@ -8,13 +8,13 @@ function helloWorldGameClass()
   this.NPC = undefined;
   this.defineAndInitializePlayerCharacter = function()
 	{
-		this.playerCharacter = new HelloWorldCharacter(russianDollImage1, gameCanvas.width*0.1);
-    this.NPC = new HelloWorldCharacter(russianDollImage4, gameCanvas.width*0.8);
+		this.playerCharacter = new HelloWorldCharacter("images\\sprites\\dodgeBall\\Player1.png", gameCanvas.width*0.1);
+    this.NPC = new HelloWorldCharacter("images\\sprites\\dodgeBall\\Player4.png", gameCanvas.width*0.8);
 		// this.playerCharacter.initialize();
 
-    this.playerCharacterSpeechBubbleHW1A = new CharacterSpeechBubbleHW1(speechBubbleFromLeftImageA,speechBubbleFromLeftImageAHighlighted, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
-    this.playerCharacterSpeechBubbleHW1B = new CharacterSpeechBubbleHW1(speechBubbleFromLeftImageB,speechBubbleFromLeftImageBHighlighted, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
-    this.NPCSpeechBubble = new CharacterSpeechBubbleHW1(speechBubbleFromRightImage,speechBubbleFromRightImage, gameCanvas.width*0.5,gameCanvas.height*0.2, gameCanvas.width/3,gameCanvas.width/3);
+    this.playerCharacterSpeechBubbleHW1A = new CharacterSpeechBubbleHW1("images\\sprites\\dayTime\\speechBubbleFromLeftA.png","images\\sprites\\dayTime\\speechBubbleFromLeftAHighlighted.png", gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
+    this.playerCharacterSpeechBubbleHW1B = new CharacterSpeechBubbleHW1("images\\sprites\\dayTime\\speechBubbleFromLeftB.png","images\\sprites\\dayTime\\speechBubbleFromLeftBHighlighted.png", gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
+    this.NPCSpeechBubble = new CharacterSpeechBubbleHW1("images\\sprites\\dayTime\\speechBubbleFromRIght.png","images\\sprites\\dayTime\\speechBubbleFromRIght.png", gameCanvas.width*0.5,gameCanvas.height*0.2, gameCanvas.width/3,gameCanvas.width/3);
   }
 
   this.drawTransitionText = function()
@@ -125,10 +125,11 @@ const helloWorldGame = new helloWorldGameClass();
 
 function HelloWorldBackground()
 {
-  this.image = daytimeImage;
+  this.image = "images\\Backgrounds\\daytimeBackground.png";
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
   }
 }

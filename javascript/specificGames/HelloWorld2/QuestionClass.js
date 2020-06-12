@@ -11,7 +11,7 @@ function QuestionClass(name, questionAudio,promptImage)
   {
     if (this.promptImageX !== undefined)
     {
-      gameCanvasContext.drawImage(this.image, this.promptAudioX,this.promptAudioY, 100,100);
+      gameCanvasContext.drawImage(this.promptImage, this.promptAudioX,this.promptAudioY, 100,100);
     }
   }
 }

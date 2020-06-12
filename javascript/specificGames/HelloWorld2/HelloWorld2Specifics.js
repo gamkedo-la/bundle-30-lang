@@ -8,12 +8,12 @@ function helloWorld2GameClass()
   this.NPC = undefined;
   this.defineAndInitializePlayerCharacter = function()
 	{
-		this.playerCharacter = new HelloWorldCharacter(russianDollImage1, gameCanvas.width*0.1);
-    this.NPC = new HelloWorldCharacter(russianDollImage4, gameCanvas.width*0.8);
+		this.playerCharacter = new HelloWorldCharacter("images\\sprites\\dodgeBall\\Player1.png", gameCanvas.width*0.1);
+    this.NPC = new HelloWorldCharacter("images\\sprites\\dodgeBall\\Player4.png", gameCanvas.width*0.8);
 		// this.playerCharacter.initialize();
 
-    this.playerCharacterSpeechBubbleHW2A = new CharacterSpeechBubbleHW2(speechBubbleFromLeftImageA,speechBubbleFromLeftImageAHighlighted, gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
-    this.playerCharacterSpeechBubbleHW2B = new CharacterSpeechBubbleHW2(speechBubbleFromLeftImageB,speechBubbleFromLeftImageBHighlighted, gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
+    this.playerCharacterSpeechBubbleHW2A = new CharacterSpeechBubbleHW2("images\\sprites\\dayTime\\speechBubbleFromLeftA.png","images\\sprites\\dayTime\\speechBubbleFromLeftAHighlighted.png", gameCanvas.width*0.1,gameCanvas.height*0.1, gameCanvas.width/3,gameCanvas.height/3);
+    this.playerCharacterSpeechBubbleHW2B = new CharacterSpeechBubbleHW2("images\\sprites\\dayTime\\speechBubbleFromLeftB.png","images\\sprites\\dayTime\\speechBubbleFromLeftBHighlighted.png", gameCanvas.width*0.2,gameCanvas.height*0.3, gameCanvas.width/3,gameCanvas.height/3);
   }
 
   this.drawTransitionText = function()
@@ -131,10 +131,11 @@ const helloWorld2Game = new helloWorld2GameClass();
 
 function HelloWorld2Background()
 {
-  this.image = daytimeImage;
+  this.image = "images\\Backgrounds\\daytimeBackground.png";
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
   }
 }

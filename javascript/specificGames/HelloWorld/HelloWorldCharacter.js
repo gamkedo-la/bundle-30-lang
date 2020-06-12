@@ -10,15 +10,16 @@ function HelloWorldCharacter(image, x)
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
-}CharacterSpeechBubbleHW1
+}
 
 function CharacterSpeechBubbleHW1(image,highlightedImage, x,y, width,height)
 {
   this.image = image;
   this.highlightedImage = highlightedImage;
-  this.arrowImage = helloWorldArrowImage;
+  this.arrowImage = "images\\sprites\\dayTime\\arrow.png";
   this.arrowImageWidth = 50;
   this.arrowImageHeight = 100;
 
@@ -37,11 +38,13 @@ function CharacterSpeechBubbleHW1(image,highlightedImage, x,y, width,height)
   {
     if (this.highlighted === true)
     {
-      gameCanvasContext.drawImage(this.highlightedImage, this.x,this.y, this.width,this.height);
+      drawFromSheet(this.highlightedImage, this.x,this.y, this.width,this.height);
+      //gameCanvasContext.drawImage(this.highlightedImage, this.x,this.y, this.width,this.height);
     }
     else if (this.highlighted === false)
     {
-      gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+      drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+      //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     }
 
     if (this.isBeingHeard === true)
@@ -50,7 +53,8 @@ function CharacterSpeechBubbleHW1(image,highlightedImage, x,y, width,height)
       let arrowImageStartingY = this.y - this.arrowImageHeight;
       // let arrowImageStartingX = gameCanvas.width/2;
       // let arrowImageStartingY = gameCanvas.height/2;
-      gameCanvasContext.drawImage(this.arrowImage, arrowImageStartingX,arrowImageStartingY, this.arrowImageWidth,this.arrowImageHeight);
+      drawFromSheet(this.arrowImage, arrowImageStartingX,arrowImageStartingY, this.arrowImageWidth,this.arrowImageHeight);
+      //gameCanvasContext.drawImage(this.arrowImage, arrowImageStartingX,arrowImageStartingY, this.arrowImageWidth,this.arrowImageHeight);
     }
   }
 

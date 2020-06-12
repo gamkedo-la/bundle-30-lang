@@ -2,7 +2,7 @@ function ConversationPattern(name,promptAudio,answerAudio)
 {
 
   this.name = name;
-  this.image = placeholderPlayButtonImage;
+  this.image = "images\\placeholderPlayButtonImage.png";
 
   this.promptAudioX = undefined;
   this.promptAudioY = undefined;
@@ -18,12 +18,14 @@ function ConversationPattern(name,promptAudio,answerAudio)
   {
     if (this.promptAudioX !== undefined)
     {
-      gameCanvasContext.drawImage(this.image, this.promptAudioX,this.promptAudioY, 100,100);
+      drawFromSheet(this.image, this.promptAudioX,this.promptAudioY, 100,100);
+      //gameCanvasContext.drawImage(this.image, this.promptAudioX,this.promptAudioY, 100,100);
     }
 
     if (this.answerAudioX !== undefined)
     {
-      gameCanvasContext.drawImage(this.image, this.answerAudioX,this.answerAudioY, 100,100);
+      drawFromSheet(this.image, this.answerAudioX,this.answerAudioY, 100,100);
+      //gameCanvasContext.drawImage(this.image, this.answerAudioX,this.answerAudioY, 100,100);
     }
   }
 }
