@@ -9,10 +9,11 @@ function Chicken(x,y)
   this.eggStartingX = this.x;
   this.eggStartingY = this.y + this.height*0.6;
 
-  this.image = chickenImage;
+  this.image = 'images\\sprites\\eggCatch\\chicken.png';
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
 }

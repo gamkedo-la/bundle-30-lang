@@ -44,8 +44,8 @@ function eggCatchGameClass()
   this.textAnswerFontStyle = this.textAnswerFontSize + 'px Helvetica';
 
   this.arrayOfAnswerHolders = [];
-  this.eggAnswerHolder1 = new EggAnswerHolder(eggImage1);
-  this.eggAnswerHolder2 = new EggAnswerHolder(eggImage2);
+  this.eggAnswerHolder1 = new EggAnswerHolder('images\\sprites\\eggCatch\\egg.png');
+  this.eggAnswerHolder2 = new EggAnswerHolder('images\\sprites\\eggCatch\\egg2.png');
   this.arrayOfAnswerHolders.push(this.eggAnswerHolder1);
   this.arrayOfAnswerHolders.push(this.eggAnswerHolder2);
   this.assignAnswerHolder = function()
@@ -188,11 +188,13 @@ const eggCatchGame = new eggCatchGameClass();
 
 function EggCatchBackground()
 {
-  this.image = eggCatchBackgroundImage;
+  this.image = 'images\\Backgrounds\\Barn.png';
   this.draw = function()
   {
-    gameCanvasContext.drawImage(daytimeImage, 0,0, gameCanvas.width,gameCanvas.height);
-    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet("images\\Backgrounds\\daytimeBackground.png", 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    // gameCanvasContext.drawImage("images\\Backgrounds\\daytimeBackground.png", 0,0, gameCanvas.width,gameCanvas.height);
+    // gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
   }
 }
 
