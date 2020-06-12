@@ -3,8 +3,8 @@ const CELL_HEIGHT = 100;
 const WALL_THICKNESS = 20;
 
 function CellClass(
-  rowIndex, columnIndex, 
-  numRows=NUMBER_OF_ROWS, 
+  rowIndex, columnIndex,
+  numRows=NUMBER_OF_ROWS,
   numCols=NUMBER_OF_COLUMNS
   )
 {
@@ -41,26 +41,26 @@ function CellClass(
     {
       this.topNeighboringCellIndex = ( (this.rowIndex - 1) * numCols ) + this.columnIndex;
       this.neighborIdx.push(this.topNeighboringCellIndex);
-    } 
-    
+    }
+
     if (rowIndex < numRows - 1)
     {
       this.bottomNeighboringCellIndex = ( ( (this.rowIndex + 1 ) * numCols ) + this.columnIndex );
       this.neighborIdx.push(this.bottomNeighboringCellIndex);
-    } 
-    
+    }
+
     if (columnIndex > 0)
     {
       this.leftNeighboringCellIndex = ( (this.rowIndex * numCols) + (this.columnIndex - 1) );
       this.neighborIdx.push(this.leftNeighboringCellIndex);
-    } 
-    
+    }
+
     if (columnIndex < numCols - 1)
     {
       this.rightNeighboringCellIndex = (this.rowIndex * numCols ) + this.columnIndex + 1;
       this.neighborIdx.push(this.rightNeighboringCellIndex);
-    } 
-    
+    }
+
   }
 
   this.checkIfIsDeadEnd = function(){
@@ -120,18 +120,21 @@ function CellClass(
     //top wall
     if (this.topWallExist)
     {
-      gameCanvasContext.drawImage(
-        mazeTopWall, xCoordinate - WALL_THICKNESS/2, 
-        yCoordinate - WALL_THICKNESS/2, 
-        CELL_WIDTH + WALL_THICKNESS, WALL_THICKNESS
-      );
+      drawFromSheet("images\\Backgrounds\\topWall.png",xCoordinate - WALL_THICKNESS/2,
+      yCoordinate - WALL_THICKNESS/2,
+      CELL_WIDTH + WALL_THICKNESS, WALL_THICKNESS);
+      // gameCanvasContext.drawImage(
+      //   mazeTopWall, xCoordinate - WALL_THICKNESS/2,
+      //   yCoordinate - WALL_THICKNESS/2,
+      //   CELL_WIDTH + WALL_THICKNESS, WALL_THICKNESS
+      // );
     }
 
     // //bottom wall
     // if (this.bottomWallExist)
     // {
     //   gameCanvasContext.drawImage(
-    //     mazeBottomWall, xCoordinate, 
+    //     mazeBottomWall, xCoordinate,
     //     yCoordinate + CELL_HEIGHT-WALL_THICKNESS/2, CELL_WIDTH, WALL_THICKNESS
     //   );
     // }
@@ -139,23 +142,26 @@ function CellClass(
     //left wall
     if (this.leftWallExist)
     {
-      gameCanvasContext.drawImage(
-        mazeLeftWall, xCoordinate-WALL_THICKNESS/2, 
-        yCoordinate - WALL_THICKNESS/2, 
-        WALL_THICKNESS, CELL_HEIGHT + WALL_THICKNESS
-      );
+      drawFromSheet("images\\Backgrounds\\leftWall.png", xCoordinate-WALL_THICKNESS/2,
+      yCoordinate - WALL_THICKNESS/2,
+      WALL_THICKNESS, CELL_HEIGHT + WALL_THICKNESS);
+      // gameCanvasContext.drawImage(
+      //   mazeLeftWall, xCoordinate-WALL_THICKNESS/2,
+      //   yCoordinate - WALL_THICKNESS/2,
+      //   WALL_THICKNESS, CELL_HEIGHT + WALL_THICKNESS
+      // );
     }
 
     // //right wall
     // if (this.rightWallExist)
     // {
     //   gameCanvasContext.drawImage(
-    //     mazeRightWall, xCoordinate + CELL_WIDTH - WALL_THICKNESS/2, 
+    //     mazeRightWall, xCoordinate + CELL_WIDTH - WALL_THICKNESS/2,
     //     yCoordinate, WALL_THICKNESS, CELL_HEIGHT
     //   );
     // }
 
-    
+
     gameCanvasContext.restore();
 
   }

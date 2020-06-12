@@ -36,7 +36,7 @@ function MazeGameClass(){
     this.correctTextAnswerHolderWidth = undefined;
     this.incorrectTextAnswerHolderWidth = undefined;
 
-    this.answerHolderImage = moleFoodImage;
+    this.answerHolderImage = "images\\sprites\\Maze\\moleFood.png";
 
     this.assignAnswerHolder = function()
     {
@@ -165,7 +165,8 @@ function MazeGameClass(){
 
     this.drawBackGround = function ()
     {
-        gameCanvasContext.drawImage(mazeFloor, 0, 0, gameCanvas.width, gameCanvas.height);
+      drawFromSheet("images\\Backgrounds\\mazefloor.png", 0, 0, gameCanvas.width, gameCanvas.height);
+        //gameCanvasContext.drawImage(mazeFloor, 0, 0, gameCanvas.width, gameCanvas.height);
     }
 
     this.selectDeadEndCellsForAnswers = function () {

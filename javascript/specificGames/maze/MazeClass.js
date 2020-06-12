@@ -27,7 +27,7 @@ function MazeClass(){
         }
     }
 
-    this.generate = function () 
+    this.generate = function ()
     {
         if (!this.isGenerationInitialized){
             this.initializeGeneration();
@@ -62,7 +62,7 @@ function MazeClass(){
         if (!nextCellToVisit.hasBeenVisited){
             this.tearDownTheWallBetweenCells(
                 this.currentCellVisitedByGenerationAlgo, nextCellToVisit
-            ); 
+            );
         }
         this.currentCellVisitedByGenerationAlgo.checkIfIsDeadEnd();
         this.markCurrentCellAsVisited();
@@ -85,24 +85,24 @@ function MazeClass(){
 
     this.tearDownTheWallBetweenCells = function(cell1, cell2){
         var cell1ToCell2Distance = cell1.index - cell2.index;
-        
+
         switch(cell1ToCell2Distance)
         {
             case NUMBER_OF_COLUMNS:
                 cell1.topWallExist    = false;
                 cell2.bottomWallExist = false;
                 break;
-            
+
             case -NUMBER_OF_COLUMNS:
                 cell1.bottomWallExist = false;
                 cell2.topWallExist    = false;
                 break;
-            
+
             case 1:
                 cell1.leftWallExist  = false;
                 cell2.rightWallExist = false;
                 break;
-            
+
             case -1:
                 cell1.rightWallExist = false;
                 cell2.leftWallExist  = false;
@@ -136,14 +136,14 @@ function MazeClass(){
     }
 
 
-    this.initializeGeneration = function () 
+    this.initializeGeneration = function ()
     {
         this.currentCellVisitedByGenerationAlgo = getRandomElementFromArray(this.arrayOfCells);
         this.currentCellVisitedByGenerationAlgo.isVisitedByGenerationAlgorithm = true;
         this.isGenerationInitialized = true;
     }
 
-    
+
     this.reset = function()
     {
         this.arrayOfCells.forEach(function(cell){cell.reset();});
@@ -167,28 +167,34 @@ function MazeClass(){
             this.arrayOfCells[currentCellIndex].draw();
         }
 
-        gameCanvasContext.drawImage(
-            mazeTopWall, 0, -WALL_THICKNESS/2, 
-            gameCanvas.width, WALL_THICKNESS
-        );
+        drawFromSheet("images\\Backgrounds\\topWall.png", 0, -WALL_THICKNESS/2,
+        gameCanvas.width, WALL_THICKNESS);
 
-        
-        gameCanvasContext.drawImage(
-            mazeBottomWall, 0, gameCanvas.height - WALL_THICKNESS/2, 
-            gameCanvas.width, WALL_THICKNESS
-        );
+        // gameCanvasContext.drawImage(
+        //     mazeTopWall, 0, -WALL_THICKNESS/2,
+        //     gameCanvas.width, WALL_THICKNESS
+        // );
 
-        
-        gameCanvasContext.drawImage(
-            mazeLeftWall, -WALL_THICKNESS/2, 0, 
-            WALL_THICKNESS, gameCanvas.height
-        );
+        drawFromSheet("images\\Backgrounds\\bottomWall.png", 0, gameCanvas.height - WALL_THICKNESS/2,
+        gameCanvas.width, WALL_THICKNESS);
+        // gameCanvasContext.drawImage(
+        //     mazeBottomWall, 0, gameCanvas.height - WALL_THICKNESS/2,
+        //     gameCanvas.width, WALL_THICKNESS
+        // );
 
-        
-        gameCanvasContext.drawImage(
-            mazeRightWall, gameCanvas.width - WALL_THICKNESS/2, 0,
-            WALL_THICKNESS, gameCanvas.height
-        );
+        drawFromSheet("images\\Backgrounds\\leftWall.png", -WALL_THICKNESS/2, 0,
+        WALL_THICKNESS, gameCanvas.height);
+        // gameCanvasContext.drawImage(
+        //     mazeLeftWall, -WALL_THICKNESS/2, 0,
+        //     WALL_THICKNESS, gameCanvas.height
+        // );
+
+        drawFromSheet("images\\Backgrounds\\rightWall.png", gameCanvas.width - WALL_THICKNESS/2, 0,
+        WALL_THICKNESS, gameCanvas.height);
+        // gameCanvasContext.drawImage(
+        //     mazeRightWall, gameCanvas.width - WALL_THICKNESS/2, 0,
+        //     WALL_THICKNESS, gameCanvas.height
+        // );
     }
 
     this.getCellAtIndex = function(index){
