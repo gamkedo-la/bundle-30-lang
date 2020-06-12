@@ -48,8 +48,7 @@ function fancyBG(bottomImages=[heartImage],topImages=[starImage]) {
 
     gameCanvasContext.globalAlpha = 1;
 }
-// to quickly debug different ones by updating this from console
-var testDrawString = "images\\sprites\\Penalty\\goalkeeper\\11.png"; // find in ImageList.JS
+
 function TitleScreenClass()
 {
   this.cellXTopLeftCoordinate = 0;
@@ -59,8 +58,12 @@ function TitleScreenClass()
   {
     customFontFillText(['Bundle of 30 Language Games'], 40, 20, 50,25);
     customFontFillText(['Choose A Game ', symbolExclamationPointImage], 50, 20, 175,100);
-    drawFromSheet(testDrawString,
-            inputManager.mouseCoordinates.x,inputManager.mouseCoordinates.y,150,150);
+    
+    // which image to use? path can be browsed from imageList.js!
+    drawFromSheet("images\\sprites\\PromptsAndAnswers\\Mandarin\\excuseMePassingThroughContext.png",
+            inputManager.mouseCoordinates.x,inputManager.mouseCoordinates.y, // where to draw?
+            150,150, // what dimensions?
+            true); // flip horizontally?
   }
 
   this.drawCellsAndCheckForHighlighting = function()
