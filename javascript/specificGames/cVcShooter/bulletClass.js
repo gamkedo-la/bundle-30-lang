@@ -10,7 +10,8 @@ function Bullet(i)
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(galleryBulletImage, this.xPosition,this.yPosition, 10,30);
+    drawFromSheet('images\\sprites\\cVc shooter\\bullet.png', this.xPosition,this.yPosition, 10,30);
+    //gameCanvasContext.drawImage(galleryBulletImage, this.xPosition,this.yPosition, 10,30);
   }
 
   this.handleLetterCollisions = function(i)

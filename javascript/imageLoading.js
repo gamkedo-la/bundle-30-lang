@@ -657,13 +657,6 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: gem2Image, theFile: 'images/sprites/passBlock/Gem2.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: gem3Image, theFile: 'images/sprites/passBlock/Gem3.png', loaded: false});
 
-  //cVc shooter/shoot gallery game
-  arrayOfImagesToLoad.push({imageObjectBinding: shootGalleryImage, theFile: 'images/Backgrounds/ShootGallery.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: shootGalleryTargetImage, theFile: 'images/Backgrounds/target.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: galleryGunImage, theFile: 'images/sprites/cVc shooter/Gun.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: galleryBulletImage, theFile: 'images/sprites/cVc shooter/bullet.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: gunSmokeParticleImage, theFile: 'images/sprites/cVc shooter/smokeParticle.png', loaded: false});
-
   //space shooter game
   arrayOfImagesToLoad.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/SpaceWithJupiter1.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: spaceShooterBackgroundImage2, theFile: 'images/Backgrounds/SpaceWithJupiter2.png', loaded: false});

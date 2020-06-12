@@ -1,6 +1,6 @@
 function cVc(firstLetter,secondLetter,thirdLetter, imageAssociation, audioAssociation)
 {
-  this.backgroundImage = shootGalleryTargetImage;
+  this.backgroundImage = 'images\\Backgrounds\\target.png';
 
   this.imageAssociation = imageAssociation;
   this.audioAssociation = audioAssociation;
@@ -59,23 +59,32 @@ function cVc(firstLetter,secondLetter,thirdLetter, imageAssociation, audioAssoci
 
     if (cVcShooterGame.playerShouldBeTargetingFirstLetter)
     {
-      gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[0]*200 + 55,100);
+
+      //gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[0]*200 + 55,100);
+      drawFromSheet(this.backgroundImage, this.arrayOfLetterPositions[0]*200 + 55,100);
       gameCanvasContext.fillText(this.firstLetter, this.arrayOfLetterPositions[0]*200 + 102,153);
-      gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[1]*200 + 55,100);
+
+      //gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[1]*200 + 55,100);
+      drawFromSheet(this.backgroundImage, this.arrayOfLetterPositions[1]*200 + 55,100);
       gameCanvasContext.fillText(this.secondLetter, this.arrayOfLetterPositions[1]*200 + 102,153);
-      gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[2]*200 + 55,100);
+
+      //gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[2]*200 + 55,100);
+      drawFromSheet(this.backgroundImage, this.arrayOfLetterPositions[2]*200 + 55,100);
       gameCanvasContext.fillText(this.thirdLetter, this.arrayOfLetterPositions[2]*200 + 102,153);
     }
     else if (cVcShooterGame.playerShouldBeTargetingSecondLetter)
     {
-      gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[1]*200 + 55,100);
+      //gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[1]*200 + 55,100);
+      drawFromSheet(this.backgroundImage, this.arrayOfLetterPositions[1]*200 + 55,100);
       gameCanvasContext.fillText(this.secondLetter, this.arrayOfLetterPositions[1]*200 + 102,153);
-      gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[2]*200 + 55,100);
+      //gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[2]*200 + 55,100);
+      drawFromSheet(this.backgroundImage, this.arrayOfLetterPositions[2]*200 + 55,100);
       gameCanvasContext.fillText(this.thirdLetter, this.arrayOfLetterPositions[2]*200 + 102,153);
     }
     else if (cVcShooterGame.playerShouldBeTargetingThirdLetter)
     {
-      gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[2]*200 + 55,100);
+      //gameCanvasContext.drawImage(this.backgroundImage, this.arrayOfLetterPositions[2]*200 + 55,100);
+      drawFromSheet(this.backgroundImage, this.arrayOfLetterPositions[2]*200 + 55,100);
       gameCanvasContext.fillText(this.thirdLetter, this.arrayOfLetterPositions[2]*200 + 102,153);
     }
     else

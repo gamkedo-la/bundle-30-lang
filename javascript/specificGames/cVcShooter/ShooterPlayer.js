@@ -4,20 +4,24 @@ function ShooterPlayer()
 
   this.gunRotated = false;
 
+  this.image = 'images\\sprites\\cVc shooter\\Gun.png';
+
   this.draw = function()
   {
     if (this.gunRotated === true)
     {
-      gameCanvasContext.save();
-      gameCanvasContext.translate(this.position*(gameCanvas.width*0.165) - 3,gameCanvas.height);
-      gameCanvasContext.rotate(15*Math.PI/180);
-      gameCanvasContext.translate( -(this.position*(gameCanvas.width*0.165) - 3),-(gameCanvas.height) );
-      gameCanvasContext.drawImage(galleryGunImage, this.position*(gameCanvas.width/3) - 3,gameCanvas.height - 150, 200,350);
-      gameCanvasContext.restore();
+      drawFromSheet(this.image, this.position*(gameCanvas.width/3) - 3,gameCanvas.height - 150, 200,350, undefined, 15*Math.PI/180, this.position*(gameCanvas.width*0.165) - 3,gameCanvas.height);
+      // gameCanvasContext.save();
+      // gameCanvasContext.translate(this.position*(gameCanvas.width*0.165) - 3,gameCanvas.height);
+      // gameCanvasContext.rotate(15*Math.PI/180);
+      // gameCanvasContext.translate( -(this.position*(gameCanvas.width*0.165) - 3),-(gameCanvas.height) );
+      // gameCanvasContext.drawImage(galleryGunImage, this.position*(gameCanvas.width/3) - 3,gameCanvas.height - 150, 200,350);
+      // gameCanvasContext.restore();
     }
     else if (this.gunRotated === false)
     {
-      gameCanvasContext.drawImage(galleryGunImage, this.position*(gameCanvas.width/3) - 3,gameCanvas.height - 150, 200,350);
+      drawFromSheet(this.image, this.position*(gameCanvas.width/3) - 3,gameCanvas.height - 150, 200,350)
+      //gameCanvasContext.drawImage(galleryGunImage, this.position*(gameCanvas.width/3) - 3,gameCanvas.height - 150, 200,350);
     }
 
   }
@@ -46,7 +50,7 @@ function unRotateGun()
 function GunSmokeParticle(x,y)
 {
 
-  this.image = gunSmokeParticleImage;
+  this.image = 'images\\sprites\\cVc shooter\\smokeParticle.png';
   this.x = x;
   this.y = y;
 
@@ -60,7 +64,8 @@ function GunSmokeParticle(x,y)
   this.draw = function()
   {
     gameCanvasContext.globalAlpha = this.alpha;
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     gameCanvasContext.globalAlpha = 1;
   }
 
