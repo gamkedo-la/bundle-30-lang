@@ -12,8 +12,8 @@ function frogCrateGameClass()
     let fly1OscillationVelocity = getRandomArbitrary(-0.035,0.035);
     let fly2OscillationVelocity = getRandomArbitrary(-0.035,0.035);
 
-    this.fly1 = new Fly(flyImage1, 1,fly1OscillationVelocity);
-    this.fly2 = new Fly(flyImage1, -1, fly2OscillationVelocity);
+    this.fly1 = new Fly("images\\sprites\\frogCrate\\cartoonFly.png", 1,fly1OscillationVelocity);
+    this.fly2 = new Fly("images\\sprites\\frogCrate\\cartoonFly.png", -1, fly2OscillationVelocity);
   }
 
   this.drawTransitionText = function()
@@ -132,15 +132,19 @@ const frogCrateGame = new frogCrateGameClass();
 
 function FrogCrateBackground()
 {
-  this.waterImage = frogCrateBackground;
-  this.grassImage = snakeGrassBackground;
-  this.skyImage = skyBackground;
-  this.bathStoneImage = bathStoneImage;
+  this.waterImage = "images\\Backgrounds\\Lake.png";
+  this.grassImage = 'images\\Backgrounds\\Grass.png';
+  this.skyImage = "images\\Backgrounds\\Sky.png";
+  this.bathStoneImage = "images\\sprites\\frogCrate\\bathStone.png";
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.skyImage, 0,0, gameCanvas.width,gameCanvas.height);
-    gameCanvasContext.drawImage(this.grassImage, 0,gameCanvas.height*0.35, gameCanvas.width,gameCanvas.height*0.75);
-    gameCanvasContext.drawImage(this.waterImage, 0,gameCanvas.height*0.4, gameCanvas.width,gameCanvas.height*0.5);
-    gameCanvasContext.drawImage(this.bathStoneImage, 0,gameCanvas.height*0.9, gameCanvas.width,gameCanvas.height*0.15);
+    drawFromSheet(this.skyImage, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.grassImage, 0,gameCanvas.height*0.35, gameCanvas.width,gameCanvas.height*0.75);
+    drawFromSheet(this.waterImage, 0,gameCanvas.height*0.4, gameCanvas.width,gameCanvas.height*0.5);
+    drawFromSheet(this.bathStoneImage, 0,gameCanvas.height*0.9, gameCanvas.width,gameCanvas.height*0.15);
+    // gameCanvasContext.drawImage(this.skyImage, 0,0, gameCanvas.width,gameCanvas.height);
+    // gameCanvasContext.drawImage(this.grassImage, 0,gameCanvas.height*0.35, gameCanvas.width,gameCanvas.height*0.75);
+    // gameCanvasContext.drawImage(this.waterImage, 0,gameCanvas.height*0.4, gameCanvas.width,gameCanvas.height*0.5);
+    // gameCanvasContext.drawImage(this.bathStoneImage, 0,gameCanvas.height*0.9, gameCanvas.width,gameCanvas.height*0.15);
   }
 }

@@ -1,6 +1,6 @@
 function FrogCratePlayer()
 {
-  this.frogInBowlImage = frogInBowlImage;
+  this.frogInBowlImage = "images\\sprites\\frogCrate\\FrogInBowl.png";
 
 
   this.width = gameCanvas.width*0.2;
@@ -13,8 +13,10 @@ function FrogCratePlayer()
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.tongue.image, this.tongue.x,this.tongue.y, this.tongue.width,this.tongue.height);
-    gameCanvasContext.drawImage(this.frogInBowlImage, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.tongue.image, this.tongue.x,this.tongue.y, this.tongue.width,this.tongue.height);
+    drawFromSheet(this.frogInBowlImage, this.x,this.y, this.width,this.height);
+    // gameCanvasContext.drawImage(this.tongue.image, this.tongue.x,this.tongue.y, this.tongue.width,this.tongue.height);
+    // gameCanvasContext.drawImage(this.frogInBowlImage, this.x,this.y, this.width,this.height);
   }
 
   this.move = function()
@@ -69,7 +71,7 @@ function Tongue()
 {
   let playerCharacter = gameClassManager.currentGame.playerCharacter;
 
-  this.image = frogTongueImage;
+  this.image = "images\\sprites\\frogCrate\\frogTongue.png";
   this.width = 10;
   this.x = playerCharacter.x + playerCharacter.width/2 - 1.5;
   this.y = playerCharacter.y - 10;
