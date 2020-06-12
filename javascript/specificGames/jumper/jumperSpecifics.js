@@ -80,7 +80,7 @@ function jumperGameClass()
   this.assignAnswerHolder = function()
   {
     console.log('called assign answer holder');
-    this.treasureChestAnswerHolder = new TreasureChestAnswerHolder(treasureChestAnswerHolderImage);
+    this.treasureChestAnswerHolder = new TreasureChestAnswerHolder('images\\sprites\\Jumper\\treasureChest.png');
     return this.treasureChestAnswerHolder;
   }
 
@@ -188,7 +188,8 @@ function jumperGameClass()
   	{
         gameCanvasContext.fillRect(this.arrayOfJumperPlatforms[platformsIndex].x, this.arrayOfJumperPlatforms[platformsIndex].y, gameCanvas.width, 50)
   	}
-    gameCanvasContext.drawImage(jumperBackground, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet('images\\Backgrounds\\editedJumperBackground.png', 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(jumperBackground, 0,0, gameCanvas.width,gameCanvas.height);
   };
 
   this.onSpaceBarKeyDown = function()

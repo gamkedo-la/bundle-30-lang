@@ -26,7 +26,8 @@ function GroundParticle(x,y, xVelocity,yVelocity, image)
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
 }
 
@@ -46,7 +47,7 @@ function GroundParticleManager()
       let xVelocity = getRandomArbitrary(-1,1);
       let yVelocity = getRandomArbitrary(-7, -10);
 
-      let particle = new GroundParticle(xToAssign,yToAssign, xVelocity,yVelocity, jumperGroundParticleImage);
+      let particle = new GroundParticle(xToAssign,yToAssign, xVelocity,yVelocity, 'images\\sprites\\Jumper\\jumperGroundParticle.png');
       groupOfParticles.push(particle);
     }
     this.arrayOfGroupsOfParticles.push(groupOfParticles);

@@ -14,8 +14,8 @@ function JumperClass()
   this.rotationAmount = 0;
 
 
-  this.facingRightImage = jumperPlayerFacingRightImage;
-  this.facingLeftImage = jumperPlayerFacingLeftImage;
+  this.facingRightImage = 'images\\sprites\\Jumper\\JumperFacingRight.png';
+  this.facingLeftImage = 'images\\sprites\\Jumper\\JumperFacingLeft.png';
   this.currentImage = this.facingRightImage;
 
   this.draw = function()
@@ -23,12 +23,13 @@ function JumperClass()
     let currentCenterX = this.x + this.width/2;
     let currentCenterY = this.y + this.height/2;
 
-    gameCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
-    gameCanvasContext.translate(currentCenterX,currentCenterY);//place imaginary hand at pivot point
-    gameCanvasContext.rotate(this.rotationAmount + Math.PI/2);//rotate with hand at pivot based in radians
-    gameCanvasContext.translate(-currentCenterX,-currentCenterY);//return hand to 0,0 of canvas
-    gameCanvasContext.drawImage(this.currentImage, this.x,this.y, this.width,this.height);
-    gameCanvasContext.restore();//erase any errant abnormal draw code
+    drawFromSheet(this.currentImage, this.x,this.y, this.width,this.height, undefined, this.rotationAmount + Math.PI/2,currentCenterX,currentCenterY);
+    // gameCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
+    // gameCanvasContext.translate(currentCenterX,currentCenterY);//place imaginary hand at pivot point
+    // gameCanvasContext.rotate(this.rotationAmount + Math.PI/2);//rotate with hand at pivot based in radians
+    // gameCanvasContext.translate(-currentCenterX,-currentCenterY);//return hand to 0,0 of canvas
+    // gameCanvasContext.drawImage(this.currentImage, this.x,this.y, this.width,this.height);
+    // gameCanvasContext.restore();//erase any errant abnormal draw code
 
   	// gameCanvasContext.fillStyle = 'white';
   	// gameCanvasContext.fillRect(this.x,this.y, this.width,this.height);
