@@ -14,10 +14,10 @@ function drawFromSheet(imgName, atX,atY,
     heightToDraw = spritesheetData[imgNum].h*scale;
   }
 
-  console.log('angle: ' + rotationAngle + " pivotX: " + pivotX + ' pivotY: ' + pivotY);
+  //console.log('angle: ' + rotationAngle + " pivotX: " + pivotX + ' pivotY: ' + pivotY);
   if(typeof rotationAngle !== 'undefined' && typeof pivotX !== 'undefined' && typeof pivotY !== 'undefined')
   {
-    console.log('inside angle and pivot checks');
+    //console.log('inside angle and pivot checks');
     gameCanvasContext.save();
     gameCanvasContext.translate(pivotX,pivotY);//place imaginary hand at pivot point
     gameCanvasContext.rotate(rotationAngle + Math.PI/2);//rotate with hand at pivot based in radians

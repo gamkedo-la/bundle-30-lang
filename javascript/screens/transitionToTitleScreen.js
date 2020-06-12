@@ -16,7 +16,7 @@ function TransitionToTitleScreen()
     gameCanvasContext.fillStyle = 'orange';
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
 
-    fancyBG();
+    // fancyBG();
 
     customFontFillText(['Welcome to '], gameCanvas.width*0.08, gameCanvas.width*0.075,
                         gameCanvas.width/2 - gameCanvas.width*0.4,gameCanvas.height/2 - 100);

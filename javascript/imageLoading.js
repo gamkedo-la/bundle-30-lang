@@ -266,17 +266,6 @@ let simon1Image = document.createElement('img');
 let simonLeftHighlightImage = document.createElement('img');
 let simonRightHighlightImage = document.createElement('img');
 
-//air grab
-let airBoothImage = document.createElement('img');
-
-
-let armlessBodyImage = document.createElement('img');
-let rightArmImage = document.createElement('img');
-let leftArmImage = document.createElement('img');
-let bill1Image = document.createElement('img');
-let bill2Image = document.createElement('img');
-let bill3Image = document.createElement('img');
-let bill4Image = document.createElement('img');
 
 //Frog
 let frogRiverBackgroundImage = document.createElement('img');
@@ -405,7 +394,7 @@ symbolEmailAtImage, symbolHashImage, symbolDollarSignImage, symbolPercentImage, 
 symbolPeriodImage, symbolCommaImage];
 
 // image arrays for fancyBG trasition particle systems
-var titleFancySprites = [catImage,beeImage,flowerImage,runnerCloud1,coinImage,laneCarImage,spaceshipImage,moleFoodImage,bill1Image,pinataImage,symbolQuestionMarkImage,fishingGameFish1,lilyImage1,hammerImage];
+var titleFancySprites = ['images\\sprites\\PromptsAndAnswers\\cat.png','images\\sprites\\PromptsAndAnswers\\bee.png','images\\sprites\\PromptsAndAnswers\\flower.png','images\\Backgrounds\\runnerCloud1.png','images\\sprites\\runner\\Coin.png','images\\sprites\\Lane\\car.png','images\\sprites\\spaceShooter\\spaceship.png',"images\\sprites\\Maze\\moleFood.png","images\\sprites\\air grab\\Bill.png",'images\\sprites\\pinata\\pinata.png','images\\Custom Font\\pngs\\symbols\\symbolQuestionMark.png','images\\sprites\\Fishing\\fish.png',"images\\sprites\\frogRiver\\lilyImage1.png",'images\\sprites\\whackAnAnswer\\whackHammer.png'];
 
 
 (function () {//cycle through letter and number names, create image elements for them
@@ -753,17 +742,6 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: simon1Image, theFile: "images/sprites/Memory/Simon.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: simonLeftHighlightImage, theFile: "images/sprites/Memory/simonLeftHighlight.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: simonRightHighlightImage, theFile: "images/sprites/Memory/simonRightHighlight.png", loaded: false});
-
-  //air booth
-  arrayOfImagesToLoad.push({imageObjectBinding: airBoothImage, theFile: "images/Backgrounds/airBooth.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: armlessBodyImage, theFile: "images/sprites/air grab/AirGuy.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: leftArmImage, theFile: "images/sprites/air grab/leftArmm.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: rightArmImage, theFile: "images/sprites/air grab/rightArmm.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: bill1Image, theFile: "images/sprites/air grab/Bill.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: bill2Image, theFile: "images/sprites/air grab/Bill2.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: bill3Image, theFile: "images/sprites/air grab/Bill3.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: bill4Image, theFile: "images/sprites/air grab/Bill4.png", loaded: false});
-
 
 
   //frog

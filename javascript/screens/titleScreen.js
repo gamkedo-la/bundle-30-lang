@@ -38,11 +38,16 @@ function fancyBG(bottomImages=[heartImage],topImages=[starImage]) {
         fancysprite[i].y += fancysprite[i].s;
 
         gameCanvasContext.globalAlpha = fancysprite[i].a;
-        gameCanvasContext.drawImage(fancysprite[i].i,
+        drawFromSheet(fancysprite[i].i,
             fancysprite[i].x,fancysprite[i].y,
             fancysize, // scaled down
             // scale but respect aspect ratio
             (fancysprite[i].i.height/fancysprite[i].i.width)*(fancysize));
+        // gameCanvasContext.drawImage(fancysprite[i].i,
+        //     fancysprite[i].x,fancysprite[i].y,
+        //     fancysize, // scaled down
+        //     // scale but respect aspect ratio
+        //     (fancysprite[i].i.height/fancysprite[i].i.width)*(fancysize));
 
     }
 
