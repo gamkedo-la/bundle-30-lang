@@ -1,6 +1,6 @@
 function FlyingBeePlayerCharacter()
 {
-  this.image = flyingBeeFacingRightImage;
+  this.image = 'images/sprites/Flying Bee/Simple Bee Facing Right.png';
 
   this.width = gameCanvas.width*0.15;
   this.height = gameCanvas.height*0.1;
@@ -13,43 +13,44 @@ function FlyingBeePlayerCharacter()
     if (inputManager.leftArrowIsBeingHeld && !inputManager.upArrowIsBeingHeld &&
         !inputManager.downArrowIsBeingHeld)//flying left
         {
-          this.image = flyingBeeFacingLeftImage;
+          this.image = 'images\\sprites\\Flying Bee\\Simple Bee Facing Left.png';
         }
     else if (inputManager.leftArrowIsBeingHeld && inputManager.upArrowIsBeingHeld &&
         !inputManager.downArrowIsBeingHeld)//flying up left up
         {
-          this.image = flyingBeeFacingLeftUpImage;
+          this.image = 'images\\sprites\\Flying Bee\\Simple Bee Facing UpLeft.png';
         }
     else if (inputManager.leftArrowIsBeingHeld && !inputManager.upArrowIsBeingHeld &&
              inputManager.downArrowIsBeingHeld)//flying right
              {
-               this.image = flyingBeeFacingLeftDownImage;
+               this.image = 'images\\sprites\\Flying Bee\\Simple Bee Facing DownLeft.png';
              }
     else if (inputManager.rightArrowIsBeingHeld && inputManager.upArrowIsBeingHeld &&
              !inputManager.downArrowIsBeingHeld)//flying right up
              {
-               this.image = flyingBeeFacingRightUpImage;
+               this.image = 'images\\sprites\\Flying Bee\\Simple Bee Facing UpRight.png';
              }
     else if (inputManager.rightArrowIsBeingHeld && !inputManager.upArrowIsBeingHeld &&
              inputManager.downArrowIsBeingHeld)// flying right down
              {
-               this.image = flyingBeeFacingRightDownImage;
+               this.image = 'images\\sprites\\Flying Bee\\Simple Bee Facing DownRight.png';
              }
     else if (inputManager.upArrowIsBeingHeld && !inputManager.rightArrowIsBeingHeld &&
              !inputManager.leftArrowIsBeingHeld)// flying up
              {
-               this.image = flyingBeeFacingUpImage;
+               this.image = 'images\\sprites\\Flying Bee\\Simple Bee Facing Up.png';
              }
     else if (inputManager.downArrowIsBeingHeld && !inputManager.rightArrowIsBeingHeld &&
              !inputManager.leftArrowIsBeingHeld)// flying down
              {
-               this.image = flyingBeeFacingDownImage;
+               this.image = 'images\\sprites\\Flying Bee\\Simple Bee Facing Down.png';
              }
     else
     {
-      this.image = flyingBeeFacingRightImage;
+      this.image = 'images\\sprites\\Flying Bee\\Simple Bee Facing Right.png';
     }
-      gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+      drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+      //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
 
   this.velocity = 7;

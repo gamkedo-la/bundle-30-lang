@@ -146,9 +146,10 @@ const flyingBeeGame = new flyingBeeGameClass();
 
 function FlyingBeeBackground()
 {
-  this.image = flyingBeeBackgroundImage;
+  this.image = 'images\\Backgrounds\\flyingBee.png';
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
   }
 }
