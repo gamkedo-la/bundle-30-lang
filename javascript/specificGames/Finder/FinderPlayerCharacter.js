@@ -1,6 +1,6 @@
 function FinderPlayerCharacter()
 {
-  this.image = russianDollImage2;
+  this.image = "images\\sprites\\dodgeBall\\Player2.png";
 
   this.width = gameCanvas.width*0.1;
   this.height = gameCanvas.height*0.15;
@@ -18,7 +18,8 @@ function FinderPlayerCharacter()
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
 
   this.move = function()

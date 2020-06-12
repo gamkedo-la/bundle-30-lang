@@ -67,10 +67,10 @@ function finderGameClass()
     this.collidingObject = this.playerCharacter;
 
     this.background = new finderBackground();
-    this.topRoom = new Room(upperAndMiddleRoomsImage, gameCanvas.height*0.2);
-    this.middleRoom = new Room(upperAndMiddleRoomsImage, gameCanvas.height*0.2 + gameCanvas.height*0.2);
-    this.bottomRoom = new Room(bottomRoomImage, gameCanvas.height*0.2 + gameCanvas.height*0.2 + gameCanvas.height*0.2);
-    this.trophy = {image:trophyImage,x:this.bottomRoom.x + 20,y:this.bottomRoom.y + 20,width:this.bottomRoom.width*0.6,height:this.bottomRoom.height*0.6};
+    this.topRoom = new Room('images\\sprites\\Finder\\upperAndMiddleRooms.png', gameCanvas.height*0.2);
+    this.middleRoom = new Room('images\\sprites\\Finder\\upperAndMiddleRooms.png', gameCanvas.height*0.2 + gameCanvas.height*0.2);
+    this.bottomRoom = new Room('images\\sprites\\Finder\\bottomRoom.png', gameCanvas.height*0.2 + gameCanvas.height*0.2 + gameCanvas.height*0.2);
+    this.trophy = {image:'images\\sprites\\Rewards\\Trophy.png',x:this.bottomRoom.x + 20,y:this.bottomRoom.y + 20,width:this.bottomRoom.width*0.6,height:this.bottomRoom.height*0.6};
   }
 
   this.handleLeftArrowDown = function()
@@ -127,7 +127,8 @@ function finderGameClass()
     this.topRoom.draw();
     this.middleRoom.draw();
     this.bottomRoom.draw();
-    gameCanvasContext.drawImage(this.trophy.image, this.trophy.x,this.trophy.y, this.trophy.width,this.trophy.height);
+    drawFromSheet(this.trophy.image, this.trophy.x,this.trophy.y, this.trophy.width,this.trophy.height);
+    //gameCanvasContext.drawImage(this.trophy.image, this.trophy.x,this.trophy.y, this.trophy.width,this.trophy.height);
     drawAnswersManager.draw();
     promptersManager.drawPromptsWhenAppropriate();
     gameCanvasContext.fillStyle = 'white';
@@ -140,9 +141,10 @@ const finderGame = new finderGameClass();
 
 function finderBackground()
 {
-  this.image = finderBackgroundImage;
+  this.image = 'images\\Backgrounds\\FinderBG.png';
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
   }
 }

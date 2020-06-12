@@ -25,10 +25,12 @@ function Room(image,y)
   this.hasADoor = true;
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     if (this.hasADoor)
     {
-      gameCanvasContext.drawImage(doorImage, this.x,this.y, this.width,this.height);
+      drawFromSheet('images\\sprites\\Finder\\door.png', this.x,this.y, this.width,this.height)
+      //gameCanvasContext.drawImage(doorImage, this.x,this.y, this.width,this.height);
     }
   }
 
