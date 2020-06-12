@@ -185,7 +185,7 @@ function birdGameClass() {
     let startingYOnCanvas = 0;
     let endingXOnCanvas = gameCanvas.width;
     let endingYOnCanvas = gameCanvas.height;
-    drawFromSheet('images\\Backgrounds\\runnerSunAndSky.png', startingXOnCanvas,startingYOnCanvas,
+    drawFromSheet("images\\Backgrounds\\Sky.png", startingXOnCanvas,startingYOnCanvas,
                                                endingXOnCanvas, endingYOnCanvas);
   	// gameCanvasContext.drawImage(skyBackground, startingXOnCanvas,startingYOnCanvas,
     //                                            endingXOnCanvas, endingYOnCanvas);

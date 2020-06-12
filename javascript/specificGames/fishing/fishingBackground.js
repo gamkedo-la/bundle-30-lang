@@ -3,7 +3,7 @@ const WATER_HEIGHT = 210;
 function FishingBackground()
 {
   this.waterImage = 'images\\Backgrounds\\underwater2.png';
-  this.skyImage = 'images\\Backgrounds\\runnerSunAndSky.png';
+  this.skyImage = "images\\Backgrounds\\Sky.png";
   this.draw = function()
   {
     drawFromSheet(this.skyImage, 0,0, gameCanvas.width,gameCanvas.height*0.3);
