@@ -1,10 +1,11 @@
 function FrogRiverBackground()
 {
-  this.image = frogRiverBackgroundImage;
+  this.image = "images\\Backgrounds\\river.png";
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
   }
 }
 
@@ -12,7 +13,7 @@ function FrogRiverBackground()
 
 function initializeOrResetLilyPads()
 {
-  
+
 }
 
 function drawLilyPads()

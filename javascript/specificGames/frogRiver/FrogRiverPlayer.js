@@ -13,11 +13,12 @@ function FrogRiverPlayer()
   }
 
   this.color = 'DarkGreen';
-  this.sprite = frogRiverCharacter;
+  this.sprite = "images\\sprites\\frogRiver\\Frog.png";
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.sprite, this.x, this.y, this.width, this.height);
+    drawFromSheet(this.sprite, this.x, this.y, this.width, this.height);
+    //gameCanvasContext.drawImage(this.sprite, this.x, this.y, this.width, this.height);
   }
 
   this.checkForLilyLanding = function()
@@ -37,7 +38,7 @@ function FrogRiverPlayer()
         if (frogCenterPoint > lilyLeftBoundary && frogCenterPoint < lilyRightBoundary)
         {
           this.y = lilyToCheck.yCoordinate + 10;
-          
+
           this.currentLilyPad = lilyToCheck;
 
           if (lilyToCheck.answer === promptsAndAnswersManager.correctTargetPromptAndAnswerPairing)

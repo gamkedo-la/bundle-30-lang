@@ -19,7 +19,8 @@ function LilyPadClass()
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.xCoordinate,this.yCoordinate, this.width,this.height);
+    drawFromSheet(this.image, this.xCoordinate,this.yCoordinate, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.xCoordinate,this.yCoordinate, this.width,this.height);
   }
 
   this.move = function()

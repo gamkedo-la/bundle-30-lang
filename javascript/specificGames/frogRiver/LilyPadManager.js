@@ -2,7 +2,7 @@ function LilyPadManager()
 {
   this.arrayOfLilyPads = [];
 
-  this.arrayOfLilyPadImages = [lilyImage1,lilyImage2,lilyImage3,lilyImage4];
+  this.arrayOfLilyPadImages = ["images\\sprites\\frogRiver\\lilyImage1.png","images\\sprites\\frogRiver\\lilyImage2.png","images\\sprites\\frogRiver\\lilyImage3.png","images\\sprites\\frogRiver\\lilyImage4.png"];
 
   this.answerCount = 0;
 
