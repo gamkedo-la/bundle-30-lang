@@ -48,7 +48,7 @@ function feedGameClass()
   this.backgroundMusic = new MusicTrack('audio/backgroundTracks/200412.mp3', 121.62);
 
   this.background = undefined;
-  
+
   this.pregameSpecialCode = function()
   {
     gameAudio = {};
@@ -71,10 +71,10 @@ function feedGameClass()
     this.correctTextAnswerHolderWidth = undefined;
     this.incorrectTextAnswerHolderWidth = undefined;
 
-    this.foodAnswerHolder1 = new FoodAnswerHolder(cake1);
-    this.foodAnswerHolder2 = new FoodAnswerHolder(cake2);
-    this.foodAnswerHolder3 = new FoodAnswerHolder(cake3);
-    this.foodAnswerHolder4 = new FoodAnswerHolder(cake4);
+    this.foodAnswerHolder1 = new FoodAnswerHolder("images\\sprites\\feedGame\\cake1.png");
+    this.foodAnswerHolder2 = new FoodAnswerHolder("images\\sprites\\feedGame\\cake2.png");
+    this.foodAnswerHolder3 = new FoodAnswerHolder("images\\sprites\\feedGame\\cake3.png");
+    this.foodAnswerHolder4 = new FoodAnswerHolder("images\\sprites\\feedGame\\cake4.png");
     this.arrayOfAnswerHolders.push(this.foodAnswerHolder1);
     this.arrayOfAnswerHolders.push(this.foodAnswerHolder2);
     this.arrayOfAnswerHolders.push(this.foodAnswerHolder3);
@@ -180,10 +180,11 @@ function feedPlayerCharacter()
     this.height = gameCanvas.height*0.1;
     this.x = gameCanvas.width/2 - this.width/2;
     this.y = gameCanvas.height*0.8;
-    this.image = armlessBodyImage;
-  
+    this.image = "images\\sprites\\air grab\\AirGuy.png";
+
     this.draw = function()
     {
-      gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+      drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+      //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     }
   }

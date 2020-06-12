@@ -1,10 +1,11 @@
 function feedBackground()
 {
 
-  this.feedBackgroundImage = feedBackgroundImage;
+  this.feedBackgroundImage = 'images\\Backgrounds\\feed.png';
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.feedBackgroundImage, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.feedBackgroundImage, 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(this.feedBackgroundImage, 0,0, gameCanvas.width,gameCanvas.height);
   }
 
   this.handleAnswersOffScreen = function()
