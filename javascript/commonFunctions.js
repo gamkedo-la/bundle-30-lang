@@ -1,6 +1,7 @@
 function drawFromSheet(imgName, atX,atY,
                         desiredWidth,desiredHeight, // optional arguments (note: if either, expects both)
-                        flipGraphic) // flip horizontal, note: desired w/h above needed to give this option 
+                        flipGraphic, // flip horizontal, note: desired w/h above needed to give this option
+                        rotationAngle,pivotX,pivotY)//if defined, rotate from a pivot point
 {
   var scale = 1/0.3;
   var imgNum = sheetLookup[imgName];
@@ -13,17 +14,37 @@ function drawFromSheet(imgName, atX,atY,
     heightToDraw = spritesheetData[imgNum].h*scale;
   }
 
-  gameCanvasContext.save();
-  gameCanvasContext.translate(atX,atY);  
-  if(typeof flipGraphic !== 'undefined' && flipGraphic) {
-    gameCanvasContext.scale(-1,1);  
-    gameCanvasContext.translate(-widthToDraw,0); // scoot to keep same coordinate
+  console.log('angle: ' + rotationAngle + " pivotX: " + pivotX + ' pivotY: ' + pivotY);
+  if(typeof rotationAngle !== 'undefined' && typeof pivotX !== 'undefined' && typeof pivotY !== 'undefined')
+  {
+    console.log('inside angle and pivot checks');
+    gameCanvasContext.save();
+    gameCanvasContext.translate(pivotX,pivotY);//place imaginary hand at pivot point
+    gameCanvasContext.rotate(rotationAngle + Math.PI/2);//rotate with hand at pivot based in radians
+    gameCanvasContext.translate(-pivotX,-pivotY);//move imaginary hand back to original spot
+    gameCanvasContext.translate(atX,atY);
+    gameCanvasContext.drawImage(megaSheet,spritesheetData[imgNum].x,spritesheetData[imgNum].y,
+                                spritesheetData[imgNum].w,spritesheetData[imgNum].h,
+                                0,0,
+                                widthToDraw,heightToDraw);
+    gameCanvasContext.restore();
   }
-  gameCanvasContext.drawImage(megaSheet,spritesheetData[imgNum].x,spritesheetData[imgNum].y,
-                              spritesheetData[imgNum].w,spritesheetData[imgNum].h,
-                              0,0,
-                              widthToDraw,heightToDraw);
-  gameCanvasContext.restore();
+  else
+  {
+    gameCanvasContext.save();
+    gameCanvasContext.translate(atX,atY);
+    if(typeof flipGraphic !== 'undefined' && flipGraphic) {
+      gameCanvasContext.scale(-1,1);
+      gameCanvasContext.translate(-widthToDraw,0); // scoot to keep same coordinate
+    }
+
+    gameCanvasContext.drawImage(megaSheet,spritesheetData[imgNum].x,spritesheetData[imgNum].y,
+                                spritesheetData[imgNum].w,spritesheetData[imgNum].h,
+                                0,0,
+                                widthToDraw,heightToDraw);
+    gameCanvasContext.restore();
+  }
+
 }
 
 function getRandomIntInclusive(min, max) {

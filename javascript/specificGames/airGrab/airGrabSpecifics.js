@@ -78,10 +78,10 @@ function AirGrabGameClass()
     this.correctTextAnswerHolderWidth = undefined;
     this.incorrectTextAnswerHolderWidth = undefined;
 
-    this.dollarBillAnswerHolder1 = new DollarBillAnswerHolder(bill1Image);
-    this.dollarBillAnswerHolder2 = new DollarBillAnswerHolder(bill2Image);
-    this.dollarBillAnswerHolder3 = new DollarBillAnswerHolder(bill3Image);
-    this.dollarBillAnswerHolder4 = new DollarBillAnswerHolder(bill4Image);
+    this.dollarBillAnswerHolder1 = new DollarBillAnswerHolder("images\\sprites\\air grab\\Bill.png");
+    this.dollarBillAnswerHolder2 = new DollarBillAnswerHolder("images\\sprites\\air grab\\Bill2.png");
+    this.dollarBillAnswerHolder3 = new DollarBillAnswerHolder("images\\sprites\\air grab\\Bill3.png");
+    this.dollarBillAnswerHolder4 = new DollarBillAnswerHolder("images\\sprites\\air grab\\Bill4.png");
     this.arrayOfAnswerHolders.push(this.dollarBillAnswerHolder1);
     this.arrayOfAnswerHolders.push(this.dollarBillAnswerHolder2);
     this.arrayOfAnswerHolders.push(this.dollarBillAnswerHolder3);

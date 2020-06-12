@@ -268,8 +268,8 @@ let simonRightHighlightImage = document.createElement('img');
 
 //air grab
 let airBoothImage = document.createElement('img');
-let plasticImage = document.createElement('img');
-let airBoothTopLayerImage = document.createElement('img');
+
+
 let armlessBodyImage = document.createElement('img');
 let rightArmImage = document.createElement('img');
 let leftArmImage = document.createElement('img');
@@ -763,8 +763,6 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: bill2Image, theFile: "images/sprites/air grab/Bill2.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: bill3Image, theFile: "images/sprites/air grab/Bill3.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: bill4Image, theFile: "images/sprites/air grab/Bill4.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: plasticImage, theFile: "images/Backgrounds/airBoothPlasticLayer.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: airBoothTopLayerImage, theFile: "images/Backgrounds/airBoothTopLayer.png", loaded: false});
 
 
 
