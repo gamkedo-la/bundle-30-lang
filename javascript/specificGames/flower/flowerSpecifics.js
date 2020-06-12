@@ -50,7 +50,7 @@ function flowerGameClass(){
     this.seedTwoXCoordinate = undefined;
     this.seedTwoYCoordinate = undefined;
 
-    this.flowerArray = new Array(simpleFlower, simpleFlower, simpleFlower, simpleFlower, simpleFlower);
+    this.flowerArray = new Array("images\\sprites\\Flower\\10 Second Flower.png", "images\\sprites\\Flower\\10 Second Flower.png", "images\\sprites\\Flower\\10 Second Flower.png", "images\\sprites\\Flower\\10 Second Flower.png", "images\\sprites\\Flower\\10 Second Flower.png");
 
     var amountCorrectThisGameSession = undefined;
     var amountCorrectAtStart = undefined;
@@ -171,7 +171,8 @@ function flowerGameClass(){
           flowerLocationX = this.playerCharacter.x + (this.flowerWidth*LeftOrRight*(-2));
         }
 
-        gameCanvasContext.drawImage(this.flowerArray[i], (flowerLocationX),(this.playerCharacter.y - this.flowerHeight), this.flowerWidth, this.flowerHeight);
+        drawFromSheet(this.flowerArray[i], (flowerLocationX),(this.playerCharacter.y - this.flowerHeight), this.flowerWidth, this.flowerHeight);
+        //gameCanvasContext.drawImage(this.flowerArray[i], (flowerLocationX),(this.playerCharacter.y - this.flowerHeight), this.flowerWidth, this.flowerHeight);
 
       }
 
