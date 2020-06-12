@@ -14,7 +14,7 @@ function LanguageSelectionScreen()
   {
     gameCanvasContext.fillStyle = 'orange';
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
-    // fancyBG();
+    fancyBG();
   }
 
   this.drawHeader = function()

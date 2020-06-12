@@ -5,8 +5,8 @@ var fancysprite = [];
 var fancycount = 100;
 var fancydecay = 0.02;
 var fancymaxspeed = -12;
-var fancysize = 128;
-function fancyBG(bottomImages=[heartImage],topImages=[starImage]) {
+var fancysize = 100;
+function fancyBG(bottomImages=["images\\sprites\\transitions\\heart.png"],topImages=["images\\sprites\\transitions\\star.png"]) {
     var i = 0;
 
     if (!fancysprite.length) {
@@ -22,13 +22,13 @@ function fancyBG(bottomImages=[heartImage],topImages=[starImage]) {
             fancysprite[i].a = 0.5+Math.random()*0.5;
             if (Math.random()>0.5) {
                 // bottom up
-                fancysprite[i].y = gameCanvas.height + 64 + Math.random()*256;
+                fancysprite[i].y = gameCanvas.height + 64 + Math.random()*128;
                 fancysprite[i].s = Math.random() * fancymaxspeed;
                 fancysprite[i].i = bottomImages[Math.floor(Math.random() * bottomImages.length)];
 
             } else {
                 // top down
-                fancysprite[i].y = -256-Math.random()*256;
+                fancysprite[i].y = -256-Math.random()*128;
                 fancysprite[i].s = Math.random() * fancymaxspeed * -1;
                 fancysprite[i].i = topImages[Math.floor(Math.random() * topImages.length)];
             }
@@ -38,17 +38,11 @@ function fancyBG(bottomImages=[heartImage],topImages=[starImage]) {
         fancysprite[i].y += fancysprite[i].s;
 
         gameCanvasContext.globalAlpha = fancysprite[i].a;
-        drawFromSheet(fancysprite[i].i,
-            fancysprite[i].x,fancysprite[i].y,
-            fancysize, // scaled down
-            // scale but respect aspect ratio
-            (fancysprite[i].i.height/fancysprite[i].i.width)*(fancysize));
-        // gameCanvasContext.drawImage(fancysprite[i].i,
-        //     fancysprite[i].x,fancysprite[i].y,
-        //     fancysize, // scaled down
-        //     // scale but respect aspect ratio
-        //     (fancysprite[i].i.height/fancysprite[i].i.width)*(fancysize));
 
+        drawFromSheet(
+            fancysprite[i].i,
+            fancysprite[i].x,fancysprite[i].y,
+            fancysize,fancysize); // scaled down
     }
 
     gameCanvasContext.globalAlpha = 1;

@@ -39,7 +39,7 @@ function MiniGameTransitioner()
     //background
     gameCanvasContext.fillStyle = 'orange';
     gameCanvasContext.fillRect(0,0, 640,700);
-    // fancyBG();
+    fancyBG();
 
     //text
     this.drawTransitionText();
