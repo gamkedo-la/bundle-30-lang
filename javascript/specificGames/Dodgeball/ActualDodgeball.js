@@ -1,7 +1,7 @@
 function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscillationVelocityY)
 {
   this.number = number;
-  this.image = dodgeballImage;
+  this.image = "images\\sprites\\dodgeBall\\dodgeBall.png";
 
   this.x = startingX;
   this.y = startingY;
@@ -19,7 +19,8 @@ function ActualDodgeball(number, startingX,startingY, oscillationVelocityX,oscil
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     gameCanvasContext.fillStyle = 'white';
     gameCanvasContext.fillText(this.phonicClass.textAssociation, this.x + this.width/3,this.y + this.height*0.75);
   }

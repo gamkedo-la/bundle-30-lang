@@ -50,10 +50,10 @@ function dodgeballGameClass()
     let oscillationVelocityYForBallAndCharacter3 = getRandomArbitrary(-0.05,0.05);
     let oscillationVelocityXForBallAndCharacter4 = getRandomArbitrary(-0.05,0.05);
 
-    this.NPC1 = new DodgeballNPC(russianDollImage2, 0,gameCanvas.height/2 - gameCanvas.height/20, undefined,oscillationVelocityYForBallAndCharacter1);//left side of screen
-    this.NPC2 = new DodgeballNPC(russianDollImage3, gameCanvas.width/2 - gameCanvas.width/24,0,  oscillationVelocityXForBallAndCharacter2,undefined);//top center
-    this.NPC3 = new DodgeballNPC(russianDollImage4, gameCanvas.width - gameCanvas.width/12,gameCanvas.height/2 - gameCanvas.height/20, undefined,oscillationVelocityYForBallAndCharacter3);//right side
-    this.NPC4 = new DodgeballNPC(russianDollImage5, gameCanvas.width/2 - gameCanvas.width/24,gameCanvas.height - gameCanvas.height/10,  oscillationVelocityXForBallAndCharacter4,undefined);//bottom center
+    this.NPC1 = new DodgeballNPC("images\\sprites\\dodgeBall\\Player2.png", 0,gameCanvas.height/2 - gameCanvas.height/20, undefined,oscillationVelocityYForBallAndCharacter1);//left side of screen
+    this.NPC2 = new DodgeballNPC("images\\sprites\\dodgeBall\\Player3.png", gameCanvas.width/2 - gameCanvas.width/24,0,  oscillationVelocityXForBallAndCharacter2,undefined);//top center
+    this.NPC3 = new DodgeballNPC("images\\sprites\\dodgeBall\\Player4.png", gameCanvas.width - gameCanvas.width/12,gameCanvas.height/2 - gameCanvas.height/20, undefined,oscillationVelocityYForBallAndCharacter3);//right side
+    this.NPC4 = new DodgeballNPC("images\\sprites\\dodgeBall\\Player5.png", gameCanvas.width/2 - gameCanvas.width/24,gameCanvas.height - gameCanvas.height/10,  oscillationVelocityXForBallAndCharacter4,undefined);//bottom center
     this.arrayOfNPCs.push(this.NPC1);
     this.arrayOfNPCs.push(this.NPC2);
     this.arrayOfNPCs.push(this.NPC3);
@@ -235,10 +235,11 @@ const dodgeballGame = new dodgeballGameClass();
 
 function DodgeballBackground()
 {
-  this.image = dodgeBallBackgroundImage;
+  this.image = "images\\Backgrounds\\dodgeball.png";
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, 150,70,700,630, 0,0,gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(this.image, 150,70,700,630, 0,0,gameCanvas.width,gameCanvas.height);
   }
 }

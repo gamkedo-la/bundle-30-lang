@@ -20,12 +20,13 @@ function DodgeballNPC(image, x,y, oscillationVelocityX,oscillationVelocityY)
   {
     let angleInRadians = this.angle * 0.01745;
 
-    gameCanvasContext.save();
-    gameCanvasContext.translate(this.pivotX,this.pivotY);
-    gameCanvasContext.rotate(angleInRadians);
-    gameCanvasContext.translate(-this.pivotX,-this.pivotY);
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
-    gameCanvasContext.restore();
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height, undefined, angleInRadians,this.pivotX,this.pivotY);
+    // gameCanvasContext.save();
+    // gameCanvasContext.translate(this.pivotX,this.pivotY);
+    // gameCanvasContext.rotate(angleInRadians);
+    // gameCanvasContext.translate(-this.pivotX,-this.pivotY);
+    // gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    // gameCanvasContext.restore();
   }
 
   this.weebleWobbleRate = 2.5;
