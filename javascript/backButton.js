@@ -35,6 +35,12 @@ function BackButton()
           {
             document.body.style.cursor = 'default';
           }
+          else if (gameClassManager.currentGame.name === 'egg catch game')
+          {
+            clearInterval(gameClassManager.currentGame.intervalCluck1);
+            clearInterval(gameClassManager.currentGame.intervalCluck2);
+            clearInterval(gameClassManager.currentGame.intervalCluck3);
+          }
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
           transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
           genAudio.playClick();
