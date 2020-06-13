@@ -4,10 +4,12 @@ function WhackBackground()
   {
     gameCanvasContext.fillStyle = 'orange';
     gameCanvasContext.fillRect(0,0, gameCanvas.width,gameCanvas.height);
-    gameCanvasContext.drawImage(whackTableBeneathSurface, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet('images\\Backgrounds\\WackTableBeneathSurface.png');
+    //gameCanvasContext.drawImage('images\\Backgrounds\\WackTableBeneathSurface.png', 0,0, gameCanvas.width,gameCanvas.height);
     drawAnswersManager.draw();
-    gameCanvasContext.drawImage(whackTableSurface, 0,0, gameCanvas.width,gameCanvas.height);
-    //this.drawGrid();  
+    drawFromSheet('images\\Backgrounds\\WackTableSurface.png', 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage('images\\Backgrounds\\WackTableSurface.png', 0,0, gameCanvas.width,gameCanvas.height);
+    //this.drawGrid();
   }
 
   this.grid = [];
