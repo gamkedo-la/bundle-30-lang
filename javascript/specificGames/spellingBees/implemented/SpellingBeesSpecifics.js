@@ -102,10 +102,11 @@ function spellingBeesGameClass()
 
 function SpellingBeesBackground()
 {
-  this.image = spellingBeesBackgroundImage;
+  this.image = 'images\\Backgrounds\\spellingBee.png';
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
   }
 
   this.playingFieldLeftXBoundary = 75;

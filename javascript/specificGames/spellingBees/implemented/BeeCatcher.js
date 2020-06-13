@@ -6,11 +6,12 @@ function BeeCatcher()
   this.x = gameCanvas.width/2 - this.width/2;
   this.y = gameCanvas.height/2 - this.height/2;
 
-  this.image = russianDollImage2;
+  this.image = "images\\sprites\\dodgeBall\\Player2.png";
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
 
   this.velocity = 7;

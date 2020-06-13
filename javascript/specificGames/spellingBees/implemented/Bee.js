@@ -6,7 +6,7 @@ function Bee(letter)
   this.width = 100;
   this.height = 100;
 
-  this.image = beeWithoutStripesImage;
+  this.image = 'images\\sprites\\SpellingBees\\Simple Bee Without Stripes.png';
 
   this.letter = letter;
   this.letterColor = 'black';
@@ -83,7 +83,8 @@ function Bee(letter)
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     gameCanvasContext.fillStyle = this.letterColor;
     gameCanvasContext.font = '30px Helvetica';
     gameCanvasContext.fillText(this.letter, this.x + this.width/2 -10, this.y + this.height/2 + 10);
