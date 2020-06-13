@@ -52,11 +52,19 @@ function customFontFillText(arrayOfCharacterTypes, fontSize, spacing, xCoordinat
       {
         let characterObjectBindingName = 'small' + arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character;
         arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding = window[characterObjectBindingName];
+        arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].sheetFilename = 
+            "images\\Custom Font\\pngs\\small letters\\"
+            +characterObjectBindingName
+            +".png";
       }
       if (arrayOfTextLetters[arrayOfTextLettersIndex].toUpperCase() === arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character)
       {
         characterObjectBindingName = 'big' + arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character.toLowerCase();
         arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding = window[characterObjectBindingName];
+        arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].sheetFilename = 
+            "images\\Custom Font\\pngs\\big letters\\"
+            +characterObjectBindingName
+            +".png";
       }
     }
 
@@ -66,22 +74,32 @@ function customFontFillText(arrayOfCharacterTypes, fontSize, spacing, xCoordinat
       {
         characterObjectBindingName = 'number' + arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character;
         arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding = window[characterObjectBindingName];
+        arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].sheetFilename = 
+            "images\\Custom Font\\pngs\\numbers\\"
+            +arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].character//characterObjectBindingName
+            +".png";
       }
     }//end of checking for number matches
   }// end of loop through characters
 
   for (let arrayOfCharactersIndex = 0; arrayOfCharactersIndex < arrayOfCharacterObjectLiterals.length; arrayOfCharactersIndex++)
   {
-    if (arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding === undefined)
-    {
-      continue;
+    // new way, using name lookup to spritesheet
+    if (arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].sheetFilename) {
+        drawFromSheet(arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].sheetFilename,
+            xCoordinate + arrayOfCharactersIndex*spacing,yCoordinate,
+            fontSize,fontSize);
+    } else {
+        // old way, using many images: works fine
+        if (arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding === undefined) {
+            continue;
+        }
+        gameCanvasContext.drawImage(arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding,
+        0,0, /*starting x and y coordinates of original png*/
+        1000,750, /*original png width and height*/
+        xCoordinate + arrayOfCharactersIndex*spacing,yCoordinate,/*x y on canvas, space each character by 20 pixels horizontally*/
+        fontSize,fontSize/*width and height of drawing on canvas*/);
     }
-    gameCanvasContext.drawImage(arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].imageObjectBinding,
-                                0,0, /*starting x and y coordinates of original png*/
-                                1000,750, /*original png width and height*/
-                                xCoordinate + arrayOfCharactersIndex*spacing,yCoordinate,/*x y on canvas, space each character by 20 pixels horizontally*/
-                                fontSize,fontSize/*width and height of drawing on canvas*/);
-                                //customFontFillText(string, fontSize, spacing, xCoordinate,yCoordinate)
   }
 
 }//end of customFontFillText

@@ -15,7 +15,8 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     this.gameIsActive = false;
     this.name = myName;
     this.physicsEnabled = usePhysics;
-    this.titleTXT1 = "Piñata Pop";
+    //this.titleTXT1 = "Piñata Pop";
+    this.titleTXT1 = "Pinata Pop";
     this.titleTXT2 = "Click the right letter";
     this.titleTXT3 = "as fast as you can";
     this.spritesheet = null;
@@ -313,7 +314,8 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
                     ctx.drawImage(pinataImage, wobblex, wobbley);
                     // and the instructions
                 }
-                if (window.customFontFillText) customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
+                //if (window.customFontFillText) customFontFillText(['Smash the Piñata', symbolExclamationPointImage], 32, 24, 120, 32);
+                if (window.customFontFillText) customFontFillText(['Smash the Pinata', symbolExclamationPointImage], 32, 24, 120, 32);
             }
         } // loop thru all
         //drawBackButton(); // FIXME

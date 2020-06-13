@@ -5,6 +5,12 @@ function drawFromSheet(imgName, atX,atY,
 {
   var scale = 1/0.3;
   var imgNum = sheetLookup[imgName];
+
+  if (imgNum==undefined) {
+      console.log("warning: unknown image in drawFromSheet: " + imgName);
+      return;
+  }
+
   var widthToDraw, heightToDraw;
   if(typeof desiredWidth !== 'undefined') { // custom size specified?
     widthToDraw = desiredWidth;
