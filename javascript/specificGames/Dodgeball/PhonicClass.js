@@ -136,6 +136,34 @@ function PhonicClassManager()
   this.pinyinUai = new PhonicClass('pinyin uai', promptAudio.pinyinUai, 'uai');
   this.pinyinUei = new PhonicClass('pinyin uei', promptAudio.pinyinUei, 'uei');
 
+  // English
+  this.englishA = new PhonicClass('english a', promptAudio.a, 'a');
+  this.englishB = new PhonicClass('english b', promptAudio.b, 'b');
+  this.englishC = new PhonicClass('english c', promptAudio.c, 'c');
+  this.englishD = new PhonicClass('english d', promptAudio.d, 'd');
+  this.englishE = new PhonicClass('english e', promptAudio.e, 'e');
+  this.englishF = new PhonicClass('english f', promptAudio.f, 'f');
+  this.englishG = new PhonicClass('english g', promptAudio.g, 'g');
+  this.englishH = new PhonicClass('english h', promptAudio.h, 'h');
+  this.englishI = new PhonicClass('english i', promptAudio.i, 'i');
+  this.englishJ = new PhonicClass('english j', promptAudio.j, 'j');
+  this.englishK = new PhonicClass('english k', promptAudio.k, 'k');
+  this.englishL = new PhonicClass('english l', promptAudio.l, 'l');
+  this.englishM = new PhonicClass('english m', promptAudio.m, 'm');
+  this.englishN = new PhonicClass('english n', promptAudio.n, 'n');
+  this.englishO = new PhonicClass('english o', promptAudio.o, 'o');
+  this.englishP = new PhonicClass('english p', promptAudio.p, 'p');
+  this.englishQ = new PhonicClass('english q', promptAudio.q, 'q');
+  this.englishR = new PhonicClass('english r', promptAudio.r, 'r');
+  this.englishS = new PhonicClass('english s', promptAudio.s, 's');
+  this.englishT = new PhonicClass('english t', promptAudio.t, 't');
+  this.englishU = new PhonicClass('english u', promptAudio.u, 'u');
+  this.englishV = new PhonicClass('english v', promptAudio.v, 'v');
+  this.englishW = new PhonicClass('english w', promptAudio.w, 'w');
+  this.englishX = new PhonicClass('english x', promptAudio.x, 'x');
+  this.englishY = new PhonicClass('english y', promptAudio.y, 'y');
+  this.englishZ = new PhonicClass('english z', promptAudio.z, 'z');
+
   this.arrayOfEnglishPhonics = [];
   this.arrayOfPinyinPhonics = [];
   this.arrayOfCentralVietnamesePhonics = [];
@@ -267,6 +295,33 @@ function PhonicClassManager()
     this.arrayOfPinyinPhonics.push(this.pinyinUai);
     this.arrayOfPinyinPhonics.push(this.pinyinUei);
 
+    // english
+    this.arrayOfEnglishPhonics.push(this.englishA);
+    this.arrayOfEnglishPhonics.push(this.englishB);
+    this.arrayOfEnglishPhonics.push(this.englishC);
+    this.arrayOfEnglishPhonics.push(this.englishD);
+    this.arrayOfEnglishPhonics.push(this.englishE);
+    this.arrayOfEnglishPhonics.push(this.englishF);
+    this.arrayOfEnglishPhonics.push(this.englishG);
+    this.arrayOfEnglishPhonics.push(this.englishH);
+    this.arrayOfEnglishPhonics.push(this.englishI);
+    this.arrayOfEnglishPhonics.push(this.englishJ);
+    this.arrayOfEnglishPhonics.push(this.englishK);
+    this.arrayOfEnglishPhonics.push(this.englishL);
+    this.arrayOfEnglishPhonics.push(this.englishM);
+    this.arrayOfEnglishPhonics.push(this.englishN);
+    this.arrayOfEnglishPhonics.push(this.englishO);
+    this.arrayOfEnglishPhonics.push(this.englishP);
+    this.arrayOfEnglishPhonics.push(this.englishQ);
+    this.arrayOfEnglishPhonics.push(this.englishR);
+    this.arrayOfEnglishPhonics.push(this.englishS);
+    this.arrayOfEnglishPhonics.push(this.englishT);
+    this.arrayOfEnglishPhonics.push(this.englishU);
+    this.arrayOfEnglishPhonics.push(this.englishV);
+    this.arrayOfEnglishPhonics.push(this.englishW);
+    this.arrayOfEnglishPhonics.push(this.englishX);
+    this.arrayOfEnglishPhonics.push(this.englishY);
+    this.arrayOfEnglishPhonics.push(this.englishZ);
   }
 
   this.currentLanguageArray = [];
