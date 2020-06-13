@@ -20,7 +20,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     this.titleTXT2 = "Click the right letter";
     this.titleTXT3 = "as fast as you can";
     this.spritesheet = null;
-    this.gravity = 0.05;
+    this.gravity = 0.1;//0.05;
     this.spriteH = 256;
     this.spriteW = 256;
     this.shrinking = true;
@@ -41,13 +41,13 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     // list of rgba colours
     var rainbow;
     // how many poppable letter choices will fall out
-    const CANDY_COUNT = 16;
+    const CANDY_COUNT = 10;//16;
     const CANDY_MIN_SIZE = 20;
     const CANDY_START_RADIUS = 40;
     const CANDY_SHRINK = -0.2;
     const CANDY_MASS = 1;
     // special case: candies with a "space" as the letter are considered particles of confetti
-    const CONFETTI_COUNT = 20; // currently it messes up the physics
+    const CONFETTI_COUNT = 10;//20; // currently it messes up the physics
     const CONFETTI_RADIUS = 10; // starting size
     const CONFETTI_MASS = 100; // the higher the number, the LESS it weighs! FIXME
     const CONFETTI_SHRINKSPEED = 0.975; // % each frame
@@ -133,7 +133,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
         if (!this.nextPromptTime) this.nextPromptTime = now + promptDelay;
         // each subsequent time
         if (now>this.nextPromptTime) {
-            console.log("playing A-Z voice prompt: " + targetLetter)
+            //console.log("playing A-Z voice prompt: " + targetLetter)
             var snd = promptAudio[targetLetter.toLowerCase()];
             if (snd) snd.play();
             this.nextPromptTime = now + promptDelay;
@@ -402,6 +402,8 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
             transitionIsFadingIn = false;
             transitionIsFadingOut = false;
             gameCanvasContext.globalAlpha = 1;
+            var snd = promptAudio.balloonPop;
+            if (snd) snd.play();
             return; // dont register this click in game yet
         }
         // first click open the pinata!
@@ -409,6 +411,8 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
             console.log("Pinata just got smashed!")
             me.introComplete = true;
             boom(e.pageX, e.pageY, true);
+            var snd = promptAudio.balloonPop;
+            if (snd) snd.play();
             if (window.audioManager) {
                 audioManager.pinataHitSound.play();
             } else {
@@ -440,14 +444,26 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
                 }
 
                 if (me.alwaysPopLetters) {
+                    if (me.name=='bubbleWrap')
+                    {
+                        var snd = promptAudio.bubbleWrapPop;
+                        if (snd) snd.play();
+                    } else {
+                        var snd = promptAudio.balloonPop;
+                        if (snd) snd.play();
+                    }
                     // destroy the clicked bubble (only)
                     objects.splice(i, 1);
                     //correct = true; // always!?
+                } else {
+                    var snd = promptAudio.balloonPop;
+                    if (snd) snd.play();
                 }
             }
         }
         if (correct) {
             amountCorrect++;
+
             if (window.audioManager) {
                 audioManager.multisoundPlayer.playARandomSoundInAMultisoundArray
                     (audioManager.multisoundPlayer.arrayOfGeneralPositiveFeedbackSounds);

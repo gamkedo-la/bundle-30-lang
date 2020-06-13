@@ -578,6 +578,8 @@ promptAudio.x = new promptSound('audio/letters/x.mp3');
 promptAudio.y = new promptSound('audio/letters/y.mp3');
 promptAudio.z = new promptSound('audio/letters/z.mp3');
 
+promptAudio.balloonPop = new promptSound('audio/balloonPop.mp3');
+promptAudio.bubbleWrapPop = new promptSound('audio/bubbleWrapPop.mp3');
 
 
 gameAudio = {};
