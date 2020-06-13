@@ -161,10 +161,11 @@ const vacuumGame = new vacuumGameClass();
 
 function VacuumBackground()
 {
-  this.image = vacuumBackgroundImage;
+  this.image = 'images\\Backgrounds\\vacuumBackground.png';
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
   }
 }

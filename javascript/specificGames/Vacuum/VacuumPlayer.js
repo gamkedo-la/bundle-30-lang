@@ -1,6 +1,6 @@
 function Vacuum()
 {
-  this.image = vacuumImage;
+  this.image = 'images\\sprites\\Vacuum\\vacuum.png';
   this.width = gameCanvas.width*0.15;
   this.height = gameCanvas.height*0.15;
 
@@ -11,7 +11,8 @@ function Vacuum()
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
 
   this.move = function()
