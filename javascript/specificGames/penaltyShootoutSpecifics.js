@@ -63,6 +63,8 @@ function penaltyGameClass(){
     this.correctSide;
     //this.totalFrameCountToChangeState = 30;
     //this.currentFrame = 0;
+    this.frameCountToChangeSpriteForGoalkeeper = 2;
+    this.currentFrameToChangeSpriteForGoakeeper = 0;
     this.frameRate = 30;
     this.ballWidth = BALL_WIDTH;
     this.ballHeight = BALL_HEIGHT;
@@ -76,6 +78,7 @@ function penaltyGameClass(){
     this.ArrayOfGoalkeeperImagesIndex = 0;
     this.ArrayOfBallImages = [];
     this.ArrayOfBallImagesIndex = 0;
+    this.FlipGoalkeeper = 0;
     this.sides = {
       left : {number : 1, isCorrect : false, drawX : 50, drawY : 125},
       right : {number : 2, isCorrect : false, drawX : 500, drawY : 125}
@@ -178,14 +181,20 @@ function penaltyGameClass(){
         arrayOfGoalkeeperImagesIndex = 0;
       }
       else {
-        arrayOfGoalkeeperImagesIndex++;
+        if ( this.frameCountToChangeSpriteForGoalkeeper  > this.currentFrameToChangeSpriteForGoakeeper) {
+          this.currentFrameToChangeSpriteForGoakeeper++;
+        }
+        else {
+          this.currentFrameToChangeSpriteForGoakeeper = 0;
+          arrayOfGoalkeeperImagesIndex++;
+        }
         if (arrayOfGoalkeeperImagesIndex >= arrayOfGoalkeeperImages.length) {
           this.changeState();
           promptersManager.promptThePlayer();
           arrayOfGoalkeeperImagesIndex = 0;
         }
       }
-      drawFromSheet(arrayOfGoalkeeperImages[arrayOfGoalkeeperImagesIndex], this.goalkeeperX, this.goalkeeperY, this.goalkeeperWidth, this.goalkeeperHeight, 1);
+      drawFromSheet(arrayOfGoalkeeperImages[arrayOfGoalkeeperImagesIndex], this.goalkeeperX, this.goalkeeperY, this.goalkeeperWidth, this.goalkeeperHeight, this.FlipGoalkeeper);
     };
 
 
@@ -236,6 +245,12 @@ function penaltyGameClass(){
     };
 
     this.setCorrectSide = function(){
+      if (this.correctSide === this.sides.left.number){
+        this.FlipGoalkeeper = 0;
+      }
+      else {
+        this.FlipGoalkeeper = 1;
+      }
       this.correctSide = Math.floor(Math.random() * 2) + 1;
     };
 

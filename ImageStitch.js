@@ -23,7 +23,7 @@ function loadingDoneSoStartGame() {
   var dimH = img[0].height;
 
   canvas.width = 10000;
-  canvas.height = 3500;
+  canvas.height = 3056;
 
   var scaleAll = 0.3;
 
