@@ -3,7 +3,7 @@ const VOLUME_INCREMENT = 0.05
 
 var volume = {}
 volume.music = {};
-volume._musicValue = 0.5; //muted so I can listen to other music while playing and debugging, lol
+volume._musicValue = 0.7; //muted so I can listen to other music while playing and debugging, lol
 Object.defineProperty(volume, 'music', {
 	get() {	return volume._musicValue; },
 	set(value) {
@@ -585,9 +585,9 @@ promptAudio.bubbleWrapPop = new promptSound('audio/bubbleWrapPop.mp3');
 gameAudio = {};
 
 var genAudio = {};
-genAudio.transitionMusic1 = new MusicTrack("audio/levelTransitionSound.mp3", 5);
-genAudio.transitionMusic2 = new MusicTrack("audio/Transition2.mp3", 5.5);
-genAudio.transitionMusic3 = new MusicTrack("audio/Transition3.mp3", 4);
+genAudio.transitionMusic1 = new MusicTrack("audio/backgroundTracks/levelTransitionSound.mp3", 5);
+genAudio.transitionMusic2 = new MusicTrack("audio/backgroundTracks/Transition2.mp3", 5.5);
+genAudio.transitionMusic3 = new MusicTrack("audio/backgroundTracks/Transition3.mp3", 4);
 genAudio.playTransitionMusic = function() {
 	musicManager.addTrack(randItem([genAudio.transitionMusic1,genAudio.transitionMusic2,genAudio.transitionMusic3]));
 	musicManager.moveToLastTrack();
