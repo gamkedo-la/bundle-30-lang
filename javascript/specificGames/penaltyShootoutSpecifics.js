@@ -5,32 +5,32 @@ let arrayOfBallImagesIndex = 0
 let arrayOfGoalkeeperImages = [];
 let arrayOfGoalkeeperImagesIndex = 0;
 
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper1);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper2);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper3);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper4);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper5);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper6);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper7);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper8);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper9);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper10);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper11);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper12);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper13);
-arrayOfGoalkeeperImages.push(penaltyGoalkeeper14);
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\1.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\2.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\3.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\4.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\5.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\6.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\7.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\8.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\9.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\10.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\11.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\12.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\13.png");
+arrayOfGoalkeeperImages.push("images\\sprites\\Penalty\\goalkeeper\\14.png");
 
-arrayOfBallImages.push(penaltyBall1);
-arrayOfBallImages.push(penaltyBall2);
-arrayOfBallImages.push(penaltyBall3);
-arrayOfBallImages.push(penaltyBall4);
-arrayOfBallImages.push(penaltyBall5);
-arrayOfBallImages.push(penaltyBall6);
-arrayOfBallImages.push(penaltyBall7);
-arrayOfBallImages.push(penaltyBall8);
-arrayOfBallImages.push(penaltyBall9);
-arrayOfBallImages.push(penaltyBall10);
-arrayOfBallImages.push(penaltyBall11);
+arrayOfBallImages.push("images\\sprites\\Penalty\\ball\\ball0000.png");
+arrayOfBallImages.push("images\\sprites\\Penalty\\ball\\ball0001.png");
+arrayOfBallImages.push("images\\sprites\\Penalty\\ball\\ball0002.png");
+arrayOfBallImages.push("images\\sprites\\Penalty\\ball\\ball0003.png");
+arrayOfBallImages.push("images\\sprites\\Penalty\\ball\\ball0004.png");
+arrayOfBallImages.push("images\\sprites\\Penalty\\ball\\ball0005.png");
+arrayOfBallImages.push("images\\sprites\\Penalty\\ball\\ball0006.png");
+arrayOfBallImages.push("images\\sprites\\Penalty\\ball\\ball0007.png");
+arrayOfBallImages.push("images\\sprites\\Penalty\\ball\\ball0008.png");
+arrayOfBallImages.push("images\\sprites\\Penalty\\ball\\ball0009.png");
+arrayOfBallImages.push("images\\sprites\\Penalty\\ball\\ball0010.png");
 
 const penaltyBackButtonRectangleColor = 'yellow';
 const penaltyBackButtonTextColor = 'red';
@@ -49,11 +49,11 @@ const BALL_Y = 500;
 const GOAL_X = 15;
 const GOAL_Y = 0;
 
-const GOALKEEPER_WIDTH = 400;
-const GOALKEEPER_HEIGHT = 240;
+const GOALKEEPER_WIDTH = 500;
+const GOALKEEPER_HEIGHT = 300;
 
-const GOALKEEPER_X = 200;
-const GOALKEEPER_Y = 100;
+const GOALKEEPER_X = 70;
+const GOALKEEPER_Y = 70;
 
 penaltyGameClass.prototype = new GameClass();
 function penaltyGameClass(){
@@ -153,7 +153,7 @@ function penaltyGameClass(){
     };
 
     this.drawBackground = function(){
-      gameCanvasContext.drawImage(snakeGrassBackground, 0, 0, gameCanvas.width, gameCanvas.height);
+      drawFromSheet('images\\Backgrounds\\Grass.png', 0, 0, gameCanvas.width, gameCanvas.height);
     };
 
     this.drawBall = function(){
@@ -166,11 +166,11 @@ function penaltyGameClass(){
           arrayOfBallImagesIndex = 0;
         }
       }
-      gameCanvasContext.drawImage(arrayOfBallImages[arrayOfBallImagesIndex], this.ballX, this.ballY, this.ballWidth, this.ballHeight);
+      drawFromSheet(arrayOfBallImages[arrayOfBallImagesIndex], this.ballX, this.ballY, this.ballWidth, this.ballHeight);
     };
 
     this.drawGoal = function(){
-      gameCanvasContext.drawImage(penaltyGoal, GOAL_X,GOAL_Y, GOAL_WIDTH,GOAL_HEIGHT);
+      drawFromSheet("images\\sprites\\Penalty\\goal.png", GOAL_X,GOAL_Y, GOAL_WIDTH,GOAL_HEIGHT);
     };
 
     this.drawGoalKeeper = function(){
@@ -185,7 +185,7 @@ function penaltyGameClass(){
           arrayOfGoalkeeperImagesIndex = 0;
         }
       }
-      gameCanvasContext.drawImage(arrayOfGoalkeeperImages[arrayOfGoalkeeperImagesIndex], this.goalkeeperX, this.goalkeeperY, this.goalkeeperWidth, this.goalkeeperHeight);
+      drawFromSheet(arrayOfGoalkeeperImages[arrayOfGoalkeeperImagesIndex], this.goalkeeperX, this.goalkeeperY, this.goalkeeperWidth, this.goalkeeperHeight, 1);
     };
 
 

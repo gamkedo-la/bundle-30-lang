@@ -351,7 +351,6 @@ let penaltyGoalkeeper11 = document.createElement('img');
 let penaltyGoalkeeper12 = document.createElement('img');
 let penaltyGoalkeeper13 = document.createElement('img');
 let penaltyGoalkeeper14 = document.createElement('img');
-let penaltyGoalkeeperRotated1 = document.createElement('img');
 
 //special characters for custom font
 let upArrowImage = document.createElement("img");
@@ -793,7 +792,6 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper12, theFile: 'images/sprites/Penalty/goalkeeper/12.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper13, theFile: 'images/sprites/Penalty/goalkeeper/13.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper14, theFile: 'images/sprites/Penalty/goalkeeper/14.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeperRotated1, theFile: 'images/sprites/Penalty/goalkeeper/1rotated.png', loaded: false});
 
 
   //whackAnAnswer
