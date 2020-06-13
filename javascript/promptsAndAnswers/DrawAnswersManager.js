@@ -182,10 +182,12 @@ function DrawAnswersManager()
 
         dateAndTime.checkForNecessityOfUsingDatesForDrawAnswersManager();
 
-
-        gameCanvasContext.drawImage(promptsAndAnswersManager.currentCorrectAnswer,
+        drawFromSheet(promptsAndAnswersManager.currentCorrectAnswer,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);
+        // gameCanvasContext.drawImage(promptsAndAnswersManager.currentCorrectAnswer,
+        // promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
+        // promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);
 
         if (dateAndTime.shouldDrawADateOnAnswers)
         {
@@ -213,9 +215,12 @@ function DrawAnswersManager()
             promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + this.imageHeight/2);
         }
 
-        gameCanvasContext.drawImage(promptsAndAnswersManager.currentIncorrectAnswer,
+        drawFromSheet(promptsAndAnswersManager.currentIncorrectAnswer,
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);
+        // gameCanvasContext.drawImage(promptsAndAnswersManager.currentIncorrectAnswer,
+        // promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
+        // promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);
 
         if (dateAndTime.shouldDrawADateOnAnswers)
         {

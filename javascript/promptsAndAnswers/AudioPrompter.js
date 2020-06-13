@@ -2,11 +2,12 @@ function AudioPrompter()
 {
   this.name = 'audio prompter';
   this.currentAudioPrompt = undefined;
-  this.image = placeholderPlayButtonImage;
+  this.image = "images\\placeholderPlayButtonImage.png";
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, gameCanvas.width/2 - this.image.width/2,gameCanvas.height/2 - this.image.height/2);
+    drawFromSheet(this.image, gameCanvas.width/2 - this.image.width/2,gameCanvas.height/2 - this.image.height/2);
+    //gameCanvasContext.drawImage(this.image, gameCanvas.width/2 - this.image.width/2,gameCanvas.height/2 - this.image.height/2);
   }
 
   this.loadCurrentAudioPrompt = function(audioTagToLoad)
@@ -54,11 +55,14 @@ function AudioPrompter()
       //sourceImageStartingX,SourceImageStartingY,SourceImageWidthToCrop,SourceImageHeightToCrop,
       //targetCanvasXCoordinateToStartDrawing,targetCanvasYCoordinateToStartDrawing,
       //widthOfImageToDrawOnTargetCanvas,heightOfImageToDrawOnTargetCanvas);
-      gameCanvasContext.drawImage(this.image,
-                           0,0, 1000,750,
-                           gameCanvas.width/2 - this.currentWidth/2 + this.currentWidth*0.15,
-                           gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.25,
-                           this.currentWidth*0.7,this.currentHeight*0.65);
+      drawFromSheet(this.image, gameCanvas.width/2 - this.currentWidth/2 + this.currentWidth*0.15,
+      gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.25,
+      this.currentWidth*0.7,this.currentHeight*0.65);
+      // gameCanvasContext.drawImage(this.image,
+      //                      0,0, 1000,750,
+      //                      gameCanvas.width/2 - this.currentWidth/2 + this.currentWidth*0.15,
+      //                      gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.25,
+      //                      this.currentWidth*0.7,this.currentHeight*0.65);
     }
   }
 
