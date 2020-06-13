@@ -14,7 +14,8 @@ function Spaceship()
 
   this.draw = function()
 	{
-		gameCanvasContext.drawImage(spaceshipImage, this.x,this.y, this.width,this.height);
+    drawFromSheet('images\\sprites\\spaceShooter\\spaceship.png', this.x,this.y, this.width,this.height);
+		// gameCanvasContext.drawImage(spaceshipImage, this.x,this.y, this.width,this.height);
 	};
 
   this.move = function()

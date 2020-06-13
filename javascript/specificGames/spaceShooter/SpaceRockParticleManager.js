@@ -20,7 +20,8 @@ function SpaceRockParticle(x,y, xVelocity,yVelocity, image)
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
 }
 
@@ -55,7 +56,7 @@ function SpaceRockParticleManager()
       let xVelocity = getRandomArbitrary(-7, 7);
       let yVelocity = getRandomArbitrary(-7, 7);
 
-      let particle = new SpaceRockParticle(rockCenterX,rockCenterY, xVelocity,yVelocity, jumperGroundParticleImage);
+      let particle = new SpaceRockParticle(rockCenterX,rockCenterY, xVelocity,yVelocity, 'images\\sprites\\Jumper\\jumperGroundParticle.png');
       groupOfParticles.push(particle);
     }
     this.arrayOfGroupsOfParticles.push(groupOfParticles);
@@ -74,7 +75,7 @@ function SpaceRockParticleManager()
       {
         for (let individualParticlesIndex = 0; individualParticlesIndex < this.arrayOfGroupsOfParticles[groupsOfParticlesIndex].length; individualParticlesIndex++)
         {
-          
+
           if (this.arrayOfGroupsOfParticles[groupsOfParticlesIndex][individualParticlesIndex].y > gameCanvas.height ||
               this.arrayOfGroupsOfParticles[groupsOfParticlesIndex][individualParticlesIndex].y < 0 ||
               this.arrayOfGroupsOfParticles[groupsOfParticlesIndex][individualParticlesIndex].x < 0 ||

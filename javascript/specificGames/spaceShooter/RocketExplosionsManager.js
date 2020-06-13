@@ -3,7 +3,7 @@ function RocketExplosion(x,y)
   this.x = x;
   this.y = y;
 
-  this.image = rocketExplosionImage;
+  this.image = 'images\\sprites\\spaceShooter\\rocketExplosion.png';
 
   this.alpha = 1;
   this.width = 1;
@@ -25,7 +25,8 @@ function RocketExplosion(x,y)
   this.draw = function()
   {
     gameCanvasContext.globalAlpha = this.alpha;
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     gameCanvasContext.globalAlpha = 1;
   }
 }

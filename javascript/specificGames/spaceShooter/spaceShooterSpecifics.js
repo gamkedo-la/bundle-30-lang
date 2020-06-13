@@ -95,8 +95,8 @@ function spaceShooterGameClass() {
 		this.shipSmokeManager = new ShipSmokeManager();
 		setInterval(this.shipSmokeManager.generateSmoke,250);
 
-		this.spaceRockAnswerHolder1 = new SpaceRockAnswerHolder(spaceRockImage1);
-		this.spaceRockAnswerHolder2 = new SpaceRockAnswerHolder(spaceRockImage2);
+		this.spaceRockAnswerHolder1 = new SpaceRockAnswerHolder('images\\sprites\\spaceShooter\\spaceRock.png');
+		this.spaceRockAnswerHolder2 = new SpaceRockAnswerHolder('images\\sprites\\spaceShooter\\spaceRock2.png');
 		this.arrayOfAnswerHolders.push(this.spaceRockAnswerHolder1);
 		this.arrayOfAnswerHolders.push(this.spaceRockAnswerHolder2);
 		// initializePromptAndAnswerObjects();
@@ -193,8 +193,10 @@ function spaceShooterGameClass() {
 		{
 			// gameCanvasContext.fillRect(this.arrayOfBullets[bulletIndex].x,this.arrayOfBullets[bulletIndex].y,
 			// 						   this.bulletDimensionX,this.bulletDimensionY);
-			gameCanvasContext.drawImage(bulletImage, this.arrayOfBullets[bulletIndex].x,this.arrayOfBullets[bulletIndex].y,
-									   this.bulletDimensionX,this.bulletDimensionY);
+			drawFromSheet('images\\sprites\\spaceShooter\\rocket.png', this.arrayOfBullets[bulletIndex].x,this.arrayOfBullets[bulletIndex].y,
+									   this.bulletDimensionX,this.bulletDimensionY)
+			// gameCanvasContext.drawImage('images\\sprites\\spaceShooter\\rocket.png', this.arrayOfBullets[bulletIndex].x,this.arrayOfBullets[bulletIndex].y,
+			// 						   this.bulletDimensionX,this.bulletDimensionY);
 		}
 	}
 
@@ -205,6 +207,8 @@ function spaceShooterGameClass() {
 
 	this.drawBackground = function()
 	{
+		drawFromSheet('images\\Backgrounds\\SpaceWithJupiter1.png', this.backgroundPic1XCoordinate,0, gameCanvas.width,gameCanvas.height);
+		drawFromSheet('images\\Backgrounds\\SpaceWithJupiter1.png', this.backgroundPic2XCoordinate,0, gameCanvas.width,gameCanvas.height);
 		gameCanvasContext.drawImage(spaceShooterBackgroundImage, this.backgroundPic1XCoordinate,0, gameCanvas.width,gameCanvas.height);
 		gameCanvasContext.drawImage(spaceShooterBackgroundImage2, this.backgroundPic2XCoordinate,0, gameCanvas.width,gameCanvas.height);
 	};
