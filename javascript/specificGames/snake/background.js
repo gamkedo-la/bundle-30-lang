@@ -2,6 +2,7 @@ function SnakeBackground()
 {
   this.draw = function()
   {
-    gameCanvasContext.drawImage(snakeGrassBackground, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet('images\\Backgrounds\\Grass.png', 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage('images\\Backgrounds\\Grass.png', 0,0, gameCanvas.width,gameCanvas.height);
   }
 }

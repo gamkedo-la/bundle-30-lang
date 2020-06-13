@@ -15,9 +15,9 @@ function SnakeClass()
     this.tailX = undefined;
     this.tailY = undefined;
 
-    this.snakeHeadImage = snakeHeadImage;
-    this.snakeMiddleImage = snakeMiddleImage;
-    this.snakeTailImage = snakeTailImage;
+    this.snakeHeadImage = 'images\\sprites\\Snake\\topSnake.png';
+    this.snakeMiddleImage = 'images\\sprites\\Snake\\middleSnake.png';
+    this.snakeTailImage = 'images\\sprites\\Snake\\bottomSnake.png';
 
     this.headOrientation = 0;
     this.previousHeadOrientation = 0;
@@ -58,12 +58,16 @@ function SnakeClass()
                 break;
         }
 
-        gameCanvasContext.drawImage(
-            this.snakeTailImage,
-            - (this.width*2) / 2,
-            - (this.height*2) / 2,
-            this.width*2.3, this.height*2
-        )
+        drawFromSheet(this.snakeTailImage,
+        - (this.width*2) / 2,
+        - (this.height*2) / 2,
+        this.width*2.3, this.height*2);
+        // gameCanvasContext.drawImage(
+        //     this.snakeTailImage,
+        //     - (this.width*2) / 2,
+        //     - (this.height*2) / 2,
+        //     this.width*2.3, this.height*2
+        // )
         gameCanvasContext.restore();
       }
 
@@ -87,12 +91,16 @@ function SnakeClass()
                   break;
           }
 
-          gameCanvasContext.drawImage(
-              this.snakeMiddleImage,
-              - (this.width*2) / 2,
-              - (this.height*2) / 2,
-              this.width*2, this.height*2
-          )
+          drawFromSheet(this.snakeMiddleImage,
+          - (this.width*2) / 2,
+          - (this.height*2) / 2,
+          this.width*2, this.height*2);
+          // gameCanvasContext.drawImage(
+          //     this.snakeMiddleImage,
+          //     - (this.width*2) / 2,
+          //     - (this.height*2) / 2,
+          //     this.width*2, this.height*2
+          // )
           gameCanvasContext.restore();
         }
 
@@ -114,12 +122,16 @@ function SnakeClass()
                 break;
         }
 
-        gameCanvasContext.drawImage(
-            this.snakeHeadImage,
-            - (this.width*2) / 2,
-            - (this.height*2) / 2,
-            this.width*2, this.height*2
-        )
+        drawFromSheet(this.snakeHeadImage,
+        - (this.width*2) / 2,
+        - (this.height*2) / 2,
+        this.width*2, this.height*2);
+        // gameCanvasContext.drawImage(
+        //     this.snakeHeadImage,
+        //     - (this.width*2) / 2,
+        //     - (this.height*2) / 2,
+        //     this.width*2, this.height*2
+        // )
         gameCanvasContext.restore();
     }
 

@@ -45,7 +45,7 @@ function snakeGameClass()
   this.currentIncorrectAnswerHolderWidth = undefined;
   this.currentIncorrectAnswerHolderHeight = undefined;
 
-  this.answerHolderImage = appleImage;
+  this.answerHolderImage = 'images\\sprites\\Snake\\apple.png';
 
   var populateBugsInterval;
   var assignCoreInterval;
@@ -245,7 +245,7 @@ function snakeGameClass()
 
 function AppleCore(x,y, width,height)
 {
-  this.image = appleCoreImage;
+  this.image = 'images\\sprites\\Snake\\appleCore.png';
   this.x = x;
   this.y = y;
   this.width = width;
@@ -257,7 +257,8 @@ function AppleCore(x,y, width,height)
   this.draw = function()
   {
     gameCanvasContext.globalAlpha -= this.totalDecay;
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     gameCanvasContext.globalAlpha = 1;
   }
 
