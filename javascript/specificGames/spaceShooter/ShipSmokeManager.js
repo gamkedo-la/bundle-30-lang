@@ -3,7 +3,7 @@ function Smoke(x,y)
   this.x = x;
   this.y = y;
 
-  this.image = gunSmokeParticleImage;
+  this.image = 'images\\sprites\\cVc shooter\\smokeParticle.png';
 
   this.width = 5;
   this.height = gameClassManager.currentGame.playerCharacter.height/2;
@@ -21,7 +21,8 @@ function Smoke(x,y)
   this.draw = function()
   {
     gameCanvasContext.globalAlpha = this.alpha;
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     gameCanvasContext.globalAlpha = 1;
   }
 }
