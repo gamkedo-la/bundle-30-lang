@@ -66,7 +66,7 @@ function LanguageSelectionScreen()
 
     gameCanvasContext.strokeStyle = 'black';
     gameCanvasContext.strokeRect(startingX,startingY, width,height);
-    customFontFillText('Customize', 30, 15, startingX + width/4,startingY + height/4);
+    customFontFillText('Customize', 30, 15, startingX + width/32,startingY + 35);
   }
 
   this.startGame = function()
