@@ -40,8 +40,6 @@ function memoryGameClass()
     this.simon.grabLeftAndRightPhonics();
     this.simon.chooseCorrectPhonicAndAddToArray();
     this.simon.playPatternOfPhonics();
-    console.log('memoryGame.simon.currentPatternOfCorrectPhonics: ' + memoryGame.simon.currentPatternOfCorrectPhonics);
-
   }
 
   this.draw = function()

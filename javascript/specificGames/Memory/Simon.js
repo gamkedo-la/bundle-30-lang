@@ -1,8 +1,8 @@
 function Simon()
 {
-  this.image = simon1Image;
-  this.leftHighlightImage = simonLeftHighlightImage;
-  this.rightHighlightImage = simonRightHighlightImage;
+  this.image = "images\\sprites\\Memory\\Simon.png";
+  this.leftHighlightImage = "images\\sprites\\Memory\\simonLeftHighlight.png";
+  this.rightHighlightImage = "images\\sprites\\Memory\\simonRightHighlight.png";
 
   this.width = gameCanvas.width*0.75;
   this.height = gameCanvas.height*0.75;
@@ -87,14 +87,17 @@ function Simon()
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     if (this.leftPhonicIsBeingHeard === true)
     {
-      gameCanvasContext.drawImage(this.leftHighlightImage, this.x,this.y, this.width,this.height);
+      drawFromSheet(this.leftHighlightImage, this.x,this.y, this.width,this.height);
+      //gameCanvasContext.drawImage(this.leftHighlightImage, this.x,this.y, this.width,this.height);
     }
     if (this.rightPhonicIsBeingHeard === true)
     {
-      gameCanvasContext.drawImage(this.rightHighlightImage, this.x,this.y, this.width,this.height);
+      drawFromSheet(this.rightHighlightImage, this.x,this.y, this.width,this.height);
+      //gameCanvasContext.drawImage(this.rightHighlightImage, this.x,this.y, this.width,this.height);
     }
     gameCanvasContext.fillStyle = 'white';
     gameCanvasContext.font = '100px Helvetica';
