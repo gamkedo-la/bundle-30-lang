@@ -76,13 +76,13 @@ function eggCatchGameClass()
     let cluckInterval2 = getRandomArbitrary(2000,5000);
     let cluckInterval3 = getRandomArbitrary(2000,5000);
 
-    setInterval(function(){
+    this.intervalCluck1 = setInterval(function(){
       gameAudio.chickenCluck1.play();
     },cluckInterval1);
-    setInterval(function(){
+    this.intervalCluck2 = setInterval(function(){
       gameAudio.chickenCluck2.play();
     },cluckInterval2);
-    setInterval(function(){
+    this.intervalCluck3 = setInterval(function(){
       gameAudio.chickenCluck3.play();
     },cluckInterval3);
   }
