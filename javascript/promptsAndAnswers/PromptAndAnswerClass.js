@@ -131,54 +131,54 @@ function initializePromptAndAnswerObjects()
   console.log('prompts and answers initializing');
 
   //English section
-  womanPromptAndAnswer = new PromptAndAnswerClass('woman', 'woman', womanImage, promptAudio.woman);
-  womenPromptAndAnswer = new PromptAndAnswerClass('women', 'women', womenImage, promptAudio.women);
+  womanPromptAndAnswer = new PromptAndAnswerClass('woman', 'woman', 'images\\sprites\\PromptsAndAnswers\\woman.png', promptAudio.woman);
+  womenPromptAndAnswer = new PromptAndAnswerClass('women', 'women', 'images\\sprites\\PromptsAndAnswers\\women.png', promptAudio.women);
 
-  manPromptAndAnswer = new PromptAndAnswerClass('man', 'man', manImage, promptAudio.man);
-  menPromptAndAnswer = new PromptAndAnswerClass("men", "men", menImage, promptAudio.men);
+  manPromptAndAnswer = new PromptAndAnswerClass('man', 'man', 'images\\sprites\\PromptsAndAnswers\\man.png', promptAudio.man);
+  menPromptAndAnswer = new PromptAndAnswerClass("men", "men", 'images\\sprites\\PromptsAndAnswers\\men.png', promptAudio.men);
 
-  hePromptAndAnswer = new PromptAndAnswerClass('he', 'he', heImage, promptAudio.he);
-  shePromptAndAnswer = new PromptAndAnswerClass('she', 'she', sheImage, promptAudio.she);
+  hePromptAndAnswer = new PromptAndAnswerClass('he', 'he', 'images\\sprites\\PromptsAndAnswers\\man.png', promptAudio.he);
+  shePromptAndAnswer = new PromptAndAnswerClass('she', 'she', 'images\\sprites\\PromptsAndAnswers\\woman.png', promptAudio.she);
 
-  beePromptAndAnswer = new PromptAndAnswerClass('bee', 'bee', beeImage, promptAudio.englishBee);
-  flowerPromptAndAnswer = new PromptAndAnswerClass('flower', 'flower', flowerImage, promptAudio.englishFlower);
+  beePromptAndAnswer = new PromptAndAnswerClass('bee', 'bee', "images\\sprites\\PromptsAndAnswers\\bee.png", promptAudio.englishBee);
+  flowerPromptAndAnswer = new PromptAndAnswerClass('flower', 'flower', "images\\sprites\\PromptsAndAnswers\\flower.png", promptAudio.englishFlower);
 
   //Mandarin section
-  mandarinBuyPromptAndAnswer = new PromptAndAnswerClass('mandarin buy','买', mandarinBuyImage, promptAudio.mandarinBuy);
-  mandarinSellPromptAndAnswer = new PromptAndAnswerClass('mandarin sell','卖', mandarinSellImage, promptAudio.mandarinSell);
+  mandarinBuyPromptAndAnswer = new PromptAndAnswerClass('mandarin buy','买', "images\\sprites\\PromptsAndAnswers\\Mandarin\\mandarinBuy.png", promptAudio.mandarinBuy);
+  mandarinSellPromptAndAnswer = new PromptAndAnswerClass('mandarin sell','卖', "images\\sprites\\PromptsAndAnswers\\Mandarin\\mandarinSell.png", promptAudio.mandarinSell);
 
-  mandarinMomPromptAndAnswer = new PromptAndAnswerClass('mandarin mom', '妈', mandarinMomImage, promptAudio.mandarinMom);
-  mandarinHorsePromptAndAnswer = new PromptAndAnswerClass('mandarin horse', '马', mandarinHorseImage, promptAudio.mandarinHorse);
+  mandarinMomPromptAndAnswer = new PromptAndAnswerClass('mandarin mom', '妈', "images\\sprites\\PromptsAndAnswers\\Mandarin\\mom.png", promptAudio.mandarinMom);
+  mandarinHorsePromptAndAnswer = new PromptAndAnswerClass('mandarin horse', '马', "images\\sprites\\PromptsAndAnswers\\Mandarin\\horse.png", promptAudio.mandarinHorse);
 
-  mandarinThisOnePromptAndAnswer = new PromptAndAnswerClass('mandarin this one', '这个', mandarinThisOneImage, promptAudio.mandarinThisOne);
-  mandarinThatOnePromptAndAnswer = new PromptAndAnswerClass('mandarin that one', '那个', mandarinThatOneImage, promptAudio.mandarinThatOne);
-  mandarinTheseOnesPromptAndAnswer = new PromptAndAnswerClass('mandarin these ones', '这些', mandarinTheseOnesImage, promptAudio.mandarinTheseOnes);
-  mandarinThoseOnesPromptAndAnswer = new PromptAndAnswerClass('mandarin those ones', '那些', mandarinThoseOnesImage, promptAudio.mandarinThoseOnes);
+  mandarinThisOnePromptAndAnswer = new PromptAndAnswerClass('mandarin this one', '这个', "images\\sprites\\PromptsAndAnswers\\Mandarin\\thisOne.png", promptAudio.mandarinThisOne);
+  mandarinThatOnePromptAndAnswer = new PromptAndAnswerClass('mandarin that one', '那个', "images\\sprites\\PromptsAndAnswers\\Mandarin\\thatOne.png", promptAudio.mandarinThatOne);
+  mandarinTheseOnesPromptAndAnswer = new PromptAndAnswerClass('mandarin these ones', '这些', "images\\sprites\\PromptsAndAnswers\\Mandarin\\theseOnes.png", promptAudio.mandarinTheseOnes);
+  mandarinThoseOnesPromptAndAnswer = new PromptAndAnswerClass('mandarin those ones', '那些', "images\\sprites\\PromptsAndAnswers\\Mandarin\\thoseOnes.png", promptAudio.mandarinThoseOnes);
 
-  mandarinHePromptAndAnswer = new PromptAndAnswerClass('mandarin he', '他', heImage, promptAudio.mandarinHe);
-  mandarinCouchPromptAndAnswer = new PromptAndAnswerClass("mandarin couch", '榻', mandarinCouchImage, promptAudio.mandarinCouch);
-  mandarinTowerPromptAndAnswer = new PromptAndAnswerClass("mandarin tower", '塔', mandarinTowerImage, promptAudio.mandarinTower);
+  mandarinHePromptAndAnswer = new PromptAndAnswerClass('mandarin he', '他', 'images\\sprites\\PromptsAndAnswers\\man.png', promptAudio.mandarinHe);
+  mandarinCouchPromptAndAnswer = new PromptAndAnswerClass("mandarin couch", '榻', "images\\sprites\\PromptsAndAnswers\\Mandarin\\couch.png", promptAudio.mandarinCouch);
+  mandarinTowerPromptAndAnswer = new PromptAndAnswerClass("mandarin tower", '塔', "images\\sprites\\PromptsAndAnswers\\Mandarin\\tower.png", promptAudio.mandarinTower);
 
-  mandarinThisAreaPromptAndAnswer = new PromptAndAnswerClass('mandarin this area', '这里', hereImage, promptAudio.mandarinThisArea);
-  mandarinThatAreaPromptAndAnswer = new PromptAndAnswerClass("mandarin that area", '那里', thereImage, promptAudio.mandarinThatArea);
+  mandarinThisAreaPromptAndAnswer = new PromptAndAnswerClass('mandarin this area', '这里', "images\\sprites\\PromptsAndAnswers\\Mandarin\\here.png", promptAudio.mandarinThisArea);
+  mandarinThatAreaPromptAndAnswer = new PromptAndAnswerClass("mandarin that area", '那里', "images\\sprites\\PromptsAndAnswers\\Mandarin\\there.png", promptAudio.mandarinThatArea);
 
-  mandarinSleepPromptAndAnswer = new PromptAndAnswerClass('mandarin sleep', '睡觉', sleepImage, promptAudio.mandarinSleep);
-  mandarinDumplingsPromptAndAnswer = new PromptAndAnswerClass('mandarin dumplings', '水饺', dumplingsImage, promptAudio.mandarinDumplings);
+  mandarinSleepPromptAndAnswer = new PromptAndAnswerClass('mandarin sleep', '睡觉', "images\\sprites\\PromptsAndAnswers\\Mandarin\\sleep.png", promptAudio.mandarinSleep);
+  mandarinDumplingsPromptAndAnswer = new PromptAndAnswerClass('mandarin dumplings', '水饺', "images\\sprites\\PromptsAndAnswers\\Mandarin\\dumplings.png", promptAudio.mandarinDumplings);
 
-  mandarinTodayPromptAndAnswer = new PromptAndAnswerClass("mandarin today", '今天', calendarImage, promptAudio.mandarinToday);
-  mandarinTomorrowPromptAndAnswer = new PromptAndAnswerClass("mandarin tomorrow", '明天', calendarImage, promptAudio.mandarinTomorrow);
-  mandarinYesterdayPromptAndAnswer = new PromptAndAnswerClass('mandarin yesterday', '昨天', calendarImage, promptAudio.mandarinYesterday);
+  mandarinTodayPromptAndAnswer = new PromptAndAnswerClass("mandarin today", '今天', "images\\sprites\\PromptsAndAnswers\\Mandarin\\blankCalendarPage.png", promptAudio.mandarinToday);
+  mandarinTomorrowPromptAndAnswer = new PromptAndAnswerClass("mandarin tomorrow", '明天', "images\\sprites\\PromptsAndAnswers\\Mandarin\\blankCalendarPage.png", promptAudio.mandarinTomorrow);
+  mandarinYesterdayPromptAndAnswer = new PromptAndAnswerClass('mandarin yesterday', '昨天', "images\\sprites\\PromptsAndAnswers\\Mandarin\\blankCalendarPage.png", promptAudio.mandarinYesterday);
 
-  mandarinBlackPromptAndAnswer = new PromptAndAnswerClass("mandarin black", '黑色', blackImage, promptAudio.mandarinBlack);
-  mandarinWhitePromptAndAnswer = new PromptAndAnswerClass("mandarin white", '白色', whiteImage, promptAudio.mandarinWhite);
-  mandarinGrayPromptAndAnswer = new PromptAndAnswerClass("mandarin gray", '灰色', grayImage, promptAudio.mandarinGray);
-  mandarinRedPromptAndAnswer = new PromptAndAnswerClass("mandarin red", '红色', redImage, promptAudio.mandarinRed);
-  mandarinBrownPromptAndAnswer = new PromptAndAnswerClass("mandarin brown", '棕色', brownImage, promptAudio.mandarinBrown);
-  mandarinYellowPromptAndAnswer = new PromptAndAnswerClass("mandarin yellow", '黄色', yellowImage, promptAudio.mandarinYellow);
-  mandarinPurplePromptAndAnswer = new PromptAndAnswerClass("mandarin purple", '紫色', purpleImage, promptAudio.mandarinPurple);
-  mandarinPinkPromptAndAnswer = new PromptAndAnswerClass("mandarin pink", '粉', pinkImage, promptAudio.mandarinPink);
-  mandarinGreenPromptAndAnswer = new PromptAndAnswerClass("mandarin green", '绿色', greenImage, promptAudio.mandarinGreen);
-  mandarinBluePromptAndAnswer = new PromptAndAnswerClass("mandarin blue", '蓝色', blueImage, promptAudio.mandarinBlue);
+  mandarinBlackPromptAndAnswer = new PromptAndAnswerClass("mandarin black", '黑色', "images\\sprites\\PromptsAndAnswers\\Mandarin\\black.png", promptAudio.mandarinBlack);
+  mandarinWhitePromptAndAnswer = new PromptAndAnswerClass("mandarin white", '白色', "images\\sprites\\PromptsAndAnswers\\Mandarin\\white.png", promptAudio.mandarinWhite);
+  mandarinGrayPromptAndAnswer = new PromptAndAnswerClass("mandarin gray", '灰色', "images\\sprites\\PromptsAndAnswers\\Mandarin\\gray.png", promptAudio.mandarinGray);
+  mandarinRedPromptAndAnswer = new PromptAndAnswerClass("mandarin red", '红色', "images\\sprites\\PromptsAndAnswers\\Mandarin\\red.png", promptAudio.mandarinRed);
+  mandarinBrownPromptAndAnswer = new PromptAndAnswerClass("mandarin brown", '棕色', "images\\sprites\\PromptsAndAnswers\\Mandarin\\brown.png", promptAudio.mandarinBrown);
+  mandarinYellowPromptAndAnswer = new PromptAndAnswerClass("mandarin yellow", '黄色', "images\\sprites\\PromptsAndAnswers\\Mandarin\\yellow.png", promptAudio.mandarinYellow);
+  mandarinPurplePromptAndAnswer = new PromptAndAnswerClass("mandarin purple", '紫色', "images\\sprites\\PromptsAndAnswers\\Mandarin\\purple.png", promptAudio.mandarinPurple);
+  mandarinPinkPromptAndAnswer = new PromptAndAnswerClass("mandarin pink", '粉', "images\\sprites\\PromptsAndAnswers\\Mandarin\\pink.png", promptAudio.mandarinPink);
+  mandarinGreenPromptAndAnswer = new PromptAndAnswerClass("mandarin green", '绿色', "images\\sprites\\PromptsAndAnswers\\Mandarin\\green.png", promptAudio.mandarinGreen);
+  mandarinBluePromptAndAnswer = new PromptAndAnswerClass("mandarin blue", '蓝色', "images\\sprites\\PromptsAndAnswers\\Mandarin\\blue.png", promptAudio.mandarinBlue);
 
   mandarin0PromptAndAnswer = new PromptAndAnswerClass("mandarin 0", '零', number0, promptAudio.mandarin0);
   mandarin1PromptAndAnswer = new PromptAndAnswerClass("mandarin 1", '一', number1, promptAudio.mandarin1);
@@ -192,39 +192,39 @@ function initializePromptAndAnswerObjects()
   mandarin9PromptAndAnswer = new PromptAndAnswerClass("mandarin 9", '九', number9, promptAudio.mandarin9);
 
   //polite phrases 1
-  mandarinPleasePromptAndAnswer = new PromptAndAnswerClass('mandarin please', '请', pleaseImage, promptAudio.mandarinPlease);
-  mandarinSorryPromptAndAnswer = new PromptAndAnswerClass('mandarin sorry', '抱歉', sorryImage, promptAudio.mandarinSorry);
-  mandarinExcuseMeQuestionAskingContextPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me question', '请问', excuseMeQuestionAskingContextImage, promptAudio.mandarinExcuseMeQuestionAskingContext);
-  mandarinWaitAMomentPromptAnswer = new PromptAndAnswerClass('mandarin wait a moment', '稍等', waitAMomentImage, promptAudio.mandarinWaitAMoment);
-  mandarinThankYouPromptAndAnswer = new PromptAndAnswerClass('mandarin thank you', '谢谢', thankYouImage, promptAudio.mandarinThankYou);
-  mandarinAnyTimePromptAndAnswer = new PromptAndAnswerClass('mandarin any time', '随时 ', anyTimeImage, promptAudio.mandarinAnyTime);
-  mandarinYoureWelcomePromptAndAnswer = new PromptAndAnswerClass('mandarin youre welcome', '别客气', youreWelcomeImage, promptAudio.mandarinYoureWelcome);
-  mandarinExcuseMePassingThroughContextPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me passing through', '借过', excuseMePassingThroughContextImage, promptAudio.mandarinExcuseMePassingThroughContext);
-  mandarinIAppreciateThatPromptAndAnswer = new PromptAndAnswerClass('mandarin I appreciate that', '我很感激', iAppreciateThatImage, promptAudio.mandarinIAppreciateThat);
-  mandarinYouHaveWorkedHardPromptAndAnswer = new PromptAndAnswerClass('mandarin you have worked hard', '您辛苦', youHaveWorkedHardImage, promptAudio.mandarinYouHaveWorkedHard);
+  mandarinPleasePromptAndAnswer = new PromptAndAnswerClass('mandarin please', '请', "images\\sprites\\PromptsAndAnswers\\Mandarin\\please.png", promptAudio.mandarinPlease);
+  mandarinSorryPromptAndAnswer = new PromptAndAnswerClass('mandarin sorry', '抱歉', "images\\sprites\\PromptsAndAnswers\\Mandarin\\sorry.png", promptAudio.mandarinSorry);
+  mandarinExcuseMeQuestionAskingContextPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me question', '请问', "images\\sprites\\PromptsAndAnswers\\Mandarin\\excuseMeQuestionAskingContext.png", promptAudio.mandarinExcuseMeQuestionAskingContext);
+  mandarinWaitAMomentPromptAnswer = new PromptAndAnswerClass('mandarin wait a moment', '稍等', 'images\\sprites\\PromptsAndAnswers\\Mandarin\\oneMoment.png', promptAudio.mandarinWaitAMoment);
+  mandarinThankYouPromptAndAnswer = new PromptAndAnswerClass('mandarin thank you', '谢谢', "images\\sprites\\PromptsAndAnswers\\Mandarin\\thankYou.png", promptAudio.mandarinThankYou);
+  mandarinAnyTimePromptAndAnswer = new PromptAndAnswerClass('mandarin any time', '随时 ', "images\\sprites\\PromptsAndAnswers\\Mandarin\\anyTime2.png", promptAudio.mandarinAnyTime);
+  mandarinYoureWelcomePromptAndAnswer = new PromptAndAnswerClass('mandarin youre welcome', '别客气', "images\\sprites\\PromptsAndAnswers\\Mandarin\\youreWelcome.png", promptAudio.mandarinYoureWelcome);
+  mandarinExcuseMePassingThroughContextPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me passing through', '借过', "images\\sprites\\PromptsAndAnswers\\Mandarin\\excuseMePassingThroughContext.png", promptAudio.mandarinExcuseMePassingThroughContext);
+  mandarinIAppreciateThatPromptAndAnswer = new PromptAndAnswerClass('mandarin I appreciate that', '我很感激', "images\\sprites\\PromptsAndAnswers\\Mandarin\\iAppreciateThat.png", promptAudio.mandarinIAppreciateThat);
+  mandarinYouHaveWorkedHardPromptAndAnswer = new PromptAndAnswerClass('mandarin you have worked hard', '您辛苦', "images\\sprites\\PromptsAndAnswers\\Mandarin\\youHaveWorkedHard.png", promptAudio.mandarinYouHaveWorkedHard);
 
   //polite phrases 2
-  mandarinLongTimeNoSeePromptAndAnswer = new PromptAndAnswerClass('mandarin long time no see', '久违 ', longTimeNoSeeImage, promptAudio.mandarinLongTimeNoSee);
-  mandarinIllLetYouGoPromptAndAnswer = new PromptAndAnswerClass('mandarin Ill let you go', '您失陪', illLetYouGoImage, promptAudio.mandarinIllLetYouGo);
-  mandarinPleaseAdviseMePromptAndAnswer = new PromptAndAnswerClass('mandarin please advise me', '您指教', pleaseAdviseMeImage, promptAudio.mandarinPleaseAdviseMe);
-  mandarinIRespectfullyWaitPromptAndAnswer = new PromptAndAnswerClass('mandarin I respectfully wait', '我恭候', iRespectfullyWaitImage, promptAudio.mandarinIRespectfullyWait);
-  mandarinInMyHumbleOpinionPromptAndAnswer = new PromptAndAnswerClass('mandarin in my humble opinion', ' 依本人拙见', myHumbleOpinionImage, promptAudio.mandarinMyHumbleOpinion);
-  mandarinExcuseMeForSayingThisPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me for saying this', '冒昧 ', excuseMeForSayingThisImage, promptAudio.mandarinExcuseMeForSayingThis);
-  mandarinItsOKPromptAndAnswer = new PromptAndAnswerClass('mandarin its OK', '没关系', itsOKImage, promptAudio.mandarinItsOK);
-  mandarinItsMyDutyPromptAndAnswer = new PromptAndAnswerClass('mandarin its my duty', '我应该的 ', itsMyDutyImage, promptAudio.mandarinItsMyDuty);
-  mandarinExcuseMyLowSkillPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse my low skill', '献丑', excuseMyLowSkillImage, promptAudio.mandarinSorryForMyLowSkill);
+  mandarinLongTimeNoSeePromptAndAnswer = new PromptAndAnswerClass('mandarin long time no see', '久违 ', "images\\sprites\\PromptsAndAnswers\\Mandarin\\longTimeNoSee.png", promptAudio.mandarinLongTimeNoSee);
+  mandarinIllLetYouGoPromptAndAnswer = new PromptAndAnswerClass('mandarin Ill let you go', '您失陪', "images\\sprites\\PromptsAndAnswers\\Mandarin\\illLetYouGo.png", promptAudio.mandarinIllLetYouGo);
+  mandarinPleaseAdviseMePromptAndAnswer = new PromptAndAnswerClass('mandarin please advise me', '您指教', "images\\sprites\\PromptsAndAnswers\\Mandarin\\pleaseAdviseMe.png", promptAudio.mandarinPleaseAdviseMe);
+  mandarinIRespectfullyWaitPromptAndAnswer = new PromptAndAnswerClass('mandarin I respectfully wait', '我恭候', "images\\sprites\\PromptsAndAnswers\\Mandarin\\iRespectfullyWait.png", promptAudio.mandarinIRespectfullyWait);
+  mandarinInMyHumbleOpinionPromptAndAnswer = new PromptAndAnswerClass('mandarin in my humble opinion', ' 依本人拙见', "images\\sprites\\PromptsAndAnswers\\Mandarin\\myHumbleOpinion.png", promptAudio.mandarinMyHumbleOpinion);
+  mandarinExcuseMeForSayingThisPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse me for saying this', '冒昧 ', 'images\\sprites\\PromptsAndAnswers\\Mandarin\\excuseMeForSayingThis.png', promptAudio.mandarinExcuseMeForSayingThis);
+  mandarinItsOKPromptAndAnswer = new PromptAndAnswerClass('mandarin its OK', '没关系', "images\\sprites\\PromptsAndAnswers\\Mandarin\\itsOK.png", promptAudio.mandarinItsOK);
+  mandarinItsMyDutyPromptAndAnswer = new PromptAndAnswerClass('mandarin its my duty', '我应该的 ', "images\\sprites\\PromptsAndAnswers\\Mandarin\\itsMyDuty.png", promptAudio.mandarinItsMyDuty);
+  mandarinExcuseMyLowSkillPromptAndAnswer = new PromptAndAnswerClass('mandarin excuse my low skill', '献丑', "images\\sprites\\PromptsAndAnswers\\Mandarin\\excuseMyLowSkill.png", promptAudio.mandarinSorryForMyLowSkill);
 
   //common words
-  mandarinToBePromptAndAnswer = new PromptAndAnswerClass('mandarin to be', '是 ', toBeImage, promptAudio.mandarinToBe);
-  mandarinOfPromptAndAnswer = new PromptAndAnswerClass('mandarin of', '的 ', ofImage, promptAudio.mandarinOf);
-  mandarinNotPromptAndAnswer = new PromptAndAnswerClass('mandarin not', '不 ', notImage, promptAudio.mandarinNot);
-  mandarinOccurPromptAndAnswer = new PromptAndAnswerClass('mandarin occur/le', '了 ', leImage, promptAudio.mandarinLe);
-  mandarinPersonPromptAndAnswer =  new PromptAndAnswerClass('mandarin person', '人	 ', personImage, promptAudio.mandarinPerson);
-  mandarinIPromptAndAnswer =  new PromptAndAnswerClass('mandarin I', '我	 ', mandarinMeMyIImage, promptAudio.mandarinI);
-  mandarinYouPromptAndAnswer =  new PromptAndAnswerClass('mandarin You', '你', youImage, promptAudio.mandarinYou);
-  mandarinAtPromptAndAnswer = new PromptAndAnswerClass('mandarin At', '在', atImage, promptAudio.mandarinAt);
-  mandarinHavePromptAndAnswer = new PromptAndAnswerClass('mandarin Have', '有', haveImage, promptAudio.mandarinHave);
-  mandarinInPromptAndAnswer = new PromptAndAnswerClass('mandarin In', '中', inImage, promptAudio.mandarinIn);
+  mandarinToBePromptAndAnswer = new PromptAndAnswerClass('mandarin to be', '是 ', "images\\sprites\\PromptsAndAnswers\\Mandarin\\toBeImage.png", promptAudio.mandarinToBe);
+  mandarinOfPromptAndAnswer = new PromptAndAnswerClass('mandarin of', '的 ', "images\\sprites\\PromptsAndAnswers\\Mandarin\\of.png", promptAudio.mandarinOf);
+  mandarinNotPromptAndAnswer = new PromptAndAnswerClass('mandarin not', '不 ', "images\\sprites\\PromptsAndAnswers\\Mandarin\\notImage.png", promptAudio.mandarinNot);
+  mandarinOccurPromptAndAnswer = new PromptAndAnswerClass('mandarin occur/le', '了 ', "images\\sprites\\PromptsAndAnswers\\Mandarin\\leImage.png", promptAudio.mandarinLe);
+  mandarinPersonPromptAndAnswer =  new PromptAndAnswerClass('mandarin person', '人	 ', "images\\sprites\\PromptsAndAnswers\\Mandarin\\personImage.png", promptAudio.mandarinPerson);
+  mandarinIPromptAndAnswer =  new PromptAndAnswerClass('mandarin I', '我	 ', "images\\sprites\\PromptsAndAnswers\\Mandarin\\mandarinMeMyIImage.png", promptAudio.mandarinI);
+  mandarinYouPromptAndAnswer =  new PromptAndAnswerClass('mandarin You', '你', "images\\sprites\\PromptsAndAnswers\\Mandarin\\you.png", promptAudio.mandarinYou);
+  mandarinAtPromptAndAnswer = new PromptAndAnswerClass('mandarin At', '在', "images\\sprites\\PromptsAndAnswers\\Mandarin\\at.png", promptAudio.mandarinAt);
+  mandarinHavePromptAndAnswer = new PromptAndAnswerClass('mandarin Have', '有', "images\\sprites\\PromptsAndAnswers\\Mandarin\\have.png", promptAudio.mandarinHave);
+  mandarinInPromptAndAnswer = new PromptAndAnswerClass('mandarin In', '中', "images\\sprites\\PromptsAndAnswers\\Mandarin\\in.png", promptAudio.mandarinIn);
 
   //Vietnamese Section
 }
