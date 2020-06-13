@@ -93,7 +93,7 @@ function spaceShooterGameClass() {
 		this.spaceRockParticleManager = new SpaceRockParticleManager();
 		this.rocketExplosionsManager = new RocketExplosionsManager();
 		this.shipSmokeManager = new ShipSmokeManager();
-		setInterval(this.shipSmokeManager.generateSmoke,250);
+		this.shipSmokerInterval = setInterval(this.shipSmokeManager.generateSmoke,250);
 
 		this.spaceRockAnswerHolder1 = new SpaceRockAnswerHolder('images\\sprites\\spaceShooter\\spaceRock.png');
 		this.spaceRockAnswerHolder2 = new SpaceRockAnswerHolder('images\\sprites\\spaceShooter\\spaceRock2.png');

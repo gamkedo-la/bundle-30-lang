@@ -41,6 +41,10 @@ function BackButton()
             clearInterval(gameClassManager.currentGame.intervalCluck2);
             clearInterval(gameClassManager.currentGame.intervalCluck3);
           }
+          else if (gameClassManager.currentGame.name === 'spaceShooter')
+          {
+            clearInterval(gameClassManager.currentGame.shipSmokerInterval);
+          }
           fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.transitionToTitleScreen);
           transitionToTitleScreen.changeFullGameStateAfterTwoSeconds();
           genAudio.playClick();
