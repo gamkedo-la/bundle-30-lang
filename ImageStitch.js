@@ -22,10 +22,10 @@ function loadingDoneSoStartGame() {
   var dimW = img[0].width;
   var dimH = img[0].height;
 
-  canvas.width = 10000;
-  canvas.height = 3056;
+  canvas.width = 5000;
+  canvas.height = 4048;
 
-  var scaleAll = 0.3;
+  var scaleAll = 0.25;
 
   var drawX = 0,drawY = 0,rowH = 0;
   for(var i=0;i<fileList.length;i++) {
@@ -42,20 +42,20 @@ function loadingDoneSoStartGame() {
 
       canvasContext.drawImage(img[i],
         0,0,img[i].width,img[i].height,
-        drawX,drawY,scaledW,scaledH);
+        drawX+1,drawY+1,scaledW,scaledH);
 
-        imgFacts.push({fileName:fileList[i],fileIdx:i,x:drawX,y:drawY,w:scaledW,h:scaledH})
+        imgFacts.push({fileName:fileList[i],fileIdx:i,x:drawX+1,y:drawY+1,w:scaledW,h:scaledH})
 
-        drawX+=scaledW;
+        drawX+=scaledW+2;
         if (scaledH > rowH)
         {
-          rowH = scaledH;
+          rowH = scaledH+2;
         }
 
 
   }
   document.getElementById("jsonOutput").innerHTML = JSON.stringify(imgFacts);
-  console.log(drawY + rowH);
+  console.log(drawY + rowH+1);
 }
 
 function countLoadedImageAndLaunchIfReady() {

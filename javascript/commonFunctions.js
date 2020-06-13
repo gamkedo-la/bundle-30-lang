@@ -3,7 +3,7 @@ function drawFromSheet(imgName, atX,atY,
                         flipGraphic, // flip horizontal, note: desired w/h above needed to give this option
                         rotationAngle,pivotX,pivotY)//if defined, rotate from a pivot point
 {
-  var scale = 1/0.3;
+  var scale = 1/0.25;
   var imgNum = sheetLookup[imgName];
 
   if (imgNum==undefined) {
