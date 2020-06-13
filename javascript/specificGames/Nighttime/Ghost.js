@@ -21,7 +21,8 @@ function Ghost(image, initialDirectionNumber, oscillationVelocityY)
   {
     gameCanvasContext.fillStyle = 'brown';
     gameCanvasContext.fillRect(this.answerStringX,this.answerStringY, this.answerStringWidth,this.answerStringHeight);
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
   }
 
   this.oscillationVelocityY = oscillationVelocityY;

@@ -1,6 +1,6 @@
 function NighttimePlayerCharacter()
 {
-  this.image = russianDollImage2;
+  this.image = "images\\sprites\\dodgeBall\\Player2.png";
 
   this.width = gameCanvas.width*0.1;
   this.height = gameCanvas.height*0.15;
@@ -34,7 +34,8 @@ function NighttimePlayerCharacter()
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
     gameCanvasContext.fillStyle = 'yellow';
     gameCanvasContext.fillRect(this.ghostGunX,this.ghostGunY, this.ghostGunWidth,this.ghostGunHeight);
     if (this.laserShot.x !== undefined)

@@ -16,7 +16,7 @@ function nighttimeGameClass()
     customFontFillText(['Space bar', ' ', symbolEqualsImage, ' Shoot'], 30,15, 175,500);
     customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Move left'], 30,15, 50,350);
   }
-  
+
   this.defineAndInitializePlayerCharacter = function()
   {
     this.playerCharacter = new NighttimePlayerCharacter();
@@ -51,8 +51,8 @@ function nighttimeGameClass()
     let ghost1OscillationVelocity = getRandomArbitrary(-0.035,0.035);
     let ghost2OscillationVelocity = getRandomArbitrary(-0.035,0.035);
 
-    this.ghost1 = new Ghost(ghostImage1, 1, ghost1OscillationVelocity);
-    this.ghost2 = new Ghost(ghostImage2, -1, ghost2OscillationVelocity);
+    this.ghost1 = new Ghost("images\\sprites\\nightTime\\Ghost.png", 1, ghost1OscillationVelocity);
+    this.ghost2 = new Ghost("images\\sprites\\nightTime\\ghost2.png", -1, ghost2OscillationVelocity);
 
     this.imageAnswerWidth = gameCanvas.width*0.1;
 		this.imageAnswerHeight = gameCanvas.height*0.1;
@@ -135,9 +135,10 @@ const nighttimeGame = new nighttimeGameClass();
 
 function nighttimeBackground()
 {
-  this.image = nighttimeBackgroundImage;
+  this.image = "images\\Backgrounds\\nighttimeBackground.png";
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.image, 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
   }
 }
