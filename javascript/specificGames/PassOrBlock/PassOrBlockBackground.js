@@ -1,12 +1,14 @@
 function PassOrBlockBackground()
 {
 
-  this.volcanoImage = volcanoImage;
-  this.spaceBackgrondImage = spaceBackgroundForVolcanoGame;
+  this.volcanoImage = 'images\\Backgrounds\\Volcano.png';
+  this.spaceBackgrondImage = "images\\Backgrounds\\spaceBackgroundForVolcanoGame.png";
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.spaceBackgrondImage, 0,0, gameCanvas.width,gameCanvas.height);
-    gameCanvasContext.drawImage(this.volcanoImage, 0,gameCanvas.height*0.7, gameCanvas.width,gameCanvas.height*0.3);
+    drawFromSheet(this.spaceBackgrondImage, 0,0, gameCanvas.width,gameCanvas.height);
+    drawFromSheet(this.volcanoImage, 0,gameCanvas.height*0.7, gameCanvas.width,gameCanvas.height*0.3);
+    //gameCanvasContext.drawImage(this.spaceBackgrondImage, 0,0, gameCanvas.width,gameCanvas.height);
+    //gameCanvasContext.drawImage(this.volcanoImage, 0,gameCanvas.height*0.7, gameCanvas.width,gameCanvas.height*0.3);
   }
 
   this.handleAnswersOffScreen = function()

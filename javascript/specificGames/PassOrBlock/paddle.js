@@ -2,17 +2,18 @@ function Paddle()
 {
   this.width = 120;
   this.height = 25;
-  this.image = paddleRockImage;
+  this.image = 'images\\sprites\\passBlock\\volcanicRock.png';
 
   this.x = gameCanvas.width/2 - this.width/2;
   this.y = gameCanvas.height - this.height*5;
 
-  this.arrayOfGemImages = [gem1Image,gem2Image,gem3Image];
+  this.arrayOfGemImages = ['images\\sprites\\passBlock\\Gem.png','images\\sprites\\passBlock\\Gem2.png','images\\sprites\\passBlock\\Gem3.png'];
   this.arrayOfGems = [];
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(paddleRockImage, this.x,this.y, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(paddleRockImage, this.x,this.y, this.width,this.height);
     this.drawGems();
     // gameCanvasContext.fillStyle = 'white';
     // gameCanvasContext.fillRect(this.x,this.y, this.width,this.height);
@@ -47,6 +48,7 @@ function Gem(image, x,y)
 
   this.draw = function()
   {
-    gameCanvasContext.drawImage(this.image, this.x,this.y - this.height + 3, this.width,this.height);
+    drawFromSheet(this.image, this.x,this.y - this.height + 3, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y - this.height + 3, this.width,this.height);
   }
 }

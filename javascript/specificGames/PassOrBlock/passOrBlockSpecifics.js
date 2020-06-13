@@ -73,16 +73,16 @@ function PassOrBlockGameClass()
     this.audioImageAnswerHolderWidth = gameCanvas.width/5;
     this.audioImageAnswerHolderHeight = gameCanvas.height/6;
 
-    this.lavaAnswerHolder1 = new LavaAnswerHolder(lavaBall1Image);
-    this.lavaAnswerHolder2 = new LavaAnswerHolder(lavaBall2Image);
-    this.lavaAnswerHolder3 = new LavaAnswerHolder(lavaBall3Image);
+    this.lavaAnswerHolder1 = new LavaAnswerHolder('images\\sprites\\passBlock\\lavaBal.png');
+    this.lavaAnswerHolder2 = new LavaAnswerHolder('images\\sprites\\passBlock\\lavaBall.png');
+    this.lavaAnswerHolder3 = new LavaAnswerHolder('images\\sprites\\passBlock\\lavaBalll.png');
     this.arrayOfAnswerHolders.push(this.lavaAnswerHolder1);
     this.arrayOfAnswerHolders.push(this.lavaAnswerHolder2);
     this.arrayOfAnswerHolders.push(this.lavaAnswerHolder3);
 
-    this.upsideDownAnswerHolder1 = new LavaAnswerHolder(lavaBall1UpsideDownImage);
-    this.upsideDownAnswerHolder2 = new LavaAnswerHolder(lavaBall2UpsideDownImage);
-    this.upsideDownAnswerHolder3 = new LavaAnswerHolder(lavaBall3UpsideDownImage);
+    this.upsideDownAnswerHolder1 = new LavaAnswerHolder('images\\sprites\\passBlock\\lavaBalUpsideDown.png');
+    this.upsideDownAnswerHolder2 = new LavaAnswerHolder('images\\sprites\\passBlock\\lavaBallUpsideDown.png');
+    this.upsideDownAnswerHolder3 = new LavaAnswerHolder('images\\sprites\\passBlock\\lavaBalllUpsideDown.png');
     this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder1);
     this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder2);
     this.arrayOfUpsideDownAnswerHolders.push(this.upsideDownAnswerHolder3);

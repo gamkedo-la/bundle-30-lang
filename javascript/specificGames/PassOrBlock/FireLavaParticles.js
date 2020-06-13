@@ -26,7 +26,8 @@ function FireLavaParticle(x,y, xVelocity,yVelocity, image)
     if (this.image !== undefined)
     {
       gameCanvasContext.globalAlpha = this.alpha;
-      gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+      drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+      //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
       gameCanvasContext.globalAlpha = 1;
     }
   }
@@ -35,7 +36,7 @@ function FireLavaParticle(x,y, xVelocity,yVelocity, image)
 function FireLavaParticleManager()
 {
   this.arrayOfParticles = [];
-  this.arrayOfParticleImages = [lavaParticle1Image,lavaParticle2Image,lavaParticle3Image,lavaParticle4Image];
+  this.arrayOfParticleImages = ['images\\sprites\\passBlock\\lavaParticle1.png','images\\sprites\\passBlock\\lavaParticle2.png','images\\sprites\\passBlock\\lavaParticle3.png','images\\sprites\\passBlock\\lavaParticle4.png'];
   this.generateAParticle = function()
   {
     let targetAnswerToAssignAParticleTo = this.pickAnAnswer();
