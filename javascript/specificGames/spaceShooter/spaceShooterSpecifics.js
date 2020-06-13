@@ -123,7 +123,7 @@ function spaceShooterGameClass() {
 		this.rocketExplosionsManager.handleFadedExplosions();
 
 		this.shipSmokeManager.updateSmoke();
-		// this.shipSmokeManager.deleteFadedSmoke();
+		this.shipSmokeManager.deleteFadedSmoke();
 	};
 
 	this.assignAnswerHolder = function()
