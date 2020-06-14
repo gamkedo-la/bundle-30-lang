@@ -1,7 +1,8 @@
 function drawFromSheet(imgName, atX,atY,
                         desiredWidth,desiredHeight, // optional arguments (note: if either, expects both)
                         flipGraphic, // flip horizontal, note: desired w/h above needed to give this option
-                        rotationAngle,pivotX,pivotY)//if defined, rotate from a pivot point
+                        rotationAngle,pivotX,pivotY,//if defined, rotate from a pivot point
+                        useStatsCanvas = false)
 {
   var scale = 1/0.25;
   var imgNum = sheetLookup[imgName];
@@ -37,21 +38,41 @@ function drawFromSheet(imgName, atX,atY,
   }
   else
   {
-    gameCanvasContext.save();
-    gameCanvasContext.translate(atX,atY);
-    if(typeof flipGraphic !== 'undefined' && flipGraphic) {
-      gameCanvasContext.scale(-1,1);
-      gameCanvasContext.translate(-widthToDraw,0); // scoot to keep same coordinate
+    if (useStatsCanvas === true)
+    {
+      statsCanvasContext.save();
+      statsCanvasContext.translate(atX,atY);
+      if(typeof flipGraphic !== 'undefined' && flipGraphic) {
+        statsCanvasContext.scale(-1,1);
+        statsCanvasContext.translate(-widthToDraw,0); // scoot to keep same coordinate
+      }
+
+      statsCanvasContext.drawImage(megaSheet,spritesheetData[imgNum].x,spritesheetData[imgNum].y,
+                                  spritesheetData[imgNum].w,spritesheetData[imgNum].h,
+                                  0,0,
+                                  widthToDraw,heightToDraw);
+      statsCanvasContext.restore();
     }
+    else
+    {
+      gameCanvasContext.save();
+      gameCanvasContext.translate(atX,atY);
+      if(typeof flipGraphic !== 'undefined' && flipGraphic) {
+        gameCanvasContext.scale(-1,1);
+        gameCanvasContext.translate(-widthToDraw,0); // scoot to keep same coordinate
+      }
 
-    gameCanvasContext.drawImage(megaSheet,spritesheetData[imgNum].x,spritesheetData[imgNum].y,
-                                spritesheetData[imgNum].w,spritesheetData[imgNum].h,
-                                0,0,
-                                widthToDraw,heightToDraw);
-    gameCanvasContext.restore();
+      gameCanvasContext.drawImage(megaSheet,spritesheetData[imgNum].x,spritesheetData[imgNum].y,
+                                  spritesheetData[imgNum].w,spritesheetData[imgNum].h,
+                                  0,0,
+                                  widthToDraw,heightToDraw);
+      gameCanvasContext.restore();
+    }
   }
-
 }
+
+
+
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);

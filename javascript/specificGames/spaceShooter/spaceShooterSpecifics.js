@@ -208,9 +208,9 @@ function spaceShooterGameClass() {
 	this.drawBackground = function()
 	{
 		drawFromSheet('images\\Backgrounds\\SpaceWithJupiter1.png', this.backgroundPic1XCoordinate,0, gameCanvas.width,gameCanvas.height);
-		drawFromSheet('images\\Backgrounds\\SpaceWithJupiter1.png', this.backgroundPic2XCoordinate,0, gameCanvas.width,gameCanvas.height);
-		gameCanvasContext.drawImage(spaceShooterBackgroundImage, this.backgroundPic1XCoordinate,0, gameCanvas.width,gameCanvas.height);
-		gameCanvasContext.drawImage(spaceShooterBackgroundImage2, this.backgroundPic2XCoordinate,0, gameCanvas.width,gameCanvas.height);
+		drawFromSheet('images\\Backgrounds\\SpaceWithJupiter2.png', this.backgroundPic2XCoordinate,0, gameCanvas.width,gameCanvas.height);
+		//gameCanvasContext.drawImage(spaceShooterBackgroundImage, this.backgroundPic1XCoordinate,0, gameCanvas.width,gameCanvas.height);
+		//gameCanvasContext.drawImage(spaceShooterBackgroundImage2, this.backgroundPic2XCoordinate,0, gameCanvas.width,gameCanvas.height);
 	};
 
 	this.scrollBackgroundsFromRightToLeft = function()

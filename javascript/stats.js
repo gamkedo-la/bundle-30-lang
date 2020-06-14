@@ -25,5 +25,7 @@ function drawStatsBackground()
 {
   statsCanvasContext.fillStyle = 'purple';
   statsCanvasContext.fillRect(0,0, statsCanvas.width,statsCanvas.height);
-  statsCanvasContext.drawImage(scoreboard_overlayImage,0,0);
+
+  drawFromSheet("images\\Backgrounds\\scoreboard_overlay.png",0,0, useStatsCanvas = true);
+  //statsCanvasContext.drawImage("images\\Backgrounds\\scoreboard_overlay.png",0,0);
 }
