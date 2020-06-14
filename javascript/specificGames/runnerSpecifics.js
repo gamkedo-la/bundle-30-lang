@@ -245,9 +245,9 @@ function runnerGameClass() {
 
   function drawParallax() {
 	//clouds
-  drawFromSheet(runnerCloud1, parallaxPos[0],gameCanvas.height*0.20, 200,150);
-	drawFromSheet(runnerCloud1, parallaxPos[1],gameCanvas.height*0.07, 150,125);
-	drawFromSheet(runnerCloud1, parallaxPos[2],gameCanvas.height*0.12, 250,200);
+  drawFromSheet('images\\Backgrounds\\runnerCloud1.png', parallaxPos[0],gameCanvas.height*0.20, 200,150);
+	drawFromSheet('images\\Backgrounds\\runnerCloud1.png', parallaxPos[1],gameCanvas.height*0.07, 150,125);
+	drawFromSheet('images\\Backgrounds\\runnerCloud1.png', parallaxPos[2],gameCanvas.height*0.12, 250,200);
 	//gameCanvasContext.drawImage(runnerCloud1, parallaxPos[0],gameCanvas.height*0.20, 200,150);
 	//gameCanvasContext.drawImage(runnerCloud1, parallaxPos[1],gameCanvas.height*0.07, 150,125);
 	//gameCanvasContext.drawImage(runnerCloud1, parallaxPos[2],gameCanvas.height*0.12, 250,200);
