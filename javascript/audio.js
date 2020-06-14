@@ -619,15 +619,15 @@ genAudio.playTitleMusic = function() {
 	musicManager.playNextTrack();
 }
 
-genAudio.click = new sfxMulti(["audio/UI_01.mp3", "audio/UI_02.mp3", "audio/UI_03.mp3", "audio/UI_04.mp3"]);
+genAudio.click = new sfxOneShot("audio/UI_01.mp3");
 genAudio.playClick = function() {
 	genAudio.click.play();
 }
-genAudio.positive = new sfxMulti(["audio/Positive_01.mp3", "audio/Positive_02.mp3", "audio/Positive_03.mp3", "audio/Positive_04.mp3"]);
+genAudio.positive = new sfxOneShot("audio/Positive_01.mp3");
 genAudio.playPositive = function() {
 	genAudio.positive.play();
 }
-genAudio.negative = new sfxMulti(["audio/Negative_01.mp3", "audio/Negative_02.mp3", "audio/Negative_03.mp3", "audio/Negative_04.mp3"]);
+genAudio.negative = new sfxOneShot("audio/Negative_01.mp3");
 genAudio.playNegative = function() {
 	genAudio.negative.play();
 }

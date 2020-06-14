@@ -69,10 +69,10 @@ function spaceShooterGameClass() {
   //   levelIsTransitioning = true;
 
     gameAudio = {};
-    gameAudio.shoot = new sfxMulti(["audio/SpaceShot01.mp3", "audio/SpaceShot02.mp3", "audio/SpaceShot03.mp3", "audio/SpaceShot04.mp3"]);
+    gameAudio.shoot = new sfxOneShot("audio/SpaceShot01.mp3");
 		gameAudio.laserShoot = new sfxOneShot('audio/V/laser.mp3');
 		gameAudio.move = new sfxLooping("audio/SpaceMove.mp3");
-		gameAudio.rockExplosion = new sfxMulti(['audio/V/explosion.mp3','audio/V/explosion2.mp3']);
+		gameAudio.rockExplosion = new sfxOneShot('audio/V/explosion.mp3']);
   };
 
 	this.superInitialize = function()

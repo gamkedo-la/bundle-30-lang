@@ -59,8 +59,8 @@ function feedGameClass()
   this.pregameSpecialCode = function()
   {
     gameAudio = {};
-    gameAudio.clap = new sfxMulti(['audio/clap1.mp3','audio/clap2.mp3','audio/clap3.mp3','audio/clap4.mp3']);
-    gameAudio.paperCrumple = new sfxMulti(['audio/V/feed.mp3','audio/V/feed2.mp3']);
+    gameAudio.clap = new sfxOneShot('audio/clap1.mp3');
+    gameAudio.paperCrumple = new sfxOneShot('audio/V/feed.mp3');
   };
 
   this.superInitialize = function()

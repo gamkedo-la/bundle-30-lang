@@ -61,11 +61,11 @@ function snakeGameClass()
   this.pregameSpecialCode = function()
   {
     gameAudio = {};
-    gameAudio.slither = new sfxMulti(["audio/snake_slither_01.mp3", "audio/snake_slither_02.mp3", "audio/snake_slither_03.mp3", "audio/snake_slither_04.mp3"]);
+    gameAudio.slither = new sfxOneShot("audio/snake_slither_01.mp3");
 	  gameAudio.playSlither = function() {
 	    gameAudio.slither.play();
   	}
-    gameAudio.appleEating = new sfxMulti(['audio/eatingApple1.mp3','audio/eatingApple2.mp3','audio/eatingApple3.mp3']);
+    gameAudio.appleEating = new sfxOneShot('audio/eatingApple1.mp3');
   };
 
   this.postGameSpecialCode = function() {

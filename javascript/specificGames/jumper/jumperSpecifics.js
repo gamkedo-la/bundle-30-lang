@@ -56,7 +56,7 @@ function jumperGameClass()
   this.pregameSpecialCode = function()
   {
     gameAudio = {};
-    gameAudio.digging = new sfxMulti(['audio/dig1.mp3','audio/dig2.mp3','audio/dig3.mp3','audio/dig4.mp3']);
+    gameAudio.digging = new sfxOneShot('audio/dig1.mp3');
     gameAudio.quickPlatformDropSound = new sfxOneShot('audio/V/playerJump.mp3');
   };
 
