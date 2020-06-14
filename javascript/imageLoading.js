@@ -613,23 +613,23 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: scoreboard_overlayImage, theFile: 'images/Backgrounds/scoreboard_overlay.png', loaded: false});
 
   //lane game
-  arrayOfImagesToLoad.push({imageObjectBinding: laneGrassBackground1, theFile: 'images/Backgrounds/LaneGrass1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: laneGrassBackground2, theFile: 'images/Backgrounds/LaneGrass2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: laneRoad1, theFile: 'images/Backgrounds/road1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: laneRoad2, theFile: 'images/Backgrounds/road2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: laneCarImage, theFile: 'images/sprites/Lane/car.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: roadDash1, theFile: 'images/Backgrounds/roadDash.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: roadDash2, theFile: 'images/Backgrounds/roadDash2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: roadDash3, theFile: 'images/Backgrounds/roadDash3.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: gasCanImage, theFile: 'images/sprites/Lane/gasCan.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: billboardImage, theFile: 'images/sprites/Lane/billboard.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: laneGrassBackground1, theFile: 'images/Backgrounds/LaneGrass1.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: laneGrassBackground2, theFile: 'images/Backgrounds/LaneGrass2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: laneRoad1, theFile: 'images/Backgrounds/road1.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: laneRoad2, theFile: 'images/Backgrounds/road2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: laneCarImage, theFile: 'images/sprites/Lane/car.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: roadDash1, theFile: 'images/Backgrounds/roadDash.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: roadDash2, theFile: 'images/Backgrounds/roadDash2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: roadDash3, theFile: 'images/Backgrounds/roadDash3.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: gasCanImage, theFile: 'images/sprites/Lane/gasCan.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: billboardImage, theFile: 'images/sprites/Lane/billboard.png', loaded: false});
 
   //jumper game
-  arrayOfImagesToLoad.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/editedJumperBackground.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: jumperPlayerFacingRightImage, theFile: 'images/sprites/Jumper/JumperFacingRight.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: jumperPlayerFacingLeftImage, theFile: 'images/sprites/Jumper/JumperFacingLeft.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: jumperGroundParticleImage, theFile: 'images/sprites/Jumper/jumperGroundParticle.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: treasureChestAnswerHolderImage, theFile: 'images/sprites/Jumper/treasureChest.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: jumperBackground, theFile: 'images/Backgrounds/editedJumperBackground.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: jumperPlayerFacingRightImage, theFile: 'images/sprites/Jumper/JumperFacingRight.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: jumperPlayerFacingLeftImage, theFile: 'images/sprites/Jumper/JumperFacingLeft.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: jumperGroundParticleImage, theFile: 'images/sprites/Jumper/jumperGroundParticle.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: treasureChestAnswerHolderImage, theFile: 'images/sprites/Jumper/treasureChest.png', loaded: false});
 
   //finder game
   // arrayOfImagesToLoad.push({imageObjectBinding: finderBackgroundImage, theFile: 'images/Backgrounds/FinderBG.png', loaded: false});
@@ -703,11 +703,11 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: ghostImage2, theFile: "images/sprites/nightTime/ghost2.png", loaded: false});
 
   //frog crate
-  arrayOfImagesToLoad.push({imageObjectBinding: frogCrateBackground, theFile: "images/Backgrounds/Lake.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: frogInBowlImage, theFile: "images/sprites/frogCrate/FrogInBowl.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: bathStoneImage, theFile: "images/sprites/frogCrate/bathStone.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: frogTongueImage, theFile: "images/sprites/frogCrate/frogTongue.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: flyImage1, theFile: "images/sprites/frogCrate/cartoonFly.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: frogCrateBackground, theFile: "images/Backgrounds/Lake.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: frogInBowlImage, theFile: "images/sprites/frogCrate/FrogInBowl.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: bathStoneImage, theFile: "images/sprites/frogCrate/bathStone.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: frogTongueImage, theFile: "images/sprites/frogCrate/frogTongue.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: flyImage1, theFile: "images/sprites/frogCrate/cartoonFly.png", loaded: false});
 
   // maze game
   arrayOfImagesToLoad.push({imageObjectBinding: mazeFloor, theFile: "images/Backgrounds/mazefloor.png", loaded: false});
@@ -719,18 +719,18 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: moleFoodImage, theFile: "images/sprites/Maze/moleFood.png", loaded: false});
 
   //memory game
-  arrayOfImagesToLoad.push({imageObjectBinding: simon1Image, theFile: "images/sprites/Memory/Simon.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: simonLeftHighlightImage, theFile: "images/sprites/Memory/simonLeftHighlight.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: simonRightHighlightImage, theFile: "images/sprites/Memory/simonRightHighlight.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: simon1Image, theFile: "images/sprites/Memory/Simon.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: simonLeftHighlightImage, theFile: "images/sprites/Memory/simonLeftHighlight.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: simonRightHighlightImage, theFile: "images/sprites/Memory/simonRightHighlight.png", loaded: false});
 
 
   //frog
-  arrayOfImagesToLoad.push({imageObjectBinding: frogRiverBackgroundImage, theFile: "images/Backgrounds/river.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: frogRiverCharacter, theFile: "images/sprites/frogRiver/Frog.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lilyImage1, theFile: "images/sprites/frogRiver/lilyImage1.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lilyImage2, theFile: "images/sprites/frogRiver/lilyImage2.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lilyImage3, theFile: "images/sprites/frogRiver/lilyImage3.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lilyImage4, theFile: "images/sprites/frogRiver/lilyImage4.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: frogRiverBackgroundImage, theFile: "images/Backgrounds/river.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: frogRiverCharacter, theFile: "images/sprites/frogRiver/Frog.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lilyImage1, theFile: "images/sprites/frogRiver/lilyImage1.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lilyImage2, theFile: "images/sprites/frogRiver/lilyImage2.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lilyImage3, theFile: "images/sprites/frogRiver/lilyImage3.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lilyImage4, theFile: "images/sprites/frogRiver/lilyImage4.png", loaded: false});
 
   //particles used by loading and transition screens
   arrayOfImagesToLoad.push({imageObjectBinding: heartImage, theFile: 'images/sprites/transitions/heart.png', loaded: false});
