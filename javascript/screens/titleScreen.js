@@ -6,6 +6,8 @@ var fancycount = 100;
 var fancydecay = 0.02;
 var fancymaxspeed = -12;
 var fancysize = 100;
+var showingCredits = false;
+
 function fancyBG(bottomImages=["images\\sprites\\transitions\\heart.png"],topImages=["images\\sprites\\transitions\\star.png"]) {
     var i = 0;
 
@@ -171,17 +173,29 @@ function TitleScreenClass()
 
   this.draw = function()
   {
+    if(showingCredits) {
+      gameCanvasContext.fillStyle="black";
+      gameCanvasContext.fillRect(0,0,100,100);
+      gameCanvasContext.font= "10px Arial";
+      gameCanvasContext.fillStyle="yellow";
+      gameCanvasContext.fillText("click to close",10,50);
+      return;
+    }
     this.drawBackground();
     this.drawHeader();
     this.drawCellsAndCheckForHighlighting();
     this.drawGameNames();
+    customFontFillText("Click down here to see credits", 20, 12, 130, gameCanvas.height-39);
   }
 
   this.gameNum = -1;
 
   this.handleGameCellClicks = function()
   {
-
+    if(showingCredits) {
+      showingCredits = false;
+      return;
+    }
     // TODO: all the x,y,w,h are stored in GAME_NAMES
     // we could use that data and avoid the giant IF and hardcoded values here
 
@@ -189,6 +203,12 @@ function TitleScreenClass()
 
     var mouseCol = Math.floor((inputManager.mouseCoordinates.x - 20)/100);
     var mouseRow = Math.floor((inputManager.mouseCoordinates.y - 150)/100);
+
+    if(mouseRow>=5) {
+      showingCredits = true;
+      return;
+    }
+
     if (mouseCol >= 0 && mouseCol < 6 && mouseRow >= 0 && mouseRow < 5)
     {
       this.gameNum = mouseCol + mouseRow *6;
