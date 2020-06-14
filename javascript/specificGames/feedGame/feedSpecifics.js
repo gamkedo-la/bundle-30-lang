@@ -34,7 +34,7 @@ function feedGameClass()
 
   this.titleScreenData = [
 	  {name: "Feed", fontSize: 27, spacing: 15, x: 122, y: 480},
-	  {name: "Who", fontSize: 27, spacing: 15, x: 126, y: 495}
+	  {name: "US", fontSize: 27, spacing: 15, x: 126, y: 495}
 	];
 
   this.playerCharacter = undefined;
@@ -53,7 +53,7 @@ function feedGameClass()
   {
     gameAudio = {};
     gameAudio.clap = new sfxMulti(['audio/clap1.mp3','audio/clap2.mp3','audio/clap3.mp3','audio/clap4.mp3']);
-    gameAudio.paperCrumple = new sfxMulti(['audio/paper1.mp3','audio/paper2.mp3','audio/paper3.mp3']);
+    gameAudio.paperCrumple = new sfxMulti(['audio/V/feed.mp3','audio/V/feed2.mp3']);
   };
 
   this.superInitialize = function()
@@ -83,7 +83,6 @@ function feedGameClass()
     this.initializeAnswerSettings();
     drawAnswersManager.initialize();
     this.background = new feedBackground();
-    this.playerCharacter = new FeedGrabberPlayer();
     this.collisionsWithAnswersManager = new feedCollisionsManager();
     //this.playerCharacter.collisionsWithAnswersManager.initialize(gameClassManager.currentGame);
   }
@@ -174,7 +173,8 @@ function FoodAnswerHolder(image)
   this.image = image;
 }
 
-function feedGrabberPlayer()
+
+function feedGrabPlayer()
   {
     this.width = gameCanvas.width*0.2;
     this.height = gameCanvas.height*0.1;

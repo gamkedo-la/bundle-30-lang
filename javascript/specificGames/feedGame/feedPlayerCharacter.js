@@ -47,13 +47,13 @@ function FeedGrabberPlayer()
 
   this.draw = function()
   {
-    drawFromSheet(this.leftPac, 0,
+    drawFromSheet(this.leftPac, 50,
       gameCanvas.height,
-      this.bodyWidth,this.bodyHeight);
+      50,50);
 
-    drawFromSheet(this.rightPac, gameCanvas.width,
+    drawFromSheet(this.rightPac, gameCanvas.width - 50,
       gameCanvas.height,
-      this.bodyWidth,this.bodyHeight);
+      50,50);
 
     drawFromSheet(this.armlessBodyImage, gameCanvas.width/2 - this.bodyWidth/2,
                                 gameCanvas.height - this.bodyHeight - gameCanvas.width*0.0225,
