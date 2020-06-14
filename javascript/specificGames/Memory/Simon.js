@@ -125,28 +125,11 @@ function Simon()
             console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
             if (this.leftPhonic === this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
             {
-              genAudio.positive.play();
-              this.phonicToCheckIndex++;
-              if (this.phonicToCheckIndex >= this.currentPatternOfCorrectPhonics.length)
-              {
-                amountCorrect++;
-                calculateAccuracy();
-                
-                this.chooseCorrectPhonicAndAddToArray();
-                this.playPatternOfPhonics();
-                this.phonicToCheckIndex = 0;
-              }
+              this.processCorrectAnswer();
             }
             else if (this.leftPhonic !== this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
             {
-              genAudio.negative.play();
-              amountIncorrect++;
-              calculateAccuracy();
-              
-              this.phonicToCheckIndex = 0;
-              this.currentPatternOfCorrectPhonics = [];
-              this.chooseCorrectPhonicAndAddToArray();
-              this.playPatternOfPhonics();
+              this.processIncorrectAnswer();
             }
             console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
           }
@@ -157,32 +140,43 @@ function Simon()
             console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
             if (this.rightPhonic === this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
             {
-              genAudio.positive.play();
-              this.phonicToCheckIndex++;
-
-              if (this.phonicToCheckIndex >= this.currentPatternOfCorrectPhonics.length)
-              {
-                amountCorrect++;
-                calculateAccuracy();
-
-                this.chooseCorrectPhonicAndAddToArray();
-                this.phonicToCheckIndex = 0;
-                this.playPatternOfPhonics();
-              }
+              this.processCorrectAnswer();
             }
             else if (this.rightPhonic !== this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
             {
-              genAudio.negative.play();
-              amountIncorrect++;
-              calculateAccuracy();
-
-              this.phonicToCheckIndex = 0;
-              this.currentPatternOfCorrectPhonics = [];
-              this.chooseCorrectPhonicAndAddToArray();
-              this.playPatternOfPhonics();
+              this.processIncorrectAnswer();
             }
             console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
           }
+    }
+  }
+
+  this.updatePatternOfPhonics = function() {
+    this.phonicToCheckIndex = 0;
+    this.chooseCorrectPhonicAndAddToArray();
+    this.playPatternOfPhonics();
+  }
+
+  this.processCorrectFullAnswer = function() {
+    amountCorrect++;
+    calculateAccuracy();
+    this.updatePatternOfPhonics();
+  }
+
+  this.processIncorrectAnswer = function() {
+    genAudio.negative.play();
+    amountIncorrect++;
+    calculateAccuracy();
+
+    this.currentPatternOfCorrectPhonics = [];
+    this.updatePatternOfPhonics();
+  }
+
+  this.processCorrectAnswer = function() {
+    genAudio.positive.play();
+    this.phonicToCheckIndex++;
+    if (this.phonicToCheckIndex >= this.currentPatternOfCorrectPhonics.length) {
+      this.processCorrectFullAnswer();
     }
   }
 }
