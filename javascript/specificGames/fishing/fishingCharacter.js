@@ -58,21 +58,29 @@ function FishingCharacter () {
     }
 
     this.drawCharacter = function(){
-        gameCanvasContext.drawImage(
-            fishingGameCharacter,
-            this.x - this.width/2,
-            this.y - this.height/2,
-            this.width, this.height
-        )
+        drawFromSheet('images\\sprites\\Fishing\\person.png',
+        this.x - this.width/2,
+        this.y - this.height/2,
+        this.width, this.height)
+        // gameCanvasContext.drawImage(
+        //     fishingGameCharacter,
+        //     this.x - this.width/2,
+        //     this.y - this.height/2,
+        //     this.width, this.height
+        //)
     }
 
     this.drawBoat = function() {
-        gameCanvasContext.drawImage(
-            fishingGameBoat,
-            this.x - 100,
-            WATER_HEIGHT - 15,
-            150, 30
-        )
+      drawFromSheet('images\\sprites\\Fishing\\boat.png',
+      this.x - 100,
+      WATER_HEIGHT - 15,
+      150, 30)
+        // gameCanvasContext.drawImage(
+        //     fishingGameBoat,
+        //     this.x - 100,
+        //     WATER_HEIGHT - 15,
+        //     150, 30
+        // )
     }
 
     this.drawFishingLine = function() {

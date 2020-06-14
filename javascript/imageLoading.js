@@ -632,11 +632,11 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: treasureChestAnswerHolderImage, theFile: 'images/sprites/Jumper/treasureChest.png', loaded: false});
 
   //finder game
-  arrayOfImagesToLoad.push({imageObjectBinding: finderBackgroundImage, theFile: 'images/Backgrounds/FinderBG.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: upperAndMiddleRoomsImage, theFile: 'images/sprites/Finder/upperAndMiddleRooms.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: bottomRoomImage, theFile: 'images/sprites/Finder/bottomRoom.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: doorImage, theFile: 'images/sprites/Finder/door.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: trophyImage, theFile: 'images/sprites/Rewards/Trophy.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: finderBackgroundImage, theFile: 'images/Backgrounds/FinderBG.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: upperAndMiddleRoomsImage, theFile: 'images/sprites/Finder/upperAndMiddleRooms.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: bottomRoomImage, theFile: 'images/sprites/Finder/bottomRoom.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: doorImage, theFile: 'images/sprites/Finder/door.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: trophyImage, theFile: 'images/sprites/Rewards/Trophy.png', loaded: false});
 
   //pass or block
   arrayOfImagesToLoad.push({imageObjectBinding: volcanoImage, theFile: 'images/Backgrounds/Volcano.png', loaded: false});
@@ -668,34 +668,34 @@ function loadImages()
 
 
   //feedGame
-  arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/Backgrounds/feed.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: cake1, theFile: 'images/sprites/feedGame/cake1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding:cake2, theFile: 'images/sprites/feedGame/cake2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: cake3, theFile: 'images/sprites/feedGame/cake3.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: rightPac, theFile: 'images/sprites/feedGame/rightP.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: leftPac, theFile: 'images/sprites/feedGame/leftP.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: feedBackgroundImage, theFile: 'images/Backgrounds/feed.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: cake1, theFile: 'images/sprites/feedGame/cake1.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding:cake2, theFile: 'images/sprites/feedGame/cake2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: cake3, theFile: 'images/sprites/feedGame/cake3.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: rightPac, theFile: 'images/sprites/feedGame/rightP.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: leftPac, theFile: 'images/sprites/feedGame/leftP.png', loaded: false});
 
   //flower game
   arrayOfImagesToLoad.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png", loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: flowerBackground, theFile: "images/Backgrounds/Flower2.png", loaded: false});
 
   //hello world images
-  arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage1, theFile: "images/sprites/dodgeBall/Player1.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: daytimeImage, theFile: "images/Backgrounds/daytimeBackground.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage4, theFile: "images/sprites/dodgeBall/Player4.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageA, theFile: "images/sprites/dayTime/speechBubbleFromLeftA.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageAHighlighted, theFile: "images/sprites/dayTime/speechBubbleFromLeftAHighlighted.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageB, theFile: "images/sprites/dayTime/speechBubbleFromLeftB.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageBHighlighted, theFile: "images/sprites/dayTime/speechBubbleFromLeftBHighlighted.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromRightImage, theFile: "images/sprites/dayTime/speechBubbleFromRight.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: helloWorldArrowImage, theFile: "images/sprites/dayTime/arrow.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage1, theFile: "images/sprites/dodgeBall/Player1.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: daytimeImage, theFile: "images/Backgrounds/daytimeBackground.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage4, theFile: "images/sprites/dodgeBall/Player4.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageA, theFile: "images/sprites/dayTime/speechBubbleFromLeftA.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageAHighlighted, theFile: "images/sprites/dayTime/speechBubbleFromLeftAHighlighted.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageB, theFile: "images/sprites/dayTime/speechBubbleFromLeftB.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromLeftImageBHighlighted, theFile: "images/sprites/dayTime/speechBubbleFromLeftBHighlighted.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: speechBubbleFromRightImage, theFile: "images/sprites/dayTime/speechBubbleFromRight.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: helloWorldArrowImage, theFile: "images/sprites/dayTime/arrow.png", loaded: false});
 
   //dodgeball images
-  arrayOfImagesToLoad.push({imageObjectBinding: dodgeBallBackgroundImage, theFile: "images/Backgrounds/dodgeball.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage2, theFile: "images/sprites/dodgeBall/Player2.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage3, theFile: "images/sprites/dodgeBall/Player3.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage5, theFile: "images/sprites/dodgeBall/Player5.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: dodgeballImage, theFile: "images/sprites/dodgeBall/dodgeBall.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: dodgeBallBackgroundImage, theFile: "images/Backgrounds/dodgeball.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage2, theFile: "images/sprites/dodgeBall/Player2.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage3, theFile: "images/sprites/dodgeBall/Player3.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage5, theFile: "images/sprites/dodgeBall/Player5.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: dodgeballImage, theFile: "images/sprites/dodgeBall/dodgeBall.png", loaded: false});
 
   //nighttime
   arrayOfImagesToLoad.push({imageObjectBinding: nighttimeBackgroundImage, theFile: "images/Backgrounds/nighttimeBackground.png", loaded: false});
@@ -751,19 +751,19 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingDownImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Down.png', loaded: false});
 
   //fishing game
-  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameWaterBackgroundImage, theFile: 'images/Backgrounds/underwater2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameCharacter, theFile: 'images/sprites/Fishing/person.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameBoat, theFile: 'images/sprites/Fishing/boat.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish1, theFile: 'images/sprites/Fishing/fish.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish2, theFile: 'images/sprites/Fishing/fish2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish3, theFile: 'images/sprites/Fishing/fish3.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: fishingGameWaterBackgroundImage, theFile: 'images/Backgrounds/underwater2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: fishingGameCharacter, theFile: 'images/sprites/Fishing/person.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: fishingGameBoat, theFile: 'images/sprites/Fishing/boat.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish1, theFile: 'images/sprites/Fishing/fish.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish2, theFile: 'images/sprites/Fishing/fish2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: fishingGameFish3, theFile: 'images/sprites/Fishing/fish3.png', loaded: false});
 
   //egg catch game
-  arrayOfImagesToLoad.push({imageObjectBinding: eggCatchBackgroundImage, theFile: 'images/Backgrounds/Barn.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: eggImage1, theFile: 'images/sprites/eggCatch/egg.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: eggImage2, theFile: 'images/sprites/eggCatch/egg2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: basketImage, theFile: 'images/sprites/eggCatch/Basket.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: chickenImage, theFile: 'images/sprites/eggCatch/chicken.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: eggCatchBackgroundImage, theFile: 'images/Backgrounds/Barn.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: eggImage1, theFile: 'images/sprites/eggCatch/egg.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: eggImage2, theFile: 'images/sprites/eggCatch/egg2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: basketImage, theFile: 'images/sprites/eggCatch/Basket.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: chickenImage, theFile: 'images/sprites/eggCatch/chicken.png', loaded: false});
 
   //PenaltyShootout game
   arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall1, theFile: 'images/sprites/Penalty/ball/ball0000.png', loaded: false});

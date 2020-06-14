@@ -13,7 +13,7 @@ function Fish() {
     this.y = undefined;
 
     this.headX = undefined;
-    
+
     this.headWidth = undefined;
 
     this.speedX = undefined;
@@ -36,7 +36,7 @@ function Fish() {
     this.oscillationSpeed = undefined;
 
     this.drawTrajectoryToBucket = false;
-    
+
     this.bucketX = undefined;
     this.bucketY = undefined;
     this.caughtLocationX = undefined;
@@ -66,7 +66,7 @@ function Fish() {
         }
 
         this.speedX = getRandomArbitrary(FISH_MIN_SPEED, FISH_MAX_SPEED);
-        
+
         this.hasCorrectAnswer = false;
         this.hasIncorrectAnswer = false;
 
@@ -81,9 +81,9 @@ function Fish() {
         {
             this.updatePosition();
             this.handleCollisionWithCanvasBorder();
-            this.setAnswerPositionIfHasAnswer(); 
+            this.setAnswerPositionIfHasAnswer();
             this.handleCollisionWithFishingHook();
-        } 
+        }
     }
 
     this.updatePosition = function() {
@@ -98,10 +98,10 @@ function Fish() {
     }
 
     this.updatePositionWhenHasEatenHook = function() {
-        
+
         if (this.fishingHook.isPulledBack){
             this.setCaughtAndBucketLocationsIfUndefined();
-            this.projectToBucket(); 
+            this.projectToBucket();
         }
         else {
             this.oscillateTryingToEscape();
@@ -145,7 +145,7 @@ function Fish() {
         control2Coordinate, // P2
         targetCoordinate    // P3
     ){
-        //  (1-t)^3*P0 + 3(1-t)^2*t*P1 + 3(1-t)*t^2*P2 + t^3*P3 
+        //  (1-t)^3*P0 + 3(1-t)^2*t*P1 + 3(1-t)*t^2*P2 + t^3*P3
         var bezierCoordinate  =     (1 - this.bezierParameter)**3 * originCoordinate;
         bezierCoordinate     += 3 * (1 - this.bezierParameter)**2 * this.bezierParameter * control1Coordinate;
         bezierCoordinate     += 3 * (1 - this.bezierParameter)    * this.bezierParameter**2 * control2Coordinate;
@@ -155,7 +155,7 @@ function Fish() {
     }
 
     this.setCaughtAndBucketLocationsIfUndefined = function() {
-        if (this.bucketX == undefined && 
+        if (this.bucketX == undefined &&
             this.bucketY == undefined &&
             this.caughtLocationY == undefined &&
             this.caughtLocationY == undefined
@@ -253,15 +253,21 @@ function Fish() {
             gameCanvasContext.save();
             gameCanvasContext.translate(this.x, this.y);
             gameCanvasContext.scale(this.orientation, 1);
-            gameCanvasContext.drawImage(
-                this.sprite,
-                -this.width/2, 
-                -this.height/2,
-                this.width, 
-                this.height
-            );
+            drawFromSheet(
+              this.sprite,
+            -this.width/2,
+            -this.height/2,
+            this.width,
+            this.height);
+            // gameCanvasContext.drawImage(
+            //     this.sprite,
+            //     -this.width/2,
+            //     -this.height/2,
+            //     this.width,
+            //     this.height
+            // );
             gameCanvasContext.restore();
-            
+
             this.drawBoundingBoxesIfDebugMode();
             this.drawProjectionTrajectoryIfDebugMode();
         }
@@ -269,16 +275,16 @@ function Fish() {
 
     this.drawBoundingBoxesIfDebugMode = function() {
         if (debugOn){
-            
+
             gameCanvasContext.save();
             gameCanvasContext.translate(this.x, this.y);
             gameCanvasContext.scale(this.orientation, 1);
             gameCanvasContext.strokeStyle = "purple";
             gameCanvasContext.lineWidth = 3;
             gameCanvasContext.strokeRect(
-                -this.width/2, 
+                -this.width/2,
                 -this.height/2,
-                this.width, 
+                this.width,
                 this.height
             );
             gameCanvasContext.restore();
@@ -289,7 +295,7 @@ function Fish() {
             gameCanvasContext.strokeStyle = "red";
             gameCanvasContext.strokeRect(
                 -this.headWidth/2,
-                -this.height/2, 
+                -this.height/2,
                 this.headWidth,
                 this.height
             );
@@ -307,7 +313,7 @@ function Fish() {
             gameCanvasContext.beginPath();
             gameCanvasContext.moveTo(this.caughtLocationX, this.caughtLocationY);
             gameCanvasContext.bezierCurveTo(
-                this.caughtLocationX, -WATER_HEIGHT, 
+                this.caughtLocationX, -WATER_HEIGHT,
                 this.bucketX, 0,
                 this.bucketX, this.bucketY
             );
@@ -325,7 +331,7 @@ function Fish() {
         var otherFishesInWater = gameClassManager.currentGame.fishes;
 
         for (var i=0 ; i < otherFishesInWater.length ; i++){
-            if (Math.abs(this.y - otherFishesInWater[i].y) < 
+            if (Math.abs(this.y - otherFishesInWater[i].y) <
                 MIN_DISTANCE_BETWEEN_FISHES
             ){
                 return true;
