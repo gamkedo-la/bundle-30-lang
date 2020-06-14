@@ -4,6 +4,8 @@ function FeedGrabberPlayer()
   this.armlessBodyImage = "images\\sprites\\air grab\\AirGuy.png";
   this.rightArmImage = "images\\sprites\\air grab\\rightArmm.png";
   this.leftArmImage = "images\\sprites\\air grab\\leftArmm.png";
+  this.leftPac = "images\\sprites\\feedGame\\leftP.png";
+  this.rightPac = "images\\sprites\\feedGame\\rightP.png";
 
   this.leftArmX = undefined;
   this.leftArmY = undefined;
@@ -45,13 +47,20 @@ function FeedGrabberPlayer()
 
   this.draw = function()
   {
+    drawFromSheet(this.leftPac, 0,
+      gameCanvas.height,
+      this.bodyWidth,this.bodyHeight);
+
+    drawFromSheet(this.rightPac, gameCanvas.width,
+      gameCanvas.height,
+      this.bodyWidth,this.bodyHeight);
+
     drawFromSheet(this.armlessBodyImage, gameCanvas.width/2 - this.bodyWidth/2,
                                 gameCanvas.height - this.bodyHeight - gameCanvas.width*0.0225,
                                 this.bodyWidth,this.bodyHeight);
     // gameCanvasContext.drawImage(this.armlessBodyImage, gameCanvas.width/2 - this.bodyWidth/2,
     //                             gameCanvas.height - this.bodyHeight - gameCanvas.width*0.0225,
     //                             this.bodyWidth,this.bodyHeight);
-
     this.calculateLeftArmAngle();
     drawFromSheet(this.leftArmImage, this.leftArmX,this.leftArmY, this.leftArmWidth,this.leftArmHeight, undefined, this.leftArmAngle,this.leftArmPivotX,this.leftArmPivotY);
     // gameCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
