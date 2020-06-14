@@ -22,6 +22,13 @@ function Simon()
   this.leftPhonicIsBeingHeard = false;
   this.rightPhonicIsBeingHeard = false;
 
+  this.timeToWaitBeforePlayingPattern = 1000;
+
+  this.computerTurnText = "Listen carefully";
+  this.computerTurnTextXPosition = gameCanvas.width/2 - 100;
+  this.playerTurnText = "Repeat the pattern";
+  this.playerTurnTextXPosition = gameCanvas.width/2 - 120;
+
   this.grabLeftAndRightPhonics = function()
   {
     let randomPhonicIndex1 = getRandomIntInclusive(0,gameClassManager.currentGame.phonicClassManager.temporaryArrayOfPhonics.length - 1);
@@ -111,6 +118,24 @@ function Simon()
     gameCanvasContext.font = '100px Helvetica';
     gameCanvasContext.fillText(this.leftPhonic.textAssociation, this.leftPhonicX,this.leftPhonicY);
     gameCanvasContext.fillText(this.rightPhonic.textAssociation, this.rightPhonicX,this.rightPhonicY);
+
+    if (this.isPlayingPatternOfPhonics){
+      gameCanvasContext.fillStyle = "gold";
+      gameCanvasContext.fillRect(0, 0, gameCanvas.width, 50);
+      customFontFillText(
+        [this.computerTurnText], 30, 12, 
+        this.computerTurnTextXPosition, 10
+      );
+    }
+    else{
+      gameCanvasContext.fillStyle = "gold";
+      gameCanvasContext.fillRect(0, 0, gameCanvas.width, 50);
+      customFontFillText(
+        [this.playerTurnText], 30, 12, 
+        this.playerTurnTextXPosition, 10
+      );
+    }
+    
   }
 
   this.phonicToCheckIndex = 0;
@@ -154,7 +179,12 @@ function Simon()
   this.updatePatternOfPhonics = function() {
     this.phonicToCheckIndex = 0;
     this.chooseCorrectPhonicAndAddToArray();
-    this.playPatternOfPhonics();
+
+    this.isPlayingPatternOfPhonics = true;
+    setTimeout(
+      this.playPatternOfPhonics.bind(this), 
+      this.timeToWaitBeforePlayingPattern
+    );
   }
 
   this.processCorrectFullAnswer = function() {
