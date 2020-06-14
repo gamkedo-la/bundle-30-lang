@@ -83,7 +83,7 @@ function feedGameClass()
     this.initializeAnswerSettings();
     drawAnswersManager.initialize();
     this.background = new feedBackground();
-    this.playerCharacter = new feedPlayerCharacter();
+    this.playerCharacter = new FeedGrabberPlayer();
     this.collisionsWithAnswersManager = new feedCollisionsManager();
     //this.playerCharacter.collisionsWithAnswersManager.initialize(gameClassManager.currentGame);
   }
@@ -105,7 +105,7 @@ function feedGameClass()
 
   this.handleClick = function()
   {
-    //this.playerCharacter.handleClick();
+    this.playerCharacter.handleClick();
   }
 
   this.moveAnswers = function()
@@ -174,7 +174,7 @@ function FoodAnswerHolder(image)
   this.image = image;
 }
 
-function feedPlayerCharacter()
+function feedGrabberPlayer()
   {
     this.width = gameCanvas.width*0.2;
     this.height = gameCanvas.height*0.1;
