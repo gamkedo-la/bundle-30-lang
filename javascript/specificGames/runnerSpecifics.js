@@ -47,7 +47,7 @@ function runnerGameClass() {
   this.correctTextAnswerHolderWidth = undefined;
   this.incorrectTextAnswerHolderWidth = undefined;
 
-  this.answerHolderImage = coinImage;
+  this.answerHolderImage = 'images\\sprites\\runner\\Coin.png';
 
   this.assignAnswerHolder = function()
   {
@@ -112,11 +112,11 @@ function runnerGameClass() {
     this.correctTextAnswerHolderWidth = undefined;
     this.incorrectTextAnswerHolderWidth = undefined;
 
-    arrayOfRunnerRunningImages.push(runnerRunning1Image);
-    arrayOfRunnerRunningImages.push(runnerRunning2Image);
-    arrayOfRunnerRunningImages.push(runnerRunning3Image);
-    arrayOfRunnerRunningImages.push(runnerRunning4Image);
-    arrayOfRunnerRunningImages.push(runnerRunning5Image);
+    arrayOfRunnerRunningImages.push('images\\sprites\\runner\\1edited.png');
+    arrayOfRunnerRunningImages.push('images\\sprites\\runner\\2edited.png');
+    arrayOfRunnerRunningImages.push('images\\sprites\\runner\\3edited.png');
+    arrayOfRunnerRunningImages.push('images\\sprites\\runner\\4edited.png');
+    arrayOfRunnerRunningImages.push('images\\sprites\\runner\\5edited.png');
     this.currentRunnerRunningImage = arrayOfRunnerRunningImages[0];
 
 	runnerSpeedY = 0;
@@ -183,17 +183,20 @@ function runnerGameClass() {
 	  y = gameCanvas.height*0.75 - height;
 	}
 	if (runnerStatus == 'stumble') {
-	  gameCanvasContext.save();
-	  gameCanvasContext.translate(x, y);
-	  gameCanvasContext.rotate(Math.PI/4);
-	  // gameCanvasContext.fillRect(width, -height/2, width, height);
-	  gameCanvasContext.drawImage(arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex], x, y, width,height);
-	  gameCanvasContext.restore();
+    drawFromSheet(arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex], x, y, width,height, undefined, Math.PI/4, x,y);
+	  // gameCanvasContext.save();
+	  // gameCanvasContext.translate(x, y);
+	  // gameCanvasContext.rotate(Math.PI/4);
+	  // // gameCanvasContext.fillRect(width, -height/2, width, height);
+	  // gameCanvasContext.drawImage(arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex], x, y, width,height);
+	  // gameCanvasContext.restore();
 	} else if (runnerStatus == 'jump'){
-	  gameCanvasContext.drawImage(runnerJumpingImage, x,y, width,height);
+    drawFromSheet('images\\sprites\\runner\\1jump.png', x,y, width,height);
+	  //gameCanvasContext.drawImage('images\\sprites\\runner\\1jump.png', x,y, width,height);
 	}else {
 	  // gameCanvasContext.fillRect(x, y, width, height);
-	  gameCanvasContext.drawImage(arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex], x,y, width,height);
+    drawFromSheet(arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex], x,y, width,height);
+	  //gameCanvasContext.drawImage(arrayOfRunnerRunningImages[arrayOfRunnerRunningImagesIndex], x,y, width,height);
 	}
 	drawAnswersManager.draw();
 	promptersManager.drawPromptsWhenAppropriate();
@@ -242,9 +245,12 @@ function runnerGameClass() {
 
   function drawParallax() {
 	//clouds
-	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[0],gameCanvas.height*0.20, 200,150);
-	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[1],gameCanvas.height*0.07, 150,125);
-	gameCanvasContext.drawImage(runnerCloud1, parallaxPos[2],gameCanvas.height*0.12, 250,200);
+  drawFromSheet(runnerCloud1, parallaxPos[0],gameCanvas.height*0.20, 200,150);
+	drawFromSheet(runnerCloud1, parallaxPos[1],gameCanvas.height*0.07, 150,125);
+	drawFromSheet(runnerCloud1, parallaxPos[2],gameCanvas.height*0.12, 250,200);
+	//gameCanvasContext.drawImage(runnerCloud1, parallaxPos[0],gameCanvas.height*0.20, 200,150);
+	//gameCanvasContext.drawImage(runnerCloud1, parallaxPos[1],gameCanvas.height*0.07, 150,125);
+	//gameCanvasContext.drawImage(runnerCloud1, parallaxPos[2],gameCanvas.height*0.12, 250,200);
 	// gameCanvasContext.fillStyle = 'lightgrey';
 	// gameCanvasContext.fillText('AMAZING', parallaxPos[0], gameCanvas.height*0.28);
 
@@ -258,9 +264,12 @@ function runnerGameClass() {
   }
 
   this.drawBackground = function() {
-	gameCanvasContext.drawImage(runnerSunAndSkyBackgroundImage, 0,0, gameCanvas.width,gameCanvas.height);
-	gameCanvasContext.drawImage(runnerMountain1Image, parallaxPos[3],gameCanvas.height*0.20, 200,350);
-	gameCanvasContext.drawImage(runnerGrassImage, 0,gameCanvas.height*0.7, gameCanvas.width,gameCanvas.height*0.3);
+  drawFromSheet('images\\Backgrounds\\runnerSunAndSky.png', 0,0, gameCanvas.width,gameCanvas.height);
+  drawFromSheet('images\\Backgrounds\\runnerMountain1.png',  parallaxPos[3],gameCanvas.height*0.20, 200,350);
+  drawFromSheet('images\\Backgrounds\\runnerGrass.png', 0,gameCanvas.height*0.7, gameCanvas.width,gameCanvas.height*0.3);
+	// gameCanvasContext.drawImage('images\\Backgrounds\\runnerSunAndSky.png', 0,0, gameCanvas.width,gameCanvas.height);
+	// gameCanvasContext.drawImage(runnerMountain1Image, parallaxPos[3],gameCanvas.height*0.20, 200,350);
+	// gameCanvasContext.drawImage(runnerGrassImage, 0,gameCanvas.height*0.7, gameCanvas.width,gameCanvas.height*0.3);
 
 	drawParallax();
   };
