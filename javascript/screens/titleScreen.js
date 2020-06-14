@@ -175,10 +175,8 @@ function TitleScreenClass()
   {
     if(showingCredits) {
       gameCanvasContext.fillStyle="black";
-      gameCanvasContext.fillRect(0,0,100,100);
-      gameCanvasContext.font= "10px Arial";
-      gameCanvasContext.fillStyle="yellow";
-      gameCanvasContext.fillText("click to close",10,50);
+      gameCanvasContext.fillRect(0,0,gameCanvas.width,gameCanvas.height);
+      drawCredits();
       return;
     }
     this.drawBackground();
@@ -302,3 +300,102 @@ else if (inputManager.mouseCoordinates.x > 220 && inputManager.mouseCoordinates.
   }
   // FIXME: this may trigger when you click the background and never started a game?
   */
+
+var creditsList = [
+" ",
+"                                          CLICK ANYWHERE TO CLOSE AND RETURN TO THE GAME",
+" ",
+"Stebs: Project lead, majority of cored functionality shared between minigames, clue images+recordings, language data set authoring, file count reduction for itch, many of the minigames not mentioned below, foreign language character support, additional font, many small fixes to minigames, additional sounds and art",
+"Christer \"McFunkypants\" Kaitila: Several games with related implementation and art+audio (pinata, bubble wrap, balloon pop), main menu and transition animated background, title and transition particles, custom font, stats display gui improvements, letter voiceover recordings",
+"Ian Cherabier: Maze game and fishing game (implementation and art), collision manager, dynamic bounding boxes, game transition debugging, answer positions, various fixes (including for snake game, frog river, egg catch, space shooter, also for language selection screen), replay prompt functionality",
+"Vaan Hope Khani: Majority of game art sprites (including coins, letters, characters, bills, food), many backgrounds, assorted sounds (including bomb, dodgeball, running), some art fixes",
+"Michael \"Misha\" Fewkes: Audio engine code, sounds (UI, positive/negative feedback, correct/incorrect answers, back, radio select, snake game sound, bird, duck, fade, space shooter), music (runner, maze, title, frog river, jumper, air grab, space shooter, lane, transition songs, several additional songs)",
+"Gonzalo Delgado: Runner game, lane game, snake game realted fixes, code architecture/organization improvements, loading improvements, cross-platform fixes",
+"Brian Nielsen: Bird game updates, flower game, bee and flower art+audio,  question/answer pair authoring text tool (based on foundation by H from Warped Radar)",
+"Barış Köklü: Penalty shot game (including animation)",
+"Michelly Oliveira: Image loading fix, game change fix, cross-platform support improvement, audio debugging",
+"H Trayford: Pair authoring text tool foundation",
+"Chris DeLeon: Minor debugging, spritesheet atlas script, credits",
+"Lexi \"LexiGameDev\" Kunkel: First practice commit!",
+  " ",
+  "Game made in HomeTeam GameDev, apply to join us at",
+  "HomeTeamGameDev.com"
+];
+
+function lineWrapCredits() { // note: gets calling immediately after definition!
+  const newCut = [];
+  var maxLineChar = 127;
+  var findEnd;
+  for(var i=0;i<creditsList.length;i++) {
+    while(creditsList[i].length > 0) {
+      findEnd = maxLineChar;
+      if(creditsList[i].length > maxLineChar) {
+        for(var ii=findEnd;ii>0;ii--) {
+          if(creditsList[i].charAt(ii) == " ") {
+            findEnd=ii;
+            break;
+          }
+        }
+      }
+      newCut.push(creditsList[i].substring(0, findEnd));
+      creditsList[i] = creditsList[i].substring(findEnd, creditsList[i].length);
+    }
+  } 
+
+  const newerCut = [];
+  for(let i = 0; i < newCut.length; i++) {
+    const currentLine = newCut[i];
+    for(let j = 0; j < currentLine.length; j++) {
+      const aChar = currentLine[j];
+      if(aChar === ":") {
+        if(i !== 0) {
+          newerCut.push("\n");
+        }
+
+        newerCut.push(currentLine.substring(0, j + 1));
+        newerCut.push(currentLine.substring(j + 2, currentLine.length));
+        break;
+      } else if(j === currentLine.length - 1) {
+        if((i === 0) || (i >= newCut.length - 2)) {
+          newerCut.push(currentLine);
+        } else {
+          newerCut.push(currentLine.substring(1, currentLine.length));
+        }
+      }
+    }
+  }
+
+  creditsList = newerCut;
+}
+lineWrapCredits(); // note: calling immediately as part of init, outside the function
+
+const drawCredits = function() {
+  var creditPosY = 10;
+  var leftX = 20;
+    for(var i=0; i<creditsList.length; i++) {
+      var yPos = creditPosY + i * 12;
+      //if (200 < yPos && yPos < 600) {
+        if((i > 0) && (creditsList[i - 1] === "\n")) {
+          gameCanvasContext.font= "13px Arial";
+          gameCanvasContext.fillStyle="white";
+          gameCanvasContext.textAlign="left";
+          gameCanvasContext.fillText(creditsList[i],leftX,yPos);
+        } else if(i === creditsList.length - 2) {
+          gameCanvasContext.font= "11px Arial";
+          gameCanvasContext.fillStyle="white";
+          gameCanvasContext.textAlign="center";
+          gameCanvasContext.fillText(creditsList[i],gameCanvas.width/2,yPos);
+        } else if(i === creditsList.length - 1) {
+          gameCanvasContext.font= "11px Arial";
+          gameCanvasContext.fillStyle="#54b0bd";
+          gameCanvasContext.textAlign="center";
+          gameCanvasContext.fillText(creditsList[i],gameCanvas.width/2,yPos);
+        } else {
+          gameCanvasContext.font= "11px Arial";
+          gameCanvasContext.fillStyle="white";
+          gameCanvasContext.textAlign="left";
+          gameCanvasContext.fillText(creditsList[i],leftX,yPos);
+        }
+      // }
+    }
+  };
