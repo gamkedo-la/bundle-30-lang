@@ -740,15 +740,15 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png', loaded: false});
 
   //flying bee
-  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeBackgroundImage, theFile: 'images/Backgrounds/flyingBee.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingLeftImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Left.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingLeftUpImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing UpLeft.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingLeftDownImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing DownLeft.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingRightImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Right.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingRightUpImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing UpRight.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingRightDownImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing DownRight.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingUpImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Up.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingDownImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Down.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeBackgroundImage, theFile: 'images/Backgrounds/flyingBee.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingLeftImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Left.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingLeftUpImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing UpLeft.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingLeftDownImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing DownLeft.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingRightImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Right.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingRightUpImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing UpRight.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingRightDownImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing DownRight.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingUpImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Up.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: flyingBeeFacingDownImage, theFile: 'images/sprites/Flying Bee/Simple Bee Facing Down.png', loaded: false});
 
   //fishing game
   // arrayOfImagesToLoad.push({imageObjectBinding: fishingGameWaterBackgroundImage, theFile: 'images/Backgrounds/underwater2.png', loaded: false});
