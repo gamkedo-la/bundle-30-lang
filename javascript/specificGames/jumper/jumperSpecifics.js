@@ -204,3 +204,161 @@ function TreasureChestAnswerHolder(image)
 {
 	this.image = image;
 }
+
+function JumperClass()
+{
+  this.RIGHT_ARROW_DOWN_SPEED = 3;
+  this.LEFT_ARROW_DOWN_SPEED = -3;
+  this.JUMP_SPEED = 7;
+  this.LEFT_OR_RIGHT_ARROW_UP_SPEED = 0;
+  this.xSpeed = 0;
+  this.x = Math.random() * gameCanvas.width;
+  this.y = (Math.floor(Math.random() * 7) * 100) + 20;
+
+  this.width = 60;
+  this.height = 60;
+
+  this.rotationAmount = 0;
+
+
+  this.facingRightImage = 'images\\sprites\\Jumper\\JumperFacingRight.png';
+  this.facingLeftImage = 'images\\sprites\\Jumper\\JumperFacingLeft.png';
+  this.currentImage = this.facingRightImage;
+
+  this.draw = function()
+  {
+    let currentCenterX = this.x + this.width/2;
+    let currentCenterY = this.y + this.height/2;
+
+    drawFromSheet(this.currentImage, this.x,this.y, this.width,this.height, undefined, this.rotationAmount + Math.PI/2,currentCenterX,currentCenterY);
+    // gameCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
+    // gameCanvasContext.translate(currentCenterX,currentCenterY);//place imaginary hand at pivot point
+    // gameCanvasContext.rotate(this.rotationAmount + Math.PI/2);//rotate with hand at pivot based in radians
+    // gameCanvasContext.translate(-currentCenterX,-currentCenterY);//return hand to 0,0 of canvas
+    // gameCanvasContext.drawImage(this.currentImage, this.x,this.y, this.width,this.height);
+    // gameCanvasContext.restore();//erase any errant abnormal draw code
+
+  	// gameCanvasContext.fillStyle = 'white';
+  	// gameCanvasContext.fillRect(this.x,this.y, this.width,this.height);
+  };
+
+  this.jump = function()
+  {
+	   this.y -= 5;
+  }
+}
+
+function GroundParticle(x,y, xVelocity,yVelocity, image)
+{
+  this.x = x;
+  this.y = y;
+  this.xVelocity = xVelocity;
+  this.yVelocity = yVelocity;
+
+  this.width = 7;
+  this.height = 7;
+
+  const GRAVITY = -0.5;
+
+  this.image = image;
+
+  this.update = function()
+  {
+    this.yVelocity -= GRAVITY;
+  }
+
+  this.move = function()
+  {
+
+    this.x += this.xVelocity;
+    this.y += this.yVelocity;
+  }
+
+  this.draw = function()
+  {
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+  }
+}
+
+function GroundParticleManager()
+{
+  this.arrayOfGroupsOfParticles = [];
+  this.createAGroupOfParticles = function()
+  {
+    let groupOfParticles = [];
+    let randomAmountOfParticles = getRandomIntInclusive(15, 30);
+    for (let particleIndex = 0; particleIndex < randomAmountOfParticles; particleIndex++)
+    {
+      let currentX = gameClassManager.currentGame.playerCharacter.x;
+      let currentY = gameClassManager.currentGame.playerCharacter.y;
+      let xToAssign = getRandomArbitrary(currentX - 35, currentX + 35);
+      let yToAssign = getRandomArbitrary(currentY + 70, currentY + 10);
+      let xVelocity = getRandomArbitrary(-1,1);
+      let yVelocity = getRandomArbitrary(-7, -10);
+
+      let particle = new GroundParticle(xToAssign,yToAssign, xVelocity,yVelocity, 'images\\sprites\\Jumper\\jumperGroundParticle.png');
+      groupOfParticles.push(particle);
+    }
+    this.arrayOfGroupsOfParticles.push(groupOfParticles);
+  }
+
+  this.updateParticles = function()
+  {
+    if (this.arrayOfGroupsOfParticles.length === 0)
+    {
+      return;
+    }
+    else
+    {
+      for (let groupsOfParticlesIndex = 0; groupsOfParticlesIndex < this.arrayOfGroupsOfParticles.length; groupsOfParticlesIndex++)
+      {
+        for (let individualParticlesIndex = 0; individualParticlesIndex < this.arrayOfGroupsOfParticles[groupsOfParticlesIndex].length; individualParticlesIndex++)
+        {
+          this.arrayOfGroupsOfParticles[groupsOfParticlesIndex][individualParticlesIndex].update();
+          if (this.arrayOfGroupsOfParticles[groupsOfParticlesIndex][individualParticlesIndex].y > gameCanvas.height)
+          {
+            this.arrayOfGroupsOfParticles[groupsOfParticlesIndex].splice(individualParticlesIndex,1);
+          }
+        }
+      }
+    }
+
+  }
+
+  this.moveParticles = function()
+  {
+    if (this.arrayOfGroupsOfParticles.length === 0)
+    {
+      return;
+    }
+    else
+    {
+      for (let groupsOfParticlesIndex = 0; groupsOfParticlesIndex < this.arrayOfGroupsOfParticles.length; groupsOfParticlesIndex++)
+      {
+        for (let individualParticlesIndex = 0; individualParticlesIndex < this.arrayOfGroupsOfParticles[groupsOfParticlesIndex].length; individualParticlesIndex++)
+        {
+          this.arrayOfGroupsOfParticles[groupsOfParticlesIndex][individualParticlesIndex].move();
+        }
+      }
+    }
+  }
+
+  this.drawParticles = function()
+  {
+    if (this.arrayOfGroupsOfParticles.length === 0)
+    {
+      return;
+    }
+    else
+    {
+      for (let groupsOfParticlesIndex = 0; groupsOfParticlesIndex < this.arrayOfGroupsOfParticles.length; groupsOfParticlesIndex++)
+      {
+        for (let individualParticlesIndex = 0; individualParticlesIndex < this.arrayOfGroupsOfParticles[groupsOfParticlesIndex].length; individualParticlesIndex++)
+        {
+          this.arrayOfGroupsOfParticles[groupsOfParticlesIndex][individualParticlesIndex].draw();
+        }
+      }
+    }
+  }
+}

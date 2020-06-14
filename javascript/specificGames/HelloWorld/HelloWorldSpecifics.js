@@ -133,3 +133,300 @@ function HelloWorldBackground()
     //gameCanvasContext.drawImage(this.image, 0,0, gameCanvas.width,gameCanvas.height);
   }
 }
+
+function HelloWorldCharacter(image, x)
+{
+  this.image = image;
+
+  this.x = x;
+  this.y = gameCanvas.height*0.5;
+
+  this.width = 100;
+  this.height = 200;
+
+  this.draw = function()
+  {
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+  }
+}
+
+function CharacterSpeechBubbleHW1(image,highlightedImage, x,y, width,height)
+{
+  this.image = image;
+  this.highlightedImage = highlightedImage;
+  this.arrowImage = "images\\sprites\\dayTime\\arrow.png";
+  this.arrowImageWidth = 50;
+  this.arrowImageHeight = 100;
+
+  this.isBeingHeard = false;
+
+  this.x = x;
+  this.y = y;
+  this.width = width;
+  this.height = height;
+
+  this.message = undefined;
+
+  this.highlighted = false;
+
+  this.draw = function()
+  {
+    if (this.highlighted === true)
+    {
+      drawFromSheet(this.highlightedImage, this.x,this.y, this.width,this.height);
+      //gameCanvasContext.drawImage(this.highlightedImage, this.x,this.y, this.width,this.height);
+    }
+    else if (this.highlighted === false)
+    {
+      drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+      //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+    }
+
+    if (this.isBeingHeard === true)
+    {
+      let arrowImageStartingX = this.x + this.width/2 - this.arrowImageWidth/2;
+      let arrowImageStartingY = this.y - this.arrowImageHeight;
+      // let arrowImageStartingX = gameCanvas.width/2;
+      // let arrowImageStartingY = gameCanvas.height/2;
+      drawFromSheet(this.arrowImage, arrowImageStartingX,arrowImageStartingY, this.arrowImageWidth,this.arrowImageHeight);
+      //gameCanvasContext.drawImage(this.arrowImage, arrowImageStartingX,arrowImageStartingY, this.arrowImageWidth,this.arrowImageHeight);
+    }
+  }
+
+  this.highlightBoundaryLeftX = this.x;
+  this.highlightBoundaryTopY = this.y;
+  this.highlightBoundaryRightX = this.x + this.width;
+  this.highlightBoundaryBottomY = (this.y + this.height)*0.725;
+
+  this.returnMouseOverStatus = function()
+  {
+    if (inputManager.mouseCoordinates.x > this.highlightBoundaryLeftX && inputManager.mouseCoordinates.x < this.highlightBoundaryRightX &&
+        inputManager.mouseCoordinates.y > this.highlightBoundaryTopY && inputManager.mouseCoordinates.y < this.highlightBoundaryBottomY)
+        {
+          this.highlighted = true;
+        }
+        else {
+          this.highlighted = false;
+        }
+  }
+
+  this.handleClick = function()
+  {
+    if (!this.highlighted)
+    {
+      return
+    }
+    else
+    {
+      if (this.message === gameClassManager.currentGame.conversationPatternManager.currentCorrectConversationPattern.answerAudio)
+      {
+        amountCorrect++;
+        genAudio.playPositive();
+      }
+      else if (this.message === gameClassManager.currentGame.conversationPatternManager.incorrectConversationPattern.answerAudio)
+      {
+        amountIncorrect++;
+        genAudio.playNegative();
+      }
+      gameClassManager.currentGame.conversationPatternManager.chooseCorrectConversationPattern(gameClassManager.currentGame.currentLanguageArray);
+      gameClassManager.currentGame.conversationPatternManager.promptAudio = gameClassManager.currentGame.conversationPatternManager.currentCorrectConversationPattern.promptAudio;
+      gameClassManager.currentGame.conversationPatternManager.chooseIncorrectConversationPattern(gameClassManager.currentGame.currentLanguageArray);
+      gameClassManager.currentGame.conversationPatternManager.assignAudioClipsToSpeechBubbles();
+      gameClassManager.currentGame.conversationAudioManager.getAudioClips();
+      gameClassManager.currentGame.conversationAudioManager.assignOrderOfAudioAnswers();
+      gameClassManager.currentGame.conversationAudioManager.assignOnendedFunctions();
+      gameClassManager.currentGame.conversationAudioManager.promptAudio.play();
+      gameClassManager.currentGame.partyGuestSpeechBubble.isBeingHeard = true;
+    }
+  }
+}
+
+function ConversationPatternManager()
+{
+  //central vietnamese
+  this.centralVietnameseWhatIsYourNameConvoPattern = new ConversationPattern('whats your name convo',promptAudio.centralVietnameseWhatsYourNameGeneral,promptAudio.centralVietnameseMyNameIsSteven);
+  this.centralVietnameseWhereAreYouFromConvoPattern = new ConversationPattern('where are you from convo',promptAudio.centralVietnameseWhereAreYouFrom,promptAudio.centralVietnameseIAmFromAmerica);
+  this.centralVietnameseWhatDoYouLikeToEatConvoPattern = new ConversationPattern('what do you like to eat convo',promptAudio.centralVietnameseWhatDoYouLikeToEat,promptAudio.centralVietnameseILikeToEatVegetarian);
+  this.centralVietnameseGoodbyeVeryNiceToMeetYouConvoPattern = new ConversationPattern('goodbye very nice to meet you pattern',promptAudio.centralVietnameseGoodBye,promptAudio.centralVietnameseVeryNiceToMeetYou);
+  this.centralVietnameseHowAreYouGoodAndYouConvoPattern = new ConversationPattern('how are you good and you convo pattern',promptAudio.centralVietnameseHowAreYouGeneral,promptAudio.centralVietnameseGoodAndYouGeneral);
+  this.centralVietnameseExcuseMePoliteHelloConvoPattern = new ConversationPattern('excuse me polite hello convo pattern',promptAudio.centralVietnameseExcuseMe,promptAudio.centralVietnamesePoliteHello);
+
+  this.arrayOfCentralVietnameseConvoPatterns = [];
+
+  //mandarin
+  this.mandarinHelloConversationPattern = new ConversationPattern('hello conversation pattern', promptAudio.mandarinHello,promptAudio.mandarinHello);
+  this.mandarinHowAreYouConversationPattern = new ConversationPattern('how are you conversation pattern', promptAudio.mandarinHowAreYou,promptAudio.mandarinImGoodAndYou);
+  this.mandarinWhereAreYouFromConversationPattern = new ConversationPattern('where are you from conversation pattern', promptAudio.mandarinWhereAreYouFrom,promptAudio.mandarinImFromAmerica);
+  this.mandarinWhatDoYouLikeToDoConversationPattern = new ConversationPattern('what do you like to do conversation pattern', promptAudio.mandarinWhatDoYouLikeToDo,promptAudio.mandarinILikeProgramming);
+  this.mandarinWhereDoYouLiveConversationPattern = new ConversationPattern('where do you live conversation pattern', promptAudio.mandarinWhereDoYouLive,promptAudio.mandarinILiveInVietnam);
+  this.mandarinWhatIsYourJobConversationPattern = new ConversationPattern('what is your job conversation pattern', promptAudio.mandarinWhatIsYourJob,promptAudio.mandarinIAmATeacher);
+  this.mandarinAnythingElseConversationPattern = new ConversationPattern('anything else conversation pattern', promptAudio.mandarinAnythingElse,promptAudio.mandarinIAlsoLikeFitness);
+  this.mandarinWhatIsYourNameConversationPattern = new ConversationPattern('what is your name conversation pattern', promptAudio.mandarinWhatIsYourName,promptAudio.mandarinMyNameIsSteven);
+  this.mandarinHowOldAreYouConversationPattern = new ConversationPattern('how old are you conversation pattern', promptAudio.mandarinHowOldAreYou,promptAudio.mandarinIAm37YearsOld);
+  this.mandarinWhereAreYouConversationPattern = new ConversationPattern('how old are you conversation pattern', promptAudio.mandarinHowOldAreYou,promptAudio.mandarinIAm37YearsOld);
+
+  this.arrayOfMandarinConvoPatterns = [];
+  this.initializeArraysOfConvoPatterns = function()
+  {
+    //central vietnamese
+    this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseWhatIsYourNameConvoPattern);
+    this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseWhereAreYouFromConvoPattern);
+    this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseWhatDoYouLikeToEatConvoPattern);
+    this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseGoodbyeVeryNiceToMeetYouConvoPattern);
+    this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseHowAreYouGoodAndYouConvoPattern);
+    this.arrayOfCentralVietnameseConvoPatterns.push(this.centralVietnameseExcuseMePoliteHelloConvoPattern);
+
+    //mandarin
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinHelloConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinHowAreYouConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinWhereAreYouFromConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinWhatDoYouLikeToDoConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinWhereDoYouLiveConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinWhatIsYourJobConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinAnythingElseConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinWhatIsYourNameConversationPattern);
+    this.arrayOfMandarinConvoPatterns.push(this.mandarinHowOldAreYouConversationPattern);
+  }
+
+  this.currentCorrectConversationPattern = undefined;
+  this.chooseCorrectConversationPattern = function(currentLanguageArray)
+  {
+    let randomArrayOfConvoPatternsIndex = getRandomIntInclusive(0,currentLanguageArray.length - 1);
+    this.currentCorrectConversationPattern = currentLanguageArray[randomArrayOfConvoPatternsIndex];
+    console.log('this.currentCorrectConversationPattern.name: ' + this.currentCorrectConversationPattern.name);
+  }
+
+  this.incorrectConversationPattern = undefined;
+  this.chooseIncorrectConversationPattern = function(currentLanguageArray)
+  {
+    let randomArrayOfConvoPatternsIndex = getRandomIntInclusive(0,currentLanguageArray.length - 1);
+    this.incorrectConversationPattern = currentLanguageArray[randomArrayOfConvoPatternsIndex];
+
+    while (this.incorrectConversationPattern === this.currentCorrectConversationPattern)
+    {
+      randomArrayOfConvoPatternsIndex = getRandomIntInclusive(0,currentLanguageArray.length - 1);
+      this.incorrectConversationPattern = currentLanguageArray[randomArrayOfConvoPatternsIndex];
+    }
+    console.log('this.incorrectConversationPattern.name: ' + this.incorrectConversationPattern.name);
+  }
+
+  this.assignAudioClipsToSpeechBubbles = function()
+  {
+    let npcGuestSpeechBubble = gameClassManager.currentGame.NPCSpeechBubble;
+    npcGuestSpeechBubble.message = this.currentCorrectConversationPattern.promptAudio;
+
+    let playerCharacterSpeechBubbleHW1A = gameClassManager.currentGame.playerCharacterSpeechBubbleHW1A;
+    let playerCharacterSpeechBubbleHW1B = gameClassManager.currentGame.playerCharacterSpeechBubbleHW1B;
+
+    let fiftyFiftyChance = Math.random();
+    if (fiftyFiftyChance < 0.5)
+    {
+      playerCharacterSpeechBubbleHW1A.message = this.currentCorrectConversationPattern.answerAudio;
+
+      playerCharacterSpeechBubbleHW1B.message = this.incorrectConversationPattern.answerAudio;
+    }
+    else
+    {
+      playerCharacterSpeechBubbleHW1B.message = this.currentCorrectConversationPattern.answerAudio;
+
+      playerCharacterSpeechBubbleHW1A.message = this.incorrectConversationPattern.answerAudio;
+
+    }
+  }
+
+}
+
+function ConversationPattern(name,promptAudio,answerAudio)
+{
+
+  this.name = name;
+  this.image = "images\\placeholderPlayButtonImage.png";
+
+  this.promptAudioX = undefined;
+  this.promptAudioY = undefined;
+
+  this.answerAudioX = undefined;
+  this.answerAudioY = undefined;
+
+  this.promptAudio = promptAudio;
+
+  this.answerAudio = answerAudio;
+
+  this.draw = function()
+  {
+    if (this.promptAudioX !== undefined)
+    {
+      drawFromSheet(this.image, this.promptAudioX,this.promptAudioY, 100,100);
+      //gameCanvasContext.drawImage(this.image, this.promptAudioX,this.promptAudioY, 100,100);
+    }
+
+    if (this.answerAudioX !== undefined)
+    {
+      drawFromSheet(this.image, this.answerAudioX,this.answerAudioY, 100,100);
+      //gameCanvasContext.drawImage(this.image, this.answerAudioX,this.answerAudioY, 100,100);
+    }
+  }
+}
+
+function ConversationAudioManager()
+{
+  this.promptAudio = undefined;
+  this.correctAnswerAudio = undefined;
+
+
+  this.getAudioClips = function()
+  {
+    let conversationPatternManager = gameClassManager.currentGame.conversationPatternManager;
+    this.promptAudio = conversationPatternManager.currentCorrectConversationPattern.promptAudio;
+    this.correctAnswerAudio = conversationPatternManager.currentCorrectConversationPattern.answerAudio;
+    this.incorrectAnswerAudio = conversationPatternManager.incorrectConversationPattern.answerAudio;
+  }
+
+  this.promptBubble = undefined;
+  this.firstAnswerBubble = undefined;
+  this.secondAnswerBubble = undefined;
+  this.assignOrderOfAudioAnswers = function()
+  {
+    let scopingProblemThis = gameClassManager.currentGame.conversationAudioManager;
+
+    scopingProblemThis.promptBubble = gameClassManager.currentGame.NPCSpeechBubble;
+
+
+    let fiftyFiftyChance = Math.random();
+    if (fiftyFiftyChance < 0.5)
+    {
+      scopingProblemThis.firstAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleHW1A;
+      scopingProblemThis.secondAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleHW1B;
+    }
+    else
+    {
+      scopingProblemThis.firstAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleHW1B;
+      scopingProblemThis.secondAnswerBubble = gameClassManager.currentGame.playerCharacterSpeechBubbleHW1A;
+    }
+  }
+
+  this.assignOnendedFunctions = function()
+  {
+    let scopingProblemThis = gameClassManager.currentGame.conversationAudioManager;
+    scopingProblemThis.promptBubble.message.sfx.onended = function()
+    {
+      scopingProblemThis.firstAnswerBubble.message.play();
+      scopingProblemThis.promptBubble.isBeingHeard = false;
+      scopingProblemThis.firstAnswerBubble.isBeingHeard = true;
+    }
+
+    scopingProblemThis.firstAnswerBubble.message.sfx.onended = function()
+    {
+      scopingProblemThis.secondAnswerBubble.message.play();
+      scopingProblemThis.firstAnswerBubble.isBeingHeard = false;
+      scopingProblemThis.secondAnswerBubble.isBeingHeard = true;
+    }
+
+    scopingProblemThis.secondAnswerBubble.message.sfx.onended = function()
+    {
+      scopingProblemThis.secondAnswerBubble.isBeingHeard = false;
+      musicManager.endDuck();
+    }
+  }
+}

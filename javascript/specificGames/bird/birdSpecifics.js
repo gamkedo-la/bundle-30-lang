@@ -79,7 +79,7 @@ function birdGameClass() {
     gameAudio.playFlap = function() {
 
         gameAudio.flap1.play();
-      
+
     }
 
   };
@@ -229,4 +229,235 @@ const birdGame = new birdGameClass();
 function SkyRingAnswerHolder(image)
 {
   this.image = image;
+}
+
+function BirdClass()
+{
+  this.name = 'bird player';
+  this.openFacingLeftImage = 'images\\sprites\\Bird\\birdOpenFacingLeft.png';
+  this.openFacingRightImage = 'images\\sprites\\Bird\\birdOpenFacingRight.png';
+  this.currentImage = this.openFacingRightImage;
+  this.x = undefined;
+  this.y = undefined;
+  const BIRD_STARTING_X = 100;
+  const BIRD_STARTING_Y = 100;
+  this.width = 75;
+  this.height = 75;
+  this.xSpeed = undefined;
+
+  this.draw = function()
+  {
+	  // gameCanvasContext.fillStyle = 'lightCoral';
+    // gameCanvasContext.fillRect(this.x, this.y, this.width,this.height);
+    drawFromSheet(this.currentImage, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.currentImage, this.x,this.y, this.width,this.height);
+  };
+
+  this.initialize = function()
+  {
+    this.x = BIRD_STARTING_X;
+    this.y = BIRD_STARTING_Y;
+    this.xSpeed = 0;
+  }
+
+  this.flapUp = function()
+  {
+	   this.y -= 50;
+  }
+
+  this.move = function()
+  {
+    birdGame.applyGRAVITYToBird();
+    this.x += this.xSpeed;
+  };
+
+  this.handleOffScreen = function()
+  {
+	   if (this.y > gameCanvas.height - 10)
+	{
+      this.y = 5;
+	}
+  else if (this.y < 0)
+  {
+      this.y = 0;
+	}
+  else if (this.x > gameCanvas.width - 10)
+	{
+      this.x = -5;
+	}
+  else if (this.x < -5)
+	{
+      this.x = gameCanvas.width - 5;
+	}
+  };
+}
+
+function Cloud(randomCloudImage)
+{
+  this.image = randomCloudImage;
+
+  this.x = getRandomIntInclusive(0, gameCanvas.width);
+  this.y = getRandomIntInclusive(0, gameCanvas.height);
+
+  this.height = getRandomIntInclusive(gameCanvas.height/9, gameCanvas.height/4);
+  this.width = getRandomIntInclusive(gameCanvas.width/9, gameCanvas.height/2);
+
+  this.draw = function()
+  {
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+  }
+
+  this.xSpeed = (getRandomIntInclusive(10,14))/10;
+  this.move = function()
+  {
+    this.x -= this.xSpeed;
+  }
+
+  this.handleOffScreen = function()
+  {
+    if (this.x + this.width < 0)
+    {
+      this.x = gameCanvas.width + this.width;
+      this.y = getRandomIntInclusive(0, gameCanvas.height);
+
+      let randomCloudImageIndex = getRandomIntInclusive(0,cloudManager.arrayOfCloudImages.length - 1);
+      console.log('randomCloudImageIndex: ' + randomCloudImageIndex);
+      let cloudImage = cloudManager.arrayOfCloudImages[randomCloudImageIndex];
+      console.log('cloudImage: ' + cloudImage);
+      this.image = cloudImage;
+      this.xSpeed = (getRandomIntInclusive(10,14))/10;
+
+      this.height = getRandomIntInclusive(gameCanvas.height/9, gameCanvas.height/4);
+      this.width = getRandomIntInclusive(gameCanvas.width/9, gameCanvas.height/2);
+    }
+  }
+}
+
+function CloudManager()
+{
+  this.numberOfClouds = 7;
+
+  this.arrayOfCloudImages = [];
+
+  this.initializeArrayOfCloudImages = function()
+  {
+    this.arrayOfCloudImages.push('images\\Backgrounds\\cloud1.png');
+    this.arrayOfCloudImages.push('images\\Backgrounds\\cloud2.png');
+    this.arrayOfCloudImages.push('images\\Backgrounds\\cloud3.png');
+    this.arrayOfCloudImages.push('images\\Backgrounds\\cloud4.png');
+  }
+
+  this.arrayOfClouds = [];
+
+  this.initializeClouds = function()
+  {
+    for (let cloudToInitializeIndex = 0; cloudToInitializeIndex < this.numberOfClouds; cloudToInitializeIndex++)
+    {
+      let randomCloudImageIndex = getRandomIntInclusive(0,this.arrayOfCloudImages.length - 1);
+      let cloudImage = this.arrayOfCloudImages[randomCloudImageIndex];
+      let cloud = new Cloud(cloudImage);
+      this.arrayOfClouds.push(cloud);
+    }
+  }
+
+  this.initialize = function()
+  {
+      this.initializeArrayOfCloudImages();
+      this.initializeClouds();
+  }
+
+  this.drawClouds = function()
+  {
+    for (let arrayOfCloudsIndex = 0; arrayOfCloudsIndex < this.arrayOfClouds.length; arrayOfCloudsIndex++)
+    {
+      this.arrayOfClouds[arrayOfCloudsIndex].draw();
+    }
+  }
+
+  this.moveClouds = function()
+  {
+    for (let arrayOfCloudsIndex = 0; arrayOfCloudsIndex < this.arrayOfClouds.length; arrayOfCloudsIndex++)
+    {
+      this.arrayOfClouds[arrayOfCloudsIndex].move();
+    }
+  }
+
+  this.handleCloudsOffScreen = function()
+  {
+    for (let arrayOfCloudsIndex = 0; arrayOfCloudsIndex < this.arrayOfClouds.length; arrayOfCloudsIndex++)
+    {
+      this.arrayOfClouds[arrayOfCloudsIndex].handleOffScreen();
+    }
+  }
+
+  this.update = function()
+  {
+    this.moveClouds();
+    this.handleCloudsOffScreen();
+  }
+}
+
+let cloudManager = new CloudManager();
+
+function Plane()
+{
+  this.image = 'images\\sprites\\Bird\\plane.png';
+  this.width = gameCanvas.width/2;
+  this.height = gameCanvas.height/10;
+  this.x = getRandomArbitrary(0,gameCanvas.width - this.width);
+  this.y = getRandomArbitrary(0,gameCanvas.height - this.height);
+
+  this.xVelocity = -3;
+  this.yVelocity = 1;
+
+  this.bannerMessageCharacters = ['G','o','o','d',' ','J','o','b','!'];
+
+  this.draw = function()
+  {
+    drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+    //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+
+    let arrayOfCharacterTypes = [];
+    for (let bannerMessageIndex = 0; bannerMessageIndex < gameClassManager.currentGame.amountCorrect; bannerMessageIndex++)
+             {
+               arrayOfCharacterTypes.push(this.bannerMessageCharacters[bannerMessageIndex])
+             }
+             customFontFillText(arrayOfCharacterTypes, 30, 15, this.x + this.width/2 + 17,this.y + 10);
+
+
+    // customFontFillText(this.bannerMessageCharacters, 30,15, this.x + this.width/2 + 17,this.y + 10);
+  }
+
+  this.targetY = getRandomArbitrary(0,gameCanvas.height - this.height);
+
+  this.move = function()
+  {
+    this.x += this.xVelocity;
+
+    if (this.y < this.targetY)
+    {
+      this.y += this.yVelocity;
+      if (this.y >= this.targetY)
+      {
+        this.targetY = getRandomArbitrary(0,gameCanvas.height - this.height);
+      }
+    }
+    else if (this.y > this.targetY)
+    {
+      this.y -= this.yVelocity;
+      if (this.y <= this.targetY)
+      {
+        this.targetY = getRandomArbitrary(0,gameCanvas.height - this.height);
+      }
+    }
+  }
+
+  this.handleOffScreen = function()
+  {
+    if (this.x + this.width < 0)
+    {
+      this.x = gameCanvas.width;
+    }
+  }
 }

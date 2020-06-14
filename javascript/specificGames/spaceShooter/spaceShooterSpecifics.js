@@ -72,7 +72,7 @@ function spaceShooterGameClass() {
     gameAudio.shoot = new sfxOneShot("audio/SpaceShot01.mp3");
 		gameAudio.laserShoot = new sfxOneShot('audio/V/laser.mp3');
 		gameAudio.move = new sfxLooping("audio/SpaceMove.mp3");
-		gameAudio.rockExplosion = new sfxOneShot('audio/V/explosion.mp3']);
+		gameAudio.rockExplosion = new sfxOneShot('audio/V/explosion.mp3');
   };
 
 	this.superInitialize = function()

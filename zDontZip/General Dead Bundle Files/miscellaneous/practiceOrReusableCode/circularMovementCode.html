@@ -1,0 +1,597 @@
+<html>
+
+<canvas id = 'circularMovementCanvas' width = '640' height = '700'></canvas>
+<image id = 'fanBladesImage' src = 'fanBlades.png'></image>
+<image id = 'blueSquareImage' src = 'blueSquare.png'></image>
+<image id = 'armlessBody' src = 'armlessBody.png'></image>
+<image id = 'leftArm' src = 'arm.png'></image>
+<image id = 'rightArm' src = 'arm.png'></image>
+
+<script>
+
+  let circularMovementCanvas;
+  let circularMovementCanvasContext;
+
+  let blueSquareImage = document.getElementById("blueSquareImage");
+  let armlessBodyImage = document.getElementById("armlessBody");
+  let leftArmImage = document.getElementById("arm");
+  let rightArmImage = document.getElementById("arm");
+
+  let actualBlueSquare;
+
+  function getRandomIntInclusive(min, max)
+  {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+  }
+
+  let arrayOfFanBlades = [];
+  let fanBlade1;
+  let fanBlade2;
+
+  let BladePrototype = function(image, xCoordinate,yCoordinate, width,height,
+                               rotationAngle,rotationSpeed,rotationDirection)
+  {
+    this.image = fanBladesImage;
+
+    this.width = 50;
+    this.height = 50;
+
+    this.xCoordinate = xCoordinate;
+    this.yCoordinate = yCoordinate;
+
+    this.xCenterPoint = this.xCoordinate + this.width/2;//for rotating at the center point
+    this.yCenterPoint = this.yCoordinate + this.height/2;//for rotating at the center point
+    this.rotationAngle = rotationAngle;
+    this.rotationSpeed = rotationSpeed;
+    this.rotationDirection = rotationDirection;//I want some things to rotate clockwise, others counter-clockwise
+
+    this.rotate = function()
+    {
+      this.rotationAngle += this.rotationSpeed;
+    }
+
+    this.draw = function()
+    {
+      //preparing to leave original context so we can rotate only this image
+      circularMovementCanvasContext.save();
+      //move to the center point of the image so when the canvas is rotated it rotates from the center of this image,
+      //which avoids circular movement of the image
+      circularMovementCanvasContext.translate(this.xCenterPoint,this.yCenterPoint);
+      //rotate with translation to radians
+      circularMovementCanvasContext.rotate(Math.PI / 180 * (this.rotationAngle*this.rotationDirection));
+      circularMovementCanvasContext.translate(-(this.xCenterPoint),-(this.yCenterPoint));
+      circularMovementCanvasContext.drawImage(//what is being drawn
+                                              this.image,
+                                              //starting coordinates of drawing in game, not the original png
+                                              this.xCoordinate,this.yCoordinate,
+                                              //dimensions of drawing on screen, not the original png
+                                              this.width,this.height);
+      //go back to the saved canvas context, in other words get rid of the translations and rotations so future this
+      //frames future drawing code is not translated to other coordinates or rotated
+      circularMovementCanvasContext.restore();
+    }
+
+  }
+
+  let LetterPrototype = function(nameString)
+  {
+    this.name = nameString;
+    this.x = getRandomIntInclusive(100,430);
+    this.y = getRandomIntInclusive(100,400);
+    this.fontSize = 50;
+
+    this.circlePathVelocity = 0.25;
+    this.xVelocity = 5;
+    this.yVelocity = 5;
+
+    this.draw = function()
+    {
+      circularMovementCanvasContext.fillStyle = 'blue';
+      circularMovementCanvasContext.font = '30px Helvetica';
+      circularMovementCanvasContext.fillText(this.name, this.x,this.y);
+    }
+
+    this.colliderLeftX = this.x - 40;
+    this.colliderTopY = this.y - 50;
+    this.colliderRightX = this.colliderLeftX + 100;
+    this.colliderBottomY = this.colliderTopY + 100;
+
+    this.updateColliderPositions = function()
+    {
+      this.colliderLeftX = this.x - 40;
+      this.colliderTopY = this.y - 50;
+      this.colliderRightX = this.colliderLeftX + 100;
+      this.colliderBottomY = this.colliderTopY + 100;
+    }
+
+    this.drawCollider = function()
+    {
+      circularMovementCanvasContext.strokeStyle = 'pink';
+      circularMovementCanvasContext.strokeRect(this.colliderLeftX,this.colliderTopY, 100,100);
+    }
+    //actual circle motion stuff
+    this.radius = this.width/2;//not really a radius, taken from code that animated a circle
+    this.radians = 0;
+
+
+    this.updatePosition = function()
+    {
+      //move points over time
+      this.radians += this.circlePathVelocity;
+      this.x = this.x + (Math.cos(this.radians) * 10) + this.xVelocity;
+      this.y = this.y + (Math.sin(this.radians) * 10) + this.yVelocity;
+    }
+
+    this.checkWallCollision = function()
+    {
+      if (this.x + 100 > 600 || this.x  - 100 < 40)
+      {
+        this.xVelocity *= -1;
+      }
+      if (this.y + 100 > 550 || this.y - 100 < 10)
+      {
+        this.yVelocity *= -1;
+      }
+    }
+  };
+
+  let arrayOfAnswers = [];
+
+  function checkForLetterClick()
+  {
+    console.log('inside check for letter click');
+    for (let arrayOfAnswersIndex = 0; arrayOfAnswersIndex < arrayOfAnswers.length; arrayOfAnswersIndex++)
+    {
+      if (mouseCoordinates.mouseX > arrayOfAnswers[arrayOfAnswersIndex].colliderLeftX &&
+          mouseCoordinates.mouseX < arrayOfAnswers[arrayOfAnswersIndex].colliderRightX &&
+          mouseCoordinates.mouseY > arrayOfAnswers[arrayOfAnswersIndex].colliderTopY &&
+          mouseCoordinates.mouseY < arrayOfAnswers[arrayOfAnswersIndex].colliderBottomY)
+          {
+            console.log('letter click detected');
+          }
+    }
+
+  }
+
+  let letterM;
+  let letterN;
+
+  let fanBladesImage;
+
+  window.onload = function()
+  {
+
+    circularMovementCanvas = document.getElementById("circularMovementCanvas");
+    circularMovementCanvasContext = circularMovementCanvas.getContext('2d');
+
+    circularMovementCanvas.addEventListener('mousemove', calculateMousePosition);
+    circularMovementCanvas.addEventListener('click', circularMovementCanvasClick, false);
+
+    blueSquareImage = document.getElementById('blueSquareImage');
+    fanBladesImage = document.getElementById('fanBladesImage');
+
+    letterM = new LetterPrototype('m');
+    letterN = new LetterPrototype('n');
+
+    arrayOfAnswers.push(letterM);
+    arrayOfAnswers.push(letterN);
+
+    //Fan(xCoordinate,yCoordinate, width,height, color)
+    fan1 = new Fan(10,550, 75,150, 'white');
+    fan2 = new Fan(120,550, 75,150, 'white');
+    fan3 = new Fan(230,550, 75,150, 'white');
+    fan4 = new Fan(340,550, 75,150, 'white');
+    fan5 = new Fan(450,550, 75,150, 'white');
+    fan6 = new Fan(560,550, 75,150, 'white');
+
+    arrayOfFans.push(fan1);
+    arrayOfFans.push(fan2);
+    arrayOfFans.push(fan3);
+    arrayOfFans.push(fan4);
+    arrayOfFans.push(fan5);
+    arrayOfFans.push(fan6);
+
+
+    fanBlade1 = new BladePrototype(fanBladesImage, 315,560, 50,50, 0,20,-1);
+    fanBlade2 = new BladePrototype(fanBladesImage, 350,560, 50,50, 0,20,1);
+    arrayOfFanBlades.push(fanBlade1);
+    arrayOfFanBlades.push(fanBlade2);
+
+    setInterval(animationLoop, 1000/30);
+    setInterval(changeLetterMXVelocity, 500);
+    setInterval(changeLetterNYVelocity, 500);
+  }
+
+  function animationLoop()
+  {
+    updatePositions();
+    drawEverything();
+  }
+
+  function updatePositions()
+  {
+    letterM.updatePosition();
+    letterM.checkWallCollision();
+    letterN.updatePosition();
+    letterN.checkWallCollision();
+    letterM.updateColliderPositions();
+    letterN.updateColliderPositions();
+    updateFanBladeAngles();
+  }
+
+  function drawEverything()
+  {
+      drawBackground();
+      drawFans();
+      drawMan();
+      letterM.draw();
+      letterN.draw();
+      letterM.drawCollider();
+      letterN.drawCollider();
+      drawMouseCoordinates();
+      if (shouldDrawStretchedArm)
+      {
+        drawStretchedArm();
+      }
+      // drawAngleCalculationBaseLine();
+      // drawAngledLineForLeftArmPivotPoint();
+      // drawAngledLineForRightArmPivotPoint();
+  }
+
+  var mouseCoordinates = {mouseX:undefined,mouseY:undefined};
+
+  function calculateMousePosition(builtInDocumentEventObject)
+  {
+    var rect = circularMovementCanvas.getBoundingClientRect();
+    var root = document.documentElement;
+    var x = builtInDocumentEventObject.clientX - rect.left - root.scrollLeft;
+    var y = builtInDocumentEventObject.clientY - rect.top - root.scrollTop;
+    mouseCoordinates.mouseX = x;
+    mouseCoordinates.mouseY = y;
+    // console.log(mouseCoordinates.mouseX,mouseCoordinates.mouseY);
+  }
+
+  function drawMouseCoordinates()
+  {
+    circularMovementCanvasContext.fillStyle = 'lime';
+    circularMovementCanvasContext.font = '30px Helvetica';
+    circularMovementCanvasContext.fillText(mouseCoordinates.mouseX + ', ' + mouseCoordinates.mouseY,
+                                           mouseCoordinates.mouseX,mouseCoordinates.mouseY);
+  }
+
+  let shouldDrawStretchedArm = false;
+  function stopDrawingStretchedArm()
+  {
+    shouldDrawStretchedArm = false;
+  }
+
+  let armPivotPointX;
+  let armPivotPointY;
+  let armToStretch;
+
+  function circularMovementCanvasClick()
+  {
+    calculateArmStretch();
+    shouldDrawStretchedArm = true;
+    setTimeout(stopDrawingStretchedArm, 250);
+
+    checkForLetterClick();
+  }
+
+  let armStretchAngle;
+  let armStretchHeight;
+
+  function calculateArmStretch()
+  {
+    armPivotPointX = mouseCoordinates.mouseX;
+    armPivotPointY = mouseCoordinates.mouseY;
+    armToStretch = undefined;
+
+    if (armPivotPointX <= 320)
+    {
+      armToStretch = leftArm;
+    } else {
+      armToStretch = rightArm;
+    }
+    armStretchAngle = Math.atan2(mouseCoordinates.mouseY - 550, mouseCoordinates.mouseX - 326);
+    armStretchHeight = Math.sqrt( Math.pow(326 - armPivotPointX,2) + Math.pow(550 - armPivotPointY,2) );
+  }
+
+  function drawStretchedArm()
+  {
+    circularMovementCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
+    circularMovementCanvasContext.translate(armPivotPointX,armPivotPointY);//place imaginary hand at pivot point
+    circularMovementCanvasContext.rotate(armStretchAngle + Math.PI/2);//rotate with hand at pivot based in radians
+    circularMovementCanvasContext.translate(-armPivotPointX,-armPivotPointY);//return hand to 0,0 of canvas
+    circularMovementCanvasContext.drawImage(armToStretch, armPivotPointX - 10,armPivotPointY, 75 + 10,armStretchHeight*1.6);//normal draw code affected by rotation
+    circularMovementCanvasContext.restore();//erase any errant abnormal draw code
+  }
+
+  let leftArmX = 320;
+  let leftArmY = 0;
+  let leftArmAngle = 90;
+  let leftArmPivotX = 326;
+  let leftArmPivotY = 550;
+
+  let rightArmX = 320;
+  let rightArmY = 0;
+  let rightArmAngle = 0;
+  let rightArmPivotX = 326;
+  let rightArmPivotY = 550;
+
+  function drawAngleCalculationBaseLine()//give a visual representation of the bottom part of the arms
+  {
+    circularMovementCanvasContext.strokeStyle = 'lime';//color for STROKE, not FILL
+    circularMovementCanvasContext.beginPath();//reset the coordinates of imaginary drawing hand
+    circularMovementCanvasContext.moveTo(0,550);//move the imaginary hand to 0,550
+    circularMovementCanvasContext.lineTo(640,550);//give coordinates to next point of drawing without actually drawing it
+    circularMovementCanvasContext.stroke();//fill in the strokes of previous drawing directions
+  }
+
+  function drawAngledLineForLeftArmPivotPoint()
+  {
+    circularMovementCanvasContext.strokeStyle = 'lime';//color for STROKE, not FILL
+    circularMovementCanvasContext.beginPath();//reset the coordinates of imaginary drawing hand
+    circularMovementCanvasContext.moveTo(leftArmPivotX,leftArmPivotY);//move the imaginary hand to 0,550
+    circularMovementCanvasContext.lineTo(mouseCoordinates.mouseX,mouseCoordinates.mouseY);//give coordinates to next point of drawing without actually drawing it
+    circularMovementCanvasContext.stroke();//fill in the strokes of previous drawing directions
+  }
+
+  function drawAngledLineForRightArmPivotPoint()
+  {
+    circularMovementCanvasContext.strokeStyle = 'red';//color for STROKE, not FILL
+    circularMovementCanvasContext.beginPath();//reset the coordinates of imaginary drawing hand
+    circularMovementCanvasContext.moveTo(rightArmPivotX,rightArmPivotY);//move the imaginary hand to 0,550
+    circularMovementCanvasContext.lineTo(mouseCoordinates.mouseX,mouseCoordinates.mouseY);//give coordinates to next point of drawing without actually drawing it
+    circularMovementCanvasContext.stroke();//fill in the strokes of previous drawing directions
+  }
+
+  function drawMan()
+  {
+
+    circularMovementCanvasContext.drawImage(armlessBodyImage, 227,400, 200,320);
+
+    calculateLeftArmAngle();
+    circularMovementCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
+    circularMovementCanvasContext.translate(leftArmPivotX,leftArmPivotY);//place imaginary hand at pivot point
+    circularMovementCanvasContext.rotate(leftArmAngle + Math.PI/2);//rotate with hand at pivot based in radians
+    circularMovementCanvasContext.translate(-leftArmPivotX,-leftArmPivotY);//return hand to 0,0 of canvas
+    circularMovementCanvasContext.drawImage(leftArm, 320,450, 75,160);//normal draw code affected by rotation
+    circularMovementCanvasContext.restore();//erase any errant abnormal draw code
+
+    calculateRightArmAngle();
+    circularMovementCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
+    circularMovementCanvasContext.translate(rightArmPivotX,rightArmPivotY);//place imaginary hand at pivot point
+    circularMovementCanvasContext.rotate(rightArmAngle + Math.PI/2);//rotate with hand at pivot based in radians
+    circularMovementCanvasContext.translate(-rightArmPivotX,-rightArmPivotY);//return hand to 0,0 of canvas
+    circularMovementCanvasContext.drawImage(rightArm, 320,450, 75,160);//normal draw code affected by rotation
+    circularMovementCanvasContext.restore();//erase any errant abnormal draw code
+  }
+
+  function calculateLeftArmAngle()
+  {
+    if (mouseCoordinates.mouseX > 326)//stop the arm from going past the mid angle point for aesthetic reasons
+    {
+      leftArmAngle = -2;
+    } else
+    {
+      leftArmAngle = Math.atan2(mouseCoordinates.mouseY - 550, mouseCoordinates.mouseX - 326);
+    }
+  }
+
+  function calculateRightArmAngle()
+  {
+    if (mouseCoordinates.mouseX < 326)//stop the arm from going past the mid angle point for aesthetic reasons
+    {
+      rightArmAngle = -1;
+    } else
+    {
+      rightArmAngle = Math.atan2(mouseCoordinates.mouseY - 550, mouseCoordinates.mouseX - 326)
+    }
+  }
+
+  function drawBackground()
+  {
+    circularMovementCanvasContext.fillStyle = 'black';
+    circularMovementCanvasContext.fillRect(0,0, 640,700);
+  }
+
+  let arrayOfPossibleXYVelocityIntegers = [-20,-15,-10,-9,8,9,10,15,20];
+
+  function changeLetterMXVelocity()
+  {
+    let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
+    letterM.xVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
+
+  }
+
+  function changeLetterMYVelocity()
+  {
+    let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
+    letterM.yVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
+
+  }
+
+  function changeLetterNXVelocity()
+  {
+    let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
+    letterN.xVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
+
+  }
+
+  function changeLetterNYVelocity()
+  {
+    let randomIndexForArrayOfPossibleIntegers = getRandomIntInclusive(0, arrayOfPossibleXYVelocityIntegers.length - 1);
+    letterN.yVelocity = arrayOfPossibleXYVelocityIntegers[randomIndexForArrayOfPossibleIntegers];
+
+  }
+
+  function randomizeTimeLengthForSetIntervalReset(minTimeInteger,maxTimeInteger)
+  {
+    let randomTimeLengthToResetValue = getRandomIntInclusive(minTimeInteger,maxTimeInteger);
+
+    return randomTimeLengthToResetValue;
+  }
+
+  let letterMCircleVelocityInterval;
+  let letterMXVelocityInterval;
+  let letterMYVelocityInterval;
+  let letterNCircleVelocityInterval;
+  let letterNXVelocityInterval;
+  let letterNYVelocityInterval;
+
+  function frameInterval(updateFunction, frameRate) {
+      var timerObject = setInterval(updateFunction, frameRate);
+
+      this.stop = function() {
+          if (timerObject) {
+              clearInterval(timerObject);
+              timerObject = null;
+          }
+          return this;
+      }
+
+      // start timer using current settings (if it's not already running)
+      this.start = function() {
+          if (!timerObject) {
+              this.stop();
+              timerObject = setInterval(updateFunction, frameRate);
+          }
+          return this;
+      }
+
+      // start with new interval, stop current interval
+      this.reset = function(newRate) {
+          frameRate = newRate;
+          return this.stop().start();
+      }
+  }
+
+
+  let fan1;
+  let fan2;
+  let fan3;
+  let fan4;
+  let fan5;
+  let fan6;
+
+  let arrayOfFans = [];
+
+  function Fan(xCoordinate,yCoordinate, width,height, color)
+  {
+    this.width = width;
+    this.height = height;
+    this.color = color;
+
+    this.xCoordinate = xCoordinate;
+    this.yCoordinate = yCoordinate;
+
+    this.fanBladesImage = fanBladesImage;
+    this.fanBladeWidth = 30;
+    this.fanBladeHeight = 30;
+    this.fanBladeSpeed = 30;
+
+    this.fanBlade1XCoordinate = this.xCoordinate + 3;
+    this.fanBlade1YCoordinate = this.yCoordinate + 5;
+    this.fanBlade1CenterXCoordinate = this.fanBlade1XCoordinate + this.fanBladeWidth/2;
+    this.fanBlade1CenterYCoordinate = this.fanBlade1YCoordinate + this.fanBladeHeight/2;
+    this.fanBlade1Angle = 0;
+    this.fanBlade1RotationDirection = -1;
+
+    this.fanBlade2XCoordinate = this.xCoordinate + this.width - 35;
+    this.fanBlade2YCoordinate = this.yCoordinate + 5;
+    this.fanBlade2CenterXCoordinate = this.fanBlade2XCoordinate + this.fanBladeWidth/2;
+    this.fanBlade2CenterYCoordinate = this.fanBlade2YCoordinate + this.fanBladeHeight/2;
+    this.fanBlade2Angle = 0;
+    this.fanBlade2RotationDirection = 1;
+
+    this.draw = function()
+    {
+      this.drawBase();
+    }
+
+    this.drawBase = function()
+    {
+      circularMovementCanvasContext.fillStyle = this.color;
+      circularMovementCanvasContext.fillRect(this.xCoordinate,this.yCoordinate, this.width,this.height);
+    }
+
+    this.drawFanBlades1 = function()
+    {
+      //preparing to leave original context so we can rotate only this image
+      circularMovementCanvasContext.save();
+      //move to the center point of the image so when the canvas is rotated it rotates from the center of this image,
+      //which avoids circular movement of the image
+      circularMovementCanvasContext.translate(this.fanBlade1CenterXCoordinate,this.fanBlade1CenterYCoordinate);
+      //rotate with translation to radians
+      circularMovementCanvasContext.rotate(Math.PI / 180 * (this.fanBlade1Angle*this.fanBlade1RotationDirection));
+      circularMovementCanvasContext.translate(-(this.fanBlade1CenterXCoordinate),-(this.fanBlade1CenterYCoordinate));
+      circularMovementCanvasContext.drawImage(//what is being drawn
+                                              this.fanBladesImage,
+                                              //starting coordinates of drawing in game, not the original png
+                                              this.fanBlade1XCoordinate,this.fanBlade1YCoordinate,
+                                              //dimensions of drawing on screen, not the original png
+                                              this.fanBladeWidth,this.fanBladeHeight);
+      //go back to the saved canvas context, in other words get rid of the translations and rotations so future this
+      //frames future drawing code is not translated to other coordinates or rotated
+      circularMovementCanvasContext.restore();
+    }
+
+    this.drawFanBlades2 = function()
+    {
+      //preparing to leave original context so we can rotate only this image
+      circularMovementCanvasContext.save();
+      //move to the center point of the image so when the canvas is rotated it rotates from the center of this image,
+      //which avoids circular movement of the image
+      circularMovementCanvasContext.translate(this.fanBlade2CenterXCoordinate,this.fanBlade2CenterYCoordinate);
+      //rotate with translation to radians
+      circularMovementCanvasContext.rotate(Math.PI / 180 * (this.fanBlade2Angle*this.fanBlade2RotationDirection));
+      circularMovementCanvasContext.translate(-(this.fanBlade2CenterXCoordinate),-(this.fanBlade2CenterYCoordinate));
+      circularMovementCanvasContext.drawImage(//what is being drawn
+                                              this.fanBladesImage,
+                                              //starting coordinates of drawing in game, not the original png
+                                              this.fanBlade2XCoordinate,this.fanBlade2YCoordinate,
+                                              //dimensions of drawing on screen, not the original png
+                                              this.fanBladeWidth,this.fanBladeHeight);
+      //go back to the saved canvas context, in other words get rid of the translations and rotations so future this
+      //frames future drawing code is not translated to other coordinates or rotated
+      circularMovementCanvasContext.restore();
+    }
+
+    this.rotateFanBlade1 = function()
+    {
+      this.fanBlade1Angle += this.fanBladeSpeed;
+      // console.log('fanBlade1RotationAng')
+    }
+
+    this.rotateFanBlade2 = function()
+    {
+      this.fanBlade2Angle += this.fanBladeSpeed;
+    }
+  }
+
+  function drawFans()
+  {
+    for (let arrayOfFansIndex = 0; arrayOfFansIndex < arrayOfFans.length; arrayOfFansIndex++)
+    {
+      arrayOfFans[arrayOfFansIndex].draw();
+      arrayOfFans[arrayOfFansIndex].drawFanBlades1();
+      arrayOfFans[arrayOfFansIndex].drawFanBlades2();
+    }
+  }
+
+  function updateFanBladeAngles()
+  {
+    for (let arrayOfFansIndex = 0; arrayOfFansIndex < arrayOfFans.length; arrayOfFansIndex++)
+    {
+      arrayOfFans[arrayOfFansIndex].rotateFanBlade1();
+      arrayOfFans[arrayOfFansIndex].rotateFanBlade2();
+
+    }
+  }
+
+</script>
+
+</html>
