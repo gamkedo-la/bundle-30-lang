@@ -601,16 +601,16 @@ function loadImages()
   // arrayOfImagesToLoad.push({imageObjectBinding: coinImage, theFile: 'images/sprites/runner/Coin.png', loaded: false});
 
   //snake game
-  arrayOfImagesToLoad.push({imageObjectBinding: snakeGrassBackground, theFile: 'images/Backgrounds/Grass.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: snakeHeadImage, theFile: 'images/sprites/Snake/topSnake.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: snakeMiddleImage, theFile: 'images/sprites/Snake/middleSnake.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: snakeTailImage, theFile: 'images/sprites/Snake/bottomSnake.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: appleImage, theFile: 'images/sprites/Snake/apple.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: appleCoreImage, theFile: 'images/sprites/Snake/appleCore.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: snakeGrassBackground, theFile: 'images/Backgrounds/Grass.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: snakeHeadImage, theFile: 'images/sprites/Snake/topSnake.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: snakeMiddleImage, theFile: 'images/sprites/Snake/middleSnake.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: snakeTailImage, theFile: 'images/sprites/Snake/bottomSnake.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: appleImage, theFile: 'images/sprites/Snake/apple.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: appleCoreImage, theFile: 'images/sprites/Snake/appleCore.png', loaded: false});
 
   // main menu bg
-  arrayOfImagesToLoad.push({imageObjectBinding: menu_borderImage, theFile: 'images/Backgrounds/menu_border.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: scoreboard_overlayImage, theFile: 'images/Backgrounds/scoreboard_overlay.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: menu_borderImage, theFile: 'images/Backgrounds/menu_border.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: scoreboard_overlayImage, theFile: 'images/Backgrounds/scoreboard_overlay.png', loaded: false});
 
   //lane game
   // arrayOfImagesToLoad.push({imageObjectBinding: laneGrassBackground1, theFile: 'images/Backgrounds/LaneGrass1.png', loaded: false});
@@ -639,32 +639,32 @@ function loadImages()
   // arrayOfImagesToLoad.push({imageObjectBinding: trophyImage, theFile: 'images/sprites/Rewards/Trophy.png', loaded: false});
 
   //pass or block
-  arrayOfImagesToLoad.push({imageObjectBinding: volcanoImage, theFile: 'images/Backgrounds/Volcano.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: spaceBackgroundForVolcanoGame, theFile: 'images/Backgrounds/spaceBackgroundForVolcanoGame.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall1Image, theFile: 'images/sprites/passBlock/lavaBal.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall2Image, theFile: 'images/sprites/passBlock/lavaBall.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall3Image, theFile: 'images/sprites/passBlock/lavaBalll.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle1Image, theFile: 'images/sprites/passBlock/lavaParticle1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle2Image, theFile: 'images/sprites/passBlock/lavaParticle2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle3Image, theFile: 'images/sprites/passBlock/lavaParticle3.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle4Image, theFile: 'images/sprites/passBlock/lavaParticle4.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall1UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBalUpsideDown.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall2UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBallUpsideDown.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: lavaBall3UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBalllUpsideDown.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: paddleRockImage, theFile: 'images/sprites/passBlock/volcanicRock.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: gem1Image, theFile: 'images/sprites/passBlock/Gem.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: gem2Image, theFile: 'images/sprites/passBlock/Gem2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: gem3Image, theFile: 'images/sprites/passBlock/Gem3.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: volcanoImage, theFile: 'images/Backgrounds/Volcano.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: spaceBackgroundForVolcanoGame, theFile: 'images/Backgrounds/spaceBackgroundForVolcanoGame.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lavaBall1Image, theFile: 'images/sprites/passBlock/lavaBal.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lavaBall2Image, theFile: 'images/sprites/passBlock/lavaBall.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lavaBall3Image, theFile: 'images/sprites/passBlock/lavaBalll.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle1Image, theFile: 'images/sprites/passBlock/lavaParticle1.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle2Image, theFile: 'images/sprites/passBlock/lavaParticle2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle3Image, theFile: 'images/sprites/passBlock/lavaParticle3.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lavaParticle4Image, theFile: 'images/sprites/passBlock/lavaParticle4.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lavaBall1UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBalUpsideDown.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lavaBall2UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBallUpsideDown.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: lavaBall3UpsideDownImage, theFile: 'images/sprites/passBlock/lavaBalllUpsideDown.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: paddleRockImage, theFile: 'images/sprites/passBlock/volcanicRock.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: gem1Image, theFile: 'images/sprites/passBlock/Gem.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: gem2Image, theFile: 'images/sprites/passBlock/Gem2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: gem3Image, theFile: 'images/sprites/passBlock/Gem3.png', loaded: false});
 
   //space shooter game
-  arrayOfImagesToLoad.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/SpaceWithJupiter1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: spaceShooterBackgroundImage2, theFile: 'images/Backgrounds/SpaceWithJupiter2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: spaceshipImage, theFile: 'images/sprites/spaceShooter/spaceship.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: jupiterImage, theFile: 'images/sprites/spaceShooter/Jupiter.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: spaceRockImage1, theFile: 'images/sprites/spaceShooter/spaceRock.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: spaceRockImage2, theFile: 'images/sprites/spaceShooter/spaceRock2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: rocketExplosionImage, theFile: 'images/sprites/spaceShooter/rocketExplosion.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: rocketImage, theFile: 'images/sprites/spaceShooter/rocket.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: spaceShooterBackgroundImage, theFile: 'images/Backgrounds/SpaceWithJupiter1.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: spaceShooterBackgroundImage2, theFile: 'images/Backgrounds/SpaceWithJupiter2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: spaceshipImage, theFile: 'images/sprites/spaceShooter/spaceship.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: jupiterImage, theFile: 'images/sprites/spaceShooter/Jupiter.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: spaceRockImage1, theFile: 'images/sprites/spaceShooter/spaceRock.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: spaceRockImage2, theFile: 'images/sprites/spaceShooter/spaceRock2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: rocketExplosionImage, theFile: 'images/sprites/spaceShooter/rocketExplosion.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: rocketImage, theFile: 'images/sprites/spaceShooter/rocket.png', loaded: false});
 
 
   //feedGame
@@ -677,7 +677,7 @@ function loadImages()
 
   //flower game
   arrayOfImagesToLoad.push({imageObjectBinding: simpleFlower, theFile: "images/sprites/Flower/10 Second Flower.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: flowerBackground, theFile: "images/Backgrounds/Flower2.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: flowerBackground, theFile: "images/Backgrounds/Flower2.png", loaded: false});
 
   //hello world images
   // arrayOfImagesToLoad.push({imageObjectBinding: russianDollImage1, theFile: "images/sprites/dodgeBall/Player1.png", loaded: false});
@@ -698,9 +698,9 @@ function loadImages()
   // arrayOfImagesToLoad.push({imageObjectBinding: dodgeballImage, theFile: "images/sprites/dodgeBall/dodgeBall.png", loaded: false});
 
   //nighttime
-  arrayOfImagesToLoad.push({imageObjectBinding: nighttimeBackgroundImage, theFile: "images/Backgrounds/nighttimeBackground.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: ghostImage1, theFile: "images/sprites/nightTime/Ghost.png", loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: ghostImage2, theFile: "images/sprites/nightTime/ghost2.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: nighttimeBackgroundImage, theFile: "images/Backgrounds/nighttimeBackground.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: ghostImage1, theFile: "images/sprites/nightTime/Ghost.png", loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: ghostImage2, theFile: "images/sprites/nightTime/ghost2.png", loaded: false});
 
   //frog crate
   // arrayOfImagesToLoad.push({imageObjectBinding: frogCrateBackground, theFile: "images/Backgrounds/Lake.png", loaded: false});
@@ -766,46 +766,46 @@ function loadImages()
   // arrayOfImagesToLoad.push({imageObjectBinding: chickenImage, theFile: 'images/sprites/eggCatch/chicken.png', loaded: false});
 
   //PenaltyShootout game
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall1, theFile: 'images/sprites/Penalty/ball/ball0000.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall2, theFile: 'images/sprites/Penalty/ball/ball0001.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall3, theFile: 'images/sprites/Penalty/ball/ball0002.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall4, theFile: 'images/sprites/Penalty/ball/ball0003.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall5, theFile: 'images/sprites/Penalty/ball/ball0004.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall6, theFile: 'images/sprites/Penalty/ball/ball0005.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall7, theFile: 'images/sprites/Penalty/ball/ball0006.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall8, theFile: 'images/sprites/Penalty/ball/ball0007.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall9, theFile: 'images/sprites/Penalty/ball/ball0008.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall10, theFile: 'images/sprites/Penalty/ball/ball0009.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall11, theFile: 'images/sprites/Penalty/ball/ball0010.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoal, theFile: 'images/sprites/Penalty/goal.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper1, theFile: 'images/sprites/Penalty/goalkeeper/1.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper2, theFile: 'images/sprites/Penalty/goalkeeper/2.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper3, theFile: 'images/sprites/Penalty/goalkeeper/3.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper4, theFile: 'images/sprites/Penalty/goalkeeper/4.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper5, theFile: 'images/sprites/Penalty/goalkeeper/5.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper6, theFile: 'images/sprites/Penalty/goalkeeper/6.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper7, theFile: 'images/sprites/Penalty/goalkeeper/7.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper8, theFile: 'images/sprites/Penalty/goalkeeper/8.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper9, theFile: 'images/sprites/Penalty/goalkeeper/9.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper10, theFile: 'images/sprites/Penalty/goalkeeper/10.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper11, theFile: 'images/sprites/Penalty/goalkeeper/11.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper12, theFile: 'images/sprites/Penalty/goalkeeper/12.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper13, theFile: 'images/sprites/Penalty/goalkeeper/13.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper14, theFile: 'images/sprites/Penalty/goalkeeper/14.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall1, theFile: 'images/sprites/Penalty/ball/ball0000.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall2, theFile: 'images/sprites/Penalty/ball/ball0001.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall3, theFile: 'images/sprites/Penalty/ball/ball0002.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall4, theFile: 'images/sprites/Penalty/ball/ball0003.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall5, theFile: 'images/sprites/Penalty/ball/ball0004.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall6, theFile: 'images/sprites/Penalty/ball/ball0005.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall7, theFile: 'images/sprites/Penalty/ball/ball0006.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall8, theFile: 'images/sprites/Penalty/ball/ball0007.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall9, theFile: 'images/sprites/Penalty/ball/ball0008.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall10, theFile: 'images/sprites/Penalty/ball/ball0009.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyBall11, theFile: 'images/sprites/Penalty/ball/ball0010.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoal, theFile: 'images/sprites/Penalty/goal.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper1, theFile: 'images/sprites/Penalty/goalkeeper/1.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper2, theFile: 'images/sprites/Penalty/goalkeeper/2.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper3, theFile: 'images/sprites/Penalty/goalkeeper/3.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper4, theFile: 'images/sprites/Penalty/goalkeeper/4.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper5, theFile: 'images/sprites/Penalty/goalkeeper/5.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper6, theFile: 'images/sprites/Penalty/goalkeeper/6.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper7, theFile: 'images/sprites/Penalty/goalkeeper/7.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper8, theFile: 'images/sprites/Penalty/goalkeeper/8.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper9, theFile: 'images/sprites/Penalty/goalkeeper/9.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper10, theFile: 'images/sprites/Penalty/goalkeeper/10.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper11, theFile: 'images/sprites/Penalty/goalkeeper/11.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper12, theFile: 'images/sprites/Penalty/goalkeeper/12.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper13, theFile: 'images/sprites/Penalty/goalkeeper/13.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: penaltyGoalkeeper14, theFile: 'images/sprites/Penalty/goalkeeper/14.png', loaded: false});
 
 
   //whackAnAnswer
-  arrayOfImagesToLoad.push({imageObjectBinding: whackTableSurface, theFile: 'images/Backgrounds/WackTableSurface.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: whackTableBeneathSurface, theFile: 'images/Backgrounds/WackTableBeneathSurface.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: hammerImage, theFile: 'images/sprites/whackAnAnswer/whackHammer.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: whackTableSurface, theFile: 'images/Backgrounds/WackTableSurface.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: whackTableBeneathSurface, theFile: 'images/Backgrounds/WackTableBeneathSurface.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: hammerImage, theFile: 'images/sprites/whackAnAnswer/whackHammer.png', loaded: false});
 
   //spelling bees
-  arrayOfImagesToLoad.push({imageObjectBinding: spellingBeesBackgroundImage, theFile: 'images/Backgrounds/spellingBee.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: beeWithoutStripesImage, theFile: 'images/sprites/SpellingBees/Simple Bee Without Stripes.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: spellingBeesBackgroundImage, theFile: 'images/Backgrounds/spellingBee.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: beeWithoutStripesImage, theFile: 'images/sprites/SpellingBees/Simple Bee Without Stripes.png', loaded: false});
 
   //vacuum
-  arrayOfImagesToLoad.push({imageObjectBinding: vacuumBackgroundImage, theFile: 'images/Backgrounds/vacuumBackground.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: vacuumImage, theFile: 'images/sprites/Vacuum/vacuum.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: vacuumBackgroundImage, theFile: 'images/Backgrounds/vacuumBackground.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: vacuumImage, theFile: 'images/sprites/Vacuum/vacuum.png', loaded: false});
 
   //symbols
   arrayOfImagesToLoad.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png', loaded: false });
@@ -828,7 +828,7 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: placeholderPlayButtonImage, theFile: 'images/placeholderPlayButtonImage.png', loaded: false});
 
   // bubble wrap game
-  arrayOfImagesToLoad.push({imageObjectBinding: bubbleWrapBG, theFile: 'images/Backgrounds/bubbleWrapBG.jpg', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: bubbleWrapBG, theFile: 'images/Backgrounds/bubbleWrapBG.jpg', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: bubbleWrapSpritesheet, theFile: 'images/sprites/bubbleWrap/bubbleWrapSpritesheet.png', loaded: false});
   //arrayOfImagesToLoad.push({imageObjectBinding: balloonPopBG, theFile: 'images/Backgrounds/balloonPopBG.jpg', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: balloonPopSpritesheet, theFile: 'images/sprites/balloonPop/balloonPopSpritesheet.png', loaded: false});

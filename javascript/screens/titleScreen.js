@@ -168,7 +168,8 @@ function TitleScreenClass()
     }
 
     // a cute little picture frame
-    gameCanvasContext.drawImage(menu_borderImage,0,0);
+    drawFromSheet("images\\Backgrounds\\menu_border.png",0,0);
+    //gameCanvasContext.drawImage("images\\Backgrounds\\menu_border.png",0,0);
 }
 
   this.draw = function()
@@ -340,7 +341,7 @@ function lineWrapCredits() { // note: gets calling immediately after definition!
       newCut.push(creditsList[i].substring(0, findEnd));
       creditsList[i] = creditsList[i].substring(findEnd, creditsList[i].length);
     }
-  } 
+  }
 
   const newerCut = [];
   for(let i = 0; i < newCut.length; i++) {
