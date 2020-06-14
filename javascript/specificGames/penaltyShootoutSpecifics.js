@@ -44,6 +44,11 @@ const BALL_HEIGHT = 100;
 const GOAL_WIDTH = 600;
 const GOAL_HEIGHT = 300;
 
+const BALL_RIGHTSIDE_X = 520;
+const BALL_RIGHTSIDE_Y = 90;
+const BALL_LEFTSIDE_X = 120;
+const BALL_LEFTSIDE_Y = 90;
+
 const BALL_X = 295;
 const BALL_Y = 500;
 const GOAL_X = 15;
@@ -162,9 +167,25 @@ function penaltyGameClass(){
     this.drawBall = function(){
       if (this.currentState === penaltyGameState.DecisionState) {
         arrayOfBallImagesIndex = 0;
+        this.ballX = BALL_X;
+        this.ballY = BALL_Y;
+        this.ballWidth = BALL_WIDTH;
+        this.ballHeight = BALL_HEIGHT;
       }
       else {
         arrayOfBallImagesIndex++;
+        if (this.selectedSide.number === 1) {
+          var direction = Math.atan2( BALL_LEFTSIDE_Y - BALL_Y, BALL_LEFTSIDE_X - BALL_X );
+        }
+        else {
+          var direction = Math.atan2( BALL_RIGHTSIDE_Y - BALL_Y, BALL_RIGHTSIDE_X - BALL_X );
+        }
+          var speedX = Math.cos(direction) * 11;
+					var speedY = Math.sin(direction) * 11;
+          this.ballX += speedX;
+          this.ballY += speedY;
+          this.ballWidth -= 1;
+          this.ballHeight -= 1;
         if (arrayOfBallImagesIndex >= arrayOfBallImages.length) {
           arrayOfBallImagesIndex = 0;
         }
