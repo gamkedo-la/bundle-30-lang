@@ -825,7 +825,7 @@ function loadImages()
   arrayOfImagesToLoad.push({imageObjectBinding: symbolHashImage, theFile: 'images/Custom Font/pngs/symbols/symbolHash.png', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: symbolQuestionMarkImage, theFile: 'images/Custom Font/pngs/symbols/symbolQuestionMark.png', loaded: false});
 
-  arrayOfImagesToLoad.push({imageObjectBinding: placeholderPlayButtonImage, theFile: 'images/placeholderPlayButtonImage.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: placeholderPlayButtonImage, theFile: 'images/placeholderPlayButtonImage.png', loaded: false});
 
   // bubble wrap game
   // arrayOfImagesToLoad.push({imageObjectBinding: bubbleWrapBG, theFile: 'images/Backgrounds/bubbleWrapBG.jpg', loaded: false});
@@ -833,8 +833,8 @@ function loadImages()
   //arrayOfImagesToLoad.push({imageObjectBinding: balloonPopBG, theFile: 'images/Backgrounds/balloonPopBG.jpg', loaded: false});
   arrayOfImagesToLoad.push({imageObjectBinding: balloonPopSpritesheet, theFile: 'images/sprites/balloonPop/balloonPopSpritesheet.png', loaded: false});
 
-  arrayOfImagesToLoad.push({imageObjectBinding: checkBoxImage, theFile: 'images/checkBox.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: checkForCheckBoxImage, theFile: 'images/checkForCheckBox.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: checkBoxImage, theFile: 'images/checkBox.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: checkForCheckBoxImage, theFile: 'images/checkForCheckBox.png', loaded: false});
 
   numberOfImagesToLoad = arrayOfImagesToLoad.length;
 

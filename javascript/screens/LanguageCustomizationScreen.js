@@ -237,7 +237,7 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
       languageGroupDiv.defineChildCheckBoxXandYs();
       if (parentScreenObject.currentColumnIndex > 2)
       {
-        
+
         parentScreenObject.currentColumnIndex = 0;
         parentScreenObject.currentPageIndexForInitialization++;
         let page = new Page(parentScreenObject.currentPageIndexForInitialization);
@@ -255,14 +255,20 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
   this.draw = function()
   {
     // console.log('inside draw div function');
-    gameCanvasContext.drawImage(this.parentPromptAndAnswerGroupCheckBox.boxImage,
+    drawFromSheet(this.parentPromptAndAnswerGroupCheckBox.boxImage,
                                 this.parentPromptAndAnswerGroupCheckBox.x,this.parentPromptAndAnswerGroupCheckBox.y,
-                                this.parentPromptAndAnswerGroupCheckBox.width,this.parentPromptAndAnswerGroupCheckBox.height);
+                                this.parentPromptAndAnswerGroupCheckBox.width,this.parentPromptAndAnswerGroupCheckBox.height)
+    // gameCanvasContext.drawImage(this.parentPromptAndAnswerGroupCheckBox.boxImage,
+    //                             this.parentPromptAndAnswerGroupCheckBox.x,this.parentPromptAndAnswerGroupCheckBox.y,
+    //                             this.parentPromptAndAnswerGroupCheckBox.width,this.parentPromptAndAnswerGroupCheckBox.height);
     if (this.parentPromptAndAnswerGroupCheckBox.checked)
     {
-      gameCanvasContext.drawImage(this.parentPromptAndAnswerGroupCheckBox.checkImage,
+      drawFromSheet(this.parentPromptAndAnswerGroupCheckBox.checkImage,
                                 this.parentPromptAndAnswerGroupCheckBox.x,this.parentPromptAndAnswerGroupCheckBox.y,
                                 this.parentPromptAndAnswerGroupCheckBox.width,this.parentPromptAndAnswerGroupCheckBox.height);
+      // gameCanvasContext.drawImage(this.parentPromptAndAnswerGroupCheckBox.checkImage,
+      //                           this.parentPromptAndAnswerGroupCheckBox.x,this.parentPromptAndAnswerGroupCheckBox.y,
+      //                           this.parentPromptAndAnswerGroupCheckBox.width,this.parentPromptAndAnswerGroupCheckBox.height);
     }
 
     gameCanvasContext.fillStyle = 'black';
@@ -277,12 +283,16 @@ function LanguageGroupDiv(parentScreenObject, parentPromptAndAnswerGroupCheckBox
 
       let childBox = this.parentPromptAndAnswerGroupCheckBox.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex];
 
-      gameCanvasContext.drawImage(childBox.boxImage, childBox.x,childBox.y,
+      drawFromSheet(childBox.boxImage, childBox.x,childBox.y,
                                   childBox.width,childBox.height);
+      // gameCanvasContext.drawImage(childBox.boxImage, childBox.x,childBox.y,
+      //                             childBox.width,childBox.height);
       if (childBox.checked)
       {
-        gameCanvasContext.drawImage(childBox.checkImage, childBox.x,childBox.y,
+        drawFromSheet(childBox.checkImage, childBox.x,childBox.y,
                                     childBox.width,childBox.height);
+        // gameCanvasContext.drawImage(childBox.checkImage, childBox.x,childBox.y,
+        //                             childBox.width,childBox.height);
       }
 
       gameCanvasContext.fillStyle = 'black';
@@ -303,8 +313,8 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
   this.x = undefined;
   this.y = undefined;
 
-  this.boxImage = checkBoxImage;
-  this.checkImage = checkForCheckBoxImage;
+  this.boxImage = 'images\\checkBox.png';
+  this.checkImage = 'images\\checkForCheckBox.png';
 
   this.width = gameCanvas.width/20;
   this.height = gameCanvas.height/20;
@@ -391,8 +401,8 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
 {
   this.name = nameString;
 
-  this.boxImage = checkBoxImage;
-  this.checkImage = checkForCheckBoxImage;
+  this.boxImage = 'images\\checkBox.png';
+  this.checkImage = 'images\\checkForCheckBox.png';
 
   this.x = undefined;
   this.y = undefined;
