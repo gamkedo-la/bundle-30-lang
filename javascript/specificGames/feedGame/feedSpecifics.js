@@ -11,6 +11,13 @@ function feedGameClass()
 
   this.LETTER_COLOR = 'black';
 
+  this.drawTransitionText = function()
+  {
+    customFontFillText(['Feed the cakes', symbolExclamationPointImage], 55,30, 75,50);
+    customFontFillText(['Move the Mouse', ' ', symbolEqualsImage, ' Move the arms'], 40,15, gameCanvas.width*0.125,250);
+    customFontFillText(['Mouse Click', ' ', symbolEqualsImage, ' Reach and Grab'], 40,15, gameCanvas.width*0.125,450);
+  }
+
   this.imageAnswerWidth = undefined;
   this.imageAnswerHeight = undefined;
   this.imageAnswerHolderWidth = undefined;
@@ -83,8 +90,8 @@ function feedGameClass()
     this.initializeAnswerSettings();
     drawAnswersManager.initialize();
     this.background = new feedBackground();
-    this.collisionsWithAnswersManager = new feedCollisionsManager();
-    //this.playerCharacter.collisionsWithAnswersManager.initialize(gameClassManager.currentGame);
+    //this.collisionsWithAnswersManager = new feedCollisionsManager();
+    this.playerCharacter.collisionsWithAnswersManager.initialize(gameClassManager.currentGame);
   }
 
   this.draw = function()
@@ -174,17 +181,17 @@ function FoodAnswerHolder(image)
 }
 
 
-function feedGrabPlayer()
-  {
-    this.width = gameCanvas.width*0.2;
-    this.height = gameCanvas.height*0.1;
-    this.x = gameCanvas.width/2 - this.width/2;
-    this.y = gameCanvas.height*0.8;
-    this.image = "images\\sprites\\air grab\\AirGuy.png";
+// function feedGrabPlayer()
+//   {
+//     this.width = gameCanvas.width*0.2;
+//     this.height = gameCanvas.height*0.1;
+//     this.x = gameCanvas.width/2 - this.width/2;
+//     this.y = gameCanvas.height*0.8;
+//     this.image = "images\\sprites\\air grab\\AirGuy.png";
 
-    this.draw = function()
-    {
-      drawFromSheet(this.image, this.x,this.y, this.width,this.height);
-      //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
-    }
-  }
+//     this.draw = function()
+//     {
+//       drawFromSheet(this.image, this.x,this.y, this.width,this.height);
+//       //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
+//     }
+//   }
