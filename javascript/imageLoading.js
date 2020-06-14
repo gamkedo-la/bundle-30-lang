@@ -425,32 +425,32 @@ let arrayOfImagesToLoad = [];
 function loadImages()
 {
 
-  for (let arrayOfTextLettersIndex = 0; arrayOfTextLettersIndex < arrayOfTextLetters.length; arrayOfTextLettersIndex++)
-  {
-    let smallLetterImageName = 'small' + arrayOfTextLetters[arrayOfTextLettersIndex];
-    arrayOfImagesToLoad.push(
-                    {
-                    imageObjectBinding: window[smallLetterImageName],
-                    theFile: 'images/Custom Font/pngs/small letters/small' + arrayOfTextLetters[arrayOfTextLettersIndex] + '.png'
-                    });
-
-    let bigLetterImageName = 'big' + arrayOfTextLetters[arrayOfTextLettersIndex];
-    arrayOfImagesToLoad.push(
-                    {
-                    imageObjectBinding: window[bigLetterImageName],
-                    theFile: 'images/Custom Font/pngs/big letters/big' + arrayOfTextLetters[arrayOfTextLettersIndex] + '.png'}
-                    );
-  }
-
-  for (let arrayOfTextNumbersIndex = 0; arrayOfTextNumbersIndex < arrayOfTextNumbers.length; arrayOfTextNumbersIndex++)
-  {
-    let numberImageName = 'number' + arrayOfTextNumbers[arrayOfTextNumbersIndex];
-    arrayOfImagesToLoad.push(
-                    {
-                    imageObjectBinding: window[numberImageName],
-                    theFile: 'images/Custom Font/pngs/numbers/' + arrayOfTextNumbers[arrayOfTextNumbersIndex]  + '.png'
-                    });
-  }
+  // for (let arrayOfTextLettersIndex = 0; arrayOfTextLettersIndex < arrayOfTextLetters.length; arrayOfTextLettersIndex++)
+  // {
+  //   let smallLetterImageName = 'small' + arrayOfTextLetters[arrayOfTextLettersIndex];
+  //   arrayOfImagesToLoad.push(
+  //                   {
+  //                   imageObjectBinding: window[smallLetterImageName],
+  //                   theFile: 'images/Custom Font/pngs/small letters/small' + arrayOfTextLetters[arrayOfTextLettersIndex] + '.png'
+  //                   });
+  //
+  //   let bigLetterImageName = 'big' + arrayOfTextLetters[arrayOfTextLettersIndex];
+  //   arrayOfImagesToLoad.push(
+  //                   {
+  //                   imageObjectBinding: window[bigLetterImageName],
+  //                   theFile: 'images/Custom Font/pngs/big letters/big' + arrayOfTextLetters[arrayOfTextLettersIndex] + '.png'}
+  //                   );
+  // }
+  //
+  // for (let arrayOfTextNumbersIndex = 0; arrayOfTextNumbersIndex < arrayOfTextNumbers.length; arrayOfTextNumbersIndex++)
+  // {
+  //   let numberImageName = 'number' + arrayOfTextNumbers[arrayOfTextNumbersIndex];
+  //   arrayOfImagesToLoad.push(
+  //                   {
+  //                   imageObjectBinding: window[numberImageName],
+  //                   theFile: 'images/Custom Font/pngs/numbers/' + arrayOfTextNumbers[arrayOfTextNumbersIndex]  + '.png'
+  //                   });
+  // }
   //somewhat standard image loading
 
   arrayOfImagesToLoad.push({imageObjectBinding: megaSheet, theFile: 'megaSheet.png', loaded: false});
@@ -733,8 +733,8 @@ function loadImages()
   // arrayOfImagesToLoad.push({imageObjectBinding: lilyImage4, theFile: "images/sprites/frogRiver/lilyImage4.png", loaded: false});
 
   //particles used by loading and transition screens
-  arrayOfImagesToLoad.push({imageObjectBinding: heartImage, theFile: 'images/sprites/transitions/heart.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: starImage, theFile: 'images/sprites/transitions/star.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: heartImage, theFile: 'images/sprites/transitions/heart.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: starImage, theFile: 'images/sprites/transitions/star.png', loaded: false});
 
   //pinata game
   arrayOfImagesToLoad.push({imageObjectBinding: pinataImage, theFile: 'images/sprites/pinata/pinata.png', loaded: false});
@@ -808,22 +808,22 @@ function loadImages()
   // arrayOfImagesToLoad.push({imageObjectBinding: vacuumImage, theFile: 'images/sprites/Vacuum/vacuum.png', loaded: false});
 
   //symbols
-  arrayOfImagesToLoad.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png', loaded: false });
-  arrayOfImagesToLoad.push({imageObjectBinding: rightArrowImage, theFile: 'images/Custom Font/pngs/symbols/rightArrow.png', loaded: false });
-  arrayOfImagesToLoad.push({imageObjectBinding: downArrowImage, theFile: 'images/Custom Font/pngs/symbols/downArrow.png', loaded: false });
-  arrayOfImagesToLoad.push({imageObjectBinding: leftArrowImage, theFile: 'images/Custom Font/pngs/symbols/leftArrow.png', loaded: false });
-
-  arrayOfImagesToLoad.push({imageObjectBinding: symbolTildeImage, theFile: 'images/Custom Font/pngs/symbols/symbol~.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: symbolExclamationPointImage, theFile: 'images/Custom Font/pngs/symbols/symbol!.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: symbolEmailAtImage, theFile: 'images/Custom Font/pngs/symbols/symbol@.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: symbolDollarSignImage, theFile: 'images/Custom Font/pngs/symbols/symbol$.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: upArrowImage, theFile: 'images/Custom Font/pngs/symbols/upArrow.png', loaded: false });
+  // arrayOfImagesToLoad.push({imageObjectBinding: rightArrowImage, theFile: 'images/Custom Font/pngs/symbols/rightArrow.png', loaded: false });
+  // arrayOfImagesToLoad.push({imageObjectBinding: downArrowImage, theFile: 'images/Custom Font/pngs/symbols/downArrow.png', loaded: false });
+  // arrayOfImagesToLoad.push({imageObjectBinding: leftArrowImage, theFile: 'images/Custom Font/pngs/symbols/leftArrow.png', loaded: false });
+  //
+  // arrayOfImagesToLoad.push({imageObjectBinding: symbolTildeImage, theFile: 'images/Custom Font/pngs/symbols/symbol~.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: symbolExclamationPointImage, theFile: 'images/Custom Font/pngs/symbols/symbol!.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: symbolEmailAtImage, theFile: 'images/Custom Font/pngs/symbols/symbol@.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: symbolDollarSignImage, theFile: 'images/Custom Font/pngs/symbols/symbol$.png', loaded: false});
   //arrayOfImagesToLoad.push({imageObjectBinding: symbolPercentImage, theFile: 'images/Custom Font/pngs/symbols/symbol%.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: symbolEqualsImage, theFile: 'images/Custom Font/pngs/symbols/symbol=.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: symbolPeriodImage, theFile: 'images/Custom Font/pngs/symbols/symbol..png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: symbolCommaImage, theFile: 'images/Custom Font/pngs/symbols/symbol,.png', loaded: false});
-
-  arrayOfImagesToLoad.push({imageObjectBinding: symbolHashImage, theFile: 'images/Custom Font/pngs/symbols/symbolHash.png', loaded: false});
-  arrayOfImagesToLoad.push({imageObjectBinding: symbolQuestionMarkImage, theFile: 'images/Custom Font/pngs/symbols/symbolQuestionMark.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: symbolEqualsImage, theFile: 'images/Custom Font/pngs/symbols/symbol=.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: symbolPeriodImage, theFile: 'images/Custom Font/pngs/symbols/symbol..png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: symbolCommaImage, theFile: 'images/Custom Font/pngs/symbols/symbol,.png', loaded: false});
+  //
+  // arrayOfImagesToLoad.push({imageObjectBinding: symbolHashImage, theFile: 'images/Custom Font/pngs/symbols/symbolHash.png', loaded: false});
+  // arrayOfImagesToLoad.push({imageObjectBinding: symbolQuestionMarkImage, theFile: 'images/Custom Font/pngs/symbols/symbolQuestionMark.png', loaded: false});
 
   // arrayOfImagesToLoad.push({imageObjectBinding: placeholderPlayButtonImage, theFile: 'images/placeholderPlayButtonImage.png', loaded: false});
 
