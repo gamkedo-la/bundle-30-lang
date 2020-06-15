@@ -293,7 +293,8 @@ function CollisionsWithAnswersManager()
         {
             cycleCount++;
         }
-
+        promptersManager.currentPrompter.currentWidth = 150;
+        promptersManager.currentPrompter.currentHeight = 150;
         this.resetAnswers();
         calculateAccuracy();
     }
