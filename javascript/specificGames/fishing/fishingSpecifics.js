@@ -11,7 +11,9 @@ FishingCollisionManager.prototype = new CollisionsWithAnswersManager();
 FishingCollisionManager.prototype.constructor = FishingCollisionManager;
 
 var fishSprites = [
-  fishingGameFish1, fishingGameFish2, fishingGameFish3
+  "images\\sprites\\Fishing\\fish.png",
+  "images\\sprites\\Fishing\\fish2.png",
+  "images\\sprites\\Fishing\\fish3.png"
 ]
 
 const NUM_FISHES = 4;
@@ -504,8 +506,8 @@ function Fish() {
         this.orientation = getRandomElementFromArray([-1, 1]);
 
         this.sprite = getRandomElementFromArray(fishSprites);
-        this.width  = FISH_SIZE_FACTOR * this.sprite.width;
-        this.height = FISH_SIZE_FACTOR * this.sprite.height;
+        this.width  = FISH_SIZE_FACTOR * 190; // pre-string this.sprite.width
+        this.height = FISH_SIZE_FACTOR * 67; // pre-string this.sprite.height
 
         this.headWidth = this.width * 0.3;
         this.headXOffset = (this.width - this.headWidth) / 2;

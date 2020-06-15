@@ -17,86 +17,7 @@ function DrawAnswersManager()
 
   this.draw = function()
   {
-    if (promptsAndAnswersManager.currentAnswerDataType === 'string')
-    {
-      gameCanvasContext.fillStyle = this.getTextLetterColor();
-
-      var correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
-        gameClassManager.currentGame.textAnswerFontStyle
-      )
-
-      var incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
-        gameClassManager.currentGame.textAnswerFontStyle
-      )
-
-      // if (gameClassManager.currentGame.currentCorrectAnswerHolderWidth)
-      // {
-        gameClassManager.currentGame.currentCorrectAnswerHolderWidth = correctAnswerWidth;
-        gameClassManager.currentGame.currentCorrectAnswerHolderHeight = 30;
-        gameClassManager.currentGame.currentIncorrectAnswerHolderWidth = incorrectAnswerWidth;
-        gameClassManager.currentGame.currentIncorrectAnswerHolderHeight = 30;
-      // }
-      if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder)
-      {
-        this.currentCorrectAnswerHolderX = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - gameClassManager.currentGame.correctTextAnswerHolderWidth/4;
-        this.currentCorrectAnswerHolderY = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - gameClassManager.currentGame.currentCorrectAnswerHolderHeight*1.2;
-        this.currentCorrectAnswerHolderWidth = gameClassManager.currentGame.correctTextAnswerHolderWidth*1.5;
-        this.currentCorrectAnswerHolderHeight = gameClassManager.currentGame.currentCorrectAnswerHolderHeight*1.75;
-
-        drawFromSheet(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
-          this.currentCorrectAnswerHolderX,this.currentCorrectAnswerHolderY,
-          this.currentCorrectAnswerHolderWidth,this.currentCorrectAnswerHolderHeight);
-        // gameCanvasContext.drawImage(
-        //   promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
-        //   this.currentCorrectAnswerHolderX,this.currentCorrectAnswerHolderY,
-        //   this.currentCorrectAnswerHolderWidth,this.currentCorrectAnswerHolderHeight
-        // );
-      }
-
-      if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder)
-      {
-        this.currentIncorrectAnswerHolderX = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - gameClassManager.currentGame.incorrectTextAnswerHolderWidth/4;
-        this.currentIncorrectAnswerHolderY = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - gameClassManager.currentGame.currentIncorrectAnswerHolderHeight*1.2;
-        this.currentIncorrectAnswerHolderWidth = gameClassManager.currentGame.currentIncorrectAnswerHolderWidth*1.5;
-        this.currentIncorrectAnswerHolderHeight = gameClassManager.currentGame.currentIncorrectAnswerHolderHeight*1.75;
-
-        drawFromSheet(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
-          this.currentIncorrectAnswerHolderX,this.currentIncorrectAnswerHolderY,
-          this.currentIncorrectAnswerHolderWidth,this.currentIncorrectAnswerHolderHeight);
-        // gameCanvasContext.drawImage(
-        //   promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
-        //   this.currentIncorrectAnswerHolderX,this.currentIncorrectAnswerHolderY,
-        //   this.currentIncorrectAnswerHolderWidth,this.currentIncorrectAnswerHolderHeight
-        // );
-      }
-
-
-      //draw correct answer
-      // gameCanvasContext.font = '30px Helvetica';
-      gameCanvasContext.font = this.textAnswerFontStyle;
-      gameCanvasContext.fillText(promptsAndAnswersManager.currentCorrectAnswer,
-      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
-      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
-
-      //collider box
-      gameCanvasContext.strokeStyle = 'white';
-      gameCanvasContext.strokeRect(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5,
-                                  promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate-this.textAnswerFontSize,//fill text offset
-                                  correctAnswerWidth + 10, this.textAnswerFontSize + 10);
-
-      //draw incorrect answer
-      gameCanvasContext.fillStyle = this.LETTER_COLOR;
-      gameCanvasContext.fillText(promptsAndAnswersManager.currentIncorrectAnswer,
-      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
-      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate);
-
-      //collider collider box
-      gameCanvasContext.strokeStyle = 'white';
-      gameCanvasContext.strokeRect(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5,
-                                  promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - this.textAnswerFontSize,//fill text offset
-                                  incorrectAnswerWidth + 10 , this.textAnswerFontSize + 10);
-      //}
-    } else if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
+    if (promptsAndAnswersManager.currentAnswerDataType === 'IMG')
     {
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
@@ -247,6 +168,85 @@ function DrawAnswersManager()
             promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate + this.imageHeight/2);
         }
 
+      //}
+    } else if (promptsAndAnswersManager.currentAnswerDataType === 'string')
+    {
+      gameCanvasContext.fillStyle = this.getTextLetterColor();
+
+      var correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
+        gameClassManager.currentGame.textAnswerFontStyle
+      )
+
+      var incorrectAnswerWidth = promptsAndAnswersManager.getIncorrectAnswerWidthFromFontStyle(
+        gameClassManager.currentGame.textAnswerFontStyle
+      )
+
+      // if (gameClassManager.currentGame.currentCorrectAnswerHolderWidth)
+      // {
+        gameClassManager.currentGame.currentCorrectAnswerHolderWidth = correctAnswerWidth;
+        gameClassManager.currentGame.currentCorrectAnswerHolderHeight = 30;
+        gameClassManager.currentGame.currentIncorrectAnswerHolderWidth = incorrectAnswerWidth;
+        gameClassManager.currentGame.currentIncorrectAnswerHolderHeight = 30;
+      // }
+      if (promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder)
+      {
+        this.currentCorrectAnswerHolderX = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - gameClassManager.currentGame.correctTextAnswerHolderWidth/4;
+        this.currentCorrectAnswerHolderY = promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate - gameClassManager.currentGame.currentCorrectAnswerHolderHeight*1.2;
+        this.currentCorrectAnswerHolderWidth = gameClassManager.currentGame.correctTextAnswerHolderWidth*1.5;
+        this.currentCorrectAnswerHolderHeight = gameClassManager.currentGame.currentCorrectAnswerHolderHeight*1.75;
+
+        drawFromSheet(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
+          this.currentCorrectAnswerHolderX,this.currentCorrectAnswerHolderY,
+          this.currentCorrectAnswerHolderWidth,this.currentCorrectAnswerHolderHeight);
+        // gameCanvasContext.drawImage(
+        //   promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
+        //   this.currentCorrectAnswerHolderX,this.currentCorrectAnswerHolderY,
+        //   this.currentCorrectAnswerHolderWidth,this.currentCorrectAnswerHolderHeight
+        // );
+      }
+
+      if (promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.answerHolder)
+      {
+        this.currentIncorrectAnswerHolderX = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - gameClassManager.currentGame.incorrectTextAnswerHolderWidth/4;
+        this.currentIncorrectAnswerHolderY = promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - gameClassManager.currentGame.currentIncorrectAnswerHolderHeight*1.2;
+        this.currentIncorrectAnswerHolderWidth = gameClassManager.currentGame.currentIncorrectAnswerHolderWidth*1.5;
+        this.currentIncorrectAnswerHolderHeight = gameClassManager.currentGame.currentIncorrectAnswerHolderHeight*1.75;
+
+        drawFromSheet(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
+          this.currentIncorrectAnswerHolderX,this.currentIncorrectAnswerHolderY,
+          this.currentIncorrectAnswerHolderWidth,this.currentIncorrectAnswerHolderHeight);
+        // gameCanvasContext.drawImage(
+        //   promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image,
+        //   this.currentIncorrectAnswerHolderX,this.currentIncorrectAnswerHolderY,
+        //   this.currentIncorrectAnswerHolderWidth,this.currentIncorrectAnswerHolderHeight
+        // );
+      }
+
+
+      //draw correct answer
+      // gameCanvasContext.font = '30px Helvetica';
+      gameCanvasContext.font = this.textAnswerFontStyle;
+      gameCanvasContext.fillText(promptsAndAnswersManager.currentCorrectAnswer,
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
+      promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate);
+
+      //collider box
+      gameCanvasContext.strokeStyle = 'white';
+      gameCanvasContext.strokeRect(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate - 5,
+                                  promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate-this.textAnswerFontSize,//fill text offset
+                                  correctAnswerWidth + 10, this.textAnswerFontSize + 10);
+
+      //draw incorrect answer
+      gameCanvasContext.fillStyle = this.LETTER_COLOR;
+      gameCanvasContext.fillText(promptsAndAnswersManager.currentIncorrectAnswer,
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
+      promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate);
+
+      //collider collider box
+      gameCanvasContext.strokeStyle = 'white';
+      gameCanvasContext.strokeRect(promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate - 5,
+                                  promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate - this.textAnswerFontSize,//fill text offset
+                                  incorrectAnswerWidth + 10 , this.textAnswerFontSize + 10);
       //}
     } else if (promptsAndAnswersManager.currentAnswerDataType === "AUDIO")
     {

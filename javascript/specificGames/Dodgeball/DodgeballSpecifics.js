@@ -270,7 +270,7 @@ function DodgeballPlayerCharacter()
 
   this.draw = function()
   {
-    let angleInRadians = this.angle * 0.01745;
+    let angleInRadians = (this.angle-90) * 0.01745;
 
     drawFromSheet(this.image, this.x,this.y, this.width,this.height, undefined, angleInRadians,this.pivotX,this.pivotY);
     // gameCanvasContext.save();
@@ -342,7 +342,7 @@ function DodgeballNPC(image, x,y, oscillationVelocityX,oscillationVelocityY)
 
   this.draw = function()
   {
-    let angleInRadians = this.angle * 0.01745;
+    let angleInRadians = (this.angle-90) * 0.01745;
 
     drawFromSheet(this.image, this.x,this.y, this.width,this.height, undefined, angleInRadians,this.pivotX,this.pivotY);
     // gameCanvasContext.save();
