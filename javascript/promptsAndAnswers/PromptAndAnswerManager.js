@@ -138,7 +138,7 @@ if (
       this.dataTypeOfCurrentPrompt = 'IMG';
       imagePrompter.loadCurrentImage(this.currentPrompt);
     }
-    else 
+    else
 */
 
     if (typeof this.currentCorrectAnswer === 'string' && this.currentCorrectAnswer.indexOf("\\")!=-1) { // before megasheet // was this.currentPrompt.nodeName === 'IMG'
@@ -237,8 +237,21 @@ if (
     for (let arrayOfPossibleAnswersIndex = 0; arrayOfPossibleAnswersIndex < this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers.length; arrayOfPossibleAnswersIndex++)
     {
         let currentIncorrectAnswerDataType = undefined;
-        if (typeof this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex] === 'string')
+        if (typeof this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex] === 'string'
+            && this.currentCorrectAnswer.indexOf("\\")!=-1)
         {
+          currentIncorrectAnswerDataType = 'IMG';
+          if (currentIncorrectAnswerDataType !== undefined)
+          {
+            if (this.currentAnswerDataType === currentIncorrectAnswerDataType)
+            {
+              this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
+            }
+          }
+        }
+        else if (typeof this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex] === 'string')
+        {
+
           currentIncorrectAnswerDataType = 'string';
           if (currentIncorrectAnswerDataType !== undefined)
           {
@@ -253,17 +266,6 @@ if (
                 gameClassManager.currentGame.textAnswerFontStyle
             ) + 20;
 
-        }
-        else if (this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex].nodeName === 'IMG')
-        {
-          currentIncorrectAnswerDataType = 'IMG';
-          if (currentIncorrectAnswerDataType !== undefined)
-          {
-            if (this.currentAnswerDataType === currentIncorrectAnswerDataType)
-            {
-              this.currentIncorrectAnswer = this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex];
-            }
-          }
         }
         else if (this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex].type === 'AUDIO')
         {

@@ -21,6 +21,8 @@ function DrawAnswersManager()
     {
       // for (var arrayOfAnswersAnswerIndex = 0; arrayOfAnswersAnswerIndex < arrayOfAnswers.length; arrayOfAnswersAnswerIndex++)
       // {
+      console.log('promptsAndAnswersManager.currentCorrectAnswer: ' + promptsAndAnswersManager.currentCorrectAnswer);
+      console.log('promptsAndAnswersManager.currentIncorrectAnswer: ' + promptsAndAnswersManager.currentIncorrectAnswer);
 
       if (gameClassManager.currentGame.currentCorrectAnswerHolderWidth !== undefined)
       {
@@ -103,6 +105,7 @@ function DrawAnswersManager()
 
         dateAndTime.checkForNecessityOfUsingDatesForDrawAnswersManager();
 
+        console.log('promptsAndAnswersManager.currentCorrectAnswer: ' + promptsAndAnswersManager.currentCorrectAnswer);
         drawFromSheet(promptsAndAnswersManager.currentCorrectAnswer,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);
@@ -136,6 +139,7 @@ function DrawAnswersManager()
             promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.yCoordinate + this.imageHeight/2);
         }
 
+        console.log('promptsAndAnswersManager.currentIncorrectAnswer.name: ' + promptsAndAnswersManager.currentIncorrectAnswer.name);
         drawFromSheet(promptsAndAnswersManager.currentIncorrectAnswer,
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.xCoordinate,
         promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.yCoordinate, this.imageWidth,this.imageHeight);

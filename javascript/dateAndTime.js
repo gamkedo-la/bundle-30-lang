@@ -227,9 +227,9 @@ function DateAndTime()
           {
             dateToDraw = this.yesterdaysDate;
           }
-          
+
           this.dateToDraw = dateToDraw;
-          this.shouldDrawADate = true;;
+          this.shouldDrawADate = true;
         }
   }
 
@@ -244,6 +244,7 @@ function DateAndTime()
         promptsAndAnswersManager.currentAnswerDataType === "IMG" )
         {
           this.shouldDrawADateOnAnswers = true;
+          promptersManager.loadCurrentPrompter(imagePrompter);
         }
         else {
           this.shouldDrawADateOnAnswers = false;
