@@ -123,7 +123,7 @@ function Simon()
       gameCanvasContext.fillStyle = "gold";
       gameCanvasContext.fillRect(0, 0, gameCanvas.width, 50);
       customFontFillText(
-        [this.computerTurnText], 30, 12, 
+        [this.computerTurnText], 30, 12,
         this.computerTurnTextXPosition, 10
       );
     }
@@ -131,11 +131,11 @@ function Simon()
       gameCanvasContext.fillStyle = "gold";
       gameCanvasContext.fillRect(0, 0, gameCanvas.width, 50);
       customFontFillText(
-        [this.playerTurnText], 30, 12, 
+        [this.playerTurnText], 30, 12,
         this.playerTurnTextXPosition, 10
       );
     }
-    
+
   }
 
   this.phonicToCheckIndex = 0;
@@ -147,7 +147,6 @@ function Simon()
           inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
           {//left button clicked
             gameAudio.buttonPress.play();
-            console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
             if (this.leftPhonic === this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
             {
               this.processCorrectAnswer();
@@ -156,13 +155,11 @@ function Simon()
             {
               this.processIncorrectAnswer();
             }
-            console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
           }
       else if (inputManager.mouseCoordinates.x > this.x + this.width/2 && inputManager.mouseCoordinates.x < this.x + this.width &&
               inputManager.mouseCoordinates.y > this.y && inputManager.mouseCoordinates.y < this.y + this.height)
           {//right button clicked
             gameAudio.buttonPress.play();
-            console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
             if (this.rightPhonic === this.currentPatternOfCorrectPhonics[this.phonicToCheckIndex])
             {
               this.processCorrectAnswer();
@@ -171,7 +168,6 @@ function Simon()
             {
               this.processIncorrectAnswer();
             }
-            console.log('this.phonicToCheckIndex: ' + this.phonicToCheckIndex);
           }
     }
   }
@@ -182,7 +178,7 @@ function Simon()
 
     this.isPlayingPatternOfPhonics = true;
     setTimeout(
-      this.playPatternOfPhonics.bind(this), 
+      this.playPatternOfPhonics.bind(this),
       this.timeToWaitBeforePlayingPattern
     );
   }

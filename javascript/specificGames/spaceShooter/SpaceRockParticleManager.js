@@ -31,7 +31,6 @@ function SpaceRockParticleManager()
   this.arrayOfGroupsOfParticles = [];
   this.createAGroupOfParticles = function()
   {
-    console.log('inside create a group of particles');
     let groupOfParticles = [];
     let randomAmountOfParticles = getRandomIntInclusive(15, 30);
 
@@ -40,7 +39,6 @@ function SpaceRockParticleManager()
     let rockCenterY = undefined;
     if (currentCollidedAnswer === promptsAndAnswersManager.correctTargetPromptAndAnswerPairing)
     {
-      console.log('inside create correct collided answer');
       rockCenterX = drawAnswersManager.currentCorrectAnswerHolderX + drawAnswersManager.currentCorrectAnswerHolderWidth/2;
       rockCenterY = drawAnswersManager.currentCorrectAnswerHolderY + drawAnswersManager.currentCorrectAnswerHolderHeight/2;
     }

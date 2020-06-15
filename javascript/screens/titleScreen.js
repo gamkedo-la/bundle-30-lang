@@ -219,7 +219,7 @@ function TitleScreenClass()
 
     // FIXME why is this undefined sometimes?
     if (typeof gameClassManager.currentGame == "undefined") {
-        console.log("currentGame is null - ignoring click. this.gameNum="+this.gameNum);
+        //console.log("currentGame is null - ignoring click. this.gameNum="+this.gameNum);
         return;
     }
 
@@ -230,7 +230,7 @@ function TitleScreenClass()
           genAudio.playClick();
           if (gameClassManager.currentGame.skipCustomizationScreens) {
 
-            console.log("skipping customization screens for this game");
+            //console.log("skipping customization screens for this game");
             // the bubble popping games are only A-Z seeking games
             // and do not use the prompts and answers databases
 

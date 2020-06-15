@@ -60,7 +60,7 @@ function MusicManager() {
 				nextTrackDuration = trackList[1].dur;
 			} else {
 				if (!trackList || !trackList[0]) {
-					console.log("Warning: music trackList is empty. Ignoring.");
+
 					this.playing = false;
 					nextTrack = null;
 					return;
@@ -594,7 +594,7 @@ genAudio.playTransitionMusic = function() {
 	musicManager.playNextTrack();
 	musicManager.addTrack(gameClassManager.currentGame.backgroundMusic);
 	if (SKIP_TRANSITIONS) {
-		console.log("Skipping transition music");
+		
 		fullGameStateMachine.loadCurrentState(fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame);
 		promptersManager.promptThePlayer();
 		if (gameClassManager.currentGame.startGameSpecialCode) {

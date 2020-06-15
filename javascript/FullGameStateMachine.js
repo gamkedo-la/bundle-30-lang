@@ -20,7 +20,7 @@ function FullGameStateMachineClass()
   this.loadCurrentState = function(stateToLoad)
   {
     this.currentState = stateToLoad;
-    console.log('the current state is: ' + fullGameStateMachine.currentState.status);
+    
   }
 
 }

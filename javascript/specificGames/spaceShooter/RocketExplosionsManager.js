@@ -43,12 +43,10 @@ function RocketExplosionsManager()
 
     if (currentCollidedAnswer === promptsAndAnswersManager.correctTargetPromptAndAnswerPairing)
     {
-      console.log('inside create correct collided answer');
       x = drawAnswersManager.currentCorrectAnswerHolderX + gameClassManager.currentGame.bulletDimensionX;
       y = drawAnswersManager.currentCorrectAnswerHolderY + drawAnswersManager.currentCorrectAnswerHolderHeight/2;
     }
     else if (currentCollidedAnswer === promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing){
-      console.log('inside create incorrect collided answer');
 
       x = drawAnswersManager.currentIncorrectAnswerHolderX + gameClassManager.currentGame.bulletDimensionX;
       y = drawAnswersManager.currentIncorrectAnswerHolderY + drawAnswersManager.currentIncorrectAnswerHolderHeight/2;

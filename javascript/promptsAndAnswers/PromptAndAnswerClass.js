@@ -128,7 +128,6 @@ function PromptAndAnswerClass(nameString, textAssociation, imageAssociation, aud
 
 function initializePromptAndAnswerObjects()
 {
-  console.log('prompts and answers initializing');
 
   //English section
   womanPromptAndAnswer = new PromptAndAnswerClass('woman', 'woman', 'images\\sprites\\PromptsAndAnswers\\woman.png', promptAudio.woman);

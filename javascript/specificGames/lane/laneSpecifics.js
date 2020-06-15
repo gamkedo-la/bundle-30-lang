@@ -426,7 +426,6 @@ function Billboard()
              {
                arrayOfCharacterTypes.push(this.bannerMessageCharacters[bannerMessageIndex])
              }
-             console.log()
              customFontFillText(arrayOfCharacterTypes, 30, 15, this.x + 15,this.y + 60);
   }
 }

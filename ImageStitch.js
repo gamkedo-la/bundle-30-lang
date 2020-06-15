@@ -55,12 +55,12 @@ function loadingDoneSoStartGame() {
 
   }
   document.getElementById("jsonOutput").innerHTML = JSON.stringify(imgFacts);
-  console.log(drawY + rowH+1);
+
 }
 
 function countLoadedImageAndLaunchIfReady() {
   picsToLoad--;
-  console.log(picsToLoad);
+  
   if(picsToLoad == 0) { // last image loaded?
     loadingDoneSoStartGame();
   }

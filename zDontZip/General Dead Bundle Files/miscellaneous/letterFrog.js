@@ -133,7 +133,6 @@ function FrogClass()
           this.yCoordinate - 50 === arrayOfLilyPads[arrayOfLilyPadsIndex].yCoordinate &&
           arrayOfLilyPads[arrayOfLilyPadsIndex].letter === currentCorrectLetter)
           {
-            console.log('inside check for lily landing success, should have heard frog jump audio');
             gameAudio.frogJump.play();
             this.yCoordinate -= 50;
             this.currentLilyPad = arrayOfLilyPads[arrayOfLilyPadsIndex];

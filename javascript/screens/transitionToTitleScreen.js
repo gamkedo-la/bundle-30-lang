@@ -1,6 +1,6 @@
 function TransitionToTitleScreen()
 {
-  console.log('transitioning to title screen, should switch states in 2 second');
+  //console.log('transitioning to title screen, should switch states in 2 second');
 
   this.changeFullGameStateAfterTwoSeconds = function()
   {

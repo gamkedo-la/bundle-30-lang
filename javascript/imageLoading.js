@@ -860,7 +860,7 @@ function countLoadedImageAndLaunchIfReady(fileName, imageToLoadIndex)
   numberOfImagesToLoad--;
   if (numberOfImagesToLoad === 0)
   {
-    console.log('numberOfImagesToLoad === 0 triggered');
+
     /*
     const FAST_DEBUG_MODE = true; // skip entire menu and immeditately play a game! use only for debugging!
     if (FAST_DEBUG_MODE) {
@@ -883,7 +883,7 @@ function countLoadedImageAndLaunchIfReady(fileName, imageToLoadIndex)
 
 function checkForUnloadedImages()
 {
-  console.log('checkForUnloadedImages timedout');
+  
   for (let arrayOfImagesToLoadIndex = 0; arrayOfImagesToLoadIndex < arrayOfImagesToLoad.length; arrayOfImagesToLoadIndex++)
   {
     if (arrayOfImagesToLoad[arrayOfImagesToLoadIndex].loaded === false)

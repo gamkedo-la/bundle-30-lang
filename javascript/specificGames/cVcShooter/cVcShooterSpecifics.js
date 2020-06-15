@@ -67,7 +67,7 @@ function cVcShooterGameClass()
     {
       this.currentLanguageArray = this.cVcManager.arrayOfCentralVietnameseCVCs;
     }
-    console.log('this.currentLanguageArray: ' + this.currentLanguageArray);
+    //console.log('this.currentLanguageArray: ' + this.currentLanguageArray);
   }
 
   this.draw = function()
@@ -564,7 +564,6 @@ function CVCManager()
     this.arrayOfCentralVietnameseCVCs.push(this.CVCCentralVietnameseVeryNiceToMeetYou);
 
 
-    console.log('this.arrayOfEnglishCVCs: ' + this.arrayOfEnglishCVCs);
   }
 
   this.chooseARandomCVC = function(currentLanguageArray)

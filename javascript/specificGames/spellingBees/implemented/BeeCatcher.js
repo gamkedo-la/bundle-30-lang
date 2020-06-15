@@ -48,7 +48,6 @@ function BeeCatcher()
           {
             currentBee.shouldBeMoving = false;
             let boxToBeFilled = gameClassManager.currentGame.background.arrayOfBoxes[gameClassManager.currentGame.background.currentBoxToBeFilledIndex];
-            console.log('boxToBeFilled: ' + boxToBeFilled);
             currentBee.x = boxToBeFilled.x + 10;
             currentBee.y = boxToBeFilled.y - 10;
             boxToBeFilled.letter = currentBee.letter;
@@ -58,7 +57,6 @@ function BeeCatcher()
               let wordStringToCheck = '';
               let arrayOfBoxes = gameClassManager.currentGame.background.arrayOfBoxes;
               wordStringToCheck = arrayOfBoxes[0].letter + arrayOfBoxes[1].letter + arrayOfBoxes[2].letter;
-              console.log('wordStringToCheck: ' + wordStringToCheck);
               gameClassManager.currentGame.background.currentBoxToBeFilledIndex = 0;
               if (wordStringToCheck === gameClassManager.currentGame.wordsManager.currentAnswer.word)
               {

@@ -63,7 +63,7 @@ function spaceShooterGameClass() {
 
   this.pregameSpecialCode = function()
   {
-    console.log("pregame special code for space shooter");
+    //console.log("pregame special code for space shooter");
 	// playerShouldSeeTitleScreen = false;
   //   fullGameStateMachine.playingAGameState = true;
   //   levelIsTransitioning = true;
@@ -286,7 +286,6 @@ function spaceShooterGameClass() {
 		this.arrayOfBullets.push({x:this.playerCharacter.x + this.playerCharacter.width,
 												 y:this.playerCharacter.y + this.playerCharacter.height/2 - this.bulletDimensionY/2,
 											 	 width: this.bulletDimensionX, height: this.bulletDimensionY});
-		console.log('this.arrayOfBullets:' + this.arrayOfBullets);
 		gameAudio.shoot.play();
 
 	}

@@ -1,5 +1,5 @@
 var gameCanvas, gameCanvasContext, statsCanvas, statsCanvasContext, backButton;
-console.log('Bundle of 30 Language Games Starting...');
+
 
 window.onload = function()
 {

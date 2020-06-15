@@ -398,7 +398,6 @@ function assignAnAppleCoreToABug()
           let appleCoreIndex = getRandomIntInclusive(0,arrayOfAppleCores.length - 1);
           arrayOfBugs[i].targetAppleCore = arrayOfAppleCores[appleCoreIndex];
           arrayOfBugs[i].hasATargetAppleCore = true;
-          console.log('arrayOfBugs[i].targetAppleCore: ' + arrayOfBugs[i].targetAppleCore);
         }//end of else case that actually assigns a target apple core
       }//end of if statement that checks for existence of apple cores
     }//end of if statement that checks for existence of bugs

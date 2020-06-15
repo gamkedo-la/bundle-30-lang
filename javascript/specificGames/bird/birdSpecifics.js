@@ -8,7 +8,6 @@ function birdGameClass() {
   this.playerCharacter = undefined;
   this.defineAndInitializePlayerCharacter = function()
   {
-    console.log('inside define and initialize of bird player character');
     this.playerCharacter = new BirdClass();
     this.playerCharacter.initialize();
     this.collidingObject = this.playerCharacter;
@@ -322,9 +321,7 @@ function Cloud(randomCloudImage)
       this.y = getRandomIntInclusive(0, gameCanvas.height);
 
       let randomCloudImageIndex = getRandomIntInclusive(0,cloudManager.arrayOfCloudImages.length - 1);
-      console.log('randomCloudImageIndex: ' + randomCloudImageIndex);
       let cloudImage = cloudManager.arrayOfCloudImages[randomCloudImageIndex];
-      console.log('cloudImage: ' + cloudImage);
       this.image = cloudImage;
       this.xSpeed = (getRandomIntInclusive(10,14))/10;
 

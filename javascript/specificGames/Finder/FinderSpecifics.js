@@ -261,7 +261,6 @@ function Room(image,y)
     {
       if (playerCharacter.x + playerCharacter.width > this.leftWallX)
       {
-        console.log('left wall collision');
         playerCharacter.x = playerCharacter.previousX;
       }
     }
@@ -313,26 +312,20 @@ function Room(image,y)
 
       if (playerCharacter.y + playerCharacter.height >= this.doorY)
       {
-        console.log('door collision detected');
         if (!this.hasADoor)
         {
-          console.log('no door here');
           return;
         }
         else if (this.hasADoor)
         {
-          console.log('there is a door');
           if (playerCharacter.numberOfKeys < 1)
           {
-            console.log('no key, should not enter room');
             playerCharacter.y = playerCharacter.previousY;
           }
           else if (playerCharacter.numberOfKeys > 0)
           {
-            console.log('player has a key, should make the door disappear and room enterable');
             this.hasADoor = false;
             playerCharacter.numberOfKeys -= 1;
-            console.log('playerCharacter.numberOfKeys: ' + playerCharacter.numberOfKeys);
           }
         }
       }

@@ -9,15 +9,12 @@ function LetterSubmissionManager()
 
   this.checkSubmittedLettersForCorrectSpelling = function()
   {
-    console.log('this.arrayOfLetters: ' + this.arrayOfLetters);
-    console.log('spellingBeesGame.answersManager.currentSplitAnswer: ' + spellingBeesGame.answersManager.currentSplitAnswer);
+
     if (this.arrayOfLetters.toString() === spellingBeesGame.answersManager.currentSplitAnswer.toString())
     {
-      console.log('correct answer submitted');
     } else if (this.arrayOfLetters.length === spellingBeesGame.answersManager.currentSplitAnswer.length &&
                this.arrayOfLetters.toString !== spellingBeesGame.answersManager.currentSplitAnswer.toString())
                {
-                 console.log('incorrect answer submitted');
                }
   }
 }

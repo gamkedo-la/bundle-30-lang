@@ -7,7 +7,7 @@ const SKIP_TRANSITIONS = false; // instant, good for debugging
 if (SKIP_TRANSITIONS) {
     TRANSITION_SPEED_MULTIPLIER = 10;
     TITLESCREEN_TRANSITION_TIME = 1;
-    console.log("SKIP_TRANSITIONS is true");
+    //console.log("SKIP_TRANSITIONS is true");
 }
 
 var levelIsTransitioning = false;
@@ -45,7 +45,7 @@ function MiniGameTransitioner()
     this.drawTransitionText();
 
     if (SKIP_TRANSITIONS) {
-        console.log("Skipping transition!");
+        //console.log("Skipping transition!");
         transitionIsFadingIn = false;
         transitionIsFadingOut = false;
         transitionScreenVisualFadeLevel = 1;

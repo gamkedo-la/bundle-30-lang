@@ -8,7 +8,7 @@ function drawFromSheet(imgName, atX,atY,
   var imgNum = sheetLookup[imgName];
 
   if (imgNum==undefined) {
-      console.log("warning: unknown image in drawFromSheet: " + imgName);
+      
       return;
   }
 

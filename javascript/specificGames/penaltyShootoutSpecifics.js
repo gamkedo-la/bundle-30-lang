@@ -106,7 +106,6 @@ function penaltyGameClass(){
 
     this.handleLeftArrowDown = function(){
         if (this.currentState === penaltyGameState.DecisionState) {
-          console.log("leftarrowpressed");
           this.selectedSide = this.sides.left;
           this.changeState();
           this.currentFrame = 0;
@@ -115,7 +114,6 @@ function penaltyGameClass(){
 
     this.handleRightArrowDown = function(){
       if (this.currentState === penaltyGameState.DecisionState) {
-        console.log("rightArrowPressed");
         this.selectedSide = this.sides.right;
         this.changeState();
         this.currentFrame = 0;
@@ -241,13 +239,11 @@ function penaltyGameClass(){
             genAudio.playPositive();
             amountCorrect++;
             this.collisionsWithAnswersManager.processCollisionWithAnswer();
-            console.log("Right Choice");
           }
           else {
             genAudio.playNegative();
             amountIncorrect++;
             this.collisionsWithAnswersManager.processCollisionWithAnswer();
-            console.log("Wrong Choice");
           }
           this.selectedSide == null;
           this.ResetStrikerAndGoalKeeper();

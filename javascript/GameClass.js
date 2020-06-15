@@ -2,11 +2,11 @@ function GameClass()
 {
   this.pregameSpecialCode = function()
   {
-    console.log("no pregame special code is used by this game");
+    //console.log("no pregame special code is used by this game");
   };
   this.postLoadInit = function()
   {
-    console.log("no post load special code is used by this game");
+    //console.log("no post load special code is used by this game");
   };
 
   this.initialize = function()
@@ -65,7 +65,7 @@ function GameClassManager()
 
     // this is undefined when the user clicks empty space in the menu screen
     if(typeof this.currentGame === "undefined") {
-        console.log("Ignoring a click on the background of the menu.");
+        //console.log("Ignoring a click on the background of the menu.");
         return;
     }
 
@@ -73,10 +73,10 @@ function GameClassManager()
       this.currentGame.pregameSpecialCode();
       //this.initializeCurrentGame();
     } else {
-      console.log("no pregameSpecialCode function for this game type");
+      //console.log("no pregameSpecialCode function for this game type");
     }
     fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.playingMiniGame.associatedObject = gameToLoad;
-    console.log('this.currentGame.name: ' + this.currentGame.name);
+    //console.log('this.currentGame.name: ' + this.currentGame.name);
   }
 
   this.initializeCurrentGame = function()

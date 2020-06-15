@@ -87,11 +87,11 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     // public functions called by the game state machine
     //////////////////////////////////////////////////////
     this.postLoadInit = function () { // NEVER GETS FIRED? FIXME
-        console.log(this.name + " postLoadInit...");
+        //console.log(this.name + " postLoadInit...");
         this.gameIsActive = true;
     }
     this.postGameSpecialCode = function () {
-        console.log(this.name + " postGameSpecialCode...");
+        //console.log(this.name + " postGameSpecialCode...");
         // remove mousedown event listener
         this.gameIsActive = false;
     }
@@ -103,7 +103,7 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     }
 
     this.initialize = function () {
-        console.log(this.name + " popping game initializing...");
+        //console.log(this.name + " popping game initializing...");
         this.gameIsActive = true; // hmmmmmmmmmmm
         generateRainbowColours();
         ctx = gameCanvasContext;
@@ -124,9 +124,9 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
     }
 
     this.maybePromptUser = function() {
-        
+
         if (!this.introComplete) return;
-        
+
         const promptDelay = 2000; // ms
         var now = performance.now();
         // first time?
@@ -139,8 +139,8 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
             this.nextPromptTime = now + promptDelay;
         }
     }
-    
-    
+
+
     // called by the game state machine
     this.update = function () {
         //console.log("popping game update()");
@@ -330,13 +330,13 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
         if (wasCorrect && me.alwaysPopLetters) { // bubble wrap etc
             if (objects.length) {
                 targetLetter = objects[Math.floor(Math.random() * objects.length)].Z;
-                console.log("new target letter without erasing board: " + targetLetter);
+                //console.log("new target letter without erasing board: " + targetLetter);
             } else {
-                console.log("entire board cleared!!!");
+              //  console.log("entire board cleared!!!");
                 //resetAnyways = true; // force full new choices? NO - this is done elsewhere
             }
         }
-      
+
         if (wasCorrect && (!me.alwaysPopLetters || resetAnyways)) {
             //pinataSmashed = false; // reset!!!!!!!! fixme: or do we like spam
             /*
@@ -433,12 +433,12 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
                 // did we succeed?
                 clickedABubble = true;
                 if (checkme.Z == targetLetter) {
-                    console.log("You clicked the right letter: " + checkme.Z);
+                    //console.log("You clicked the right letter: " + checkme.Z);
                     //depreciated playARandomSoundInAMultisoundArray(arrayOfGeneralPositiveFeedbackSounds);
                     correct = true;
                 }
-                else { 
-                    console.log("You clicked the wrong answer: " + checkme.Z + " not " + targetLetter);
+                else {
+                    //console.log("You clicked the wrong answer: " + checkme.Z + " not " + targetLetter);
                     correct = false;
                     //depreciated playARandomSoundInAMultisoundArray(arrayOfGeneralNegativeFeedbackSounds);
                 }
@@ -486,8 +486,8 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
         // make sure there are choices left!
         if (objects.length<1) {
 
-            console.log("all bubbles popped!");
-            if (me.gameSpecificInits) { 
+            //console.log("all bubbles popped!");
+            if (me.gameSpecificInits) {
                 me.gameSpecificInits();
                 return; // maybe we have a custom init func
             }
@@ -562,4 +562,3 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
         return new Circle(Vec2(x, y), r, m);
     }
 }
-

@@ -33,7 +33,6 @@ function ShipSmokeManager()
 
   this.generateSmoke = function()
   {
-    console.log('calling generate smoke');
     let ship = gameClassManager.currentGame.playerCharacter;
     let smoke = new Smoke(ship.x,ship.y + ship.height*0.3);
     gameClassManager.currentGame.shipSmokeManager.arrayOfSmoke.push(smoke);
@@ -59,7 +58,6 @@ function ShipSmokeManager()
     for (let i = 0;  i < this.arrayOfSmoke.length; i++)
     {
       // gameClassManager.currentGame.shipSmokeManager.arrayOfSmoke[i].draw();
-      console.log('inside draw smoke of ship smoke manager');
       this.arrayOfSmoke[i].draw();
 
     }

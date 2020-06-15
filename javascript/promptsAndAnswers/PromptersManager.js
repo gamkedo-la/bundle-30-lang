@@ -17,8 +17,10 @@ function PromptersManager()
 
   this.loadAppropriatePrompterBasedOnCurrentPromptsDataType = function()
   {
+    // console.log(promptsAndAnswersManager.dataTypeOfCurrentPrompt.charAt(0));
     if (promptsAndAnswersManager.dataTypeOfCurrentPrompt === 'string')
     {
+      console.log(promptsAndAnswersManager.dataTypeOfCurrentPrompt.charAt(0));
       this.loadCurrentPrompter(textPrompter);
 
     } else if (promptsAndAnswersManager.dataTypeOfCurrentPrompt === 'IMG')

@@ -36,7 +36,6 @@ function BeeCatcher()
             spellingBeesGame.caughtBeesManager.placeCaughtBeeInAppropriateBox(caughtBee);
             spellingBeesGame.caughtBeesManager.submitLetterToSubmissionsManager(caughtBee);
             spellingBeesGame.letterSubmissionManager.checkSubmittedLettersForCorrectSpelling();
-            console.log(spellingBeesGame.letterSubmissionManager.arrayOfLetters);
           }
     }
   }

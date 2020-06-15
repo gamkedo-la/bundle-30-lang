@@ -23,8 +23,8 @@ window.onload = function()
   let randomCellIndex = getRandomIntInclusive(0, arrayOfCells.length - 1);
   currentCellBeingVisitedByGenerationAlgorithm = arrayOfCells[randomCellIndex];
   currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm = true;
-  console.log(currentCellBeingVisitedByGenerationAlgorithm);
-  console.log(currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm);
+  //console.log(currentCellBeingVisitedByGenerationAlgorithm);
+  //console.log(currentCellBeingVisitedByGenerationAlgorithm.hasBeenVisitedByGenerationAlgorithm);
 
   setInterval(gameLoop, 1000);
 }
@@ -130,7 +130,6 @@ function initializeArrayOfCells()
       arrayOfCells.push(cell);
     }
   }
-  console.log(arrayOfCells);
 }
 
 function getRandomIntInclusive(min, max) {

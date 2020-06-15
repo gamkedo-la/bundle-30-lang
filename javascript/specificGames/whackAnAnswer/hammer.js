@@ -58,11 +58,7 @@ function Hammer()
       mouseGridIndex = mouseCol + mouseRow * 3;
     }
 
-    console.log('mouseGridIndex: ' + mouseGridIndex);
-    console.log('promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.gridIndex: ' +
-                  promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.whackAnAnswerGridIndex);
-                  console.log('promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.gridIndex: ' +
-                                promptsAndAnswersManager.incorrectTargetPromptAndAnswerPairing.whackAnAnswerGridIndex);
+
 
     if (mouseGridIndex === promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.whackAnAnswerGridIndex)
     {
@@ -90,7 +86,6 @@ function Hammer()
 
   this.unClickMouse = function()
   {
-    console.log('should be unclicking mouse');
     gameClassManager.currentGame.playerCharacter.mouseClicked = false;
   }
 }

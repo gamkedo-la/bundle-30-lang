@@ -63,8 +63,7 @@ function helloWorld2GameClass()
     this.imagePrompter = new HelloWorld2ImagePrompter();
     this.questionClassManager.populateArraysOfConvoPatterns();
     this.currentLanguageArray = this.setCurrentLanguageArray();
-    console.log('this.currentLanguageArray: ' + this.currentLanguageArray);
-    console.log('this.currentLanguageArray[0]: ' + this.currentLanguageArray[0]);
+
     this.questionClassManager.chooseCorrectQuestion(this.currentLanguageArray);
     this.questionClassManager.chooseIncorrectQuestion(this.currentLanguageArray);
     this.questionClassManager.assignAudioClipsToSpeechBubbles();
@@ -91,8 +90,7 @@ function helloWorld2GameClass()
     else if (languageSelectionScreen.languageNum === 2)
     {
       currentLanguageArray = this.questionClassManager.arrayOfCentralVietnameseQuestions;
-      console.log('this.questionClassManager: ' + this.questionClassManager);
-      console.log('currentLanguageArray: ' + currentLanguageArray);
+
     }
     return currentLanguageArray;
   }
@@ -267,7 +265,6 @@ function HelloWorld2ImagePrompter()
 
   this.drawThePrompt = function()
   {
-    console.log('inside draw the prompt function');
     if (this.image !== undefined)
     {
       gameCanvasContext.fillStyle = this.backgroundColor;
@@ -292,7 +289,6 @@ function HelloWorld2ImagePrompter()
     dateAndTime.checkForNecessityOfUsingDatesForImagePrompter();
     if (dateAndTime.shouldDrawADate)
     {
-      console.log('dateAndTime.dateToDraw.month: ' + dateAndTime.dateToDraw.month);
       customFontFillText( (dateAndTime.dateToDraw.month + 1).toString(), this.currentWidth*0.1 /*font size*/, this.currentWidth*0.055 /*spacing*/,
                          gameCanvas.width/2 - 20, /*- this.currentWidth/2  + this.currentWidth*0.0175,*///xCoordinate)
                          gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.3);/* - this.currentHeight/2 + this.currentHeight*0.1);*///yCoordinate
@@ -306,10 +302,8 @@ function HelloWorld2ImagePrompter()
   this.shouldBeDrawingAPrompt = false;
   this.togglePromptingBoolean = function()
   {
-    console.log('image prompter toggled');
     if (gameClassManager.currentGame.imagePrompter.shouldBeDrawingAPrompt === true)
     {
-      console.log('if check for drawing prompt is true');
       gameClassManager.currentGame.imagePrompter.shouldBeDrawingAPrompt = false;
       gameClassManager.currentGame.imagePrompter.currentWidth = 150;
       gameClassManager.currentGame.imagePrompter.currentHeight = 150;
@@ -325,12 +319,10 @@ function HelloWorld2ImagePrompter()
     }
     else if (gameClassManager.currentGame.imagePrompter.shouldBeDrawingAPrompt === false)
     {
-      console.log('if check for drawing prompt is false');
       gameClassManager.currentGame.imagePrompter.shouldBeDrawingAPrompt = true;
       gameClassManager.currentGame.imagePrompter.currentHeight = 150;
       gameClassManager.currentGame.imagePrompter.currentHeight = 150;
     }
-    console.log('this.shouldBeDrawingAPrompt: ' + gameClassManager.currentGame.imagePrompter.shouldBeDrawingAPrompt);
   }
 
   this.promptThePlayer = function()
@@ -383,7 +375,6 @@ function QuestionAudioManager()
 
     scopingProblemThis.secondQuestionBubble.message.sfx.onended = function()
     {
-      console.log('second question bubble audio onended triggering');
       scopingProblemThis.secondQuestionBubble.isBeingHeard = false;
       scopingProblemThis.firstQuestionBubble.isBeingHeard = false;
     }
@@ -456,7 +447,6 @@ function QuestionClassManager()
   {
     let randomArrayOfQuestionsIndex = getRandomIntInclusive(0,currentLanguageArray.length - 1);
     this.currentCorrectQuestion = currentLanguageArray[randomArrayOfQuestionsIndex];
-    console.log('this.currentCorrectQuestion.name: ' + this.currentCorrectQuestion.name);
     gameClassManager.currentGame.imagePrompter.loadCurrentImage(this.currentCorrectQuestion.promptImage);
   }
 
@@ -471,7 +461,6 @@ function QuestionClassManager()
       randomArrayOfQuestionsIndex = getRandomIntInclusive(0,currentLanguageArray.length - 1);
       this.incorrectQuestion = currentLanguageArray[randomArrayOfQuestionsIndex];
     }
-    console.log('this.incorrectQuestion.name: ' + this.incorrectQuestion.name);
   }
 
   this.assignAudioClipsToSpeechBubbles = function()

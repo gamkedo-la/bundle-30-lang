@@ -431,12 +431,10 @@ function advanceGenerationAlgorithm()
     mazeGenerationAlgorithmShouldAdvance = false;
     populateArrayOfDeadEndCellsNotIncludingPlayerStartingLocation();
     initializeLetters();
-    console.log('currentCellBeingVisitedByGenerationAlgorithm: ' + currentCellBeingVisitedByGenerationAlgorithm);
     initializePlayers();
     correctLetterAudioTag.onended = function(){backgroundMusic.play()};
     backgroundMusic.loop = true;
     correctLetterAudioTag.play();
-    console.log(arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation);
   }
 
 }
@@ -491,7 +489,6 @@ function populateArrayOfDeadEndCellsNotIncludingPlayerStartingLocation()
       arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation.push(arrayOfCells[cellIndex]);
     }//end of pushing dead ends into dead end array
   }//end of cycling through all the cells
-  console.log('finalCellVisitedByGenerationAlgorithm: ' + finalCellVisitedByGenerationAlgorithm);
   for (let deadEndCellsIndex = 0; deadEndCellsIndex < arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation.length; deadEndCellsIndex++)
   {
     if (arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation[deadEndCellsIndex] === finalCellVisitedByGenerationAlgorithm)
@@ -540,11 +537,9 @@ function LetterClass(nameString)
   this.assignCell = function()
   {
     let randomDeadEndIndex = getRandomIntInclusive(0,arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation.length - 1);
-    console.log('random dead end index: ' + randomDeadEndIndex);
     this.cell = arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation[randomDeadEndIndex];
     this.cellIndex = this.cell.cellIndex;
     arrayOfCurrentDeadEndCellsNotIncludingPlayerStartingLocation.splice(randomDeadEndIndex,1);
-    console.log('letter cell index: letter ' + this.name + ': ' + this.cellIndex);
   }
 
   this.draw = function()
@@ -685,7 +680,7 @@ function movePlayer1UpIfPossible()
   {
     player1.cell = player1.cell.topNeighboringCell;
     checkForLetterCollisions();
-  } 
+  }
 }
 
 function movePlayer2UpIfPossible()
@@ -761,7 +756,6 @@ function checkForLetterCollisions()
           arrayOfAnswers[arrayOfAnswersIndex].name === currentCorrectLetter)
           {
             resetGame();
-            console.log('correct letter choice');
             backgroundMusic.pause();
             backgroundMusic.currentTime = 0;
             return;
@@ -770,7 +764,6 @@ function checkForLetterCollisions()
                arrayOfAnswers[arrayOfAnswersIndex].name !== currentCorrectLetter)
                {
                  // resetGame();
-                 console.log('incorrect letter choice');
                }//end of checking for incorrect letter choice
     }//end of checking the players positions and if letter was correct/incorrect
   }//end of check all the letters

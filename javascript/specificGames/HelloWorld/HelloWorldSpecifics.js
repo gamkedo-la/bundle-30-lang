@@ -65,8 +65,6 @@ function helloWorldGameClass()
     this.conversationAudioManager = new ConversationAudioManager();
     this.conversationPatternManager.initializeArraysOfConvoPatterns();
     this.currentLanguageArray = this.setCurrentLanguageArray();
-    console.log('this.currentLanguageArray: ' + this.currentLanguageArray);
-    console.log('this.currentLanguageArray[0]: ' + this.currentLanguageArray[0]);
     this.conversationPatternManager.chooseCorrectConversationPattern(this.currentLanguageArray);
     this.conversationPatternManager.chooseIncorrectConversationPattern(this.currentLanguageArray);
     this.conversationPatternManager.assignAudioClipsToSpeechBubbles();
@@ -91,7 +89,6 @@ function helloWorldGameClass()
     else if (languageSelectionScreen.languageNum === 2)
     {
       currentLanguageArray = this.conversationPatternManager.arrayOfCentralVietnameseConvoPatterns;
-      console.log('currentLanguageArray: ' + currentLanguageArray);
     }
     return currentLanguageArray;
   }
@@ -294,7 +291,6 @@ function ConversationPatternManager()
   {
     let randomArrayOfConvoPatternsIndex = getRandomIntInclusive(0,currentLanguageArray.length - 1);
     this.currentCorrectConversationPattern = currentLanguageArray[randomArrayOfConvoPatternsIndex];
-    console.log('this.currentCorrectConversationPattern.name: ' + this.currentCorrectConversationPattern.name);
   }
 
   this.incorrectConversationPattern = undefined;
@@ -308,7 +304,6 @@ function ConversationPatternManager()
       randomArrayOfConvoPatternsIndex = getRandomIntInclusive(0,currentLanguageArray.length - 1);
       this.incorrectConversationPattern = currentLanguageArray[randomArrayOfConvoPatternsIndex];
     }
-    console.log('this.incorrectConversationPattern.name: ' + this.incorrectConversationPattern.name);
   }
 
   this.assignAudioClipsToSpeechBubbles = function()

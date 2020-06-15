@@ -12,7 +12,7 @@ function InputManager()
     switch(fullGameStateMachine.currentState)
     {
       case  fullGameStateMachine.FULL_GAME_ENUMERABLE_STATES.loading:
-      console.log('game is still loading, nothing should happen');
+      //console.log('game is still loading, nothing should happen');
       return;
       break;
 
@@ -150,10 +150,10 @@ function InputManager()
       if (debugOn === true)
       {
         debugOn = false;
-        console.log('debug off');
+
       } else if (debugOn === false)
       {
-        console.log('debug on');
+        
         debugOn = true;
       }
       break;

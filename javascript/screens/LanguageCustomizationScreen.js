@@ -368,7 +368,7 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
             }
           }
 
-          console.log('currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
+          //console.log('currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
         }
         else
         {
@@ -385,7 +385,7 @@ function PromptAndAnswerGroupCheckBox(parentScreenObject, nameString, promptAndA
         {
           this.arrayOfIndividualPromptAndAnswerCheckBoxes[childIndex].checked = true;
           promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings.push(this.promptAndAnswerGroup);
-          console.log('currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
+          //console.log('currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
         }
         else
         {
@@ -440,7 +440,7 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
       this.checked = true;
       this.addPromptAndAnswerToCustomizedArray();
     }
-    console.log('currentArrayOfLogicalPromptAnswerGroupings ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
+    //console.log('currentArrayOfLogicalPromptAnswerGroupings ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
 
   }
 
@@ -495,7 +495,7 @@ function IndividualPromptAndAnswerCheckBox(parentGroup, nameString, promptAndAns
         }
 
       }
-    console.log('promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
+    //console.log('promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings: ' + promptsAndAnswersManager.currentArrayOfLogicalPromptAnswerGroupings);
     }
   }
 }

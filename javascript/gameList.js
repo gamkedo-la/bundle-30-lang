@@ -27,7 +27,7 @@ var cycleCount = 0;
 function loadGameNum(gameListIndex)
 {
   if(gameList[gameListIndex] == null) {
-    console.log("gameToLoad is null, bailing");
+    //console.log("gameToLoad is null, bailing");
     return false;
   }
   gameClassManager.loadCurrentGame(gameList[gameListIndex]);

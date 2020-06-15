@@ -21,7 +21,5 @@ function AnswersManager()
     let randomPossibleAnswerIndex = getRandomIntInclusive(0,this.arrayOfPossibleAnswers.length - 1);
     this.currentAnswer = this.arrayOfPossibleAnswers[randomPossibleAnswerIndex];
     this.currentSplitAnswer = this.currentAnswer.textString.split("");
-    console.log('this.currentAnswer: ' + this.currentAnswer);
-    console.log('this.currentSplitAnswer: ' + this.currentSplitAnswer);
   }
 }

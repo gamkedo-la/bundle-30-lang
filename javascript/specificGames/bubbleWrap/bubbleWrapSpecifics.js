@@ -14,7 +14,7 @@ bubbleWrapGame.titleTXT2 = "Pop the bubbles";
 bubbleWrapGame.titleTXT3 = "as fast as you can";
 bubbleWrapGame.introComplete = true; // no swinging pinata
 bubbleWrapGame.noIntro = true;
-bubbleWrapGame.spritesheet = bubbleWrapSpritesheet; 
+bubbleWrapGame.spritesheet = bubbleWrapSpritesheet;
 bubbleWrapGame.shrinking = false;
 bubbleWrapGame.smashSound = null;//window.audioManager?audioManager.balloonPopSound:document.getElementById('smashSound');
 bubbleWrapGame.successSound = window.audioManager?audioManager.bubbleWrapPopSound:document.getElementById('successSound');
@@ -22,7 +22,7 @@ bubbleWrapGame.failSound = null;//window.audioManager?audioManager.pinataFailSou
 
 // build a grid of bubbles
 bubbleWrapGame.gameSpecificInits = function() {
-    console.log("Bubble Wrap game specific inits...");
+    // console.log("Bubble Wrap game specific inits...");
     var r = 30;
     var margin = -8;
     var spacing = (r*2)+margin;
@@ -39,7 +39,7 @@ bubbleWrapGame.gameSpecificInits = function() {
 
 // attempting to leverage for this game type, seems to not work for this case though
 bubbleWrapGame.postLoadInit = function() { // code may not be getting called
-    console.log("postLoadInit for bubble wrap");
+    // console.log("postLoadInit for bubble wrap");
     gameInterval.reset(PINATAFRAMERATE);
     // do we still need to set these?
     playerShouldSeeTitleScreen = false;
@@ -47,7 +47,7 @@ bubbleWrapGame.postLoadInit = function() { // code may not be getting called
     levelIsTransitioning = true;
 }
 
-bubbleWrapGame.drawBG = function() { 
+bubbleWrapGame.drawBG = function() {
     gameCanvasContext.drawImage(bubbleWrapBG,0,0);
 }
 

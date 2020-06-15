@@ -33,14 +33,12 @@ window.onload = function()
   initializePromptBoxes();
   initializeButtonChoiceObjects();
   addALetterToAnswerPatternArray();
-  console.log('arrayOfCurrentAnswersPattern: ' + arrayOfCurrentAnswersPattern);
   assignRandomLeftRightPositionForChoiceButtons();
 
   letterAudioTag = document.getElementById('letterAudioTag');
   letterAudioTag.onended = function() {playPatternOfLetters();};
 
-  console.log('arrayOfPromptBoxes: ' + arrayOfPromptBoxes);
-  console.log('arrayOfLetterChoiceButtons: ' + arrayOfLetterChoiceButtons);
+
 
   drawSplashScreen();
 }
@@ -293,7 +291,7 @@ function handleAnswerChoiceClicks()
         mouseCoordinates.mouseY < currentButtonChoice.yCoordinate + currentButtonChoice.height)
         {
           arrayOfSubmittedChoices.push(currentButtonChoice.name);
-          console.log('arrayOfSubmittedChoices: ' + arrayOfSubmittedChoices);
+
         }
   }
 }
@@ -337,11 +335,9 @@ function SubmitButtonClass()
         {
           if (arrayOfSubmittedChoices.toString() == arrayOfCurrentAnswersPattern.toString())
           {
-            console.log('Correct!');
             addALetterToAnswerPatternArray();
           } else
           {
-            console.log("Incorrect!");
             arrayOfCurrentAnswersPattern = [];
             addALetterToAnswerPatternArray();
           }//end of checking if the submitted answer is correct

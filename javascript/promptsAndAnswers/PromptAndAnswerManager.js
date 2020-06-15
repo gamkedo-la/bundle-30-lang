@@ -32,7 +32,7 @@ function PromptsAndAnswersManager()
   this.pickATargetPromptAndAnswerPairing = function()
   {
     if(typeof this.currentLogicalPromptAndAnswerGroup === 'undefined') {
-      console.log("PromptsAndAnswersManager not set up yet -- how do we fill this in with functional (even placeholder) data when this happens?");
+      //console.log("PromptsAndAnswersManager not set up yet -- how do we fill this in with functional (even placeholder) data when this happens?");
       return;
     }
     let randomIndexFromCurrentPromptAndAnswerGroup = getRandomIntInclusive(0,this.currentLogicalPromptAndAnswerGroup.arrayOfObjects.length - 1);
@@ -55,7 +55,7 @@ function PromptsAndAnswersManager()
   {
     if(typeof this.correctTargetPromptAndAnswerPairing === 'undefined' ||
         typeof this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts === 'undefined') {
-        console.log("correctTargetPromptAndAnswerPairing not set up yet");
+        //console.log("correctTargetPromptAndAnswerPairing not set up yet");
         return;
       }
     let randomIndexForArrayOfPossiblePrompts = getRandomIntInclusive(0,this.correctTargetPromptAndAnswerPairing.arrayOfPossiblePrompts.length - 1);
@@ -68,7 +68,7 @@ function PromptsAndAnswersManager()
   this.defineDataTypeOfCurrentPrompt = function()
   {
     if (typeof this.currentPrompt === 'undefined') {
-        console.log("currentPrompt not set up yet");
+        //console.log("currentPrompt not set up yet");
         return;
     }
     if (typeof this.currentPrompt === 'string')
@@ -101,7 +101,7 @@ function PromptsAndAnswersManager()
     if (typeof this.correctTargetPromptAndAnswerPairing === 'undefined' ||
         typeof this.correctTargetPromptAndAnswerPairing.arrayOfPossibleAnswers === 'undefined'
     ) {
-        console.log("correctTargetPromptAndAnswerPairing not set up.");
+        //console.log("correctTargetPromptAndAnswerPairing not set up.");
         return;
     }
 
@@ -126,7 +126,7 @@ function PromptsAndAnswersManager()
   {
 
     if (typeof this.currentCorrectAnswer === 'undefined') {
-        console.log("currentCorrectAnswer not set up.");
+        //console.log("currentCorrectAnswer not set up.");
         return;
     }
 
@@ -157,7 +157,7 @@ function PromptsAndAnswersManager()
   this.defineIncorrectTargetPromptAndAnswerPairing = function()
   {
     if (typeof this.currentLogicalPromptAndAnswerGroup === 'undefined') {
-        console.log("currentLogicalPromptAndAnswerGroup not set up.");
+        //console.log("currentLogicalPromptAndAnswerGroup not set up.");
         return;
     }
 
@@ -218,7 +218,7 @@ function PromptsAndAnswersManager()
     if (typeof this.incorrectTargetPromptAndAnswerPairing === 'undefined' ||
         typeof this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers === 'undefined'
     ) {
-        console.log("this.incorrectTargetPromptAndAnswerPairing not set up");
+        //console.log("this.incorrectTargetPromptAndAnswerPairing not set up");
         return;
     }
 
@@ -280,7 +280,7 @@ function PromptsAndAnswersManager()
 
   this.getCorrectAnswerWidthFromFontStyle = function(fontStyle){
     if (this.currentAnswerDataType != 'string'){
-      console.log("This answer is not a string, cannot measure for text width");
+      //console.log("This answer is not a string, cannot measure for text width");
       return;
     }
 
@@ -495,7 +495,7 @@ function PromptsAndAnswersManager()
       else if (this.currentAnswerDataType === 'AUDIO'){
         yCoordinateOffset -= frogRiverGame.audioImageAnswerWidth / 2;
       }
-      
+
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate += yCoordinateOffset;
       this.correctTargetPromptAndAnswerPairing.yCoordinate += yCoordinateOffset;
 
@@ -638,7 +638,6 @@ function PromptsAndAnswersManager()
       this.incorrectTargetPromptAndAnswerPairing.whackAnAnswerGridIndex = randomGridIndex2;
 
       let randomDirectionNumber = Math.random();
-      console.log('randomDirectionNumber: ' + randomDirectionNumber);
       if (randomDirectionNumber >= 0.75)
       {
         this.correctTargetPromptAndAnswerPairing.whackAnAnswerPositionName = 'left';

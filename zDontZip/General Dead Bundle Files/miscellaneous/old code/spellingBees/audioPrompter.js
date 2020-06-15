@@ -40,7 +40,6 @@ function AudioPrompter()
 
   this.drawThePrompt = function()
   {
-    console.log('should be drawing the prompt');
     if (this.image !== undefined)
     {
       spellingBeesGame.canvasContext.fillStyle = this.backgroundColor;
@@ -67,7 +66,7 @@ function AudioPrompter()
   this.promptThePlayer = function()
   {
     this.currentAudioPrompt.play();
-    
+
     setTimeout(this.togglePromptingBoolean,2000);
   }
 }

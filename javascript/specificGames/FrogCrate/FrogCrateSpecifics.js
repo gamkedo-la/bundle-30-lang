@@ -118,7 +118,6 @@ function frogCrateGameClass()
 
   this.handleSpaceBarDown = function()
   {
-    console.log('space bar pressed');
     if (this.playerCharacter.tongueShouldBeStretchingOut === true || this.playerCharacter.tongueShouldBeReturningToMouth === true)
     {
       return;

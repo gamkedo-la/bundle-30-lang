@@ -79,7 +79,6 @@ function jumperGameClass()
 
   this.assignAnswerHolder = function()
   {
-    console.log('called assign answer holder');
     this.treasureChestAnswerHolder = new TreasureChestAnswerHolder('images\\sprites\\Jumper\\treasureChest.png');
     return this.treasureChestAnswerHolder;
   }

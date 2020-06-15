@@ -15,7 +15,7 @@ balloonPopGame.titleTXT2 = "Pop the balloons";
 balloonPopGame.titleTXT3 = "before they fly away";
 balloonPopGame.introComplete = true; // no swinging pinata
 balloonPopGame.noIntro = true;
-balloonPopGame.spritesheet = balloonPopSpritesheet; 
+balloonPopGame.spritesheet = balloonPopSpritesheet;
 balloonPopGame.spawnRandomly = true;
 balloonPopGame.spawnChance = 0.05;
 balloonPopGame.shrinking = false;
@@ -26,7 +26,7 @@ balloonPopGame.failSound = null;//window.audioManager?audioManager.pinataFailSou
 
 // build a grid of bubbles
 balloonPopGame.gameSpecificInits = function() {
-    console.log("Balloon Pop Game specific inits...");
+    //console.log("Balloon Pop Game specific inits...");
     /*
     var r = 25;
     var margin = 24;
@@ -45,7 +45,7 @@ balloonPopGame.gameSpecificInits = function() {
 
 // attempting to leverage for this game type, seems to not work for this case though
 balloonPopGame.postLoadInit = function() { // code may not be getting called
-    console.log("postLoadInit for balloonPopGame");
+    //console.log("postLoadInit for balloonPopGame");
     gameInterval.reset(PINATAFRAMERATE);
     // do we still need to set these?
     playerShouldSeeTitleScreen = false;
@@ -53,6 +53,6 @@ balloonPopGame.postLoadInit = function() { // code may not be getting called
     levelIsTransitioning = true;
 }
 
-//balloonPopGame.drawBG = function() { 
+//balloonPopGame.drawBG = function() {
     //gameCanvasContext.drawImage(balloonPopBG,0,0);
 //}
