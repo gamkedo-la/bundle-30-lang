@@ -14,7 +14,7 @@ function feedCollisionsManager() {
         CollisionsWithAnswersManager.prototype.processCollisionWithCorrectAnswer();
         gameClassManager.currentGame.correctAnswersYSpeed *= -1;
         let randomImageIndex = getRandomIntInclusive(0, gameClassManager.currentGame.arrayOfUpsideDownAnswerHolders.length - 1);
-                     gameClassManager.currentGame.arrayOfUpsideDownAnswerHolders[randomImageIndex]);
+        //             gameClassManager.currentGame.arrayOfUpsideDownAnswerHolders[randomImageIndex]);
         promptsAndAnswersManager.correctTargetPromptAndAnswerPairing.answerHolder.image =
         gameClassManager.currentGame.arrayOfUpsideDownAnswerHolders[randomImageIndex].image;
 
