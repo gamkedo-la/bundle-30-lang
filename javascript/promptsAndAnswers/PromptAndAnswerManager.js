@@ -240,6 +240,7 @@ if (
         if (typeof this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex] === 'string'
             && this.currentCorrectAnswer.indexOf("\\")!=-1)
         {
+          console.log('image filepath detected');
           currentIncorrectAnswerDataType = 'IMG';
           if (currentIncorrectAnswerDataType !== undefined)
           {
