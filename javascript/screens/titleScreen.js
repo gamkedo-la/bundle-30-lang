@@ -373,6 +373,9 @@ lineWrapCredits(); // note: calling immediately as part of init, outside the fun
 const drawCredits = function() {
   var creditPosY = 10;
   var leftX = 20;
+  var wasFont = gameCanvasContext.font;
+  var wasAlign = gameCanvasContext.textAlign;
+
     for(var i=0; i<creditsList.length; i++) {
       var yPos = creditPosY + i * 12;
       //if (200 < yPos && yPos < 600) {
@@ -399,4 +402,6 @@ const drawCredits = function() {
         }
       // }
     }
+    gameCanvasContext.font= wasFont;
+    gameCanvasContext.textAlign=wasAlign; // cleaning up after itself
   };
