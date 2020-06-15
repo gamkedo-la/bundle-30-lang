@@ -255,7 +255,10 @@ function bubblePoppingEngine(myName = 'POP!', usePhysics = false) {
                 ctx.arc(0, 0, nextOne.R, 0, 7);
             } else {
                 // really big: balloons assumed: FIXME
-                ctx.drawImage(this.spritesheet, 0, 0, this.spriteW, this.spriteH, -nextOne.R, -nextOne.R, nextOne.R * 2, nextOne.R * 2);
+                // ctx.drawImage(this.spritesheet, 0, 0, this.spriteW, this.spriteH, -nextOne.R, -nextOne.R, nextOne.R * 2, nextOne.R * 2);
+                drawFromSheet("images\\sprites\\balloonPop\\balloonPopSpritesheet.png",
+                    -nextOne.R,-nextOne.R,
+                    nextOne.R * 2, nextOne.R * 2);
             }
             //c.lineWidth = 3;
             ctx.font = nextOne.R * 1.9 + "px a";
