@@ -238,7 +238,7 @@ if (
     {
         let currentIncorrectAnswerDataType = undefined;
         if (typeof this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex] === 'string'
-            && this.currentCorrectAnswer.indexOf("\\")!=-1)
+            && this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex].indexOf("\\")!=-1)
         {
           currentIncorrectAnswerDataType = 'IMG';
           if (currentIncorrectAnswerDataType !== undefined)
