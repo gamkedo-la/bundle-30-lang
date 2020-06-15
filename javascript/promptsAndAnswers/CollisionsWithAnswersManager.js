@@ -328,8 +328,8 @@ function CollisionsWithAnswersManager()
 
     this.resetAnswers = function()
     {
-        promptersManager.currentPrompter.currentWidth = 150;
-        promptersManager.currentPrompter.currentHeight = 150;
+        //promptersManager.currentPrompter.currentWidth = 150;
+        //promptersManager.currentPrompter.currentHeight = 150;
         promptsAndAnswersManager.setOrResetPromptsAndAnswers();
         promptersManager.loadAppropriatePrompterBasedOnCurrentPromptsDataType();
         promptersManager.promptThePlayer();

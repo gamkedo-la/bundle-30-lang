@@ -9,6 +9,11 @@ window.onload = function()
   gameCanvas.style.display = "inline";
   gameCanvasContext = gameCanvas.getContext('2d');
 
+  gameCanvasContext.mozImageSmoothingEnabled = false;
+  gameCanvasContext.imageSmoothingEnabled = false;
+  gameCanvasContext.msImageSmoothingEnabled = false;
+  gameCanvasContext.imageSmoothingEnabled = false;
+
   statsCanvas = document.getElementById("statsCanvas");
   statsCanvas.style.display = 'inline';
   statsCanvasContext = statsCanvas.getContext('2d');
