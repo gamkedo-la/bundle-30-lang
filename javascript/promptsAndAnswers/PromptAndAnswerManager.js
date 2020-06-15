@@ -252,7 +252,7 @@ if (
         }
         else if (typeof this.incorrectTargetPromptAndAnswerPairing.arrayOfPossibleAnswers[arrayOfPossibleAnswersIndex] === 'string')
         {
-
+          console.log('string type detected');
           currentIncorrectAnswerDataType = 'string';
           if (currentIncorrectAnswerDataType !== undefined)
           {
