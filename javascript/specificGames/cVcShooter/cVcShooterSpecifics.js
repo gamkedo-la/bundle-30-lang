@@ -461,52 +461,52 @@ function cVc(firstLetter,secondLetter,thirdLetter, imageAssociation, audioAssoci
 function CVCManager()
 {
   //english section
-  this.CVCcat = new cVc('c','a','t', catImage, promptAudio.blendedCat);
-  this.CVCcot = new cVc('c','o','t', cotImage, promptAudio.blendedCot);
+  this.CVCcat = new cVc('c','a','t', "images\\sprites\\PromptsAndAnswers\\cat.png", promptAudio.blendedCat);
+  this.CVCcot = new cVc('c','o','t', "images\\sprites\\PromptsAndAnswers\\cot.png", promptAudio.blendedCot);
 
   //mandarin section
-  this.CVCMandarinHowAreYou = new cVc('你','好','吗', howAreYouImage, promptAudio.mandarinHowAreYou);
-  this.CVCMandarinHowAmI = new cVc('我','怎么','样', howAmIImage, promptAudio.mandarinHowAmI);
-  this.CVCMandarinHowAreThey = new cVc('他们','怎么','样', howAreTheyImage, promptAudio.mandarinHowAreThey);
-  this.CVCMandarinHowAreWe = new cVc('我们','怎么','样', howAreWeImage, promptAudio.mandarinHowAreWe);
-  this.CVCMandarinHowIsHe = new cVc('他','怎么','样', howIsHeImage, promptAudio.mandarinHowIsHe);
-  this.CVCMandarinHowIsShe = new cVc('她','怎么','样', howIsHeImage, promptAudio.mandarinHowIsShe);
-  this.CVCMandarinHowIsItDoing = new cVc('它','怎么','样', howIsItDoingImage, promptAudio.mandarinHowIsHe);
-  this.CVCMandarinImVeryGood = new cVc('我','很','好', imVeryGoodImage, promptAudio.mandarinImVeryGood);
-  this.CVCMandarinNotBad = new cVc('还','不','错', notBadImage, promptAudio.mandarinNotBad);
-  this.CVCMandarinImAlsoVeryGood = new cVc('我','也','很好', imAlsoVeryGoodImage, promptAudio.mandarinImAlsoVeryGood);
-  this.CVCMandarinVeryNiceToMeetYou = new cVc('很','高兴','认识你', veryNiceToMeetYouImage, promptAudio.mandarinVeryNiceToMeetYou);
-  this.CVCMandarinWhereAreYouFrom = new cVc('你是','哪里','人', whereAreYouFromImage, promptAudio.mandarinWhereAreYouFrom);
-  this.CVCMandarinImFromAmerica = new cVc('我','来自','美国', imFromAmericaImage, promptAudio.mandarinImFromAmerica);
-  this.CVCMandarinWhatDoYouLikeToDo = new cVc('你喜欢','做','什么', whatDoYouLikeToDoImage, promptAudio.mandarinWhatDoYouLikeToDo);
-  this.CVCMandarinWhatPartOfChina = new cVc('你来自','中国','哪里', whatPartOfChinaImage, promptAudio.mandarinWhatPartOfChina);
-  this.CVCMandarinWhereDoYouLive = new cVc('你','住在','哪里', whereDoYouLiveImage, promptAudio.mandarinWhereDoYouLive);
-  this.CVCMandarinILiveInVietnam = new cVc('我','住在','越南', iLiveInVietnamImage, promptAudio.mandarinILiveInVietnam);
-  this.CVCMandarinMeToo = new cVc('我','也','是', meTooImage, promptAudio.mandarinMeToo);
-  this.CVCMandarinILikeProgramming = new cVc('我','喜欢','编程', iLikeProgrammingImage, promptAudio.mandarinILikeProgramming);
-  this.CVCMandarinIAlsoLikeFitness = new cVc('我也','喜欢','健身', iAlsoLikeFitnessImage, promptAudio.mandarinIAlsoLikeFitness);
-  this.CVCMandarinWhatIsYourJob = new cVc('你的','工作','是什么', whatIsYourJobImage, promptAudio.mandarinWhatIsYourJob);
-  this.CVCMandarinIAmATeacher = new cVc('我','是','老师', iAmATeacherImage, promptAudio.mandarinIAmATeacher);
-  this.CVCMandarinAnythingElse = new cVc('还','有','吗', anythingElseImage, promptAudio.mandarinAnythingElse);
-  this.CVCMandarinILikeWatchingMovies = new cVc('我','喜欢','看电影', iLikeWatchingMoviesImage, promptAudio.mandarinILikeWatchingMovies);
-  this.CVCMandarinILikeRockClimbing = new cVc('我','喜欢','攀岩', iLikeRockClimbingImage, promptAudio.mandarinILikeRockClimbing);
-  this.CVCMandarinWhatIsYourName = new cVc('你叫','什么','名字', whatIsYourNameImage, promptAudio.mandarinWhatIsYourName);
-  this.CVCMandarinMyNameIsSteven = new cVc('我叫','史','蒂文', myNameIsStevenImage, promptAudio.mandarinMyNameIsSteven);
-  this.CVCMandarinHowOldAreYou = new cVc('你','几','岁', howOldAreYouImage, promptAudio.mandarinHowOldAreYou);
-  this.CVCMandarinIAm37YearsOld = new cVc('我今年','三十七','岁', iAm37YearsOldImage, promptAudio.mandarinIAm37YearsOld);
+  this.CVCMandarinHowAreYou = new cVc('你','好','吗', "images\\sprites\\PromptsAndAnswers\\Mandarin\\howAreYou.png", promptAudio.mandarinHowAreYou);
+  this.CVCMandarinHowAmI = new cVc('我','怎么','样', "images\\sprites\\PromptsAndAnswers\\Mandarin\\howAmI.png", promptAudio.mandarinHowAmI);
+  this.CVCMandarinHowAreThey = new cVc('他们','怎么','样', "images\\sprites\\PromptsAndAnswers\\Mandarin\\howAreThey.png", promptAudio.mandarinHowAreThey);
+  this.CVCMandarinHowAreWe = new cVc('我们','怎么','样', "images\\sprites\\PromptsAndAnswers\\Mandarin\\howAreWe.png", promptAudio.mandarinHowAreWe);
+  this.CVCMandarinHowIsHe = new cVc('他','怎么','样', "images\\sprites\\PromptsAndAnswers\\Mandarin\\howIsHe.png", promptAudio.mandarinHowIsHe);
+  this.CVCMandarinHowIsShe = new cVc('她','怎么','样', "images\\sprites\\PromptsAndAnswers\\Mandarin\\howIsShe.png", promptAudio.mandarinHowIsShe);
+  this.CVCMandarinHowIsItDoing = new cVc('它','怎么','样', "images\\sprites\\PromptsAndAnswers\\Mandarin\\howIsItDoing.png", promptAudio.mandarinHowIsHe);
+  this.CVCMandarinImVeryGood = new cVc('我','很','好', "images\\sprites\\PromptsAndAnswers\\Mandarin\\imVeryGood.png", promptAudio.mandarinImVeryGood);
+  this.CVCMandarinNotBad = new cVc('还','不','错', "images\\sprites\\PromptsAndAnswers\\Mandarin\\notBad.png", promptAudio.mandarinNotBad);
+  this.CVCMandarinImAlsoVeryGood = new cVc('我','也','很好', "images\\sprites\\PromptsAndAnswers\\Mandarin\\imAlsoVeryGood.png", promptAudio.mandarinImAlsoVeryGood);
+  this.CVCMandarinVeryNiceToMeetYou = new cVc('很','高兴','认识你', "images\\sprites\\PromptsAndAnswers\\Mandarin\\niceToMeetYou.png", promptAudio.mandarinVeryNiceToMeetYou);
+  this.CVCMandarinWhereAreYouFrom = new cVc('你是','哪里','人', "images\\sprites\\PromptsAndAnswers\\Mandarin\\whereAreYouFrom.png", promptAudio.mandarinWhereAreYouFrom);
+  this.CVCMandarinImFromAmerica = new cVc('我','来自','美国', "images\\sprites\\PromptsAndAnswers\\Mandarin\\iAmFromAmerica.png", promptAudio.mandarinImFromAmerica);
+  this.CVCMandarinWhatDoYouLikeToDo = new cVc('你喜欢','做','什么', "images\\sprites\\PromptsAndAnswers\\Mandarin\\whatDoYouLikeToDo.png", promptAudio.mandarinWhatDoYouLikeToDo);
+  this.CVCMandarinWhatPartOfChina = new cVc('你来自','中国','哪里', "images\\sprites\\PromptsAndAnswers\\Mandarin\\whatPartOfChina.png", promptAudio.mandarinWhatPartOfChina);
+  this.CVCMandarinWhereDoYouLive = new cVc('你','住在','哪里', "images\\sprites\\PromptsAndAnswers\\Mandarin\\whereDoYouLive.png", promptAudio.mandarinWhereDoYouLive);
+  this.CVCMandarinILiveInVietnam = new cVc('我','住在','越南', "images\\sprites\\PromptsAndAnswers\\Mandarin\\iLiveInVietnam.png", promptAudio.mandarinILiveInVietnam);
+  this.CVCMandarinMeToo = new cVc('我','也','是', "images\\sprites\\PromptsAndAnswers\\Mandarin\\meToo.png", promptAudio.mandarinMeToo);
+  this.CVCMandarinILikeProgramming = new cVc('我','喜欢','编程', "images\\sprites\\PromptsAndAnswers\\Mandarin\\iLikeProgramming.png", promptAudio.mandarinILikeProgramming);
+  this.CVCMandarinIAlsoLikeFitness = new cVc('我也','喜欢','健身', "images\\sprites\\PromptsAndAnswers\\Mandarin\\iAlsoLikeFitness.png", promptAudio.mandarinIAlsoLikeFitness);
+  this.CVCMandarinWhatIsYourJob = new cVc('你的','工作','是什么', "images\\sprites\\PromptsAndAnswers\\Mandarin\\whatIsYourJob.png", promptAudio.mandarinWhatIsYourJob);
+  this.CVCMandarinIAmATeacher = new cVc('我','是','老师', "images\\sprites\\PromptsAndAnswers\\Mandarin\\iAmATeacher.png", promptAudio.mandarinIAmATeacher);
+  this.CVCMandarinAnythingElse = new cVc('还','有','吗', "images\\sprites\\PromptsAndAnswers\\Mandarin\\somethingElse.png", promptAudio.mandarinAnythingElse);
+  this.CVCMandarinILikeWatchingMovies = new cVc('我','喜欢','看电影', "images\\sprites\\PromptsAndAnswers\\Mandarin\\iLikeWatchingMovies.png", promptAudio.mandarinILikeWatchingMovies);
+  this.CVCMandarinILikeRockClimbing = new cVc('我','喜欢','攀岩', "images\\sprites\\PromptsAndAnswers\\Mandarin\\iLikeRockClimbing.png", promptAudio.mandarinILikeRockClimbing);
+  this.CVCMandarinWhatIsYourName = new cVc('你叫','什么','名字', "images\\sprites\\PromptsAndAnswers\\Mandarin\\whatIsYourName.png", promptAudio.mandarinWhatIsYourName);
+  this.CVCMandarinMyNameIsSteven = new cVc('我叫','史','蒂文', "images\\sprites\\PromptsAndAnswers\\Mandarin\\myNameIsSteven.png", promptAudio.mandarinMyNameIsSteven);
+  this.CVCMandarinHowOldAreYou = new cVc('你','几','岁', "images\\sprites\\PromptsAndAnswers\\Mandarin\\howOldAreYou.png", promptAudio.mandarinHowOldAreYou);
+  this.CVCMandarinIAm37YearsOld = new cVc('我今年','三十七','岁', "images\\sprites\\PromptsAndAnswers\\Mandarin\\iAm37.png", promptAudio.mandarinIAm37YearsOld);
 
   //central vietnamese Section
-  this.CVCCentralVietnameseHelloMan = new cVc('xin', 'chào', 'anh', helloManImage, promptAudio.centralVietnameseHelloMan);
-  this.CVCCentralVietnameseHelloWoman = new cVc('xin', 'chào', 'em', helloWomanImage, promptAudio.centralVietnameseHelloWoman);
-  this.CVCCentralVietnameseWhatsYourNameGeneral = new cVc('bạn', 'tên', 'là gì', whatIsYourNameImage, promptAudio.centralVietnameseWhatsYourNameGeneral);
-  this.CVCCentralVietnameseWhatsYourNameBrother = new cVc('anh', 'tên', 'là gì', whatIsYourNameImage, promptAudio.centralVietnameseWhatsYourNameBrother);
-  this.CVCCentralVietnameseWhatsYourNameBaby = new cVc('em', 'tên', 'là gì', whatIsYourNameImage, promptAudio.centralVietnameseWhatsYourNameBaby);
-  this.CVCCentralVietnameseMyNameIsSteven = new cVc('tôi', 'tên', 'là Steven', myNameIsStevenImage, promptAudio.centralVietnameseMyNameIsSteven);
-  this.CVCCentralVietnameseWhereAreYouFrom = new cVc('anh là','người nước','nào', whereAreYouFromImage, promptAudio.centralVietnameseWhereAreYouFrom);
-  this.CVCCentralVietnameseIAmFromAmerica = new cVc('tôi là','người', 'Mỹ', imFromAmericaImage, promptAudio.centralVietnameseIAmFromAmerica);
-  this.CVCCentralVietnameseVeryNiceToMeetYou = new cVc('rất vui', 'được', 'bạn', veryNiceToMeetYouImage, promptAudio.centralVietnameseVeryNiceToMeetYou);
-  this.CVCCentralVietnameseWhatDoYouLikeToEat = new cVc('Bạn', 'thích ăn', 'gì', whatDoYouLikeToEatImage, promptAudio.centralVietnameseWhatDoYouLikeToEat);
-  this.CVCCentralVietnameseILikeToEatVegetarian = new cVc('tôi', 'thích ăn', 'chay', iLikeToEatVegetarianImage, promptAudio.centralVietnameseILikeToEatVegetarian);
+  this.CVCCentralVietnameseHelloMan = new cVc('xin', 'chào', 'anh', "images\\sprites\\PromptsAndAnswers\\CentralVietnamese\\helloMan.png", promptAudio.centralVietnameseHelloMan);
+  this.CVCCentralVietnameseHelloWoman = new cVc('xin', 'chào', 'em', "images\\sprites\\PromptsAndAnswers\\CentralVietnamese\\helloWoman.png", promptAudio.centralVietnameseHelloWoman);
+  this.CVCCentralVietnameseWhatsYourNameGeneral = new cVc('bạn', 'tên', 'là gì', "images\\sprites\\PromptsAndAnswers\\CentralVietnamese\\whatIsYourNameBrother.png", promptAudio.centralVietnameseWhatsYourNameGeneral);
+  this.CVCCentralVietnameseWhatsYourNameBrother = new cVc('anh', 'tên', 'là gì', "images\\sprites\\PromptsAndAnswers\\CentralVietnamese\\whatIsYourNameBrother.png", promptAudio.centralVietnameseWhatsYourNameBrother);
+  this.CVCCentralVietnameseWhatsYourNameBaby = new cVc('em', 'tên', 'là gì', "images\\sprites\\PromptsAndAnswers\\CentralVietnamese\\whatIsYourNameBaby.png", promptAudio.centralVietnameseWhatsYourNameBaby);
+  this.CVCCentralVietnameseMyNameIsSteven = new cVc('tôi', 'tên', 'là Steven', "images\\sprites\\PromptsAndAnswers\\Mandarin\\myNameIsSteven.png", promptAudio.centralVietnameseMyNameIsSteven);
+  this.CVCCentralVietnameseWhereAreYouFrom = new cVc('anh là','người nước','nào', "images\\sprites\\PromptsAndAnswers\\Mandarin\\whereAreYouFrom.png", promptAudio.centralVietnameseWhereAreYouFrom);
+  this.CVCCentralVietnameseIAmFromAmerica = new cVc('tôi là','người', 'Mỹ', "images\\sprites\\PromptsAndAnswers\\Mandarin\\iAmFromAmerica.png", promptAudio.centralVietnameseIAmFromAmerica);
+  this.CVCCentralVietnameseVeryNiceToMeetYou = new cVc('rất vui', 'được', 'bạn', "images\\sprites\\PromptsAndAnswers\\Mandarin\\niceToMeetYou.png", promptAudio.centralVietnameseVeryNiceToMeetYou);
+  this.CVCCentralVietnameseWhatDoYouLikeToEat = new cVc('Bạn', 'thích ăn', 'gì', "images\\sprites\\PromptsAndAnswers\\CentralVietnamese\\whatDoYouLikeToEat.png", promptAudio.centralVietnameseWhatDoYouLikeToEat);
+  this.CVCCentralVietnameseILikeToEatVegetarian = new cVc('tôi', 'thích ăn', 'chay', "images\\sprites\\PromptsAndAnswers\\CentralVietnamese\\iLikeToEatVegetarian.png", promptAudio.centralVietnameseILikeToEatVegetarian);
 
 
 

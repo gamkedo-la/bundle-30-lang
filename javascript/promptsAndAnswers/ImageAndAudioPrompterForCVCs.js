@@ -42,11 +42,16 @@ function ImageAndAudioPrompterForCVCs()
       //sourceImageStartingX,SourceImageStartingY,SourceImageWidthToCrop,SourceImageHeightToCrop,
       //targetCanvasXCoordinateToStartDrawing,targetCanvasYCoordinateToStartDrawing,
       //widthOfImageToDrawOnTargetCanvas,heightOfImageToDrawOnTargetCanvas);
-      gameCanvasContext.drawImage(this.image,
+      
+      drawFromSheet(this.image,
+                            gameCanvas.width/2 - this.currentWidth/2 + this.currentWidth*0.225,
+                           gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.2,
+                           this.currentWidth*0.6,this.currentHeight*0.7);
+      /*gameCanvasContext.drawImage(this.image,
                            0,0, 1000,750,
                            gameCanvas.width/2 - this.currentWidth/2 + this.currentWidth*0.225,
                            gameCanvas.height/2 - this.currentHeight/2 + this.currentHeight*0.2,
-                           this.currentWidth*0.6,this.currentHeight*0.7);
+                           this.currentWidth*0.6,this.currentHeight*0.7);*/
     }
   }
 
