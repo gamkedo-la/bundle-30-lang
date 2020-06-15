@@ -71,15 +71,16 @@ function PromptsAndAnswersManager()
         console.log("currentPrompt not set up yet");
         return;
     }
-    if (typeof this.currentPrompt === 'string')
+    if (typeof this.currentPrompt === 'string' && this.currentPrompt.indexOf("\\")!=-1) // before megasheet // was this.currentPrompt.nodeName === 'IMG'
+    {
+      console.log("type IMG clue detected");
+      this.dataTypeOfCurrentPrompt = 'IMG';
+      imagePrompter.loadCurrentImage(this.currentPrompt);
+    }
+    else if (typeof this.currentPrompt === 'string')
     {
       this.dataTypeOfCurrentPrompt = 'string';
       textPrompter.loadCurrentText(this.currentPrompt);
-    }
-    else if (this.currentPrompt.nodeName === 'IMG')
-    {
-      this.dataTypeOfCurrentPrompt = 'IMG';
-      imagePrompter.loadCurrentImage(this.currentPrompt);
     }
     else if (this.currentPrompt.type === 'AUDIO')
     {
@@ -130,8 +131,19 @@ function PromptsAndAnswersManager()
         return;
     }
 
+/*
+if (
+    {
+      console.log("type IMG clue detected");
+      this.dataTypeOfCurrentPrompt = 'IMG';
+      imagePrompter.loadCurrentImage(this.currentPrompt);
+    }
+    else 
+*/
 
-    if (typeof this.currentCorrectAnswer === 'string')
+    if (typeof this.currentCorrectAnswer === 'string' && this.currentCorrectAnswer.indexOf("\\")!=-1) { // before megasheet // was this.currentPrompt.nodeName === 'IMG'
+      this.currentAnswerDataType = 'IMG';
+    } else if (typeof this.currentCorrectAnswer === 'string')
     {
       this.currentAnswerDataType = 'string';
         let correctAnswerWidth = promptsAndAnswersManager.getCorrectAnswerWidthFromFontStyle(
@@ -142,8 +154,6 @@ function PromptsAndAnswersManager()
         gameClassManager.currentGame.correctTextAnswerHolderWidth = correctAnswerWidth + 20;
         //console.log('gameClassManager.currentGame.correctTextAnswerHolderWidth: ' + gameClassManager.currentGame.correctTextAnswerHolderWidth);
 
-    } else if (this.currentCorrectAnswer.nodeName === 'IMG') {
-      this.currentAnswerDataType = 'IMG';
     } else if (this.currentCorrectAnswer.type === 'AUDIO')
     {
       this.currentAnswerDataType = 'AUDIO';

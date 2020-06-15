@@ -4,6 +4,7 @@ function ImagePrompter()
   this.image = undefined;
   this.loadCurrentImage = function(imageToLoad)
   {
+    console.log("this.loadCurrentImage " + this.image);
     this.image = imageToLoad;
   }
 
