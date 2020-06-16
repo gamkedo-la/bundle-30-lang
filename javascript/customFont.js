@@ -86,7 +86,7 @@ function customFontFillText(arrayOfCharacterTypes, fontSize, spacing, xCoordinat
   {
     // new way, using name lookup to spritesheet
     if (arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].sheetFilename) {
-        drawFromSheet(arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].sheetFilename,
+        drawFromSheetSimple(arrayOfCharacterObjectLiterals[arrayOfCharactersIndex].sheetFilename,
             xCoordinate + arrayOfCharactersIndex*spacing,yCoordinate,
             fontSize,fontSize);
     } else {

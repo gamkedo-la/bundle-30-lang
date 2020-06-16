@@ -41,7 +41,7 @@ function fancyBG(bottomImages=["images\\sprites\\transitions\\heart.png"],topIma
 
         gameCanvasContext.globalAlpha = fancysprite[i].a;
 
-        drawFromSheet(
+        drawFromSheetSimple(
             fancysprite[i].i,
             fancysprite[i].x,fancysprite[i].y,
             fancysize,fancysize); // scaled down
@@ -168,7 +168,7 @@ function TitleScreenClass()
     }
 
     // a cute little picture frame
-    drawFromSheet("images\\Backgrounds\\menu_border.png",0,0);
+    drawFromSheetSimple("images\\Backgrounds\\menu_border.png",0,0);
     //gameCanvasContext.drawImage("images\\Backgrounds\\menu_border.png",0,0);
 }
 

@@ -4,7 +4,7 @@ function drawFromSheetSimple(imgName, atX,atY,
                         desiredWidth,desiredHeight) // has to get stretched regardless, so keeping these optional ones
 {
   var imgNum = sheetLookup[imgName];
-  var imgData = spritesheetData[imgName];
+  var imgData = spritesheetData[imgNum];
 
   var widthToDraw, heightToDraw;
   if(typeof desiredWidth !== 'undefined') { // custom size specified?
@@ -29,10 +29,17 @@ function drawFromSheet(imgName, atX,atY,
 {
   var imgNum = sheetLookup[imgName];
 
-  if (imgNum==undefined) {
-      
+  if (imgNum==undefined) {      
       return;
   }
+
+  if(typeof flipGraphic === 'undefined') { // no optional params? then use simpler version
+    drawFromSheetSimple(imgName, atX,atY,
+                        desiredWidth,desiredHeight);
+    return;
+  }
+
+  var imgData = spritesheetData[imgNum];
 
   var widthToDraw, heightToDraw;
   if(typeof desiredWidth !== 'undefined') { // custom size specified?
