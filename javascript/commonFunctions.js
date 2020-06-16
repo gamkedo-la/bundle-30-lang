@@ -1,10 +1,32 @@
+var MEGASHEET_SCALE = 1/0.25;
+// this function avoids any save/restore, doesn't support flipping, rotation, bypassing stats canvas
+function drawFromSheetSimple(imgName, atX,atY,
+                        desiredWidth,desiredHeight) // has to get stretched regardless, so keeping these optional ones
+{
+  var imgNum = sheetLookup[imgName];
+  var imgData = spritesheetData[imgName];
+
+  var widthToDraw, heightToDraw;
+  if(typeof desiredWidth !== 'undefined') { // custom size specified?
+    widthToDraw = desiredWidth;
+    heightToDraw = desiredHeight;
+  } else {
+    widthToDraw = imgData.w*MEGASHEET_SCALE;
+    heightToDraw = imgData.h*MEGASHEET_SCALE;
+  }
+
+  gameCanvasContext.drawImage(megaSheet,imgData.x,imgData.y,
+                              imgData.w,imgData.h,
+                              atX,atY,
+                              widthToDraw,heightToDraw);
+}
+
 function drawFromSheet(imgName, atX,atY,
                         desiredWidth,desiredHeight, // optional arguments (note: if either, expects both)
                         flipGraphic, // flip horizontal, note: desired w/h above needed to give this option
                         rotationAngle,pivotX,pivotY,//if defined, rotate from a pivot point
                         useStatsCanvas = false)
 {
-  var scale = 1/0.25;
   var imgNum = sheetLookup[imgName];
 
   if (imgNum==undefined) {
@@ -17,8 +39,8 @@ function drawFromSheet(imgName, atX,atY,
     widthToDraw = desiredWidth;
     heightToDraw = desiredHeight;
   } else {
-    widthToDraw = spritesheetData[imgNum].w*scale;
-    heightToDraw = spritesheetData[imgNum].h*scale;
+    widthToDraw = spritesheetData[imgNum].w*MEGASHEET_SCALE;
+    heightToDraw = spritesheetData[imgNum].h*MEGASHEET_SCALE;
   }
 
   //console.log('angle: ' + rotationAngle + " pivotX: " + pivotX + ' pivotY: ' + pivotY);
