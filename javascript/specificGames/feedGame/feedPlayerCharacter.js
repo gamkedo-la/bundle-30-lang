@@ -4,8 +4,16 @@ function FeedGrabberPlayer()
   this.armlessBodyImage = "images\\sprites\\air grab\\AirGuy.png";
   this.rightArmImage = "images\\sprites\\air grab\\rightArmm.png";
   this.leftArmImage = "images\\sprites\\air grab\\leftArmm.png";
-  this.leftPac = "images\\sprites\\feedGame\\leftP.png";
-  this.rightPac = "images\\sprites\\feedGame\\rightP.png";
+
+  this.arrayOfCakeImages = ["images\\sprites\\feedGame\\cake1.png","images\\sprites\\feedGame\\cake2.png","images\\sprites\\feedGame\\cake3.png","images\\sprites\\feedGame\\cake4.png"];
+  this.currentCakeImage = undefined;
+
+
+  this.pickACakeImage = function()
+  {
+    let randomCakeImageIndex = getRandomIntInclusive(0,this.arrayOfCakeImages.length-1);
+    this.currentCakeImage = this.arrayOfCakeImages[randomCakeImageIndex];
+  }
 
   this.leftArmX = undefined;
   this.leftArmY = undefined;
@@ -43,26 +51,30 @@ function FeedGrabberPlayer()
     this.leftArmPivotY = this.shoulderY;
     this.rightArmPivotX = this.rightArmX + this.rightArmWidth/2;
     this.rightArmPivotY = this.shoulderY;
+
+    this.cakeImageX = this.leftArmX + 20;
+    this.cakeImageY = this.leftArmY-40;
+    this.cakeImageWidth = gameCanvas.width*0.15;
+    this.cakeImageHeight = gameCanvas.height*0.125;
+
+    this.pickACakeImage();
   }
 
   this.draw = function()
   {
-    drawFromSheet(this.leftPac, 50,
-      gameCanvas.height,
-      50,50);
-
-    drawFromSheet(this.rightPac, gameCanvas.width - 50,
-      gameCanvas.height,
-      50,50);
 
     drawFromSheet(this.armlessBodyImage, gameCanvas.width/2 - this.bodyWidth/2,
                                 gameCanvas.height - this.bodyHeight - gameCanvas.width*0.0225,
                                 this.bodyWidth,this.bodyHeight);
+
     // gameCanvasContext.drawImage(this.armlessBodyImage, gameCanvas.width/2 - this.bodyWidth/2,
     //                             gameCanvas.height - this.bodyHeight - gameCanvas.width*0.0225,
     //                             this.bodyWidth,this.bodyHeight);
     this.calculateLeftArmAngle();
-    drawFromSheet(this.leftArmImage, this.leftArmX,this.leftArmY, this.leftArmWidth,this.leftArmHeight, undefined, this.leftArmAngle,this.leftArmPivotX,this.leftArmPivotY);
+    drawFromSheet(this.leftArmImage, this.leftArmX,this.leftArmY,
+      this.leftArmWidth,this.leftArmHeight, undefined,
+      this.leftArmAngle,this.leftArmPivotX,this.leftArmPivotY);
+
     // gameCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
     // gameCanvasContext.translate(this.leftArmPivotX,this.leftArmPivotY);//place imaginary hand at pivot point
     // gameCanvasContext.rotate(this.leftArmAngle + Math.PI/2);//rotate with hand at pivot based in radians
@@ -71,13 +83,17 @@ function FeedGrabberPlayer()
     // gameCanvasContext.restore();//erase any errant abnormal draw code
 
     this.calculateRightArmAngle();
-    drawFromSheet(this.rightArmImage, this.rightArmX,this.rightArmY, this.rightArmWidth,this.rightArmHeight, undefined, this.rightArmAngle,this.rightArmPivotX,this.rightArmPivotY);
+    drawFromSheet(this.rightArmImage, this.rightArmX,this.rightArmY,
+      this.rightArmWidth,this.rightArmHeight, undefined,
+      this.rightArmAngle,this.rightArmPivotX,this.rightArmPivotY);
     // gameCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
     // gameCanvasContext.translate(this.rightArmPivotX,this.rightArmPivotY);//place imaginary hand at pivot point
     // gameCanvasContext.rotate(this.rightArmAngle + Math.PI/2);//rotate with hand at pivot based in radians
     // gameCanvasContext.translate(-this.rightArmPivotX,-this.rightArmPivotY);//return hand to 0,0 of canvas
     // gameCanvasContext.drawImage(this.rightArmImage, this.rightArmX,this.rightArmY, this.rightArmWidth,this.rightArmHeight);//normal draw code affected by rotation
     // gameCanvasContext.restore();//erase any errant abnormal draw code
+
+    drawFromSheet(this.currentCakeImage, this.cakeImageX,this.cakeImageY, this.cakeImageWidth,this.cakeImageHeight);
   }
 
   this.calculateLeftArmAngle = function()
@@ -172,7 +188,7 @@ function FeedGrabberPlayer()
           gameAudio.paperCrumple.play();
         }
 
-      gameAudio.clap.play();
+      // gameAudio.clap.play();
 
   }
 }

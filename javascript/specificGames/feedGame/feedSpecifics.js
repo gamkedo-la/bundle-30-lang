@@ -11,6 +11,9 @@ function feedGameClass()
 
   this.LETTER_COLOR = 'black';
 
+  this.leftPacMan = undefined;
+  this.rightPacMan = undefined;
+
   this.drawTransitionText = function()
   {
     customFontFillText(['Feed the cakes', symbolExclamationPointImage], 55,30, 75,50);
@@ -78,14 +81,8 @@ function feedGameClass()
     this.correctTextAnswerHolderWidth = undefined;
     this.incorrectTextAnswerHolderWidth = undefined;
 
-    this.foodAnswerHolder1 = new FoodAnswerHolder("images\\sprites\\feedGame\\cake1.png");
-    this.foodAnswerHolder2 = new FoodAnswerHolder("images\\sprites\\feedGame\\cake2.png");
-    this.foodAnswerHolder3 = new FoodAnswerHolder("images\\sprites\\feedGame\\cake3.png");
-    this.foodAnswerHolder4 = new FoodAnswerHolder("images\\sprites\\feedGame\\cake4.png");
-    this.arrayOfAnswerHolders.push(this.foodAnswerHolder1);
-    this.arrayOfAnswerHolders.push(this.foodAnswerHolder2);
-    this.arrayOfAnswerHolders.push(this.foodAnswerHolder3);
-    this.arrayOfAnswerHolders.push(this.foodAnswerHolder4);
+    this.leftPacMan = new PacMan('left pac man', "images\\sprites\\feedGame\\rightP.png");
+    this.rightPacMan = new PacMan('right pac man', "images\\sprites\\feedGame\\leftP.png")
 
     this.initializeAnswerSettings();
     drawAnswersManager.initialize();
@@ -98,7 +95,9 @@ function feedGameClass()
   {
     this.background.draw();
     this.playerCharacter.draw();
-    drawAnswersManager.draw();
+    this.leftPacMan.draw();
+    this.rightPacMan.draw();
+    // drawAnswersManager.draw();
 
 
     promptersManager.drawPromptsWhenAppropriate();
@@ -175,23 +174,30 @@ function feedGameClass()
 
 const feedGame = new feedGameClass();
 
-function FoodAnswerHolder(image)
+function PacMan(name, image)
 {
+  this.name = name;
+
+  this.y = 0;
+
+  this.width = gameCanvas.width*0.2;
+  this.height = gameCanvas.height*0.2;
+
+  if (this.name === 'left pac man')
+  {
+    this.x = 0;
+  }
+  else if (this.name === 'right pac man')
+  {
+    this.x = gameCanvas.width - this.width;
+  }
+
   this.image = image;
+
+  this.draw = function()
+  {
+
+    drawFromSheetSimple(this.image, this.x,this.y,
+                            this.width,this.height);
+  }
 }
-
-
-// function feedGrabPlayer()
-//   {
-//     this.width = gameCanvas.width*0.2;
-//     this.height = gameCanvas.height*0.1;
-//     this.x = gameCanvas.width/2 - this.width/2;
-//     this.y = gameCanvas.height*0.8;
-//     this.image = "images\\sprites\\air grab\\AirGuy.png";
-
-//     this.draw = function()
-//     {
-//       drawFromSheet(this.image, this.x,this.y, this.width,this.height);
-//       //gameCanvasContext.drawImage(this.image, this.x,this.y, this.width,this.height);
-//     }
-//   }

@@ -913,6 +913,24 @@ if (
       this.incorrectTargetPromptAndAnswerPairing.xCoordinate = getRandomArbitrary(0,gameCanvas.width - 1);
       this.incorrectTargetPromptAndAnswerPairing.yCoordinate = getRandomArbitrary(WATER_HEIGHT,gameCanvas.height - 1);
     }
+    else if(gameClassManager.currentGame.name === "feedGame")
+    {
+      let fiftyFiftyResult = Math.random();
+      if (fiftyFiftyResult < 0.5)
+      {
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = 0;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = 0;
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width - 50;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = 0;
+      }
+      else if (fiftyFiftyResult >= 0.5)
+      {
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width - 50;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = 0;
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = 0;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = 0;
+      }
+    }
   }
 
   this.setOrResetPromptsAndAnswers = function()
