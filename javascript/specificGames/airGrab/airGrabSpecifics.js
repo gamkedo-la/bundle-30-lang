@@ -246,7 +246,7 @@ function GrabberPlayer()
     //                             this.bodyWidth,this.bodyHeight);
 
     this.calculateLeftArmAngle();
-    drawFromSheet(this.leftArmImage, this.leftArmX,this.leftArmY, this.leftArmWidth,this.leftArmHeight, undefined, this.leftArmAngle,this.leftArmPivotX,this.leftArmPivotY);
+    drawFromSheet(this.leftArmImage, this.leftArmX,this.leftArmY, this.leftArmWidth,this.leftArmHeight, 'undefined', this.leftArmAngle,this.leftArmPivotX,this.leftArmPivotY);
     // gameCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
     // gameCanvasContext.translate(this.leftArmPivotX,this.leftArmPivotY);//place imaginary hand at pivot point
     // gameCanvasContext.rotate(this.leftArmAngle + Math.PI/2);//rotate with hand at pivot based in radians
@@ -255,7 +255,7 @@ function GrabberPlayer()
     // gameCanvasContext.restore();//erase any errant abnormal draw code
 
     this.calculateRightArmAngle();
-    drawFromSheet(this.rightArmImage, this.rightArmX,this.rightArmY, this.rightArmWidth,this.rightArmHeight, undefined, this.rightArmAngle,this.rightArmPivotX,this.rightArmPivotY);
+    drawFromSheet(this.rightArmImage, this.rightArmX,this.rightArmY, this.rightArmWidth,this.rightArmHeight, 'undefined', this.rightArmAngle,this.rightArmPivotX,this.rightArmPivotY);
     // gameCanvasContext.save();//save context so we can do weird stuff and go back to normal drawing afterwards
     // gameCanvasContext.translate(this.rightArmPivotX,this.rightArmPivotY);//place imaginary hand at pivot point
     // gameCanvasContext.rotate(this.rightArmAngle + Math.PI/2);//rotate with hand at pivot based in radians

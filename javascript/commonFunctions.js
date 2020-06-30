@@ -29,7 +29,7 @@ function drawFromSheet(imgName, atX,atY,
 {
   var imgNum = sheetLookup[imgName];
 
-  if (imgNum==undefined) {      
+  if (imgNum==undefined) {
       return;
   }
 
@@ -51,9 +51,27 @@ function drawFromSheet(imgName, atX,atY,
   }
 
   //console.log('angle: ' + rotationAngle + " pivotX: " + pivotX + ' pivotY: ' + pivotY);
+  if (imgName === "images\\sprites\\air grab\\leftArmm.png")
+  {
+    console.log('leftArm image check verified');
+    if (rotationAngle === undefined)
+    {
+      console.log('rotationAngle undefined');
+    }
+    if (pivotX === undefined)
+    {
+      console.log('pivotX undefined');
+    }
+    if (pivotY === undefined)
+    {
+      console.log('pivotY undefined');
+    }
+  }
+
+
   if(typeof rotationAngle !== 'undefined' && typeof pivotX !== 'undefined' && typeof pivotY !== 'undefined')
   {
-    //console.log('inside angle and pivot checks');
+    console.log('inside angle and pivot checks');
     gameCanvasContext.save();
     gameCanvasContext.translate(pivotX,pivotY);//place imaginary hand at pivot point
     gameCanvasContext.rotate(rotationAngle + Math.PI/2);//rotate with hand at pivot based in radians

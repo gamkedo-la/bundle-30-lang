@@ -99,7 +99,6 @@ function feedGameClass()
     this.rightPacMan.draw();
     // drawAnswersManager.draw();
 
-
     promptersManager.drawPromptsWhenAppropriate();
   }
 
