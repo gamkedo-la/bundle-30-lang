@@ -125,6 +125,11 @@ function FeedGrabberPlayer()
                                      (this.rightArmPythagoreanBLength*this.rightArmPythagoreanBLength) );
     this.leftArmY = this.shoulderY - this.leftArmHeight;
     this.rightArmY = this.shoulderY - this.rightArmHeight;
+
+    this.feedingACake = true;
+    this.cakeImageX = inputManager.mouseCoordinates.x;
+    this.cakeImageY = inputManager.mouseCoordinates.y;
+
     setTimeout(resetArmSettings, 500);
 
     this.handleCollisionsWithAnswers(promptsAndAnswersManager.correctTargetPromptAndAnswerPairing,
@@ -194,17 +199,23 @@ function FeedGrabberPlayer()
 
   }
 
+  this.feedingACake = false;
   this.updateCakeImageX = function()
   {
-    this.cakeImageX = inputManager.mouseCoordinates.x - this.cakeImageWidth/2;
-    if (this.cakeImageX < 220)
+    if (!this.feedingACake)
     {
-      this.cakeImageX = 220;
+      this.cakeImageX = inputManager.mouseCoordinates.x - this.cakeImageWidth/2;
+      this.cakeImageY = this.leftArmY-40;
+      if (this.cakeImageX < 220)
+      {
+        this.cakeImageX = 220;
+      }
+      if (this.cakeImageX > 375)
+      {
+        this.cakeImageX = 375;
+      }
     }
-    if (this.cakeImageX > 375)
-    {
-      this.cakeImageX = 375;
-    }
+
   }
 }
 
@@ -217,4 +228,7 @@ function resetArmSettings()
   airGuy.rightArmY = airGuy.shoulderY - airGuy.rightArmHeight;
   airGuy.leftArmX = gameCanvas.width/2 - airGuy.bodyWidth/2;
   airGuy.rightArmX = gameCanvas.width/2 + airGuy.bodyWidth/2 - airGuy.rightArmWidth;
+  airGuy.feedingACake = false;
+  airGuy.cakeImageY = airGuy.leftArmY-40;
+  airGuy.pickACakeImage();
 }

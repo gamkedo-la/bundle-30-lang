@@ -51,66 +51,61 @@ function drawFromSheet(imgName, atX,atY,
   }
 
   //console.log('angle: ' + rotationAngle + " pivotX: " + pivotX + ' pivotY: ' + pivotY);
-  if (imgName === "images\\sprites\\air grab\\leftArmm.png")
-  {
-    console.log('leftArm image check verified');
-    if (rotationAngle === undefined)
-    {
-      console.log('rotationAngle undefined');
-    }
-    if (pivotX === undefined)
-    {
-      console.log('pivotX undefined');
-    }
-    if (pivotY === undefined)
-    {
-      console.log('pivotY undefined');
-    }
-  }
+  // if (imgName === "images\\sprites\\air grab\\leftArmm.png")
+  // {
+  //   console.log('leftArm image check verified');
+  //   if (rotationAngle === undefined)
+  //   {
+  //     console.log('rotationAngle undefined');
+  //   }
+  //   if (pivotX === undefined)
+  //   {
+  //     console.log('pivotX undefined');
+  //   }
+  //   if (pivotY === undefined)
+  //   {
+  //     console.log('pivotY undefined');
+  //   }
+  // }
 
 
   if(typeof rotationAngle !== 'undefined' && typeof pivotX !== 'undefined' && typeof pivotY !== 'undefined')
   {
-    console.log('rotationAngle: ' + rotationAngle);
+
     if (gameClassManager.currentGame === 'feedGame')
     {
       if (imgName === "images\\sprites\\air grab\\leftArmm.png")
       {
-        if (inputManager.mouseCoordinates.x > 530)
+        if(inputManager.mouseCoordinates.y > gameCanvas.height/2)
         {
+          rotationAngle = rotationAngle;
+        }
+        else if (inputManager.mouseCoordinates.x > 530)
+        {
+
           rotationAngle = -0.82
         }
-        if (inputManager.mouseCoordinates.x < 190)
+        else if (inputManager.mouseCoordinates.x < 190)
         {
           rotationAngle = -1.8;
         }
-        // if (rotationAngle < -1.8)
-        // {
-        //   rotationAngle = -1.8;
-        // }
-        // if (rotationAngle > -0.82)
-        // {
-        //   rotationAngle = -0.82;
-        // }
+
       }
       if (imgName === "images\\sprites\\air grab\\rightArmm.png")
       {
-        if (inputManager.mouseCoordinates.x > 530)
+        if(inputManager.mouseCoordinates.y > gameCanvas.height/2)
+        {
+          rotationAngle = rotationAngle;
+        }
+        else if (inputManager.mouseCoordinates.x > 530)
         {
           rotationAngle = -1.09;
         }
-        if (inputManager.mouseCoordinates.x < 190)
+        else if (inputManager.mouseCoordinates.x < 190)
         {
           rotationAngle = -2.05;
         }
-        // if (rotationAngle < -2.05)
-        // {
-        //   rotationAngle = -2.05;
-        // }
-        // if (rotationAngle > -1.09)
-        // {
-        //   rotationAngle = -1.09;
-        // }
+
       }
     }
     gameCanvasContext.save();

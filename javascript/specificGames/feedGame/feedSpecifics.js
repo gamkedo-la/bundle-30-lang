@@ -97,7 +97,7 @@ function feedGameClass()
     this.playerCharacter.draw();
     this.leftPacMan.draw();
     this.rightPacMan.draw();
-    // drawAnswersManager.draw();
+    drawAnswersManager.draw();
 
     promptersManager.drawPromptsWhenAppropriate();
   }

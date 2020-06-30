@@ -919,16 +919,16 @@ if (
       if (fiftyFiftyResult < 0.5)
       {
         this.correctTargetPromptAndAnswerPairing.xCoordinate = 0;
-        this.correctTargetPromptAndAnswerPairing.yCoordinate = 0;
-        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width - 50;
-        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = 0;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = gameCanvas.height*0.1;
+        this.incorrectTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width - 100;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = gameCanvas.height*0.1;
       }
       else if (fiftyFiftyResult >= 0.5)
       {
-        this.correctTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width - 50;
-        this.correctTargetPromptAndAnswerPairing.yCoordinate = 0;
+        this.correctTargetPromptAndAnswerPairing.xCoordinate = gameCanvas.width - 100;
+        this.correctTargetPromptAndAnswerPairing.yCoordinate = gameCanvas.height*0.1;
         this.incorrectTargetPromptAndAnswerPairing.xCoordinate = 0;
-        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = 0;
+        this.incorrectTargetPromptAndAnswerPairing.yCoordinate = gameCanvas.height*0.1;
       }
     }
   }
