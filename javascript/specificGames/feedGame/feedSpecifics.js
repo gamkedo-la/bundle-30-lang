@@ -104,7 +104,8 @@ function feedGameClass()
 
   this.update = function()
   {
-    this.moveAnswers();
+    this.playerCharacter.updateCakeImageX();
+
   }
 
   this.handleClick = function()

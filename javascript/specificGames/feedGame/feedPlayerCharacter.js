@@ -193,6 +193,19 @@ function FeedGrabberPlayer()
       // gameAudio.clap.play();
 
   }
+
+  this.updateCakeImageX = function()
+  {
+    this.cakeImageX = inputManager.mouseCoordinates.x - this.cakeImageWidth/2;
+    if (this.cakeImageX < 220)
+    {
+      this.cakeImageX = 220;
+    }
+    if (this.cakeImageX > 375)
+    {
+      this.cakeImageX = 375;
+    }
+  }
 }
 
 function resetArmSettings()

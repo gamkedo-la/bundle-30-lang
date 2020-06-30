@@ -71,7 +71,48 @@ function drawFromSheet(imgName, atX,atY,
 
   if(typeof rotationAngle !== 'undefined' && typeof pivotX !== 'undefined' && typeof pivotY !== 'undefined')
   {
-    console.log('inside angle and pivot checks');
+    console.log('rotationAngle: ' + rotationAngle);
+    if (gameClassManager.currentGame === 'feedGame')
+    {
+      if (imgName === "images\\sprites\\air grab\\leftArmm.png")
+      {
+        if (inputManager.mouseCoordinates.x > 530)
+        {
+          rotationAngle = -0.82
+        }
+        if (inputManager.mouseCoordinates.x < 190)
+        {
+          rotationAngle = -1.8;
+        }
+        // if (rotationAngle < -1.8)
+        // {
+        //   rotationAngle = -1.8;
+        // }
+        // if (rotationAngle > -0.82)
+        // {
+        //   rotationAngle = -0.82;
+        // }
+      }
+      if (imgName === "images\\sprites\\air grab\\rightArmm.png")
+      {
+        if (inputManager.mouseCoordinates.x > 530)
+        {
+          rotationAngle = -1.09;
+        }
+        if (inputManager.mouseCoordinates.x < 190)
+        {
+          rotationAngle = -2.05;
+        }
+        // if (rotationAngle < -2.05)
+        // {
+        //   rotationAngle = -2.05;
+        // }
+        // if (rotationAngle > -1.09)
+        // {
+        //   rotationAngle = -1.09;
+        // }
+      }
+    }
     gameCanvasContext.save();
     gameCanvasContext.translate(pivotX,pivotY);//place imaginary hand at pivot point
     gameCanvasContext.rotate(rotationAngle + Math.PI/2);//rotate with hand at pivot based in radians
