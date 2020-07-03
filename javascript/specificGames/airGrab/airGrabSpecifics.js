@@ -13,9 +13,12 @@ function AirGrabGameClass()
 
   this.drawTransitionText = function()
   {
-    customFontFillText(['Grab the Money!', symbolExclamationPointImage], 55,30, 75,50);
-    customFontFillText(['Move the Mouse', ' ', symbolEqualsImage, ' Move the arms'], 40,15, gameCanvas.width*0.125,250);
-    customFontFillText(['Mouse Click', ' ', symbolEqualsImage, ' Reach and Grab'], 40,15, gameCanvas.width*0.125,450);
+    customFontFillText(['Grab the Money'], 55,30, 75,50);
+    drawFromSheetSimple("images\\Custom Font\\pngs\\symbols\\symbol!.png", 500,40, 75,50);
+    customFontFillText(['Move the Mouse    Move the arms'], 40,15, gameCanvas.width*0.125,250);
+    drawFromSheetSimple("images\\Custom Font\\pngs\\symbols\\symbol=.png", 290,250, 75,50);
+    customFontFillText(['Mouse Click       Reach and Grab'], 40,15, gameCanvas.width*0.125,450);
+    drawFromSheetSimple("images\\Custom Font\\pngs\\symbols\\symbol=.png", 275,450, 75,50);
   }
 
   this.imageAnswerWidth = undefined;

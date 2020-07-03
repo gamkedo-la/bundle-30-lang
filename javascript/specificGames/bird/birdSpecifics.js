@@ -28,10 +28,17 @@ function birdGameClass() {
 
   this.drawTransitionText = function()
   {
-    customFontFillText(['Fly to the answers!', symbolExclamationPointImage], 60,30, 75,50);
+    // (imgName, atX,atY,
+    //                         desiredWidth,desiredHeight)
+    customFontFillText(['Fly to the answers'], 60,30, 75,50);
+    drawFromSheetSimple("images\\Custom Font\\pngs\\symbols\\symbol!.png", 290,30, 75,50);
     customFontFillText([rightArrowImage, ' ', symbolEqualsImage, ' Fly right'], 30,15, 350,350);
+    drawFromSheetSimple("images\\Custom Font\\pngs\\symbols\\symbol=.png", 290,250, 75,50);
+    drawFromSheetSimple("images\\Custom Font\\pngs\\symbols\\symbol=.png", 290,250, 75,50);
     customFontFillText(['Space bar', ' ', symbolEqualsImage, ' Fly up'], 30,15, 175,500);
+    drawFromSheetSimple("images\\Custom Font\\pngs\\symbols\\symbol=.png", 290,250, 75,50);
     customFontFillText([leftArrowImage, ' ', symbolEqualsImage, ' Fly left'], 30,15, 50,350);
+    drawFromSheetSimple("images\\Custom Font\\pngs\\symbols\\symbol=.png", 290,250, 75,50);
   }
 
 
