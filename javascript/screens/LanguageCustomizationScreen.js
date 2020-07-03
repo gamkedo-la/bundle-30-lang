@@ -81,7 +81,9 @@ function LanguageCustomizationScreen(nameString, specificParentLanguageObject)
     gameCanvasContext.strokeRect(gameCanvas.width/2 - 90,2, 70,40);
     gameCanvasContext.strokeRect(gameCanvas.width/2,2, 70,40);
 
-    customFontFillText([leftArrowImage, rightArrowImage], 70,90, gameCanvas.width/2 - 90,-10);
+    //customFontFillText([leftArrowImage, rightArrowImage], 70,90, gameCanvas.width/2 - 90,-10);
+    drawFromSheetSimple("images\\Custom Font\\pngs\\symbols\\leftArrow.png", gameCanvas.width/2 - 90,-17, 70,85);
+    drawFromSheetSimple("images\\Custom Font\\pngs\\symbols\\rightArrow.png", gameCanvas.width/2,-17, 70,85);
 
     //play button
     gameCanvasContext.strokeRect(gameCanvas.width-100,2, 98,40);
